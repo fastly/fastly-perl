@@ -120,3 +120,6 @@ ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
 
 ok($version2->activate);
+
+my %stats       = $service->stats;
+ok(keys %stats, "Got stats");
