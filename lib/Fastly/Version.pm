@@ -21,7 +21,7 @@ sub post_path {
 sub put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->get_path($obj->service, $obj->version, $obj->name);
+    return $class->get_path($obj->as_hash);
 }
  
 sub delete_path {
@@ -33,14 +33,14 @@ sub delete_path {
 sub activate {
     my $self = shift;
     die "You must be fully authed to activate a version" unless $self->fetcher->fully_authed;
-    my $hash = $self->fetcher->client.put($self->put_path($self)+"/activate");
+    my $hash = $self->fetcher->client->put($self->put_path($self)."/activate");
     return defined $hash;
 }
 
 sub deactivate {
     my $self = shift;
     die "You must be fully authed to deactivate a version" unless $self->fetcher->fully_authed;
-    my $hash = $self->fetcher->client.put($self->put_path($self)+"/deactivate");
+    my $hash = $self->fetcher->client->put($self->put_path($self)."/deactivate");
     return defined $hash;
 }
 1;

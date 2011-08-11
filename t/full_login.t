@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 37; 
+use Test::More tests => 55; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -119,7 +119,7 @@ is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
 
-ok($version2->activate);
+ok($version2->activate, "Activated version");
 
 my %stats       = $service->stats;
 ok(keys %stats, "Got stats");
