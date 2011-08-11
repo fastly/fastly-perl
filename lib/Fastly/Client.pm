@@ -1,7 +1,7 @@
 package Fastly::Client;
 
 use strict;
-use warning;
+use warnings;
 use JSON;
 
 =head1 NAME
@@ -24,18 +24,20 @@ sub new {
     my $port  = $opts{base_port} ||= 80;
     $self->{_ua} = Fastly::Client::UserAgent->new($base, $port);
     
-    return $self unless $self->fully_authed
+    return $self unless $self->fully_authed;
 
     # If we're fully authed (i.e username and password ) then we need to log in
-    my $res = $self->ua->post('/login', make_params(user => $self->{user}, password => $self->{password}))
+    my $res = $self->ua->post('/login', {}, user => $self->{user}, password => $self->{password});
     die "Unauthorized" unless $res->is_success;
     $self->{_cookie} = $res->header('set-cookie');
-    return $self
+    return $self;
 }
+
+sub ua { shift->{_ua} }
 
 sub authed {   
     my $self = shift;
-    defined $self->{api_key} || $self->fully_authed
+    defined $self->{api_key} || $self->fully_authed;
 }
 
 # Some methods require full username and password rather than just auth token
@@ -49,7 +51,7 @@ sub get {
     my $path = shift;
     my $res  = $self->ua->get($path, $self->_headers);
     return undef if 404 == $res->code;
-    die "Couldn't get $path - ".$res->message unless $res->is_success;
+    die "Couldn't GET $path - ".$res->message unless $res->is_success;
     decode_json($res->decoded_content);
 }
 
@@ -57,47 +59,101 @@ sub post {
     my $self   = shift;
     my $path   = shift;
     my %params = @_;
-    return $self->_post_and_put('post', $path, %params);
+    
+    my $res    = $self->ua->post($path, $self->_headers, %params);
+    die "Couldn't POST to $path - ".$res->message unless $res->is_success;
+    decode_json($res->decoded_content);
 }
 
 sub put {
     my $self   = shift;
     my $path   = shift;
     my %params = @_;
-    return $self->_post_and_put('put', $path, %params);
-}
-
-sub _post_and_put {
-    my $self   = shift;
-    my $meth   = shift;
-    my $path   = shift;
-    my %params = @_;
-    my $query  = $self->_make_params(%params);
-    my $res    = $self->ua->request($method => $path, $self->_headers, $query);
-    die "Couldn't $method to $path - ".$res->message unless $res->is_success;
+    
+    my $res    = $self->ua->put($path, $self->_headers, %params);
+    die "Couldn't PUT to $path - ".$res->message unless $res->is_success;
     decode_json($res->decoded_content);
 }
-
 
 sub delete {
     my $self = shift;
     my $path = shift;
+
     my $res  = $self->ua->delete($path, $self->_headers);
     return $res->is_success;
 }
 
-sub headers {
+sub _headers {
     my $self   = shift;
-    my $params = $self->fully_authed ? { 'Cookie' => $self->{_cookie} } : { 'X-Fastly-Key' => $self->{api_key} }
+    my $params = $self->fully_authed ? { 'Cookie' => $self->{_cookie} } : { 'X-Fastly-Key' => $self->{api_key} };
     $params->{'Content-Accept'} =  'application/json';
     return $params;
 }
 
-sub make_params {
+
+package Fastly::Client::UserAgent;
+
+use strict;
+use URI;
+use LWP::UserAgent;
+use HTTP::Request::Common qw(GET HEAD PUT POST DELETE);
+
+sub new {
+    my $class = shift;
+    my $base  = shift;
+    my $port  = shift;
+    return bless { _base => $base, _port => $port, _ua => LWP::UserAgent->new }, $class;
+}
+
+sub ua { shift->{_ua} }
+
+sub get {
+    my $self    = shift;
+    my $path    = shift;
+    my $headers = shift;
+    my %params  = @_;
+    my $url     = $self->_make_url($path, %params);
+    return $self->ua->request(GET $url, %$headers); 
+}
+
+sub post {
+    my $self    = shift;
+    my $path    = shift;
+    my $headers = shift;
+    my %params  = @_;
+    my $url     = $self->_make_url($path);
+    return $self->ua->request(POST $url, [%params], %$headers);   
+}
+
+sub put {
+    my $self    = shift;
+    my $path    = shift;
+    my $headers = shift;
+    my %params  = @_;
+    my $url     = $self->_make_url($path, %params);
+    return $self->ua->request(PUT $url, %$headers); 
+}
+
+sub delete {
+    my $self    = shift;
+    my $path    = shift;
+    my $headers = shift;
+    my %params  = @_;
+    my $url     = $self->_make_url($path, %params);
+    return $self->ua->request(DELETE $url, %$headers); 
+}
+
+sub _make_url {
     my $self   = shift;
-    my %params = @_; 
+    my $base   = $self->{_base};
+    my $port   = $self->{_port};
+    my $path   = shift;
+    my %params = @_;
     my $url = URI->new('http:');
-    $url->query_form(%params);
-    return $url->query;
+    $url->host($base);
+    $url->port($port) if $port != 80;
+    $url->path($path);
+    $url->query_form(%params) if keys %params;
+    return $url;
 }
 1;
