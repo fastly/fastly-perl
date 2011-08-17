@@ -1,0 +1,678 @@
+#!perl -w
+
+use strict;
+use warnings;
+use Fastly;
+use Data::Dumper;
+use YAML;
+
+our $CONFIG = $ENV{HOME}."/.fastly";
+
+my %opts   = get_options();
+my $fastly = Fastly->new(%opts);
+
+my $customer = $fastly->current_customer;
+
+use Term::ShellUI;
+my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history");
+          
+#$term->{debug_complete}=5;
+
+print 'Using '.$term->{term}->ReadLine."\n";
+use Term::ANSIColor qw(:constants);
+
+my $basecommands = { 
+    "help" => {
+        desc => "Print helpful information",
+        args => sub { shift->help_args(undef, @_); },
+        method => sub { shift->help_call(undef, @_); }
+    },
+    "quit" => { 
+    desc => "Quit", 
+    maxargs => 0,
+    method => sub { shift->exit_requested(1) },
+    exclude_from_history => 1,
+    },
+    "show" => {
+    desc => "Display stuff",
+    cmds => {
+        service => {
+        desc => "Show a service",
+        minargs => 1,
+        maxargs => 3,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+        proc => \&show_service,
+        },
+        services => {
+        desc => "List services",
+        proc => \&show_services,
+        },
+        stats => {
+        cmds => {
+            service => {
+            minargs => 1,
+            args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
+            proc => \&show_stats_service,
+            },
+            all => {
+            args => [sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
+            proc => \&show_stats_all,
+            }
+        }        
+        },
+        diff => {
+        desc => "Difference between two versions",
+        minargs => 5,
+        maxargs => 5,
+        proc => \&diff,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['to'] }, \&list_version, undef],
+        },
+        locks => {
+        desc => "Show active locks",
+        proc => \&show_locks,
+        },
+    }
+    },
+    "create" => {
+    cmds => {
+        service => {
+        minargs => 1,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&name_map_complete, \&model_args],
+        proc => \&create,
+        },
+    },
+    },
+    "delete" => {
+    cmds => {
+        service => {
+        minargs => 1,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, undef],
+        proc => \&delete,
+        }
+    }
+    },
+    "set" => {
+    cmds => {
+        service => {
+        minargs => 5,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, \&model_args],
+        proc => \&set,
+        }
+    }
+    },
+    "upload" => {
+    cmds => {
+        service => {
+        minargs => 5,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['from'] }, sub { ['file'] },
+            sub { shift->complete_files(@_) }, undef],
+        proc => \&upload,
+        }
+    }
+    },
+    "validate" => {
+    cmds => {
+        service => {
+        minargs => 3,
+        maxargs => 3,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+        proc => \&validate,
+        }
+    }
+    },
+    "dump" => {
+    cmds => {
+        service => {
+        minargs => 3,
+        maxargs => 3,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+        proc => \&dump,
+        }
+    }
+    },
+    "activate" => {
+    cmds => {
+        service => {
+        minargs => 3,
+        maxargs => 3,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+        proc => \&activate,
+        }
+    }
+    },
+    "purge" => {
+    cmds => {
+        service => {
+        minargs => 1,
+        maxargs => 1,
+        args => [\&list_service_complete],
+        proc => \&purge,
+        }
+    }
+    },
+    "clone" => {
+    cmds => {
+        service => {
+        minargs => 3,
+        maxargs => 3,
+        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+        proc => \&clone,
+        }
+    }
+    }
+};
+use DateTime;
+
+sub name_map_complete {
+    my $t = shift;
+    my $c = shift;
+    my $commands = $fastly->commands;
+    my $command  = $commands->{"$c->{args}->[3].create"};
+    if ($command->{name}) {
+        return (RED . "    \nNAME" . RESET);
+    } else {
+        return ["MAP"];
+    }
+}
+
+sub show_stats_service {
+    my $service_name = shift;
+    my ($service)    = $fastly->search_services(name => $service_name);
+    my $args = { service => $service };
+    show_stats($args, @_);
+}
+
+sub show_stats {
+    my $service = shift; 
+    my $type = "minutely";
+    if ($_[2]) {
+        $type = "hourly" if ($_[2] eq 'hour');
+        $type = "daily" if ($_[2] eq 'day');
+    }
+
+    my $stats = eval { $service->stats }; 
+    unless ($stats) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+        return;
+    }
+    my $split = 0;
+    $split++ if ($_[5] && $_[5] eq 'datacenter');
+    
+
+
+
+    printf("%-21s%-5s%-10s%-10s%-6s%-10s%-6s%6s  %-7s %-7s %-7s\n", "Time", "DC", "Bytes", "Requests", "Hits", "Misses", "Pass", "%", "200", "304", "5xx");
+    my @stats;
+    my $last;
+    my $total = {start_time => time, datacenter => ''} ;
+    foreach my $stats (keys %$stats) {
+        foreach (qw(hits requests pass uncacheable body_size header_size miss status_5xx status_200 status_304)) {
+            $total->{$_} += $stats->{$_};
+        }
+        if ($split) {
+            push @stats, $stats;
+        } else {
+            unless ($last) {
+                $last = $stats;
+                next;
+            }
+            if ($last->{start_time} != $stats->{start_time}) {
+                push @stats, $last;
+                $last = $stats;
+            } else {
+                foreach (qw(hits requests pass uncacheable body_size header_size miss status_5xx status_200 status_304)) {
+                    $last->{$_} += $stats->{$_};
+                }
+            }
+        }
+    }
+    push @stats, $last unless $split;
+    push @stats, undef, $total;
+    foreach my $stats (@stats) {
+        unless ($stats) {
+            print "----\n";
+            next;
+        }
+        my $dt = DateTime->from_epoch(epoch => $stats->{start_time});
+
+        my $size = $stats->{body_size} + $stats->{header_size};
+        if ($size > 1024*1024*1024) {
+            $size = sprintf("%.2f GB", $size / 1024 / 1024 / 1024);
+        } elsif ($size > 1024*1024) {
+            $size = sprintf("%.2f MB", $size / 1024 / 1024);
+        } elsif ($size > 1024) {
+            $size = sprintf("%.2f KB", $size / 1024);
+        } else {
+            $size = sprintf("%d B", $size);
+        }
+        my $hitp = "00.0%";
+        if ($stats->{hits}) {
+            $hitp = sprintf("%.1f%%", (($stats->{hits}/($stats->{requests}-$stats->{pass}-$stats->{uncacheable}))*100));
+        }
+        my $dc = "ALL";
+        $dc = $stats->{datacenter} if ($split);
+        printf("%s%-11s%-10s%s%s%-5s%s%-10s%-10s%-6s%-10s%-6s%-6s  %-7s %-7s %s%-7s%s\n", RED, $dt->ymd, $dt->hms, RESET, BLUE, $dc, RESET, $size, $stats->{requests}, $stats->{hits}, $stats->{miss}, $stats->{pass}, $hitp, $stats->{status_200}, $stats->{status_304}, RED, $stats->{status_5xx}, RESET);
+    }
+}
+
+sub clone {
+    my $service_name   = shift;
+    shift;
+    my $version_number = shift;
+    
+    my ($service) = $fastly->search_services(name => $service_name);
+    my $version   = $service->version($version_number);
+    my $new       = eval { $version->clone };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print "Version $version_number cloned to ".$new->number."\n";
+    }
+}
+
+sub dump {
+    my $service_name   = shift;
+    shift;
+    my $version_number = shift;
+
+    my ($service) = $fastly->search_services(name => $service_name);
+    my $version   = $service->version($version_number);
+    my $vcl       = eval { $version->generated_vcl };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print Dump({$vcl->as_hash});
+    }
+}
+
+sub validate {
+    my $service_name   = shift;
+    shift;
+    my $version_number = shift;
+
+    my ($service)  = $fastly->search_services(name => $service_name);
+    my $version    = $service->version($version_number);
+    my $valid      = eval { $version->validate };
+    
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print "Config validated\n";
+    }
+}
+
+sub activate {
+    my $service_name   = shift;
+    shift;
+    my $version_number = shift;
+
+    my ($service)  = $fastly->search_services(name => $service_name);
+    my $version    = $service->version($version_number);
+    my $response   = eval { $version->activate};
+    
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print "Set activated\n";
+    }
+}
+
+sub purge {
+    my $service_name = shift;
+    my $version      = shift;
+    my ($service)    = $fastly->search_services(name => $service_name);
+    my $ok           = eval { $service->purge_all };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print "Purged\n";
+    }
+}
+
+use File::Temp qw(tempfile);
+sub diff {
+    my $service_name = shift;
+    shift;
+    my $from_version = shift;
+    shift;
+    my $to_version = shift;
+    my $from = eval { $fastly->search_services(name => $service_name, version => $from_version) };
+    if ($@) { print BOLD, RED, "Error: ", RESET, $@,"\n"; return };
+    my $to = eval { $fastly->search_services(name => $service_name, version => $to_version) };
+    if ($@) { print BOLD, RED, "Error: ", RESET, $@,"\n"; return };
+    
+    if ($to->{type} eq 'error') { print BOLD, RED, "Error: ", RESET, $to->{data}->{error},"\n"; return };
+
+
+    my ($to_fh, $to_fn) = tempfile();
+    my ($from_fh, $from_fn) = tempfile();
+    print $to_fh Dump({$to->as_hash});
+    print $from_fh Dump({$from->as_hash});
+    my $diff = `diff -u $from_fn $to_fn`;
+    print "$diff";
+    print "\n\n";
+
+}
+
+sub set {
+    my $service_name = shift;
+    shift;
+    my $version = shift;
+    my $type = shift;
+
+    my $service  = eval { $fastly->search_services(name => $service_name ) };
+    my $commands = $fastly->commands; 
+    my $cmd      = $commands->{"$type.create"};
+
+    my %args;
+    if ($cmd->{name}) {
+        $args{"name"} =  shift;
+    } else {
+        shift;
+    }
+    my $method = "update_$type"; 
+    my $o = eval { $fastly->$method( service => $service->id, version => $version->number, @_ ) };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print "Set success\n";
+    }
+    return;
+}
+# 
+# # sub error_completion {
+# #     my $t = shift;
+# #     my $r = shift;
+# #     if ($r->{type} eq 'error') {
+# #         $t->completemsg(sprintf("%s%sError: %s %s\n", BOLD, RED, RESET, $r->{data}->{error}));
+# #         return 1;
+# #     }
+# #     return 0;    
+# # }
+# 
+# # sub error {
+# #     my $r = shift;
+# #     if ($r->{type} eq 'error') {
+# #         print BOLD, RED, "Error: ", RESET, $r->{data}->{error},"\n";
+# #         return 1;
+# #     }
+# #     return 0;
+# # }
+# 
+
+sub upload {
+    my $service_name = shift;
+    shift;
+    my $version = shift;
+    my $type    = shift;
+    my $name    = shift;
+    shift;
+    shift;
+    my $file    = shift || $name;
+    
+    local($/);
+    open(my $fh, "<$file") || die "No file '$file'";
+    my $data = <$fh>;
+    close($fh);
+
+    eval {
+        my $service = $fastly->search_services(name => $service_name);
+        my $version = $service->version($version);
+        my $r       = $version->upload_vcl($data);
+        die "Couldn't upload vcl to service $service_name version $version";
+    };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        print "Upload success\n";
+    }
+    return;
+}
+
+sub delete {
+    my @args    = @_;
+    my $name    = shift @args;
+    my $service = eval { $fastly->search_services(name => $name) };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+        return;
+    }
+        
+    if (!@args) {
+        my $r = eval { $fastly->delete_service($service) };
+        if (!$r) {
+            print BOLD, RED, "Error: ", RESET,  "Couldn't delete service $name\n";
+        } else {
+            print "Deleted service ".$service->id."\n";
+        }
+        return;
+    }
+   
+    if (@args < 2) {
+        print RED, "Need version", RESET, "\n";
+        return;
+    }
+    my $version = shift @args;
+    my $type    = shift @args;
+    my $tname   = shift @args;
+    my $meth    = "delete_$type";
+    my $r       = eval { $fastly->$meth(service => $service->id, version => $version, name => $tname ) };
+    if ($@) {
+       print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+       print "Deleted $type $tname\n";
+    }
+    return;
+}
+
+sub create {
+    my @args = @_;
+    my $name = shift @args;
+    if (!@args) {
+        my $service = eval { $fastly->create_service(name => $name ) };
+        if ($@) {
+            print BOLD, RED, "Error: ", RESET, $@,"\n";
+        } else {
+            print "Created service ".$service->id."\n";
+        }
+        return;
+    }
+    
+    if (@args < 2) {
+        print RED, "Need version", RESET, "\n";
+        return;
+    }
+
+    my $service = eval { $fastly->search_services(name => $name) };
+
+    my $service_name = shift @args;
+    shift @args;
+    my $version = shift @args;
+    my $type = shift @args;
+
+    my $commands = $fastly->commands;
+    my $cmd = $commands->{"$type.create"};
+
+    my %args;
+    if ($cmd->{name}) {
+        push @args, "name", shift @args 
+    } else {
+        shift @args;
+    }
+
+    my $meth = "create_$type"; 
+    my $obj  = eval { $fastly->$meth(service => $service->id, version $version, @args) };
+    if ($@) {
+        print BOLD, RED, "Error: ", RESET, $@,"\n";
+    } else {
+        warn Dumper({$obj->as_hash});
+    }
+}
+
+
+
+sub show_locks {
+    
+}
+
+sub list_objects {
+    no strict 'refs';
+    my $t    = shift;
+    my $c    = shift; 
+    my @args = @{$c->{args}};
+    my $service_name = $args[0];
+    my $version_num  = $args[2];
+    my $type         = $args[3];
+    my ($service)    = $fastly->search_services(name => $service_name, version => $version_num);
+    my $meth         = "list_$type";
+    my @objects      = $fastly->$meth( service => $service->id );
+    return [map { $_->name } @objects];
+}
+
+
+sub model_args {
+    my $t = shift;
+    my $c = shift; 
+    my $commands = $fastly->commands;
+    my $cmd      = $commands->{"$c->{args}->[3].create"};
+    my @args     = @{$c->{args}};
+
+    my %seen;
+    my $i = 0;
+    foreach my $arg (@args) {
+        $i++;
+        next if($i < 6);
+        $seen{$arg}++ if ($i % 2 == 0);
+    }
+
+    my $offset;
+    if (@args % 2 == 0 && $args[-1] && $cmd->{$args[-1]}) {
+        $offset = -1;
+    }
+    if (@args % 2 == 1) {
+        $offset = -2;
+    }    
+    if ($offset) {
+        if ($cmd->{$args[$offset]}->{type} =~/heavenly::(.*)/) {
+            my $service   = $fastly->search_services(name => $args[0], version => $args[2]);
+            my ($version) = $service->versions; 
+            my $x = [$version->{$1} ];
+            return $x if @$x;
+        }
+        return sprintf("   (%s%s%s)", RED, $cmd->{$args[$offset]}->{desc}, RESET);
+    }
+
+    if ($c->{twice}) {
+        $t->completemsg("\n\n");
+        foreach my $c (sort {$a cmp $b} keys %$cmd) {
+            next if ($c eq 'name' || $c eq 'service' || $c eq 'version');
+            next if ($seen{$c});
+            if (exists $cmd->{$c}->{default}) {
+                $t->completemsg(sprintf("%s%-25s%s  %s%s%s  (%s)\n",BOLD,$c,RESET, BLUE,$cmd->{$c}->{desc},RESET, $cmd->{$c}->{default} || ""));
+            } else {
+                $t->completemsg(sprintf("%s%s%-25s%s  %s%s%s\n",BOLD, RED,$c,RESET, BLUE,$cmd->{$c}->{desc},RESET));
+            }
+        } 
+    }
+    my @r;
+    foreach my $c (sort {$a cmp $b} keys %$cmd) {
+        next if ($c eq 'name' || $c eq 'service' || $c eq 'version');
+        next if ($seen{$c});
+        push @r, $c;
+    }
+    push @r, "" if(@r == 1);
+    return \@r;
+}
+
+
+sub service_models {
+    my $t = shift;
+    my $c = shift; 
+    my $commands = eval { $fastly->commands };
+    if ($@) {
+        $t->completemsg(sprintf("\n%s%s%s\n", RED, $@, RESET));
+        return [];
+    }
+    my @options;
+    foreach my $command (keys %$commands) {
+        if ($command =~/(\w+).create/) { 
+            next if ($1 eq 'service');
+            next if ($1 eq 'version');
+            push @options, $1;
+        }
+    }
+    return \@options;
+}
+
+
+sub show_service {
+    my $service_name    = shift;
+    shift;
+    my $version_number  = shift;
+    my ($service)       = $fastly->search_services(name => $service_name, version => $version_number);
+    print Dump({$service->as_hash});
+}
+
+sub show_services {
+    my @services = $fastly->list_services;
+    
+    foreach my $service (sort { $a->name cmp $b->name } @services) {
+        print $service->id."\t\t".$service->name."\n";
+    }
+}
+
+sub list_service_complete {
+    my $t = shift;
+    my $c = shift; 
+
+    my @services = $fastly->list_services;
+    
+    my $substr = 0;
+    if ($c->{str}) {
+        $substr = index($c->{args}->[0], $c->{str});
+    } else {
+        $substr = $c->{tokoff};
+    }
+    
+    return [ map { substr($_, 0, $substr, ""); $_ } map { $_->name } @services ];
+}
+
+sub list_version {
+    my $t = shift;
+    my $c = shift;
+    my $service_name    = $c->{args}->[0];
+    my ($service)       = $fastly->search_services(name => $service_name);
+    return sort { $a->number <=> $b->number } $service->versions;
+}
+
+sub load_options {
+    my $file    = shift;
+    my %options = ();
+    return %options unless -f $file;
+
+    open(my $fh, $file) || die "Couldn't open $file: $!\n";
+    while (<$fh>) {
+        chomp;
+        next if /^#/;
+        next if /^\s*$/;
+        next unless /=/;
+        s/(^\s*|\s*$)//g;
+        my ($key, $val) = split /\s*=\s*/, $_, 2;
+        $options{$key} = $val;
+    }
+    close($fh);
+    return %options;
+}
+
+sub get_options {
+    my %options = load_options($CONFIG);
+    while (@ARGV && $ARGV[0] =~ m!^(\w+)\=(\w+)$!) {
+        $options{$1} = $2;
+        shift @ARGV;
+    }
+    return %options;
+}
+
+$term->commands($basecommands);
+$term->run(@ARGV);
+
