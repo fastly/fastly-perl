@@ -53,7 +53,7 @@ sub clone {
 
 sub generated_vcl {
     my $self = shift;
-    die "You must be fully authed to get the generated_vcl for a version" unless $self->fetcher->fully_authed;
+    die "You must be fully authed to get the generated vcl for a version" unless $self->fetcher->fully_authed;
     my $hash = $self->fetcher->client->get($self->put_path($self)."/generated_vcl");
     return undef unless defined $hash;
     return Fastly::VCL->new($self->fetcher,
@@ -66,10 +66,20 @@ sub generated_vcl {
     );
 }
 
+sub upload_vcl {
+    my $self    = shift;
+    my $content = shift;
+    die "You must be fully authed to upload vcl for a version" unless $self->fetcher->fully_authed;
+    my $hash = $self->fetcher->client->post($self->put_path($self)."/vcl", content => $content);
+    return undef unless defined $hash;
+    return Fastly::VCL->new($self->fetcher, %$hash);
+}
+
 sub validate {
     my $self = shift;
     die "You must be fully authed to validate a version" unless $self->fetcher->fully_authed;
     my $hash = $self->fetcher->client->get($self->put_path($self)."/validate");
     return defined $hash;
 }
+
 1;
