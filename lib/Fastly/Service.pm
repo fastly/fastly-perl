@@ -10,7 +10,7 @@ sub stats {
     my $type = shift || "all";
     die "You must be fully authed to get stats" unless $self->fetcher->fully_authed;
     die "Unknown stats type $type" unless grep { $_ eq $type } qw(minutely hourly daily all);
-    return $self->fetcher->client->get($self->get_path($self->id)."/stats/"+$type);    
+    return $self->fetcher->client->get($self->get_path($self->id)."/stats/".$type);    
 }
 
 sub purge_all {
