@@ -26,4 +26,5 @@ sub delete_path {
     my $obj   = shift;
     return $class->put_path($obj);
 }
+
 1;

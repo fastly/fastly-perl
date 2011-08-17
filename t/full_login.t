@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 55; 
+use Test::More tests => 74; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -97,17 +97,39 @@ is($@, '', "Didn't raise an error");
 ok($tmp, "Service is defined again");
 is($tmp->name, $service->name, "Name is correct");
 
-
-my $version = eval { $fastly->create_version( service => $service->id ) };
+my $version = eval { $service->version };
 is($@, '', "Didn't raise an error");
 ok($version, "Version is defined");
+
+my @services;
+
+@services = eval { $fastly->list_services };
+is($@, '', "Didn't raise an error");
+ok(scalar @services, "Got some services back");
+ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name");
+
+@services = eval { $fastly->search_services(name => $name) };
+is($@, '', "Didn't raise an error");
+ok(scalar @services, "Got some services back after a search by name");
+ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name after a search by name");
+
+@services = eval { $fastly->search_services(name => $name, version => $version->number) };
+is($@, '', "Didn't raise an error");
+ok(scalar @services, "Got some services back after a search by name and version");
+ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name after a search by name and version");
+
 my $version2 = eval { $fastly->create_version( service => $service->id ) };
+is($@, '', "Didn't raise an error");
 ok($version2, "Version2 is defined");
 is($version->number+1, $version2->number, "Version is incremented");
-my $number = $version2->number;
 
+my $version3 = eval { $version2->clone };
+is($@, '', "Didn't raise an error");
+ok($version3, "Version3 is defined");
+is($version2->number+1, $version3->number, "Version is incremented again");
 
-#my $number = 1;
+my $number = $version3->number;
+
 my $backend = eval { $fastly->create_backend(service => $service->id, version => $number, ipv4 => '127.0.0.1', port => "9092", name => "fastly-test-backend-".get_rand) };
 is($@, '', "Didn't raise an error");
 ok($backend, "Backend is defined");
@@ -119,7 +141,18 @@ is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
 
-ok($version2->activate, "Activated version");
+ok($version3->activate, "Activated version");
+
+my $generated = eval { $version3->generated_vcl };
+is($@, '', "Didn't raise an error");
+ok($generated, "Generated VCL is defined");
+ok($generated->content, "Generate VCL has content");
+ok($generated->content =~ /\.port = "9092"/msg, "Generated VCL has right port");
+
+my $valid = eval { $version3->validate };
+is($@, '', "Didn't raise an error");
+ok($valid, "Version3 is valid");
+
 
 my %stats       = $service->stats;
 ok(keys %stats, "Got stats");

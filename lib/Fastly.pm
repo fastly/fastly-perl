@@ -30,9 +30,10 @@ BEGIN {
     
     my $name = $class->path;
         
-    foreach my $method (qw(get create update delete)) {
-        my $code = "sub { shift->_$method('$class', \@_) }";
+    foreach my $method (qw(get create update delete list)) {
+        my $code = "sub { shift->$method('$class', \@_) }";
         my $glob = "${method}_${name}";
+        $glob .= "s" if $method eq 'list';
         *$glob = eval "$code";
     }
   }  
@@ -96,7 +97,7 @@ sub fully_authed { shift->client->fully_authed }
 sub current_user {
     my $self = shift;
     die "You must be fully authed to get the current user" unless $self->fully_authed;
-    $self->_get("Fastly::User");
+    $self->get("Fastly::User");
 }
 
 =head2 current_customer
@@ -105,7 +106,15 @@ sub current_user {
 sub current_customer {
     my $self = shift;
     die "You must be fully authed to get the current customer" unless $self->fully_authed;
-    $self->_get("Fastly::Customer");
+    $self->get("Fastly::Customer");
+}
+
+=head2 commands 
+
+=cut
+sub commands {
+    my $self     = shift;
+    return eval { $self->client->get('/commands') };
 }
 
 =head purge <path>
@@ -120,13 +129,17 @@ sub purge {
     $self->client->post("/purge/$path");
 }
 
-sub _list {
-    my $self  = shift;
-    my $class = shift;
+sub list {
+    my $self     = shift;
+    my $class    = shift;
+    my %opts     = @_;
     die "You must be fully authed to list a $class" unless $self->fully_authed;
+    my $list     = $self->client->get($class->post_path, %opts, is_list => 1);
+    return () unless $list;
+    return map { $class->new($self, %$_) } @$list;
 }
 
-sub _get {
+sub get {
     my $self  = shift;
     my $class = shift;
     my @args  = @_;
@@ -141,7 +154,7 @@ sub _get {
     return $class->new($self, %$hash);
 }
 
-sub _create {
+sub create {
     my $self  = shift;
     my $class = shift;
     my %args  = @_;
@@ -150,7 +163,7 @@ sub _create {
     return $class->new($self, %$hash);
 }
 
-sub _update {
+sub update {
     my $self  = shift;
     my $class = shift;
     my $obj   = shift;
@@ -159,7 +172,7 @@ sub _update {
     return $class->new($self, %$hash);
 }
 
-sub _delete {
+sub delete {
     my $self  = shift;
     my $class = shift;
     my $obj   = shift;

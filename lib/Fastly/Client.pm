@@ -49,7 +49,8 @@ sub fully_authed {
 sub get {
     my $self = shift;
     my $path = shift;
-    my $res  = $self->ua->get($path, $self->_headers);
+    my %opts = @_;
+    my $res  = $self->ua->get($path, $self->_headers, %opts);
     return undef if 404 == $res->code;
     die "Couldn't GET $path - ".$res->message unless $res->is_success;
     decode_json($res->decoded_content);
