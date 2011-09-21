@@ -103,7 +103,7 @@ sub new {
     my $class = shift;
     my $base  = shift;
     my $port  = shift;
-    return bless { _base => $base, _port => $port, _ua => LWP::UserAgent->new }, $class;
+    return bless { _base => $base, _port => $port, _ua => Fastly::UA->new }, $class;
 }
 
 sub ua { shift->{_ua} }
@@ -123,7 +123,7 @@ sub post {
     my $headers = shift;
     my %params  = @_;
     my $url     = $self->_make_url($path);
-    return $self->ua->request(POST $url, [%params], %$headers);   
+    return $self->ua->request(POST $url, [_make_params(%params)], %$headers);   
 }
 
 sub put {
@@ -154,7 +154,40 @@ sub _make_url {
     $url->host($base);
     $url->port($port) if $port != 80;
     $url->path($path);
-    $url->query_form(%params) if keys %params;
+    $url->query_form(_make_params(%params)) if keys %params;
     return $url;
+}
+
+sub _make_params {
+    my %in = @_;
+    my %out;
+    
+    foreach my $key (keys %in) {
+        my $value = $in{$key};
+        unless (ref($value) eq 'HASH') {
+           $out{$key} = $value;
+           next; 
+        }
+        foreach my $sub_key (keys %$value) {
+            $out{$key."[".$sub_key."]"} = $value->{$sub_key};
+        }
+    }
+    return %out;
+}
+
+package Fastly::UA;
+
+use base qw(LWP::UserAgent);
+our $DEBUG=0;
+
+sub request {
+    my $self = shift;
+    my $req  = shift;
+    my $res  = $self->SUPER::request($req);
+    if ($DEBUG) {
+        print $req->as_string."\n------------------------\n\n";
+        print $res->as_string."\n------------------------\n\n\n\n\n";
+    }
+    return $res;
 }
 1;
