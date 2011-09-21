@@ -30,7 +30,7 @@ BEGIN {
     
     my $name = $class->path;
         
-    foreach my $method (qw(get create update delete list)) {
+    foreach my $method (qw(get create update delete)) {
         my $code = "sub { shift->$method('$class', \@_) }";
         my $glob = "${method}_${name}";
         $glob .= "s" if $method eq 'list';
