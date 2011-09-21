@@ -1,17 +1,14 @@
 use strict;
-use Test::More tests => 74; 
+use Test::More tests => 80; 
 use Helper;
 
 my %opts   = login_opts("full");
+#my %opts   = login_opts("api_key");
 my $client = Fastly::Client->new(%opts);
-my $fastly = Fastly->new(%opts);
+
 
 my $user;
 my $customer;
-
-sub get_rand {
-    return $$."-".time."-".rand(1000);
-}
 
 $user = eval { $client->get('/current_user') };
 is($@, '', "Didn't raise an error");
@@ -26,6 +23,8 @@ ok($customer, "Customer is defined");
 is($customer->{name}, 'Test Account', "Got correct customer name");
 
 $user = $customer = undef;
+
+my $fastly = Fastly->new(%opts);
 
 $user = eval { $fastly->current_user };
 is($@, '', "Didn't raise an error");
@@ -56,7 +55,7 @@ is($customer->name, $current_customer->name, "Got correct customer name again");
 
 $user = $customer = undef;
 my $email = 'fastly-ruby-test-'.get_rand.'-new@example.com';
-$user     = eval { $fastly->create_user(user_email => $email, user_name => "New User") };
+$user     = eval { $fastly->create_user(login => $email, name => "New User") };
 
 is($@, '', "Didn't raise an error");
 ok($user, "User is defined after create");
@@ -91,6 +90,7 @@ my $service = eval { $fastly->create_service(name => $name) };
 is($@, '', "Didn't raise an error");
 ok($service, "Service is defined");
 is($service->name, $name, "Service name is correct");
+
 
 $tmp = eval { $fastly->get_service($service->id) };
 is($@, '', "Didn't raise an error");
@@ -128,6 +128,7 @@ is($@, '', "Didn't raise an error");
 ok($version3, "Version3 is defined");
 is($version2->number+1, $version3->number, "Version is incremented again");
 
+
 my $number = $version3->number;
 
 my $backend = eval { $fastly->create_backend(service => $service->id, version => $number, ipv4 => '127.0.0.1', port => "9092", name => "fastly-test-backend-".get_rand) };
@@ -135,11 +136,24 @@ is($@, '', "Didn't raise an error");
 ok($backend, "Backend is defined");
 is($backend->service, $service->id, "Backend's service id is correct");
 
-my $domain_name = "fastly-test-domain-".get_rand;
+my $domain_name = "fastly-test-domain-".get_rand.".example.com";
 my $domain      = eval { $fastly->create_domain(service => $service->id, version => $number, name => $domain_name) };
 is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
+
+my $director_name = "fastly-test-director-".get_rand;
+my $director      = eval { $fastly->create_director(service => $service->id, version => $number, name => $director_name) };
+is($@, '', "Didn't raise an error");
+ok($director, "Director is defined");
+is($director->name, $director_name, "Director's name is correct");
+
+my $origin_name = "fastly-test-origin-".get_rand;
+my $origin      = eval { $fastly->create_origin(service => $service->id, version => $number, name => $origin_name) };
+is($@, '', "Didn't raise an error");
+ok($origin, "Origin is defined");
+is($origin->name, $origin_name, "Origin's name is correct");
+
 
 ok($version3->activate, "Activated version");
 

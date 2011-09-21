@@ -2,7 +2,7 @@ package Helper;
 
 use Exporter;
 use base qw(Exporter);
-@EXPORT = qw(login_opts);
+@EXPORT = qw(login_opts get_rand);
 
 use Fastly;
 use Fastly::Client;
@@ -21,6 +21,10 @@ sub login_opts {
         $opts{$what} = $ENV{$key};
     }
     return %opts;
+}
+
+sub get_rand {
+    return $$."-".time."-".rand(1000);
 }
 
 1;
