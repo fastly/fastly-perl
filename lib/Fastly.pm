@@ -5,17 +5,6 @@ use warnings;
 
 use Fastly::Client;
 
-# use Fastly::User;
-# use Fastly::Customer;
-# 
-# use Fastly::Director;
-# use Fastly::Domain;
-# use Fastly::Origin;
-# use Fastly::Service;
-# use Fastly::VCL;
-# use Fastly::Version;
-
-
 BEGIN {
   no strict 'refs';
   foreach my $class (qw(Fastly::User     Fastly::Customer Fastly::Backend
@@ -178,5 +167,39 @@ sub delete {
     my $obj   = shift;
     die "You must be fully authed to delete a $class" unless $self->fully_authed;
     return defined $self->client->delete($class->delete_path($obj));
+}
+
+sub load_options {
+    my $file    = shift;
+    my %options = ();
+    return %options unless -f $file;
+
+    open(my $fh, $file) || die "Couldn't open $file: $!\n";
+    while (<$fh>) {
+        chomp;
+        next if /^#/;
+        next if /^\s*$/;
+        next unless /=/;
+        s/(^\s*|\s*$)//g;
+        my ($key, $val) = split /\s*=\s*/, $_, 2;
+        $options{$key} = $val;
+    }
+    close($fh);
+    return %options;
+}
+
+sub get_options {
+    my @configs = @_;
+    my %options;
+    foreach my $config (@configs) {
+        next unless -f $config;
+        %options = load_options($config);
+    }
+    while (@ARGV && $ARGV[0] =~ m!^(\w+)\=(\w+)$!) {
+        $options{$1} = $2;
+        shift @ARGV;
+    }
+    die "Couldn't find options from command line arguments or ".join(", ", @configs)."\n" unless keys %options;
+    return %options;
 }
 1;
