@@ -6,9 +6,7 @@ use Fastly;
 use Data::Dumper;
 use YAML;
 
-our $CONFIG = $ENV{HOME}."/.fastly";
-
-my %opts   = get_options();
+my %opts   = Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
 my $fastly = Fastly->new(%opts);
 
 my $customer = $fastly->current_customer;
@@ -645,33 +643,7 @@ sub list_version {
     return sort { $a->number <=> $b->number } $service->versions;
 }
 
-sub load_options {
-    my $file    = shift;
-    my %options = ();
-    return %options unless -f $file;
 
-    open(my $fh, $file) || die "Couldn't open $file: $!\n";
-    while (<$fh>) {
-        chomp;
-        next if /^#/;
-        next if /^\s*$/;
-        next unless /=/;
-        s/(^\s*|\s*$)//g;
-        my ($key, $val) = split /\s*=\s*/, $_, 2;
-        $options{$key} = $val;
-    }
-    close($fh);
-    return %options;
-}
-
-sub get_options {
-    my %options = load_options($CONFIG);
-    while (@ARGV && $ARGV[0] =~ m!^(\w+)\=(\w+)$!) {
-        $options{$1} = $2;
-        shift @ARGV;
-    }
-    return %options;
-}
 
 $term->commands($basecommands);
 $term->run(@ARGV);
