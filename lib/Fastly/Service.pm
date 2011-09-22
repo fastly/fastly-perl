@@ -25,8 +25,8 @@ sub versions {
     my $fetcher  = $self->fetcher;
     my $versions = $self->{versions};
     my @versions;
-    foreach my $version (values %$versions) {
-        push @versions, Fastly::Version->new($fetcher, %$version);
+    foreach my $number (keys %$versions) {
+        push @versions, Fastly::Version->new($fetcher, service => $self->id, number => $number, created_at => $versions->{$number});
     }
     return sort { $a->number <=> $b->number } @versions;
 }
