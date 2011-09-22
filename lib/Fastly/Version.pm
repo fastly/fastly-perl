@@ -68,9 +68,10 @@ sub generated_vcl {
 
 sub upload_vcl {
     my $self    = shift;
+    my $name    = shift;
     my $content = shift;
     die "You must be fully authed to upload vcl for a version" unless $self->fetcher->fully_authed;
-    my $hash = $self->fetcher->client->post($self->put_path($self)."/vcl", content => $content);
+    my $hash = $self->fetcher->client->post($self->put_path($self)."/vcl", name => $name, content => $content);
     return undef unless defined $hash;
     return Fastly::VCL->new($self->fetcher, %$hash);
 }
