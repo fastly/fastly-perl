@@ -5,4 +5,43 @@ use base qw(Fastly::BelongsToServiceAndVersion);
 
 Fastly::VCL->mk_accessors(qw(service version name content created_at updated_at deleted_at));
 
+=head1 NAME
+
+Fastly::VCL - An internal representation of a Varnish Configuration Language file
+
+=head1 ACCESSORS
+
+=head2 service
+
+The id of the service this belongs to.
+
+=head2 version
+
+The number of the version this belongs to.
+
+=head2 name
+
+The domain name of this domain
+
+=head2 content
+
+The content of the VCL file.
+
+See this for more details
+
+https://www.varnish-cache.org/trac/wiki/VCL
+
+=head2 created_at
+
+The date and time this was created at
+
+=head2 updated_at
+
+The date and time this was updated at
+
+=head2 deleted_at
+
+The date and time this was deleted at
+
+=cut
 1;

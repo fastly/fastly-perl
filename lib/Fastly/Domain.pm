@@ -5,4 +5,35 @@ use base qw(Fastly::BelongsToServiceAndVersion);
 
 Fastly::Domain->mk_accessors(qw(service version name created_at updated_at id owner_id));
 
+=head1 NAME
+
+Fastly::Domain - Representation of a domain name you want to map to a service
+
+=head1 ACCESSORS
+
+=head2 service
+
+The id of the service this belongs to.
+
+=head2 version
+
+The number of the version this belongs to.
+
+=head2 name
+
+The domain name of this domain
+
+=head2 created_at
+
+The date and time this was created at
+
+=head2 updated_at
+
+The date and time this was updated at
+
+=head2 deleted_at
+
+The date and time this was deleted at
+
+=cut
 1;

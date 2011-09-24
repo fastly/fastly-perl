@@ -3,6 +3,17 @@ package Fastly::Model;
 use strict;
 use base qw(Class::Accessor::Fast);
 
+=head1 NAME
+
+Fastly::Model - base class for all classes
+
+=head1 METHODS
+
+=head2 new <fetcher> <opt[s]>
+
+Create a new object, passing in a Fastly object that can get other objects
+
+=cut
 sub new {
     my $class   = shift;
     my $fetcher = shift;
@@ -11,9 +22,9 @@ sub new {
     return bless \%opts, $class;
 }
 
-sub fetcher { shift->{_fetcher} }
+sub _fetcher { shift->{_fetcher} }
 
-sub as_hash {
+sub _as_hash {
     my $self = shift;
     my %ret;
     foreach my $key (keys %$self) {
@@ -22,34 +33,34 @@ sub as_hash {
     return %ret;
 }
 
-sub path {
+sub _path {
    my $class = shift;
    $class    = ref($class) if ref($class); 
    my ($path) = (lc($class) =~ m!::([^:]+)$!);
    return $path;
 }
 
-sub get_path {
+sub _get_path {
     my $class = shift;
     my $id    = shift;
-    return "/".$class->path."/$id";
+    return "/".$class->_path."/$id";
 }
 
-sub post_path {
+sub _post_path {
     my $class = shift;
-    return "/".$class->path;
+    return "/".$class->_path;
 }
  
-sub put_path {
+sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->get_path($obj->id);
+    return $class->_get_path($obj->id);
 }
  
-sub delete_path {
+sub _delete_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->put_path($obj);
+    return $class->_put_path($obj);
 }
 
 1;

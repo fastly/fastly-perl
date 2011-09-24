@@ -13,6 +13,22 @@ Fastly::Client - communicate with the Fastly HTTP API
 
 =head1 METHODS
 
+=cut
+
+
+=head2 new <opt[s]>
+
+Create a new Fastly user agent. Options are
+
+=over 4
+
+=item user 
+
+=item password
+
+=item api_key
+
+=back
 
 =cut
 sub new {
@@ -27,60 +43,69 @@ sub new {
     return $self unless $self->fully_authed;
 
     # If we're fully authed (i.e username and password ) then we need to log in
-    my $res = $self->ua->post('/login', {}, user => $self->{user}, password => $self->{password});
+    my $res = $self->_ua->_post('/login', {}, user => $self->{user}, password => $self->{password});
     die "Unauthorized" unless $res->is_success;
     $self->{_cookie} = $res->header('set-cookie');
     return $self;
 }
 
-sub ua { shift->{_ua} }
+sub _ua { shift->{_ua} }
 
+=head2 authed
+
+Whether or not we're authed at all by either username & password or API key
+
+=cut
 sub authed {   
     my $self = shift;
     defined $self->{api_key} || $self->fully_authed;
 }
 
-# Some methods require full username and password rather than just auth token
+=head2 fully_authed
+
+Whether or not we're fully (username and password) authed
+
+=cut
 sub fully_authed {
     my $self = shift;
     defined $self->{user} && defined $self->{password};
 }
 
-sub get {
+sub _get {
     my $self = shift;
     my $path = shift;
     my %opts = @_;
-    my $res  = $self->ua->get($path, $self->_headers, %opts);
+    my $res  = $self->_ua->_get($path, $self->_headers, %opts);
     return undef if 404 == $res->code;
     die "Couldn't GET $path - ".$res->message unless $res->is_success;
     decode_json($res->decoded_content);
 }
 
-sub post {
+sub _post {
     my $self   = shift;
     my $path   = shift;
     my %params = @_;
     
-    my $res    = $self->ua->post($path, $self->_headers, %params);
+    my $res    = $self->_ua->_post($path, $self->_headers, %params);
     die "Couldn't POST to $path - ".$res->message unless $res->is_success;
     decode_json($res->decoded_content);
 }
 
-sub put {
+sub _put {
     my $self   = shift;
     my $path   = shift;
     my %params = @_;
     
-    my $res    = $self->ua->put($path, $self->_headers, %params);
+    my $res    = $self->_ua->_put($path, $self->_headers, %params);
     die "Couldn't PUT to $path - ".$res->message unless $res->is_success;
     decode_json($res->decoded_content);
 }
 
-sub delete {
+sub _delete {
     my $self = shift;
     my $path = shift;
 
-    my $res  = $self->ua->delete($path, $self->_headers);
+    my $res  = $self->_ua->_delete($path, $self->_headers);
     return $res->is_success;
 }
 
@@ -106,42 +131,42 @@ sub new {
     return bless { _base => $base, _port => $port, _ua => Fastly::UA->new }, $class;
 }
 
-sub ua { shift->{_ua} }
+sub _ua { shift->{_ua} }
 
-sub get {
+sub _get {
     my $self    = shift;
     my $path    = shift;
     my $headers = shift;
     my %params  = @_;
     my $url     = $self->_make_url($path, %params);
-    return $self->ua->request(GET $url, %$headers); 
+    return $self->_ua->request(GET $url, %$headers); 
 }
 
-sub post {
+sub _post {
     my $self    = shift;
     my $path    = shift;
     my $headers = shift;
     my %params  = @_;
     my $url     = $self->_make_url($path);
-    return $self->ua->request(POST $url, [_make_params(%params)], %$headers);   
+    return $self->_ua->request(POST $url, [_make_params(%params)], %$headers);   
 }
 
-sub put {
+sub _put {
     my $self    = shift;
     my $path    = shift;
     my $headers = shift;
     my %params  = @_;
     my $url     = $self->_make_url($path, %params);
-    return $self->ua->request(PUT $url, %$headers); 
+    return $self->_ua->request(PUT $url, %$headers); 
 }
 
-sub delete {
+sub _delete {
     my $self    = shift;
     my $path    = shift;
     my $headers = shift;
     my %params  = @_;
     my $url     = $self->_make_url($path, %params);
-    return $self->ua->request(DELETE $url, %$headers); 
+    return $self->_ua->request(DELETE $url, %$headers); 
 }
 
 sub _make_url {

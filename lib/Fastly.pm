@@ -20,7 +20,7 @@ BEGIN {
     my $name = $class->path;
         
     foreach my $method (qw(get create update delete)) {
-        my $code = "sub { shift->$method('$class', \@_) }";
+        my $code = "sub { shift->_$method('$class', \@_) }";
         my $glob = "${method}_${name}";
         $glob .= "s" if $method eq 'list';
         *$glob = eval "$code";
@@ -30,7 +30,7 @@ BEGIN {
 
 =head1 NAME
 
-Fastly - client library for interacting with the Fastly CDN
+Fastly - client library for interacting with the Fastly web acceleration service
 
 =head1 SYNOPSIS
 
@@ -45,12 +45,28 @@ Fastly - client library for interacting with the Fastly CDN
 
 =head1 DESCRIPTION
 
-=head METHODS
+=head1 METHODS
 
 =cut
 
 
 =head2 new <opt[s]>
+
+Create a new Fastly client. Options are
+
+=over 4
+
+=item user - your Fastly login
+
+=item password - your Fastly password
+
+=item api_key - your Fastly api key
+
+=back
+
+You only need to pass in C<api_key> OR C<user> and C<password>. 
+
+Some methods require full username and password rather than just auth token.
 
 =cut
 sub new {
@@ -68,7 +84,7 @@ sub client { shift->{_client} }
 
 =head2 authed
 
-Whether or not we're authed at all
+Whether or not we're authed at all by either username & password or API key
 
 =cut
 sub authed { shift->client->authed }
@@ -86,7 +102,7 @@ sub fully_authed { shift->client->fully_authed }
 sub current_user {
     my $self = shift;
     die "You must be fully authed to get the current user" unless $self->fully_authed;
-    $self->get("Fastly::User");
+    $self->_get("Fastly::User");
 }
 
 =head2 current_customer
@@ -95,7 +111,7 @@ sub current_user {
 sub current_customer {
     my $self = shift;
     die "You must be fully authed to get the current customer" unless $self->fully_authed;
-    $self->get("Fastly::Customer");
+    $self->_get("Fastly::Customer");
 }
 
 =head2 commands 
@@ -103,10 +119,10 @@ sub current_customer {
 =cut
 sub commands {
     my $self     = shift;
-    return eval { $self->client->get('/commands') };
+    return eval { $self->client->_get('/commands') };
 }
 
-=head purge <path>
+=head2 purge <path>
 
 Purge the specified path from your cache.
 
@@ -115,58 +131,58 @@ sub purge {
     my $self = shift;
     my $path = shift;
     die "You must be authed to purge" unless $self->authed;
-    $self->client->post("/purge/$path");
+    $self->client->_post("/purge/$path");
 }
 
-sub list {
+sub _list {
     my $self     = shift;
     my $class    = shift;
     my %opts     = @_;
     die "You must be fully authed to list a $class" unless $self->fully_authed;
-    my $list     = $self->client->get($class->post_path, %opts, is_list => 1);
+    my $list     = $self->client->_get($class->_post_path, %opts, is_list => 1);
     return () unless $list;
     return map { $class->new($self, %$_) } @$list;
 }
 
-sub get {
+sub _get {
     my $self  = shift;
     my $class = shift;
     my @args  = @_;
     die "You must be fully authed to get a $class" unless $self->fully_authed;
     my $hash;
     if (@args) {
-        $hash = $self->client->get($class->get_path(@args));
+        $hash = $self->client->_get($class->_get_path(@args));
     } else {
-        $hash = $self->client->get("/current_".$class->path);
+        $hash = $self->client->_get("/current_".$class->_path);
     }
     return undef unless $hash;
     return $class->new($self, %$hash);
 }
 
-sub create {
+sub _create {
     my $self  = shift;
     my $class = shift;
     my %args  = @_;
     die "You must be fully authed to create a $class" unless $self->fully_authed;
-    my $hash  = $self->client->post($class->post_path(%args), %args);
+    my $hash  = $self->client->_post($class->_post_path(%args), %args);
     return $class->new($self, %$hash);
 }
 
-sub update {
+sub _update {
     my $self  = shift;
     my $class = shift;
     my $obj   = shift;
     die "You must be fully authed to update a $class" unless $self->fully_authed;
-    my $hash  = $self->client->put($class->put_path($obj), $obj->as_hash);
+    my $hash  = $self->client->_put($class->_put_path($obj), $obj->as_hash);
     return $class->new($self, %$hash);
 }
 
-sub delete {
+sub _delete {
     my $self  = shift;
     my $class = shift;
     my $obj   = shift;
     die "You must be fully authed to delete a $class" unless $self->fully_authed;
-    return defined $self->client->delete($class->delete_path($obj));
+    return defined $self->client->_delete($class->_delete_path($obj));
 }
 
 sub load_options {

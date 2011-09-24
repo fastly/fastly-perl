@@ -3,13 +3,58 @@ package Fastly::User;
 use strict;
 use base qw(Fastly::Model);
 
-Fastly::User->mk_accessors(qw(id name login created_at updated_at customer_id role password));
+Fastly::User->mk_accessors(qw(id name login customer_id role created_at updated_at));
 
+=head1 NAME
+
+Fastly::User - a representation of a user 
+
+=head1 ACCESSORS
+
+=head2 id
+
+The id of this user
+
+=head2 name
+
+The name of this user 
+
+=head2 customer_id
+
+The id of the customer this user belongs to
+
+=head2 role
+
+The role this user has (one of admin, owner, superuser, user, engineer, billing)
+
+=head2 created_at
+
+The date and time this was created at
+
+=head2 updated_at
+
+The date and time this was updated at
+
+=cut
+
+=head1 METHODS
+
+
+=head2 customer
+
+Get the Customer object this user belongs to.
+
+=cut
 sub customer {
     my $self = shift;
     return $self->fetcher->get("Fastly::Customer", $self->customer_id);
 }
 
+=head2 owner
+
+Where this user is the owner of their Customer.
+
+=cut
 sub owner {
     my $self = shift;
     $self->customer->owner_id eq $self->id;
@@ -24,6 +69,13 @@ our %PRIORITIES = (
   billing    => 30,
 );
 
+=head2 can_do <role>
+
+Whether or not this user has the capabilities of a given role.
+
+So for example a super user I<can_do> superuser or user or engineer or billing.
+
+=cut
 sub can_do {
     my $self          = shift;
     my $test_role     = shift;

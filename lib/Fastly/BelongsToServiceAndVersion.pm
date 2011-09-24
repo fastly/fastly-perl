@@ -3,28 +3,28 @@ package Fastly::BelongsToServiceAndVersion;
 use strict;
 use base qw(Fastly::Model);
 
-sub get_path {
+=head1 NAME
+
+Fastly::BelongsToServiceAndVersion - base class for classes that belong to a service and a version
+
+=cut
+
+sub _get_path {
     my $class = shift;
     my %opts  = @_;
-    return "/service/".$opts{service}."/version/".$opts{version}."/".$class->path."/".$opts{name};
+    return "/service/".$opts{service}."/version/".$opts{version}."/".$class->_path."/".$opts{name};
 }
 
-sub post_path {
+sub _post_path {
     my $class = shift;
     my %opts  = @_;
-    return "/service/".$opts{service}."/version/".$opts{version}."/".$class->path
+    return "/service/".$opts{service}."/version/".$opts{version}."/".$class->_path
 }
  
-sub put_path {
+sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->get_path($obj->service, $obj->version, $obj->name);
-}
- 
-sub delete_path {
-    my $class = shift;
-    my $obj   = shift;
-    return $class->put_path($obj);
+    return $class->_get_path($obj->service, $obj->version, $obj->name);
 }
 
 1;

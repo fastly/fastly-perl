@@ -3,6 +3,50 @@ package Fastly::Director;
 use strict;
 use base qw(Fastly::BelongsToServiceAndVersion);
 
-Fastly::Director->mk_accessors(qw(service version name type retries location capacity quorum created_at updated_at deleted_at));
+Fastly::Director->mk_accessors(qw(service version name type retries quorum created_at updated_at deleted_at));
+
+=head1 NAME
+
+Fastly::Director - Representation of an a logical collection of backends - for example all the asset servers in one data center
+
+=head1 ACCESSORS
+
+=head2 service
+
+The id of the service this belongs to.
+
+=head2 version
+
+The number of the version this belongs to.
+
+=head2 name
+
+The domain name of this domain
+
+=head2 type
+
+what kind of Load Balancer group (currently always 1 meaning random)
+
+=head2 retries
+
+how many backends to search if it fails (default 5)
+
+=head2 quorum
+
+the percentage of capacity that needs to be up for a director to be considered up (default 75)
+
+=head2 created_at
+
+The date and time this was created at
+
+=head2 updated_at
+
+The date and time this was updated at
+
+=head2 deleted_at
+
+The date and time this was deleted at
+
+=cut
 
 1;
