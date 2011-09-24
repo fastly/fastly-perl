@@ -22,3 +22,6 @@ t/full_login.t
 t/Helper.pm
 t/pod.t
 t/pod_coverage.t
+Makefile.PL
+META.yml
+META.json
