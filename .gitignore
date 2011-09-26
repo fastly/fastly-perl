@@ -6,3 +6,4 @@ META.yml
 Makefile.PL
 _build/
 *.tar.gz
+blib

@@ -4,6 +4,8 @@ use strict;
 use warnings;
 
 use Fastly::Client;
+our $VERSION = "0.5";
+
 
 BEGIN {
   no strict 'refs';
