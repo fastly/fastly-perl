@@ -13,7 +13,7 @@ my $fastly = Fastly->new(%opts);
 my $customer = $fastly->current_customer;
 
 use Term::ShellUI;
-my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history");
+my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history", prompt => "fastly> ");
           
 #$term->{debug_complete}=5;
 

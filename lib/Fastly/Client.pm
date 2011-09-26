@@ -77,8 +77,9 @@ sub _get {
     my %opts = @_;
     my $res  = $self->_ua->_get($path, $self->_headers, %opts);
     return undef if 404 == $res->code;
-    die "Couldn't GET $path - ".$res->message unless $res->is_success;
-    decode_json($res->decoded_content);
+    my $content = decode_json($res->decoded_content);
+    _raise_error($content) unless $res->is_success;
+    return $content;
 }
 
 sub _post {
@@ -87,8 +88,9 @@ sub _post {
     my %params = @_;
     
     my $res    = $self->_ua->_post($path, $self->_headers, %params);
-    die "Couldn't POST to $path - ".$res->message unless $res->is_success;
-    decode_json($res->decoded_content);
+    my $content = decode_json($res->decoded_content);
+    _raise_error($content) unless $res->is_success;
+    return $content;
 }
 
 sub _put {
@@ -97,14 +99,15 @@ sub _put {
     my %params = @_;
     
     my $res    = $self->_ua->_put($path, $self->_headers, %params);
-    die "Couldn't PUT to $path - ".$res->message unless $res->is_success;
-    decode_json($res->decoded_content);
+    my $content = decode_json($res->decoded_content);
+    _raise_error($content) unless $res->is_success;
+    return $content;
 }
 
 sub _delete {
     my $self = shift;
     my $path = shift;
-
+    
     my $res  = $self->_ua->_delete($path, $self->_headers);
     return $res->is_success;
 }
@@ -114,6 +117,11 @@ sub _headers {
     my $params = $self->fully_authed ? { 'Cookie' => $self->{_cookie} } : { 'X-Fastly-Key' => $self->{api_key} };
     $params->{'Content-Accept'} =  'application/json';
     return $params;
+}
+
+sub _raise_error {
+    my $content = shift;
+    die "".$content->{detail}."\n";
 }
 
 
