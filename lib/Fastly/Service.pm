@@ -64,9 +64,9 @@ Type can be one of
 sub stats {
     my $self = shift;
     my $type = shift || "all";
-    die "You must be authed to get stats" unless $self->fetcher->authed;
+    die "You must be authed to get stats" unless $self->_fetcher->authed;
     die "Unknown stats type $type" unless grep { $_ eq $type } qw(minutely hourly daily all);
-    return $self->fetcher->client->get($self->get_path($self->id)."/stats/".$type);    
+    return $self->_fetcher->client->_get($self->_get_path($self->id)."/stats/".$type);    
 }
 
 =head2 purge_all
@@ -76,8 +76,8 @@ Purge all assets from this service.
 =cut
 sub purge_all {
     my $self = shift;
-    die "You must be authed to purge everything in a service" unless $self->fetcher->authed;
-    return $self->fetcher->client->put($self->get_path($self->id)."/purge_all");
+    die "You must be authed to purge everything in a service" unless $self->_fetcher->authed;
+    return $self->_fetcher->client->_put($self->_get_path($self->id)."/purge_all");
 }
 
 =head2 versions
@@ -87,8 +87,8 @@ Get a sorted array of all the versions that this service has had.
 =cut
 sub versions {
     my $self  = shift;
-    die "You must be authed to get the versions for a service" unless $self->fetcher->authed;
-    my $fetcher  = $self->fetcher;
+    die "You must be authed to get the versions for a service" unless $self->_fetcher->authed;
+    my $fetcher  = $self->_fetcher;
     my $versions = $self->{versions};
     my @versions;
     foreach my $number (keys %$versions) {
@@ -104,7 +104,7 @@ Get the current version of this service.
 =cut
 sub version {
     my $self = shift;
-    die "You must be authed to get the current version" unless $self->fetcher->authed;
+    die "You must be authed to get the current version" unless $self->_fetcher->authed;
     my @list = $self->versions;
     return $list[-1];
 }
@@ -122,7 +122,7 @@ sub list_services {
     my $self  = shift;
     my %opts  = @_;
     my $class = "Fastly::Service";
-    return $self->list($class, %opts);
+    return $self->_list($class, %opts);
 }
 
 =head2 search_services <param[s]>
@@ -143,7 +143,7 @@ sub search_services {
     my %opts  = @_;
     my $class = "Fastly::Service"; 
     die "You must be authed to search for a $class" unless $self->authed;
-    my $hash    = $self->client->get($class->post_path."/search", %opts);
+    my $hash    = $self->client->_get($class->_post_path."/search", %opts);
     return undef unless $hash;
     return $class->new($self, %$hash);
 }

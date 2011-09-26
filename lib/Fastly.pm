@@ -19,7 +19,7 @@ BEGIN {
     CORE::require($file); 
     $class->import;
     
-    my $name = $class->path;
+    my $name = $class->_path;
         
     foreach my $method (qw(get create update delete)) {
         my $code = "sub { shift->_$method('$class', \@_) }";
@@ -43,6 +43,15 @@ Fastly - client library for interacting with the Fastly web acceleration service
     
     my $user     = $fastly->get_user($current_user->id);
     my $customer = $fastly->get_customer($current_customer->id);
+    
+    print "Name: ".$user->name."\n";
+    print "Works for ".$user->customer->name."\n";
+    print "Which is the same as ".$customer->name."\n";
+    print "Which has the owner ".$customer->owner->name."\n";
+    
+    foreach my $service ($customer->list_services) {
+        print $service->name."\n";
+    }
 
 
 =head1 DESCRIPTION
@@ -100,6 +109,8 @@ sub fully_authed { shift->client->fully_authed }
 
 =head2 current_user 
 
+Return a User object representing the current logged in user.
+
 =cut
 sub current_user {
     my $self = shift;
@@ -109,6 +120,8 @@ sub current_user {
 
 =head2 current_customer
 
+Return a Customer object representing the customer of the current logged in user.
+
 =cut
 sub current_customer {
     my $self = shift;
@@ -117,6 +130,10 @@ sub current_customer {
 }
 
 =head2 commands 
+
+Return a hash representing all commands available.
+
+Useful for information.
 
 =cut
 sub commands {
@@ -187,6 +204,21 @@ sub _delete {
     return defined $self->client->_delete($class->_delete_path($obj));
 }
 
+
+=head1 CLASS METHODS
+
+=head2 load_options <file>
+
+Attempts to load various config options in the form
+
+   <key> = <value>
+   
+From a file.
+
+Skips whitespace and lines starting with C<#>.
+
+=cut
+
 sub load_options {
     my $file    = shift;
     my %options = ();
@@ -206,6 +238,17 @@ sub load_options {
     return %options;
 }
 
+=head2 get_options <file[s]>
+
+Tries to load options from the file[s] passed in using, 
+C<load_options>, stopping when it finds the first one.
+
+Then it overrides those options with command line options 
+of the form
+
+    --<key>=<value>
+
+=cut
 sub get_options {
     my @configs = @_;
     my %options;
@@ -213,7 +256,7 @@ sub get_options {
         next unless -f $config;
         %options = load_options($config);
     }
-    while (@ARGV && $ARGV[0] =~ m!^(\w+)\=(\w+)$!) {
+    while (@ARGV && $ARGV[0] =~ m!^-+(\w+)\=(\w+)$!) {
         $options{$1} = $2;
         shift @ARGV;
     }

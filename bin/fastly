@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Fastly;
 use Data::Dumper;
+use File::Basename;
 use YAML;
 
 my %opts   = Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
@@ -26,139 +27,141 @@ my $basecommands = {
         method => sub { shift->help_call(undef, @_); }
     },
     "quit" => { 
-    desc => "Quit", 
-    maxargs => 0,
-    method => sub { shift->exit_requested(1) },
-    exclude_from_history => 1,
+        desc => "Quit", 
+        maxargs => 0,
+        method => sub { shift->exit_requested(1) },
+        exclude_from_history => 1,
     },
     "show" => {
-    desc => "Display stuff",
-    cmds => {
-        service => {
-        desc => "Show a service",
-        minargs => 1,
-        maxargs => 3,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
-        proc => \&show_service,
-        },
-        services => {
-        desc => "List services",
-        proc => \&show_services,
-        },
-        stats => {
+        desc => "Display stuff",
         cmds => {
             service => {
-            minargs => 1,
-            args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
-            proc => \&show_stats_service,
+                desc => "Show a service",
+                minargs => 1,
+                maxargs => 3,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+                proc => \&show_service,
             },
-            all => {
-            args => [sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
-            proc => \&show_stats_all,
-            }
-        }        
-        },
-        diff => {
-        desc => "Difference between two versions",
-        minargs => 5,
-        maxargs => 5,
-        proc => \&diff,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['to'] }, \&list_version, undef],
-        },
-        locks => {
-        desc => "Show active locks",
-        proc => \&show_locks,
-        },
-    }
+            services => {
+                desc => "List services",
+                proc => \&show_services,
+            },
+            stats => {
+                cmds => {
+                    service => {
+                    minargs => 1,
+                    args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
+                    proc => \&show_stats_service,
+                    },
+                    all => {
+                    args => [sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
+                    proc => \&show_stats_all,
+                    }
+                }        
+            },
+            diff => {
+                desc => "Difference between two versions",
+                minargs => 5,
+                maxargs => 5,
+                proc => \&diff,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['to'] }, \&list_version, undef],
+            },
+            locks => {
+                desc => "Show active locks",
+                proc => \&show_locks,
+            },
+        }
     },
     "create" => {
-    cmds => {
-        service => {
-        minargs => 1,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&name_map_complete, \&model_args],
-        proc => \&create,
+        cmds => {
+            service => {
+                minargs => 1,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&name_map_complete, \&model_args],
+                proc => \&create,
+            },
         },
     },
-    },
     "delete" => {
-    cmds => {
-        service => {
-        minargs => 1,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, undef],
-        proc => \&delete,
+        cmds => {
+            service => {
+                minargs => 1,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, undef],
+                proc => \&delete,
+            }
         }
-    }
     },
     "set" => {
-    cmds => {
-        service => {
-        minargs => 5,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, \&model_args],
-        proc => \&set,
+        cmds => {
+            service => {
+                minargs => 5,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, \&model_args],
+                proc => \&set,
+            }
         }
-    }
     },
     "upload" => {
-    cmds => {
-        service => {
-        minargs => 5,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['from'] }, sub { ['file'] },
-            sub { shift->complete_files(@_) }, undef],
-        proc => \&upload,
+        cmds => {
+            service => {
+                minargs => 5,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['from'] }, sub { ['file'] },
+                        sub { shift->complete_files(@_) }, undef],
+                proc => \&upload,
+            }
         }
-    }
     },
     "validate" => {
-    cmds => {
-        service => {
-        minargs => 3,
-        maxargs => 3,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
-        proc => \&validate,
+        cmds => {
+            service => {
+                minargs => 3,
+                maxargs => 3,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+                proc => \&validate,
+            }
         }
-    }
     },
     "dump" => {
-    cmds => {
-        service => {
-        minargs => 3,
-        maxargs => 3,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
-        proc => \&dump,
+        cmds => {
+            service => {
+                minargs => 3,
+                maxargs => 3,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+                proc => \&dump,
+            }
         }
-    }
     },
     "activate" => {
-    cmds => {
-        service => {
-        minargs => 3,
-        maxargs => 3,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
-        proc => \&activate,
+        cmds => {
+            service => {
+                minargs => 3,
+                maxargs => 3,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+                proc => \&activate,
+            }
         }
-    }
     },
     "purge" => {
-    cmds => {
-        service => {
-        minargs => 1,
-        maxargs => 1,
-        args => [\&list_service_complete],
-        proc => \&purge,
+        cmds => {
+            service => {
+                minargs => 1,
+                maxargs => 1,
+                args => [\&list_service_complete],
+                proc => \&purge,
+            }
         }
-    }
     },
     "clone" => {
-    cmds => {
-        service => {
-        minargs => 3,
-        maxargs => 3,
-        args => [\&list_service_complete, sub { ['version'] }, \&list_version],
-        proc => \&clone,
+        cmds => {
+            service => {
+                minargs => 3,
+                maxargs => 3,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version],
+                proc => \&clone,
+            }
         }
     }
-    }
 };
+
+
 use DateTime;
 
 sub name_map_complete {
@@ -176,8 +179,7 @@ sub name_map_complete {
 sub show_stats_service {
     my $service_name = shift;
     my ($service)    = $fastly->search_services(name => $service_name);
-    my $args = { service => $service };
-    show_stats($args, @_);
+    show_stats($service, @_);
 }
 
 sub show_stats {
@@ -191,6 +193,10 @@ sub show_stats {
     my $stats = eval { $service->stats }; 
     unless ($stats) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
+        return;
+    }
+    unless (keys %$stats) {
+        print BOLD, RED, "No stats available", RESET, "\n";
         return;
     }
     my $split = 0;
@@ -227,7 +233,7 @@ sub show_stats {
     push @stats, $last unless $split;
     push @stats, undef, $total;
     foreach my $stats (@stats) {
-        unless ($stats) {
+        unless ($stats && keys %$stats>2) {
             print "----\n";
             next;
         }
@@ -279,7 +285,7 @@ sub dump {
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
-        print Dump({$vcl->as_hash});
+        print present({$vcl->_as_hash});
     }
 }
 
@@ -311,7 +317,7 @@ sub activate {
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
-        print "Set activated\n";
+        print "Set $service_name version $version_number to active\n";
     }
 }
 
@@ -344,8 +350,8 @@ sub diff {
 
     my ($to_fh, $to_fn) = tempfile();
     my ($from_fh, $from_fn) = tempfile();
-    print $to_fh Dump({$to->as_hash});
-    print $from_fh Dump({$from->as_hash});
+    print $to_fh present({$to->_as_hash});
+    print $from_fh present({$from->_as_hash});
     my $diff = `diff -u $from_fn $to_fn`;
     print "$diff";
     print "\n\n";
@@ -401,12 +407,12 @@ sub set {
 sub upload {
     my $service_name = shift;
     shift;
-    my $version = shift;
+    my $version_num  = shift;
     my $type    = shift;
-    my $name    = shift;
+    my $file    = shift;
     shift;
     shift;
-    my $file    = shift || $name;
+    my $name    = shift || basename($file, ".vcl");
     
     local($/);
     open(my $fh, "<$file") || die "No file '$file'";
@@ -415,14 +421,13 @@ sub upload {
 
     eval {
         my $service = $fastly->search_services(name => $service_name);
-        my $version = $service->version($version);
-        my $r       = $version->upload_vcl($data);
-        die "Couldn't upload vcl to service $service_name version $version";
+        my $version = $service->version($version_num);
+        my $r       = $version->upload_vcl($name, $data);
     };
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
-        print "Upload success\n";
+        print "Uploaded $file as $name to service $service_name version $version_num\n";
     }
     return;
 }
@@ -483,13 +488,13 @@ sub create {
 
     my $service = eval { $fastly->search_services(name => $name) };
 
-    my $service_name = shift @args;
+    #my $service_name = shift @args;
     shift @args;
     my $version = shift @args;
     my $type = shift @args;
 
     my $commands = $fastly->commands;
-    my $cmd = $commands->{"$type.create"};
+    my $cmd = $commands->{"${type}.create"};
 
     my %args;
     if ($cmd->{name}) {
@@ -499,11 +504,11 @@ sub create {
     }
 
     my $meth = "create_$type"; 
-    my $obj  = eval { $fastly->$meth(service => $service->id, version $version, @args) };
+    my $obj  = eval { $fastly->$meth(service => $service->id, version => $version, @args) };
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
-        warn Dumper({$obj->as_hash});
+        warn present({$obj->_as_hash});
     }
 }
 
@@ -608,7 +613,7 @@ sub show_service {
     shift;
     my $version_number  = shift;
     my ($service)       = $fastly->search_services(name => $service_name, version => $version_number);
-    print Dump({$service->as_hash});
+    print present({$service->_as_hash});
 }
 
 sub show_services {
@@ -643,6 +648,10 @@ sub list_version {
     return sort { $a->number <=> $b->number } $service->versions;
 }
 
+sub present {
+    my $obj = shift;
+    Dump($obj);
+}
 
 
 $term->commands($basecommands);
