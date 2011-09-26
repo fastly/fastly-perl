@@ -190,42 +190,45 @@ sub show_stats {
         $type = "daily" if ($_[2] eq 'day');
     }
 
-    my $stats = eval { $service->stats }; 
+    my $stats = eval { $service->stats($type) }; 
     unless ($stats) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
         return;
     }
+
+    my $split = 1;
+    
+    printf(BOLD."%-21s%-5s%-10s%-10s%-6s%-10s%-6s%5s   %-7s %-7s %-7s".RESET."\n", "Time", "DC", "Bytes", "Requests", "Hits", "Misses", "Pass", "%", "200", "304", "5xx");
+
     unless (keys %$stats) {
         print BOLD, RED, "No stats available", RESET, "\n";
         return;
     }
-    my $split = 0;
-    $split++ if ($_[5] && $_[5] eq 'datacenter');
-    
-
-
-
-    printf("%-21s%-5s%-10s%-10s%-6s%-10s%-6s%6s  %-7s %-7s %-7s\n", "Time", "DC", "Bytes", "Requests", "Hits", "Misses", "Pass", "%", "200", "304", "5xx");
+  
     my @stats;
     my $last;
     my $total = {start_time => time, datacenter => ''} ;
-    foreach my $stats (keys %$stats) {
+    foreach my $datacenter (keys %$stats) {
+        my $stat = $stats->{$datacenter};
+        next unless ref($stat);
+        $stat->{datacenter} = $datacenter;
+        $stat->{start_time} = $stats->{recorded};
         foreach (qw(hits requests pass uncacheable body_size header_size miss status_5xx status_200 status_304)) {
-            $total->{$_} += $stats->{$_};
+            $total->{$_} += $stat->{$_};
         }
         if ($split) {
-            push @stats, $stats;
+            push @stats, $stat;
         } else {
             unless ($last) {
-                $last = $stats;
+                $last = $stat;
                 next;
             }
-            if ($last->{start_time} != $stats->{start_time}) {
+            if ($last->{start_time} != $stat->{start_time}) {
                 push @stats, $last;
-                $last = $stats;
+                $last = $stat;
             } else {
                 foreach (qw(hits requests pass uncacheable body_size header_size miss status_5xx status_200 status_304)) {
-                    $last->{$_} += $stats->{$_};
+                    $last->{$_} += $stat->{$_};
                 }
             }
         }
@@ -375,7 +378,7 @@ sub set {
         shift;
     }
     my $method = "update_$type"; 
-    my $o = eval { $fastly->$method( service => $service->id, version => $version->number, @_ ) };
+    my $o = eval { $fastly->$method( service => $service->id, version => $version, @_ ) };
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
@@ -629,15 +632,16 @@ sub list_service_complete {
     my $c = shift; 
 
     my @services = $fastly->list_services;
-    
-    my $substr = 0;
-    if ($c->{str}) {
-        $substr = index($c->{args}->[0], $c->{str});
-    } else {
-        $substr = $c->{tokoff};
-    }
-    
-    return [ map { substr($_, 0, $substr, ""); $_ } map { $_->name } @services ];
+
+    my $match  = lc($c->{str});
+    return [ grep { lc($_) =~ /^$match/ } map { $_->name } @services ];
+
+    #my $substr = 0;
+    #if ($c->{str}) {
+    #    $substr = index($c->{args}->[0], $c->{str});
+    #} else {
+    #    $substr = $c->{tokoff};
+    #}
 }
 
 sub list_version {
@@ -656,4 +660,5 @@ sub present {
 
 $term->commands($basecommands);
 $term->run(@ARGV);
+
 

@@ -24,7 +24,7 @@ sub _post_path {
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->_get_path($obj->service, $obj->version, $obj->name);
+    return $class->_get_path(service => $obj->service->id, version => $obj->version->number, name => $obj->name);
 }
 
 1;
