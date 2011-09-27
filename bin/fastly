@@ -3,9 +3,40 @@
 use strict;
 use warnings;
 use Fastly;
-use Data::Dumper;
 use File::Basename;
+use Data::Dumper;
+use DateTime;
 use YAML;
+
+=head1 NAME
+
+fasty - a command line shell for interacting with the Fastly infrastructure
+
+=head1 USAGE
+
+    fastly [option[s]] 
+
+=head1 CONFIGURATION
+
+You can either have a config file in either ~/.fastly or /etc/fastly with
+
+    api_key = <key>
+    
+or a config file with
+
+    user     = <login>
+    password = <password>
+
+Alternatively you can pass in any of those options on the command line
+
+    fastly --api_key  <key>
+    fastly --user <login> --password <password>
+
+=head1 DESCRIPTION
+    
+
+=cut
+
 
 my %opts   = Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
 my $fastly = Fastly->new(%opts);
@@ -16,7 +47,7 @@ use Term::ShellUI;
 my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history", prompt => "fastly> ");
           
 #$term->{debug_complete}=5;
-
+ 
 print 'Using '.$term->{term}->ReadLine."\n";
 use Term::ANSIColor qw(:constants);
 
@@ -33,7 +64,7 @@ my $basecommands = {
         exclude_from_history => 1,
     },
     "show" => {
-        desc => "Display stuff",
+        desc => "Display objects",
         cmds => {
             service => {
                 desc => "Show a service",
@@ -46,12 +77,24 @@ my $basecommands = {
                 desc => "List services",
                 proc => \&show_services,
             },
+            versions => {
+                desc    => "Show all the versions for a service",
+                cmds    => {
+                    service => {
+                        minargs => 1,
+                        maxargs => 1,
+                        args    => [\&list_service_complete ],
+                        proc    => \&show_versions,
+                    }
+                }
+            },
             stats => {
+                desc => "Show stats for a service",
                 cmds => {
                     service => {
-                    minargs => 1,
-                    args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
-                    proc => \&show_stats_service,
+                        minargs => 1,
+                        args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
+                        proc => \&show_stats_service,
                     },
                     # all => {
                     #                    args => [sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
@@ -66,13 +109,10 @@ my $basecommands = {
                 proc => \&diff,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['to'] }, \&list_version, undef],
             },
-            locks => {
-                desc => "Show active locks",
-                proc => \&show_locks,
-            },
         }
     },
     "create" => {
+        desc => "Create a new object",
         cmds => {
             service => {
                 minargs => 1,
@@ -82,6 +122,7 @@ my $basecommands = {
         },
     },
     "delete" => {
+        desc => "Delete an object",
         cmds => {
             service => {
                 minargs => 1,
@@ -91,6 +132,7 @@ my $basecommands = {
         }
     },
     "set" => {
+        desc => "Update an object",
         cmds => {
             service => {
                 minargs => 5,
@@ -100,6 +142,7 @@ my $basecommands = {
         }
     },
     "upload" => {
+        desc => "Upload a custom VCL file",
         cmds => {
             service => {
                 minargs => 5,
@@ -110,6 +153,7 @@ my $basecommands = {
         }
     },
     "validate" => {
+        desc => "Check to see that the currently uploaded VCL is valid",
         cmds => {
             service => {
                 minargs => 3,
@@ -120,6 +164,7 @@ my $basecommands = {
         }
     },
     "dump" => {
+        desc => "Show the generated VCL for a given service",
         cmds => {
             service => {
                 minargs => 3,
@@ -130,6 +175,7 @@ my $basecommands = {
         }
     },
     "activate" => {
+        desc => "Activate a version for use",
         cmds => {
             service => {
                 minargs => 3,
@@ -140,6 +186,7 @@ my $basecommands = {
         }
     },
     "purge" => {
+        desc => "Remove objects from the cache",
         cmds => {
             service => {
                 minargs => 1,
@@ -150,6 +197,7 @@ my $basecommands = {
         }
     },
     "clone" => {
+        desc => "Clone a configuration so that the new version can be modified",
         cmds => {
             service => {
                 minargs => 3,
@@ -162,7 +210,7 @@ my $basecommands = {
 };
 
 
-use DateTime;
+
 
 sub name_map_complete {
     my $t = shift;
@@ -535,12 +583,6 @@ sub create {
     }
 }
 
-
-
-sub show_locks {
-    
-}
-
 sub list_objects {
     no strict 'refs';
     my $t    = shift;
@@ -639,6 +681,15 @@ sub show_service {
     print present({$service->_as_hash});
 }
 
+sub show_versions {
+    my $service_name    = shift;
+    my ($service)       = $fastly->search_services(name => $service_name);
+    my @versions        = $service->versions;
+    foreach my $version (@versions) {
+        print $version->number."\t\t".$version->updated_at."\n";
+    }
+}
+
 sub show_services {
     my @services = $fastly->list_services;
     
@@ -680,5 +731,134 @@ sub present {
 
 $term->commands($basecommands);
 $term->run(@ARGV);
+
+=head1 COMMANDS
+
+=head2 help
+
+Display a help message with available commands.
+
+=head2 show
+
+Display various thing. The sub commands are
+
+=head3 services
+
+List all the services you have access to with their ids and names.
+
+    fastly> show services
+
+might show
+
+    KXKPV9svJFuPapAMjzxgP       FooCorp
+    6g2rQokiwAGSRdGYhCY76v      Example-Service
+    Y9puwhPNS5Y1tAjUbxp7Z       Test
+
+=head3 service
+
+Display the information from one particular service including all 
+backends, directors, domains and origins.
+
+    fastly> show service <service name>
+    
+=head3 versions
+
+Show the creation date of all the versions for a service.
+
+    fastly> show versions <service name>
+
+=head3 diff
+
+Display the diff between two different versions
+
+    fastly> show diff <service name> version <version number> to <version number>
+
+=head3 stats
+
+Display the stats for a service. Default last argument is minutely. 
+
+    fastly> show stats <service name> [all|minutely|hourly|daily]
+
+=head2 create
+
+Create a new object.
+
+    fastly> create service <service name>
+    fastly> create service <service name> version <version number> backend  <name> [options[s]]
+    fastly> create service <service name> version <version number> director <name> [options[s]]
+    fastly> create service <service name> version <version number> domain   <name> [options[s]]
+    fastly> create service <service name> version <version number> origin   <name> [options[s]]
+
+Options look like
+
+    fastly> create service <service name> version <version number> backend  <name> ipv4 <ip address>
+
+=head2 set
+
+Update an object. A note - you cannot change the names of things.
+
+ fastly> set service <service name> version <version number> backend  <name> [options[s]]
+ fastly> set service <service name> version <version number> director <name> [options[s]]
+ fastly> set service <service name> version <version number> domain   <name> [options[s]]
+ fastly> set service <service name> version <version number> origin   <name> [options[s]]
+
+Agagin, like create, options look like
+
+    fastly> set service <service name> version <version number> director <name> retries <retries>
+
+=head2 delete
+
+Delete an object from a configuration.
+
+    fastly> delete service <service name>
+    fastly> delete service <service name> version <version number>
+    fastly> delete service <service name> version <version number> backend  <backend name>
+    fastly> delete service <service name> version <version number> director <director name>
+    fastly> delete service <service name> version <version number> domain   <domain name>
+    fastly> delete service <service name> version <version number> origin   <origin name>
+    
+=head2 clone
+
+Clone a configuration so that the new version can be modified.
+
+    fastly> clone service <service name> version <version number>
+
+=head2 activate
+
+Activate a version for use - this will lock it and prevent any further modification.
+
+    fastly> activate service <service name> version <version number>
+    
+=head2 purge
+
+Remove objects from the cache.
+
+    fastly> purge service <service name>
+    
+    fastly> purge <url>
+
+=head2 upload
+
+Upload a custom VCL file
+
+    fastly> upload service <service name> version <version number> from <file> [as <vcl name>]
+
+=head2 validate
+
+Check to see that the currently uploaded VCL is valid.
+
+    fastly> validate service <service name> version <version number>
+
+=head2 dump
+
+Show the generated VCL for a given service.
+
+fastly> dump service <service name> version <version number>
+
+=head2 quit
+
+Exit the Fastly shell.
+
+=cut
 
 
