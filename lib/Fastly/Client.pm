@@ -211,7 +211,7 @@ sub _make_params {
 package Fastly::UA;
 
 use base qw(LWP::UserAgent);
-our $DEBUG=1;
+our $DEBUG=0;
 
 sub request {
     my $self = shift;

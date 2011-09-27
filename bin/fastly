@@ -53,10 +53,10 @@ my $basecommands = {
                     args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
                     proc => \&show_stats_service,
                     },
-                    all => {
-                    args => [sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
-                    proc => \&show_stats_all,
-                    }
+                    # all => {
+                    #                    args => [sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
+                    #                    proc => \&show_stats_all,
+                    #                    }
                 }        
             },
             diff => {
@@ -364,25 +364,45 @@ sub diff {
 sub set {
     my $service_name = shift;
     shift;
-    my $version = shift;
-    my $type = shift;
+    my $version      = shift;
+    my $type         = shift;
+    
+    
 
     my $service  = eval { $fastly->search_services(name => $service_name ) };
-    my $commands = $fastly->commands; 
-    my $cmd      = $commands->{"$type.create"};
-
-    my %args;
-    if ($cmd->{name}) {
-        $args{"name"} =  shift;
-    } else {
-        shift;
+    if ($@ || !$service) {
+        print BOLD, RED, "Error finding service $service_name: ", RESET, $@,"\n";
+        return;
     }
-    my $method = "update_$type"; 
-    my $o = eval { $fastly->$method( service => $service->id, version => $version, @_ ) };
+
+    my $name     = shift;
+   
+    my $method = "get_$type"; 
+    my $obj    =  eval { $fastly->$method( service => $service->id, version => $version, name => $name) };
+    if ($@ || !$obj) {
+        print BOLD, RED, "Error finding $type $name: ", RESET, $@,"\n";
+        return;
+    }
+
+    
+    while (my $prop = shift @_) {
+        my $val = shift @_ || last;
+        if ($prop eq 'name') {
+            print BOLD, RED, "You can't update the name on a $type", RESET,"\n";
+            return
+        }
+        unless ($obj->can($prop)) {
+            print BOLD, RED, "$type doesn't have the property '$prop' ", RESET,"\n";
+            return
+        }
+        $obj->$prop($val);
+    }
+    $method = "update_$type"; 
+    my $o = eval { $fastly->$method($obj) };
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+        print BOLD, RED, "Error updating $type: ", RESET, $@,"\n";
     } else {
-        print "Set success\n";
+        print "Update successful\n";
     }
     return;
 }

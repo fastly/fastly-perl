@@ -192,7 +192,7 @@ sub _update {
     my $class = shift;
     my $obj   = shift;
     die "You must be fully authed to update a $class" unless $self->fully_authed;
-    my $hash  = $self->client->_put($class->_put_path($obj), $obj->as_hash);
+    my $hash  = $self->client->_put($class->_put_path($obj), $obj->_as_hash);
     return $class->new($self, %$hash);
 }
 

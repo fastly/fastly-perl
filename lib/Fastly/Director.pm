@@ -3,7 +3,7 @@ package Fastly::Director;
 use strict;
 use base qw(Fastly::BelongsToServiceAndVersion);
 
-Fastly::Director->mk_accessors(qw(service version name type retries quorum created_at updated_at deleted_at));
+Fastly::Director->mk_accessors(qw(service version name type capacity retries quorum created_at updated_at deleted_at));
 
 =head1 NAME
 
