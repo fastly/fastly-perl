@@ -81,6 +81,7 @@ my $basecommands = {
                 desc    => "Show all the versions for a service",
                 cmds    => {
                     service => {
+                        desc    => "The service name",
                         minargs => 1,
                         maxargs => 1,
                         args    => [\&list_service_complete ],
@@ -92,6 +93,7 @@ my $basecommands = {
                 desc => "Show stats for a service",
                 cmds => {
                     service => {
+                        desc    => "The service name",
                         minargs => 1,
                         args => [\&list_service_complete, sub { ['aggregate'] }, sub { ['by']}, sub { [qw(minute hour day)]}, sub { ['split'] }, sub { ['by']} , sub { ['datacenter'] }, undef],
                         proc => \&show_stats_service,
@@ -115,6 +117,7 @@ my $basecommands = {
         desc => "Create a new object",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 1,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&name_map_complete, \&model_args],
                 proc => \&create,
@@ -125,6 +128,7 @@ my $basecommands = {
         desc => "Delete an object",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 1,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, undef],
                 proc => \&delete,
@@ -135,6 +139,7 @@ my $basecommands = {
         desc => "Update an object",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 5,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, \&model_args],
                 proc => \&set,
@@ -145,6 +150,7 @@ my $basecommands = {
         desc => "Upload a custom VCL file",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 5,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['from'] }, sub { ['file'] },
                         sub { shift->complete_files(@_) }, undef],
@@ -156,6 +162,7 @@ my $basecommands = {
         desc => "Check to see that the currently uploaded VCL is valid",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 3,
                 maxargs => 3,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version],
@@ -167,6 +174,7 @@ my $basecommands = {
         desc => "Show the generated VCL for a given service",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 3,
                 maxargs => 3,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version],
@@ -178,6 +186,7 @@ my $basecommands = {
         desc => "Activate a version for use",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 3,
                 maxargs => 3,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version],
@@ -189,6 +198,7 @@ my $basecommands = {
         desc => "Remove objects from the cache",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 1,
                 maxargs => 1,
                 args => [\&list_service_complete],
@@ -200,6 +210,7 @@ my $basecommands = {
         desc => "Clone a configuration so that the new version can be modified",
         cmds => {
             service => {
+                desc    => "The service name",
                 minargs => 3,
                 maxargs => 3,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version],
@@ -686,7 +697,7 @@ sub show_versions {
     my ($service)       = $fastly->search_services(name => $service_name);
     my @versions        = $service->versions;
     foreach my $version (@versions) {
-        print $version->number."\t\t".$version->updated_at."\n";
+        print $version->number."\t\t".$version->updated_at." ".($version->comment || "")."\n";
     }
 }
 
