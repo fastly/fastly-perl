@@ -3,7 +3,7 @@ package Fastly::Version;
 use strict;
 use base qw(Fastly::Model);
 
-Fastly::Version->mk_accessors(qw(service number name active locked staging testing deployed created_at updated_at deleted_at));
+Fastly::Version->mk_accessors(qw(service number name active locked staging testing deployed comment created_at updated_at deleted_at));
 
 =head1 NAME
 
