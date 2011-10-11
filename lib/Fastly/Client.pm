@@ -165,7 +165,7 @@ sub _put {
     my $headers = shift;
     my %params  = @_;
     my $url     = $self->_make_url($path, %params);
-    return $self->_ua->request(PUT $url, %$headers); 
+    return $self->_ua->request(PUT $url, %$headers, Content => ""); 
 }
 
 sub _delete {
