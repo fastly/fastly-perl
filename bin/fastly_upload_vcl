@@ -42,12 +42,13 @@ sub slurp {
 my %opts   = Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
 my $fastly = Fastly->new(%opts);
 
-my $service_id  = shift || die("You must pass in a service id");
+my $service_id  = shift || die("You must pass in a service id or name");
 my $vcl_file    = shift || die("You must pass in a vcl file");
 
 die "Couldn't find vcl file #{vcl_file}" unless -f $vcl_file;
 
-my $service = $fastly->get_service($service_id) || die "Couldn't find service $service_id";
+my ($service) = eval { $fastly->get_service($service_id) } || eval { $fastly->search_services(name => $service_id) } || die "Couldn't find service $service_id\n";
+
 my $old     = $service->version;
 my $updated = $old->clone;
 print "Uploading $vcl_file and bumping version from ".$old->number." to ".$updated->number."\n";
@@ -59,7 +60,7 @@ eval {
       $vcl->content($cont);
       $fastly->update_vcl($vcl);
   } else {
-      $updated->upload_vcl($name, slurp($vcl_file), main => 1);
+      $updated->upload_vcl($name, slurp($vcl_file));
   }
   $updated->activate;
 };
