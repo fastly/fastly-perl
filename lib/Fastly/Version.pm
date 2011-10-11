@@ -125,8 +125,8 @@ sub generated_vcl {
     my $hash = $self->_fetcher->client->_get($self->_put_path($self)."/generated_vcl");
     return undef unless defined $hash;
     return Fastly::VCL->new($self->_fetcher,
-        content => $hash->{vcl},
-        name    => $hash->{md5},
+        content    => $hash->{vcl},
+        name       => $hash->{md5},
         created_at => $hash->{created},
         updated_at => $hash->{updated},
         version    => $hash->{version},
@@ -143,10 +143,19 @@ sub upload_vcl {
     my $self    = shift;
     my $name    = shift;
     my $content = shift;
+    my %params  = @_;
     die "You must be fully authed to upload vcl for a version" unless $self->_fetcher->fully_authed;
-    my $hash = $self->_fetcher->client->_post($self->_put_path($self)."/vcl", name => $name, content => $content);
+    my $hash = $self->_fetcher->client->_post($self->_put_path($self)."/vcl", name => $name, content => $content, %params);
     return undef unless defined $hash;
     return Fastly::VCL->new($self->_fetcher, %$hash);
+}
+
+sub vcl {
+     my $self = shift;
+     my $name = shift;
+     die "You must be fully authed to get the generated vcl for a version" unless $self->_fetcher->fully_authed;
+     my $vcl = $self->_fetcher->get_vcl(service => $self->service, version => $self->number, name => $name);
+     return $vcl;
 }
 
 =head2 validate
