@@ -85,6 +85,7 @@ sub purge_all {
 Get a sorted array of all the versions that this service has had.
 
 =cut
+use Data::Dumper;
 sub versions {
     my $self  = shift;
     die "You must be authed to get the versions for a service" unless $self->_fetcher->authed;
@@ -93,8 +94,9 @@ sub versions {
     my @versions;
     foreach my $number (keys %$versions) {
         my $v = $versions->{$number};
-        push @versions, Fastly::Version->new($fetcher, service => $self->id, 
-                                                       number => $number, 
+        push @versions, Fastly::Version->new($fetcher, service    => $self->id, 
+                                                       number     => $number, 
+                                                       comment    => $v->{comment} || "",
                                                        created_at => $v->{created},
                                                        updated_at => $v->{updated},
                                                        deleted_at => $v->{deleted});
