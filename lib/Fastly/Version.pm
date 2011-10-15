@@ -154,7 +154,7 @@ sub vcl {
      my $self = shift;
      my $name = shift;
      die "You must be fully authed to get the generated vcl for a version" unless $self->_fetcher->fully_authed;
-     my $vcl = $self->_fetcher->get_vcl(service => $self->service, version => $self->number, name => $name);
+     my $vcl = $self->_fetcher->get_vcl(service => $self->service, version => $self->number, name => $name, @_);
      return $vcl;
 }
 
