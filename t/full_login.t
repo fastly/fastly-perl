@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 80; 
+use Test::More tests => 83; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -10,14 +10,14 @@ my $client = Fastly::Client->new(%opts);
 my $user;
 my $customer;
 
-$user = eval { $client->get('/current_user') };
+$user = eval { $client->_get('/current_user') };
 is($@, '', "Didn't raise an error");
 
 ok($user, "User is defined");
 is($user->{login}, 'testowner@example.com', "Got correct login");
 is($user->{name}, 'Test Owner', "Got correct name");
 
-$customer = eval { $client->get('/current_customer') };
+$customer = eval { $client->_get('/current_customer') };
 is($@, '', "Didn't raise an error");
 ok($customer, "Customer is defined");
 is($customer->{name}, 'Test Account', "Got correct customer name");
@@ -55,12 +55,14 @@ is($customer->name, $current_customer->name, "Got correct customer name again");
 
 $user = $customer = undef;
 my $email = 'fastly-ruby-test-'.get_rand.'-new@example.com';
-$user     = eval { $fastly->create_user(login => $email, name => "New User") };
+$user     = eval { $fastly->create_user(login => $email, name => "New User", role => 'user') };
 
 is($@, '', "Didn't raise an error");
 ok($user, "User is defined after create");
 is($user->name, "New User", "Got correct name");
 is($user->login, $email, "Got correct email");
+is($user->role, 'user', "Got correct role");
+
 
 my $tmp;
 $tmp =  eval { $fastly->get_user($user->id) };
@@ -68,13 +70,16 @@ is($@, '', "Didn't raise an error");
 ok($tmp, "User is defined again after fetching after create");
 is($tmp->name, $user->name, "Got correct name after fetch");
 is($tmp->login, $user->login, "Got correct login after fetch");
+is($user->role, 'user', "Got correct role after fetch");
 
 $user->name("Updated Name");
+$user->role("engineer");
 $tmp =  eval { $fastly->update_user($user) };
 is($@, '', "Didn't raise an error");
 ok($tmp, "User is defined again");
 is($tmp->name, "Updated Name", "Name is updated");
 is($tmp->login, $user->login, "Login is the same");
+is($user->role, 'engineer', "Role is updated");
 
 my $deleted = eval { $fastly->delete_user($user) };
 is($@, '', "Didn't raise an error");
