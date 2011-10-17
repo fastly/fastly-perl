@@ -13,8 +13,8 @@ export FASTLY_TEST_PASSWORD=password
 export FASTLY_TEST_API_KEY=TESTAPIKEY
 
 #for f in `ls t/*.t`; 
-#for f in `ls t/full_login.t`; 
-for f in `ls t/admin.t`; 
+#for f in `ls t/admin.t`; 
+for f in `ls t/full_login.t`; 
 do
     echo "Running $f";
     perl -Ilib  -It "$f" $*
