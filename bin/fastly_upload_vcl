@@ -40,7 +40,7 @@ sub slurp {
 }
 
 my %opts   = Net::Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
-my $fastly = Fastly->new(%opts);
+my $fastly = Net::Fastly->new(%opts);
 
 my $service_id  = shift || die("You must pass in a service id or name");
 my $vcl_file    = shift || die("You must pass in a vcl file");
