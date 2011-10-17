@@ -3,7 +3,7 @@ package Fastly::Service;
 use strict;
 use base qw(Fastly::Model);
 
-Fastly::Service->mk_accessors(qw(id customer name created_at updated_at deleted_at));
+Fastly::Service->mk_accessors(qw(id customer name comment created_at updated_at deleted_at));
 
 =head1 NAME
 

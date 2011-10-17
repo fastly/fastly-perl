@@ -3,7 +3,7 @@ package Fastly::Origin;
 use strict;
 use base qw(Fastly::BelongsToServiceAndVersion);
 
-Fastly::Origin->mk_accessors(qw(service version name created_at updated_at));
+Fastly::Origin->mk_accessors(qw(service version name comment created_at updated_at));
 
 =head1 NAME
 
