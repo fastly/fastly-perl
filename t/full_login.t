@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 86; 
+use Test::More tests => 89; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -154,6 +154,11 @@ my $domain      = eval { $fastly->create_domain(service => $service->id, version
 is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
+
+$domain = eval { $fastly->get_domain(service => $service->id, version => $number, name => $domain_name) };
+is($@, '', "Didn't raise an error");
+ok($domain, "Domain is defined");
+is($domain->name, $domain_name, "Domain's name is correct still");
 
 my $director_name = "fastly-test-director-".get_rand;
 my $director      = eval { $fastly->create_director(service => $service->id, version => $number, name => $director_name) };
