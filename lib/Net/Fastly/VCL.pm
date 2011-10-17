@@ -3,7 +3,7 @@ package Net::Fastly::VCL;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::VCL->mk_accessors(qw(service version name content created_at updated_at deleted_at));
+Net::Fastly::VCL->mk_accessors(qw(service_id version name content created_at updated_at deleted_at));
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Net::Fastly::VCL - An internal representation of a Varnish Configuration Languag
 
 =head1 ACCESSORS
 
-=head2 service
+=head2 service_id
 
 The id of the service this belongs to.
 

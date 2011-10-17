@@ -3,7 +3,7 @@ package Net::Fastly::Version;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Version->mk_accessors(qw(service number name active locked staging testing deployed comment created_at updated_at deleted_at));
+Net::Fastly::Version->mk_accessors(qw(service_id number name active locked staging testing deployed comment created_at updated_at deleted_at));
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Net::Fastly::Version - a representation of a version of a service
 
 =head1 ACCESSORS
 
-=head2 service
+=head2 service_id
 
 The id of the service this belongs to.
 
@@ -63,13 +63,15 @@ sub _get_path {
 sub _post_path {
     my $class = shift;
     my %opts  = @_;
-    return "/service/".$opts{service}."/version";
+    return "/service/".$opts{service_id}."/version";
 }
 
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->_get_path($obj->service, $obj->number);
+    use Data::Dumper;
+    warn Dumper($obj);
+    return $class->_get_path($obj->service_id, $obj->number);
 }
  
 =head1 METHODS
@@ -131,7 +133,7 @@ sub generated_vcl {
         created_at => $hash->{created},
         updated_at => $hash->{updated},
         version    => $hash->{version},
-        service    => $hash->{service},
+        service_id => $hash->{service_id},
     );
 }
 
@@ -161,7 +163,7 @@ sub vcl {
      my $self = shift;
      my $name = shift;
      die "You must be fully authed to get the generated vcl for a version" unless $self->_fetcher->fully_authed;
-     my $vcl = $self->_fetcher->get_vcl($self->service, $self->number, $name, @_);
+     my $vcl = $self->_fetcher->get_vcl($self->service_id, $self->number, $name, @_);
      return $vcl;
 }
 

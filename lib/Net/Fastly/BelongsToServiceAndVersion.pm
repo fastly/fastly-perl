@@ -20,13 +20,13 @@ sub _get_path {
 sub _post_path {
     my $class = shift;
     my %opts  = @_;
-    return "/service/".$opts{service}."/version/".$opts{version}."/".$class->_path;
+    return "/service/".$opts{service_id}."/version/".$opts{version}."/".$class->_path;
 }
  
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->_get_path($obj->service, $obj->version, $obj->name);
+    return $class->_get_path($obj->service_id, $obj->version, $obj->name);
 }
 
 1;

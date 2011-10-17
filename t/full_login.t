@@ -55,7 +55,7 @@ is($customer->name, $current_customer->name, "Got correct customer name again");
 
 $user = $customer = undef;
 my $email = 'fastly-ruby-test-'.get_rand.'-new@example.com';
-$user     = eval { $fastly->create_user(login => $email, name => "New User", role => 'user') };
+$user     = eval { $fastly->create_user(login => $email, name => "New User", role => 'user' ) };
 
 is($@, '', "Didn't raise an error");
 ok($user, "User is defined after create");
@@ -134,7 +134,7 @@ is($@, '', "Didn't raise an error");
 ok(scalar @services, "Got some services back after a search by name and version");
 ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name after a search by name and version");
 
-my $version2 = eval { $fastly->create_version( service => $service->id ) };
+my $version2 = eval { $fastly->create_version( service_id => $service->id ) };
 is($@, '', "Didn't raise an error");
 ok($version2, "Version2 is defined");
 is($version->number+1, $version2->number, "Version is incremented");
@@ -148,10 +148,10 @@ is($version2->number+1, $version3->number, "Version is incremented again");
 my $number = $version3->number;
 
 my $backend_name = "fastly-test-backend-".get_rand;
-my $backend = eval { $fastly->create_backend(service => $service->id, version => $number, ipv4 => '127.0.0.1', port => "9092", name => $backend_name) };
+my $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, ipv4 => '127.0.0.1', port => "9092", name => $backend_name) };
 is($@, '', "Didn't raise an error");
 ok($backend, "Backend is defined");
-is($backend->service, $service->id, "Backend's service id is correct");
+is($backend->service_id, $service->id, "Backend's service id is correct");
 
 $backend->ipv4('192.168.0.1');
 my $r = eval { $fastly->update_backend($backend) };
@@ -161,7 +161,7 @@ ok($backend, "Got the backend again");
 is($backend->ipv4, '192.168.0.1', "Got the updated ipv4");
 
 my $domain_name = "fastly-test-domain-".get_rand.".example.com";
-my $domain      = eval { $fastly->create_domain(service => $service->id, version => $number, name => $domain_name) };
+my $domain      = eval { $fastly->create_domain(service_id => $service->id, version => $number, name => $domain_name) };
 is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
@@ -177,13 +177,13 @@ is($domain->name, $domain_name, "Domain's name is correct still");
 is($domain->comment, "Flibbety gibbet", "Got comment");
 
 my $director_name = "fastly-test-director-".get_rand;
-my $director      = eval { $fastly->create_director(service => $service->id, version => $number, name => $director_name) };
+my $director      = eval { $fastly->create_director(service_id => $service->id, version => $number, name => $director_name) };
 is($@, '', "Didn't raise an error");
 ok($director, "Director is defined");
 is($director->name, $director_name, "Director's name is correct");
 
 my $origin_name = "fastly-test-origin-".get_rand;
-my $origin      = eval { $fastly->create_origin(service => $service->id, version => $number, name => $origin_name) };
+my $origin      = eval { $fastly->create_origin(service_id => $service->id, version => $number, name => $origin_name) };
 is($@, '', "Didn't raise an error");
 ok($origin, "Origin is defined");
 is($origin->name, $origin_name, "Origin's name is correct");

@@ -121,7 +121,7 @@ sub _headers {
 
 sub _raise_error {
     my $content = shift;
-    die "".$content->{detail}."\n";
+    die "".$content->{msg}."\n";
 }
 
 
@@ -211,7 +211,7 @@ sub _make_params {
 package Net::Fastly::UA;
 
 use base qw(LWP::UserAgent);
-our $DEBUG=0;
+our $DEBUG=1;
 
 sub request {
     my $self = shift;

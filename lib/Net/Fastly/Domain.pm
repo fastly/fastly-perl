@@ -3,7 +3,7 @@ package Net::Fastly::Domain;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Domain->mk_accessors(qw(service version name comment created_at updated_at deleted_at));
+Net::Fastly::Domain->mk_accessors(qw(service_id version name comment created_at updated_at deleted_at));
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Net::Fastly::Domain - Representation of a domain name you want to map to a servi
 
 =head1 ACCESSORS
 
-=head2 service
+=head2 service_id
 
 The id of the service this belongs to.
 

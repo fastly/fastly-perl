@@ -3,7 +3,7 @@ package Net::Fastly::Origin;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Origin->mk_accessors(qw(service version name comment created_at updated_at));
+Net::Fastly::Origin->mk_accessors(qw(service_id version name comment created_at updated_at));
 
 =head1 NAME
 
@@ -11,7 +11,7 @@ Net::Fastly::Origin - Representation of a logical group of directors - for examp
 
 =head1 ACCESSORS
 
-=head2 service
+=head2 service_id
 
 The id of the service this belongs to.
 
