@@ -1,13 +1,13 @@
-package Fastly::Version;
+package Net::Fastly::Version;
 
 use strict;
-use base qw(Fastly::Model);
+use base qw(Net::Fastly::Model);
 
-Fastly::Version->mk_accessors(qw(service number name active locked staging testing deployed comment created_at updated_at deleted_at));
+Net::Fastly::Version->mk_accessors(qw(service number name active locked staging testing deployed comment created_at updated_at deleted_at));
 
 =head1 NAME
 
-Fastly::User - a representation of a user 
+Net::Fastly::Version - a representation of a version of a service
 
 =head1 ACCESSORS
 
@@ -111,7 +111,7 @@ sub clone {
     my $self = shift;
     die "You must be fully authed to clone a version" unless $self->_fetcher->fully_authed;
     my $hash = $self->_fetcher->client->_put($self->_put_path($self)."/clone");
-    return Fastly::Version->new($self->_fetcher, %$hash);
+    return Net::Fastly::Version->new($self->_fetcher, %$hash);
 }
 
 =head2 generated_vcl
@@ -124,7 +124,7 @@ sub generated_vcl {
     die "You must be fully authed to get the generated vcl for a version" unless $self->_fetcher->fully_authed;
     my $hash = $self->_fetcher->client->_get($self->_put_path($self)."/generated_vcl");
     return undef unless defined $hash;
-    return Fastly::VCL->new($self->_fetcher,
+    return Net::Fastly::VCL->new($self->_fetcher,
         content    => $hash->{vcl},
         name       => $hash->{md5},
         created_at => $hash->{created},
@@ -147,8 +147,9 @@ sub upload_vcl {
     die "You must be fully authed to upload vcl for a version" unless $self->_fetcher->fully_authed;
     my $hash = $self->_fetcher->client->_post($self->_put_path($self)."/vcl", name => $name, content => $content, %params);
     return undef unless defined $hash;
-    return Fastly::VCL->new($self->_fetcher, %$hash);
+    return Net::Fastly::VCL->new($self->_fetcher, %$hash);
 }
+
 
 sub vcl {
      my $self = shift;

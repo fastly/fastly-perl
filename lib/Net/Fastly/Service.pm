@@ -1,13 +1,13 @@
-package Fastly::Service;
+package Net::Fastly::Service;
 
 use strict;
-use base qw(Fastly::Model);
+use base qw(Net::Fastly::Model);
 
-Fastly::Service->mk_accessors(qw(id customer name comment created_at updated_at deleted_at));
+Net::Fastly::Service->mk_accessors(qw(id customer name comment created_at updated_at deleted_at));
 
 =head1 NAME
 
-Fastly::Service - a representation of a Fastly service
+Net::Fastly::Service - a representation of a Fastly service
 
 =head1 ACCESSORS
 
@@ -94,7 +94,7 @@ sub versions {
     my @versions;
     foreach my $number (keys %$versions) {
         my $v = $versions->{$number};
-        push @versions, Fastly::Version->new($fetcher, service    => $self->id, 
+        push @versions, Net::Fastly::Version->new($fetcher, service    => $self->id, 
                                                        number     => $number, 
                                                        comment    => $v->{comment} || "",
                                                        created_at => $v->{created},
@@ -116,7 +116,7 @@ sub version {
     return $list[-1];
 }
 
-package Fastly;
+package Net::Fastly;
 
 =head1 METHODS ADDED TO MAIN FASTLY CLASS
 
@@ -128,8 +128,7 @@ Get a list of all the services that the current customer has.
 sub list_services {
     my $self  = shift;
     my %opts  = @_;
-    my $class = "Fastly::Service";
-    return $self->_list($class, %opts);
+    return $self->_list("Net::Fastly::Service", %opts);
 }
 
 =head2 search_services <param[s]>
@@ -148,7 +147,7 @@ or
 sub search_services {
     my $self  = shift;
     my %opts  = @_;
-    my $class = "Fastly::Service"; 
+    my $class = "Net::Fastly::Service"; 
     die "You must be authed to search for a $class" unless $self->authed;
     my $hash    = $self->client->_get($class->_post_path."/search", %opts);
     return undef unless $hash;

@@ -1,4 +1,4 @@
-package Fastly::Client;
+package Net::Fastly::Client;
 
 use strict;
 use warnings;
@@ -6,7 +6,7 @@ use JSON;
 
 =head1 NAME
 
-Fastly::Client - communicate with the Fastly HTTP API
+Net::Fastly::Client - communicate with the Fastly HTTP API
 
 =head1 SYNOPSIS
 
@@ -38,7 +38,7 @@ sub new {
     
     my $base  = $opts{base_url}  ||= "api.fastly.com";
     my $port  = $opts{base_port} ||= 80;
-    $self->{_ua} = Fastly::Client::UserAgent->new($base, $port);
+    $self->{_ua} = Net::Fastly::Client::UserAgent->new($base, $port);
     
     return $self unless $self->fully_authed;
 
@@ -125,7 +125,7 @@ sub _raise_error {
 }
 
 
-package Fastly::Client::UserAgent;
+package Net::Fastly::Client::UserAgent;
 
 use strict;
 use URI;
@@ -136,7 +136,7 @@ sub new {
     my $class = shift;
     my $base  = shift;
     my $port  = shift;
-    return bless { _base => $base, _port => $port, _ua => Fastly::UA->new }, $class;
+    return bless { _base => $base, _port => $port, _ua => Net::Fastly::UA->new }, $class;
 }
 
 sub _ua { shift->{_ua} }
@@ -208,7 +208,7 @@ sub _make_params {
     return %out;
 }
 
-package Fastly::UA;
+package Net::Fastly::UA;
 
 use base qw(LWP::UserAgent);
 our $DEBUG=0;

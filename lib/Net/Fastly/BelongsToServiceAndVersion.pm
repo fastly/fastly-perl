@@ -1,11 +1,11 @@
-package Fastly::BelongsToServiceAndVersion;
+package Net::Fastly::BelongsToServiceAndVersion;
 
 use strict;
-use base qw(Fastly::Model);
+use base qw(Net::Fastly::Model);
 
 =head1 NAME
 
-Fastly::BelongsToServiceAndVersion - base class for classes that belong to a service and a version
+Net::Fastly::BelongsToServiceAndVersion - base class for classes that belong to a service and a version
 
 =cut
 

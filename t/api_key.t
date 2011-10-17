@@ -3,8 +3,8 @@ use Test::More tests => 9;
 use Helper;
 
 my %opts   = login_opts("api_key");
-my $client = Fastly::Client->new(%opts);
-my $fastly = Fastly->new(%opts);
+my $client = Net::Fastly::Client->new(%opts);
+my $fastly = Net::Fastly->new(%opts);
 
 my $user;
 my $customer;

@@ -1,13 +1,13 @@
-package Fastly::Domain;
+package Net::Fastly::Origin;
 
 use strict;
-use base qw(Fastly::BelongsToServiceAndVersion);
+use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Fastly::Domain->mk_accessors(qw(service version name comment created_at updated_at deleted_at));
+Net::Fastly::Origin->mk_accessors(qw(service version name comment created_at updated_at));
 
 =head1 NAME
 
-Fastly::Domain - Representation of a domain name you want to map to a service
+Net::Fastly::Origin - Representation of a logical group of directors - for example the asset server directors from all your DCNs
 
 =head1 ACCESSORS
 

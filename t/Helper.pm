@@ -4,8 +4,8 @@ use Exporter;
 use base qw(Exporter);
 @EXPORT = qw(login_opts get_rand);
 
-use Fastly;
-use Fastly::Client;
+use Net::Fastly;
+use Net::Fastly::Client;
 
 sub login_opts {
     my $mode = shift || "full";

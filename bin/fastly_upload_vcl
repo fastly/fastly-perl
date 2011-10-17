@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Fastly;
+use Net::Fastly;
 use File::Basename;
 
 =head1 NAME
@@ -39,7 +39,7 @@ sub slurp {
   return $content;
 }
 
-my %opts   = Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
+my %opts   = Net::Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
 my $fastly = Fastly->new(%opts);
 
 my $service_id  = shift || die("You must pass in a service id or name");

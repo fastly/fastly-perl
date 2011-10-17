@@ -1,18 +1,18 @@
-package Fastly;
+package Net::Fastly;
 
 use strict;
 use warnings;
 
-use Fastly::Client;
+use Net::Fastly::Client;
 our $VERSION = "0.5";
 
 
 BEGIN {
   no strict 'refs';
-  foreach my $class (qw(Fastly::User     Fastly::Customer Fastly::Backend
-                        Fastly::Director Fastly::Domain 
-                        Fastly::Origin   Fastly::Service 
-                        Fastly::VCL      Fastly::Version)) {
+  foreach my $class (qw(Net::Fastly::User     Net::Fastly::Customer Net::Fastly::Backend
+                        Net::Fastly::Director Net::Fastly::Domain 
+                        Net::Fastly::Origin   Net::Fastly::Service 
+                        Net::Fastly::VCL      Net::Fastly::Version)) {
     
     my $file = $class . '.pm';
     $file =~ s{::}{/}g;
@@ -32,11 +32,11 @@ BEGIN {
 
 =head1 NAME
 
-Fastly - client library for interacting with the Fastly web acceleration service
+Net::Fastly - client library for interacting with the Fastly web acceleration service
 
 =head1 SYNOPSIS
 
-    my $fastly = Fastly->new(%login_opts);
+    my $fastly = Net::Fastly->new(%login_opts);
     
     my $current_user     = $fastly->current_user;
     my $current_customer = $fastly->current_customer;
@@ -83,12 +83,12 @@ Some methods require full username and password rather than just auth token.
 sub new {
     my $class = shift;
     my %opts  = @_;
-    return bless { _client => Fastly::Client->new(%opts) }, $class;
+    return bless { _client => Net::Fastly::Client->new(%opts) }, $class;
 }
 
 =head2 client
 
-Get the current Fastly::Client
+Get the current Net::Fastly::Client
 
 =cut
 sub client { shift->{_client} }
@@ -115,7 +115,7 @@ Return a User object representing the current logged in user.
 sub current_user {
     my $self = shift;
     die "You must be fully authed to get the current user" unless $self->fully_authed;
-    $self->_get("Fastly::User");
+    $self->_get("Net::Fastly::User");
 }
 
 =head2 current_customer
@@ -126,7 +126,7 @@ Return a Customer object representing the customer of the current logged in user
 sub current_customer {
     my $self = shift;
     die "You must be fully authed to get the current customer" unless $self->fully_authed;
-    $self->_get("Fastly::Customer");
+    $self->_get("Net::Fastly::Customer");
 }
 
 =head2 commands 

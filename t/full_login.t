@@ -4,7 +4,7 @@ use Helper;
 
 my %opts   = login_opts("full");
 #my %opts   = login_opts("api_key");
-my $client = Fastly::Client->new(%opts);
+my $client = Net::Fastly::Client->new(%opts);
 
 
 my $user;
@@ -24,7 +24,7 @@ is($customer->{name}, 'Test Account', "Got correct customer name");
 
 $user = $customer = undef;
 
-my $fastly = Fastly->new(%opts);
+my $fastly = Net::Fastly->new(%opts);
 
 $user = eval { $fastly->current_user };
 is($@, '', "Didn't raise an error");

@@ -1,13 +1,13 @@
-package Fastly::Customer;
+package Net::Fastly::Customer;
 
 use strict;
-use base qw(Fastly::Model);
+use base qw(Net::Fastly::Model);
 
-Fastly::Customer->mk_accessors(qw(id name owner_id created_at updated_at));
+Net::Fastly::Customer->mk_accessors(qw(id name owner_id created_at updated_at));
 
 =head1 NAME
 
-Fastly::User - a representation of a user 
+Net::Fastly::User - a representation of a user 
 
 =head1 ACCESSORS
 
@@ -42,6 +42,6 @@ The User object representing the owner of this customer.
 =cut
 sub owner {
     my $self = shift;
-    return $self->_fetcher->_get("Fastly::User", $self->owner_id);
+    return $self->_fetcher->_get("Net::Fastly::User", $self->owner_id);
 }
 1;

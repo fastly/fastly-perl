@@ -1,13 +1,13 @@
-package Fastly::VCL;
+package Net::Fastly::VCL;
 
 use strict;
-use base qw(Fastly::BelongsToServiceAndVersion);
+use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Fastly::VCL->mk_accessors(qw(service version name content created_at updated_at deleted_at));
+Net::Fastly::VCL->mk_accessors(qw(service version name content created_at updated_at deleted_at));
 
 =head1 NAME
 
-Fastly::VCL - An internal representation of a Varnish Configuration Language file
+Net::Fastly::VCL - An internal representation of a Varnish Configuration Language file
 
 =head1 ACCESSORS
 

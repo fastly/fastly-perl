@@ -2,7 +2,7 @@ use strict;
 use Module::Build;
 
 my $build = Module::Build
-  ->new( module_name  => "Fastly",
+  ->new( module_name  => "Net::Fastly",
          configure_requires => { 'Module::Build' => 0.38 },
          requires     => {
                           'Class::Accessor::Fast'        => 0,

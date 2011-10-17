@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Fastly;
+use Net::Fastly;
 use File::Basename;
 use Data::Dumper;
 use DateTime;
@@ -38,8 +38,8 @@ Alternatively you can pass in any of those options on the command line
 =cut
 
 
-my %opts   = Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
-my $fastly = Fastly->new(%opts);
+my %opts   = Net::Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
+my $fastly = Net::Fastly->new(%opts);
 
 my $customer = $fastly->current_customer;
 

@@ -1,11 +1,11 @@
-package Fastly::Model;
+package Net::Fastly::Model;
 
 use strict;
 use base qw(Class::Accessor::Fast);
 
 =head1 NAME
 
-Fastly::Model - base class for all classes
+Net::Fastly::Model - base class for all classes
 
 =head1 METHODS
 

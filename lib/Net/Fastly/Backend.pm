@@ -1,15 +1,15 @@
-package Fastly::Backend;
+package Net::Fastly::Backend;
 
 use strict;
-use base qw(Fastly::BelongsToServiceAndVersion);
+use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Fastly::Backend->mk_accessors(qw(service version name address ipv4 ipv6 hostname use_ssl client_cert port
+Net::Fastly::Backend->mk_accessors(qw(service version name address ipv4 ipv6 hostname use_ssl client_cert port
                                  connect_timeout first_byte_timeout between_bytes_timeout error_threshold max_conn weight
                                  created_at updated_at deleted_at));             
 
 =head1 NAME
 
-Fastly::Backend - Representation of an individual host you want to serve assets off
+Net::Fastly::Backend - Representation of an individual host you want to serve assets off
 
 =head1 ACCESSORS
 
