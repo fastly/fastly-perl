@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 91; 
+use Test::More tests => 96; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -85,6 +85,17 @@ my $deleted = eval { $fastly->delete_user($user) };
 is($@, '', "Didn't raise an error");
 ok($deleted, "User deleted");
 
+$tmp =  eval { $fastly->get_user($user->id) };
+is($@, '', "Didn't raise an error");
+is($tmp, undef, "Couldn't get deleted user");
+
+$user     = eval { $fastly->create_user(login => $email, name => "New User", role => 'user') };
+$user->name("Updated Name");
+eval { $user->save };
+is($@, '', "Didn't raise an error");
+is($user->name, "Updated Name", "Name is updated");
+eval { $user->delete };
+is($@, '', "Didn't raise an error");
 $tmp =  eval { $fastly->get_user($user->id) };
 is($@, '', "Didn't raise an error");
 is($tmp, undef, "Couldn't get deleted user");

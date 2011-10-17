@@ -63,4 +63,29 @@ sub _delete_path {
     return $class->_put_path($obj);
 }
 
+=head2 save
+
+Save this object. Equivalent to
+
+   $fastly->update_<class>($object);
+
+=cut
+sub save {
+    my $self = shift;
+    $self->_fetcher->_update(ref($self), $self);
+}
+
+=head2 delete
+
+Delete this object. Equivalent to
+
+   $fastly->delete_<class>($object);
+
+=cut
+sub delete {
+    my $self = shift;
+    $self->_fetcher->_delete(ref($self), $self);     
+}
+
+
 1;
