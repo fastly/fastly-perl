@@ -150,6 +150,11 @@ sub upload_vcl {
     return Net::Fastly::VCL->new($self->_fetcher, %$hash);
 }
 
+=head2 vcl
+
+The uploaded vcl for this version
+
+=cut
 
 sub vcl {
      my $self = shift;

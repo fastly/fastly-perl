@@ -153,6 +153,114 @@ sub purge {
     $self->client->_post("/purge/$path");
 }
 
+=head2 create_user <opts>
+
+=head2 create_customer <opts>
+
+=head2 create_service <opts>
+
+=head2 create_version <opts>
+
+=head2 create_backend <opts>
+
+=head2 create_director <opts>
+
+=head2 create_domain <opts>
+
+=head2 create_origin <opts>
+
+=head2 create_vcl <opts>
+
+=head2 create_version <opts>
+
+=cut
+
+=head2 get_user <id>
+
+=head2 get_customer <id>
+
+=head2 get_service <id>
+
+=head2 get_version <service id> <number>
+
+=head2 get_backend <service id> <version number> <name>
+
+=head2 get_director <service id> <version number> <name>
+
+=head2 get_domain <service id> <version number> <name>
+
+=head2 get_origin <service id> <version number> <name>
+
+=head2 get_vcl <service id> <version number> <name>
+
+=head2 get_version <service id> <version number> <name>
+
+=cut
+
+
+=head2 update_user <obj>
+
+=head2 update_customer <obj>
+
+=head2 update_service <obj>
+
+=head2 update_version <obj>
+
+=head2 update_backend <obj>
+
+=head2 update_director <obj>
+
+=head2 update_domain <obj>
+
+=head2 update_origin <obj>
+
+=head2 update_vcl <obj>
+
+=head2 update_version <obj>
+
+=cut
+
+
+=head2 delete_user <obj> 
+
+=head2 delete_customer <obj>
+
+=head2 delete_service <obj>
+
+=head2 delete_version <obj>
+
+=head2 delete_backend <obj>
+
+=head2 delete_director <obj>
+
+=head2 delete_domain <obj>
+
+=head2 delete_origin <obj>
+
+=head2 delete_vcl <obj>
+
+=head2 delete_version <obj>
+
+=cut
+
+=head2 list_services
+
+Get a list of all the services that the current customer has.
+
+=head2 search_services <param[s]>
+
+Search all the services that the current customer has.
+
+In general you'll want to do
+
+        my @services = $fastly->search_services(name => $name);
+
+or
+
+        my ($service) = $fastly->search_services(name => $name, version => $number);
+
+=cut
+
 sub _list {
     my $self     = shift;
     my $class    = shift;

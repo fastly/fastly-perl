@@ -118,32 +118,12 @@ sub version {
 
 package Net::Fastly;
 
-=head1 METHODS ADDED TO MAIN FASTLY CLASS
-
-=head2 list_services
-
-Get a list of all the services that the current customer has.
-
-=cut
 sub list_services {
     my $self  = shift;
     my %opts  = @_;
     return $self->_list("Net::Fastly::Service", %opts);
 }
 
-=head2 search_services <param[s]>
-
-Search all the services that the current customer has.
-
-In general you'll want to do
-
-        my @services = $fastly->search_services(name => $name);
-
-or
-
-        my ($service) = $fastly->search_services(name => $name, version => $number);
-
-=cut
 sub search_services {
     my $self  = shift;
     my %opts  = @_;
