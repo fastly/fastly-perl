@@ -10,9 +10,11 @@ Net::Fastly::BelongsToServiceAndVersion - base class for classes that belong to 
 =cut
 
 sub _get_path {
-    my $class = shift;
-    my %opts  = @_;
-    return "/service/".$opts{service}."/version/".$opts{version}."/".$class->_path."/".$opts{name};
+    my $class   = shift;
+    my $service = shift;
+    my $version = shift;
+    my $name    = shift;
+    return "/service/$service/version/$version/".$class->_path."/$name";
 }
 
 sub _post_path {
@@ -24,7 +26,7 @@ sub _post_path {
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->_get_path(service => $obj->service, version => $obj->version, name => $obj->name);
+    return $class->_get_path($obj->service, $obj->version, $obj->name);
 }
 
 1;

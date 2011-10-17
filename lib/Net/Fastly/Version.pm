@@ -54,9 +54,10 @@ The date and time this was deleted at
 =cut
 
 sub _get_path {
-    my $class = shift;
-    my %opts  = @_;
-    return "/service/".$opts{service}."/version/".$opts{number};
+    my $class   = shift;
+    my $service = shift;
+    my $number  = shift;
+    return "/service/$service/version/$number";
 }
 
 sub _post_path {
@@ -68,7 +69,7 @@ sub _post_path {
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->_get_path($obj->_as_hash);
+    return $class->_get_path($obj->service, $obj->number);
 }
  
 =head1 METHODS
@@ -160,7 +161,7 @@ sub vcl {
      my $self = shift;
      my $name = shift;
      die "You must be fully authed to get the generated vcl for a version" unless $self->_fetcher->fully_authed;
-     my $vcl = $self->_fetcher->get_vcl(service => $self->service, version => $self->number, name => $name, @_);
+     my $vcl = $self->_fetcher->get_vcl($self->service, $self->number, $name, @_);
      return $vcl;
 }
 

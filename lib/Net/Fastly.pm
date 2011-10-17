@@ -173,6 +173,8 @@ sub purge {
 
 =head2 create_version <opts>
 
+Create new objects.
+
 =cut
 
 =head2 get_user <id>
@@ -194,6 +196,8 @@ sub purge {
 =head2 get_vcl <service id> <version number> <name>
 
 =head2 get_version <service id> <version number> <name>
+
+Get existing objects.
 
 =cut
 
@@ -218,6 +222,12 @@ sub purge {
 
 =head2 update_version <obj>
 
+Update existing objects.
+
+Note - you can also do
+
+    $obj->save;
+
 =cut
 
 
@@ -240,6 +250,12 @@ sub purge {
 =head2 delete_vcl <obj>
 
 =head2 delete_version <obj>
+
+Delete existing objects.
+
+Note - you can also do
+
+    $obj->delete
 
 =cut
 

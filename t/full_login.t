@@ -156,7 +156,7 @@ is($backend->service, $service->id, "Backend's service id is correct");
 $backend->ipv4('192.168.0.1');
 my $r = eval { $fastly->update_backend($backend) };
 is($@, '', "Didn't raise an error");
-$backend = $fastly->get_backend(service => $service->id, version => $number, name => $backend_name); 
+$backend = $fastly->get_backend($service->id, $number, $backend_name); 
 ok($backend, "Got the backend again");
 is($backend->ipv4, '192.168.0.1', "Got the updated ipv4");
 
@@ -170,7 +170,7 @@ $domain->comment("Flibbety gibbet");
 eval { $fastly->update_domain($domain) };
 is($@, '', "Didn't raise an error when updating domain");
 
-$domain = eval { $fastly->get_domain(service => $service->id, version => $number, name => $domain_name) };
+$domain = eval { $fastly->get_domain($service->id, $number, $domain_name) };
 is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct still");
