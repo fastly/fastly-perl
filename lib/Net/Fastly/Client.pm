@@ -183,7 +183,11 @@ sub _make_url {
     my $port   = $self->{_port};
     my $path   = shift;
     my %params = @_;
-    my $url = URI->new('http:');
+
+    $base =~ s!^(https?:)//!!;
+    my $prot = $1 || "https:";
+
+    my $url = URI->new($prot);
     $url->host($base);
     $url->port($port) if $port != 80;
     $url->path($path);
