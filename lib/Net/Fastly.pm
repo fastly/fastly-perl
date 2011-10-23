@@ -86,7 +86,13 @@ Some methods require full username and password rather than just auth token.
 sub new {
     my $class = shift;
     my %opts  = @_;
-    return bless { _client => Net::Fastly::Client->new(%opts) }, $class;
+    my ($client, $user, $customer) = Net::Fastly::Client->new(%opts);
+    my $self  = bless { _client =>  $client, _current_customer => undef, _current_user => undef}, $class;
+    if ($user && $customer) {
+        $self->{_current_user}     =  Net::Fastly::User->new($self, %$user);
+        $self->{_current_customer} =  Net::Fastly::Customer->new($self, %$customer);
+    }
+    return $self;
 }
 
 =head2 client
@@ -118,7 +124,7 @@ Return a User object representing the current logged in user.
 sub current_user {
     my $self = shift;
     die "You must be fully authed to get the current user" unless $self->fully_authed;
-    $self->_get("Net::Fastly::User");
+    $self->{_current_user} ||= $self->_get("Net::Fastly::User");
 }
 
 =head2 current_customer
@@ -129,7 +135,7 @@ Return a Customer object representing the customer of the current logged in user
 sub current_customer {
     my $self = shift;
     die "You must be fully authed to get the current customer" unless $self->fully_authed;
-    $self->_get("Net::Fastly::Customer");
+    $self->{_current_customer} ||= $self->_get("Net::Fastly::Customer");
 }
 
 =head2 commands 
