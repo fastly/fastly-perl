@@ -50,6 +50,8 @@ sub _post_path {
     my $class = shift;
     return "/".$class->_path;
 }
+
+sub _list_path { shift->_post_path(@_) }
  
 sub _put_path {
     my $class = shift;

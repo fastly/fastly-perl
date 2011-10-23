@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 96; 
+use Test::More tests => 104; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -204,3 +204,17 @@ ok($valid, "Version3 is valid");
 
 my %stats       = eval { $service->stats };
 ok(keys %stats, "Got stats");
+
+my $invoice     = eval { $service->invoice };
+is($@, '', "Didn't raise an error");
+is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
+ok($invoice->regions, "Got invoice regions");
+
+is($invoice->service_id, $service->id, "Invoice has correct service id");
+is($@, '', "Didn't raise an error");
+my @invoices    = eval { $fastly->list_invoices };
+@services       = eval { $fastly->list_services };
+is(scalar(@invoices), scalar(@services), "Got the same number of invoices as we did services");
+is(ref($invoices[0]), "Net::Fastly::Invoice", "Got an invoice object");
+ok($invoices[0]->service_id, "Got a service id");
+
