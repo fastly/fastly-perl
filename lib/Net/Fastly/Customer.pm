@@ -42,6 +42,6 @@ The User object representing the owner of this customer.
 =cut
 sub owner {
     my $self = shift;
-    return $self->_fetcher->_get("Net::Fastly::User", $self->owner_id);
+    return $self->{_owner} ||= $self->_fetcher->_get("Net::Fastly::User", $self->owner_id);
 }
 1;

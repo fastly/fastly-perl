@@ -69,8 +69,6 @@ sub _post_path {
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    use Data::Dumper;
-    warn Dumper($obj);
     return $class->_get_path($obj->service_id, $obj->number);
 }
  
@@ -78,6 +76,15 @@ sub _put_path {
 
 =cut
 
+=head2 service
+
+Get the service object for this version
+
+=cut
+sub service {
+    my $self = shift;
+    return $self->_fetcher->_get("Net::Fastly::Service", $self->service_id);
+}
 
 =head2 activate
 

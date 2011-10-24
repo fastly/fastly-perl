@@ -3,7 +3,7 @@ package Net::Fastly::Domain;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Domain->mk_accessors(qw(service_id version name comment created_at updated_at deleted_at));
+Net::Fastly::Domain->mk_accessors(qw(service_id name comment created_at updated_at deleted_at));
 
 =head1 NAME
 

@@ -47,7 +47,7 @@ Get the Customer object this user belongs to.
 =cut
 sub customer {
     my $self = shift;
-    return $self->fetcher->get("Net::Fastly::Customer", $self->customer_id);
+    return $self->{_customer} ||= $self->_fetcher->_get("Net::Fastly::Customer", $self->customer_id);
 }
 
 =head2 owner

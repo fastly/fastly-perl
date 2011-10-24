@@ -3,7 +3,7 @@ package Net::Fastly::Origin;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Origin->mk_accessors(qw(service_id version name comment created_at updated_at));
+Net::Fastly::Origin->mk_accessors(qw(service_id name comment created_at updated_at));
 
 =head1 NAME
 

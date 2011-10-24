@@ -3,7 +3,7 @@ package Net::Fastly::Service;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Service->mk_accessors(qw(id customer name comment created_at updated_at deleted_at));
+Net::Fastly::Service->mk_accessors(qw(id customer_id name comment created_at updated_at deleted_at));
 
 =head1 NAME
 
@@ -150,10 +150,10 @@ sub list_services {
 sub search_services {
     my $self  = shift;
     my %opts  = @_;
-    my $class = "Net::Fastly::Service"; 
+    my $class = "Net::Fastly::Service";
     die "You must be authed to search for a $class" unless $self->authed;
     my $hash    = $self->client->_get($class->_post_path."/search", %opts);
     return undef unless $hash;
-    return $class->new($self, %$hash);
+    return $class->new($class, %$hash);
 }
 1;

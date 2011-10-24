@@ -3,7 +3,7 @@ package Net::Fastly::Director;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Director->mk_accessors(qw(service_id version name comment type capacity retries quorum created_at updated_at deleted_at));
+Net::Fastly::Director->mk_accessors(qw(service_id name comment type capacity retries quorum created_at updated_at deleted_at));
 
 =head1 NAME
 

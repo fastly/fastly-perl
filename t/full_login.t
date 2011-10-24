@@ -53,6 +53,16 @@ is($@, '', "Didn't raise an error");
 ok($customer, "Customer is defined again");
 is($customer->name, $current_customer->name, "Got correct customer name again");
 
+$customer = eval { $fastly->get_customer($user->customer_id) };
+is($@, '', "Didn't raise an error");
+ok($customer, "Customer is defined again");
+is($customer->name, $current_customer->name, "Got correct customer name again");
+
+$customer = eval { $user->customer };
+is($@, '', "Didn't raise an error");
+ok($customer, "Customer is defined again");
+is($customer->name, $current_customer->name, "Got correct customer name again");
+
 $user = $customer = undef;
 my $email = 'fastly-ruby-test-'.get_rand.'-new@example.com';
 $user     = eval { $fastly->create_user(login => $email, name => "New User", role => 'user' ) };
@@ -127,12 +137,12 @@ ok(scalar(grep { $name eq $_->name } @services), "List services returns the serv
 @services = eval { $fastly->search_services(name => $name) };
 is($@, '', "Didn't raise an error");
 ok(scalar @services, "Got some services back after a search by name");
-ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name after a search by name");
+ok(scalar(grep { $name eq $_->name } @services), "Search services returns the service with the correct name after a search by name");
 
 @services = eval { $fastly->search_services(name => $name, version => $version->number) };
 is($@, '', "Didn't raise an error");
 ok(scalar @services, "Got some services back after a search by name and version");
-ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name after a search by name and version");
+ok(scalar(grep { $name eq $_->name } @services), "Search services returns the service with the correct name after a search by name and version");
 
 my $version2 = eval { $fastly->create_version( service_id => $service->id ) };
 is($@, '', "Didn't raise an error");
@@ -143,6 +153,9 @@ my $version3 = eval { $version2->clone };
 is($@, '', "Didn't raise an error");
 ok($version3, "Version3 is defined");
 is($version2->number+1, $version3->number, "Version is incremented again");
+
+is ($version3->service_id, $service->id, "Version 3 has the right service id");
+is ($version3->service->id, $service->id, "Version 3 has the right service");
 
 
 my $number = $version3->number;
@@ -165,6 +178,10 @@ my $domain      = eval { $fastly->create_domain(service_id => $service->id, vers
 is($@, '', "Didn't raise an error");
 ok($domain, "Domain is defined");
 is($domain->name, $domain_name, "Domain's name is correct");
+is($domain->service->id, $service->id, "Domain's service id is correct");
+is($domain->version_number, $number, "Domain's version number is correct");
+is($domain->version->number, $number, "Domain's version's number is correct");
+
 
 $domain->comment("Flibbety gibbet");
 eval { $fastly->update_domain($domain) };
@@ -181,12 +198,19 @@ my $director      = eval { $fastly->create_director(service_id => $service->id, 
 is($@, '', "Didn't raise an error");
 ok($director, "Director is defined");
 is($director->name, $director_name, "Director's name is correct");
+is($director->service->id, $service->id, "Director's service id is correct");
+is($director->version_number, $number, "Director's version number is correct");
+is($director->version->number, $number, "Director's version's number is correct");
+
 
 my $origin_name = "fastly-test-origin-".get_rand;
 my $origin      = eval { $fastly->create_origin(service_id => $service->id, version => $number, name => $origin_name) };
 is($@, '', "Didn't raise an error");
 ok($origin, "Origin is defined");
 is($origin->name, $origin_name, "Origin's name is correct");
+is($origin->service->id, $service->id, "Origin's service id is correct");
+is($origin->version_number, $number, "Origin's version number is correct");
+is($origin->version->number, $number, "Origin's version's number is correct");
 
 
 ok($version3->activate, "Activated version");
