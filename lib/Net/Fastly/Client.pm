@@ -45,8 +45,9 @@ sub new {
     # If we're fully authed (i.e username and password ) then we need to log in
     my $res = $self->_ua->_post('/login', {}, user => $self->{user}, password => $self->{password});
     die "Unauthorized" unless $res->is_success;
+    my $content = decode_json($res->decoded_content);    
     $self->{_cookie} = $res->header('set-cookie');
-    return $self;
+    return wantarray ? ($self, $content->{user}, $content->{customer}) : $self;
 }
 
 sub _ua { shift->{_ua} }
@@ -183,7 +184,11 @@ sub _make_url {
     my $port   = $self->{_port};
     my $path   = shift;
     my %params = @_;
-    my $url = URI->new('http:');
+
+    $base =~ s!^(https?:)//!!;
+    my $prot = $1 || "https:";
+
+    my $url = URI->new($prot);
     $url->host($base);
     $url->port($port) if $port != 80;
     $url->path($path);

@@ -870,6 +870,17 @@ fastly> dump service <service name> version <version number>
 
 Exit the Fastly shell.
 
-=cut
+=head1 COPYRIGHT
 
+Copyright 2011 - Fastly Inc
+
+Mail support at fastly dot com if you have problems.
+
+=head1 DEVELOPERS
+
+http://github.com/fastly/fastly-perl
+
+http://www.fastly.com/developers
+
+=cut
 

@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Net::Fastly::Client;
+use Net::Fastly::Invoice;
 our $VERSION = "0.5";
 
 
@@ -53,6 +54,8 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
         print $service->name."\n";
     }
 
+    
+
 
 =head1 DESCRIPTION
 
@@ -83,7 +86,13 @@ Some methods require full username and password rather than just auth token.
 sub new {
     my $class = shift;
     my %opts  = @_;
-    return bless { _client => Net::Fastly::Client->new(%opts) }, $class;
+    my ($client, $user, $customer) = Net::Fastly::Client->new(%opts);
+    my $self  = bless { _client =>  $client, _current_customer => undef, _current_user => undef}, $class;
+    if ($user && $customer) {
+        $self->{_current_user}     =  Net::Fastly::User->new($self, %$user);
+        $self->{_current_customer} =  Net::Fastly::Customer->new($self, %$customer);
+    }
+    return $self;
 }
 
 =head2 client
@@ -115,7 +124,7 @@ Return a User object representing the current logged in user.
 sub current_user {
     my $self = shift;
     die "You must be fully authed to get the current user" unless $self->fully_authed;
-    $self->_get("Net::Fastly::User");
+    $self->{_current_user} ||= $self->_get("Net::Fastly::User");
 }
 
 =head2 current_customer
@@ -126,7 +135,7 @@ Return a Customer object representing the customer of the current logged in user
 sub current_customer {
     my $self = shift;
     die "You must be fully authed to get the current customer" unless $self->fully_authed;
-    $self->_get("Net::Fastly::Customer");
+    $self->{_current_customer} ||= $self->_get("Net::Fastly::Customer");
 }
 
 =head2 commands 
@@ -152,6 +161,7 @@ sub purge {
     die "You must be authed to purge" unless $self->authed;
     $self->client->_post("/purge/$path");
 }
+
 
 =head2 create_user <opts>
 
@@ -277,12 +287,22 @@ or
 
 =cut
 
+=head2 list_invoices [<year> <month>]
+
+Return an array of Net::Fastly::Invoice objects representing invoices for all services.
+
+If a year and month are passed in returns the invoices for that whole month. 
+
+Otherwise it returns the invoices for the current month so far.
+
+=cut
+
 sub _list {
     my $self     = shift;
     my $class    = shift;
     my %opts     = @_;
     die "You must be fully authed to list a $class" unless $self->fully_authed;
-    my $list     = $self->client->_get($class->_post_path, %opts, is_list => 1);
+    my $list     = $self->client->_get($class->_list_path, %opts, is_list => 1);
     return () unless $list;
     return map { $class->new($self, %$_) } @$list;
 }
@@ -387,4 +407,18 @@ sub get_options {
     die "Couldn't find options from command line arguments or ".join(", ", @configs)."\n" unless keys %options;
     return %options;
 }
+
+=head1 COPYRIGHT
+
+Copyright 2011 - Fastly Inc
+
+Mail support at fastly dot com if you have problems.
+
+=head1 DEVELOPERS
+
+http://github.com/fastly/fastly-perl
+
+http://www.fastly.com/developers
+
+=cut
 1;

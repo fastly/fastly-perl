@@ -69,6 +69,29 @@ sub stats {
     return $self->_fetcher->client->_get($self->_get_path($self->id)."/stats/".$type);    
 }
 
+=head2 invoice [<year> <month>]
+
+Return a Net::Fastly::Invoice objects representing the invoice for this service
+
+If a year and month are passed in returns the invoice for that whole month. 
+
+Otherwise it returns the invoice for the current month so far.
+
+=cut
+sub invoice {
+    my $self  = shift;
+    my $year  = shift;
+    my $month = shift;
+    die "You must be authed to get an invoice" unless $self->_fetcher->authed;
+    my %opts = ( service => $self->id );
+    if ($year && $month) {
+        $opts{year} = $year;
+        $opts{month} = $month;
+    }
+    return $self->_fetcher->_get('Net::Fastly::Invoice', %opts);
+}
+
+
 =head2 purge_all
 
 Purge all assets from this service.
