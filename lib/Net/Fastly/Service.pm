@@ -83,7 +83,7 @@ sub invoice {
     my $year  = shift;
     my $month = shift;
     die "You must be authed to get an invoice" unless $self->_fetcher->authed;
-    my %opts = ( service => $self->id );
+    my %opts = ( service_id => $self->id );
     if ($year && $month) {
         $opts{year} = $year;
         $opts{month} = $month;

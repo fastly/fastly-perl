@@ -26,7 +26,7 @@ sub _post_path {
 sub _put_path {
     my $class = shift;
     my $obj   = shift;
-    return $class->_get_path($obj->service_id, $obj->version, $obj->name);
+    return $class->_get_path($obj->service_id, $obj->version_number, $obj->name);
 }
 
 =head2 service

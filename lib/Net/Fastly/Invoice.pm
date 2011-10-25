@@ -42,8 +42,8 @@ sub _get_path {
     my %opts  = @_;
     
     my $url  = "/billing";
-    if ($opts{service}) {
-        $url .= "/service/".$opts{service};
+    if ($opts{service_id}) {
+        $url .= "/service/".$opts{service_id};
     }
     if ($opts{year} && $opts{month}) {
         $url .= "/year/".$opts{year}."/month/".$opts{mon};
