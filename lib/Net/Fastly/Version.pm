@@ -3,7 +3,7 @@ package Net::Fastly::Version;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Version->mk_accessors(qw(service_id number name active locked staging testing deployed comment created_at updated_at deleted_at));
+Net::Fastly::Version->mk_accessors(qw(service_id number name active locked staging testing deployed comment));
 
 =head1 NAME
 
@@ -38,18 +38,6 @@ Whether this version is in testing or not.
 =head2 deployed
 
 Whether this version is deployed or not.
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
-
-=head2 deleted_at
-
-The date and time this was deleted at
 
 =cut
 

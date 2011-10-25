@@ -3,7 +3,7 @@ package Net::Fastly::Director;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Director->mk_accessors(qw(service_id name comment type capacity retries quorum created_at updated_at deleted_at));
+Net::Fastly::Director->mk_accessors(qw(service_id name comment type capacity retries quorum));
 
 =head1 NAME
 
@@ -34,18 +34,6 @@ how many backends to search if it fails (default 5)
 =head2 quorum
 
 the percentage of capacity that needs to be up for a director to be considered up (default 75)
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
-
-=head2 deleted_at
-
-The date and time this was deleted at
 
 =cut
 

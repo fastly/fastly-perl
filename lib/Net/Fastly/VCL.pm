@@ -3,7 +3,7 @@ package Net::Fastly::VCL;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::VCL->mk_accessors(qw(service_id name content created_at updated_at deleted_at));
+Net::Fastly::VCL->mk_accessors(qw(service_id name content));
 
 =head1 NAME
 
@@ -30,18 +30,6 @@ The content of the VCL file.
 See this for more details
 
 https://www.varnish-cache.org/trac/wiki/VCL
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
-
-=head2 deleted_at
-
-The date and time this was deleted at
 
 =cut
 1;

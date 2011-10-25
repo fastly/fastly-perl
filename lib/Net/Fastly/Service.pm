@@ -3,7 +3,7 @@ package Net::Fastly::Service;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Service->mk_accessors(qw(id customer_id name comment created_at updated_at deleted_at));
+Net::Fastly::Service->mk_accessors(qw(id customer_id name comment));
 
 =head1 NAME
 
@@ -22,18 +22,6 @@ The id of the customer this belongs to
 =head2 name
 
 The name of this service
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
-
-=head2 deleted_at
-
-The date and time this was deleted at
 
 =cut
 

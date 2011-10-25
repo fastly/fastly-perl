@@ -4,8 +4,7 @@ use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
 Net::Fastly::Backend->mk_accessors(qw(service_id version name address ipv4 ipv6 hostname use_ssl client_cert port
-                                 connect_timeout first_byte_timeout between_bytes_timeout error_threshold max_conn weight
-                                 created_at updated_at deleted_at));             
+                                 connect_timeout first_byte_timeout between_bytes_timeout error_threshold max_conn weight));             
 
 =head1 NAME
 
@@ -68,18 +67,6 @@ the maximum number of connections to this backend (default 20)
 =head2 weight
 
 the weight assigned to this backend (default 100)
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
-
-=head2 deleted_at
-
-The date and time this was deleted at
 
 =cut
 

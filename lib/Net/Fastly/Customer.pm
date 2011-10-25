@@ -3,7 +3,7 @@ package Net::Fastly::Customer;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Customer->mk_accessors(qw(id name owner_id created_at updated_at));
+Net::Fastly::Customer->mk_accessors(qw(id name owner_id));
 
 =head1 NAME
 
@@ -22,14 +22,6 @@ The name of this customer
 =head2 owner_id
 
 The id of the user that owns this customer
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
 
 =cut
 

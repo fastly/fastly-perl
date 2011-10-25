@@ -3,7 +3,7 @@ package Net::Fastly::User;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::User->mk_accessors(qw(id name login customer_id role created_at updated_at));
+Net::Fastly::User->mk_accessors(qw(id name login customer_id role));
 
 =head1 NAME
 
@@ -26,14 +26,6 @@ The id of the customer this user belongs to
 =head2 role
 
 The role this user has (one of admin, owner, superuser, user, engineer, billing)
-
-=head2 created_at
-
-The date and time this was created at
-
-=head2 updated_at
-
-The date and time this was updated at
 
 =cut
 
