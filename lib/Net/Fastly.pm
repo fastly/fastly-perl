@@ -50,11 +50,37 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
     print "Which is the same as ".$customer->name."\n";
     print "Which has the owner ".$customer->owner->name."\n";
     
+    # Let's see which services we have defined
     foreach my $service ($customer->list_services) {
+        print $service->id."\n";
         print $service->name."\n";
+        foreach my $version ($service->versions) {
+            print "\t".$version->number."\n";
+        }
     }
-
     
+    my $service        = $fastly->create_service(name => "MyFirstService");
+    my $latest_version = $service->version;
+    
+    # Create a domain and a backend for the service ...
+    my $domain         = $fastly->create_domain(service_id => $service->id, version => $latest_version->number, name => "www.example.com");
+    my $backend        = $fastly->create_backend(service_id => $service->id, version => $latest_version->number, ipv4 => "127.0.0.1", port => 80);
+    
+    # ... and activate it. You're now hosted on Fastly.
+    $latest_version->activate;
+    
+    # Let's take a peek at the VCL that Fastly generated for us
+    my $vcl = $latest_version->generated_vcl;
+    print "Generated VCL file is:\n".$vcl->content."\n";
+    
+    # Now let's create a new version ...
+    my $new_version    = $latest_version->clone;
+    # ... add a new backend ...
+    my $new_backend    = $fastly->create_backend(service_id => $service->id, version => $new_version->number, ipv4 => "192.0.0.1", port => 8080);
+    # ... and upload some custome vcl (presuming we have permissions)
+    $new_version->upload_vcl($vcl_name, slurp($vcl_file));    
+    
+    $new_version->activate;
 
 
 =head1 DESCRIPTION
@@ -169,19 +195,17 @@ sub purge {
 
 =head2 create_service <opts>
 
-=head2 create_version <opts>
+=head2 create_version service_id => <service id>, [opts]
 
-=head2 create_backend <opts>
+=head2 create_backend service_id => <service id>, version => <version number>, <opts>
 
-=head2 create_director <opts>
+=head2 create_director service_id => <service id>, version => <version number> <opts>
 
-=head2 create_domain <opts>
+=head2 create_domain service_id => <service id>, version => <version number> <opts>
 
-=head2 create_origin <opts>
+=head2 create_origin service_id => <service id>, version => <version number> <opts>
 
-=head2 create_vcl <opts>
-
-=head2 create_version <opts>
+=head2 create_vcl service_id => <service id>, version => <version number> <opts>
 
 Create new objects.
 
