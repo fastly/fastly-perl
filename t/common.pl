@@ -70,17 +70,23 @@ sub common_tests {
     my $number = $version3->number;
 
     my $backend_name = "fastly-test-backend-".get_rand;
-    my $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, ipv4 => '127.0.0.1', port => "9092", name => $backend_name) };
+    my $backend;
+
+    $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, hostname => 'localhost', port => "9092", name => $backend_name) };
+    isnt($@, '', "Did raise an error when trying to create a backend against localhost");
+    is($backend, undef, "Backend isn't defined");
+
+    $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, ipv4 => '74.125.224.146', port => "9092", name => $backend_name) };
     is($@, '', "Didn't raise an error");
     ok($backend, "Backend is defined");
     is($backend->service_id, $service->id, "Backend's service id is correct");
 
-    $backend->ipv4('192.168.0.1');
+    $backend->ipv4('74.125.224.147');
     my $r = eval { $fastly->update_backend($backend) };
     is($@, '', "Didn't raise an error");
     $backend = $fastly->get_backend($service->id, $number, $backend_name); 
     ok($backend, "Got the backend again");
-    is($backend->ipv4, '192.168.0.1', "Got the updated ipv4");
+    is($backend->ipv4, '74.125.224.147', "Got the updated ipv4");
 
     my $domain_name = "fastly-test-domain-".get_rand.".example.com";
     my $domain      = eval { $fastly->create_domain(service_id => $service->id, version => $number, name => $domain_name) };
