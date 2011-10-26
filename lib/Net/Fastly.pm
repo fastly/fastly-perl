@@ -448,7 +448,7 @@ Mail support at fastly dot com if you have problems.
 
 http://github.com/fastly/fastly-perl
 
-http://www.fastly.com/developers
+http://www.fastly.com/documentation
 
 =cut
 1;
