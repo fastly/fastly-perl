@@ -57,7 +57,7 @@ sub _put_path    { die "You can't PUT to an invoice"    }
 sub _delete_path { die "You can't DELETE to an invoice" }
 
 sub save   { die "You can't save an invoice" }
-sub delete { die "You can't save an invoice" }
+sub delete { die "You can't delete an invoice" }
 
 package Net::Fastly;
 
