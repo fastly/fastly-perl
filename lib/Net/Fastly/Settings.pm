@@ -47,6 +47,14 @@ sub _as_hash {
 sub _list_path   { die "You can't list settings" }
 sub _post_path   { die "You can't POST to settings"   }
 sub _delete_path { die "You can't DELETE to settings" }
+
+=head2 delete
+
+Delete this object. Equivalent to
+
+   $fastly->delete_<class>($object);
+
+=cut
 sub delete       { die "You can't delete an invoice" }
 
 package Net::Fastly;

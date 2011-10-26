@@ -56,7 +56,22 @@ sub _post_path   { die "You can't POST to an invoice"   }
 sub _put_path    { die "You can't PUT to an invoice"    }
 sub _delete_path { die "You can't DELETE to an invoice" }
 
+=head2 save
+
+Save this object. Equivalent to
+
+   $fastly->update_<class>($object);
+
+=cut
 sub save   { die "You can't save an invoice" }
+
+=head2 delete
+
+Delete this object. Equivalent to
+
+   $fastly->delete_<class>($object);
+
+=cut
 sub delete { die "You can't delete an invoice" }
 
 package Net::Fastly;
