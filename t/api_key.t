@@ -1,8 +1,15 @@
 use strict;
-use Test::More tests => 9; 
+use Test::More tests => 88; 
 use Helper;
+require 'common.pl';
 
-my %opts   = login_opts("api_key");
+my %opts = eval { login_opts("api_key") };
+chomp(my $err = $@);
+
+SKIP: {
+
+skip "No api key credentials given - $err", 88 if $err;
+
 my $client = Net::Fastly::Client->new(%opts);
 my $fastly = Net::Fastly->new(%opts);
 
@@ -25,4 +32,8 @@ eval { $customer =  $fastly->current_customer };
 ok($@, "Raised an error");
 is($customer, undef, "Customer still isn't defined");
 
-ok($fastly->purge('foo'), "Purging works");
+#ok($fastly->purge('foo'), "Purging works");
+
+common_tests($fastly);
+
+}
