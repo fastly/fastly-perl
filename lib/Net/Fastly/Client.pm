@@ -165,8 +165,11 @@ sub _put {
     my $path    = shift;
     my $headers = shift;
     my %params  = @_;
-    my $url     = $self->_make_url($path, %params);
-    return $self->_ua->request(PUT $url, %$headers, Content => ""); 
+    $headers->{content_type} =  "application/x-www-form-urlencoded";
+    my $url     = $self->_make_url($path);
+    my $uri     = URI->new('http');
+    $uri->query_form(_make_params(%params));
+    return $self->_ua->request(PUT $url, %$headers, Content => $uri->query); 
 }
 
 sub _delete {
