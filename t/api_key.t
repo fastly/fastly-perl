@@ -1,5 +1,6 @@
 use strict;
 use Test::More tests => 88; 
+use lib qw(t);
 use Helper;
 require 'common.pl';
 
