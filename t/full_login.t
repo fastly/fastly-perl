@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 121; 
+use Test::More tests => 131; 
 use Helper;
 
 my %opts   = login_opts("full");
@@ -126,6 +126,26 @@ is($tmp->name, $service->name, "Name is correct");
 my $version = eval { $service->version };
 is($@, '', "Didn't raise an error");
 ok($version, "Version is defined");
+
+my $settings = eval { $fastly->get_settings($service->id, $version->number) };
+is($@, '', "Didn't raise an error");
+ok($settings, "Settings is defined");
+is($settings->service_id, $service->id, "Service id is the same");
+is($settings->version, $version->number, "Version number is the same");
+
+my $default_ttl = $settings->settings->{'general.default_ttl'};
+$settings       = eval { $version->settings };
+is($@, '', "Didn't raise an error");
+ok($settings, "Settings is defined");
+is($settings->service_id, $service->id, "Service id is still the same");
+is($settings->version, $version->number, "Version number is still the same");
+is($settings->settings->{'general.default_ttl'}, $default_ttl, "Default TTL is the same");
+
+$settings->settings->{'general.default_ttl'} = $default_ttl = 888_888_888;
+$settings->save;
+
+$settings       = eval { $version->settings };
+is($settings->settings->{'general.default_ttl'}, $default_ttl, "Default TTL is the same");
 
 my @services;
 

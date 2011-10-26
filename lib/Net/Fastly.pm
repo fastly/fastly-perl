@@ -5,6 +5,8 @@ use warnings;
 
 use Net::Fastly::Client;
 use Net::Fastly::Invoice;
+use Net::Fastly::Settings;
+
 our $VERSION = "0.5";
 
 
@@ -231,6 +233,8 @@ Create new objects.
 
 =head2 get_version <service id> <version number> <name>
 
+=head2 get_settings <service id> <version number>
+
 Get existing objects.
 
 =cut
@@ -255,6 +259,8 @@ Get existing objects.
 =head2 update_vcl <obj>
 
 =head2 update_version <obj>
+
+=head2 update_settings <obj>
 
 Update existing objects.
 

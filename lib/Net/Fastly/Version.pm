@@ -74,6 +74,16 @@ sub service {
     return $self->_fetcher->_get("Net::Fastly::Service", $self->service_id);
 }
 
+=head2 settings
+
+Get the settings object for this version
+
+=cut
+sub settings {
+    my $self = shift;
+    return $self->_fetcher->get_settings($self->service_id, $self->number);
+}
+
 =head2 activate
 
 Activate this version. This will cause it to be deployed.
