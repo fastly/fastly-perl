@@ -142,7 +142,7 @@ sub authed { shift->client->authed }
 Whether or not we're fully (username and password) authed
 
 =cut
-sub fully_authed { shift->client->fully_authed }
+sub fully_authed { shift->client->authed }
 
 =head2 current_user 
 
