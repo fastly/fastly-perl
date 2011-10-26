@@ -224,11 +224,9 @@ our $DEBUG=0;
 sub request {
     my $self = shift;
     my $req  = shift;
+    print $req->as_string."\n------------------------\n\n" if $DEBUG;
     my $res  = $self->SUPER::request($req);
-    if ($DEBUG) {
-        print $req->as_string."\n------------------------\n\n";
-        print $res->as_string."\n------------------------\n\n\n\n\n";
-    }
+    print $res->as_string."\n------------------------\n\n\n\n\n" if $DEBUG;
     return $res;
 }
 1;
