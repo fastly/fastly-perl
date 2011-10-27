@@ -24,6 +24,12 @@ The number of the version this belongs to.
 
 The name of this backend.
 
+=head2 address
+
+A magic field - will automagically be set to whichever of ipv4, ipv6 or hostname is currently set.
+
+Conversely if you set the address field then the correct field from ipv4, ipv6 or hostname will be set.
+
 =head2 ipv4
 
 the ipv4 address of the host to serve assets (this, hostname or ipv6 must be set)

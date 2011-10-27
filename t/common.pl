@@ -72,22 +72,39 @@ sub common_tests {
     my $backend_name = "fastly-test-backend-".get_rand;
     my $backend;
 
-    $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, hostname => 'localhost', port => "9092", name => $backend_name) };
+    $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, hostname => 'localhost', name => $backend_name) };
     isnt($@, '', "Did raise an error when trying to create a backend against localhost");
     is($backend, undef, "Backend isn't defined");
 
-    $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, ipv4 => '74.125.224.146', port => "9092", name => $backend_name) };
+    $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, address => '74.125.224.146', name => $backend_name) };
     is($@, '', "Didn't raise an error");
     ok($backend, "Backend is defined");
     is($backend->service_id, $service->id, "Backend's service id is correct");
+    is($backend->address, '74.125.224.146', "Got the right address");
+    is($backend->ipv4, '74.125.224.146', "Got the right ipv4");
+    is($backend->port, 80, "Got the right port");
+    
+    # TODO switch the next block of things with this block when the new Varnish is working in dev
+    # $backend->hostname('www.google.com');
+    # $backend->port(9092);
+    # my $r = eval { $fastly->update_backend($backend) };
+    # is($@, '', "Didn't raise an error");
+    # $backend = $fastly->get_backend($service->id, $number, $backend_name); 
+    # ok($backend, "Got the backend again");
+    # is($backend->address, 'www.google.com', "Got the updated address");
+    # is($backend->hostname, 'www.google.com', "Got the updated hostname");
+    # is($backend->port, 9092, "Got the updated port");
 
     $backend->ipv4('74.125.224.147');
+    $backend->port(9092);
     my $r = eval { $fastly->update_backend($backend) };
     is($@, '', "Didn't raise an error");
     $backend = $fastly->get_backend($service->id, $number, $backend_name); 
     ok($backend, "Got the backend again");
-    is($backend->ipv4, '74.125.224.147', "Got the updated ipv4");
-
+    is($backend->address, '74.125.224.147', "Got the updated address");
+    is($backend->ipv4, '74.125.224.147', "Got the updated hostname");
+    is($backend->port, 9092, "Got the updated port");
+    
     my $domain_name = "fastly-test-domain-".get_rand.".example.com";
     my $domain      = eval { $fastly->create_domain(service_id => $service->id, version => $number, name => $domain_name) };
     is($@, '', "Didn't raise an error");
@@ -140,8 +157,7 @@ sub common_tests {
     is($@, '', "Didn't raise an error");
     ok($valid, "Version3 is valid");
 
-
-    my %stats       = $service->stats ;
+    my %stats       = $service->stats;
     ok(keys %stats, "Got stats");
 
     my $invoice     = $service->invoice;
