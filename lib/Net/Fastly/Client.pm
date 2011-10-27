@@ -205,6 +205,7 @@ sub _make_params {
     
     foreach my $key (keys %in) {
         my $value = $in{$key};
+        next unless defined $value;
         unless (ref($value) eq 'HASH') {
            $out{$key} = $value;
            next; 
