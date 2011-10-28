@@ -21,13 +21,13 @@ $user = eval { $client->_get('/current_user') };
 is($@, '', "Didn't raise an error");
 
 ok($user, "User is defined");
-is($user->{login}, 'testowner@example.com', "Got correct login");
-is($user->{name}, 'Test Owner', "Got correct name");
+is($user->{login}, $opts{user}, "Got correct login");
+is($user->{name}, $opts{name}, "Got correct name");
 
 $customer = eval { $client->_get('/current_customer') };
 is($@, '', "Didn't raise an error");
 ok($customer, "Customer is defined");
-is($customer->{name}, 'Test Account', "Got correct customer name");
+is($customer->{name}, $opts{customer}, "Got correct customer name");
 
 $user = $customer = undef;
 
@@ -36,13 +36,13 @@ my $fastly = Net::Fastly->new(%opts);
 $user = eval { $fastly->current_user };
 is($@, '', "Didn't raise an error");
 ok($user, "User is defined again");
-is($user->login, 'testowner@example.com', "Got correct login again");
-is($user->name, 'Test Owner', "Got correct name");
+is($user->login, $opts{user}, "Got correct login again");
+is($user->name, $opts{name}, "Got correct name");
 
 $customer = eval { $fastly->current_customer };
 is($@, '', "Didn't raise an error");
 ok($customer, "Customer is defined again");
-is($customer->name, 'Test Account', "Got correct customer name again");
+is($customer->name, $opts{customer}, "Got correct customer name again");
 
 my $current_user     = $user;
 my $current_customer = $customer;
