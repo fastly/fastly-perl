@@ -84,25 +84,14 @@ sub common_tests {
     is($backend->ipv4, '74.125.224.146', "Got the right ipv4");
     is($backend->port, 80, "Got the right port");
     
-    # TODO switch the next block of things with this block when the new Varnish is working in dev
-    # $backend->hostname('www.google.com');
-    # $backend->port(9092);
-    # my $r = eval { $fastly->update_backend($backend) };
-    # is($@, '', "Didn't raise an error");
-    # $backend = $fastly->get_backend($service->id, $number, $backend_name); 
-    # ok($backend, "Got the backend again");
-    # is($backend->address, 'www.google.com', "Got the updated address");
-    # is($backend->hostname, 'www.google.com', "Got the updated hostname");
-    # is($backend->port, 9092, "Got the updated port");
-
-    $backend->ipv4('74.125.224.147');
+    $backend->hostname('www.google.com');
     $backend->port(9092);
     my $r = eval { $fastly->update_backend($backend) };
     is($@, '', "Didn't raise an error");
     $backend = $fastly->get_backend($service->id, $number, $backend_name); 
     ok($backend, "Got the backend again");
-    is($backend->address, '74.125.224.147', "Got the updated address");
-    is($backend->ipv4, '74.125.224.147', "Got the updated hostname");
+    is($backend->address, 'www.google.com', "Got the updated address");
+    is($backend->hostname, 'www.google.com', "Got the updated hostname");
     is($backend->port, 9092, "Got the updated port");
     
     my $domain_name = "fastly-test-domain-".get_rand.".example.com";
