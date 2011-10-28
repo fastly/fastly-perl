@@ -94,7 +94,7 @@ sub common_tests {
     is($backend->hostname, 'www.google.com', "Got the updated hostname");
     is($backend->port, 9092, "Got the updated port");
     
-    my $domain_name = "fastly-test-domain-".get_rand.".example.com";
+    my $domain_name = "fastly-test-domain-".get_rand."-example.com";
     my $domain      = eval { $fastly->create_domain(service_id => $service->id, version => $number, name => $domain_name) };
     is($@, '', "Didn't raise an error");
     ok($domain, "Domain is defined");
