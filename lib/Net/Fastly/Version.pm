@@ -39,6 +39,10 @@ Whether this version is in testing or not.
 
 Whether this version is deployed or not.
 
+=head2 comment 
+
+a free form comment field
+
 =cut
 
 sub _get_path {

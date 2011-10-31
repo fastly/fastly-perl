@@ -3,7 +3,7 @@ package Net::Fastly::VCL;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::VCL->mk_accessors(qw(service_id name content));
+Net::Fastly::VCL->mk_accessors(qw(service_id name content comment));
 
 =head1 NAME
 
@@ -30,6 +30,10 @@ The content of the VCL file.
 See this for more details
 
 https://www.varnish-cache.org/trac/wiki/VCL
+
+=head2 comment 
+
+a free form comment field
 
 =cut
 1;

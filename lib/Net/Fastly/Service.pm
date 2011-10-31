@@ -23,6 +23,10 @@ The id of the customer this belongs to
 
 The name of this service
 
+=head2 comment 
+
+a free form comment field
+
 =cut
 
 =head1 METHODS

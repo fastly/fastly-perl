@@ -23,5 +23,10 @@ The number of the version this belongs to.
 
 The domain name of this domain
 
+=head2 comment 
+
+a free form comment field
+
+
 =cut
 1;
