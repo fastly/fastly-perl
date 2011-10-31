@@ -5,7 +5,7 @@ use warnings;
 use Net::Fastly;
 use File::Basename;
 use Data::Dumper;
-use DateTime;
+use POSIX qw(strftime);
 use YAML;
 
 =head1 NAME
@@ -299,8 +299,9 @@ sub show_stats {
             print "----\n";
             next;
         }
-        my $dt = DateTime->from_epoch(epoch => $stats->{start_time});
-
+        my $ymd = strftime "%Y:%m:%d", gmtime($stats->{start_time});
+        my $hms = strftime "%H:%M:%S", gmtime($stats->{start_time});
+        
         my $size = $stats->{body_size} + $stats->{header_size};
         if ($size > 1024*1024*1024) {
             $size = sprintf("%.2f GB", $size / 1024 / 1024 / 1024);
@@ -317,7 +318,7 @@ sub show_stats {
         }
         my $dc = "ALL";
         $dc = $stats->{datacenter} if ($split);
-        printf("%s%-11s%-10s%s%s%-5s%s%-10s%-10s%-6s%-10s%-6s%-6s  %-7s %-7s %s%-7s%s\n", RED, $dt->ymd, $dt->hms, RESET, BLUE, $dc, RESET, $size, $stats->{requests}, $stats->{hits}, $stats->{miss}, $stats->{pass}, $hitp, $stats->{status_200}, $stats->{status_304}, RED, $stats->{status_5xx}, RESET);
+        printf("%s%-11s%-10s%s%s%-5s%s%-10s%-10s%-6s%-10s%-6s%-6s  %-7s %-7s %s%-7s%s\n", RED, $ymd, $hms, RESET, BLUE, $dc, RESET, $size, $stats->{requests}, $stats->{hits}, $stats->{miss}, $stats->{pass}, $hitp, $stats->{status_200}, $stats->{status_304}, RED, $stats->{status_5xx}, RESET);
     }
 }
 

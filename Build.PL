@@ -6,7 +6,6 @@ my $build = Module::Build
          configure_requires => { 'Module::Build' => 0.38 },
          requires     => {
                           'Class::Accessor::Fast'        => 0,
-                          'DateTime'                     => 0,
                           'File::Basename'               => 0,
                           'File::Spec'                   => 0,
                           'File::Temp'                   => 0,
