@@ -10,7 +10,7 @@ use YAML;
 
 =head1 NAME
 
-fasty - a command line shell for interacting with the Fastly infrastructure
+fastly - a command line shell for interacting with the Fastly infrastructure
 
 =head1 USAGE
 
