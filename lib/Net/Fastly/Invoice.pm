@@ -46,7 +46,7 @@ sub _get_path {
         $url .= "/service/".$opts{service_id};
     }
     if ($opts{year} && $opts{month}) {
-        $url .= "/year/".$opts{year}."/month/".$opts{mon};
+        $url .= "/year/".$opts{year}."/month/".$opts{month};
     }
     return $url;
 }
