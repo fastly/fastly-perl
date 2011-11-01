@@ -84,14 +84,14 @@ sub common_tests {
     is($backend->ipv4, '74.125.224.146', "Got the right ipv4");
     is($backend->port, 80, "Got the right port");
     
-    $backend->hostname('www.google.com');
+    $backend->hostname('thegestalt.org');
     $backend->port(9092);
     my $r = eval { $fastly->update_backend($backend) };
     is($@, '', "Didn't raise an error");
     $backend = $fastly->get_backend($service->id, $number, $backend_name); 
     ok($backend, "Got the backend again");
-    is($backend->address, 'www.google.com', "Got the updated address");
-    is($backend->hostname, 'www.google.com', "Got the updated hostname");
+    is($backend->address, 'thegestalt.org', "Got the updated address");
+    is($backend->hostname, 'thegestalt.org', "Got the updated hostname");
     is($backend->port, 9092, "Got the updated port");
     
     my $domain_name = "fastly-test-domain-".get_rand."-example.com";
@@ -139,21 +139,23 @@ sub common_tests {
     my $generated = eval { $version3->generated_vcl };
     is($@, '', "Didn't raise an error");
     ok($generated, "Generated VCL is defined");
+    ok(!$generated->content, "Generate VCL has no content");
+    $generated = $version3->generated_vcl(include_content => 1);
     ok($generated->content, "Generate VCL has content");
     ok($generated->content =~ /\.port = "9092"/msg, "Generated VCL has right port");
 
     my $valid = eval { $version3->validate };
     is($@, '', "Didn't raise an error");
     ok($valid, "Version3 is valid");
-
+    
     my %stats       = $service->stats;
     ok(keys %stats, "Got stats");
-
+    
     my $invoice     = $service->invoice;
     is($@, '', "Didn't raise an error");
     is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
     ok($invoice->regions, "Got invoice regions");
-
+    
     is($invoice->service_id, $service->id, "Invoice has correct service id");
     is($@, '', "Didn't raise an error");
     my @invoices    = $fastly->list_invoices;
