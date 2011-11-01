@@ -12,10 +12,10 @@ our $VERSION = "0.5";
 
 BEGIN {
   no strict 'refs';
-  foreach my $class (qw(Net::Fastly::User     Net::Fastly::Customer 
-                        Net::Fastly::Backend  Net::Fastly::Director 
-                        Net::Fastly::Match    Net::Fastly::Domain 
-                        Net::Fastly::Origin   Net::Fastly::Service 
+  foreach my $class (qw(Net::Fastly::User     Net::Fastly::Customer
+                        Net::Fastly::Backend  Net::Fastly::Director
+                        Net::Fastly::Domain   Net::Fastly::Match
+                        Net::Fastly::Origin   Net::Fastly::Service
                         Net::Fastly::VCL      Net::Fastly::Version)) {
     
     my $file = $class . '.pm';
@@ -341,7 +341,7 @@ sub _list {
     my $class    = shift;
     my %opts     = @_;
     die "You must be fully authed to list a $class" unless $self->fully_authed;
-    my $list     = $self->client->_get($class->_list_path, %opts, is_list => 1);
+    my $list     = $self->client->_get($class->_list_path, %opts);
     return () unless $list;
     return map { $class->new($self, %$_) } @$list;
 }
