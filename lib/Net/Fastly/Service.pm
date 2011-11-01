@@ -111,10 +111,7 @@ sub versions {
         my $v = $versions->{$number};
         push @versions, Net::Fastly::Version->new($fetcher, service_id => $self->id, 
                                                             number     => $number, 
-                                                            comment    => $v->{comment} || "",
-                                                            created_at => $v->{created},
-                                                            updated_at => $v->{updated},
-                                                            deleted_at => $v->{deleted});
+                                                            comment    => $v->{comment} || "");
     }
     return sort { $a->number <=> $b->number } @versions;
 }
