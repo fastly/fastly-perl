@@ -37,45 +37,45 @@ sub common_tests {
     is($settings->settings->{'general.default_ttl'}, $default_ttl, "Default TTL is the same");
 
     my @services;
-
+    
     @services = eval { $fastly->list_services };
     is($@, '', "Didn't raise an error");
     ok(scalar @services, "Got some services back");
     ok(scalar(grep { $name eq $_->name } @services), "List services returns the service with the correct name");
-
+    
     @services = eval { $fastly->search_services(name => $name) };
     is($@, '', "Didn't raise an error");
     ok(scalar @services, "Got some services back after a search by name");
     ok(scalar(grep { $name eq $_->name } @services), "Search services returns the service with the correct name after a search by name");
-
+    
     @services = eval { $fastly->search_services(name => $name, version => $version->number) };
     is($@, '', "Didn't raise an error");
     ok(scalar @services, "Got some services back after a search by name and version");
     ok(scalar(grep { $name eq $_->name } @services), "Search services returns the service with the correct name after a search by name and version");
-
+    
     my $version2 = eval { $fastly->create_version( service_id => $service->id ) };
     is($@, '', "Didn't raise an error");
     ok($version2, "Version2 is defined");
     is($version->number+1, $version2->number, "Version is incremented");
-
+    
     my $version3 = eval { $version2->clone };
     is($@, '', "Didn't raise an error");
     ok($version3, "Version3 is defined");
     is($version2->number+1, $version3->number, "Version is incremented again");
-
+    
     is ($version3->service_id, $service->id, "Version 3 has the right service id");
     is ($version3->service->id, $service->id, "Version 3 has the right service");
-
-
+    
+    
     my $number = $version3->number;
-
+    
     my $backend_name = "fastly-test-backend-".get_rand;
     my $backend;
-
+    
     $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, hostname => 'localhost', name => $backend_name) };
     isnt($@, '', "Did raise an error when trying to create a backend against localhost");
     is($backend, undef, "Backend isn't defined");
-
+    
     $backend = eval { $fastly->create_backend(service_id => $service->id, version => $number, address => '74.125.224.146', name => $backend_name) };
     is($@, '', "Didn't raise an error");
     ok($backend, "Backend is defined");
@@ -102,18 +102,18 @@ sub common_tests {
     is($domain->service->id, $service->id, "Domain's service id is correct");
     is($domain->version_number, $number, "Domain's version number is correct");
     is($domain->version->number, $number, "Domain's version's number is correct");
-
-
+    
+    
     $domain->comment("Flibbety gibbet");
     eval { $fastly->update_domain($domain) };
     is($@, '', "Didn't raise an error when updating domain");
-
+    
     $domain = eval { $fastly->get_domain($service->id, $number, $domain_name) };
     is($@, '', "Didn't raise an error");
     ok($domain, "Domain is defined");
     is($domain->name, $domain_name, "Domain's name is correct still");
     is($domain->comment, "Flibbety gibbet", "Got comment");
-
+    
     my $director_name = "fastly-test-director-".get_rand;
     my $director      = eval { $fastly->create_director(service_id => $service->id, version => $number, name => $director_name) };
     is($@, '', "Didn't raise an error");
@@ -122,8 +122,8 @@ sub common_tests {
     is($director->service->id, $service->id, "Director's service id is correct");
     is($director->version_number, $number, "Director's version number is correct");
     is($director->version->number, $number, "Director's version's number is correct");
-
-
+    
+    
     my $origin_name = "fastly-test-origin-".get_rand;
     my $origin      = eval { $fastly->create_origin(service_id => $service->id, version => $number, name => $origin_name) };
     is($@, '', "Didn't raise an error");
@@ -132,10 +132,10 @@ sub common_tests {
     is($origin->service->id, $service->id, "Origin's service id is correct");
     is($origin->version_number, $number, "Origin's version number is correct");
     is($origin->version->number, $number, "Origin's version's number is correct");
-
-
+    
+    
     ok($version3->activate, "Activated version");
-
+    
     my $generated = eval { $version3->generated_vcl };
     is($@, '', "Didn't raise an error");
     ok($generated, "Generated VCL is defined");
@@ -143,7 +143,7 @@ sub common_tests {
     $generated = $version3->generated_vcl(include_content => 1);
     ok($generated->content, "Generate VCL has content");
     ok($generated->content =~ /\.port = "9092"/msg, "Generated VCL has right port");
-
+    
     my $valid = eval { $version3->validate };
     is($@, '', "Didn't raise an error");
     ok($valid, "Version3 is valid");
