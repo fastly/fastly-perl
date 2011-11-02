@@ -7,7 +7,9 @@ use LWPx::TimedHTTP qw(:autoinstall);
 use URI;
 
 our @TIMINGS = qw(Client-Request-Dns-Time Client-Request-Connect-Time Client-Request-Transmit-Time Client-Response-Server-Time Client-Response-Receive-Time);
+our $EXIT    = 0;
 $|++;
+$SIG{INT} = sub { $EXIT++ };
 
 =head1 NAME
 
@@ -44,13 +46,14 @@ foreach my $run (0..$runs) {
     print "Run $run    \r";
     my $pr = $ua->get($plain); 
     my $fr = $ua->get($fastly); 
-    next unless $run; # give them a chance to wamr the cache
+    next unless $run; # give them a chance to warm the cache
     foreach my $timing (@TIMINGS) {
         $plain_results{$timing}  += 0+$pr->header($timing);
         $fastly_results{$timing} += 0+$fr->header($timing);
         $plain_results{'total'}  += 0+$pr->header($timing);
         $fastly_results{'total'} += 0+$fr->header($timing);
     }
+    last if $EXIT;
 }
 print "         \r";
 print "  Timing     Plain/s      Fastly/s       Diff\n";
