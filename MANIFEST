@@ -1,4 +1,5 @@
 bin/fastly
+bin/fastly_speed_test
 bin/fastly_upload_vcl
 Build.PL
 Changes
@@ -18,7 +19,10 @@ lib/Net/Fastly/Settings.pm
 lib/Net/Fastly/User.pm
 lib/Net/Fastly/VCL.pm
 lib/Net/Fastly/Version.pm
+Makefile.PL
 MANIFEST			This list of files
+META.json
+META.yml
 t/admin.t
 t/api_key.t
 t/common.pl
@@ -26,6 +30,3 @@ t/full_login.t
 t/Helper.pm
 t/pod.t
 t/pod_coverage.t
-Makefile.PL
-META.yml
-META.json
