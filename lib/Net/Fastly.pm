@@ -438,6 +438,7 @@ sub get_options {
     foreach my $config (@configs) {
         next unless -f $config;
         %options = load_options($config);
+        last;
     }
     while (@ARGV && $ARGV[0] =~ m!^-+(\w+)\=(\w+)$!) {
         $options{$1} = $2;
