@@ -1,6 +1,7 @@
 bin/fastly
 bin/fastly_upload_vcl
 Build.PL
+Changes
 lib/Net/Fastly.pm
 lib/Net/Fastly/Backend.pm
 lib/Net/Fastly/BelongsToServiceAndVersion.pm
