@@ -130,12 +130,6 @@ sub version {
 
 package Net::Fastly;
 
-sub list_services {
-    my $self  = shift;
-    my %opts  = @_;
-    return $self->_list("Net::Fastly::Service", %opts);
-}
-
 sub search_services {
     my $self  = shift;
     my %opts  = @_;

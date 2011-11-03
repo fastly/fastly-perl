@@ -25,10 +25,14 @@ BEGIN {
     
     my $name = $class->_path;
         
-    foreach my $method (qw(get create update delete)) {
+    foreach my $method (qw(get create update delete list)) {
         my $code = "sub { shift->_$method('$class', \@_) }";
         my $glob = "${method}_${name}";
         $glob .= "s" if $method eq 'list';
+        # don't create this if it's a list and something isn't listable ...
+        next if $method eq $list && !defined $class->_list_path;
+        # or if it already exists (i.e it's been overidden)
+        next if *$glob;
         *$glob = eval "$code";
     }
   }  
@@ -308,9 +312,39 @@ Note - you can also do
 
 =cut
 
-=head2 list_services
 
-Get a list of all the services that the current customer has.
+
+=head2 list_users
+
+=head2 list_customers 
+
+=head2 list_versions
+
+=head2 list_services 
+
+=head2 list_backends 
+
+=head2 list_directors 
+
+=head2 list_domains 
+
+=head2 list_healthchecks
+
+=head2 list_matchs 
+
+=head2 list_vcls 
+
+=head2 list_versions 
+
+Get a list of all objects
+
+=head2 list_invoices [<year> <month>]
+
+Return an array of Net::Fastly::Invoice objects representing invoices for all services.
+
+If a year and month are passed in returns the invoices for that whole month. 
+
+Otherwise it returns the invoices for the current month so far.
 
 =head2 search_services <param[s]>
 
@@ -323,16 +357,6 @@ In general you'll want to do
 or
 
         my ($service) = $fastly->search_services(name => $name, version => $number);
-
-=cut
-
-=head2 list_invoices [<year> <month>]
-
-Return an array of Net::Fastly::Invoice objects representing invoices for all services.
-
-If a year and month are passed in returns the invoices for that whole month. 
-
-Otherwise it returns the invoices for the current month so far.
 
 =cut
 

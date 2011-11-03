@@ -56,6 +56,7 @@ sub _post_path   { die "You can't POST to an invoice"   }
 sub _put_path    { die "You can't PUT to an invoice"    }
 sub _delete_path { die "You can't DELETE to an invoice" }
 
+
 =head2 save
 
 Save this object. Equivalent to
