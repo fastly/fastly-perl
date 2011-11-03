@@ -14,8 +14,9 @@ BEGIN {
   no strict 'refs';
   foreach my $class (qw(Net::Fastly::User     Net::Fastly::Customer
                         Net::Fastly::Backend  Net::Fastly::Director
-                        Net::Fastly::Domain   Net::Fastly::Match
-                        Net::Fastly::Origin   Net::Fastly::Service
+                        Net::Fastly::Domain   Net::Fastly::Healthcheck
+                        Net::Fastly::Match    Net::Fastly::Origin   
+                        Net::Fastly::Service  Net::Fastly::Syslog
                         Net::Fastly::VCL      Net::Fastly::Version)) {
     
     my $file = $class . '.pm';
@@ -210,9 +211,13 @@ sub purge {
 
 =head2 create_domain service_id => <service id>, version => <version number>, name => <name> <opts>
 
+=head2 create_healthcheck service_id => <service id>, version => <version number>, name => <name> <opts>
+
 =head2 create_match service_id => <service id>, version => <version number>, name => <name> <opts>
 
 =head2 create_origin service_id => <service id>, version => <version number>, name => <name> <opts>
+
+=head2 create_syslog service_id => <service id>, version => <version number>, name => <name> <opts>
 
 =head2 create_vcl service_id => <service id>, version => <version number>, name => <name> <opts>
 
@@ -234,9 +239,13 @@ Create new objects.
 
 =head2 get_domain <service id> <version number> <name>
 
+=head2 get_healthcheck <service id> <version number> <name>
+
 =head2 get_match <service id> <version number> <name>
 
 =head2 get_origin <service id> <version number> <name>
+
+=head2 get_syslog <service id> <version number> <name>
 
 =head2 get_vcl <service id> <version number> <name>
 
@@ -263,9 +272,13 @@ Get existing objects.
 
 =head2 update_domain <obj>
 
+=head2 update_healthcheck <obj>
+
 =head2 update_match <obj>
 
 =head2 update_origin <obj>
+
+=head2 update_syslog <obj>
 
 =head2 update_vcl <obj>
 
@@ -296,9 +309,13 @@ Note - you can also do
 
 =head2 delete_domain <obj>
 
+=head2 delete_healthcheck <obj>
+
 =head2 delete_match <obj>
 
 =head2 delete_origin <obj>
+
+=head2 delete_syslog <obj>
 
 =head2 delete_vcl <obj>
 
