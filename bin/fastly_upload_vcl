@@ -45,27 +45,29 @@ my $fastly = Net::Fastly->new(%opts);
 my $service_id  = shift || die("You must pass in a service id or name");
 my $vcl_file    = shift || die("You must pass in a vcl file");
 
-die "Couldn't find vcl file #{vcl_file}" unless -f $vcl_file;
+die "Couldn't find vcl file #{vcl_file}\n" unless -f $vcl_file;
 
 my ($service) = eval { $fastly->get_service($service_id) } || eval { $fastly->search_services(name => $service_id) } || die "Couldn't find service $service_id\n";
 
-my $old     = $service->version;
-my $updated = $old->clone;
-print "Uploading $vcl_file and bumping version from ".$old->number." to ".$updated->number."\n";
+my $version = $service->version;
+die "Can't upload a vcl file the latest (".$version->number.") version of ".$service->name." (".$service->id.") is locked\n" if $version->locked;
+print "Uploading $vcl_file to version  ".$version->number."\n";
 eval {
   my $name = basename($vcl_file, ".vcl");
-  my $vcl  = eval { $updated->vcl($name) };
+  my $vcl  = eval { $version->vcl($name) };
   my $cont = slurp($vcl_file);
   if ($vcl) {
       $vcl->content($cont);
-      $fastly->update_vcl($vcl);
+      $vcl->save;
   } else {
-      $updated->upload_vcl($name, slurp($vcl_file));
+      $version->upload_vcl($name, slurp($vcl_file));
   }
-  $updated->activate;
+  #$version->activate;
 };
-die "Couldn't upload and activate vcl: $@\n" if $@;
-print "Done!\n"
+die "Couldn't upload: $@\n" if $@;
+print "Done! You should now go and activate it at https://app.fastly.com/#configure/service/".$service->id."/versions\n";
+
+=pod 
 
 =head1 COPYRIGHT
 
