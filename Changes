@@ -1,3 +1,7 @@
+2011-11-02 v0.7
+
+Fix stupid bug in fastly_upload_vcl
+
 2011-11-02 v0.6
 
 Add Match and Settings objects and a bunch of cleanups
