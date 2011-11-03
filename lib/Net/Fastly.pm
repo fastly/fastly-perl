@@ -30,9 +30,9 @@ BEGIN {
         my $glob = "${method}_${name}";
         $glob .= "s" if $method eq 'list';
         # don't create this if it's a list and something isn't listable ...
-        next if $method eq $list && !defined $class->_list_path;
+        next if $method eq 'list' && !defined $class->_list_path;
         # or if it already exists (i.e it's been overidden)
-        next if *$glob;
+        next if defined *$glob;
         *$glob = eval "$code";
     }
   }  
@@ -331,6 +331,10 @@ Note - you can also do
 =head2 list_healthchecks
 
 =head2 list_matchs 
+
+=head2 list_origins 
+
+=head2 list_syslogs
 
 =head2 list_vcls 
 
