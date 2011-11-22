@@ -61,5 +61,12 @@ sub version_number {
     return $self->{version};
 }
 
+sub _as_hash {
+    my $self = shift;
+    my %hash = $self->SUPER::_as_hash;
+    delete $hash{service_id};
+    delete $hash{version};
+    return %hash;    
+}
 
 1;
