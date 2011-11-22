@@ -55,12 +55,12 @@ sub common_tests {
     
     my $version2 = eval { $fastly->create_version( service_id => $service->id ) };
     is($@, '', "Didn't raise an error");
-    ok($version2, "Version2 is defined");
+    ok($version2, "Version 2 is defined");
     is($version->number+1, $version2->number, "Version is incremented");
     
     my $version3 = eval { $version2->clone };
     is($@, '', "Didn't raise an error");
-    ok($version3, "Version3 is defined");
+    ok($version3, "Version 3 is defined");
     is($version2->number+1, $version3->number, "Version is incremented again");
     
     is ($version3->service_id, $service->id, "Version 3 has the right service id");
@@ -81,93 +81,99 @@ sub common_tests {
     ok($backend, "Backend is defined");
     is($backend->service_id, $service->id, "Backend's service id is correct");
     is($backend->address, '74.125.224.146', "Got the right address");
-    is($backend->ipv4, '74.125.224.146', "Got the right ipv4");
+    #is($backend->ipv4, '74.125.224.146', "Got the right ipv4");
     is($backend->port, 80, "Got the right port");
     
-    $backend->hostname('thegestalt.org');
+    $backend->address('thegestalt.org');
     $backend->port(9092);
     my $r = eval { $fastly->update_backend($backend) };
     is($@, '', "Didn't raise an error");
     $backend = $fastly->get_backend($service->id, $number, $backend_name); 
     ok($backend, "Got the backend again");
     is($backend->address, 'thegestalt.org', "Got the updated address");
-    is($backend->hostname, 'thegestalt.org', "Got the updated hostname");
+    #is($backend->hostname, 'thegestalt.org', "Got the updated hostname");
     is($backend->port, 9092, "Got the updated port");
     
     my $domain_name = "fastly-test-domain-".get_rand."-example.com";
-    my $domain      = eval { $fastly->create_domain(service_id => $service->id, version => $number, name => $domain_name) };
-    is($@, '', "Didn't raise an error");
-    ok($domain, "Domain is defined");
-    is($domain->name, $domain_name, "Domain's name is correct");
-    is($domain->service->id, $service->id, "Domain's service id is correct");
-    is($domain->version_number, $number, "Domain's version number is correct");
-    is($domain->version->number, $number, "Domain's version's number is correct");
-    
-    
-    $domain->comment("Flibbety gibbet");
-    eval { $fastly->update_domain($domain) };
-    is($@, '', "Didn't raise an error when updating domain");
-    
-    $domain = eval { $fastly->get_domain($service->id, $number, $domain_name) };
-    is($@, '', "Didn't raise an error");
-    ok($domain, "Domain is defined");
-    is($domain->name, $domain_name, "Domain's name is correct still");
-    is($domain->comment, "Flibbety gibbet", "Got comment");
-    
-    my $director_name = "fastly-test-director-".get_rand;
-    my $director      = eval { $fastly->create_director(service_id => $service->id, version => $number, name => $director_name) };
-    is($@, '', "Didn't raise an error");
-    ok($director, "Director is defined");
-    is($director->name, $director_name, "Director's name is correct");
-    is($director->service->id, $service->id, "Director's service id is correct");
-    is($director->version_number, $number, "Director's version number is correct");
-    is($director->version->number, $number, "Director's version's number is correct");
-    
-    
-    my $origin_name = "fastly-test-origin-".get_rand;
-    my $origin      = eval { $fastly->create_origin(service_id => $service->id, version => $number, name => $origin_name) };
-    is($@, '', "Didn't raise an error");
-    ok($origin, "Origin is defined");
-    is($origin->name, $origin_name, "Origin's name is correct");
-    is($origin->service->id, $service->id, "Origin's service id is correct");
-    is($origin->version_number, $number, "Origin's version number is correct");
-    is($origin->version->number, $number, "Origin's version's number is correct");
-    
-    
-    ok($version3->activate, "Activated version");
-    
-    my $generated = eval { $version3->generated_vcl };
-    is($@, '', "Didn't raise an error");
-    ok($generated, "Generated VCL is defined");
-    ok(!$generated->content, "Generate VCL has no content");
-    $generated = $version3->generated_vcl(include_content => 1);
-    ok($generated->content, "Generate VCL has content");
-    ok($generated->content =~ /\.port = "9092"/msg, "Generated VCL has right port");
-    
-    my $valid = eval { $version3->validate };
-    is($@, '', "Didn't raise an error");
-    ok($valid, "Version3 is valid");
-    
-    my %stats       = $service->stats;
-    ok(keys %stats, "Got stats");
-    
-    my $invoice     = $service->invoice;
-    is($@, '', "Didn't raise an error");
-    is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
-    ok($invoice->regions, "Got invoice regions");
-    
-    is($invoice->service_id, $service->id, "Invoice has correct service id");
-    is($@, '', "Didn't raise an error");
-    my @invoices = $fastly->list_invoices;
-    # If we're logged in filter out the services based on customer id incase we're logged in as a super user
-    if (my $customer = eval { $fastly->current_customer }) {
-        @services = grep { $_->customer_id eq $customer->id } $fastly->list_services;
-    } else {
-        @services = $fastly->list_services;   
-    }
-    is(scalar(@invoices), scalar(@services), "Got the same number of invoices as we did services");
-    is(ref($invoices[0]), "Net::Fastly::Invoice", "Got an invoice object");
-    ok($invoices[0]->service_id, "Got a service id");
+     my $domain      = eval { $fastly->create_domain(service_id => $service->id, version => $number, name => $domain_name) };
+     is($@, '', "Didn't raise an error");
+     ok($domain, "Domain is defined");
+     is($domain->name, $domain_name, "Domain's name is correct");
+     is($domain->service->id, $service->id, "Domain's service id is correct");
+     is($domain->version_number, $number, "Domain's version number is correct");
+     is($domain->version->number, $number, "Domain's version's number is correct");
+     
+     
+     $domain->comment("Flibbety gibbet");
+     eval { $fastly->update_domain($domain) };
+     is($@, '', "Didn't raise an error when updating domain");
+     
+     $domain = eval { $fastly->get_domain($service->id, $number, $domain_name) };
+     is($@, '', "Didn't raise an error");
+     ok($domain, "Domain is defined");
+     is($domain->name, $domain_name, "Domain's name is correct still");
+     is($domain->comment, "Flibbety gibbet", "Got comment");
+     
+     my $director_name = "fastly-test-director-".get_rand;
+     my $director      = eval { $fastly->create_director(service_id => $service->id, version => $number, name => $director_name) };
+     is($@, '', "Didn't raise an error");
+     ok($director, "Director is defined");
+     is($director->name, $director_name, "Director's name is correct");
+     is($director->service->id, $service->id, "Director's service id is correct");
+     is($director->version_number, $number, "Director's version number is correct");
+     is($director->version->number, $number, "Director's version's number is correct");
+     
+     ok($director->add_backend($backend), "Added backend to director");
+     
+     
+     my $origin_name = "fastly-test-origin-".get_rand;
+     my $origin      = eval { $fastly->create_origin(service_id => $service->id, version => $number, name => $origin_name) };
+     is($@, '', "Didn't raise an error");
+     ok($origin, "Origin is defined");
+     is($origin->name, $origin_name, "Origin's name is correct");
+     is($origin->service->id, $service->id, "Origin's service id is correct");
+     is($origin->version_number, $number, "Origin's version number is correct");
+     is($origin->version->number, $number, "Origin's version's number is correct");
+     
+     ok($origin->add_director($director), "Added director to origin");
+     
+     
+    my $generated2 = eval { $version3->generated_vcl };
+     
+     ok($version3->activate, "Activated version");
+     
+     my $generated = eval { $version3->generated_vcl };
+     is($@, '', "Didn't raise an error");
+     ok($generated, "Generated VCL is defined");
+     ok(!$generated->content, "Generate VCL has no content");
+     $generated = $version3->generated_vcl(include_content => 1);
+     ok($generated->content, "Generate VCL has content");
+     ok($generated->content =~ /\.port = "9092"/msg, "Generated VCL has right port");
+     
+     my $valid = eval { $version3->validate };
+     is($@, '', "Didn't raise an error");
+     ok($valid, "Version3 is valid");
+     
+     my %stats       = $service->stats;
+     ok(keys %stats, "Got stats");
+     
+     my $invoice     = $service->invoice;
+     is($@, '', "Didn't raise an error");
+     is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
+     ok($invoice->regions, "Got invoice regions");
+     
+     is($invoice->service_id, $service->id, "Invoice has correct service id");
+     is($@, '', "Didn't raise an error");
+     my @invoices = $fastly->list_invoices;
+     # If we're logged in filter out the services based on customer id incase we're logged in as a super user
+     if (my $customer = eval { $fastly->current_customer }) {
+         @services = grep { $_->customer_id eq $customer->id } $fastly->list_services;
+     } else {
+         @services = $fastly->list_services;   
+     }
+     is(scalar(@invoices), scalar(@services), "Got the same number of invoices as we did services");
+     is(ref($invoices[0]), "Net::Fastly::Invoice", "Got an invoice object");
+     ok($invoices[0]->service_id, "Got a service id");
     
 }
 
