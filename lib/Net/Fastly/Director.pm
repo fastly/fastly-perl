@@ -41,4 +41,32 @@ a free form comment field
 
 =cut
 
+=head2 add_backend <backend object>
+
+Add a backend to a director.
+
+Returns true on success and false on failure.
+
+=cut
+sub add_backend {
+    my $self     = shift;
+    my $backend  = shift;
+    my $hash = $self->_fetcher->client->_post($self->_put_path($self)."/backend/".$backend->name);
+    return !!(keys %$hash);
+}
+
+=head2 delete_backend <backend object>
+
+Delete a backend from an origin.
+
+Returns true on success and false on failure.
+
+=cut
+sub delete_backend {
+    my $self    = shift;
+    my $backend = shift;
+    my $hash = $self->_fetcher->client->_delete($self->_put_path($self)."/backend/".$backend->name);
+    return !!(keys %$hash);    
+}
+
 1;

@@ -24,4 +24,33 @@ The number of the version this belongs to.
 The domain name of this domain
 
 =cut
+
+=head2 add_director <director object>
+
+Add a director to an origin.
+
+Returns true on success and false on failure.
+
+=cut
+sub add_director {
+    my $self     = shift;
+    my $director = shift;
+    my $hash = $self->_fetcher->client->_post($self->_put_path($self)."/director/".$director->name);
+    return !!(keys %$hash);
+}
+
+=head2 delete_director <director object>
+
+Delete a director from an origin.
+
+Returns true on success and false on failure.
+
+=cut
+sub delete_director {
+    my $self     = shift;
+    my $director = shift;
+    my $hash = $self->_fetcher->client->_delete($self->_put_path($self)."/director/".$director->name);
+    return !!(keys %$hash);    
+}
+
 1;
