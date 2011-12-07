@@ -145,7 +145,7 @@ sub common_tests {
      my $generated = eval { $version3->generated_vcl };
      is($@, '', "Didn't raise an error");
      ok($generated, "Generated VCL is defined");
-     ok(!$generated->content, "Generate VCL has no content");
+     ok(!defined $generated->content, "Generate VCL has no content");
      $generated = $version3->generated_vcl(include_content => 1);
      ok($generated->content, "Generate VCL has content");
      ok($generated->content =~ /\.port = "9092"/msg, "Generated VCL has right port");
