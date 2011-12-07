@@ -56,14 +56,14 @@ foreach my $run (0..$runs) {
     last if $EXIT;
 }
 print "         \r";
-print "  Timing     Plain/s      Fastly/s       Diff\n";
+print "  Timing     Plain/s     Fastly/s    Diff\n";
 foreach my $timing ((@TIMINGS, 'total')) {
     print "---------------------------------------------\n" if $timing eq $TIMINGS[0] || $timing eq 'total';
     my $name    = (split('-', $timing))[2] || $timing; 
     my $plaint  = $plain_results{$timing}/$runs;
     my $fastlyt = $fastly_results{$timing}/$runs;
     my $diff    = $fastlyt - $plaint;
-    printf "%8s  %10s    %10s    %6s\n", $name, $plaint, $fastlyt, sprintf("%.3f", $diff);
+    printf "%8s  %8s    %8s    %8s\n", $name, sprintf("%.3f",$plaint), sprintf("%.3f",$fastlyt), sprintf("%.3f", $diff);
 }
 
 =head1 COPYRIGHT
