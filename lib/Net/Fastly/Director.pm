@@ -43,7 +43,7 @@ a free form comment field
 
 =head2 add_backend <backend object>
 
-Add a backend to a director.
+Add a Backend to a Director.
 
 Returns true on success and false on failure.
 
@@ -57,7 +57,7 @@ sub add_backend {
 
 =head2 delete_backend <backend object>
 
-Delete a backend from an origin.
+Delete a Backend from a Director
 
 Returns true on success and false on failure.
 
