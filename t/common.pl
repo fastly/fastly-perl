@@ -164,7 +164,21 @@ sub common_tests {
      
      is($invoice->service_id, $service->id, "Invoice has correct service id");
      is($@, '', "Didn't raise an error");
+     
      my @invoices = $fastly->list_invoices;
+     # If we're logged in filter out the services based on customer id incase we're logged in as a super user
+     if (my $customer = eval { $fastly->current_customer }) {
+         @services = grep { $_->customer_id eq $customer->id } $fastly->list_services;
+     } else {
+         @services = $fastly->list_services();   
+     }
+     is(scalar(@invoices), scalar(@services), "Got the same number of invoices as we did services");
+     is(ref($invoices[0]), "Net::Fastly::Invoice", "Got an invoice object");
+     ok($invoices[0]->service_id, "Got a service id");
+     
+     
+     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+     @invoices = $fastly->list_invoices($year+1900, $mon+1);
      # If we're logged in filter out the services based on customer id incase we're logged in as a super user
      if (my $customer = eval { $fastly->current_customer }) {
          @services = grep { $_->customer_id eq $customer->id } $fastly->list_services;
