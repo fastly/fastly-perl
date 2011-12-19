@@ -178,7 +178,9 @@ sub common_tests {
      
      
      my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
-     @invoices = $fastly->list_invoices($year+1900, $mon+1);
+     $year += 1900;
+     $mon   = 12 if $mon == 0;
+     @invoices = $fastly->list_invoices($year, $mon);
      # If we're logged in filter out the services based on customer id incase we're logged in as a super user
      if (my $customer = eval { $fastly->current_customer }) {
          @services = grep { $_->customer_id eq $customer->id } $fastly->list_services;
@@ -187,8 +189,15 @@ sub common_tests {
      }
      is(scalar(@invoices), scalar(@services), "Got the same number of invoices as we did services");
      is(ref($invoices[0]), "Net::Fastly::Invoice", "Got an invoice object");
+     # is($invoices[0]->start->year,  $year,  "Got the correct service start year");
+     # is($invoices[0]->start->month, $mon,   "Got the correct service start month");
+     # is($invoices[0]->start->day,   1,      "Got the correct service start day");
+     # is($invoices[0]->end->year,    $year,  "Got the correct service end year");
+     # is($invoices[0]->end->month,   $mon, " Got the correct service end month");
+     # use DateTime;
+     # my $last_day = DateTime->last_day_of_month( year => $year, month => $mon);
+     # is($invoices[0]->end->day,   $last_day->day, "Got the correct service end day");
      ok($invoices[0]->service_id, "Got a service id");
-    
 }
 
 1;

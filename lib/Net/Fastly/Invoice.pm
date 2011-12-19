@@ -37,6 +37,29 @@ A hash reference with all the different regions and their subtotals
 
 =cut
 
+# Not included because trying not to have DateTime as a dependency
+# use DateTime::Format::ISO8601;
+# =head2 start
+# 
+# The I<start_time> as a DateTime object
+# 
+# =cut
+# sub start {
+#     my $self = shift;
+#     DateTime::Format::ISO8601->parse_datetime($self->start_time)->set_time_zone('UTC');
+# }
+# 
+# =head2 end 
+# 
+# The I<end_time> as a DateTime object
+# 
+# =cut
+# sub end {
+#     my $self = shift;
+#     DateTime::Format::ISO8601->parse_datetime($self->end_time)->set_time_zone('UTC');    
+# }
+
+
 sub _get_path {
     my $class = shift;
     my %opts  = @_;
@@ -86,7 +109,9 @@ sub list_invoices {
         $opts{year}  = $year;
         $opts{month} = $month;
     }
-    return $self->_list("Net::Fastly::Invoice", %opts);
+    my $list     = $self->client->_get(Net::Fastly::Invoice->_list_path(%opts));
+    return () unless $list;
+    return map { Net::Fastly::Invoice->new($self, %$_) } @$list;
 }
 
 1;
