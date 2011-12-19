@@ -56,9 +56,10 @@ Type can be one of
 sub stats {
     my $self = shift;
     my $type = shift || "all";
+    my %opts = @_;
     die "You must be authed to get stats" unless $self->_fetcher->authed;
     die "Unknown stats type $type" unless grep { $_ eq $type } qw(minutely hourly daily all);
-    return $self->_fetcher->client->_get($self->_get_path($self->id)."/stats/".$type);    
+    return $self->_fetcher->client->_get($self->_get_path($self->id)."/stats/".$type, %opts);    
 }
 
 =head2 invoice [<year> <month>]
