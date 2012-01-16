@@ -165,14 +165,14 @@ sub common_tests {
      is($invoice->service_id, $service->id, "Invoice has correct service id");
      is($@, '', "Didn't raise an error");
      
-     my $invoice = $fastly->get_invoice;
+     $invoice = $fastly->get_invoice;
      is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
      
      
      my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
      $year += 1900;
      $mon   = 12 if $mon == 0;
-     my $invoice = $fastly->get_invoice($year, $mon);
+     $invoice = $fastly->get_invoice($year, $mon);
      is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
      # is($invoice->start->year,  $year,  "Got the correct service start year");
      # is($invoice->start->month, $mon,   "Got the correct service start month");
