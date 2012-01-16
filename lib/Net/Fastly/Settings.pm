@@ -44,7 +44,7 @@ sub _as_hash {
     return %$settings;
 }
 
-sub _list_path   { undef }
+sub _skip_list   { 1 }
 sub _post_path   { die "You can't POST to settings"   }
 sub _delete_path { die "You can't DELETE to settings" }
 

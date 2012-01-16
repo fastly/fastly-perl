@@ -31,7 +31,7 @@ BEGIN {
         my $glob = "${method}_${name}";
         $glob .= "s" if $method eq 'list';
         # don't create this if it's a list and something isn't listable ...
-        next if $method eq 'list' && !defined $class->_list_path;
+        next if $method eq 'list' && $class->_skip_list;
         # or if it already exists (i.e it's been overidden)
         next if defined *$glob;
         *$glob = eval "$code";

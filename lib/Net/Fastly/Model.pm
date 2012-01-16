@@ -50,7 +50,7 @@ sub _post_path {
     my $class = shift;
     return "/".$class->_path;
 }
-
+sub _skip_list { 0 }
 sub _list_path { shift->_post_path(@_) }
 
 
