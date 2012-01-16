@@ -241,6 +241,14 @@ Create new objects.
 
 =head2 get_healthcheck <service id> <version number> <name>
 
+=head2 get_invoice [<year> <month>]
+
+Return a Net::Fastly::Invoice objects representing an invoice for all services.
+
+If a year and month are passed in returns the invoice for that whole month. 
+
+Otherwise it returns the invoices for the current month to date.
+
 =head2 get_match <service id> <version number> <name>
 
 =head2 get_origin <service id> <version number> <name>
@@ -358,14 +366,6 @@ Note - you can also do
 =head2 list_versions 
 
 Get a list of all objects
-
-=head2 list_invoices [<year> <month>]
-
-Return an array of Net::Fastly::Invoice objects representing invoices for all services.
-
-If a year and month are passed in returns the invoices for that whole month. 
-
-Otherwise it returns the invoices for the current month so far.
 
 =head2 search_services <param[s]>
 

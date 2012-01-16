@@ -3,7 +3,7 @@ package Net::Fastly::Invoice;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Invoice->mk_accessors(qw(service_id service_name start_time end_time total regions));
+Net::Fastly::Invoice->mk_accessors(qw(service_id service_name start_time end_time total regions service));
 
 =head1 NAME
 
@@ -100,7 +100,7 @@ sub delete { die "You can't delete an invoice" }
 
 package Net::Fastly;
 
-sub list_invoices {
+sub get_invoice {
     my $self  = shift;
     my $year  = shift;
     my $month = shift;
@@ -109,9 +109,9 @@ sub list_invoices {
         $opts{year}  = $year;
         $opts{month} = $month;
     }
-    my $list     = $self->client->_get(Net::Fastly::Invoice->_list_path(%opts));
-    return () unless $list;
-    return map { Net::Fastly::Invoice->new($self, %$_) } @$list;
+    my $hash = $self->client->_get(Net::Fastly::Invoice->_get_path(%opts));
+    return undef unless $hash;
+    return Net::Fastly::Invoice->new($self, %$hash);
 }
 
 1;
