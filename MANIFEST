@@ -10,12 +10,14 @@ lib/Net/Fastly/Client.pm
 lib/Net/Fastly/Customer.pm
 lib/Net/Fastly/Director.pm
 lib/Net/Fastly/Domain.pm
+lib/Net/Fastly/Healthcheck.pm
 lib/Net/Fastly/Invoice.pm
 lib/Net/Fastly/Match.pm
 lib/Net/Fastly/Model.pm
 lib/Net/Fastly/Origin.pm
 lib/Net/Fastly/Service.pm
 lib/Net/Fastly/Settings.pm
+lib/Net/Fastly/Syslog.pm
 lib/Net/Fastly/User.pm
 lib/Net/Fastly/VCL.pm
 lib/Net/Fastly/Version.pm
