@@ -65,7 +65,7 @@ eval {
   #$version->activate;
 };
 die "Couldn't upload: $@\n" if $@;
-print "Done! You should now go and activate it at https://app.fastly.com/#configure/service/".$service->id."/versions\n";
+print "Done! You should now go and activate it at https://app.fastly.com/#configure\n";
 
 =pod 
 
