@@ -15,6 +15,7 @@ my $build = Module::Build
                           'Term::ANSIColor'              => 0,
                           'Term::ShellUI'                => 0,
                           'Test::More'                   => 0,
+                          'YAML'                         => 0,
                         },
          create_makefile_pl => 'traditional',
        );
