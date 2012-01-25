@@ -38,7 +38,8 @@ sub new {
     
     my $base  = $opts{base_url}  ||= "api.fastly.com";
     my $port  = $opts{base_port} ||= 80;
-    $self->{_ua} = Net::Fastly::Client::UserAgent->new($base, $port);
+    $self->{user} ||= $self->{username};
+    $self->{_ua}    = Net::Fastly::Client::UserAgent->new($base, $port);
     
     return $self unless $self->fully_authed;
 
