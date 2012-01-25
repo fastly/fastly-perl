@@ -83,6 +83,10 @@ my $basecommands = {
         method => sub { shift->exit_requested(1) },
         exclude_from_history => 1,
     },
+    "who" => {
+        desc => "Print who is logged in",
+        proc => \&who,
+    }, 
     "show" => {
         desc => "Display objects",
         cmds => {
@@ -241,7 +245,14 @@ my $basecommands = {
 };
 
 
-
+sub who {
+    if ($fastly->client->fully_authed) {
+        my $user = $fastly->current_user;
+        print "Logged in as ".$user->name." <".$user->login."> of ".$customer->name."\n";
+    } else {
+        print "Logged with api key as ".$customer->name."\n";
+    } 
+}
 
 sub name_map_complete {
     my $t = shift;
