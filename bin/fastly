@@ -31,6 +31,26 @@ Alternatively you can pass in any of those options on the command line
 
     fastly --api_key  <key>
     fastly --user <login> --password <password>
+    
+=head1 PROXYING
+
+There are three ways to proxy:
+
+The first method is to put a proxy option in your .fastly file (or pass it in on)
+
+    proxy = http://localhost:8080
+    
+The second is to pass it in on the command line
+
+    fastly --user <login> --password <password> --proxy http://localhost:8080
+
+Lastly, the third method is to set your C<https_proxy> environment variable. So, in Bash
+
+    % export https_proxy=http://localhost:8080
+
+or in CSH or TCSH
+
+    % setenv https_proxy=http://localhost:8080    
 
 =head1 DESCRIPTION
     
