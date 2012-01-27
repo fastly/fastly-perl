@@ -70,6 +70,8 @@ my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file =
  
 print 'Using '.$term->{term}->ReadLine."\n";
 use Term::ANSIColor qw(:constants);
+# precache the list of services
+&list_service_complete;
 
 my $basecommands = { 
     "help" => {
@@ -637,7 +639,7 @@ sub list_objects {
     my ($service)    = $fastly->search_services(name => $service_name, version => $version_num);
     my $meth         = "list_$type";
     my @objects      = $fastly->$meth( service_id => $service->id );
-    return [map { $_->name } @objects];
+    return [sort map { $_->name } @objects];
 }
 
 
@@ -748,7 +750,7 @@ sub list_service_complete {
     my @services = $fastly->list_services;
 
     my $match  = lc($c->{str});
-    return [ grep { lc($_) =~ /^$match/ } map { $_->name } @services ];
+    return [ grep { lc($_) =~ /^$match/ } sort map { $_->name } @services ];
 
     #my $substr = 0;
     #if ($c->{str}) {
