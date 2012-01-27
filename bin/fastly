@@ -469,7 +469,7 @@ sub set {
     my $name     = shift;
    
     my $method = "get_$type"; 
-    my $obj    =  eval { $fastly->$method( service => $service->id, version => $version, name => $name) };
+    my $obj    =  eval { $fastly->$method( service_id => $service->id, version => $version, name => $name) };
     if ($@ || !$obj) {
         print BOLD, RED, "Error finding $type $name: ", RESET, $@,"\n";
         return;
@@ -573,7 +573,7 @@ sub delete {
     my $type    = shift @args;
     my $tname   = shift @args;
     my $meth    = "delete_$type";
-    my $r       = eval { $fastly->$meth(service => $service->id, version => $version, name => $tname ) };
+    my $r       = eval { $fastly->$meth(service_id => $service->id, version => $version, name => $tname ) };
     if ($@) {
        print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
@@ -618,7 +618,7 @@ sub create {
     }
 
     my $meth = "create_$type"; 
-    my $obj  = eval { $fastly->$meth(service => $service->id, version => $version, @args) };
+    my $obj  = eval { $fastly->$meth(service_id => $service->id, version => $version, @args) };
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
@@ -636,7 +636,7 @@ sub list_objects {
     my $type         = $args[3];
     my ($service)    = $fastly->search_services(name => $service_name, version => $version_num);
     my $meth         = "list_$type";
-    my @objects      = $fastly->$meth( service => $service->id );
+    my @objects      = $fastly->$meth( service_id => $service->id );
     return [map { $_->name } @objects];
 }
 
