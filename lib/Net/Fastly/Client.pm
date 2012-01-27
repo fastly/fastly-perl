@@ -225,9 +225,10 @@ sub _make_url {
     my $path   = shift;
     my %params = @_;
 
-    $base =~ s!^(https?:)//!!;
-    my $prot = $1 || "https:";
-
+    my $prot = "https:";
+    if ($base =~ s!^(https?:)//!!) {
+	$prot = $1;
+    }
     my $url = URI->new($prot);
     $url->host($base);
     $url->port($port) if $port != 80;
