@@ -2,7 +2,7 @@ package Net::Fastly::Client;
 
 use strict;
 use warnings;
-use JSON;
+use JSON::Any;
 
 =head1 NAME
 
@@ -65,6 +65,7 @@ sub new {
     my $base  = $opts{base_url}  ||= "api.fastly.com";
     my $port  = $opts{base_port} ||= 80;
     $self->{user} ||= $self->{username};
+    $self->{_json}  = JSON::Any->new;
     $self->{_ua}    = Net::Fastly::Client::UserAgent->new($base, $port, $opts{proxy});
     
     return $self unless $self->fully_authed;
@@ -72,12 +73,13 @@ sub new {
     # If we're fully authed (i.e username and password ) then we need to log in
     my $res = $self->_ua->_post('/login', {}, user => $self->{user}, password => $self->{password});
     die "Unauthorized" unless $res->is_success;
-    my $content = decode_json($res->decoded_content);    
+    my $content = $self->_json->from_json($res->decoded_content);    
     $self->{_cookie} = $res->header('set-cookie');
     return wantarray ? ($self, $content->{user}, $content->{customer}) : $self;
 }
 
-sub _ua { shift->{_ua} }
+sub _ua   { shift->{_ua}   }
+sub _json { shift->{_json} }
 
 =head2 authed
 
@@ -105,7 +107,7 @@ sub _get {
     my %opts = @_;
     my $res  = $self->_ua->_get($path, $self->_headers, %opts);
     return undef if 404 == $res->code;
-    my $content = decode_json($res->decoded_content);
+    my $content = $self->_json->from_json($res->decoded_content);
     _raise_error($content) unless $res->is_success;
     return $content;
 }
@@ -115,8 +117,8 @@ sub _post {
     my $path   = shift;
     my %params = @_;
     
-    my $res    = $self->_ua->_post($path, $self->_headers, %params);
-    my $content = decode_json($res->decoded_content);
+    my $res     = $self->_ua->_post($path, $self->_headers, %params);
+    my $content = $self->_json->from_json($res->decoded_content);
     _raise_error($content) unless $res->is_success;
     return $content;
 }
@@ -126,8 +128,8 @@ sub _put {
     my $path   = shift;
     my %params = @_;
     
-    my $res    = $self->_ua->_put($path, $self->_headers, %params);
-    my $content = decode_json($res->decoded_content);
+    my $res     = $self->_ua->_put($path, $self->_headers, %params);
+    my $content = $self->_json->from_json($res->decoded_content);
     _raise_error($content) unless $res->is_success;
     return $content;
 }
