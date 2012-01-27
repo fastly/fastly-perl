@@ -131,6 +131,6 @@ sub search_services {
     die "You must be authed to search for a $class" unless $self->authed;
     my $hash    = $self->client->_get($class->_post_path."/search", %opts);
     return undef unless $hash;
-    return $class->new($class, %$hash);
+    return $class->new($self, %$hash);
 }
 1;
