@@ -12,6 +12,7 @@ my $build = Module::Build
                           'JSON::Any'                    => 0,
                           'JSON::XS'                     => 0,
                           'LWP::UserAgent'               => 6.02,
+                          'LWP::Protocol::https'         => 0,
                           'Term::ANSIColor'              => 0,
                           'Term::ShellUI'                => 0,
                           'Test::More'                   => 0,
