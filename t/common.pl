@@ -138,9 +138,14 @@ sub common_tests {
      ok($origin->add_director($director), "Added director to origin");
      
      
-    my $generated2 = eval { $version3->generated_vcl };
+     my $generated2 = eval { $version3->generated_vcl };
      
-     ok($version3->activate, "Activated version");
+     ok($version3->activate,   "Activated version");
+     ok($version3->deactivate, "Deactivated version");
+     ok(!$fastly->get_service($version3->service_id)->version->active, "Version is correctly not active");
+     ok($version3->activate,   "Activated version again");
+     ok($fastly->get_service($version3->service_id)->version->active, "Version is correctly active");
+     
      
      my $generated = eval { $version3->generated_vcl };
      is($@, '', "Didn't raise an error");

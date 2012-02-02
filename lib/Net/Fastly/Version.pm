@@ -100,19 +100,17 @@ sub activate {
     return defined $hash;
 }
 
-# XXX Not currently.
-#
-# =head2 deactivate
-# 
-# Deactivate this version.
-# 
-# =cut
-# sub deactivate {
-#     my $self = shift;
-#     die "You must be fully authed to deactivate a version" unless $self->fetcher->fully_authed;
-#     my $hash = $self->_fetcher->client->_put($self->_put_path($self)."/deactivate");
-#     return defined $hash;
-# }
+=head2 deactivate
+
+Deactivate this version.
+
+=cut
+sub deactivate {
+    my $self = shift;
+    die "You must be fully authed to deactivate a version" unless $self->_fetcher->fully_authed;
+    my $hash = $self->_fetcher->client->_put($self->_put_path($self)."/deactivate");
+    return defined $hash;
+}
 
 =head2 clone
 
