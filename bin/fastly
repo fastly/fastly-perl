@@ -622,7 +622,7 @@ sub delete {
     my $meth    = "delete_$type";
     my $r       = eval { $fastly->$meth({ service_id => $service->id, version => $version, name => $tname }) };
     if ($@) {
-	print_error($@);
+	    print_error($@);
     } else {
        print "Deleted $type $tname\n";
     }
