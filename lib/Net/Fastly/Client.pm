@@ -106,8 +106,8 @@ sub _get {
     my %opts = @_;
     my $res  = $self->_ua->_get($path, $self->_headers, %opts);
     return undef if 404 == $res->code;
+    $self->_raise_error($res) unless $res->is_success;
     my $content = $self->_json->from_json($res->decoded_content);
-    _raise_error($content) unless $res->is_success;
     return $content;
 }
 
@@ -117,8 +117,8 @@ sub _post {
     my %params = @_;
     
     my $res     = $self->_ua->_post($path, $self->_headers, %params);
+    $self->_raise_error($res) unless $res->is_success;
     my $content = $self->_json->from_json($res->decoded_content);
-    _raise_error($content) unless $res->is_success;
     return $content;
 }
 
@@ -128,15 +128,14 @@ sub _put {
     my %params = @_;
     
     my $res     = $self->_ua->_put($path, $self->_headers, %params);
+    $self->_raise_error($res) unless $res->is_success;
     my $content = $self->_json->from_json($res->decoded_content);
-    _raise_error($content) unless $res->is_success;
     return $content;
 }
 
 sub _delete {
     my $self = shift;
     my $path = shift;
-    
     my $res  = $self->_ua->_delete($path, $self->_headers);
     return $res->is_success;
 }
@@ -149,8 +148,12 @@ sub _headers {
 }
 
 sub _raise_error {
-    my $content = shift;
-    die "".$content->{msg}."\n";
+    my $self = shift;
+    my $res  = shift;
+
+    my $content = eval { $self->_json->from_json($res->decoded_content) };
+    my $message = $content ? $content->{msg} : $res->status_line."  ".$res->decoded_content;
+    die "$message\n";
 }
 
 
