@@ -573,6 +573,7 @@ sub upload {
     eval {
         my $service = $fastly->search_services(name => $service_name);
         my $version = $service->version($version_num);
+	#XXX eats error
         my $vcl     = eval { $version->vcl($name) };
         my $r;
         if ($vcl) {
