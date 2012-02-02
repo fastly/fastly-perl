@@ -20,16 +20,13 @@ fastly - a command line shell for interacting with the Fastly infrastructure
 
 You can either have a config file in either ~/.fastly or /etc/fastly with
 
-    api_key = <key>
-    
-or a config file with
-
     user     = <login>
     password = <password>
+    
+B<NOTE:> For the time being you must use username and password, not API key. This may change in the future.
 
 Alternatively you can pass in any of those options on the command line
 
-    fastly --api_key  <key>
     fastly --user <login> --password <password>
     
 =head1 PROXYING
