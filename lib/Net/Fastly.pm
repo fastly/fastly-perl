@@ -181,7 +181,8 @@ Useful for information.
 =cut
 sub commands {
     my $self     = shift;
-    return eval { $self->client->_get('/commands') };
+    return $self->{__cache_commands} if ($self->{__cache_commands});
+    return eval { $self->{__cache_commands} = $self->client->_get('/commands') };
 }
 
 =head2 purge <path>
