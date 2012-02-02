@@ -599,6 +599,7 @@ sub delete {
         print RED, "Need version", RESET, "\n";
         return;
     }
+    shift @args;
     my $version = shift @args;
     my $type    = shift @args;
     my $tname   = shift @args;
