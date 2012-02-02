@@ -429,6 +429,7 @@ sub _delete {
     my $self  = shift;
     my $class = shift;
     my $obj   = shift;
+    $obj      = bless $obj, $class if 'HASH' eq ref($obj);
     die "You must be fully authed to delete a $class" unless $self->fully_authed;
     return defined $self->client->_delete($class->_delete_path($obj));
 }
