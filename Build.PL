@@ -17,6 +17,7 @@ my $build = Module::Build
                           'Term::ShellUI'                => 0,
                           'Test::More'                   => 0,
                           'URI'                          => 0,
+                          'URI::Escape'                  => 0,
                           'YAML'                         => 0,
                         },
          create_makefile_pl => 'traditional',

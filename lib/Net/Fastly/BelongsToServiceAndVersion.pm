@@ -2,6 +2,7 @@ package Net::Fastly::BelongsToServiceAndVersion;
 
 use strict;
 use base qw(Net::Fastly::Model);
+use URI::Escape;
 
 =head1 NAME
 
@@ -14,7 +15,7 @@ sub _get_path {
     my $service = shift;
     my $version = shift;
     my $name    = shift;
-    return "/service/$service/version/$version/".$class->_path."/$name";
+    return "/service/$service/version/$version/".$class->_path."/".uri_escape($name);
 }
 
 sub _post_path {
