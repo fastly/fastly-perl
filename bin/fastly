@@ -213,7 +213,7 @@ my $basecommands = {
         cmds => {
             service => {
                 desc    => "The service name",
-                minargs => 3,
+                minargs => 1,
                 maxargs => 3,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version],
                 proc => \&activate,
@@ -226,8 +226,8 @@ my $basecommands = {
             service => {
                 desc    => "The service name",
                 minargs => 1,
-                maxargs => 1,
-                args => [\&list_service_complete],
+                maxargs => 3,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version],
                 proc => \&deactivate,
             }
         }
@@ -425,7 +425,7 @@ sub activate {
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
-        print "Set $service_name version $version_number to active\n";
+        print "Set $service_name version ".$version->number." to active\n";
     }
 }
 
@@ -441,7 +441,7 @@ sub deactivate {
     if ($@) {
         print BOLD, RED, "Error: ", RESET, $@,"\n";
     } else {
-        print "Service $service_name has been deactivated.\n";
+        print "Service $service_name version ".$version->number." has been deactivated.\n";
     }
 }
 
@@ -796,7 +796,7 @@ sub list_version {
     my $c = shift;
     my $service_name    = $c->{args}->[0];
     my ($service)       = $fastly->search_services(name => $service_name);
-    return sort { $a->number <=> $b->number } $service->versions;
+    return [sort map { $_->number } $service->versions];
 }
 
 sub present {
