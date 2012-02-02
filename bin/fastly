@@ -666,7 +666,7 @@ sub list_objects {
     my $type         = $args[3];
     my ($service)    = $fastly->search_services(name => $service_name, version => $version_num);
     my $meth         = "list_$type" . "s";
-    my @objects      = $fastly->$meth( service_id => $service->id );
+    my @objects      = $fastly->$meth( service_id => $service->id , version => $version_num);
     return [sort map { $_->name } @objects];
 }
 
