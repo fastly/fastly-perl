@@ -152,7 +152,7 @@ sub _raise_error {
     my $res  = shift;
 
     my $content = eval { $self->_json->from_json($res->decoded_content) };
-    my $message = $content ? $content->{msg} : $res->status_line."  ".$res->decoded_content;
+    my $message = $content ? $content->{detail} || $content->{msg} : $res->status_line."  ".$res->decoded_content;
     die "$message\n";
 }
 
