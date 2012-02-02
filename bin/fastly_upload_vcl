@@ -60,7 +60,7 @@ eval {
       $vcl->content($cont);
       $vcl->save;
   } else {
-      $version->upload_vcl($name, slurp($vcl_file));
+      $version->upload_vcl($name, $cont);
   }
   #$version->activate;
 };
