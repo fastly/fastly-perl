@@ -259,7 +259,7 @@ my $basecommands = {
 sub who {
     if ($fastly->client->fully_authed) {
         my $user = $fastly->current_user;
-        print "Logged in as ".$user->name." <".$user->login."> of ".$customer->name."\n";
+        print "Logged in as ".$user->name." <".$user->login."> of ".$customer->name."  [". $customer->id ."]\n";
     } else {
         print "Logged with api key as ".$customer->name."\n";
     } 
