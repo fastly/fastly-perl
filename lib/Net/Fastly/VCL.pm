@@ -3,7 +3,7 @@ package Net::Fastly::VCL;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::VCL->mk_accessors(qw(service_id name content comment));
+Net::Fastly::VCL->mk_accessors(qw(service_id name content comment main));
 
 =head1 NAME
 
