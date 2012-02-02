@@ -6,6 +6,10 @@ Allow deactivation of a version
 
 Cache commands in fastly to be quicker
 
+Note that you must use username and password, not api key
+
+Better error messages
+
 2012-01-26 v0.97
 
 Fix YAML dep
