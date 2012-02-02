@@ -296,7 +296,8 @@ sub show_stats {
 
     my $stats = eval { $service->stats($type) }; 
     unless ($stats) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	my $str = "$@";
+        print BOLD, RED, "Error: ", RESET, $str,"\n";
         return;
     }
 
@@ -376,7 +377,7 @@ sub clone {
     my $version   = $service->version($version_number);
     my $new       = eval { $version->clone };
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print "Version $version_number cloned to ".$new->number."\n";
     }
@@ -391,7 +392,7 @@ sub dump {
     my $version   = $service->version($version_number);
     my $vcl       = eval { $version->generated_vcl };
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print present({$vcl->_as_hash});
     }
@@ -407,7 +408,7 @@ sub validate {
     my $valid      = eval { $version->validate };
     
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print "Config validated\n";
     }
@@ -423,7 +424,7 @@ sub activate {
     my $response   = eval { $version->activate};
     
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print "Set $service_name version ".$version->number." to active\n";
     }
@@ -439,7 +440,7 @@ sub deactivate {
     my $response   = eval { $version->deactivate};
     
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print "Service $service_name version ".$version->number." has been deactivated.\n";
     }
@@ -451,7 +452,7 @@ sub purge {
     my ($service)    = $fastly->search_services(name => $service_name);
     my $ok           = eval { $service->purge_all };
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print "Purged\n";
     }
@@ -465,9 +466,9 @@ sub diff {
     shift;
     my $to_version = shift;
     my $from = eval { $fastly->search_services(name => $service_name, version => $from_version) };
-    if ($@) { print BOLD, RED, "Error: ", RESET, $@,"\n"; return };
+    if ($@) { print_error($@); }
     my $to = eval { $fastly->search_services(name => $service_name, version => $to_version) };
-    if ($@) { print BOLD, RED, "Error: ", RESET, $@,"\n"; return };
+    if ($@) { print_error($@); }
     
     if ($to->{type} eq 'error') { print BOLD, RED, "Error: ", RESET, $to->{data}->{error},"\n"; return };
 
@@ -492,7 +493,8 @@ sub set {
 
     my $service  = eval { $fastly->search_services(name => $service_name ) };
     if ($@ || !$service) {
-        print BOLD, RED, "Error finding service $service_name: ", RESET, $@,"\n";
+	my $str = "$@";
+        print BOLD, RED, "Error finding service $service_name: ", RESET, $str,"\n";
         return;
     }
 
@@ -501,7 +503,8 @@ sub set {
     my $method = "get_$type"; 
     my $obj    =  eval { $fastly->$method( service_id => $service->id, version => $version, name => $name) };
     if ($@ || !$obj) {
-        print BOLD, RED, "Error finding $type $name: ", RESET, $@,"\n";
+	my $str = "$@";
+        print BOLD, RED, "Error finding $type $name: ", RESET, $str,"\n";
         return;
     }
 
@@ -521,7 +524,7 @@ sub set {
     $method = "update_$type"; 
     my $o = eval { $fastly->$method($obj) };
     if ($@) {
-        print BOLD, RED, "Error updating $type: ", RESET, $@,"\n";
+        print_error($@);
     } else {
         print "Update successful\n";
     }
@@ -548,18 +551,25 @@ sub set {
 # # }
 # 
 
+
+sub print_error {
+    my $error = shift;
+    chomp($error);
+    print BOLD, RED, "Error: ", RESET, RED, $error . RESET . "\n";
+}
+
 sub upload {
     my $service_name = shift;
     shift;
     my $version_num  = shift;
     my $type    = shift;
-    my $file    = shift;
+    my $name    = shift;
     shift;
     shift;
-    my $name    = shift || basename($file, ".vcl");
+    my $file    = shift || basename($name, ".vcl");
     
     local($/);
-    open(my $fh, "<$name") || die "No file '$name'";
+    open(my $fh, "<$file") || die "No file '$file'";
     my $data = <$fh>;
     close($fh);
 
@@ -568,8 +578,9 @@ sub upload {
         my $version = $service->version($version_num);
         my $r       = $version->upload_vcl($name, $data);
     };
+    my $error = "$@";
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         print "Uploaded $file as $name to service $service_name version $version_num\n";
     }
@@ -581,7 +592,7 @@ sub delete {
     my $name    = shift @args;
     my $service = eval { $fastly->search_services(name => $name) };
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+        print_error($@);
         return;
     }
         
@@ -606,7 +617,7 @@ sub delete {
     my $meth    = "delete_$type";
     my $r       = eval { $fastly->$meth(service_id => $service->id, version => $version, name => $tname ) };
     if ($@) {
-       print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
        print "Deleted $type $tname\n";
     }
@@ -619,7 +630,7 @@ sub create {
     if (!@args) {
         my $service = eval { $fastly->create_service(name => $name ) };
         if ($@) {
-            print BOLD, RED, "Error: ", RESET, $@,"\n";
+	    print_error($@);
         } else {
             print "Created service ".$service->id."\n";
         }
@@ -651,7 +662,7 @@ sub create {
     my $meth = "create_$type"; 
     my $obj  = eval { $fastly->$meth(service_id => $service->id, version => $version, @args) };
     if ($@) {
-        print BOLD, RED, "Error: ", RESET, $@,"\n";
+	print_error($@);
     } else {
         warn present({$obj->_as_hash});
     }
@@ -732,7 +743,8 @@ sub service_models {
     my $c = shift; 
     my $commands = eval { $fastly->commands };
     if ($@) {
-        $t->completemsg(sprintf("\n%s%s%s\n", RED, $@, RESET));
+	my $string = "$@";  #copy becuase RED can reset it
+        $t->completemsg(sprintf("\n%s%s%s\n", RED, $string, RESET));
         return [];
     }
     my @options;
