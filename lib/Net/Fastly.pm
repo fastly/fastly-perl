@@ -387,7 +387,7 @@ sub _list {
     my $class    = shift;
     my %opts     = @_;
     die "You must be fully authed to list a $class" unless $self->fully_authed;
-    my $list     = $self->client->_get($class->_list_path, %opts);
+    my $list     = $self->client->_get($class->_list_path(%opts), %opts);
     return () unless $list;
     return map { $class->new($self, %$_) } @$list;
 }
