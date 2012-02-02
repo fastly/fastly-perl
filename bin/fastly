@@ -71,7 +71,6 @@ my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file =
 print 'Using '.$term->{term}->ReadLine."\n";
 use Term::ANSIColor qw(:constants);
 # precache the list of services
-&list_service_complete;
 
 my $basecommands = { 
     "help" => {
