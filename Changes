@@ -1,3 +1,30 @@
+2012-02-02 v0.98
+
+Fix up the fastly shell
+
+Allow deactivation of a version
+
+Cache commands in fastly to be quicker
+
+2012-01-26 v0.97
+
+Fix YAML dep
+
+Allow username to be an alias to user in config file
+
+Allow proxies
+
+2012-01-16 v0.96
+
+Fix some MANIFEST bugs
+
+Fix up Invoice tests based on new billing method
+
+Fix getting invoices for a certain month
+
+Prevent _list_path being called at compile time
+
+
 2011-12-19 v0.95
 
 Fix the way invoices and stats are fetched
