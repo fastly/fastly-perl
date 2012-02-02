@@ -742,6 +742,9 @@ sub service_models {
             push @options, $1;
         }
     }
+    if (defined($c->{str}) && $c->{str} ne "") {
+	return [ grep { $_ =~ /^$c->{str}/} sort @options ];
+    }
     return \@options;
 }
 
