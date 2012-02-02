@@ -67,7 +67,6 @@ sub new {
     $self->{user} ||= $self->{username};
     $self->{_json}  = JSON::Any->new;
     $self->{_ua}    = Net::Fastly::Client::UserAgent->new($base, $port, $opts{proxy});
-    
     return $self unless $self->fully_authed;
 
     # If we're fully authed (i.e username and password ) then we need to log in
