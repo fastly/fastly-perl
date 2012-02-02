@@ -137,7 +137,8 @@ sub _delete {
     my $self = shift;
     my $path = shift;
     my $res  = $self->_ua->_delete($path, $self->_headers);
-    return $res->is_success;
+    $self->_raise_error($res) unless $res->is_success;
+    return 1;
 }
 
 sub _headers {
