@@ -205,7 +205,7 @@ sub _put {
     my $url     = $self->_make_url($path);
     my $uri     = URI->new('http');
     $uri->query_form(_make_params(%params));
-    return $self->_ua->request(PUT $url, %$headers, Content => $uri->query); 
+    return $self->_ua->request(PUT $url, %$headers, Content => $uri->query || ""); 
 }
 
 sub _delete {
