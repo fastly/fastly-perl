@@ -559,7 +559,7 @@ sub upload {
     my $name    = shift || basename($file, ".vcl");
     
     local($/);
-    open(my $fh, "<$file") || die "No file '$file'";
+    open(my $fh, "<$name") || die "No file '$name'";
     my $data = <$fh>;
     close($fh);
 
