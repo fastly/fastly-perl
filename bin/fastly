@@ -497,7 +497,7 @@ sub set {
 
     my $name     = shift;
    
-    my $method = "get_$type"; 
+    my $method = "get_$type";; 
     my $obj    =  eval { $fastly->$method( service_id => $service->id, version => $version, name => $name) };
     if ($@ || !$obj) {
 	my $str = "$@";

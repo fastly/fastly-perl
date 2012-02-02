@@ -396,10 +396,11 @@ sub _get {
     my $self  = shift;
     my $class = shift;
     my @args  = @_;
+    my %args = @args;
     die "You must be fully authed to get a $class" unless $self->fully_authed;
     my $hash;
     if (@args) {
-        $hash = $self->client->_get($class->_get_path(@args));
+        $hash = $self->client->_get($class->_get_path($args{service_id}, $args{version}, $args{name}));
     } else {
         $hash = $self->client->_get("/current_".$class->_path);
     }
