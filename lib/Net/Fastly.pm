@@ -382,6 +382,7 @@ or
 
 =cut
 
+use Carp;
 sub _list {
     my $self     = shift;
     my $class    = shift;
@@ -395,12 +396,13 @@ sub _list {
 sub _get {
     my $self  = shift;
     my $class = shift;
-    my @args  = @_;
-    my %args = @args;
     die "You must be fully authed to get a $class" unless $self->fully_authed;
     my $hash;
-    if (@args) {
-        $hash = $self->client->_get($class->_get_path($args{service_id}, $args{version}, $args{name}));
+    if (@_) {
+	my $service_id = shift || Carp::confess "No service";
+	my $version    = shift || Carp::confess  "No version";
+	my $name       = shift || Carp::confess  "No name";
+        $hash = $self->client->_get($class->_get_path($service_id, $version, $name));
     } else {
         $hash = $self->client->_get("/current_".$class->_path);
     }

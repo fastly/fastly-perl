@@ -498,7 +498,7 @@ sub set {
     my $name     = shift;
    
     my $method = "get_$type";; 
-    my $obj    =  eval { $fastly->$method( service_id => $service->id, version => $version, name => $name) };
+    my $obj    =  eval { $fastly->$method($service->id, $version, $name) };
     if ($@ || !$obj) {
 	my $str = "$@";
         print BOLD, RED, "Error finding $type $name: ", RESET, $str,"\n";
