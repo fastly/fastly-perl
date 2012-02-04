@@ -90,7 +90,7 @@ my $basecommands = {
         cmds => {
             service => {
                 desc => "Show a service",
-		doc => "Lists services",
+        doc => "Lists services",
                 minargs => 1,
                 maxargs => 3,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version],
@@ -178,6 +178,17 @@ my $basecommands = {
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['from'] }, sub { ['file'] },
                         sub { shift->complete_files(@_) }, undef],
                 proc => \&upload,
+            }
+        }
+    },
+    "download" => {
+        desc => "Download a vcl file",
+        cmds => {
+            service => {
+                desc    => "The service name",
+                minargs => 5,
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['to'] }, sub { ['file'] } }, undef],
+                proc => \&download,
             }
         }
     },
@@ -293,7 +304,7 @@ sub show_stats {
 
     my $stats = eval { $service->stats($type) }; 
     unless ($stats) {
-	my $str = "$@";
+    my $str = "$@";
         print BOLD, RED, "Error: ", RESET, $str,"\n";
         return;
     }
@@ -374,7 +385,7 @@ sub clone {
     my $version   = $service->version($version_number);
     my $new       = eval { $version->clone };
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print "Version $version_number cloned to ".$new->number."\n";
     }
@@ -389,7 +400,7 @@ sub dump {
     my $version   = $service->version($version_number);
     my $vcl       = eval { $version->generated_vcl };
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print present({$vcl->_as_hash});
     }
@@ -405,7 +416,7 @@ sub validate {
     my $valid      = eval { $version->validate };
     
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print "Config validated\n";
     }
@@ -421,7 +432,7 @@ sub activate {
     my $response   = eval { $version->activate};
     
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print "Set $service_name version ".$version->number." to active\n";
     }
@@ -437,7 +448,7 @@ sub deactivate {
     my $response   = eval { $version->deactivate};
     
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print "Service $service_name version ".$version->number." has been deactivated.\n";
     }
@@ -449,7 +460,7 @@ sub purge {
     my ($service)    = $fastly->search_services(name => $service_name);
     my $ok           = eval { $service->purge_all };
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print "Purged\n";
     }
@@ -490,7 +501,7 @@ sub set {
 
     my $service  = eval { $fastly->search_services(name => $service_name ) };
     if ($@ || !$service) {
-	my $str = "$@";
+    my $str = "$@";
         print BOLD, RED, "Error finding service $service_name: ", RESET, $str,"\n";
         return;
     }
@@ -500,7 +511,7 @@ sub set {
     my $method = "get_$type";; 
     my $obj    =  eval { $fastly->$method($service->id, $version, $name) };
     if ($@ || !$obj) {
-	my $str = "$@";
+    my $str = "$@";
         print BOLD, RED, "Error finding $type $name: ", RESET, $str,"\n";
         return;
     }
@@ -573,7 +584,7 @@ sub upload {
     eval {
         my $service = $fastly->search_services(name => $service_name);
         my $version = $service->version($version_num);
-	#XXX eats error
+    #XXX eats error
         my $vcl     = eval { $version->vcl($name) };
         my $r;
         if ($vcl) {
@@ -583,11 +594,38 @@ sub upload {
           $r = $version->upload_vcl($name, $data);
         }
     };
-    my $error = "$@";
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         print "Uploaded $file as $name to service $service_name version $version_num\n";
+    }
+    return;
+}
+
+sub download {
+    my $service_name = shift;
+    shift;
+    my $version_num  = shift;
+    my $type    = shift;
+    my $name    = shift;
+    shift;
+    shift;
+    my $file    = shift || "${name}.vcl";
+    
+
+    eval {
+        my $service = $fastly->search_services(name => $service_name);
+        my $version = $service->version($version_num);
+        my $vcl     = eval { $version->vcl($name) };
+        die "Couldn't find the vcl named $name" unless $vcl;
+        open(my $fh, ">$file") || die "Couldn't open the file '$file': $!";
+        print $fh $vcl->content;
+        close($fh);
+    };
+    if ($@) {
+        print_error($@);
+    } else {
+        print "Downloaded service $service_name version $version_num vcl $name to $file\n";
     }
     return;
 }
@@ -622,7 +660,7 @@ sub delete {
     my $meth    = "delete_$type";
     my $r       = eval { $fastly->$meth({ service_id => $service->id, version => $version, name => $tname }) };
     if ($@) {
-	    print_error($@);
+        print_error($@);
     } else {
        print "Deleted $type $tname\n";
     }
@@ -635,7 +673,7 @@ sub create {
     if (!@args) {
         my $service = eval { $fastly->create_service(name => $name ) };
         if ($@) {
-	    print_error($@);
+            print_error($@);
         } else {
             print "Created service ".$service->id."\n";
         }
@@ -667,7 +705,7 @@ sub create {
     my $meth = "create_$type"; 
     my $obj  = eval { $fastly->$meth(service_id => $service->id, version => $version, @args) };
     if ($@) {
-	print_error($@);
+        print_error($@);
     } else {
         warn present({$obj->_as_hash});
     }
@@ -748,7 +786,7 @@ sub service_models {
     my $c = shift; 
     my $commands = eval { $fastly->commands };
     if ($@) {
-	my $string = "$@";  #copy becuase RED can reset it
+    my $string = "$@";  #copy becuase RED can reset it
         $t->completemsg(sprintf("\n%s%s%s\n", RED, $string, RESET));
         return [];
     }
@@ -761,7 +799,7 @@ sub service_models {
         }
     }
     if (defined($c->{str}) && $c->{str} ne "") {
-	return [ grep { $_ =~ /^$c->{str}/} sort @options ];
+        return [ grep { $_ =~ /^$c->{str}/} sort @options ];
     }
     return \@options;
 }
@@ -797,10 +835,10 @@ sub list_service_complete {
     my $c = shift; 
     my @services = $fastly->list_services;
     if (defined($c->{str}) && $c->{str} ne "") {
-	my $match  = lc($c->{str});
-	return [ grep { lc($_) =~ /^$match/ } sort map { $_->name } @services ];
+        my $match  = lc($c->{str});
+        return [ grep { lc($_) =~ /^$match/ } sort map { $_->name } @services ];
     } else {
-	return [ sort map { $_->name } @services ]
+        return [ sort map { $_->name } @services ]
     }
 
 
