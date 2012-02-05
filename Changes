@@ -10,6 +10,8 @@ Note that you must use username and password, not api key
 
 Better error messages
 
+Add Service::purge_by_key
+
 2012-01-26 v0.97
 
 Fix YAML dep
