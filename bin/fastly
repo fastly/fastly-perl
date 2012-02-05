@@ -187,7 +187,7 @@ my $basecommands = {
             service => {
                 desc    => "The service name",
                 minargs => 5,
-                args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl']}, \&list_objects, sub { ['to'] }, sub { ['file'] } }, undef],
+                args => [\&list_service_complete, sub { ['version'] }, \&list_version, sub { ['vcl'] }, \&list_objects, sub { ['to'] }, sub { ['file'] }, undef],
                 proc => \&download,
             }
         }
