@@ -96,6 +96,18 @@ sub purge_all {
     return $self->_fetcher->client->_put($self->_get_path($self->id)."/purge_all");
 }
 
+=head2 purge_by_key <key>
+
+Purge anything with the specific key from the given service.
+
+=cut
+sub purge_by_key {
+    my $self = shift;
+    my $key  = shift;
+    die "You must be authed to purge a key from a service" unless $self->_fetcher->authed;
+    $self->_fetcher->client->_post("/key_purge/$key", service_id => $self->id );
+}
+
 =head2 versions
 
 Get a sorted array of all the versions that this service has had.

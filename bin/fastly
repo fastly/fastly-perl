@@ -255,6 +255,13 @@ my $basecommands = {
                 minargs => 1,
                 maxargs => 1,
                 proc    => \&purge_url,
+            },
+            key => {
+                desc    => "The service name",
+                minargs => 3,
+                maxargs => 3,
+                args => [undef, sub { ['service' ] }, \&list_service_complete],
+                proc => \&purge_key,
             }
         }
     },
@@ -475,6 +482,19 @@ sub purge_service {
 sub purge_url {
     my $url = shift;
     my $ok  = eval { $fastly->purge($url) };
+    if ($@) {
+        print_error($@);
+    } else {
+        print "Purged\n";
+    }
+}
+
+sub purge_key {
+    my $key          = shift;
+    shift;
+    my $service_name = shift;
+    my ($service)    = $fastly->search_services(name => $service_name);
+    my $ok           = eval { $service->purge_by_key($key) };
     if ($@) {
         print_error($@);
     } else {
