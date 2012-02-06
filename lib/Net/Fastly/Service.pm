@@ -134,6 +134,18 @@ sub version {
     return $list[-1];
 }
 
+=head2 details
+
+A deep hash of nested details
+
+=cut
+sub details {
+    my $self = shift;
+    die "You must be authed to get the current version" unless $self->_fetcher->authed;
+    $self->_fetcher->client->_get($self->_get_path($self->id)."/details", @_);
+}
+
+
 package Net::Fastly;
 
 sub search_services {
