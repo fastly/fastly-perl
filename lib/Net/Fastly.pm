@@ -9,16 +9,16 @@ use Net::Fastly::Settings;
 
 our $VERSION = "0.97";
 
-
 BEGIN {
   no strict 'refs';
-  foreach my $class (qw(Net::Fastly::User     Net::Fastly::Customer
-                        Net::Fastly::Backend  Net::Fastly::Director
-                        Net::Fastly::Domain   Net::Fastly::Healthcheck
-                        Net::Fastly::Match    Net::Fastly::Origin   
-                        Net::Fastly::Service  Net::Fastly::Syslog
-                        Net::Fastly::VCL      Net::Fastly::Version)) {
-    
+  our @CLASSES = qw(Net::Fastly::User     Net::Fastly::Customer
+                    Net::Fastly::Backend  Net::Fastly::Director
+                    Net::Fastly::Domain   Net::Fastly::Healthcheck
+                    Net::Fastly::Match    Net::Fastly::Origin   
+                    Net::Fastly::Service  Net::Fastly::Syslog
+                    Net::Fastly::VCL      Net::Fastly::Version);
+
+  foreach my $class (@CLASSES) {
     my $file = $class . '.pm';
     $file =~ s{::}{/}g;
     CORE::require($file); 
