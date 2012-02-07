@@ -57,7 +57,6 @@ sub stats {
     my $self = shift;
     my $type = shift || "all";
     my %opts = @_;
-    die "You must be authed to get stats" unless $self->_fetcher->authed;
     die "Unknown stats type $type" unless grep { $_ eq $type } qw(minutely hourly daily all);
     return $self->_fetcher->client->_get($self->_get_path($self->id)."/stats/".$type, %opts);    
 }
@@ -75,7 +74,6 @@ sub invoice {
     my $self  = shift;
     my $year  = shift;
     my $month = shift;
-    die "You must be authed to get an invoice" unless $self->_fetcher->authed;
     my %opts = ( service_id => $self->id );
     if ($year && $month) {
         $opts{year} = $year;
@@ -92,7 +90,6 @@ Purge all assets from this service.
 =cut
 sub purge_all {
     my $self = shift;
-    die "You must be authed to purge everything in a service" unless $self->_fetcher->authed;
     return $self->_fetcher->client->_put($self->_get_path($self->id)."/purge_all");
 }
 
@@ -104,7 +101,6 @@ Purge anything with the specific key from the given service.
 sub purge_by_key {
     my $self = shift;
     my $key  = shift;
-    die "You must be authed to purge a key from a service" unless $self->_fetcher->authed;
     $self->_fetcher->client->_post("/key_purge/$key", service_id => $self->id );
 }
 
@@ -116,7 +112,6 @@ Get a sorted array of all the versions that this service has had.
 use Data::Dumper;
 sub versions {
     my $self  = shift;
-    die "You must be authed to get the versions for a service" unless $self->_fetcher->authed;
     my $fetcher  = $self->_fetcher;
     my @versions = map { Net::Fastly::Version->new($fetcher, %$_) } @{$self->{versions}||[]};
     return sort { $a->number <=> $b->number } @versions;
@@ -129,7 +124,6 @@ Get the current version of this service.
 =cut
 sub version {
     my $self = shift;
-    die "You must be authed to get the current version" unless $self->_fetcher->authed;
     my @list = $self->versions;
     return $list[-1];
 }
@@ -141,7 +135,6 @@ A deep hash of nested details
 =cut
 sub details {
     my $self = shift;
-    die "You must be authed to get the current version" unless $self->_fetcher->authed;
     $self->_fetcher->client->_get($self->_get_path($self->id)."/details", @_);
 }
 
@@ -152,7 +145,6 @@ sub search_services {
     my $self  = shift;
     my %opts  = @_;
     my $class = "Net::Fastly::Service";
-    die "You must be authed to search for a $class" unless $self->authed;
     my $hash    = $self->client->_get($class->_post_path."/search", %opts);
     return undef unless $hash;
     return $class->new($self, %$hash);
