@@ -109,11 +109,10 @@ sub purge_by_key {
 Get a sorted array of all the versions that this service has had.
 
 =cut
-use Data::Dumper;
 sub versions {
     my $self  = shift;
     my $fetcher  = $self->_fetcher;
-    my @versions = map { Net::Fastly::Version->new($fetcher, %$_) } @{$self->{versions}||[]};
+    my @versions = map { Net::Fastly::Version->new($fetcher, %$_) } values %{$self->{versions}||{}};
     return sort { $a->number <=> $b->number } @versions;
 }
 
