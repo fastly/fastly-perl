@@ -59,9 +59,8 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
     print "Which has the owner ".$customer->owner->name."\n";
     
     # Let's see which services we have defined
-    foreach my $service ($customer->list_services) {
-        print $service->id."\n";
-        print $service->name."\n";
+    foreach my $service ($fastly->list_services) {
+        print $service->name." (".$service->id.")\n";
         foreach my $version ($service->versions) {
             print "\t".$version->number."\n";
         }
