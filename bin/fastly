@@ -657,14 +657,18 @@ sub download {
     my $type    = shift;
     my $name    = shift;
     shift;
-    shift;
-    my $file    = shift || "${name}";
+    my $tmp     = shift; # so that people can do 'download service <id> version <num> vcl <name> to <file>' as well
+    my $file    = shift || $tmp || $name;
+
+    my $dir     = dirname($file);
+    $file       = join "/", ($dir, basename($file, ".vcl").".vcl"); # ensure there's a .vcl ending
+
     
 
     eval {
         my $service = $fastly->search_services(name => $service_name);
         my $version = $service->version($version_num);
-        my $vcl     = eval { $version->vcl($name) };
+        my $vcl     = eval { $version->vcl($name, include_content => 1) };
         die "Couldn't find the vcl named $name" unless $vcl;
         open(my $fh, ">$file") || die "Couldn't open the file '$file': $!";
         print $fh $vcl->content;
@@ -939,7 +943,7 @@ sub list_version {
     my $c = shift;
     my $service_name    = $c->{args}->[0];
     my ($service)       = $fastly->search_services(name => $service_name);
-    return [sort map { $_->number } $service->versions];
+    return [sort {$a <=> $b} map { $_->number } $service->versions];
 }
 
 sub list_target {
