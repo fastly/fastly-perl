@@ -622,8 +622,8 @@ sub upload {
     my $name    = shift;
     shift;
     shift;
-    my $file    = shift || basename($name, ".vcl");
-    
+    my $file    = shift || basename($name);
+
     local($/);
     open(my $fh, "<$file") || die "No file '$file'";
     my $data = <$fh>;
@@ -658,7 +658,7 @@ sub download {
     my $name    = shift;
     shift;
     shift;
-    my $file    = shift || "${name}.vcl";
+    my $file    = shift || "${name}";
     
 
     eval {
