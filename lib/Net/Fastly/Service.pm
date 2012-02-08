@@ -112,7 +112,7 @@ Get a sorted array of all the versions that this service has had.
 sub versions {
     my $self  = shift;
     my $fetcher  = $self->_fetcher;
-    my @versions = map { Net::Fastly::Version->new($fetcher, %$_) } values %{$self->{versions}||{}};
+    my @versions = map { Net::Fastly::Version->new($fetcher, %$_) } @{$self->{versions}||{}};
     return sort { $a->number <=> $b->number } @versions;
 }
 
