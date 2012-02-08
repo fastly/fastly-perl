@@ -939,7 +939,7 @@ sub list_version {
     my $c = shift;
     my $service_name    = $c->{args}->[0];
     my ($service)       = $fastly->search_services(name => $service_name);
-    return [sort map { $_->number } $service->versions];
+    return [sort {$a <=> $b} map { $_->number } $service->versions];
 }
 
 sub list_target {
