@@ -36,4 +36,19 @@ https://www.varnish-cache.org/trac/wiki/VCL
 a free form comment field
 
 =cut
+
+package Net::Fastly;
+
+# Temporary hack
+sub get_vcl {
+    my $self    = shift;
+    my $class   = 'Net::Fastly::VCL';
+    my $service = shift;
+    my $version = shift;
+    my $name    = shift;
+    my %opts    = @_;
+    my $hash    = $self->client->_get($class->_get_path($service, $version, $name), %opts);
+    return undef unless $hash;
+    return $class->new($self, %$hash);
+}
 1;
