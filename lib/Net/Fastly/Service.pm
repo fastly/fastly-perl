@@ -101,7 +101,7 @@ Purge anything with the specific key from the given service.
 sub purge_by_key {
     my $self = shift;
     my $key  = shift;
-    $self->_fetcher->client->_post("/key_purge/$key", service_id => $self->id );
+    return $self->_fetcher->client->_put($self->_get_path($self->id)."/purge/$key");
 }
 
 =head2 versions
