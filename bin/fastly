@@ -178,6 +178,11 @@ my $basecommands = {
                 minargs => 5,
                 args => [\&list_service_complete, sub { ['version'] }, \&list_version, \&service_models, \&list_objects, \&model_args],
                 proc => \&set,
+            },
+            customer => {
+                desc => "Assume a customer",
+                args     => [\&list_customers_complete], 
+                proc     => \&set_customer,
             }
         }
     },
@@ -295,10 +300,25 @@ my $basecommands = {
 sub who {
     if ($fastly->client->fully_authed) {
         my $user = $fastly->current_user;
-        print "Logged in as ".$user->name." <".$user->login."> of ".$customer->name."  [". $customer->id ."]\n";
+        print "Logged in as ".$user->name." <".$user->login."> of ".$user->customer->name."  [". $user->customer->id ."]\n";
+        print "Currently acting as customer ".$customer->name." [".$customer->id."]\n" unless $customer->id eq $user->customer->id;
     } else {
         print "Logged with api key as ".$customer->name."\n";
     } 
+}
+
+sub set_customer {
+    my $name = shift;
+    return (BOLD, RED, "You are not an admin", RESET, "\n") unless $fastly->fully_authed && $fastly->current_user->can_do('admin');
+    my %customers = map { $_->name => $_ } $fastly->list_customers;
+    my $tmp  = $customers{$name};
+    unless ($tmp) {
+        print_error("Can't find the customer '$name'", RESET, "\n");
+        return;       
+    }
+    $fastly->set_customer($tmp->id);
+    $customer = $tmp;
+    print "Set assumed customer to ".$customer->name." [".$customer->id."]\n";
 }
 
 sub name_map_complete {
@@ -727,7 +747,7 @@ sub add {
     my $dest_name       = $args[7];
     my $src_type        = $args[3];
     my $src_name        = $args[4];
-    my $service         = eval { $fastly->search_services(name => $service_name) };
+    my $service         = eval { $fastly->search_services(name => $service_name ) };
     my $src_meth        = "get_${src_type}";
     my $src             = $fastly->$src_meth($service->id, $version_num, $src_name);
     my $dest_meth       = "get_${dest_type}";
@@ -910,9 +930,17 @@ sub show_versions {
     }
 }
 
+sub list_services {
+    my %args;
+    $args{'limit_to_current_customer'} = 'true' if 
+        $fastly->fully_authed && 
+        $fastly->current_user->can_do('admin') &&
+        $fastly->current_user->customer_id ne $customer->id;
+    $fastly->list_services(%args);
+}
+
 sub show_services {
-    my @services = $fastly->list_services;
-    
+    my @services = list_services;
     foreach my $service (sort { $a->name cmp $b->name } @services) {
         print $service->id."\t\t".$service->name."\n";
     }
@@ -921,7 +949,7 @@ sub show_services {
 sub list_service_complete {
     my $t = shift;
     my $c = shift; 
-    my @services = $fastly->list_services;
+    my @services = list_services;
     if (defined($c->{str}) && $c->{str} ne "") {
         my $match  = lc($c->{str});
         return [ grep { lc($_) =~ /^$match/ } sort map { $_->name } @services ];
@@ -944,6 +972,18 @@ sub list_version {
     my $service_name    = $c->{args}->[0];
     my ($service)       = $fastly->search_services(name => $service_name);
     return [sort {$a <=> $b} map { $_->number } $service->versions];
+}
+
+sub list_customers_complete {
+    my $t = shift;
+    my $c = shift;
+    my @customers = $fastly->list_customers;
+    if (defined($c->{str}) && $c->{str} ne "") {
+        my $match  = lc($c->{str});
+        return [ grep { lc($_) =~ /^$match/ } sort map { $_->name } @customers ];
+    } else {
+        return [ sort map { $_->name } @customers ]
+    }
 }
 
 sub list_target {

@@ -135,6 +135,22 @@ Get the current Net::Fastly::Client
 =cut
 sub client { shift->{_client} }
 
+=head2 set_customer <customer id>
+
+Set the current customer to act as.
+
+B<NOTE>: this will only work if you're an admin
+
+=cut
+sub set_customer {
+    my $self = shift;
+    my $id   = shift;
+    die "You must be fully authed to set the customer" unless $self->fully_authed;
+    die "You must be an admin to set the customer" unless $self->current_user->can_do('admin');
+    delete $self->{_current_customer};
+    $self->client->set_customer($id);
+}
+
 =head2 authed
 
 Whether or not we're authed at all by either username & password or API key

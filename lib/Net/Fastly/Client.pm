@@ -100,6 +100,20 @@ sub fully_authed {
     defined $self->{user} && defined $self->{password};
 }
 
+=head2 set_customer <customer id>
+
+Set the current customer to act as.
+
+B<NOTE>: this will only work if you're an admin
+
+=cut
+sub set_customer {
+    my $self = shift;
+    my $id   = shift;
+    $self->{explicit_customer} = $id;
+}
+
+
 sub _get {
     my $self = shift;
     my $path = shift;
@@ -144,6 +158,7 @@ sub _delete {
 sub _headers {
     my $self   = shift;
     my $params = $self->fully_authed ? { 'Cookie' => $self->{_cookie} } : { 'X-Fastly-Key' => $self->{api_key} };
+    $params->{'Fastly-Explicit-Customer'} = $self->{explicit_customer} if defined $self->{explicit_customer};
     $params->{'Content-Accept'} =  'application/json';
     return $params;
 }
