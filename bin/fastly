@@ -931,12 +931,7 @@ sub show_versions {
 }
 
 sub list_services {
-    my %args;
-    $args{'limit_to_current_customer'} = 'true' if 
-        $fastly->fully_authed && 
-        $fastly->current_user->can_do('admin') &&
-        $fastly->current_user->customer_id ne $customer->id;
-    $fastly->list_services(%args);
+    $fastly->list_services();
 }
 
 sub show_services {
