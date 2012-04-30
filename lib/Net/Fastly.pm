@@ -498,8 +498,14 @@ sub get_options {
         %options = load_options($config);
         last;
     }
-    while (@ARGV && $ARGV[0] =~ m!^-+(\w+)\=(\w+)$!) {
-        $options{$1} = $2;
+    while (@ARGV && $ARGV[0] =~ m!^-+(\w+)\=(.+)$!) {
+        if ($1 eq "config") {
+            die "No such file '$2'" unless -f $2;
+            my %tmp = load_options($2);
+            $options{$_} = $tmp{$_} for keys %tmp;
+        } else {
+            $options{$1} = $2;
+        }
         shift @ARGV;
     }
     die "Couldn't find options from command line arguments or ".join(", ", @configs)."\n" unless keys %options;
