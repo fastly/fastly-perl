@@ -54,7 +54,6 @@ or in CSH or TCSH
 
 =cut
 
-
 my %opts   = Net::Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
 my $fastly = Net::Fastly->new(%opts);
 
@@ -926,7 +925,7 @@ sub show_versions {
     my ($service)       = $fastly->search_services(name => $service_name);
     my @versions        = $service->versions;
     foreach my $version (@versions) {
-        print $version->number."\t\t".$version->updated_at." ".($version->comment || "")."\n";
+        print $version->number."\t\t".($version->updated_at || $version->created_at || "???")." ".($version->comment || "")."\n";
     }
 }
 
