@@ -3,7 +3,7 @@ package Net::Fastly::Version;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Version->mk_accessors(qw(service_id number name active locked staging testing deployed comment));
+Net::Fastly::Version->mk_accessors(qw(service_id number name active locked staging testing deployed comment created_at updated_at));
 
 =head1 NAME
 
