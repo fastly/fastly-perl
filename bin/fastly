@@ -826,9 +826,6 @@ sub model_args {
     my $commands = $fastly->commands;
     my $cmd      = $commands->{"$c->{args}->[3].create"};
     my @args     = @{$c->{args}};
-    use Data::Dumper;
-    warn Dumper $cmd;
-    warn Dumper \@args;
 
     my %seen;
     my $i = 0;
@@ -868,8 +865,6 @@ sub model_args {
         } 
     }
     my @r;
-    use Data::Dumper;
-    warn Dumper $cmd;
     foreach my $c (sort {$a cmp $b} keys %$cmd) {
         next if ($c eq 'name' || $c eq 'service' || $c eq 'version');
         next if ($seen{$c});
