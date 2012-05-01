@@ -1,3 +1,8 @@
+2012-04-30 v0.99
+
+Fix a bug with listing of services
+Allow some admin functionality
+
 2012-02-02 v0.98
 
 Fix up the fastly shell
