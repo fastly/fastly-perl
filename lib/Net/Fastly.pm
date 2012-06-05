@@ -16,7 +16,8 @@ BEGIN {
                     Net::Fastly::Domain   Net::Fastly::Healthcheck
                     Net::Fastly::Match    Net::Fastly::Origin   
                     Net::Fastly::Service  Net::Fastly::Syslog
-                    Net::Fastly::VCL      Net::Fastly::Version);
+                    Net::Fastly::VCL      Net::Fastly::Version
+                    Net::Fastly::Condition);
 
   foreach my $class (@CLASSES) {
     my $file = $class . '.pm';

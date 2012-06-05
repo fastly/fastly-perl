@@ -4,7 +4,7 @@ use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
 Net::Fastly::Backend->mk_accessors(qw(service_id name address ipv4 ipv6 hostname use_ssl client_cert port
-                                 connect_timeout first_byte_timeout between_bytes_timeout error_threshold max_conn weight comment healthcheck auto_loadbalance));             
+                                 connect_timeout first_byte_timeout between_bytes_timeout error_threshold max_conn weight comment healthcheck auto_loadbalance request_condition));             
 
 =head1 NAME
 
@@ -81,6 +81,10 @@ the name of a healthcheck to associate with this backend. See the Healthcheck ob
 =head2 auto_loadbalance
 
 set to 1 if you want to auto_loadbalance, set to 0 if you don't want to auto_loadbalance
+
+=head2 request_condition
+
+name of a request_condition to filter the backend on
 
 =cut
 
