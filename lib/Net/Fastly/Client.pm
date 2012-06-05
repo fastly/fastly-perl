@@ -71,7 +71,10 @@ sub new {
 
     # If we're fully authed (i.e username and password ) then we need to log in
     my $res = $self->_ua->_post('/login', {}, user => $self->{user}, password => $self->{password});
-    die "Unauthorized" unless $res->is_success;
+    unless ($res->is_success) {
+        die "You must have IO::Socket::SSL or Crypt::SSLeay installed in order to do SSL requests\n" if $res->code == 501 && $res->status_line =~ /Protocol scheme 'https' is not supported/;
+        die "Unauthorized" unless $res->is_success;
+    }
     my $content = $self->_json->from_json($res->decoded_content);    
     $self->{_cookie} = $res->header('set-cookie');
     return wantarray ? ($self, $content->{user}, $content->{customer}) : $self;
@@ -276,6 +279,7 @@ sub _make_params {
 package Net::Fastly::UA;
 
 use base qw(LWP::UserAgent);
+use LWP::Protocol::https;
 our $DEBUG=0;
 
 sub request {
