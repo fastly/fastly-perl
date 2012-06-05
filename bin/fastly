@@ -371,7 +371,8 @@ sub show_stats {
         $stat->{datacenter} = $datacenter;
         $stat->{start_time} = $stats->{recorded};
         foreach (qw(hits requests pass uncacheable body_size header_size miss status_5xx status_200 status_304)) {
-            $total->{$_} += $stat->{$_};
+            $total->{$_} ||= 0;
+            $total->{$_} += $stat->{$_} || 0;
         }
         if ($split) {
             push @stats, $stat;
