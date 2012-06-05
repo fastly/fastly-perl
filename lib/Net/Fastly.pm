@@ -433,7 +433,8 @@ sub _update {
     my $self  = shift;
     my $class = shift;
     my $obj   = shift;
-    my $hash  = $self->client->_put($class->_put_path($obj), $obj->_as_hash);
+    my %fds   = $obj->_as_hash;
+    my $hash  = $self->client->_put($class->_put_path($obj), map { $_ => $fds{$_} } grep { $_ !~ m/^(service_id|version)$/ } keys %fds);
     return $class->new($self, %$hash);
 }
 
