@@ -3,7 +3,7 @@ package Net::Fastly::Syslog;
 use strict;
 use base qw(Net::Fastly::BelongsToServiceAndVersion);
 
-Net::Fastly::Syslog->mk_accessors(qw(service_id name comment address ipv4 ipv6 hostname port format));
+Net::Fastly::Syslog->mk_accessors(qw(service_id name comment address ipv4 ipv6 hostname port format response_condition));
 
 =head1 NAME
 
@@ -52,6 +52,10 @@ the port to stream logs to (defaults to 514)
 =head2 format
 
 Format to log like in apache format
+
+=head2 response_condition
+
+name of a response_condition to filter the log on, if empty it always lgos
 
 =cut
 1;
