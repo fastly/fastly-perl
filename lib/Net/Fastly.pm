@@ -239,6 +239,8 @@ sub purge {
 
 =head2 create_vcl service_id => <service id>, version => <version number>, name => <name> <opts>
 
+=head2 create_condition service_id => <service id>, version => <version number>, name => <name> <opts>
+
 Create new objects.
 
 =cut
@@ -279,6 +281,8 @@ Otherwise it returns the invoices for the current month to date.
 
 =head2 get_settings <service id> <version number>
 
+=head2 get_condition <service id> <version number> <name>
+
 Get existing objects.
 
 =cut
@@ -311,6 +315,8 @@ Get existing objects.
 =head2 update_version <obj>
 
 =head2 update_settings <obj>
+
+=head2 update_condition <obj>
 
 Update existing objects.
 
@@ -347,6 +353,8 @@ Note - you can also do
 
 =head2 delete_version <obj>
 
+=head2 delete_condition <obj>
+
 Delete existing objects.
 
 Note - you can also do
@@ -382,6 +390,8 @@ Note - you can also do
 =head2 list_vcls 
 
 =head2 list_versions 
+
+=head2 list_conditions
 
 Get a list of all objects
 
