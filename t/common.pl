@@ -160,10 +160,18 @@ sub common_tests {
      my $valid = eval { $version3->validate };
      is($@, '', "Didn't raise an error");
      ok($valid, "Version3 is valid");
+
+     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+     $year += 1900;
+     $mon   = 12 if $mon == 0;
      
-     my %stats       = $service->stats;
+     my %stats = eval { $service->stats };
+     like($@, qr/unbounded/i, "Correctly raised an unbounded stats error");
+     %stats = eval { $service->stats('all', year => $year, month => $mon) };
+     is($@, '', "Didn't raise an error");
      ok(keys %stats, "Got stats");
      
+
      my $invoice     = $service->invoice;
      is($@, '', "Didn't raise an error");
      is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
@@ -176,9 +184,7 @@ sub common_tests {
      is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
      
      
-     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
-     $year += 1900;
-     $mon   = 12 if $mon == 0;
+
      $invoice = $fastly->get_invoice($year, $mon);
      is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
      # is($invoice->start->year,  $year,  "Got the correct service start year");
