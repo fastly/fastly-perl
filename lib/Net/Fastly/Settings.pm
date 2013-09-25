@@ -3,7 +3,7 @@ package Net::Fastly::Settings;
 use strict;
 use base qw(Net::Fastly::Model);
 
-Net::Fastly::Settings->mk_accessors(qw(service_id version settings));
+Net::Fastly::Settings->mk_accessors(qw(service_id version));
 
 =head1 NAME
 
@@ -36,6 +36,12 @@ sub _put_path {
     my $class = shift;
     my $obj   = shift;
     return $class->_get_path($obj->service_id, $obj->version);
+}
+
+sub settings {
+    my $self = shift;
+    $self->{_settings} = { map { $_ => $self->{$_} } grep !/^(_|service_id$|version$)/, keys %$self } unless $self->{_settings};
+    return $self->{_settings};
 }
 
 sub _as_hash {
