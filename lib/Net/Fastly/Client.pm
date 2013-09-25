@@ -248,7 +248,7 @@ sub _make_url {
 
     my $prot = "https:";
     if ($base =~ s!^(https?:)//!!) {
-	$prot = $1;
+        $prot = $1;
     }
     my $url = URI->new($prot);
     $url->host($base);
