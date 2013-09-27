@@ -117,6 +117,14 @@ sub set_customer {
 }
 
 
+# Get stuff from the stats API
+sub _get_stats {
+    my $self    = shift;
+    my $content = $self->_get(@_);
+    die $content->{msg} unless $content->{status} eq 'success';
+    return $content->{data};
+}
+
 sub _get {
     my $self = shift;
     my $path = shift;

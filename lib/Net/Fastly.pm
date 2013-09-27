@@ -214,6 +214,99 @@ sub purge {
     $self->client->_post("/purge/$path");
 }
 
+=head2 stats [opt[s]]
+
+Fetches historical stats for each of your fastly services and groups the results by service id.
+
+If you pass in a C<field> opt then fetches only the specified field.
+
+If you pass in a C<service> opt then fetches only the specified service.
+
+The C<field> and C<service> opts can be combined.
+
+If you pass in an C<aggregate> flag then fetches historical stats information aggregated across all of your Fastly services. This cannot be combined with C<field> and C<service>.
+
+Other options available are:
+
+=over 4
+
+=item from & to
+
+=item by
+
+=item region
+
+=back
+
+See http://docs.fastly.com/docs/stats for details.
+
+=cut
+sub stats {
+    my $self = shift;
+    my %opts = @_;
+    
+    die "You can't specify a field or a service for an aggregate request" if $opts{aggregate} && ($opts{field} || $opts{service});
+    
+    my $url  = "/stats";
+
+    if (delete $opts{aggregate}) {
+        $url .= "/aggregate";
+    }
+    
+    if (my $service = delete $opts{service}) {
+        $url .= "/service/$service";
+    }
+    
+    if (my $field = delete $opts{field}) {
+        $url .= "/field/$field";
+    }
+    
+    $self->client->_get_stats($url, %opts);
+}
+
+
+=head2 usage [opt[s]]
+
+Returns usage information aggregated across all Fastly services and grouped by region.
+
+If the C<by_service> flag is passed then teturns usage information aggregated by service and grouped by service & region.
+
+Other options available are:
+
+=over 4
+
+=item from & to
+
+=item by
+
+=item region
+
+=back
+
+See http://docs.fastly.com/docs/stats for details.
+
+=cut
+sub usage {
+    my $self = shift;
+    my %opts = @_;
+    
+    my $url  = "/stats/usage";
+    $url .= "_by_service" if delete $opts{by_service};
+    
+    $self->client->_get_stats($url, %opts);
+}
+
+
+=head2 regions
+
+Fetches the list of codes for regions that are covered by the Fastly CDN service.
+
+=cut
+sub regions {
+    my $self = shift;
+    $self->client->_get_stats("/stats/regions");
+}
+
 
 =head2 create_user <opts>
 
