@@ -36,25 +36,25 @@ my $stats;
 $stats = $fastly->stats(from => $FROM);
 is(ref($stats), 'HASH', "Returned an hash of data points");
 my ($service1, $service2) = keys %$stats;
-ok($stats->{$service1}->[0]->{requests}, "Found requests");
-ok($stats->{$service1}->[0]->{hits}, "Found hits");
-ok($stats->{$service2}->[0]->{requests}, "Found requests");
-ok($stats->{$service2}->[0]->{hits}, "Found hits");
+ok(exists $stats->{$service1}->[0]->{requests}, "Found requests");
+ok(exists $stats->{$service1}->[0]->{hits}, "Found hits");
+ok(exists $stats->{$service2}->[0]->{requests}, "Found requests");
+ok(exists $stats->{$service2}->[0]->{hits}, "Found hits");
 
 # stats field
 $stats = $fastly->stats(from => $FROM, field => "requests");
 is(ref($stats), 'HASH', "Returned an array of data points");
-ok($stats->{$service1}->[0]->{requests}, "Found requests");
-ok(!$stats->{$service1}->[0]->{hits}, "Didn't find hits");
-ok($stats->{$service2}->[0]->{requests}, "Found requests");
-ok(!$stats->{$service2}->[0]->{hits}, "Didn't find hits");
+ok(exists$stats->{$service1}->[0]->{requests}, "Found requests");
+ok(!exists $stats->{$service1}->[0]->{hits}, "Didn't find hits");
+ok(exists$stats->{$service2}->[0]->{requests}, "Found requests");
+ok(!exists $stats->{$service2}->[0]->{hits}, "Didn't find hits");
 
 # stats service
 $stats = $fastly->stats(from => $FROM, service => $service1);
 is(ref($stats), 'ARRAY', "Returned an array of data points");
 is($stats->[0]->{service_id}, $service1, "Got correct service id");
-ok($stats->[0]->{requests}, "Found requests");
-ok($stats->[0]->{hits}, "Found hits");
+ok(exists $stats->[0]->{requests}, "Found requests");
+ok(exists$stats->[0]->{hits}, "Found hits");
 
 # stats field service
 $stats = $fastly->stats(from => $FROM, field => "requests", service => $service1);
@@ -66,9 +66,9 @@ ok(!$stats->[0]->{hits}, "Didn't find hits");
 # stats aggregate
 $stats = $fastly->stats(from => $FROM, aggregate => 1);
 is(ref($stats), 'ARRAY', "Returned an array of data points");
-ok(!$stats->[0]->{service_id}, "No service id");
-ok($stats->[0]->{requests}, "Found requests");
-ok($stats->[0]->{hits}, "Found hits");
+ok(!exists $stats->[0]->{service_id}, "No service id");
+ok(exists $stats->[0]->{requests}, "Found requests");
+ok(exists $stats->[0]->{hits}, "Found hits");
 
 # stats aggregate with field
 $stats = eval { $fastly->stats(aggregate => 1, field => "requests") };
