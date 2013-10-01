@@ -7,6 +7,7 @@ lib/Net/Fastly.pm
 lib/Net/Fastly/Backend.pm
 lib/Net/Fastly/BelongsToServiceAndVersion.pm
 lib/Net/Fastly/Client.pm
+lib/Net/Fastly/Condition.pm
 lib/Net/Fastly/Customer.pm
 lib/Net/Fastly/Director.pm
 lib/Net/Fastly/Domain.pm
@@ -17,6 +18,7 @@ lib/Net/Fastly/Model.pm
 lib/Net/Fastly/Origin.pm
 lib/Net/Fastly/Service.pm
 lib/Net/Fastly/Settings.pm
+lib/Net/Fastly/Stats.pm
 lib/Net/Fastly/Syslog.pm
 lib/Net/Fastly/User.pm
 lib/Net/Fastly/VCL.pm
@@ -32,3 +34,4 @@ t/full_login.t
 t/Helper.pm
 t/pod.t
 t/pod_coverage.t
+t/stats.t
