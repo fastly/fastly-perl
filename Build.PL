@@ -10,7 +10,6 @@ my $build = Module::Build
                           'File::Spec'                   => 0,
                           'File::Temp'                   => 0,
                           'IO::Socket::SSL'              => 1.54, # the actual required version, 1.38, causes problems
-                          'JSON::Any'                    => 0,
                           'JSON::XS'                     => 0,
                           'LWP::UserAgent'               => 6.02,
                           'LWP::Protocol::https'         => 0,
