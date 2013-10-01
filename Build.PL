@@ -21,6 +21,12 @@ my $build = Module::Build
                           'YAML'                         => 0,
                         },
          create_makefile_pl => 'traditional',
+         meta_merge => {
+             resources => {
+                 repository => 'https://github.com/fastly/fastly-perl',
+             }
+         },
+         #license => '',
        );
 
 $build->create_build_script;
