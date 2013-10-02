@@ -1,3 +1,9 @@
+2013-10-02 v1.01
+
+Add a license
+Be a little more liberal with our prereqs
+Add compatibility fix for older versions of HTTP::Request::Common (thanks Matt Wodrich)
+
 2013-09-30 v1.0
 
 Bring in line with the API.
