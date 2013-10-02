@@ -8,6 +8,7 @@ use Data::Dumper;
 use POSIX qw(strftime);
 use YAML;
 
+
 =head1 NAME
 
 fastly - a command line shell for interacting with the Fastly infrastructure
@@ -59,7 +60,13 @@ my $fastly = Net::Fastly->new(%opts);
 
 my $customer = $fastly->current_customer;
 
-use Term::ShellUI;
+eval {
+  require Term::ShellUI;
+  Term::ShellUI->import();
+};
+
+die "You must install Term::ShellUI in order to run the Fastly shell\n" if $@;
+
 my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history", prompt => "fastly> ");
           
 #$term->{debug_complete}=5;

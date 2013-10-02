@@ -15,11 +15,13 @@ my $build = Module::Build
                           'LWP::UserAgent'               => 5.813,
                           'LWP::Protocol::https'         => 0,
                           'Term::ANSIColor'              => 0,
-                          'Term::ShellUI'                => 0,
                           'Test::More'                   => 0,
                           'URI'                          => 0,
                           'URI::Escape'                  => 0,
                           'YAML'                         => 0,
+                        },
+         recommends =>  {
+                          'Term::ShellUI'                => 0,
                         },
          create_makefile_pl => 'small',
          meta_merge => {
