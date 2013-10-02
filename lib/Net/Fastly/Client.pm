@@ -189,7 +189,20 @@ package Net::Fastly::Client::UserAgent;
 use strict;
 use URI;
 use LWP::UserAgent;
-use HTTP::Request::Common qw(GET HEAD PUT POST DELETE);
+BEGIN { # Compatibility fix for older versions of HTTP::Request::Common
+    require HTTP::Request::Common;
+    if (HTTP::Request::Common->can('DELETE')) {
+        HTTP::Request::Common->import(qw(GET HEAD PUT POST DELETE));
+    } elsif (my $_simple_req = HTTP::Request::Common->can('_simple_req')) {
+        HTTP::Request::Common->import(qw(GET HEAD PUT POST));
+        *DELETE = sub { $_simple_req->('DELETE', @_) };
+    } else {
+        die << 'END'
+"DELETE" is not exported by the HTTP::Request::Common module
+and its underlying _simple_req() method is not available.
+END
+    }
+}
 
 sub new {
     my $class = shift;
