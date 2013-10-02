@@ -4,6 +4,7 @@ use Module::Build;
 my $build = Module::Build
   ->new( module_name  => "Net::Fastly",
          configure_requires => { 'Module::Build' => 0.38 },
+         license      => 'perl',
          requires     => {
                           'Class::Accessor::Fast'        => 0,
                           'File::Basename'               => 0,
@@ -20,13 +21,12 @@ my $build = Module::Build
                           'URI::Escape'                  => 0,
                           'YAML'                         => 0,
                         },
-         create_makefile_pl => 'traditional',
+         create_makefile_pl => 'small',
          meta_merge => {
              resources => {
                  repository => 'https://github.com/fastly/fastly-perl',
              }
          },
-         #license => '',
        );
 
 $build->create_build_script;
