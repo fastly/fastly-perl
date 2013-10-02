@@ -10,7 +10,7 @@ my $build = Module::Build
                           'File::Basename'               => 0,
                           'File::Spec'                   => 0,
                           'File::Temp'                   => 0,
-                          'IO::Socket::SSL'              => '!=1.54', # this version required by LWP::UserAgent 1.38, causes problems[*]
+                          'IO::Socket::SSL'              => '!=1.38', # this version required by LWP::UserAgent 1.38, causes problems[*]
                           'JSON::XS'                     => 0,
                           'LWP::UserAgent'               => 5.813,
                           'LWP::Protocol::https'         => 0,
