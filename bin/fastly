@@ -63,9 +63,12 @@ my $customer = $fastly->current_customer;
 eval {
   require Term::ShellUI;
   Term::ShellUI->import();
+  require Term::ANSIColor;
+  Term::ANSIColor->import();
+  
 };
 
-die "You must install Term::ShellUI in order to run the Fastly shell\n" if $@;
+die "You must install Term::ShellUI and Term::ANSIColor in order to run the Fastly shell\n" if $@;
 
 my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history", prompt => "fastly> ");
           

@@ -14,7 +14,6 @@ my $build = Module::Build
                           'JSON::XS'                     => 0,
                           'LWP::UserAgent'               => 5.813,
                           'LWP::Protocol::https'         => 0,
-                          'Term::ANSIColor'              => 0,
                           'Test::More'                   => 0,
                           'URI'                          => 0,
                           'URI::Escape'                  => 0,
@@ -22,6 +21,7 @@ my $build = Module::Build
                         },
          recommends =>  {
                           'Term::ShellUI'                => 0,
+                          'Term::ANSIColor'              => 0,
                         },
          create_makefile_pl => 'small',
          meta_merge => {
