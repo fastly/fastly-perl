@@ -1,5 +1,6 @@
 use strict;
 use Test::More tests => 30; 
+use lib qw(t);
 use Helper;
 use Data::Dumper;
 
