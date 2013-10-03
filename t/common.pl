@@ -192,6 +192,14 @@ sub common_tests {
      # use DateTime;
      # my $last_day = DateTime->last_day_of_month( year => $year, month => $mon);
      # is($invoices[0]->end->day,   $last_day->day, "Got the correct service end day");
+
+     # Clean up the service now that we're done
+     ok($version3->deactivate, "Deactivated version again");
+     ok(!$fastly->get_service($version3->service_id)->version->active, "Version is correctly not active again");
+
+     my $service_id = $service->id;
+     eval { $service->delete };
+     is($@, '', "Didn't raise an error");
 }
 
 1;
