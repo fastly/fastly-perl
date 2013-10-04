@@ -200,6 +200,12 @@ sub common_tests {
      my $service_id = $service->id;
      eval { $service->delete };
      is($@, '', "Didn't raise an error");
+     
+     $tmp = eval { $fastly->get_service($service_id) };
+     ok($@, "Raised an error trying to get deleted service");
+     ok(!$tmp, "Service is not defined");
+     @services = eval { grep { $_->id eq $service_id } $fastly->list_services };
+     ok(!@services, "Couldn't find service from list");
 }
 
 1;

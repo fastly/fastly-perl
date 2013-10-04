@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 147;
+use Test::More tests => 150;
 use lib qw(t);
 use Helper;
 require 'common.pl';
@@ -9,7 +9,7 @@ chomp(my $err    = $@);
 
 SKIP: {
 
-skip "No login credentials given - $err", 147 if $err;
+skip "No login credentials given - $err", 150 if $err;
 
 my $client = Net::Fastly::Client->new(%opts);
 
