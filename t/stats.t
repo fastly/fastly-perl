@@ -13,7 +13,7 @@ SKIP: {
     
 #$Net::Fastly::UA::DEBUG=1;
 
-skip "No api key credentials given - $err", 101 if $err;
+skip "No api key credentials given - $err", 30 if $err;
 
 my $fastly   = Net::Fastly->new(%opts);
 
