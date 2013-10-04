@@ -1,5 +1,5 @@
 use strict;
-use Test::More tests => 103; 
+use Test::More tests => 106;
 use lib qw(t);
 use Helper;
 require 'common.pl';
@@ -11,7 +11,7 @@ SKIP: {
 
 
 
-skip "No api key credentials given - $err", 101 if $err;
+skip "No api key credentials given - $err", 106 if $err;
 
 my $client = Net::Fastly::Client->new(%opts);
 my $fastly = Net::Fastly->new(%opts);
