@@ -37,6 +37,7 @@ my $stats;
 $stats = $fastly->stats(from => $FROM);
 is(ref($stats), 'HASH', "Returned an hash of data points");
 my ($service1, $service2) = keys %$stats;
+skip "No services found", 24 unless defined $service1 && defined $service2;
 ok(exists $stats->{$service1}->[0]->{requests}, "Found requests");
 ok(exists $stats->{$service1}->[0]->{hits}, "Found hits");
 ok(exists $stats->{$service2}->[0]->{requests}, "Found requests");
