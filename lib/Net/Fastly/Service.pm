@@ -90,7 +90,7 @@ Purge all assets from this service.
 =cut
 sub purge_all {
     my $self = shift;
-    return $self->_fetcher->client->_put($self->_get_path($self->id)."/purge_all");
+    return $self->_fetcher->client->_post($self->_get_path($self->id)."/purge_all");
 }
 
 =head2 purge_by_key <key>
@@ -101,7 +101,7 @@ Purge anything with the specific key from the given service.
 sub purge_by_key {
     my $self = shift;
     my $key  = shift;
-    return $self->_fetcher->client->_put($self->_get_path($self->id)."/purge/$key");
+    return $self->_fetcher->client->_post($self->_get_path($self->id)."/purge/$key");
 }
 
 =head2 versions
