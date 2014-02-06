@@ -161,37 +161,50 @@ sub common_tests {
      my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
      $year += 1900;
      $mon   = 12 if $mon == 0;
-     
+
      my %stats = eval { $service->stats };
      like($@, qr/unbounded/i, "Correctly raised an unbounded stats error");
      %stats = eval { $service->stats('all', year => $year, month => $mon) };
      is($@, '', "Didn't raise an error");
      ok(keys %stats, "Got stats");
-     
 
-     my $invoice     = $service->invoice;
-     is($@, '', "Didn't raise an error");
-     is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
-     ok($invoice->regions, "Got invoice regions");
-     
-     is($invoice->service_id, $service->id, "Invoice has correct service id");
-     is($@, '', "Didn't raise an error");
-     
-     $invoice = $fastly->get_invoice;
-     is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
-     
-     
 
-     $invoice = $fastly->get_invoice($year, $mon);
-     is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
-     # is($invoice->start->year,  $year,  "Got the correct service start year");
-     # is($invoice->start->month, $mon,   "Got the correct service start month");
-     # is($invoice->start->day,   1,      "Got the correct service start day");
-     # is($invoice->end->year,    $year,  "Got the correct service end year");
-     # is($invoice->end->month,   $mon, " Got the correct service end month");
-     # use DateTime;
-     # my $last_day = DateTime->last_day_of_month( year => $year, month => $mon);
-     # is($invoices[0]->end->day,   $last_day->day, "Got the correct service end day");
+     my $invoice = eval { $service->invoice };
+     my $err     = $@;
+     is($err, '', "Didn't raise an error");
+     SKIP: {
+         skip "Error getting invoice", 4 unless $invoice && $err eq '';
+         is(ref($invoice), "Net::Fastly::Invoice", "Got invoice");
+         ok($invoice->regions, "Got invoice regions");
+
+         is($invoice->service_id, $service->id, "Invoice has correct service id");
+         is($@, '', "Didn't raise an error");
+
+
+     };
+
+     $invoice = eval { $fastly->get_invoice };
+     $err = $@;
+     SKIP: {
+         skip "Error getting invoice", 1 unless $invoice && $err eq '';
+         is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
+     };
+
+
+    $invoice = eval { $fastly->get_invoice($year, $mon) };
+    $err = $@;
+    SKIP: {
+         skip "Error getting invoice", 1 unless $invoice && $err eq '';
+         is(ref($invoice), "Net::Fastly::Invoice", "Got an invoice object");
+         # is($invoice->start->year,  $year,  "Got the correct service start year");
+         # is($invoice->start->month, $mon,   "Got the correct service start month");
+         # is($invoice->start->day,   1,      "Got the correct service start day");
+         # is($invoice->end->year,    $year,  "Got the correct service end year");
+         # is($invoice->end->month,   $mon, " Got the correct service end month");
+         # use DateTime;
+         # my $last_day = DateTime->last_day_of_month( year => $year, month => $mon);
+         # is($invoices[0]->end->day,   $last_day->day, "Got the correct service end day");
+     };
 
      # Clean up the service now that we're done
      ok($version3->deactivate, "Deactivated version again");
