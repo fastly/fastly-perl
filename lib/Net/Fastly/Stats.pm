@@ -56,9 +56,9 @@ our %PRIORITIES = (
   admin      => 1,
   owner      => 10,
   superuser  => 10,
-  user       => 20,
-  engineer   => 30,
-  billing    => 30,
+  engineer   => 20,
+  user       => 30,
+  billing    => 40,
 );
 
 =head2 can_do <role>
