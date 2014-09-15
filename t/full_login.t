@@ -117,6 +117,16 @@ $tmp =  eval { $fastly->get_user($user->id) };
 is($@, '', "Didn't raise an error");
 is($tmp, undef, "Couldn't get deleted user");
 
+
+my $name = "fastly-test-service-".get_rand;
+my $service = eval { $fastly->create_service(name => $name) };
+is($@, '', "Didn't raise an error");
+ok($service, "Service is defined");
+
+my $purge_results = eval { $service->purge_by_key('foo') };
+is($@, 'Purging by key requires API key authentication', "Raises an error");
+
+
 common_tests($fastly);
 
 }

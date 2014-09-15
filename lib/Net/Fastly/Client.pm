@@ -85,17 +85,27 @@ sub _json { shift->{_json} }
 
 =head2 authed
 
-Whether or not we're authed at all by either username & password or API key
+Whether or not we're authed at all by either API key or username & password
 
 =cut
-sub authed {   
+sub authed {
     my $self = shift;
-    defined $self->{api_key} || $self->fully_authed;
+    $self->key_authed || $self->fully_authed;
+}
+
+=head2 key_authed
+
+Whether or not we're authed by API key
+
+=cut
+sub key_authed {
+    my $self = shift;
+    defined $self->{api_key}
 }
 
 =head2 fully_authed
 
-Whether or not we're fully (username and password) authed
+Whether or not we're authed by username & password
 
 =cut
 sub fully_authed {

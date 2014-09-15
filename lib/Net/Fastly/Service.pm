@@ -95,12 +95,17 @@ sub purge_all {
 
 =head2 purge_by_key <key>
 
-Purge anything with the specific key from the given service.
+Purge anything with the specific key from the given service. Requires an API key.
 
 =cut
 sub purge_by_key {
     my $self = shift;
     my $key  = shift;
+
+    unless ($self->_fetcher->client->key_authed) {
+        die ("Purging by key requires API key authentication.");
+    }
+
     return $self->_fetcher->client->_post($self->_get_path($self->id)."/purge/$key");
 }
 
