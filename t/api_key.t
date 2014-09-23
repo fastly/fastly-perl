@@ -41,7 +41,17 @@ ok($customer, "Customer is defined again");
 is($customer->name, $opts{customer}, "Got correct customer name again");
 
 
-#ok($fastly->purge('foo'), "Purging works");
+my $name = "fastly-test-service-".get_rand;
+my $service = eval { $fastly->create_service(name => $name) };
+is($@, '', "Didn't raise an error");
+ok($service, "Service is defined");
+
+my $purge_results = eval { $service->purge_by_key('foo') };
+is($@, '', "Didn't raise an error");
+ok($purge_results, "Purge by key was successful");
+
+print $purge_results
+
 
 common_tests($fastly);
 
