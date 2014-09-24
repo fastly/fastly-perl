@@ -1,3 +1,7 @@
+2014-09-23 v1.1
+
+Require purge by key to have an API key 
+
 2014-02-04 v1.02
 
 Fix how purges are done (thank Matt Wodrich)
