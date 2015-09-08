@@ -1,8 +1,14 @@
 Revision history for Perl module Net::Fastly
 
+1.03 2015-09-08
+
+    * Change "Changes" file to be in line with CPAN::Changes::Spec (thanks Neil Bowers)
+    * Switch to using JSON::XS rather than the deprecated JSON::Any (thanks Leon Brocard)
+    * Correct username/password docs (thanks Leon Brocard)
+
 1.02 2014-02-04
 
-    * Fix how purges are done (thank Matt Wodrich)
+    * Fix how purges are done (thanks Matt Wodrich)
 
 1.01 2013-10-02
 
