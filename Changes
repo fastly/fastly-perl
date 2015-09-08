@@ -1,5 +1,15 @@
 Revision history for Perl module Net::Fastly
 
+1.02 2014-02-04
+
+    * Fix how purges are done (thank Matt Wodrich)
+
+1.01 2013-10-02
+
+    * Add a license
+    * Be a little more liberal with our prereqs
+    * Add compatibility fix for older versions of HTTP::Request::Common (thanks Matt Wodrich)
+
 1.0 2013-09-30
 
     * Bring in line with the API.
