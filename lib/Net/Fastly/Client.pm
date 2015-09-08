@@ -2,7 +2,7 @@ package Net::Fastly::Client;
 
 use strict;
 use warnings;
-use JSON::Any;
+use JSON::XS;
 
 =head1 NAME
 
@@ -65,7 +65,6 @@ sub new {
     my $base  = $opts{base_url}  ||= "api.fastly.com";
     my $port  = $opts{base_port} ||= 80;
     $self->{user} ||= $self->{username};
-    $self->{_json}  = JSON::Any->new;
     $self->{_ua}    = Net::Fastly::Client::UserAgent->new($base, $port, $opts{proxy});
     return $self unless $self->fully_authed;
 
@@ -75,13 +74,12 @@ sub new {
         die "You must have IO::Socket::SSL or Crypt::SSLeay installed in order to do SSL requests\n" if $res->code == 501 && $res->status_line =~ /Protocol scheme 'https' is not supported/;
         die "Unauthorized" unless $res->is_success;
     }
-    my $content = $self->_json->from_json($res->decoded_content);    
+    my $content = decode_json($res->decoded_content);
     $self->{_cookie} = $res->header('set-cookie');
     return wantarray ? ($self, $content->{user}, $content->{customer}) : $self;
 }
 
 sub _ua   { shift->{_ua}   }
-sub _json { shift->{_json} }
 
 =head2 authed
 
@@ -142,7 +140,7 @@ sub _get {
     my $res  = $self->_ua->_get($path, $self->_headers, %opts);
     return undef if 404 == $res->code;
     $self->_raise_error($res) unless $res->is_success;
-    my $content = $self->_json->from_json($res->decoded_content);
+    my $content = decode_json($res->decoded_content);
     return $content;
 }
 
@@ -153,7 +151,7 @@ sub _post {
     
     my $res     = $self->_ua->_post($path, $self->_headers, %params);
     $self->_raise_error($res) unless $res->is_success;
-    my $content = $self->_json->from_json($res->decoded_content);
+    my $content = decode_json($res->decoded_content);
     return $content;
 }
 
@@ -164,7 +162,7 @@ sub _put {
     
     my $res     = $self->_ua->_put($path, $self->_headers, %params);
     $self->_raise_error($res) unless $res->is_success;
-    my $content = $self->_json->from_json($res->decoded_content);
+    my $content = decode_json($res->decoded_content);
     return $content;
 }
 
@@ -188,7 +186,7 @@ sub _raise_error {
     my $self = shift;
     my $res  = shift;
 
-    my $content = eval { $self->_json->from_json($res->decoded_content) };
+    my $content = eval { decode_json($res->decoded_content) };
     my $message = $content ? $content->{detail} || $content->{msg} : $res->status_line."  ".$res->decoded_content;
     die "$message\n";
 }
