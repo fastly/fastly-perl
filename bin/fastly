@@ -39,7 +39,7 @@ B<NOTE:> For the time being you must use username and password, not API key. Thi
 
 Alternatively you can pass in any of those options on the command line
 
-    fastly --user <login> --password <password>
+    fastly --user=<login> --password=<password>
     
 =head1 PROXYING
 
