@@ -203,15 +203,22 @@ sub commands {
     return eval { $self->{__cache_commands} = $self->client->_get('/commands') };
 }
 
-=head2 purge <path>
+=head2 purge <path> [soft]
 
 Purge the specified path from your cache.
+
+You can optionally pass in a true value to enable "soft" purging e.g
+
+    $fastly->purge($url, 1);
+
+See L<https://docs.fastly.com/guides/purging/soft-purges>
 
 =cut
 sub purge {
     my $self = shift;
     my $path = shift;
-    $self->client->_post("/purge/$path");
+    my $soft = shift;
+    $self->client->_post("/purge/$path", headers => { 'Fastly-Soft-Purge' => $soft });
 }
 
 =head2 stats [opt[s]]

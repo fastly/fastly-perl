@@ -97,16 +97,23 @@ sub purge_all {
 
 Purge anything with the specific key from the given service. Requires an API key.
 
+You can optionally pass in a true value to enable "soft" purging e.g
+
+    $fastly->purge_by_key($key, 1);
+
+See L<https://docs.fastly.com/guides/purging/soft-purges>
+
 =cut
 sub purge_by_key {
     my $self = shift;
     my $key  = shift;
+    my $soft = shift;
 
     unless ($self->_fetcher->client->key_authed) {
         die ("Purging by key requires API key authentication.");
     }
 
-    return $self->_fetcher->client->_post($self->_get_path($self->id)."/purge/$key");
+    return $self->_fetcher->client->_post($self->_get_path($self->id)."/purge/$key", headers => { 'Fastly-Soft-Purge' => $soft });
 }
 
 =head2 versions
