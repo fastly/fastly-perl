@@ -215,9 +215,9 @@ See L<https://docs.fastly.com/guides/purging/soft-purges>
 
 Previously purging made an API call to the C</purge> endpoint of the Fastly API.
 
-Newer purge is by making an HTTP request against the URL using the C<PURGE> HTTP method.
+The new method of purging is done by making an HTTP request against the URL using the C<PURGE> HTTP method.
 
-This module uses the new method. The old method can be used by passing the C<use_old_purge_method> into the constructor.
+This module now uses the new method. The old method can be used by passing the C<use_old_purge_method> into the constructor.
 
     my $fastly = Net::Fastly->new(%login_opts, use_old_purge_method => 1);
 
