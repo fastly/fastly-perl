@@ -224,13 +224,9 @@ This module now uses the new method. The old method can be used by passing the C
 =cut
 sub purge {
     my $self = shift;
-    my $path = shift;
+    my $url  = shift;
     my $soft = shift;
-    if ($self->client->{use_old_purge_method}) {
-        $self->client->_post("/purge/$path", headers => { 'Fastly-Soft-Purge' => $soft });
-    } else {
-        $self->client->_purge($path, headers => { 'Fastly-Soft-Purge' => $soft });
-    }
+    $self->client->_purge($url, headers => { 'Fastly-Soft-Purge' => $soft });
 }
 
 =head2 stats [opt[s]]

@@ -164,7 +164,13 @@ sub _purge {
     my %params  = @_;
     my $headers = delete $params{headers} || {};
 
-    my $res     = $self->_ua->_purge($url, $self->_headers($headers), %params);
+    my $method  = "_purge";
+    if ($self->{use_old_purge_method}) {
+        $method = "_post";
+        $url    = "/purge/$url";
+    }
+
+    my $res     = $self->_ua->$method($url, $self->_headers($headers), %params);
     $self->_raise_error($res) unless $res->is_success;
     my $content = decode_json($res->decoded_content);
     return $content;
