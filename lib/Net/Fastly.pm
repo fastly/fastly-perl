@@ -213,12 +213,24 @@ You can optionally pass in a true value to enable "soft" purging e.g
 
 See L<https://docs.fastly.com/guides/purging/soft-purges>
 
+Previously purging made an API call to the C</purge> endpoint of the Fastly API.
+
+Newer purge is by making an HTTP request against the URL using the C<PURGE> HTTP method.
+
+This module uses the new method. The old method can be used by passing the C<use_old_purge_method> into the constructor.
+
+    my $fastly = Net::Fastly->new(%login_opts, use_old_purge_method => 1);
+
 =cut
 sub purge {
     my $self = shift;
     my $path = shift;
     my $soft = shift;
-    $self->client->_post("/purge/$path", headers => { 'Fastly-Soft-Purge' => $soft });
+    if ($self->client->{use_old_purge_method}) {
+        $self->client->_post("/purge/$path", headers => { 'Fastly-Soft-Purge' => $soft });
+    } else {
+        $self->client->_purge($path, headers => { 'Fastly-Soft-Purge' => $soft });
+    }
 }
 
 =head2 stats [opt[s]]

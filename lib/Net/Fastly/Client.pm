@@ -158,6 +158,18 @@ sub _post {
     return $content;
 }
 
+sub _purge {
+    my $self    = shift;
+    my $url     = shift;
+    my %params  = @_;
+    my $headers = delete $params{headers} || {};
+
+    my $res     = $self->_ua->_purge($url, $self->_headers($headers), %params);
+    $self->_raise_error($res) unless $res->is_success;
+    my $content = decode_json($res->decoded_content);
+    return $content;
+}
+
 sub _put {
     my $self   = shift;
     my $path   = shift;
@@ -256,6 +268,14 @@ sub _post {
     my %params  = @_;
     my $url     = $self->_make_url($path);
     return $self->_ua->request(POST $url, [_make_params(%params)], %$headers);   
+}
+
+sub _purge {
+    my $self    = shift;
+    my $url     = shift;
+    my $headers = shift;
+    my %params  = @_;
+    return $self->_ua->request(HTTP::Request->new("PURGE", $url, [%$headers]));
 }
 
 sub _put {
