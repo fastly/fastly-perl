@@ -3,6 +3,7 @@ package Net::Fastly::Client;
 use strict;
 use warnings;
 use JSON::XS;
+use Mozilla::CA;
 
 =head1 NAME
 
@@ -57,6 +58,10 @@ Optionally pass in an https proxy to use.
 
 
 =cut
+our %_SSL_DEFAULTS = (
+  verify_hostname => 1,
+  SSL_ca_file     => Mozilla::CA::SSL_ca_file(),
+);
 sub new {
     my $class = shift;
     my %opts  = @_;
@@ -65,7 +70,10 @@ sub new {
     my $base  = $opts{base_url}  ||= "api.fastly.com";
     my $port  = $opts{base_port} ||= 80;
     $self->{user} ||= $self->{username};
-    $self->{_ua}    = Net::Fastly::Client::UserAgent->new($base, $port, $opts{proxy});
+
+    my %ssl_opts = (%_SSL_DEFAULTS, %{$opts{ssl} || {}});
+
+    $self->{_ua}    = Net::Fastly::Client::UserAgent->new($base, $port, $opts{proxy}, \%ssl_opts);
     return $self unless $self->fully_authed;
 
     # If we're fully authed (i.e username and password ) then we need to log in
@@ -217,7 +225,8 @@ sub new {
     my $base  = shift;
     my $port  = shift;
     my $proxy = shift;
-    my $ua    = Net::Fastly::UA->new;
+    my $ssl   = shift || {};
+    my $ua    = Net::Fastly::UA->new(ssl_opts => $ssl);
     if ($proxy) {
         $ua->proxy('https', $proxy);
     } else {

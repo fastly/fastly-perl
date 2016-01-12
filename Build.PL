@@ -14,6 +14,7 @@ my $build = Module::Build
                           'JSON::XS'                     => 0,
                           'LWP::UserAgent'               => 5.813,
                           'LWP::Protocol::https'         => 0,
+                          'Mozilla::CA'                  => 0,
                           'Test::More'                   => 0,
                           'URI'                          => 0,
                           'URI::Escape'                  => 0,

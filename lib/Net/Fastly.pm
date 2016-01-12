@@ -110,11 +110,19 @@ Create a new Fastly client. Options are
 
 =item api_key - your Fastly api key
 
+=item ssl - SSL options (see below)
+
 =back
 
 You only need to pass in C<api_key> OR C<user> and C<password>. 
 
 Some methods require full username and password rather than just auth token.
+
+The C<ssl> option exists to allow you to override the SSL behaviour of the client. 
+It should be passed as a hash ref and can contain any of the C<ssl_opts> fields allowed by C<LWP::UserAgent> i.e
+C<verify_hostname>, C<SSL_ca_file> and C<SSL_ca_path>.
+
+By default C<verify_hostname> is set to true and C<SSL_ca_file> is set to the CA cert bundle from C<Mozilla::CA>.
 
 =cut
 sub new {
