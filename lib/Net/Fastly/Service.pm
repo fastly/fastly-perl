@@ -99,7 +99,7 @@ Purge anything with the specific key from the given service. Requires an API key
 
 You can optionally pass in a true value to enable "soft" purging e.g
 
-    $fastly->purge_by_key($key, 1);
+    $service->purge_by_key($key, 1);
 
 See L<https://docs.fastly.com/guides/purging/soft-purges>
 
