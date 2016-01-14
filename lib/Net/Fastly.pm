@@ -46,6 +46,8 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
 
 =head1 SYNOPSIS
 
+    use Net::Fastly;
+
     my $fastly = Net::Fastly->new(%login_opts);
     
     my $current_user     = $fastly->current_user;
