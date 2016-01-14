@@ -90,6 +90,12 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
     
     $new_version->activate;
 
+    # Purging
+    $fastly->purge('http://www.example.com');    # regular purge
+    $fastly->purge('http://www.example.com', 1); # 'soft' purge (see note below)
+    $service->purge_by_key('article-1');         # purge by surrogate key, note this works on $service
+    $service->purge_by_key('article-1', 1);      # 'soft' purge by surrogate key
+    $service->purge_all;                         # use with caution!
 
 =head1 DESCRIPTION
 
