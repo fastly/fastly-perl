@@ -137,7 +137,9 @@ sub _get {
     my $self = shift;
     my $path = shift;
     my %opts = @_;
-    my $res  = $self->_ua->_get($path, $self->_headers, %opts);
+    my $headers = delete $opts{headers} || {};
+
+    my $res  = $self->_ua->_get($path, $self->_headers($headers), %opts);
     return undef if 404 == $res->code;
     $self->_raise_error($res) unless $res->is_success;
     my $content = decode_json($res->decoded_content);
@@ -145,11 +147,30 @@ sub _get {
 }
 
 sub _post {
-    my $self   = shift;
-    my $path   = shift;
-    my %params = @_;
-    
-    my $res     = $self->_ua->_post($path, $self->_headers, %params);
+    my $self    = shift;
+    my $path    = shift;
+    my %params  = @_;
+    my $headers = delete $params{headers} || {};
+
+    my $res     = $self->_ua->_post($path, $self->_headers($headers), %params);
+    $self->_raise_error($res) unless $res->is_success;
+    my $content = decode_json($res->decoded_content);
+    return $content;
+}
+
+sub _purge {
+    my $self    = shift;
+    my $url     = shift;
+    my %params  = @_;
+    my $headers = delete $params{headers} || {};
+
+    my $method  = "_purge";
+    if ($self->{use_old_purge_method}) {
+        $method = "_post";
+        $url    = "/purge/$url";
+    }
+
+    my $res     = $self->_ua->$method($url, $self->_headers($headers), %params);
     $self->_raise_error($res) unless $res->is_success;
     my $content = decode_json($res->decoded_content);
     return $content;
@@ -159,26 +180,34 @@ sub _put {
     my $self   = shift;
     my $path   = shift;
     my %params = @_;
-    
-    my $res     = $self->_ua->_put($path, $self->_headers, %params);
+    my $headers = delete $params{headers} || {};
+
+    my $res     = $self->_ua->_put($path, $self->_headers($headers), %params);
     $self->_raise_error($res) unless $res->is_success;
     my $content = decode_json($res->decoded_content);
     return $content;
 }
 
 sub _delete {
-    my $self = shift;
-    my $path = shift;
-    my $res  = $self->_ua->_delete($path, $self->_headers);
+    my $self    = shift;
+    my $path    = shift;
+    my %params  = @_;
+    my $headers = delete $params{headers} || {};
+
+    my $res  = $self->_ua->_delete($path, $self->_headers($headers));
     $self->_raise_error($res) unless $res->is_success;
     return 1;
 }
 
 sub _headers {
     my $self   = shift;
+    my $extras = shift;
     my $params = $self->fully_authed ? { 'Cookie' => $self->{_cookie} } : { 'X-Fastly-Key' => $self->{api_key} };
     $params->{'Fastly-Explicit-Customer'} = $self->{explicit_customer} if defined $self->{explicit_customer};
     $params->{'Content-Accept'} =  'application/json';
+    while (my ($key, $value) = each %$extras) {
+        $params->{$key} = $value if defined $value;
+    }
     return $params;
 }
 
@@ -245,6 +274,14 @@ sub _post {
     my %params  = @_;
     my $url     = $self->_make_url($path);
     return $self->_ua->request(POST $url, [_make_params(%params)], %$headers);   
+}
+
+sub _purge {
+    my $self    = shift;
+    my $url     = shift;
+    my $headers = shift;
+    my %params  = @_;
+    return $self->_ua->request(HTTP::Request->new("PURGE", $url, [%$headers]));
 }
 
 sub _put {

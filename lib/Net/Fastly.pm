@@ -92,6 +92,12 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
     
     $new_version->activate;
 
+    # Purging
+    $fastly->purge('http://www.example.com');    # regular purge
+    $fastly->purge('http://www.example.com', 1); # 'soft' purge (see note below)
+    $service->purge_by_key('article-1');         # purge by surrogate key, note this works on $service
+    $service->purge_by_key('article-1', 1);      # 'soft' purge by surrogate key
+    $service->purge_all;                         # use with caution!
 
 =head1 DESCRIPTION
 
@@ -205,15 +211,30 @@ sub commands {
     return eval { $self->{__cache_commands} = $self->client->_get('/commands') };
 }
 
-=head2 purge <path>
+=head2 purge <path> [soft]
 
 Purge the specified path from your cache.
+
+You can optionally pass in a true value to enable "soft" purging e.g
+
+    $fastly->purge($url, 1);
+
+See L<https://docs.fastly.com/guides/purging/soft-purges>
+
+Previously purging made an API call to the C</purge> endpoint of the Fastly API.
+
+The new method of purging is done by making an HTTP request against the URL using the C<PURGE> HTTP method.
+
+This module now uses the new method. The old method can be used by passing the C<use_old_purge_method> into the constructor.
+
+    my $fastly = Net::Fastly->new(%login_opts, use_old_purge_method => 1);
 
 =cut
 sub purge {
     my $self = shift;
-    my $path = shift;
-    $self->client->_post("/purge/$path");
+    my $url  = shift;
+    my $soft = shift;
+    $self->client->_purge($url, headers => { 'Fastly-Soft-Purge' => $soft });
 }
 
 =head2 stats [opt[s]]
