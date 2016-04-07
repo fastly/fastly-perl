@@ -1,5 +1,8 @@
 Revision history for Perl module Net::Fastly
 
+1.04 2016-04-07
+    * Allow Soft-Purges (thanks to Leo Lapworth)
+
 1.03 2015-09-08
 
     * Change "Changes" file to be in line with CPAN::Changes::Spec (thanks Neil Bowers)
