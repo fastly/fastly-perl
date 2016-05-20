@@ -205,6 +205,7 @@ sub _headers {
     my $params = $self->fully_authed ? { 'Cookie' => $self->{_cookie} } : { 'X-Fastly-Key' => $self->{api_key} };
     $params->{'Fastly-Explicit-Customer'} = $self->{explicit_customer} if defined $self->{explicit_customer};
     $params->{'Content-Accept'} =  'application/json';
+    $params->{'User-Agent'} =  "fastly-perl-v$Net::Fastly::VERSION";
     while (my ($key, $value) = each %$extras) {
         $params->{$key} = $value if defined $value;
     }
