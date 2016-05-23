@@ -7,7 +7,7 @@ use Net::Fastly::Client;
 use Net::Fastly::Invoice;
 use Net::Fastly::Settings;
 
-our $VERSION = "1.04";
+our $VERSION = "1.05";
 
 BEGIN {
   no strict 'refs';
