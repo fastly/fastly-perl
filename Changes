@@ -1,5 +1,8 @@
 Revision history for Perl module Net::Fastly
 
+1.05 2016-05-23
+    * Set a specific User-Agent
+
 1.04 2016-04-07
     * Allow Soft-Purges (thanks to Leo Lapworth)
 
