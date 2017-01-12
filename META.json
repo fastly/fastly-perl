@@ -68,7 +68,7 @@
          "web" : "https://github.com/fastly/fastly-perl"
       }
    },
-   "version" : "1.05",
+   "version" : "1.06",
    "x_contributors" : [
       "Artur Bergman <sky@crucially.net>",
       "Gabor Szabo <szabgab@gmail.com>",
@@ -79,6 +79,7 @@
       "Michael May <mmay@users.noreply.github.com>",
       "Simon Wistow <simon@fastly.com>",
       "Simon Wistow <simon@thegestalt.org>",
+      "Tatsuhiko Miyagawa <miyagawa@bulknews.net>",
       "Thom Mahoney <mahoneyt@gmail.com>"
    ],
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.0115"

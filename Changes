@@ -1,5 +1,8 @@
 Revision history for Perl module Net::Fastly
 
+1.06 2017-01-11
+    * Send Fastly-Key instead of X-Fastly-Key
+
 1.05 2016-05-23
     * Set a specific User-Agent
 
