@@ -1,7 +1,6 @@
 Build
 MYMETA.json
 MYMETA.yml
-META.json
 META.yml
 Makefile.PL
 _build/
@@ -9,3 +8,11 @@ _build/
 blib
 *.sh
 *.bak
+/Net-Fastly-*
+/.build
+/_build_params
+/Build
+/Build.bat
+!Build/
+!META.json
+!LICENSE

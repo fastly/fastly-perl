@@ -640,7 +640,7 @@ sub get_options {
     return %options;
 }
 
-=head1 COPYING
+=head1 COPYRIGHT
 
 Copyright 2011 - Fastly Inc
 
