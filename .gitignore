@@ -6,7 +6,6 @@ Makefile.PL
 _build/
 *.tar.gz
 blib
-*.sh
 *.bak
 /Net-Fastly-*
 /.build
