@@ -19,5 +19,4 @@ EOF
 
 VERSION=$(echo $TRAVIS_TAG | sed -e 's/^v//')
 
-dzil build
-echo y | V=$VERSION dzil release
+echo "\ny" | V=$VERSION milla release
