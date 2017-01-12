@@ -1,8 +1,5 @@
 sudo: false
 language: perl
-env:
-  global:
-    - secure: "LtHoEzEq+OzvcE39mwcIpCjqCZclzjDMNQUUFwxRg1SQ/Z2KTg5e0SjYaU+RYmzWoQhl7sZVSsZz5w79vb4uKSt2AMR9y2iLIL9eHHQtm52eUNwK6NYdtGJaai01PJCfEJ0usB+nmMIiMkkUjzPrlouNQFQwKqCZCVNSxwx0nJo="
 perl:
   - 5.22
   - "5.20"
