@@ -8,5 +8,4 @@ perl:
   - "5.20"
   - 5.18
 after_success:
-  - cpanm -nq Dist::Milla
   - ./deploy.sh

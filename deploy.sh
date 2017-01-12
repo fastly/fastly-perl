@@ -4,6 +4,12 @@ if [ "$TRAVIS_TAG" == "" ]; then
     exit
 fi
 
+if [ "$PERLBREW_PERL" != "5.22" ]; then
+    exit
+fi
+
+cpanm -nq Dist::Milla
+
 mkdir -p ~/.dzil
 cat <<EOF > ~/.dzil/config.ini
 [%PAUSE]
