@@ -68,7 +68,7 @@
          "web" : "https://github.com/fastly/fastly-perl"
       }
    },
-   "version" : "1.06",
+   "version" : "1.08",
    "x_contributors" : [
       "Artur Bergman <sky@crucially.net>",
       "Gabor Szabo <szabgab@gmail.com>",

@@ -1,5 +1,8 @@
 Revision history for Perl module Net::Fastly
 
+1.08 2017-01-11
+    * re-upload
+
 1.06 2017-01-11
     * Send Fastly-Key instead of X-Fastly-Key
 
