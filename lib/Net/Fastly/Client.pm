@@ -124,6 +124,16 @@ sub set_customer {
     $self->{explicit_customer} = $id;
 }
 
+=head2 timeout <number>
+
+Get or set the timeout value in seconds. The default value is 180 seconds.
+
+=cut
+
+sub timeout {
+    my $self = shift;
+    $self->_ua->_ua->timeout(@_);
+}
 
 # Get stuff from the stats API
 sub _get_stats {
