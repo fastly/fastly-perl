@@ -66,14 +66,15 @@ or in CSH or TCSH
 
 =cut
 
-my %opts   = Net::Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
+my $homedir = ($^O eq 'MSWin32') ? $ENV{USERPROFILE} : $ENV{HOME} ;
+my %opts   = Net::Fastly::get_options($homedir."/.fastly", "/etc/fastly");
 my $fastly = Net::Fastly->new(%opts);
 
 my $customer = $fastly->current_customer;
 
 
 
-my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $ENV{HOME}."/.fastly_history", prompt => "fastly> ");
+my $term = Term::ShellUI->new(app => "fastly", keep_quotes => 0,  history_file => $homedir."/.fastly_history", prompt => "fastly> ");
           
 #$term->{debug_complete}=5;
  
