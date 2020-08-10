@@ -48,6 +48,8 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
 
     use Net::Fastly;
 
+    # username/password authentication is deprecated and will not be available
+    # starting September 2020; use {api_key: 'your-key'} as the login option
     my $fastly = Net::Fastly->new(%login_opts);
     
     my $current_user     = $fastly->current_user;

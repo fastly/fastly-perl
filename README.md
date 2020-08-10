@@ -2,10 +2,18 @@
 
 Net::Fastly - client library for interacting with the Fastly web acceleration service
 
+# A Note About Authentication
+
+Authenticating with a username/password is deprecated and will no longer be available starting September 2020.
+
+Authenticating with an API Token is shown in the example synopsis below. For more information on API Tokens, please see [Fastly's API Token documentation](https://developer.fastly.com/reference/api/auth/). For more information about authenticating to our API, please see our [Authentication section](https://developer.fastly.com/reference/api/#authentication).
+
 # SYNOPSIS
 
     use Net::Fastly;
 
+    # username/password authentication is deprecated and will not be available
+    # starting September 2020; use {api_key: 'your-key'} as the login option
     my $fastly = Net::Fastly->new(%login_opts);
     
     my $current_user     = $fastly->current_user;
@@ -62,6 +70,8 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
 # METHODS
 
 ## new &lt;opt\[s\]>
+
+# username/password authentication is deprecated and will not be available starting September 2020
 
 Create a new Fastly client. Options are
 
