@@ -11,14 +11,23 @@ SKIP: {
 
 skip "No login credentials given - $err", 147 if $err;
 
-my $client = Net::Fastly::Client->new(%opts);
+my @warnings; 
 
+my $client = do {
+  local $SIG{__WARN__} = sub {
+      push @warnings, @_;
+    };
+
+  Net::Fastly::Client->new(%opts); };
 
 my $user;
 my $customer;
 
 $user = eval { $client->_get('/current_user') };
 is($@, '', "Didn't raise an error");
+
+my $warning = grep /^DEPRECATION WARNING: Username\/password/, @warnings;
+ok $warning, 'saw my warning';
 
 ok($user, "User is defined");
 is($user->{login}, $opts{user}, "Got correct login");
