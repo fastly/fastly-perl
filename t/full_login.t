@@ -18,7 +18,8 @@ my $client = do {
       push @warnings, @_;
   };
 
-  Net::Fastly::Client->new(%opts); };
+  Net::Fastly::Client->new(%opts);
+};
 
 my $user;
 my $customer;
