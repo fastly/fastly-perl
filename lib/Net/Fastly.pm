@@ -103,6 +103,12 @@ Net::Fastly - client library for interacting with the Fastly web acceleration se
 
 =head1 DESCRIPTION
 
+=head2 A Note About Authentication
+
+Authenticating with a username/password is deprecated and will no longer be available starting September 2020.
+
+Authenticating with an API Token is shown in the example synopsis below. For more information on API Tokens, please see [Fastly's API Token documentation](https://developer.fastly.com/reference/api/auth/). For more information about authenticating to our API, please see our [Authentication section](https://developer.fastly.com/reference/api/#authentication).
+
 =head1 METHODS
 
 =cut

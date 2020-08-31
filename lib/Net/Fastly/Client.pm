@@ -2,6 +2,7 @@ package Net::Fastly::Client;
 
 use strict;
 use warnings;
+use Carp qw( carp );
 use JSON::XS;
 
 =head1 NAME
@@ -71,7 +72,7 @@ sub new {
     # If we're fully authed (i.e username and password ) then we need to log in
     my $res = $self->_ua->_post('/login', {}, user => $self->{user}, password => $self->{password});
 
-    warn "DEPRECATION WARNING: Username/password authentication is deprecated and will not be available starting September 2020; please migrate to API tokens as soon as possible.";
+    carp "DEPRECATION WARNING: Username/password authentication is deprecated and will not be available starting September 2020; please migrate to API tokens as soon as possible.";
 
     unless ($res->is_success) {
         die "You must have IO::Socket::SSL or Crypt::SSLeay installed in order to do SSL requests\n" if $res->code == 501 && $res->status_line =~ /Protocol scheme 'https' is not supported/;
