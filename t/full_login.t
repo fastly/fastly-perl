@@ -16,9 +16,9 @@ my @warnings;
 my $client = do {
   local $SIG{__WARN__} = sub {
       push @warnings, @_;
-    };
+  };
 
-  Net::Fastly::Client->new(%opts); 
+  Net::Fastly::Client->new(%opts);
 };
 
 my $user;
