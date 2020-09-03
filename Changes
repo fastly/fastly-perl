@@ -1,5 +1,8 @@
 Revision history for Perl module Net::Fastly
 
+1.12 2020-09-03
+    * fix release engineering
+
 1.11 2020-09-03
     * Bumps the version in META.json
 
