@@ -1,5 +1,8 @@
 Revision history for Perl module Net::Fastly
 
+1.11 2020-09-03
+    * Bumps the version in META.json
+
 1.10 2020-08-28
     * Username/password authentication produces deprecation warning
 
