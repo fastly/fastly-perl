@@ -3,7 +3,7 @@ requires 'File::Basename';
 requires 'File::Spec';
 requires 'File::Temp';
 requires 'IO::Socket::SSL', '!= 1.38';
-requires 'JSON::XS';
+requires 'JSON::MaybeXS';
 requires 'LWP::Protocol::https';
 requires 'LWP::UserAgent', '5.813';
 requires 'Test::More';

@@ -1,5 +1,7 @@
 Revision history for Perl module Net::Fastly
 
+    * switch from JSON::XS to JSON::MaybeXS
+
 1.12 2020-09-03
     * fix release engineering
 

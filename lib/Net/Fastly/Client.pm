@@ -3,7 +3,7 @@ package Net::Fastly::Client;
 use strict;
 use warnings;
 use Carp qw( carp );
-use JSON::XS;
+use JSON::MaybeXS;
 
 =head1 NAME
 
