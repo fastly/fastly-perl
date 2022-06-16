@@ -1,8 +1,9 @@
-sudo: false
+# https://docs.travis-ci.com/user/languages/perl/
+#
+
 language: perl
+
 perl:
-  - 5.22
-  - "5.20"
-  - 5.18
-after_success:
-  - ./deploy.sh
+  - "5.28"
+
+sudo: false
