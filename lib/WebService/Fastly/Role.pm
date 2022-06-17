@@ -131,10 +131,6 @@ WebService::Fastly::ApiFactory for non-Moosey usage.
 
 =head1 SYNOPSIS
 
-The Perl Generator in the OpenAPI Generator project builds a library of Perl modules to interact with
-a web service defined by a OpenAPI Specification. See below for how to build the
-library.
-
 This module provides an interface to the generated library. All the classes,
 objects, and methods (well, not quite *all*, see below) are flattened into this
 role.
@@ -167,7 +163,7 @@ For documentation of all these methods, see AUTOMATIC DOCUMENTATION below.
 
 =head2 Configuring authentication
 
-In the normal case, the OpenAPI Spec will describe what parameters are
+In the normal case, the API Spec will describe what parameters are
 required and where to put them. You just need to supply the tokens.
 
     my $tokens = {
@@ -272,31 +268,6 @@ by calling C<$api-E<gt>foo_api> or by retrieving an object, e.g.
 C<$api-E<gt>get_pet_by_id(pet_id =E<gt> $pet_id)>. They are class methods, so
 you could also call them on class names.
 
-=head1 BUILDING YOUR LIBRARY
-
-See the homepage C<https://openapi-generator.tech> for full details.
-But briefly, clone the git repository, build the codegen codebase, set up your build
-config file, then run the API build script. You will need git, Java 7 or 8 and Apache
-maven 3.0.3 or better already installed.
-
-The config file should specify the project name for the generated library:
-
-    {"moduleName":"WWW::MyProjectName"}
-
-Your library files will be built under C<WWW::MyProjectName>.
-
-    $ git clone https://github.com/openapitools/openapi-generator
-    $ cd openapi-generator
-    $ mvn package
-    $ java -jar modules/openapi-generator-cli/target/openapi-generator-cli.jar generate \
-  -i [URL or file path to JSON OpenAPI API spec] \
-  -g perl \
-  -c /path/to/config/file.json \
-  -o /path/to/output/folder
-
-Bang, all done. Run the C<autodoc> script in the C<bin> directory to see the API
-you just built.
-
 =head1 AUTOMATIC DOCUMENTATION
 
 You can print out a summary of the generated API by running the included
@@ -316,9 +287,9 @@ output formats are supported:
 The C<-c> option allows you to load and inspect your own application. A dummy
 namespace is used if you don't supply your own class.
 
-=head1 DOCUMENTATION FROM THE OpenAPI Spec
+=head1 DOCUMENTATION FROM THE API Spec
 
-Additional documentation for each class and method may be provided by the OpenAPI
+Additional documentation for each class and method may be provided by the API
 spec. If so, this is available via the C<class_documentation()> and
 C<method_documentation()> methods on each generated object class, and the
 C<method_documentation()> method on the endpoint API classes:
