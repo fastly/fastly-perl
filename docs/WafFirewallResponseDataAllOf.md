@@ -1,8 +1,8 @@
-# Fastly::Object::WafFirewallResponseDataAllOf
+# WebService::Fastly::Object::WafFirewallResponseDataAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafFirewallResponseDataAllOf;
+use WebService::Fastly::Object::WafFirewallResponseDataAllOf;
 ```
 
 ## Properties

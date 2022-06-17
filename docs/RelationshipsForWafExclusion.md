@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipsForWafExclusion
+# WebService::Fastly::Object::RelationshipsForWafExclusion
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipsForWafExclusion;
+use WebService::Fastly::Object::RelationshipsForWafExclusion;
 ```
 
 ## Properties

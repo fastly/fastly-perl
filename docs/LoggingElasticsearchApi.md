@@ -1,8 +1,8 @@
-# Fastly::LoggingElasticsearchApi
+# WebService::Fastly::LoggingElasticsearchApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingElasticsearchApi;
+use WebService::Fastly::Object::LoggingElasticsearchApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Elasticsearch logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingElasticsearchApi;
-my $api_instance = Fastly::LoggingElasticsearchApi->new(
+use WebService::Fastly::LoggingElasticsearchApi;
+my $api_instance = WebService::Fastly::LoggingElasticsearchApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -42,10 +42,10 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
-my $tls_ca_cert = "tls_ca_cert_example"; # string | A secure certificate to authenticate a server with. Must be in PEM format.
-my $tls_client_cert = "tls_client_cert_example"; # string | The client certificate used to make authenticated requests. Must be in PEM format.
-my $tls_client_key = "tls_client_key_example"; # string | The client private key used to make authenticated requests. Must be in PEM format.
-my $tls_hostname = "tls_hostname_example"; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
+my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
+my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
+my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
+my $tls_hostname = 'null'; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
 my $request_max_entries = 0; # int | The maximum number of logs sent in one request. Defaults `0` for unbounded.
 my $request_max_bytes = 0; # int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 my $index = "index_example"; # string | The name of the Elasticsearch index to send documents (logs) to. The index must follow the Elasticsearch [index format rules](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html). We support [strftime](https://www.man7.org/linux/man-pages/man3/strftime.3.html) interpolated variables inside braces prefixed with a pound symbol. For example, `#{%F}` will interpolate as `YYYY-MM-DD` with today's date.
@@ -74,10 +74,10 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.   | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest. | [optional] 
- **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] 
- **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] 
+ **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] [default to &#39;null&#39;]
  **request_max_entries** | **int**| The maximum number of logs sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **request_max_bytes** | **int**| The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **index** | **string**| The name of the Elasticsearch index to send documents (logs) to. The index must follow the Elasticsearch [index format rules](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html). We support [strftime](https://www.man7.org/linux/man-pages/man3/strftime.3.html) interpolated variables inside braces prefixed with a pound symbol. For example, `#{%F}` will interpolate as `YYYY-MM-DD` with today&#39;s date. | [optional] 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_elasticsearch**
-> DeleteAcl200Response delete_log_elasticsearch(service_id => $service_id, version_id => $version_id, logging_elasticsearch_name => $logging_elasticsearch_name)
+> InlineResponse200 delete_log_elasticsearch(service_id => $service_id, version_id => $version_id, logging_elasticsearch_name => $logging_elasticsearch_name)
 
 Delete an Elasticsearch log endpoint
 
@@ -111,8 +111,8 @@ Delete the Elasticsearch logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingElasticsearchApi;
-my $api_instance = Fastly::LoggingElasticsearchApi->new(
+use WebService::Fastly::LoggingElasticsearchApi;
+my $api_instance = WebService::Fastly::LoggingElasticsearchApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -166,8 +166,8 @@ Get the Elasticsearch logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingElasticsearchApi;
-my $api_instance = Fastly::LoggingElasticsearchApi->new(
+use WebService::Fastly::LoggingElasticsearchApi;
+my $api_instance = WebService::Fastly::LoggingElasticsearchApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -221,8 +221,8 @@ List all of the Elasticsearch logging endpoints for a particular service and ver
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingElasticsearchApi;
-my $api_instance = Fastly::LoggingElasticsearchApi->new(
+use WebService::Fastly::LoggingElasticsearchApi;
+my $api_instance = WebService::Fastly::LoggingElasticsearchApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -274,8 +274,8 @@ Update the Elasticsearch logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingElasticsearchApi;
-my $api_instance = Fastly::LoggingElasticsearchApi->new(
+use WebService::Fastly::LoggingElasticsearchApi;
+my $api_instance = WebService::Fastly::LoggingElasticsearchApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -291,10 +291,10 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
-my $tls_ca_cert = "tls_ca_cert_example"; # string | A secure certificate to authenticate a server with. Must be in PEM format.
-my $tls_client_cert = "tls_client_cert_example"; # string | The client certificate used to make authenticated requests. Must be in PEM format.
-my $tls_client_key = "tls_client_key_example"; # string | The client private key used to make authenticated requests. Must be in PEM format.
-my $tls_hostname = "tls_hostname_example"; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
+my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
+my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
+my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
+my $tls_hostname = 'null'; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
 my $request_max_entries = 0; # int | The maximum number of logs sent in one request. Defaults `0` for unbounded.
 my $request_max_bytes = 0; # int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 my $index = "index_example"; # string | The name of the Elasticsearch index to send documents (logs) to. The index must follow the Elasticsearch [index format rules](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html). We support [strftime](https://www.man7.org/linux/man-pages/man3/strftime.3.html) interpolated variables inside braces prefixed with a pound symbol. For example, `#{%F}` will interpolate as `YYYY-MM-DD` with today's date.
@@ -324,10 +324,10 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.   | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest. | [optional] 
- **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] 
- **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] 
+ **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] [default to &#39;null&#39;]
  **request_max_entries** | **int**| The maximum number of logs sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **request_max_bytes** | **int**| The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **index** | **string**| The name of the Elasticsearch index to send documents (logs) to. The index must follow the Elasticsearch [index format rules](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html). We support [strftime](https://www.man7.org/linux/man-pages/man3/strftime.3.html) interpolated variables inside braces prefixed with a pound symbol. For example, `#{%F}` will interpolate as `YYYY-MM-DD` with today&#39;s date. | [optional] 

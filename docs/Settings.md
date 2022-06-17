@@ -1,8 +1,8 @@
-# Fastly::Object::Settings
+# WebService::Fastly::Object::Settings
 
 ## Load the model package
 ```perl
-use Fastly::Object::Settings;
+use WebService::Fastly::Object::Settings;
 ```
 
 ## Properties

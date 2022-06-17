@@ -1,16 +1,16 @@
-# Fastly::Object::PackageResponse
+# WebService::Fastly::Object::PackageResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::PackageResponse;
+use WebService::Fastly::Object::PackageResponse;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **metadata** | [**PackageMetadata**](PackageMetadata.md) |  | [optional] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

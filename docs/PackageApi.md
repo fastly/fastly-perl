@@ -1,8 +1,8 @@
-# Fastly::PackageApi
+# WebService::Fastly::PackageApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::PackageApi;
+use WebService::Fastly::Object::PackageApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -23,8 +23,8 @@ List detailed information about the Compute@Edge package for the specified servi
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PackageApi;
-my $api_instance = Fastly::PackageApi->new(
+use WebService::Fastly::PackageApi;
+my $api_instance = WebService::Fastly::PackageApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -76,8 +76,8 @@ Upload a Compute@Edge package associated with the specified service version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PackageApi;
-my $api_instance = Fastly::PackageApi->new(
+use WebService::Fastly::PackageApi;
+my $api_instance = WebService::Fastly::PackageApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::PublicIpList
+# WebService::Fastly::Object::PublicIpList
 
 ## Load the model package
 ```perl
-use Fastly::Object::PublicIpList;
+use WebService::Fastly::Object::PublicIpList;
 ```
 
 ## Properties

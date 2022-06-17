@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipWafTagsWafTags
+# WebService::Fastly::Object::RelationshipWafTagsWafTags
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipWafTagsWafTags;
+use WebService::Fastly::Object::RelationshipWafTagsWafTags;
 ```
 
 ## Properties

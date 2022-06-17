@@ -1,8 +1,8 @@
-# Fastly::Object::StarData
+# WebService::Fastly::Object::StarData
 
 ## Load the model package
 ```perl
-use Fastly::Object::StarData;
+use WebService::Fastly::Object::StarData;
 ```
 
 ## Properties

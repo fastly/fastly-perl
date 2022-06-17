@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingLogentriesAllOf
+# WebService::Fastly::Object::LoggingLogentriesAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingLogentriesAllOf;
+use WebService::Fastly::Object::LoggingLogentriesAllOf;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingPapertrail
+# WebService::Fastly::Object::LoggingPapertrail
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingPapertrail;
+use WebService::Fastly::Object::LoggingPapertrail;
 ```
 
 ## Properties

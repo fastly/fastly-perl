@@ -1,8 +1,8 @@
-# Fastly::Object::StarResponse
+# WebService::Fastly::Object::StarResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::StarResponse;
+use WebService::Fastly::Object::StarResponse;
 ```
 
 ## Properties

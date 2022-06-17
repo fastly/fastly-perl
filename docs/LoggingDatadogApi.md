@@ -1,8 +1,8 @@
-# Fastly::LoggingDatadogApi
+# WebService::Fastly::LoggingDatadogApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingDatadogApi;
+use WebService::Fastly::Object::LoggingDatadogApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Datadog logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDatadogApi;
-my $api_instance = Fastly::LoggingDatadogApi->new(
+use WebService::Fastly::LoggingDatadogApi;
+my $api_instance = WebService::Fastly::LoggingDatadogApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_datadog**
-> DeleteAcl200Response delete_log_datadog(service_id => $service_id, version_id => $version_id, logging_datadog_name => $logging_datadog_name)
+> InlineResponse200 delete_log_datadog(service_id => $service_id, version_id => $version_id, logging_datadog_name => $logging_datadog_name)
 
 Delete a Datadog log endpoint
 
@@ -93,8 +93,8 @@ Delete the Datadog logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDatadogApi;
-my $api_instance = Fastly::LoggingDatadogApi->new(
+use WebService::Fastly::LoggingDatadogApi;
+my $api_instance = WebService::Fastly::LoggingDatadogApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ Get the details for a Datadog logging object for a particular service and versio
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDatadogApi;
-my $api_instance = Fastly::LoggingDatadogApi->new(
+use WebService::Fastly::LoggingDatadogApi;
+my $api_instance = WebService::Fastly::LoggingDatadogApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ List all of the Datadog logging objects for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDatadogApi;
-my $api_instance = Fastly::LoggingDatadogApi->new(
+use WebService::Fastly::LoggingDatadogApi;
+my $api_instance = WebService::Fastly::LoggingDatadogApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Update the Datadog logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDatadogApi;
-my $api_instance = Fastly::LoggingDatadogApi->new(
+use WebService::Fastly::LoggingDatadogApi;
+my $api_instance = WebService::Fastly::LoggingDatadogApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

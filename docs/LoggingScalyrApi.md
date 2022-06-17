@@ -1,8 +1,8 @@
-# Fastly::LoggingScalyrApi
+# WebService::Fastly::LoggingScalyrApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingScalyrApi;
+use WebService::Fastly::Object::LoggingScalyrApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Scalyr for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingScalyrApi;
-my $api_instance = Fastly::LoggingScalyrApi->new(
+use WebService::Fastly::LoggingScalyrApi;
+my $api_instance = WebService::Fastly::LoggingScalyrApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_scalyr**
-> DeleteAcl200Response delete_log_scalyr(service_id => $service_id, version_id => $version_id, logging_scalyr_name => $logging_scalyr_name)
+> InlineResponse200 delete_log_scalyr(service_id => $service_id, version_id => $version_id, logging_scalyr_name => $logging_scalyr_name)
 
 Delete the Scalyr log endpoint
 
@@ -95,8 +95,8 @@ Delete the Scalyr for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingScalyrApi;
-my $api_instance = Fastly::LoggingScalyrApi->new(
+use WebService::Fastly::LoggingScalyrApi;
+my $api_instance = WebService::Fastly::LoggingScalyrApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -150,8 +150,8 @@ Get the Scalyr for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingScalyrApi;
-my $api_instance = Fastly::LoggingScalyrApi->new(
+use WebService::Fastly::LoggingScalyrApi;
+my $api_instance = WebService::Fastly::LoggingScalyrApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -205,8 +205,8 @@ List all of the Scalyrs for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingScalyrApi;
-my $api_instance = Fastly::LoggingScalyrApi->new(
+use WebService::Fastly::LoggingScalyrApi;
+my $api_instance = WebService::Fastly::LoggingScalyrApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -258,8 +258,8 @@ Update the Scalyr for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingScalyrApi;
-my $api_instance = Fastly::LoggingScalyrApi->new(
+use WebService::Fastly::LoggingScalyrApi;
+my $api_instance = WebService::Fastly::LoggingScalyrApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

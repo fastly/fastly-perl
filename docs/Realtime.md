@@ -1,8 +1,8 @@
-# Fastly::Object::Realtime
+# WebService::Fastly::Object::Realtime
 
 ## Load the model package
 ```perl
-use Fastly::Object::Realtime;
+use WebService::Fastly::Object::Realtime;
 ```
 
 ## Properties

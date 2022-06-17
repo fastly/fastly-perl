@@ -1,8 +1,8 @@
-# Fastly::Object::WafActiveRuleCreationResponse
+# WebService::Fastly::Object::WafActiveRuleCreationResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafActiveRuleCreationResponse;
+use WebService::Fastly::Object::WafActiveRuleCreationResponse;
 ```
 
 ## Properties

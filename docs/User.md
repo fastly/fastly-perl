@@ -1,8 +1,8 @@
-# Fastly::Object::User
+# WebService::Fastly::Object::User
 
 ## Load the model package
 ```perl
-use Fastly::Object::User;
+use WebService::Fastly::Object::User;
 ```
 
 ## Properties

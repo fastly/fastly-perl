@@ -1,8 +1,8 @@
-# Fastly::SettingsApi
+# WebService::Fastly::SettingsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::SettingsApi;
+use WebService::Fastly::Object::SettingsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Get the settings for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SettingsApi;
-my $api_instance = Fastly::SettingsApi->new(
+use WebService::Fastly::SettingsApi;
+my $api_instance = WebService::Fastly::SettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipCommonName
+# WebService::Fastly::Object::RelationshipCommonName
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipCommonName;
+use WebService::Fastly::Object::RelationshipCommonName;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::ConditionResponse
+# WebService::Fastly::Object::ConditionResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::ConditionResponse;
+use WebService::Fastly::Object::ConditionResponse;
 ```
 
 ## Properties

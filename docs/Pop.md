@@ -1,8 +1,8 @@
-# Fastly::Object::Pop
+# WebService::Fastly::Object::Pop
 
 ## Load the model package
 ```perl
-use Fastly::Object::Pop;
+use WebService::Fastly::Object::Pop;
 ```
 
 ## Properties

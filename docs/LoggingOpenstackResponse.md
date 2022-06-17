@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingOpenstackResponse
+# WebService::Fastly::Object::LoggingOpenstackResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingOpenstackResponse;
+use WebService::Fastly::Object::LoggingOpenstackResponse;
 ```
 
 ## Properties
@@ -20,15 +20,15 @@ Name | Type | Description | Notes
 **compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
 **access_key** | **string** | Your OpenStack account access key. | [optional] 
 **bucket_name** | **string** | The name of your OpenStack container. | [optional] 
-**path** | **string** | The path to upload logs to. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] [default to &#39;null&#39;]
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **url** | **string** | Your OpenStack auth url. | [optional] 
 **user** | **string** | The username for your OpenStack account. | [optional] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

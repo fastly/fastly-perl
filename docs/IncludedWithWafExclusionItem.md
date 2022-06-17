@@ -1,8 +1,8 @@
-# Fastly::Object::IncludedWithWafExclusionItem
+# WebService::Fastly::Object::IncludedWithWafExclusionItem
 
 ## Load the model package
 ```perl
-use Fastly::Object::IncludedWithWafExclusionItem;
+use WebService::Fastly::Object::IncludedWithWafExclusionItem;
 ```
 
 ## Properties

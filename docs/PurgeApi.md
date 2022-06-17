@@ -1,8 +1,8 @@
-# Fastly::PurgeApi
+# WebService::Fastly::PurgeApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::PurgeApi;
+use WebService::Fastly::Object::PurgeApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Instant Purge a particular service of items tagged with surrogate keys. Up to 25
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PurgeApi;
-my $api_instance = Fastly::PurgeApi->new(
+use WebService::Fastly::PurgeApi;
+my $api_instance = WebService::Fastly::PurgeApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -37,7 +37,7 @@ my $api_instance = Fastly::PurgeApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $fastly_soft_purge = 1; # int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
 my $surrogate_key = key_1 key_2 key_3; # string | Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified.
-my $purge_response = Fastly::Object::PurgeResponse->new(); # PurgeResponse | 
+my $purge_response = WebService::Fastly::Object::PurgeResponse->new(); # PurgeResponse | 
 
 eval {
     my $result = $api_instance->bulk_purge_tag(service_id => $service_id, fastly_soft_purge => $fastly_soft_purge, surrogate_key => $surrogate_key, purge_response => $purge_response);
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **purge_all**
-> DeleteAcl200Response purge_all(service_id => $service_id)
+> InlineResponse200 purge_all(service_id => $service_id)
 
 Purge everything from a service
 
@@ -82,8 +82,8 @@ Instant Purge everything from a service.  Purge-all requests cannot be done in s
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PurgeApi;
-my $api_instance = Fastly::PurgeApi->new(
+use WebService::Fastly::PurgeApi;
+my $api_instance = WebService::Fastly::PurgeApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -133,8 +133,8 @@ Instant Purge an individual URL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PurgeApi;
-my $api_instance = Fastly::PurgeApi->new(
+use WebService::Fastly::PurgeApi;
+my $api_instance = WebService::Fastly::PurgeApi->new(
 
     # Configure HTTP basic authorization: url_purge
     username => 'YOUR_USERNAME',
@@ -186,8 +186,8 @@ Instant Purge a particular service of items tagged with a Surrogate Key. Only on
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PurgeApi;
-my $api_instance = Fastly::PurgeApi->new(
+use WebService::Fastly::PurgeApi;
+my $api_instance = WebService::Fastly::PurgeApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

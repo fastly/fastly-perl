@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingFormatVersion
+# WebService::Fastly::Object::LoggingFormatVersion
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingFormatVersion;
+use WebService::Fastly::Object::LoggingFormatVersion;
 ```
 
 ## Properties

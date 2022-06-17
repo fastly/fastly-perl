@@ -1,8 +1,8 @@
-# Fastly::Object::TlsDnsRecord
+# WebService::Fastly::Object::TlsDnsRecord
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsDnsRecord;
+use WebService::Fastly::Object::TlsDnsRecord;
 ```
 
 ## Properties

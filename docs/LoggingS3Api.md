@@ -1,8 +1,8 @@
-# Fastly::LoggingS3Api
+# WebService::Fastly::LoggingS3Api
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingS3Api;
+use WebService::Fastly::Object::LoggingS3Api;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a S3 for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingS3Api;
-my $api_instance = Fastly::LoggingS3Api->new(
+use WebService::Fastly::LoggingS3Api;
+my $api_instance = WebService::Fastly::LoggingS3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -52,12 +52,12 @@ my $acl = "acl_example"; # string | The access control list (ACL) specific reque
 my $bucket_name = "bucket_name_example"; # string | The bucket name for S3 account.
 my $domain = "domain_example"; # string | The domain of the Amazon S3 endpoint.
 my $iam_role = "iam_role_example"; # string | The Amazon Resource Name (ARN) for the IAM role granting Fastly access to S3. Not required if `access_key` and `secret_key` are provided.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-my $redundancy = "redundancy_example"; # string | The S3 redundancy level.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $redundancy = 'null'; # string | The S3 redundancy level.
 my $secret_key = "secret_key_example"; # string | The secret key for your S3 account. Not required if `iam_role` is provided.
-my $server_side_encryption_kms_key_id = "server_side_encryption_kms_key_id_example"; # string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
-my $server_side_encryption = "server_side_encryption_example"; # string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+my $server_side_encryption_kms_key_id = 'null'; # string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
+my $server_side_encryption = 'null'; # string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
 
 eval {
     my $result = $api_instance->create_log_aws_s3(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, message_type => $message_type, timestamp_format => $timestamp_format, period => $period, gzip_level => $gzip_level, compression_codec => $compression_codec, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption);
@@ -89,12 +89,12 @@ Name | Type | Description  | Notes
  **bucket_name** | **string**| The bucket name for S3 account. | [optional] 
  **domain** | **string**| The domain of the Amazon S3 endpoint. | [optional] 
  **iam_role** | **string**| The Amazon Resource Name (ARN) for the IAM role granting Fastly access to S3. Not required if `access_key` and `secret_key` are provided. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
- **redundancy** | **string**| The S3 redundancy level. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
+ **redundancy** | **string**| The S3 redundancy level. | [optional] [default to &#39;null&#39;]
  **secret_key** | **string**| The secret key for your S3 account. Not required if `iam_role` is provided. | [optional] 
- **server_side_encryption_kms_key_id** | **string**| Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] 
- **server_side_encryption** | **string**| Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] 
+ **server_side_encryption_kms_key_id** | **string**| Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] [default to &#39;null&#39;]
+ **server_side_encryption** | **string**| Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] [default to &#39;null&#39;]
 
 ### Return type
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_aws_s3**
-> DeleteAcl200Response delete_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name)
+> InlineResponse200 delete_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name)
 
 Delete an AWS S3 log endpoint
 
@@ -121,8 +121,8 @@ Delete the S3 for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingS3Api;
-my $api_instance = Fastly::LoggingS3Api->new(
+use WebService::Fastly::LoggingS3Api;
+my $api_instance = WebService::Fastly::LoggingS3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -176,8 +176,8 @@ Get the S3 for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingS3Api;
-my $api_instance = Fastly::LoggingS3Api->new(
+use WebService::Fastly::LoggingS3Api;
+my $api_instance = WebService::Fastly::LoggingS3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -231,8 +231,8 @@ List all of the S3s for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingS3Api;
-my $api_instance = Fastly::LoggingS3Api->new(
+use WebService::Fastly::LoggingS3Api;
+my $api_instance = WebService::Fastly::LoggingS3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -284,8 +284,8 @@ Update the S3 for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingS3Api;
-my $api_instance = Fastly::LoggingS3Api->new(
+use WebService::Fastly::LoggingS3Api;
+my $api_instance = WebService::Fastly::LoggingS3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -311,12 +311,12 @@ my $acl = "acl_example"; # string | The access control list (ACL) specific reque
 my $bucket_name = "bucket_name_example"; # string | The bucket name for S3 account.
 my $domain = "domain_example"; # string | The domain of the Amazon S3 endpoint.
 my $iam_role = "iam_role_example"; # string | The Amazon Resource Name (ARN) for the IAM role granting Fastly access to S3. Not required if `access_key` and `secret_key` are provided.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-my $redundancy = "redundancy_example"; # string | The S3 redundancy level.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $redundancy = 'null'; # string | The S3 redundancy level.
 my $secret_key = "secret_key_example"; # string | The secret key for your S3 account. Not required if `iam_role` is provided.
-my $server_side_encryption_kms_key_id = "server_side_encryption_kms_key_id_example"; # string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
-my $server_side_encryption = "server_side_encryption_example"; # string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+my $server_side_encryption_kms_key_id = 'null'; # string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
+my $server_side_encryption = 'null'; # string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
 
 eval {
     my $result = $api_instance->update_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, message_type => $message_type, timestamp_format => $timestamp_format, period => $period, gzip_level => $gzip_level, compression_codec => $compression_codec, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption);
@@ -349,12 +349,12 @@ Name | Type | Description  | Notes
  **bucket_name** | **string**| The bucket name for S3 account. | [optional] 
  **domain** | **string**| The domain of the Amazon S3 endpoint. | [optional] 
  **iam_role** | **string**| The Amazon Resource Name (ARN) for the IAM role granting Fastly access to S3. Not required if `access_key` and `secret_key` are provided. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
- **redundancy** | **string**| The S3 redundancy level. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
+ **redundancy** | **string**| The S3 redundancy level. | [optional] [default to &#39;null&#39;]
  **secret_key** | **string**| The secret key for your S3 account. Not required if `iam_role` is provided. | [optional] 
- **server_side_encryption_kms_key_id** | **string**| Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] 
- **server_side_encryption** | **string**| Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] 
+ **server_side_encryption_kms_key_id** | **string**| Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] [default to &#39;null&#39;]
+ **server_side_encryption** | **string**| Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] [default to &#39;null&#39;]
 
 ### Return type
 

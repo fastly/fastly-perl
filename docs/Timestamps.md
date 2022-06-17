@@ -1,8 +1,8 @@
-# Fastly::Object::Timestamps
+# WebService::Fastly::Object::Timestamps
 
 ## Load the model package
 ```perl
-use Fastly::Object::Timestamps;
+use WebService::Fastly::Object::Timestamps;
 ```
 
 ## Properties

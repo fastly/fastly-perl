@@ -1,8 +1,8 @@
-# Fastly::Object::TypeResource
+# WebService::Fastly::Object::TypeResource
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeResource;
+use WebService::Fastly::Object::TypeResource;
 ```
 
 ## Properties

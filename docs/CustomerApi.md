@@ -1,8 +1,8 @@
-# Fastly::CustomerApi
+# WebService::Fastly::CustomerApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::CustomerApi;
+use WebService::Fastly::Object::CustomerApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **delete_customer**
-> DeleteAcl200Response delete_customer(customer_id => $customer_id)
+> InlineResponse200 delete_customer(customer_id => $customer_id)
 
 Delete a customer
 
@@ -26,8 +26,8 @@ Delete a customer.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CustomerApi;
-my $api_instance = Fastly::CustomerApi->new(
+use WebService::Fastly::CustomerApi;
+my $api_instance = WebService::Fastly::CustomerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -77,8 +77,8 @@ Get a specific customer.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CustomerApi;
-my $api_instance = Fastly::CustomerApi->new(
+use WebService::Fastly::CustomerApi;
+my $api_instance = WebService::Fastly::CustomerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -128,8 +128,8 @@ Get the logged in customer.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CustomerApi;
-my $api_instance = Fastly::CustomerApi->new(
+use WebService::Fastly::CustomerApi;
+my $api_instance = WebService::Fastly::CustomerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -175,8 +175,8 @@ List all users from a specified customer id.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CustomerApi;
-my $api_instance = Fastly::CustomerApi->new(
+use WebService::Fastly::CustomerApi;
+my $api_instance = WebService::Fastly::CustomerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -226,8 +226,8 @@ Update a customer.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CustomerApi;
-my $api_instance = Fastly::CustomerApi->new(
+use WebService::Fastly::CustomerApi;
+my $api_instance = WebService::Fastly::CustomerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

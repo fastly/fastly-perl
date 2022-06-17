@@ -1,8 +1,8 @@
-# Fastly::Object::BillingAddressRequest
+# WebService::Fastly::Object::BillingAddressRequest
 
 ## Load the model package
 ```perl
-use Fastly::Object::BillingAddressRequest;
+use WebService::Fastly::Object::BillingAddressRequest;
 ```
 
 ## Properties

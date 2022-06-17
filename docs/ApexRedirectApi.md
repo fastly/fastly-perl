@@ -1,8 +1,8 @@
-# Fastly::ApexRedirectApi
+# WebService::Fastly::ApexRedirectApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ApexRedirectApi;
+use WebService::Fastly::Object::ApexRedirectApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **delete_apex_redirect**
-> DeleteAcl200Response delete_apex_redirect(apex_redirect_id => $apex_redirect_id)
+> InlineResponse200 delete_apex_redirect(apex_redirect_id => $apex_redirect_id)
 
 Delete an apex redirect
 
@@ -25,8 +25,8 @@ Delete an apex redirect by its ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ApexRedirectApi;
-my $api_instance = Fastly::ApexRedirectApi->new(
+use WebService::Fastly::ApexRedirectApi;
+my $api_instance = WebService::Fastly::ApexRedirectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -76,8 +76,8 @@ Get an apex redirect by its ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ApexRedirectApi;
-my $api_instance = Fastly::ApexRedirectApi->new(
+use WebService::Fastly::ApexRedirectApi;
+my $api_instance = WebService::Fastly::ApexRedirectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -127,8 +127,8 @@ List all apex redirects for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ApexRedirectApi;
-my $api_instance = Fastly::ApexRedirectApi->new(
+use WebService::Fastly::ApexRedirectApi;
+my $api_instance = WebService::Fastly::ApexRedirectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -180,8 +180,8 @@ Update an apex redirect by its ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ApexRedirectApi;
-my $api_instance = Fastly::ApexRedirectApi->new(
+use WebService::Fastly::ApexRedirectApi;
+my $api_instance = WebService::Fastly::ApexRedirectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -190,8 +190,8 @@ my $api_instance = Fastly::ApexRedirectApi->new(
 );
 
 my $apex_redirect_id = 6QI9o6ZZrSP3y9gI0OhMwZ; # string | 
-my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
-my $version = 56; # int | Integer identifying a service version.
+my $service_id = null; # string | 
+my $version = null; # int | 
 my $created_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
 my $deleted_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
 my $updated_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
@@ -213,8 +213,8 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **apex_redirect_id** | **string**|  | 
- **service_id** | **string**| Alphanumeric string identifying the service. | [optional] 
- **version** | **int**| Integer identifying a service version. | [optional] 
+ **service_id** | [**string**](string.md)|  | [optional] 
+ **version** | [**int**](int.md)|  | [optional] 
  **created_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
  **deleted_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
  **updated_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 

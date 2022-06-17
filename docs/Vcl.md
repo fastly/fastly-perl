@@ -1,8 +1,8 @@
-# Fastly::Object::Vcl
+# WebService::Fastly::Object::Vcl
 
 ## Load the model package
 ```perl
-use Fastly::Object::Vcl;
+use WebService::Fastly::Object::Vcl;
 ```
 
 ## Properties

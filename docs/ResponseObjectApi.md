@@ -1,8 +1,8 @@
-# Fastly::ResponseObjectApi
+# WebService::Fastly::ResponseObjectApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ResponseObjectApi;
+use WebService::Fastly::Object::ResponseObjectApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **delete_response_object**
-> DeleteAcl200Response delete_response_object(service_id => $service_id, version_id => $version_id, response_object_name => $response_object_name)
+> InlineResponse200 delete_response_object(service_id => $service_id, version_id => $version_id, response_object_name => $response_object_name)
 
 Delete a Response Object
 
@@ -24,8 +24,8 @@ Deletes the specified Response Object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResponseObjectApi;
-my $api_instance = Fastly::ResponseObjectApi->new(
+use WebService::Fastly::ResponseObjectApi;
+my $api_instance = WebService::Fastly::ResponseObjectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -79,8 +79,8 @@ Gets the specified Response Object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResponseObjectApi;
-my $api_instance = Fastly::ResponseObjectApi->new(
+use WebService::Fastly::ResponseObjectApi;
+my $api_instance = WebService::Fastly::ResponseObjectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -134,8 +134,8 @@ Returns all Response Objects for the specified service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResponseObjectApi;
-my $api_instance = Fastly::ResponseObjectApi->new(
+use WebService::Fastly::ResponseObjectApi;
+my $api_instance = WebService::Fastly::ResponseObjectApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

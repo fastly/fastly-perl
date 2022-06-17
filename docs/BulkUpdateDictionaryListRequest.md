@@ -1,8 +1,8 @@
-# Fastly::Object::BulkUpdateDictionaryListRequest
+# WebService::Fastly::Object::BulkUpdateDictionaryListRequest
 
 ## Load the model package
 ```perl
-use Fastly::Object::BulkUpdateDictionaryListRequest;
+use WebService::Fastly::Object::BulkUpdateDictionaryListRequest;
 ```
 
 ## Properties

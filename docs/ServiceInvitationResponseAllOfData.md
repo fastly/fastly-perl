@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceInvitationResponseAllOfData
+# WebService::Fastly::Object::ServiceInvitationResponseAllOfData
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceInvitationResponseAllOfData;
+use WebService::Fastly::Object::ServiceInvitationResponseAllOfData;
 ```
 
 ## Properties

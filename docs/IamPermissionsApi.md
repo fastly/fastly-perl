@@ -1,8 +1,8 @@
-# Fastly::IamPermissionsApi
+# WebService::Fastly::IamPermissionsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::IamPermissionsApi;
+use WebService::Fastly::Object::IamPermissionsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ List all permissions.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamPermissionsApi;
-my $api_instance = Fastly::IamPermissionsApi->new(
+use WebService::Fastly::IamPermissionsApi;
+my $api_instance = WebService::Fastly::IamPermissionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

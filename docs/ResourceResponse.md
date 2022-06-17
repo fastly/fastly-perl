@@ -1,8 +1,8 @@
-# Fastly::Object::ResourceResponse
+# WebService::Fastly::Object::ResourceResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::ResourceResponse;
+use WebService::Fastly::Object::ResourceResponse;
 ```
 
 ## Properties

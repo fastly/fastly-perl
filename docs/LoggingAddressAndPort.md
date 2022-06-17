@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingAddressAndPort
+# WebService::Fastly::Object::LoggingAddressAndPort
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingAddressAndPort;
+use WebService::Fastly::Object::LoggingAddressAndPort;
 ```
 
 ## Properties

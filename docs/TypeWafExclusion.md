@@ -1,8 +1,8 @@
-# Fastly::Object::TypeWafExclusion
+# WebService::Fastly::Object::TypeWafExclusion
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeWafExclusion;
+use WebService::Fastly::Object::TypeWafExclusion;
 ```
 
 ## Properties

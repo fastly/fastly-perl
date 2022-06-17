@@ -1,8 +1,8 @@
-# Fastly::Object::BulkWafActiveRules
+# WebService::Fastly::Object::BulkWafActiveRules
 
 ## Load the model package
 ```perl
-use Fastly::Object::BulkWafActiveRules;
+use WebService::Fastly::Object::BulkWafActiveRules;
 ```
 
 ## Properties

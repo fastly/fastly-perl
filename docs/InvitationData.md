@@ -1,8 +1,8 @@
-# Fastly::Object::InvitationData
+# WebService::Fastly::Object::InvitationData
 
 ## Load the model package
 ```perl
-use Fastly::Object::InvitationData;
+use WebService::Fastly::Object::InvitationData;
 ```
 
 ## Properties

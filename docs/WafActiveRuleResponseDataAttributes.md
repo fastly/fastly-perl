@@ -1,8 +1,8 @@
-# Fastly::Object::WafActiveRuleResponseDataAttributes
+# WebService::Fastly::Object::WafActiveRuleResponseDataAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafActiveRuleResponseDataAttributes;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAttributes;
 ```
 
 ## Properties

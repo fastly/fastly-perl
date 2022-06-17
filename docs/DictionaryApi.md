@@ -1,8 +1,8 @@
-# Fastly::DictionaryApi
+# WebService::Fastly::DictionaryApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DictionaryApi;
+use WebService::Fastly::Object::DictionaryApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create named dictionary for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryApi;
-my $api_instance = Fastly::DictionaryApi->new(
+use WebService::Fastly::DictionaryApi;
+my $api_instance = WebService::Fastly::DictionaryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dictionary**
-> DeleteAcl200Response delete_dictionary(service_id => $service_id, version_id => $version_id, dictionary_name => $dictionary_name)
+> InlineResponse200 delete_dictionary(service_id => $service_id, version_id => $version_id, dictionary_name => $dictionary_name)
 
 Delete an edge dictionary
 
@@ -83,8 +83,8 @@ Delete named dictionary for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryApi;
-my $api_instance = Fastly::DictionaryApi->new(
+use WebService::Fastly::DictionaryApi;
+my $api_instance = WebService::Fastly::DictionaryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -138,8 +138,8 @@ Retrieve a single dictionary by name for the version and service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryApi;
-my $api_instance = Fastly::DictionaryApi->new(
+use WebService::Fastly::DictionaryApi;
+my $api_instance = WebService::Fastly::DictionaryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -193,8 +193,8 @@ List all dictionaries for the version of the service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryApi;
-my $api_instance = Fastly::DictionaryApi->new(
+use WebService::Fastly::DictionaryApi;
+my $api_instance = WebService::Fastly::DictionaryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -246,8 +246,8 @@ Update named dictionary for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryApi;
-my $api_instance = Fastly::DictionaryApi->new(
+use WebService::Fastly::DictionaryApi;
+my $api_instance = WebService::Fastly::DictionaryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

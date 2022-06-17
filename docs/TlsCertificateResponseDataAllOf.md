@@ -1,8 +1,8 @@
-# Fastly::Object::TlsCertificateResponseDataAllOf
+# WebService::Fastly::Object::TlsCertificateResponseDataAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsCertificateResponseDataAllOf;
+use WebService::Fastly::Object::TlsCertificateResponseDataAllOf;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::LoggingSftpApi
+# WebService::Fastly::LoggingSftpApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingSftpApi;
+use WebService::Fastly::Object::LoggingSftpApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a SFTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSftpApi;
-my $api_instance = Fastly::LoggingSftpApi->new(
+use WebService::Fastly::LoggingSftpApi;
+my $api_instance = WebService::Fastly::LoggingSftpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -48,11 +48,11 @@ my $period = 3600; # int | How frequently log files are finalized so they can be
 my $gzip_level = 0; # int | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $address = "address_example"; # string | A hostname or IPv4 address.
-my $port = new Fastly.AnyType(); # AnyType | The port number.
+my $port = new WebService::Fastly.AnyType(); # AnyType | The port number.
 my $password = "password_example"; # string | The password for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-my $secret_key = "secret_key_example"; # string | The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $secret_key = 'null'; # string | The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
 my $ssh_known_hosts = "ssh_known_hosts_example"; # string | A list of host keys for all hosts we can connect to over SFTP.
 my $user = "user_example"; # string | The username for the server.
 
@@ -84,9 +84,9 @@ Name | Type | Description  | Notes
  **address** | **string**| A hostname or IPv4 address. | [optional] 
  **port** | [**AnyType**](AnyType.md)| The port number. | [optional] 
  **password** | **string**| The password for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
- **secret_key** | **string**| The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
+ **secret_key** | **string**| The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] [default to &#39;null&#39;]
  **ssh_known_hosts** | **string**| A list of host keys for all hosts we can connect to over SFTP. | [optional] 
  **user** | **string**| The username for the server. | [optional] 
 
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_sftp**
-> DeleteAcl200Response delete_log_sftp(service_id => $service_id, version_id => $version_id, logging_sftp_name => $logging_sftp_name)
+> InlineResponse200 delete_log_sftp(service_id => $service_id, version_id => $version_id, logging_sftp_name => $logging_sftp_name)
 
 Delete an SFTP log endpoint
 
@@ -115,8 +115,8 @@ Delete the SFTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSftpApi;
-my $api_instance = Fastly::LoggingSftpApi->new(
+use WebService::Fastly::LoggingSftpApi;
+my $api_instance = WebService::Fastly::LoggingSftpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -170,8 +170,8 @@ Get the SFTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSftpApi;
-my $api_instance = Fastly::LoggingSftpApi->new(
+use WebService::Fastly::LoggingSftpApi;
+my $api_instance = WebService::Fastly::LoggingSftpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -225,8 +225,8 @@ List all of the SFTPs for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSftpApi;
-my $api_instance = Fastly::LoggingSftpApi->new(
+use WebService::Fastly::LoggingSftpApi;
+my $api_instance = WebService::Fastly::LoggingSftpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -278,8 +278,8 @@ Update the SFTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSftpApi;
-my $api_instance = Fastly::LoggingSftpApi->new(
+use WebService::Fastly::LoggingSftpApi;
+my $api_instance = WebService::Fastly::LoggingSftpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -301,11 +301,11 @@ my $period = 3600; # int | How frequently log files are finalized so they can be
 my $gzip_level = 0; # int | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $address = "address_example"; # string | A hostname or IPv4 address.
-my $port = new Fastly.AnyType(); # AnyType | The port number.
+my $port = new WebService::Fastly.AnyType(); # AnyType | The port number.
 my $password = "password_example"; # string | The password for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-my $secret_key = "secret_key_example"; # string | The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $secret_key = 'null'; # string | The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference.
 my $ssh_known_hosts = "ssh_known_hosts_example"; # string | A list of host keys for all hosts we can connect to over SFTP.
 my $user = "user_example"; # string | The username for the server.
 
@@ -338,9 +338,9 @@ Name | Type | Description  | Notes
  **address** | **string**| A hostname or IPv4 address. | [optional] 
  **port** | [**AnyType**](AnyType.md)| The port number. | [optional] 
  **password** | **string**| The password for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
- **secret_key** | **string**| The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
+ **secret_key** | **string**| The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] [default to &#39;null&#39;]
  **ssh_known_hosts** | **string**| A list of host keys for all hosts we can connect to over SFTP. | [optional] 
  **user** | **string**| The username for the server. | [optional] 
 

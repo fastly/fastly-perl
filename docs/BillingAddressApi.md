@@ -1,8 +1,8 @@
-# Fastly::BillingAddressApi
+# WebService::Fastly::BillingAddressApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::BillingAddressApi;
+use WebService::Fastly::Object::BillingAddressApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Add a billing address to a customer.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingAddressApi;
-my $api_instance = Fastly::BillingAddressApi->new(
+use WebService::Fastly::BillingAddressApi;
+my $api_instance = WebService::Fastly::BillingAddressApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -35,7 +35,7 @@ my $api_instance = Fastly::BillingAddressApi->new(
 );
 
 my $customer_id = "customer_id_example"; # string | Alphanumeric string identifying the customer.
-my $billing_address_request = Fastly::Object::BillingAddressRequest->new(); # BillingAddressRequest | Billing address
+my $billing_address_request = WebService::Fastly::Object::BillingAddressRequest->new(); # BillingAddressRequest | Billing address
 
 eval {
     my $result = $api_instance->add_billing_addr(customer_id => $customer_id, billing_address_request => $billing_address_request);
@@ -78,8 +78,8 @@ Delete a customer's billing address.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingAddressApi;
-my $api_instance = Fastly::BillingAddressApi->new(
+use WebService::Fastly::BillingAddressApi;
+my $api_instance = WebService::Fastly::BillingAddressApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -128,8 +128,8 @@ Get a customer's billing address.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingAddressApi;
-my $api_instance = Fastly::BillingAddressApi->new(
+use WebService::Fastly::BillingAddressApi;
+my $api_instance = WebService::Fastly::BillingAddressApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -179,8 +179,8 @@ Update a customer's billing address. You may update only part of the customer's 
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingAddressApi;
-my $api_instance = Fastly::BillingAddressApi->new(
+use WebService::Fastly::BillingAddressApi;
+my $api_instance = WebService::Fastly::BillingAddressApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -189,7 +189,7 @@ my $api_instance = Fastly::BillingAddressApi->new(
 );
 
 my $customer_id = "customer_id_example"; # string | Alphanumeric string identifying the customer.
-my $update_billing_address_request = Fastly::Object::UpdateBillingAddressRequest->new(); # UpdateBillingAddressRequest | One or more billing address attributes
+my $update_billing_address_request = WebService::Fastly::Object::UpdateBillingAddressRequest->new(); # UpdateBillingAddressRequest | One or more billing address attributes
 
 eval {
     my $result = $api_instance->update_billing_addr(customer_id => $customer_id, update_billing_address_request => $update_billing_address_request);

@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingGooglePubsub
+# WebService::Fastly::Object::LoggingGooglePubsub
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingGooglePubsub;
+use WebService::Fastly::Object::LoggingGooglePubsub;
 ```
 
 ## Properties

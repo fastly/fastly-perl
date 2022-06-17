@@ -1,8 +1,8 @@
-# Fastly::StarApi
+# WebService::Fastly::StarApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::StarApi;
+use WebService::Fastly::Object::StarApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Create star.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::StarApi;
-my $api_instance = Fastly::StarApi->new(
+use WebService::Fastly::StarApi;
+my $api_instance = WebService::Fastly::StarApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -34,7 +34,7 @@ my $api_instance = Fastly::StarApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $star = Fastly::Object::Star->new(); # Star | 
+my $star = WebService::Fastly::Object::Star->new(); # Star | 
 
 eval {
     my $result = $api_instance->create_service_star(star => $star);
@@ -76,8 +76,8 @@ Delete star.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::StarApi;
-my $api_instance = Fastly::StarApi->new(
+use WebService::Fastly::StarApi;
+my $api_instance = WebService::Fastly::StarApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -126,8 +126,8 @@ Show star.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::StarApi;
-my $api_instance = Fastly::StarApi->new(
+use WebService::Fastly::StarApi;
+my $api_instance = WebService::Fastly::StarApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_service_stars**
-> ListServiceStars200Response list_service_stars()
+> Pagination list_service_stars()
 
 List stars
 
@@ -177,8 +177,8 @@ List stars.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::StarApi;
-my $api_instance = Fastly::StarApi->new(
+use WebService::Fastly::StarApi;
+my $api_instance = WebService::Fastly::StarApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -201,7 +201,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ListServiceStars200Response**](ListServiceStars200Response.md)
+[**Pagination**](Pagination.md)
 
 ### Authorization
 

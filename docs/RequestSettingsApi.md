@@ -1,8 +1,8 @@
-# Fastly::RequestSettingsApi
+# WebService::Fastly::RequestSettingsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::RequestSettingsApi;
+use WebService::Fastly::Object::RequestSettingsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **delete_request_settings**
-> DeleteAcl200Response delete_request_settings(service_id => $service_id, version_id => $version_id, request_settings_name => $request_settings_name)
+> InlineResponse200 delete_request_settings(service_id => $service_id, version_id => $version_id, request_settings_name => $request_settings_name)
 
 Delete a Request Settings object
 
@@ -25,8 +25,8 @@ Removes the specified Request Settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RequestSettingsApi;
-my $api_instance = Fastly::RequestSettingsApi->new(
+use WebService::Fastly::RequestSettingsApi;
+my $api_instance = WebService::Fastly::RequestSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -80,8 +80,8 @@ Gets the specified Request Settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RequestSettingsApi;
-my $api_instance = Fastly::RequestSettingsApi->new(
+use WebService::Fastly::RequestSettingsApi;
+my $api_instance = WebService::Fastly::RequestSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -135,8 +135,8 @@ Returns a list of all Request Settings objects for the given service and version
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RequestSettingsApi;
-my $api_instance = Fastly::RequestSettingsApi->new(
+use WebService::Fastly::RequestSettingsApi;
+my $api_instance = WebService::Fastly::RequestSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -188,8 +188,8 @@ Updates the specified Request Settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RequestSettingsApi;
-my $api_instance = Fastly::RequestSettingsApi->new(
+use WebService::Fastly::RequestSettingsApi;
+my $api_instance = WebService::Fastly::RequestSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

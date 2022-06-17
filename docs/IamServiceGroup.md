@@ -1,8 +1,8 @@
-# Fastly::Object::IamServiceGroup
+# WebService::Fastly::Object::IamServiceGroup
 
 ## Load the model package
 ```perl
-use Fastly::Object::IamServiceGroup;
+use WebService::Fastly::Object::IamServiceGroup;
 ```
 
 ## Properties

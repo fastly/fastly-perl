@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingDatadog
+# WebService::Fastly::Object::LoggingDatadog
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingDatadog;
+use WebService::Fastly::Object::LoggingDatadog;
 ```
 
 ## Properties

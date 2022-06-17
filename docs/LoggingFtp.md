@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingFtp
+# WebService::Fastly::Object::LoggingFtp
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingFtp;
+use WebService::Fastly::Object::LoggingFtp;
 ```
 
 ## Properties
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **password** | **string** | The password for the server. For anonymous use an email address. | [optional] 
 **path** | **string** | The path to upload log files to. If the path ends in `/` then it is treated as a directory. | [optional] 
 **port** | **int** | The port number. | [optional] [default to 21]
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **user** | **string** | The username for the server. Can be anonymous. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

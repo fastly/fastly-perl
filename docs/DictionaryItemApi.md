@@ -1,8 +1,8 @@
-# Fastly::DictionaryItemApi
+# WebService::Fastly::DictionaryItemApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DictionaryItemApi;
+use WebService::Fastly::Object::DictionaryItemApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -27,8 +27,8 @@ Create DictionaryItem given service, dictionary ID, item key, and item value.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryItemApi;
-my $api_instance = Fastly::DictionaryItemApi->new(
+use WebService::Fastly::DictionaryItemApi;
+my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_dictionary_item**
-> DeleteAcl200Response delete_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key)
+> InlineResponse200 delete_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key)
 
 Delete an item from an edge dictionary
 
@@ -84,8 +84,8 @@ Delete DictionaryItem given service, dictionary ID, and item key.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryItemApi;
-my $api_instance = Fastly::DictionaryItemApi->new(
+use WebService::Fastly::DictionaryItemApi;
+my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -139,8 +139,8 @@ Retrieve a single DictionaryItem given service, dictionary ID and item key.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryItemApi;
-my $api_instance = Fastly::DictionaryItemApi->new(
+use WebService::Fastly::DictionaryItemApi;
+my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -194,8 +194,8 @@ List of DictionaryItems given service and dictionary ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryItemApi;
-my $api_instance = Fastly::DictionaryItemApi->new(
+use WebService::Fastly::DictionaryItemApi;
+my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -255,8 +255,8 @@ Update DictionaryItem given service, dictionary ID, item key, and item value.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryItemApi;
-my $api_instance = Fastly::DictionaryItemApi->new(
+use WebService::Fastly::DictionaryItemApi;
+my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -314,8 +314,8 @@ Upsert DictionaryItem given service, dictionary ID, item key, and item value.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryItemApi;
-my $api_instance = Fastly::DictionaryItemApi->new(
+use WebService::Fastly::DictionaryItemApi;
+my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

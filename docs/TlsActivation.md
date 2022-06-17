@@ -1,8 +1,8 @@
-# Fastly::Object::TlsActivation
+# WebService::Fastly::Object::TlsActivation
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsActivation;
+use WebService::Fastly::Object::TlsActivation;
 ```
 
 ## Properties

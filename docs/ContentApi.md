@@ -1,8 +1,8 @@
-# Fastly::ContentApi
+# WebService::Fastly::ContentApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ContentApi;
+use WebService::Fastly::Object::ContentApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Retrieve headers and MD5 hash of the content for a particular URL from each Fast
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ContentApi;
-my $api_instance = Fastly::ContentApi->new(
+use WebService::Fastly::ContentApi;
+my $api_instance = WebService::Fastly::ContentApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

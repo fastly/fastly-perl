@@ -1,8 +1,8 @@
-# Fastly::Object::Healthcheck
+# WebService::Fastly::Object::Healthcheck
 
 ## Load the model package
 ```perl
-use Fastly::Object::Healthcheck;
+use WebService::Fastly::Object::Healthcheck;
 ```
 
 ## Properties

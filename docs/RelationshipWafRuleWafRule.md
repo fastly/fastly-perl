@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipWafRuleWafRule
+# WebService::Fastly::Object::RelationshipWafRuleWafRule
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipWafRuleWafRule;
+use WebService::Fastly::Object::RelationshipWafRuleWafRule;
 ```
 
 ## Properties

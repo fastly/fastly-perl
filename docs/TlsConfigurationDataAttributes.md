@@ -1,8 +1,8 @@
-# Fastly::Object::TlsConfigurationDataAttributes
+# WebService::Fastly::Object::TlsConfigurationDataAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsConfigurationDataAttributes;
+use WebService::Fastly::Object::TlsConfigurationDataAttributes;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::HistoricalMeta
+# WebService::Fastly::Object::HistoricalMeta
 
 ## Load the model package
 ```perl
-use Fastly::Object::HistoricalMeta;
+use WebService::Fastly::Object::HistoricalMeta;
 ```
 
 ## Properties

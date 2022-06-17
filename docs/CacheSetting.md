@@ -1,8 +1,8 @@
-# Fastly::Object::CacheSetting
+# WebService::Fastly::Object::CacheSetting
 
 ## Load the model package
 ```perl
-use Fastly::Object::CacheSetting;
+use WebService::Fastly::Object::CacheSetting;
 ```
 
 ## Properties

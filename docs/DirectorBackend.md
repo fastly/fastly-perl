@@ -1,8 +1,8 @@
-# Fastly::Object::DirectorBackend
+# WebService::Fastly::Object::DirectorBackend
 
 ## Load the model package
 ```perl
-use Fastly::Object::DirectorBackend;
+use WebService::Fastly::Object::DirectorBackend;
 ```
 
 ## Properties
@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **backend_name** | **string** | The name of the backend. | [optional] 
 **director** | **string** | Name for the Director. | [optional] 
 

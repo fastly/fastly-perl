@@ -1,8 +1,8 @@
-# Fastly::Object::ApexRedirectAllOf
+# WebService::Fastly::Object::ApexRedirectAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::ApexRedirectAllOf;
+use WebService::Fastly::Object::ApexRedirectAllOf;
 ```
 
 ## Properties

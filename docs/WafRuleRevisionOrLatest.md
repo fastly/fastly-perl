@@ -1,8 +1,8 @@
-# Fastly::Object::WafRuleRevisionOrLatest
+# WebService::Fastly::Object::WafRuleRevisionOrLatest
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafRuleRevisionOrLatest;
+use WebService::Fastly::Object::WafRuleRevisionOrLatest;
 ```
 
 ## Properties

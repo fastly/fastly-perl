@@ -1,8 +1,8 @@
-# Fastly::AclApi
+# WebService::Fastly::AclApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::AclApi;
+use WebService::Fastly::Object::AclApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a new ACL attached to the specified service version. A new, empty ACL mus
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclApi;
-my $api_instance = Fastly::AclApi->new(
+use WebService::Fastly::AclApi;
+my $api_instance = WebService::Fastly::AclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_acl**
-> DeleteAcl200Response delete_acl(service_id => $service_id, version_id => $version_id, acl_name => $acl_name)
+> InlineResponse200 delete_acl(service_id => $service_id, version_id => $version_id, acl_name => $acl_name)
 
 Delete an ACL
 
@@ -81,8 +81,8 @@ Delete an ACL from the specified service version. To remove an ACL from use, the
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclApi;
-my $api_instance = Fastly::AclApi->new(
+use WebService::Fastly::AclApi;
+my $api_instance = WebService::Fastly::AclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -136,8 +136,8 @@ Retrieve a single ACL by name for the version and service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclApi;
-my $api_instance = Fastly::AclApi->new(
+use WebService::Fastly::AclApi;
+my $api_instance = WebService::Fastly::AclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -191,8 +191,8 @@ List ACLs.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclApi;
-my $api_instance = Fastly::AclApi->new(
+use WebService::Fastly::AclApi;
+my $api_instance = WebService::Fastly::AclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -244,8 +244,8 @@ Update an ACL for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclApi;
-my $api_instance = Fastly::AclApi->new(
+use WebService::Fastly::AclApi;
+my $api_instance = WebService::Fastly::AclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

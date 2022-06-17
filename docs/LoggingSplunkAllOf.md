@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingSplunkAllOf
+# WebService::Fastly::Object::LoggingSplunkAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingSplunkAllOf;
+use WebService::Fastly::Object::LoggingSplunkAllOf;
 ```
 
 ## Properties

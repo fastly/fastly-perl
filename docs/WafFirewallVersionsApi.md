@@ -1,8 +1,8 @@
-# Fastly::WafFirewallVersionsApi
+# WebService::Fastly::WafFirewallVersionsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::WafFirewallVersionsApi;
+use WebService::Fastly::Object::WafFirewallVersionsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -27,8 +27,8 @@ Clone a specific, existing firewall version into a new, draft firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafFirewallVersionsApi;
-my $api_instance = Fastly::WafFirewallVersionsApi->new(
+use WebService::Fastly::WafFirewallVersionsApi;
+my $api_instance = WebService::Fastly::WafFirewallVersionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -80,8 +80,8 @@ Create a new, draft firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafFirewallVersionsApi;
-my $api_instance = Fastly::WafFirewallVersionsApi->new(
+use WebService::Fastly::WafFirewallVersionsApi;
+my $api_instance = WebService::Fastly::WafFirewallVersionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -90,7 +90,7 @@ my $api_instance = Fastly::WafFirewallVersionsApi->new(
 );
 
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
-my $waf_firewall_version = Fastly::Object::WafFirewallVersion->new(); # WafFirewallVersion | 
+my $waf_firewall_version = WebService::Fastly::Object::WafFirewallVersion->new(); # WafFirewallVersion | 
 
 eval {
     my $result = $api_instance->create_waf_firewall_version(firewall_id => $firewall_id, waf_firewall_version => $waf_firewall_version);
@@ -133,8 +133,8 @@ Deploy or activate a specific firewall version. If a firewall has been disabled,
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafFirewallVersionsApi;
-my $api_instance = Fastly::WafFirewallVersionsApi->new(
+use WebService::Fastly::WafFirewallVersionsApi;
+my $api_instance = WebService::Fastly::WafFirewallVersionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -186,8 +186,8 @@ Get details about a specific firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafFirewallVersionsApi;
-my $api_instance = Fastly::WafFirewallVersionsApi->new(
+use WebService::Fastly::WafFirewallVersionsApi;
+my $api_instance = WebService::Fastly::WafFirewallVersionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -241,8 +241,8 @@ Get a list of firewall versions associated with a specific firewall.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafFirewallVersionsApi;
-my $api_instance = Fastly::WafFirewallVersionsApi->new(
+use WebService::Fastly::WafFirewallVersionsApi;
+my $api_instance = WebService::Fastly::WafFirewallVersionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -298,8 +298,8 @@ Update a specific firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafFirewallVersionsApi;
-my $api_instance = Fastly::WafFirewallVersionsApi->new(
+use WebService::Fastly::WafFirewallVersionsApi;
+my $api_instance = WebService::Fastly::WafFirewallVersionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -309,7 +309,7 @@ my $api_instance = Fastly::WafFirewallVersionsApi->new(
 
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $firewall_version_number = 56; # int | Integer identifying a WAF firewall version.
-my $waf_firewall_version = Fastly::Object::WafFirewallVersion->new(); # WafFirewallVersion | 
+my $waf_firewall_version = WebService::Fastly::Object::WafFirewallVersion->new(); # WafFirewallVersion | 
 
 eval {
     my $result = $api_instance->update_waf_firewall_version(firewall_id => $firewall_id, firewall_version_number => $firewall_version_number, waf_firewall_version => $waf_firewall_version);

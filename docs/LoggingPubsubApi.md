@@ -1,8 +1,8 @@
-# Fastly::LoggingPubsubApi
+# WebService::Fastly::LoggingPubsubApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingPubsubApi;
+use WebService::Fastly::Object::LoggingPubsubApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Pub/Sub logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingPubsubApi;
-my $api_instance = Fastly::LoggingPubsubApi->new(
+use WebService::Fastly::LoggingPubsubApi;
+my $api_instance = WebService::Fastly::LoggingPubsubApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_gcp_pubsub**
-> DeleteAcl200Response delete_log_gcp_pubsub(service_id => $service_id, version_id => $version_id, logging_google_pubsub_name => $logging_google_pubsub_name)
+> InlineResponse200 delete_log_gcp_pubsub(service_id => $service_id, version_id => $version_id, logging_google_pubsub_name => $logging_google_pubsub_name)
 
 Delete a GCP Cloud Pub/Sub log endpoint
 
@@ -97,8 +97,8 @@ Delete a Pub/Sub logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingPubsubApi;
-my $api_instance = Fastly::LoggingPubsubApi->new(
+use WebService::Fastly::LoggingPubsubApi;
+my $api_instance = WebService::Fastly::LoggingPubsubApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -152,8 +152,8 @@ Get the details for a Pub/Sub logging object for a particular service and versio
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingPubsubApi;
-my $api_instance = Fastly::LoggingPubsubApi->new(
+use WebService::Fastly::LoggingPubsubApi;
+my $api_instance = WebService::Fastly::LoggingPubsubApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -207,8 +207,8 @@ List all of the Pub/Sub logging objects for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingPubsubApi;
-my $api_instance = Fastly::LoggingPubsubApi->new(
+use WebService::Fastly::LoggingPubsubApi;
+my $api_instance = WebService::Fastly::LoggingPubsubApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -260,8 +260,8 @@ Update a Pub/Sub logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingPubsubApi;
-my $api_instance = Fastly::LoggingPubsubApi->new(
+use WebService::Fastly::LoggingPubsubApi;
+my $api_instance = WebService::Fastly::LoggingPubsubApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

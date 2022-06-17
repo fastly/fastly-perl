@@ -1,8 +1,8 @@
-# Fastly::Object::TlsPrivateKeyDataAttributes
+# WebService::Fastly::Object::TlsPrivateKeyDataAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsPrivateKeyDataAttributes;
+use WebService::Fastly::Object::TlsPrivateKeyDataAttributes;
 ```
 
 ## Properties

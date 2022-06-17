@@ -1,8 +1,8 @@
-# Fastly::LoggingOpenstackApi
+# WebService::Fastly::LoggingOpenstackApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingOpenstackApi;
+use WebService::Fastly::Object::LoggingOpenstackApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a openstack for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingOpenstackApi;
-my $api_instance = Fastly::LoggingOpenstackApi->new(
+use WebService::Fastly::LoggingOpenstackApi;
+my $api_instance = WebService::Fastly::LoggingOpenstackApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -49,8 +49,8 @@ my $gzip_level = 0; # int | The level of gzip encoding when sending logs (defaul
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $access_key = "access_key_example"; # string | Your OpenStack account access key.
 my $bucket_name = "bucket_name_example"; # string | The name of your OpenStack container.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $url = "url_example"; # string | Your OpenStack auth url.
 my $user = "user_example"; # string | The username for your OpenStack account.
 
@@ -81,8 +81,8 @@ Name | Type | Description  | Notes
  **compression_codec** | **string**| The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
  **access_key** | **string**| Your OpenStack account access key. | [optional] 
  **bucket_name** | **string**| The name of your OpenStack container. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **url** | **string**| Your OpenStack auth url. | [optional] 
  **user** | **string**| The username for your OpenStack account. | [optional] 
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_openstack**
-> DeleteAcl200Response delete_log_openstack(service_id => $service_id, version_id => $version_id, logging_openstack_name => $logging_openstack_name)
+> InlineResponse200 delete_log_openstack(service_id => $service_id, version_id => $version_id, logging_openstack_name => $logging_openstack_name)
 
 Delete an OpenStack log endpoint
 
@@ -111,8 +111,8 @@ Delete the openstack for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingOpenstackApi;
-my $api_instance = Fastly::LoggingOpenstackApi->new(
+use WebService::Fastly::LoggingOpenstackApi;
+my $api_instance = WebService::Fastly::LoggingOpenstackApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -166,8 +166,8 @@ Get the openstack for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingOpenstackApi;
-my $api_instance = Fastly::LoggingOpenstackApi->new(
+use WebService::Fastly::LoggingOpenstackApi;
+my $api_instance = WebService::Fastly::LoggingOpenstackApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -221,8 +221,8 @@ List all of the openstacks for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingOpenstackApi;
-my $api_instance = Fastly::LoggingOpenstackApi->new(
+use WebService::Fastly::LoggingOpenstackApi;
+my $api_instance = WebService::Fastly::LoggingOpenstackApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -274,8 +274,8 @@ Update the openstack for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingOpenstackApi;
-my $api_instance = Fastly::LoggingOpenstackApi->new(
+use WebService::Fastly::LoggingOpenstackApi;
+my $api_instance = WebService::Fastly::LoggingOpenstackApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -298,8 +298,8 @@ my $gzip_level = 0; # int | The level of gzip encoding when sending logs (defaul
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $access_key = "access_key_example"; # string | Your OpenStack account access key.
 my $bucket_name = "bucket_name_example"; # string | The name of your OpenStack container.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $url = "url_example"; # string | Your OpenStack auth url.
 my $user = "user_example"; # string | The username for your OpenStack account.
 
@@ -331,8 +331,8 @@ Name | Type | Description  | Notes
  **compression_codec** | **string**| The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
  **access_key** | **string**| Your OpenStack account access key. | [optional] 
  **bucket_name** | **string**| The name of your OpenStack container. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **url** | **string**| Your OpenStack auth url. | [optional] 
  **user** | **string**| The username for your OpenStack account. | [optional] 
 

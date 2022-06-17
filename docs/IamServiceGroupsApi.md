@@ -1,8 +1,8 @@
-# Fastly::IamServiceGroupsApi
+# WebService::Fastly::IamServiceGroupsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::IamServiceGroupsApi;
+use WebService::Fastly::Object::IamServiceGroupsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Delete a service group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamServiceGroupsApi;
-my $api_instance = Fastly::IamServiceGroupsApi->new(
+use WebService::Fastly::IamServiceGroupsApi;
+my $api_instance = WebService::Fastly::IamServiceGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -75,8 +75,8 @@ Get a service group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamServiceGroupsApi;
-my $api_instance = Fastly::IamServiceGroupsApi->new(
+use WebService::Fastly::IamServiceGroupsApi;
+my $api_instance = WebService::Fastly::IamServiceGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -126,8 +126,8 @@ List services to a service group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamServiceGroupsApi;
-my $api_instance = Fastly::IamServiceGroupsApi->new(
+use WebService::Fastly::IamServiceGroupsApi;
+my $api_instance = WebService::Fastly::IamServiceGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -181,8 +181,8 @@ List all service groups.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamServiceGroupsApi;
-my $api_instance = Fastly::IamServiceGroupsApi->new(
+use WebService::Fastly::IamServiceGroupsApi;
+my $api_instance = WebService::Fastly::IamServiceGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::BackendApi
+# WebService::Fastly::BackendApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::BackendApi;
+use WebService::Fastly::Object::BackendApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a backend for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BackendApi;
-my $api_instance = Fastly::BackendApi->new(
+use WebService::Fastly::BackendApi;
+my $api_instance = WebService::Fastly::BackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_backend**
-> DeleteAcl200Response delete_backend(service_id => $service_id, version_id => $version_id, backend_name => $backend_name)
+> InlineResponse200 delete_backend(service_id => $service_id, version_id => $version_id, backend_name => $backend_name)
 
 Delete a backend
 
@@ -137,8 +137,8 @@ Delete the backend for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BackendApi;
-my $api_instance = Fastly::BackendApi->new(
+use WebService::Fastly::BackendApi;
+my $api_instance = WebService::Fastly::BackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -192,8 +192,8 @@ Get the backend for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BackendApi;
-my $api_instance = Fastly::BackendApi->new(
+use WebService::Fastly::BackendApi;
+my $api_instance = WebService::Fastly::BackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -247,8 +247,8 @@ List all backends for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BackendApi;
-my $api_instance = Fastly::BackendApi->new(
+use WebService::Fastly::BackendApi;
+my $api_instance = WebService::Fastly::BackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -300,8 +300,8 @@ Update the backend for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BackendApi;
-my $api_instance = Fastly::BackendApi->new(
+use WebService::Fastly::BackendApi;
+my $api_instance = WebService::Fastly::BackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

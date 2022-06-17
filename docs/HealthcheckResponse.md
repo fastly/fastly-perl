@@ -1,8 +1,8 @@
-# Fastly::Object::HealthcheckResponse
+# WebService::Fastly::Object::HealthcheckResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::HealthcheckResponse;
+use WebService::Fastly::Object::HealthcheckResponse;
 ```
 
 ## Properties
@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **threshold** | **int** | How many healthchecks must succeed to be considered healthy. | [optional] 
 **timeout** | **int** | Timeout in milliseconds. | [optional] 
 **window** | **int** | The number of most recent healthcheck queries to keep for this healthcheck. | [optional] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

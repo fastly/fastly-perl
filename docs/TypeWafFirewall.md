@@ -1,8 +1,8 @@
-# Fastly::Object::TypeWafFirewall
+# WebService::Fastly::Object::TypeWafFirewall
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeWafFirewall;
+use WebService::Fastly::Object::TypeWafFirewall;
 ```
 
 ## Properties

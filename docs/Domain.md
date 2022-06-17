@@ -1,8 +1,8 @@
-# Fastly::Object::Domain
+# WebService::Fastly::Object::Domain
 
 ## Load the model package
 ```perl
-use Fastly::Object::Domain;
+use WebService::Fastly::Object::Domain;
 ```
 
 ## Properties

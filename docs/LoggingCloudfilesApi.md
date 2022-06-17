@@ -1,8 +1,8 @@
-# Fastly::LoggingCloudfilesApi
+# WebService::Fastly::LoggingCloudfilesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingCloudfilesApi;
+use WebService::Fastly::Object::LoggingCloudfilesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Cloud Files log endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingCloudfilesApi;
-my $api_instance = Fastly::LoggingCloudfilesApi->new(
+use WebService::Fastly::LoggingCloudfilesApi;
+my $api_instance = WebService::Fastly::LoggingCloudfilesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -49,9 +49,9 @@ my $gzip_level = 0; # int | The level of gzip encoding when sending logs (defaul
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $access_key = "access_key_example"; # string | Your Cloud Files account access key.
 my $bucket_name = "bucket_name_example"; # string | The name of your Cloud Files container.
-my $path = "path_example"; # string | The path to upload logs to.
+my $path = 'null'; # string | The path to upload logs to.
 my $region = "region_example"; # string | The region to stream logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $user = "user_example"; # string | The username for your Cloud Files account.
 
 eval {
@@ -81,9 +81,9 @@ Name | Type | Description  | Notes
  **compression_codec** | **string**| The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
  **access_key** | **string**| Your Cloud Files account access key. | [optional] 
  **bucket_name** | **string**| The name of your Cloud Files container. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
  **region** | **string**| The region to stream logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **user** | **string**| The username for your Cloud Files account. | [optional] 
 
 ### Return type
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_cloudfiles**
-> DeleteAcl200Response delete_log_cloudfiles(service_id => $service_id, version_id => $version_id, logging_cloudfiles_name => $logging_cloudfiles_name)
+> InlineResponse200 delete_log_cloudfiles(service_id => $service_id, version_id => $version_id, logging_cloudfiles_name => $logging_cloudfiles_name)
 
 Delete the Cloud Files log endpoint
 
@@ -111,8 +111,8 @@ Delete the Cloud Files log endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingCloudfilesApi;
-my $api_instance = Fastly::LoggingCloudfilesApi->new(
+use WebService::Fastly::LoggingCloudfilesApi;
+my $api_instance = WebService::Fastly::LoggingCloudfilesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -166,8 +166,8 @@ Get the Cloud Files log endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingCloudfilesApi;
-my $api_instance = Fastly::LoggingCloudfilesApi->new(
+use WebService::Fastly::LoggingCloudfilesApi;
+my $api_instance = WebService::Fastly::LoggingCloudfilesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -221,8 +221,8 @@ List all of the Cloud Files log endpoints for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingCloudfilesApi;
-my $api_instance = Fastly::LoggingCloudfilesApi->new(
+use WebService::Fastly::LoggingCloudfilesApi;
+my $api_instance = WebService::Fastly::LoggingCloudfilesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -274,8 +274,8 @@ Update the Cloud Files log endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingCloudfilesApi;
-my $api_instance = Fastly::LoggingCloudfilesApi->new(
+use WebService::Fastly::LoggingCloudfilesApi;
+my $api_instance = WebService::Fastly::LoggingCloudfilesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -298,9 +298,9 @@ my $gzip_level = 0; # int | The level of gzip encoding when sending logs (defaul
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $access_key = "access_key_example"; # string | Your Cloud Files account access key.
 my $bucket_name = "bucket_name_example"; # string | The name of your Cloud Files container.
-my $path = "path_example"; # string | The path to upload logs to.
+my $path = 'null'; # string | The path to upload logs to.
 my $region = "region_example"; # string | The region to stream logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $user = "user_example"; # string | The username for your Cloud Files account.
 
 eval {
@@ -331,9 +331,9 @@ Name | Type | Description  | Notes
  **compression_codec** | **string**| The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
  **access_key** | **string**| Your Cloud Files account access key. | [optional] 
  **bucket_name** | **string**| The name of your Cloud Files container. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
  **region** | **string**| The region to stream logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **user** | **string**| The username for your Cloud Files account. | [optional] 
 
 ### Return type

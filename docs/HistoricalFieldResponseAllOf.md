@@ -1,8 +1,8 @@
-# Fastly::Object::HistoricalFieldResponseAllOf
+# WebService::Fastly::Object::HistoricalFieldResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::HistoricalFieldResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldResponseAllOf;
 ```
 
 ## Properties

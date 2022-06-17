@@ -1,8 +1,8 @@
-# Fastly::RealtimeApi
+# WebService::Fastly::RealtimeApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::RealtimeApi;
+use WebService::Fastly::Object::RealtimeApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Get data for the 120 seconds preceding the latest timestamp available for a serv
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RealtimeApi;
-my $api_instance = Fastly::RealtimeApi->new(
+use WebService::Fastly::RealtimeApi;
+my $api_instance = WebService::Fastly::RealtimeApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -75,8 +75,8 @@ Get data for the 120 seconds preceding the latest timestamp available for a serv
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RealtimeApi;
-my $api_instance = Fastly::RealtimeApi->new(
+use WebService::Fastly::RealtimeApi;
+my $api_instance = WebService::Fastly::RealtimeApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -128,8 +128,8 @@ Get real-time data for the specified reporting period. Specify `0` to get a sing
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RealtimeApi;
-my $api_instance = Fastly::RealtimeApi->new(
+use WebService::Fastly::RealtimeApi;
+my $api_instance = WebService::Fastly::RealtimeApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

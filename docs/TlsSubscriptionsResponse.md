@@ -1,8 +1,8 @@
-# Fastly::Object::TlsSubscriptionsResponse
+# WebService::Fastly::Object::TlsSubscriptionsResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsSubscriptionsResponse;
+use WebService::Fastly::Object::TlsSubscriptionsResponse;
 ```
 
 ## Properties

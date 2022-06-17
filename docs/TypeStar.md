@@ -1,8 +1,8 @@
-# Fastly::Object::TypeStar
+# WebService::Fastly::Object::TypeStar
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeStar;
+use WebService::Fastly::Object::TypeStar;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingKinesis
+# WebService::Fastly::Object::LoggingKinesis
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingKinesis;
+use WebService::Fastly::Object::LoggingKinesis;
 ```
 
 ## Properties

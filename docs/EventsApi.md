@@ -1,8 +1,8 @@
-# Fastly::EventsApi
+# WebService::Fastly::EventsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::EventsApi;
+use WebService::Fastly::Object::EventsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -23,8 +23,8 @@ Get a specific event.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::EventsApi;
-my $api_instance = Fastly::EventsApi->new(
+use WebService::Fastly::EventsApi;
+my $api_instance = WebService::Fastly::EventsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -74,8 +74,8 @@ List all events for a particular customer. Events can be filtered by user, custo
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::EventsApi;
-my $api_instance = Fastly::EventsApi->new(
+use WebService::Fastly::EventsApi;
+my $api_instance = WebService::Fastly::EventsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

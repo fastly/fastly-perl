@@ -1,8 +1,8 @@
-# Fastly::WafActiveRulesApi
+# WebService::Fastly::WafActiveRulesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::WafActiveRulesApi;
+use WebService::Fastly::Object::WafActiveRulesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -28,8 +28,8 @@ Bulk update all active rules on a [firewall version](https://developer.fastly.co
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -39,7 +39,7 @@ my $api_instance = Fastly::WafActiveRulesApi->new(
 
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $version_id = 56; # int | Integer identifying a service version.
-my $body = Fastly::Object::WafActiveRuleData->new(); # WafActiveRuleData | 
+my $body = WebService::Fastly::Object::WafActiveRuleData->new(); # WafActiveRuleData | 
 
 eval {
     $api_instance->bulk_update_waf_active_rules(firewall_id => $firewall_id, version_id => $version_id, body => $body);
@@ -82,8 +82,8 @@ Create an active rule for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -93,7 +93,7 @@ my $api_instance = Fastly::WafActiveRulesApi->new(
 
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $version_id = 56; # int | Integer identifying a service version.
-my $waf_active_rule = Fastly::Object::WafActiveRule->new(); # WafActiveRule | 
+my $waf_active_rule = WebService::Fastly::Object::WafActiveRule->new(); # WafActiveRule | 
 
 eval {
     my $result = $api_instance->create_waf_active_rule(firewall_id => $firewall_id, version_id => $version_id, waf_active_rule => $waf_active_rule);
@@ -137,8 +137,8 @@ Create active rules by tag. This endpoint will create active rules using the lat
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -149,7 +149,7 @@ my $api_instance = Fastly::WafActiveRulesApi->new(
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $version_id = 56; # int | Integer identifying a service version.
 my $waf_tag_name = "waf_tag_name_example"; # string | Name of the tag.
-my $waf_active_rule = Fastly::Object::WafActiveRule->new(); # WafActiveRule | 
+my $waf_active_rule = WebService::Fastly::Object::WafActiveRule->new(); # WafActiveRule | 
 
 eval {
     $api_instance->create_waf_active_rules_tag(firewall_id => $firewall_id, version_id => $version_id, waf_tag_name => $waf_tag_name, waf_active_rule => $waf_active_rule);
@@ -193,8 +193,8 @@ Delete an active rule for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -247,8 +247,8 @@ Get a specific active rule object. Includes details of the rule revision associa
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -304,8 +304,8 @@ List all active rules for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -371,8 +371,8 @@ Update an active rule's status for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafActiveRulesApi;
-my $api_instance = Fastly::WafActiveRulesApi->new(
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -383,7 +383,7 @@ my $api_instance = Fastly::WafActiveRulesApi->new(
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $version_id = 56; # int | Integer identifying a service version.
 my $waf_rule_id = "waf_rule_id_example"; # string | Alphanumeric string identifying a WAF rule.
-my $waf_active_rule = Fastly::Object::WafActiveRule->new(); # WafActiveRule | 
+my $waf_active_rule = WebService::Fastly::Object::WafActiveRule->new(); # WafActiveRule | 
 
 eval {
     my $result = $api_instance->update_waf_active_rule(firewall_id => $firewall_id, version_id => $version_id, waf_rule_id => $waf_rule_id, waf_active_rule => $waf_active_rule);

@@ -1,8 +1,8 @@
-# Fastly::LoggingAzureblobApi
+# WebService::Fastly::LoggingAzureblobApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingAzureblobApi;
+use WebService::Fastly::Object::LoggingAzureblobApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create an Azure Blob Storage logging endpoint for a particular service and versi
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingAzureblobApi;
-my $api_instance = Fastly::LoggingAzureblobApi->new(
+use WebService::Fastly::LoggingAzureblobApi;
+my $api_instance = WebService::Fastly::LoggingAzureblobApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -47,11 +47,11 @@ my $timestamp_format = "timestamp_format_example"; # string | A timestamp format
 my $period = 3600; # int | How frequently log files are finalized so they can be available for reading (in seconds).
 my $gzip_level = 0; # int | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-my $path = "path_example"; # string | The path to upload logs to.
+my $path = 'null'; # string | The path to upload logs to.
 my $account_name = "account_name_example"; # string | The unique Azure Blob Storage namespace in which your data objects are stored. Required.
 my $container = "container_example"; # string | The name of the Azure Blob Storage container in which to store logs. Required.
 my $sas_token = "sas_token_example"; # string | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
 
 eval {
@@ -79,11 +79,11 @@ Name | Type | Description  | Notes
  **period** | **int**| How frequently log files are finalized so they can be available for reading (in seconds). | [optional] [default to 3600]
  **gzip_level** | **int**| The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [default to 0]
  **compression_codec** | **string**| The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
  **account_name** | **string**| The unique Azure Blob Storage namespace in which your data objects are stored. Required. | [optional] 
  **container** | **string**| The name of the Azure Blob Storage container in which to store logs. Required. | [optional] 
  **sas_token** | **string**| The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
 
 ### Return type
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_azure**
-> DeleteAcl200Response delete_log_azure(service_id => $service_id, version_id => $version_id, logging_azureblob_name => $logging_azureblob_name)
+> InlineResponse200 delete_log_azure(service_id => $service_id, version_id => $version_id, logging_azureblob_name => $logging_azureblob_name)
 
 Delete the Azure Blob Storage log endpoint
 
@@ -111,8 +111,8 @@ Delete the Azure Blob Storage logging endpoint for a particular service and vers
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingAzureblobApi;
-my $api_instance = Fastly::LoggingAzureblobApi->new(
+use WebService::Fastly::LoggingAzureblobApi;
+my $api_instance = WebService::Fastly::LoggingAzureblobApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -166,8 +166,8 @@ Get the Azure Blob Storage logging endpoint for a particular service and version
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingAzureblobApi;
-my $api_instance = Fastly::LoggingAzureblobApi->new(
+use WebService::Fastly::LoggingAzureblobApi;
+my $api_instance = WebService::Fastly::LoggingAzureblobApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -221,8 +221,8 @@ List all of the Azure Blob Storage logging endpoints for a particular service an
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingAzureblobApi;
-my $api_instance = Fastly::LoggingAzureblobApi->new(
+use WebService::Fastly::LoggingAzureblobApi;
+my $api_instance = WebService::Fastly::LoggingAzureblobApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -274,8 +274,8 @@ Update the Azure Blob Storage logging endpoint for a particular service and vers
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingAzureblobApi;
-my $api_instance = Fastly::LoggingAzureblobApi->new(
+use WebService::Fastly::LoggingAzureblobApi;
+my $api_instance = WebService::Fastly::LoggingAzureblobApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -296,11 +296,11 @@ my $timestamp_format = "timestamp_format_example"; # string | A timestamp format
 my $period = 3600; # int | How frequently log files are finalized so they can be available for reading (in seconds).
 my $gzip_level = 0; # int | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
 my $compression_codec = "compression_codec_example"; # string | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error.
-my $path = "path_example"; # string | The path to upload logs to.
+my $path = 'null'; # string | The path to upload logs to.
 my $account_name = "account_name_example"; # string | The unique Azure Blob Storage namespace in which your data objects are stored. Required.
 my $container = "container_example"; # string | The name of the Azure Blob Storage container in which to store logs. Required.
 my $sas_token = "sas_token_example"; # string | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
 
 eval {
@@ -329,11 +329,11 @@ Name | Type | Description  | Notes
  **period** | **int**| How frequently log files are finalized so they can be available for reading (in seconds). | [optional] [default to 3600]
  **gzip_level** | **int**| The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [default to 0]
  **compression_codec** | **string**| The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
- **path** | **string**| The path to upload logs to. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
  **account_name** | **string**| The unique Azure Blob Storage namespace in which your data objects are stored. Required. | [optional] 
  **container** | **string**| The name of the Azure Blob Storage container in which to store logs. Required. | [optional] 
  **sas_token** | **string**| The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
 
 ### Return type

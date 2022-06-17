@@ -1,8 +1,8 @@
-# Fastly::DomainApi
+# WebService::Fastly::DomainApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DomainApi;
+use WebService::Fastly::Object::DomainApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -28,8 +28,8 @@ Checks the status of a specific domain's DNS record for a Service Version. Retur
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -83,8 +83,8 @@ Checks the status of all domains' DNS records for a Service Version. Returns an 
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -136,8 +136,8 @@ Create a domain for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_domain**
-> DeleteAcl200Response delete_domain(service_id => $service_id, version_id => $version_id, domain_name => $domain_name)
+> InlineResponse200 delete_domain(service_id => $service_id, version_id => $version_id, domain_name => $domain_name)
 
 Remove a domain from a service
 
@@ -193,8 +193,8 @@ Delete the domain for a particular service and versions.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -248,8 +248,8 @@ Get the domain for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -303,8 +303,8 @@ List all the domains for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -356,8 +356,8 @@ Update the domain for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainApi;
-my $api_instance = Fastly::DomainApi->new(
+use WebService::Fastly::DomainApi;
+my $api_instance = WebService::Fastly::DomainApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

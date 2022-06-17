@@ -1,8 +1,8 @@
-# Fastly::Object::BillingTotal
+# WebService::Fastly::Object::BillingTotal
 
 ## Load the model package
 ```perl
-use Fastly::Object::BillingTotal;
+use WebService::Fastly::Object::BillingTotal;
 ```
 
 ## Properties
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **cost** | **double** | The final amount to be paid. | [optional] 
 **cost_before_discount** | **double** | Total incurred cost plus extras cost. | [optional] 
 **discount** | **double** | Calculated discount rate. | [optional] 
-**extras** | [**ARRAY[BillingTotalExtrasInner]**](BillingTotalExtrasInner.md) | A list of any extras for this invoice. | [optional] 
+**extras** | [**ARRAY[BillingTotalExtras]**](BillingTotalExtras.md) | A list of any extras for this invoice. | [optional] 
 **extras_cost** | **double** | Total cost of all extras. | [optional] 
 **incurred_cost** | **double** | The total cost of bandwidth and requests used this month. | [optional] 
 **overage** | **double** | How much over the plan minimum has been incurred. | [optional] 

@@ -1,8 +1,8 @@
-# Fastly::LoggingLogglyApi
+# WebService::Fastly::LoggingLogglyApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingLogglyApi;
+use WebService::Fastly::Object::LoggingLogglyApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Loggly logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogglyApi;
-my $api_instance = Fastly::LoggingLogglyApi->new(
+use WebService::Fastly::LoggingLogglyApi;
+my $api_instance = WebService::Fastly::LoggingLogglyApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_loggly**
-> DeleteAcl200Response delete_log_loggly(service_id => $service_id, version_id => $version_id, logging_loggly_name => $logging_loggly_name)
+> InlineResponse200 delete_log_loggly(service_id => $service_id, version_id => $version_id, logging_loggly_name => $logging_loggly_name)
 
 Delete a Loggly log endpoint
 
@@ -91,8 +91,8 @@ Delete the Loggly logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogglyApi;
-my $api_instance = Fastly::LoggingLogglyApi->new(
+use WebService::Fastly::LoggingLogglyApi;
+my $api_instance = WebService::Fastly::LoggingLogglyApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -146,8 +146,8 @@ Get the Loggly logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogglyApi;
-my $api_instance = Fastly::LoggingLogglyApi->new(
+use WebService::Fastly::LoggingLogglyApi;
+my $api_instance = WebService::Fastly::LoggingLogglyApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -201,8 +201,8 @@ List all Loggly logging objects for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogglyApi;
-my $api_instance = Fastly::LoggingLogglyApi->new(
+use WebService::Fastly::LoggingLogglyApi;
+my $api_instance = WebService::Fastly::LoggingLogglyApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -254,8 +254,8 @@ Update the Loggly logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogglyApi;
-my $api_instance = Fastly::LoggingLogglyApi->new(
+use WebService::Fastly::LoggingLogglyApi;
+my $api_instance = WebService::Fastly::LoggingLogglyApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

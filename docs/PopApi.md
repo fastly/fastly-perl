@@ -1,8 +1,8 @@
-# Fastly::PopApi
+# WebService::Fastly::PopApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::PopApi;
+use WebService::Fastly::Object::PopApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Get a list of all Fastly POPs.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PopApi;
-my $api_instance = Fastly::PopApi->new(
+use WebService::Fastly::PopApi;
+my $api_instance = WebService::Fastly::PopApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

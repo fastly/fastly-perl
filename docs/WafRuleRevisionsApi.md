@@ -1,8 +1,8 @@
-# Fastly::WafRuleRevisionsApi
+# WebService::Fastly::WafRuleRevisionsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::WafRuleRevisionsApi;
+use WebService::Fastly::Object::WafRuleRevisionsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -23,8 +23,8 @@ Get a specific rule revision.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafRuleRevisionsApi;
-my $api_instance = Fastly::WafRuleRevisionsApi->new(
+use WebService::Fastly::WafRuleRevisionsApi;
+my $api_instance = WebService::Fastly::WafRuleRevisionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -78,8 +78,8 @@ List all revisions for a specific rule. The `rule_id` provided can be the ModSec
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafRuleRevisionsApi;
-my $api_instance = Fastly::WafRuleRevisionsApi->new(
+use WebService::Fastly::WafRuleRevisionsApi;
+my $api_instance = WebService::Fastly::WafRuleRevisionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

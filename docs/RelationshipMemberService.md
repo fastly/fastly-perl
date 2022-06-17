@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipMemberService
+# WebService::Fastly::Object::RelationshipMemberService
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipMemberService;
+use WebService::Fastly::Object::RelationshipMemberService;
 ```
 
 ## Properties

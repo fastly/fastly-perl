@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingRequestCapsCommon
+# WebService::Fastly::Object::LoggingRequestCapsCommon
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingRequestCapsCommon;
+use WebService::Fastly::Object::LoggingRequestCapsCommon;
 ```
 
 ## Properties

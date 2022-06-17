@@ -1,8 +1,8 @@
-# Fastly::DiffApi
+# WebService::Fastly::DiffApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DiffApi;
+use WebService::Fastly::Object::DiffApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Get diff between two versions.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DiffApi;
-my $api_instance = Fastly::DiffApi->new(
+use WebService::Fastly::DiffApi;
+my $api_instance = WebService::Fastly::DiffApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::WafExclusionsResponse
+# WebService::Fastly::Object::WafExclusionsResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafExclusionsResponse;
+use WebService::Fastly::Object::WafExclusionsResponse;
 ```
 
 ## Properties

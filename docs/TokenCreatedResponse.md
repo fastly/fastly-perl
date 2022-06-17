@@ -1,8 +1,8 @@
-# Fastly::Object::TokenCreatedResponse
+# WebService::Fastly::Object::TokenCreatedResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::TokenCreatedResponse;
+use WebService::Fastly::Object::TokenCreatedResponse;
 ```
 
 ## Properties

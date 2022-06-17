@@ -1,8 +1,8 @@
-# Fastly::Object::VclDiff
+# WebService::Fastly::Object::VclDiff
 
 ## Load the model package
 ```perl
-use Fastly::Object::VclDiff;
+use WebService::Fastly::Object::VclDiff;
 ```
 
 ## Properties

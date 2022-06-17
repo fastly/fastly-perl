@@ -1,8 +1,8 @@
-# Fastly::WafRulesApi
+# WebService::Fastly::WafRulesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::WafRulesApi;
+use WebService::Fastly::Object::WafRulesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -23,8 +23,8 @@ Get a specific rule. The `id` provided can be the ModSecurity Rule ID or the Fas
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafRulesApi;
-my $api_instance = Fastly::WafRulesApi->new(
+use WebService::Fastly::WafRulesApi;
+my $api_instance = WebService::Fastly::WafRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -76,8 +76,8 @@ List all available WAF rules.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafRulesApi;
-my $api_instance = Fastly::WafRulesApi->new(
+use WebService::Fastly::WafRulesApi;
+my $api_instance = WebService::Fastly::WafRulesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

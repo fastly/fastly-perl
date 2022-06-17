@@ -1,8 +1,8 @@
-# Fastly::Object::PoolResponseAllOf
+# WebService::Fastly::Object::PoolResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::PoolResponseAllOf;
+use WebService::Fastly::Object::PoolResponseAllOf;
 ```
 
 ## Properties

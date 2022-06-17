@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingHeroku
+# WebService::Fastly::Object::LoggingHeroku
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingHeroku;
+use WebService::Fastly::Object::LoggingHeroku;
 ```
 
 ## Properties

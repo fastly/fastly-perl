@@ -1,8 +1,8 @@
-# Fastly::Object::EventsResponseAllOf
+# WebService::Fastly::Object::EventsResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::EventsResponseAllOf;
+use WebService::Fastly::Object::EventsResponseAllOf;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::EventAttributes
+# WebService::Fastly::Object::EventAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::EventAttributes;
+use WebService::Fastly::Object::EventAttributes;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::PopCoordinates
+# WebService::Fastly::Object::PopCoordinates
 
 ## Load the model package
 ```perl
-use Fastly::Object::PopCoordinates;
+use WebService::Fastly::Object::PopCoordinates;
 ```
 
 ## Properties

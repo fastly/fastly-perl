@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingMessageType
+# WebService::Fastly::Object::LoggingMessageType
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingMessageType;
+use WebService::Fastly::Object::LoggingMessageType;
 ```
 
 ## Properties

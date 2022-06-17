@@ -1,8 +1,8 @@
-# Fastly::LoggingSplunkApi
+# WebService::Fastly::LoggingSplunkApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingSplunkApi;
+use WebService::Fastly::Object::LoggingSplunkApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Splunk logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSplunkApi;
-my $api_instance = Fastly::LoggingSplunkApi->new(
+use WebService::Fastly::LoggingSplunkApi;
+my $api_instance = WebService::Fastly::LoggingSplunkApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -42,15 +42,15 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-my $tls_ca_cert = "tls_ca_cert_example"; # string | A secure certificate to authenticate a server with. Must be in PEM format.
-my $tls_client_cert = "tls_client_cert_example"; # string | The client certificate used to make authenticated requests. Must be in PEM format.
-my $tls_client_key = "tls_client_key_example"; # string | The client private key used to make authenticated requests. Must be in PEM format.
-my $tls_hostname = "tls_hostname_example"; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
+my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
+my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
+my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
+my $tls_hostname = 'null'; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
 my $request_max_entries = 0; # int | The maximum number of logs sent in one request. Defaults `0` for unbounded.
 my $request_max_bytes = 0; # int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 my $url = "url_example"; # string | The URL to post logs to.
 my $token = "token_example"; # string | A Splunk token for use in posting logs over HTTP to your collector.
-my $use_tls = new Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
 
 eval {
     my $result = $api_instance->create_log_splunk(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, token => $token, use_tls => $use_tls);
@@ -72,10 +72,10 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.   | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [default to &#39;%h %l %u %t &quot;%r&quot; %&amp;gt;s %b&#39;]
- **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] 
- **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] 
+ **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] [default to &#39;null&#39;]
  **request_max_entries** | **int**| The maximum number of logs sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **request_max_bytes** | **int**| The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **url** | **string**| The URL to post logs to. | [optional] 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_splunk**
-> DeleteAcl200Response delete_log_splunk(service_id => $service_id, version_id => $version_id, logging_splunk_name => $logging_splunk_name)
+> InlineResponse200 delete_log_splunk(service_id => $service_id, version_id => $version_id, logging_splunk_name => $logging_splunk_name)
 
 Delete a Splunk log endpoint
 
@@ -107,8 +107,8 @@ Delete the Splunk logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSplunkApi;
-my $api_instance = Fastly::LoggingSplunkApi->new(
+use WebService::Fastly::LoggingSplunkApi;
+my $api_instance = WebService::Fastly::LoggingSplunkApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -162,8 +162,8 @@ Get the details for a Splunk logging object for a particular service and version
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSplunkApi;
-my $api_instance = Fastly::LoggingSplunkApi->new(
+use WebService::Fastly::LoggingSplunkApi;
+my $api_instance = WebService::Fastly::LoggingSplunkApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -217,8 +217,8 @@ List all of the Splunk logging objects for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSplunkApi;
-my $api_instance = Fastly::LoggingSplunkApi->new(
+use WebService::Fastly::LoggingSplunkApi;
+my $api_instance = WebService::Fastly::LoggingSplunkApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -270,8 +270,8 @@ Update the Splunk logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSplunkApi;
-my $api_instance = Fastly::LoggingSplunkApi->new(
+use WebService::Fastly::LoggingSplunkApi;
+my $api_instance = WebService::Fastly::LoggingSplunkApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -287,15 +287,15 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-my $tls_ca_cert = "tls_ca_cert_example"; # string | A secure certificate to authenticate a server with. Must be in PEM format.
-my $tls_client_cert = "tls_client_cert_example"; # string | The client certificate used to make authenticated requests. Must be in PEM format.
-my $tls_client_key = "tls_client_key_example"; # string | The client private key used to make authenticated requests. Must be in PEM format.
-my $tls_hostname = "tls_hostname_example"; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
+my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
+my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
+my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
+my $tls_hostname = 'null'; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
 my $request_max_entries = 0; # int | The maximum number of logs sent in one request. Defaults `0` for unbounded.
 my $request_max_bytes = 0; # int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 my $url = "url_example"; # string | The URL to post logs to.
 my $token = "token_example"; # string | A Splunk token for use in posting logs over HTTP to your collector.
-my $use_tls = new Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
 
 eval {
     my $result = $api_instance->update_log_splunk(service_id => $service_id, version_id => $version_id, logging_splunk_name => $logging_splunk_name, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, token => $token, use_tls => $use_tls);
@@ -318,10 +318,10 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.   | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [default to &#39;%h %l %u %t &quot;%r&quot; %&amp;gt;s %b&#39;]
- **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] 
- **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] 
+ **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] [default to &#39;null&#39;]
  **request_max_entries** | **int**| The maximum number of logs sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **request_max_bytes** | **int**| The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **url** | **string**| The URL to post logs to. | [optional] 

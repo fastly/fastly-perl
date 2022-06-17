@@ -1,8 +1,8 @@
-# Fastly::Object::TlsDomainsResponse
+# WebService::Fastly::Object::TlsDomainsResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsDomainsResponse;
+use WebService::Fastly::Object::TlsDomainsResponse;
 ```
 
 ## Properties

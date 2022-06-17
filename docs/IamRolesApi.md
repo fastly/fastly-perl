@@ -1,8 +1,8 @@
-# Fastly::IamRolesApi
+# WebService::Fastly::IamRolesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::IamRolesApi;
+use WebService::Fastly::Object::IamRolesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Delete a role.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamRolesApi;
-my $api_instance = Fastly::IamRolesApi->new(
+use WebService::Fastly::IamRolesApi;
+my $api_instance = WebService::Fastly::IamRolesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -75,8 +75,8 @@ Get a role.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamRolesApi;
-my $api_instance = Fastly::IamRolesApi->new(
+use WebService::Fastly::IamRolesApi;
+my $api_instance = WebService::Fastly::IamRolesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -126,8 +126,8 @@ List all permissions in a role.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamRolesApi;
-my $api_instance = Fastly::IamRolesApi->new(
+use WebService::Fastly::IamRolesApi;
+my $api_instance = WebService::Fastly::IamRolesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -177,8 +177,8 @@ List all roles.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamRolesApi;
-my $api_instance = Fastly::IamRolesApi->new(
+use WebService::Fastly::IamRolesApi;
+my $api_instance = WebService::Fastly::IamRolesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

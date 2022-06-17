@@ -1,8 +1,8 @@
-# Fastly::Object::WafExclusionResponseDataRelationships
+# WebService::Fastly::Object::WafExclusionResponseDataRelationships
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafExclusionResponseDataRelationships;
+use WebService::Fastly::Object::WafExclusionResponseDataRelationships;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::LoggingKinesisApi
+# WebService::Fastly::LoggingKinesisApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingKinesisApi;
+use WebService::Fastly::Object::LoggingKinesisApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Create an Amazon Kinesis Data Streams logging object for a particular service an
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKinesisApi;
-my $api_instance = Fastly::LoggingKinesisApi->new(
+use WebService::Fastly::LoggingKinesisApi;
+my $api_instance = WebService::Fastly::LoggingKinesisApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -37,8 +37,8 @@ my $api_instance = Fastly::LoggingKinesisApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name for the real-time logging configuration.
-my $placement = new Fastly.LoggingPlacement(); # LoggingPlacement | 
-my $format_version = new Fastly.LoggingFormatVersion(); # LoggingFormatVersion | 
+my $placement = new WebService::Fastly.LoggingPlacement(); # LoggingPlacement | 
+my $format_version = new WebService::Fastly.LoggingFormatVersion(); # LoggingFormatVersion | 
 my $format = '{"timestamp":"%{begin:%Y-%m-%dT%H:%M:%S}t","time_elapsed":"%{time.elapsed.usec}V","is_tls":"%{if(req.is_ssl, \"true\", \"false\")}V","client_ip":"%{req.http.Fastly-Client-IP}V","geo_city":"%{client.geo.city}V","geo_country_code":"%{client.geo.country_code}V","request":"%{req.request}V","host":"%{req.http.Fastly-Orig-Host}V","url":"%{json.escape(req.url)}V","request_referer":"%{json.escape(req.http.Referer)}V","request_user_agent":"%{json.escape(req.http.User-Agent)}V","request_accept_language":"%{json.escape(req.http.Accept-Language)}V","request_accept_charset":"%{json.escape(req.http.Accept-Charset)}V","cache_status":"%{regsub(fastly_info.state, \"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\", \"\\2\\3\") }V"}'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest.
 my $topic = "topic_example"; # string | The Amazon Kinesis stream to send logs to. Required.
 my $region = "region_example"; # string | The [AWS region](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints) to stream logs to.
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_kinesis**
-> DeleteAcl200Response delete_log_kinesis(service_id => $service_id, version_id => $version_id, logging_kinesis_name => $logging_kinesis_name)
+> InlineResponse200 delete_log_kinesis(service_id => $service_id, version_id => $version_id, logging_kinesis_name => $logging_kinesis_name)
 
 Delete the Amazon Kinesis log endpoint
 
@@ -96,8 +96,8 @@ Delete an Amazon Kinesis Data Streams logging object for a particular service an
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKinesisApi;
-my $api_instance = Fastly::LoggingKinesisApi->new(
+use WebService::Fastly::LoggingKinesisApi;
+my $api_instance = WebService::Fastly::LoggingKinesisApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -151,8 +151,8 @@ Get the details for an Amazon Kinesis Data Streams logging object for a particul
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKinesisApi;
-my $api_instance = Fastly::LoggingKinesisApi->new(
+use WebService::Fastly::LoggingKinesisApi;
+my $api_instance = WebService::Fastly::LoggingKinesisApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -206,8 +206,8 @@ List all of the Amazon Kinesis Data Streams logging objects for a particular ser
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKinesisApi;
-my $api_instance = Fastly::LoggingKinesisApi->new(
+use WebService::Fastly::LoggingKinesisApi;
+my $api_instance = WebService::Fastly::LoggingKinesisApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

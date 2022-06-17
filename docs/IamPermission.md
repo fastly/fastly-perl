@@ -1,8 +1,8 @@
-# Fastly::Object::IamPermission
+# WebService::Fastly::Object::IamPermission
 
 ## Load the model package
 ```perl
-use Fastly::Object::IamPermission;
+use WebService::Fastly::Object::IamPermission;
 ```
 
 ## Properties

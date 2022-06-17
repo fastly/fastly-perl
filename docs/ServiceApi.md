@@ -1,8 +1,8 @@
-# Fastly::ServiceApi
+# WebService::Fastly::ServiceApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ServiceApi;
+use WebService::Fastly::Object::ServiceApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -29,8 +29,8 @@ Create a service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_service**
-> DeleteAcl200Response delete_service(service_id => $service_id)
+> InlineResponse200 delete_service(service_id => $service_id)
 
 Delete a service
 
@@ -86,8 +86,8 @@ Delete a service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -137,8 +137,8 @@ Get a specific service by id.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -188,8 +188,8 @@ List detailed information on a specified service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -241,8 +241,8 @@ List the domains within a service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -292,8 +292,8 @@ List services.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -349,8 +349,8 @@ Get a specific service by name.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -400,8 +400,8 @@ Update a service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceApi;
-my $api_instance = Fastly::ServiceApi->new(
+use WebService::Fastly::ServiceApi;
+my $api_instance = WebService::Fastly::ServiceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

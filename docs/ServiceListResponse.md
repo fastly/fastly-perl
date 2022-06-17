@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceListResponse
+# WebService::Fastly::Object::ServiceListResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceListResponse;
+use WebService::Fastly::Object::ServiceListResponse;
 ```
 
 ## Properties

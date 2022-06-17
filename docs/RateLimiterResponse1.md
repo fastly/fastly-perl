@@ -1,8 +1,8 @@
-# Fastly::Object::RateLimiterResponse1
+# WebService::Fastly::Object::RateLimiterResponse1
 
 ## Load the model package
 ```perl
-use Fastly::Object::RateLimiterResponse1;
+use WebService::Fastly::Object::RateLimiterResponse1;
 ```
 
 ## Properties

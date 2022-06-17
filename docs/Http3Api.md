@@ -1,8 +1,8 @@
-# Fastly::Http3Api
+# WebService::Fastly::Http3Api
 
 ## Load the API package
 ```perl
-use Fastly::Object::Http3Api;
+use WebService::Fastly::Object::Http3Api;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Enable HTTP/3 (QUIC) support for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::Http3Api;
-my $api_instance = Fastly::Http3Api->new(
+use WebService::Fastly::Http3Api;
+my $api_instance = WebService::Fastly::Http3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -35,8 +35,8 @@ my $api_instance = Fastly::Http3Api->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
-my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
-my $version = 56; # int | Integer identifying a service version.
+my $service_id = null; # string | 
+my $version = null; # int | 
 my $created_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
 my $deleted_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
 my $updated_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
@@ -57,8 +57,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
- **service_id** | **string**| Alphanumeric string identifying the service. | [optional] 
- **version** | **int**| Integer identifying a service version. | [optional] 
+ **service_id** | [**string**](string.md)|  | [optional] 
+ **version** | [**int**](int.md)|  | [optional] 
  **created_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
  **deleted_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
  **updated_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_http3**
-> DeleteAcl200Response delete_http3(service_id => $service_id, version_id => $version_id)
+> InlineResponse200 delete_http3(service_id => $service_id, version_id => $version_id)
 
 Disable support for HTTP/3
 
@@ -89,8 +89,8 @@ Disable HTTP/3 (QUIC) support for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::Http3Api;
-my $api_instance = Fastly::Http3Api->new(
+use WebService::Fastly::Http3Api;
+my $api_instance = WebService::Fastly::Http3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -142,8 +142,8 @@ Get the status of HTTP/3 (QUIC) support for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::Http3Api;
-my $api_instance = Fastly::Http3Api->new(
+use WebService::Fastly::Http3Api;
+my $api_instance = WebService::Fastly::Http3Api->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

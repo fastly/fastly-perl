@@ -1,8 +1,8 @@
-# Fastly::TlsActivationsApi
+# WebService::Fastly::TlsActivationsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TlsActivationsApi;
+use WebService::Fastly::Object::TlsActivationsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Enable TLS for a particular TLS domain and certificate combination. These relati
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsActivationsApi;
-my $api_instance = Fastly::TlsActivationsApi->new(
+use WebService::Fastly::TlsActivationsApi;
+my $api_instance = WebService::Fastly::TlsActivationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -35,7 +35,7 @@ my $api_instance = Fastly::TlsActivationsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $tls_activation = Fastly::Object::TlsActivation->new(); # TlsActivation | 
+my $tls_activation = WebService::Fastly::Object::TlsActivation->new(); # TlsActivation | 
 
 eval {
     my $result = $api_instance->create_tls_activation(tls_activation => $tls_activation);
@@ -77,8 +77,8 @@ Disable TLS on the domain associated with this TLS activation.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsActivationsApi;
-my $api_instance = Fastly::TlsActivationsApi->new(
+use WebService::Fastly::TlsActivationsApi;
+my $api_instance = WebService::Fastly::TlsActivationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -127,8 +127,8 @@ Show a TLS activation.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsActivationsApi;
-my $api_instance = Fastly::TlsActivationsApi->new(
+use WebService::Fastly::TlsActivationsApi;
+my $api_instance = WebService::Fastly::TlsActivationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -180,8 +180,8 @@ List all TLS activations.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsActivationsApi;
-my $api_instance = Fastly::TlsActivationsApi->new(
+use WebService::Fastly::TlsActivationsApi;
+my $api_instance = WebService::Fastly::TlsActivationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -241,8 +241,8 @@ Update the certificate used to terminate TLS traffic for the domain associated w
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsActivationsApi;
-my $api_instance = Fastly::TlsActivationsApi->new(
+use WebService::Fastly::TlsActivationsApi;
+my $api_instance = WebService::Fastly::TlsActivationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -251,7 +251,7 @@ my $api_instance = Fastly::TlsActivationsApi->new(
 );
 
 my $tls_activation_id = "tls_activation_id_example"; # string | Alphanumeric string identifying a TLS activation.
-my $tls_activation = Fastly::Object::TlsActivation->new(); # TlsActivation | 
+my $tls_activation = WebService::Fastly::Object::TlsActivation->new(); # TlsActivation | 
 
 eval {
     my $result = $api_instance->update_tls_activation(tls_activation_id => $tls_activation_id, tls_activation => $tls_activation);

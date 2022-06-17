@@ -1,8 +1,8 @@
-# Fastly::SnippetApi
+# WebService::Fastly::SnippetApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::SnippetApi;
+use WebService::Fastly::Object::SnippetApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -27,8 +27,8 @@ Create a snippet for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SnippetApi;
-my $api_instance = Fastly::SnippetApi->new(
+use WebService::Fastly::SnippetApi;
+my $api_instance = WebService::Fastly::SnippetApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_snippet**
-> DeleteAcl200Response delete_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name)
+> InlineResponse200 delete_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name)
 
 Delete a snippet
 
@@ -90,8 +90,8 @@ Delete a specific snippet for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SnippetApi;
-my $api_instance = Fastly::SnippetApi->new(
+use WebService::Fastly::SnippetApi;
+my $api_instance = WebService::Fastly::SnippetApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -145,8 +145,8 @@ Get a single snippet for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SnippetApi;
-my $api_instance = Fastly::SnippetApi->new(
+use WebService::Fastly::SnippetApi;
+my $api_instance = WebService::Fastly::SnippetApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -200,8 +200,8 @@ Get a single dynamic snippet for a particular service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SnippetApi;
-my $api_instance = Fastly::SnippetApi->new(
+use WebService::Fastly::SnippetApi;
+my $api_instance = WebService::Fastly::SnippetApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -253,8 +253,8 @@ List all snippets for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SnippetApi;
-my $api_instance = Fastly::SnippetApi->new(
+use WebService::Fastly::SnippetApi;
+my $api_instance = WebService::Fastly::SnippetApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -306,8 +306,8 @@ Update a dynamic snippet for a particular service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::SnippetApi;
-my $api_instance = Fastly::SnippetApi->new(
+use WebService::Fastly::SnippetApi;
+my $api_instance = WebService::Fastly::SnippetApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

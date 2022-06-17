@@ -1,8 +1,8 @@
-# Fastly::Object::PurgeResponse
+# WebService::Fastly::Object::PurgeResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::PurgeResponse;
+use WebService::Fastly::Object::PurgeResponse;
 ```
 
 ## Properties

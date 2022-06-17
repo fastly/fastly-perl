@@ -1,8 +1,8 @@
-# Fastly::StatsApi
+# WebService::Fastly::StatsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::StatsApi;
+use WebService::Fastly::Object::StatsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Get the stats from a service for a block of time. This lists all stats by PoP lo
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::StatsApi;
-my $api_instance = Fastly::StatsApi->new(
+use WebService::Fastly::StatsApi;
+my $api_instance = WebService::Fastly::StatsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::HealthcheckApi
+# WebService::Fastly::HealthcheckApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::HealthcheckApi;
+use WebService::Fastly::Object::HealthcheckApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a healthcheck for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HealthcheckApi;
-my $api_instance = Fastly::HealthcheckApi->new(
+use WebService::Fastly::HealthcheckApi;
+my $api_instance = WebService::Fastly::HealthcheckApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_healthcheck**
-> DeleteAcl200Response delete_healthcheck(service_id => $service_id, version_id => $version_id, healthcheck_name => $healthcheck_name)
+> InlineResponse200 delete_healthcheck(service_id => $service_id, version_id => $version_id, healthcheck_name => $healthcheck_name)
 
 Delete a healthcheck
 
@@ -103,8 +103,8 @@ Delete the healthcheck for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HealthcheckApi;
-my $api_instance = Fastly::HealthcheckApi->new(
+use WebService::Fastly::HealthcheckApi;
+my $api_instance = WebService::Fastly::HealthcheckApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -158,8 +158,8 @@ Get the healthcheck for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HealthcheckApi;
-my $api_instance = Fastly::HealthcheckApi->new(
+use WebService::Fastly::HealthcheckApi;
+my $api_instance = WebService::Fastly::HealthcheckApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -213,8 +213,8 @@ List all of the healthchecks for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HealthcheckApi;
-my $api_instance = Fastly::HealthcheckApi->new(
+use WebService::Fastly::HealthcheckApi;
+my $api_instance = WebService::Fastly::HealthcheckApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -266,8 +266,8 @@ Update the healthcheck for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HealthcheckApi;
-my $api_instance = Fastly::HealthcheckApi->new(
+use WebService::Fastly::HealthcheckApi;
+my $api_instance = WebService::Fastly::HealthcheckApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

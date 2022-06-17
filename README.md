@@ -1,6 +1,6 @@
 # NAME
 
-Fastly::Role - a Moose role for the Fastly API
+WebService::Fastly::Role - a Moose role for the Fastly API
 
 Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports.
 The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts.
@@ -26,7 +26,7 @@ For more information, please visit [https://www.fastly.com/open-source/](https:/
 ## A note on Moose
 
 This role is the only component of the library that uses Moose. See
-Fastly::ApiFactory for non-Moosey usage.
+WebService::Fastly::ApiFactory for non-Moosey usage.
 
 # SYNOPSIS
 
@@ -40,7 +40,7 @@ role.
 
         package MyApp;
         use Moose;
-        with 'Fastly::Role';
+        with 'WebService::Fastly::Role';
 
         package main;
 
@@ -99,7 +99,7 @@ you are accessing. Usually `prefix` and `in` will be determined by the code gene
 the spec and you will not need to set them at run time. If not, `in` will
 default to 'head' and `prefix` to the empty string.
 
-The tokens will be placed in a L<Fastly::Configuration> instance
+The tokens will be placed in a L<WebService::Fastly::Configuration> instance
 as follows, but you don't need to know about this.
 
 - `$cfg->{username}`
@@ -144,7 +144,7 @@ returns the current value of `base_url`.
 
 Returns an API factory object. You probably won't need to call this directly.
 
-        $self->api_factory('Pet'); # returns a Fastly::PetApi instance
+        $self->api_factory('Pet'); # returns a WebService::Fastly::PetApi instance
 
         $self->pet_api;            # the same
 
@@ -241,654 +241,639 @@ cpanm --quiet --no-interactive Class::Accessor Test::Exception Test::More Log::A
 
 To load the API packages:
 ```perl
-use Fastly::AclApi;
-use Fastly::AclEntryApi;
-use Fastly::ApexRedirectApi;
-use Fastly::BackendApi;
-use Fastly::BillingApi;
-use Fastly::BillingAddressApi;
-use Fastly::CacheSettingsApi;
-use Fastly::ConditionApi;
-use Fastly::ContactApi;
-use Fastly::ContentApi;
-use Fastly::CustomerApi;
-use Fastly::DictionaryApi;
-use Fastly::DictionaryInfoApi;
-use Fastly::DictionaryItemApi;
-use Fastly::DiffApi;
-use Fastly::DirectorApi;
-use Fastly::DirectorBackendApi;
-use Fastly::DocsApi;
-use Fastly::DomainApi;
-use Fastly::DomainOwnershipsApi;
-use Fastly::EventsApi;
-use Fastly::GzipApi;
-use Fastly::HeaderApi;
-use Fastly::HealthcheckApi;
-use Fastly::HistoricalApi;
-use Fastly::Http3Api;
-use Fastly::IamPermissionsApi;
-use Fastly::IamRolesApi;
-use Fastly::IamServiceGroupsApi;
-use Fastly::IamUserGroupsApi;
-use Fastly::InvitationsApi;
-use Fastly::LoggingAzureblobApi;
-use Fastly::LoggingBigqueryApi;
-use Fastly::LoggingCloudfilesApi;
-use Fastly::LoggingDatadogApi;
-use Fastly::LoggingDigitaloceanApi;
-use Fastly::LoggingElasticsearchApi;
-use Fastly::LoggingFtpApi;
-use Fastly::LoggingGcsApi;
-use Fastly::LoggingHerokuApi;
-use Fastly::LoggingHoneycombApi;
-use Fastly::LoggingHttpsApi;
-use Fastly::LoggingKafkaApi;
-use Fastly::LoggingKinesisApi;
-use Fastly::LoggingLogentriesApi;
-use Fastly::LoggingLogglyApi;
-use Fastly::LoggingLogshuttleApi;
-use Fastly::LoggingNewrelicApi;
-use Fastly::LoggingOpenstackApi;
-use Fastly::LoggingPapertrailApi;
-use Fastly::LoggingPubsubApi;
-use Fastly::LoggingS3Api;
-use Fastly::LoggingScalyrApi;
-use Fastly::LoggingSftpApi;
-use Fastly::LoggingSplunkApi;
-use Fastly::LoggingSumologicApi;
-use Fastly::LoggingSyslogApi;
-use Fastly::PackageApi;
-use Fastly::PoolApi;
-use Fastly::PopApi;
-use Fastly::PublicIpListApi;
-use Fastly::PurgeApi;
-use Fastly::RateLimiterApi;
-use Fastly::RealtimeApi;
-use Fastly::RequestSettingsApi;
-use Fastly::ResourceApi;
-use Fastly::ResponseObjectApi;
-use Fastly::ServerApi;
-use Fastly::ServiceApi;
-use Fastly::ServiceAuthorizationsApi;
-use Fastly::SettingsApi;
-use Fastly::SnippetApi;
-use Fastly::StarApi;
-use Fastly::StatsApi;
-use Fastly::TlsActivationsApi;
-use Fastly::TlsBulkCertificatesApi;
-use Fastly::TlsCertificatesApi;
-use Fastly::TlsConfigurationsApi;
-use Fastly::TlsDomainsApi;
-use Fastly::TlsPrivateKeysApi;
-use Fastly::TlsSubscriptionsApi;
-use Fastly::TokensApi;
-use Fastly::UserApi;
-use Fastly::VclApi;
-use Fastly::VclDiffApi;
-use Fastly::VersionApi;
-use Fastly::WafActiveRulesApi;
-use Fastly::WafExclusionsApi;
-use Fastly::WafFirewallVersionsApi;
-use Fastly::WafFirewallsApi;
-use Fastly::WafRuleRevisionsApi;
-use Fastly::WafRulesApi;
-use Fastly::WafTagsApi;
+use WebService::Fastly::AclApi;
+use WebService::Fastly::AclEntryApi;
+use WebService::Fastly::ApexRedirectApi;
+use WebService::Fastly::BackendApi;
+use WebService::Fastly::BillingApi;
+use WebService::Fastly::BillingAddressApi;
+use WebService::Fastly::CacheSettingsApi;
+use WebService::Fastly::ConditionApi;
+use WebService::Fastly::ContactApi;
+use WebService::Fastly::ContentApi;
+use WebService::Fastly::CustomerApi;
+use WebService::Fastly::DictionaryApi;
+use WebService::Fastly::DictionaryInfoApi;
+use WebService::Fastly::DictionaryItemApi;
+use WebService::Fastly::DiffApi;
+use WebService::Fastly::DirectorApi;
+use WebService::Fastly::DirectorBackendApi;
+use WebService::Fastly::DocsApi;
+use WebService::Fastly::DomainApi;
+use WebService::Fastly::DomainOwnershipsApi;
+use WebService::Fastly::EventsApi;
+use WebService::Fastly::GzipApi;
+use WebService::Fastly::HeaderApi;
+use WebService::Fastly::HealthcheckApi;
+use WebService::Fastly::HistoricalApi;
+use WebService::Fastly::Http3Api;
+use WebService::Fastly::IamPermissionsApi;
+use WebService::Fastly::IamRolesApi;
+use WebService::Fastly::IamServiceGroupsApi;
+use WebService::Fastly::IamUserGroupsApi;
+use WebService::Fastly::InvitationsApi;
+use WebService::Fastly::LoggingAzureblobApi;
+use WebService::Fastly::LoggingBigqueryApi;
+use WebService::Fastly::LoggingCloudfilesApi;
+use WebService::Fastly::LoggingDatadogApi;
+use WebService::Fastly::LoggingDigitaloceanApi;
+use WebService::Fastly::LoggingElasticsearchApi;
+use WebService::Fastly::LoggingFtpApi;
+use WebService::Fastly::LoggingGcsApi;
+use WebService::Fastly::LoggingHerokuApi;
+use WebService::Fastly::LoggingHoneycombApi;
+use WebService::Fastly::LoggingHttpsApi;
+use WebService::Fastly::LoggingKafkaApi;
+use WebService::Fastly::LoggingKinesisApi;
+use WebService::Fastly::LoggingLogentriesApi;
+use WebService::Fastly::LoggingLogglyApi;
+use WebService::Fastly::LoggingLogshuttleApi;
+use WebService::Fastly::LoggingNewrelicApi;
+use WebService::Fastly::LoggingOpenstackApi;
+use WebService::Fastly::LoggingPapertrailApi;
+use WebService::Fastly::LoggingPubsubApi;
+use WebService::Fastly::LoggingS3Api;
+use WebService::Fastly::LoggingScalyrApi;
+use WebService::Fastly::LoggingSftpApi;
+use WebService::Fastly::LoggingSplunkApi;
+use WebService::Fastly::LoggingSumologicApi;
+use WebService::Fastly::LoggingSyslogApi;
+use WebService::Fastly::PackageApi;
+use WebService::Fastly::PoolApi;
+use WebService::Fastly::PopApi;
+use WebService::Fastly::PublicIpListApi;
+use WebService::Fastly::PurgeApi;
+use WebService::Fastly::RateLimiterApi;
+use WebService::Fastly::RealtimeApi;
+use WebService::Fastly::RequestSettingsApi;
+use WebService::Fastly::ResourceApi;
+use WebService::Fastly::ResponseObjectApi;
+use WebService::Fastly::ServerApi;
+use WebService::Fastly::ServiceApi;
+use WebService::Fastly::ServiceAuthorizationsApi;
+use WebService::Fastly::SettingsApi;
+use WebService::Fastly::SnippetApi;
+use WebService::Fastly::StarApi;
+use WebService::Fastly::StatsApi;
+use WebService::Fastly::TlsActivationsApi;
+use WebService::Fastly::TlsBulkCertificatesApi;
+use WebService::Fastly::TlsCertificatesApi;
+use WebService::Fastly::TlsConfigurationsApi;
+use WebService::Fastly::TlsDomainsApi;
+use WebService::Fastly::TlsPrivateKeysApi;
+use WebService::Fastly::TlsSubscriptionsApi;
+use WebService::Fastly::TokensApi;
+use WebService::Fastly::UserApi;
+use WebService::Fastly::VclApi;
+use WebService::Fastly::VclDiffApi;
+use WebService::Fastly::VersionApi;
+use WebService::Fastly::WafActiveRulesApi;
+use WebService::Fastly::WafExclusionsApi;
+use WebService::Fastly::WafFirewallVersionsApi;
+use WebService::Fastly::WafFirewallsApi;
+use WebService::Fastly::WafRuleRevisionsApi;
+use WebService::Fastly::WafRulesApi;
+use WebService::Fastly::WafTagsApi;
 
 ```
 
 To load the models:
 ```perl
-use Fastly::Object::Acl;
-use Fastly::Object::AclEntry;
-use Fastly::Object::AclEntryResponse;
-use Fastly::Object::AclEntryResponseAllOf;
-use Fastly::Object::AclResponse;
-use Fastly::Object::AclResponseAllOf;
-use Fastly::Object::ApexRedirect;
-use Fastly::Object::ApexRedirectAllOf;
-use Fastly::Object::Backend;
-use Fastly::Object::BackendResponse;
-use Fastly::Object::BackendResponseAllOf;
-use Fastly::Object::Billing;
-use Fastly::Object::BillingAddressAttributes;
-use Fastly::Object::BillingAddressRequest;
-use Fastly::Object::BillingAddressRequestData;
-use Fastly::Object::BillingAddressResponse;
-use Fastly::Object::BillingAddressResponseData;
-use Fastly::Object::BillingEstimateResponse;
-use Fastly::Object::BillingEstimateResponseAllOf;
-use Fastly::Object::BillingEstimateResponseAllOfLine;
-use Fastly::Object::BillingEstimateResponseAllOfLines;
-use Fastly::Object::BillingRegionsValue;
-use Fastly::Object::BillingRegionsValueValue;
-use Fastly::Object::BillingRegionsValueValueTiersInner;
-use Fastly::Object::BillingResponse;
-use Fastly::Object::BillingResponseAllOf;
-use Fastly::Object::BillingResponseLineItem;
-use Fastly::Object::BillingResponseLineItemAllOf;
-use Fastly::Object::BillingStatus;
-use Fastly::Object::BillingTotal;
-use Fastly::Object::BillingTotalExtrasInner;
-use Fastly::Object::BulkUpdateAclEntriesRequest;
-use Fastly::Object::BulkUpdateAclEntry;
-use Fastly::Object::BulkUpdateAclEntryAllOf;
-use Fastly::Object::BulkUpdateDictionaryItem;
-use Fastly::Object::BulkUpdateDictionaryItemAllOf;
-use Fastly::Object::BulkUpdateDictionaryListRequest;
-use Fastly::Object::BulkWafActiveRules;
-use Fastly::Object::CacheSetting;
-use Fastly::Object::CacheSettingResponse;
-use Fastly::Object::Condition;
-use Fastly::Object::ConditionResponse;
-use Fastly::Object::Contact;
-use Fastly::Object::ContactResponse;
-use Fastly::Object::ContactResponseAllOf;
-use Fastly::Object::Content;
-use Fastly::Object::Customer;
-use Fastly::Object::CustomerResponse;
-use Fastly::Object::CustomerResponseAllOf;
-use Fastly::Object::DeleteAcl200Response;
-use Fastly::Object::Dictionary;
-use Fastly::Object::DictionaryInfoResponse;
-use Fastly::Object::DictionaryItem;
-use Fastly::Object::DictionaryItemResponse;
-use Fastly::Object::DictionaryItemResponseAllOf;
-use Fastly::Object::DictionaryResponse;
-use Fastly::Object::DictionaryResponseAllOf;
-use Fastly::Object::DiffResponse;
-use Fastly::Object::Director;
-use Fastly::Object::DirectorBackend;
-use Fastly::Object::DirectorBackendAllOf;
-use Fastly::Object::DirectorResponse;
-use Fastly::Object::Domain;
-use Fastly::Object::DomainCheckItem;
-use Fastly::Object::DomainResponse;
-use Fastly::Object::Event;
-use Fastly::Object::EventAttributes;
-use Fastly::Object::EventResponse;
-use Fastly::Object::EventsResponse;
-use Fastly::Object::EventsResponseAllOf;
-use Fastly::Object::GenericTokenError;
-use Fastly::Object::Gzip;
-use Fastly::Object::GzipResponse;
-use Fastly::Object::Header;
-use Fastly::Object::HeaderResponse;
-use Fastly::Object::Healthcheck;
-use Fastly::Object::HealthcheckResponse;
-use Fastly::Object::Historical;
-use Fastly::Object::HistoricalAggregateResponse;
-use Fastly::Object::HistoricalAggregateResponseAllOf;
-use Fastly::Object::HistoricalFieldAggregateResponse;
-use Fastly::Object::HistoricalFieldAggregateResponseAllOf;
-use Fastly::Object::HistoricalFieldResponse;
-use Fastly::Object::HistoricalFieldResponseAllOf;
-use Fastly::Object::HistoricalFieldResultsInner;
-use Fastly::Object::HistoricalMeta;
-use Fastly::Object::HistoricalRegionsResponse;
-use Fastly::Object::HistoricalRegionsResponseAllOf;
-use Fastly::Object::HistoricalResponse;
-use Fastly::Object::HistoricalResponseAllOf;
-use Fastly::Object::HistoricalServicesValue;
-use Fastly::Object::HistoricalUsageAggregateResponse;
-use Fastly::Object::HistoricalUsageMonthResponse;
-use Fastly::Object::HistoricalUsageMonthResponseAllOf;
-use Fastly::Object::HistoricalUsageMonthResponseAllOfData;
-use Fastly::Object::HistoricalUsageResults;
-use Fastly::Object::HistoricalUsageServiceResponse;
-use Fastly::Object::HistoricalUsageServiceResponseAllOf;
-use Fastly::Object::Http3;
-use Fastly::Object::Http3AllOf;
-use Fastly::Object::IamPermission;
-use Fastly::Object::IamRole;
-use Fastly::Object::IamRoleAllOf;
-use Fastly::Object::IamServiceGroup;
-use Fastly::Object::IamServiceGroupAllOf;
-use Fastly::Object::IamUserGroup;
-use Fastly::Object::IamUserGroupAllOf;
-use Fastly::Object::IncludedWithWafActiveRuleItem;
-use Fastly::Object::IncludedWithWafExclusionItem;
-use Fastly::Object::IncludedWithWafFirewallVersionItem;
-use Fastly::Object::IncludedWithWafRuleItem;
-use Fastly::Object::Invitation;
-use Fastly::Object::InvitationData;
-use Fastly::Object::InvitationDataAttributes;
-use Fastly::Object::InvitationResponse;
-use Fastly::Object::InvitationResponseAllOf;
-use Fastly::Object::InvitationResponseData;
-use Fastly::Object::InvitationResponseDataAllOf;
-use Fastly::Object::InvitationsResponse;
-use Fastly::Object::InvitationsResponseAllOf;
-use Fastly::Object::ListDomainOwnerships200Response;
-use Fastly::Object::ListServiceStars200Response;
-use Fastly::Object::ListServiceStars200ResponseAllOf;
-use Fastly::Object::ListServiceStars200ResponseAllOfDataInner;
-use Fastly::Object::ListServiceStars200ResponseAllOfDataInnerAllOf;
-use Fastly::Object::LoggingAddressAndPort;
-use Fastly::Object::LoggingAzureblob;
-use Fastly::Object::LoggingAzureblobAllOf;
-use Fastly::Object::LoggingAzureblobResponse;
-use Fastly::Object::LoggingBigquery;
-use Fastly::Object::LoggingBigqueryAllOf;
-use Fastly::Object::LoggingBigqueryResponse;
-use Fastly::Object::LoggingCloudfiles;
-use Fastly::Object::LoggingCloudfilesAllOf;
-use Fastly::Object::LoggingCloudfilesResponse;
-use Fastly::Object::LoggingCommon;
-use Fastly::Object::LoggingDatadog;
-use Fastly::Object::LoggingDatadogAllOf;
-use Fastly::Object::LoggingDatadogResponse;
-use Fastly::Object::LoggingDigitalocean;
-use Fastly::Object::LoggingDigitaloceanAllOf;
-use Fastly::Object::LoggingDigitaloceanResponse;
-use Fastly::Object::LoggingElasticsearch;
-use Fastly::Object::LoggingElasticsearchAllOf;
-use Fastly::Object::LoggingElasticsearchResponse;
-use Fastly::Object::LoggingFormatVersion;
-use Fastly::Object::LoggingFtp;
-use Fastly::Object::LoggingFtpAllOf;
-use Fastly::Object::LoggingFtpResponse;
-use Fastly::Object::LoggingGcs;
-use Fastly::Object::LoggingGcsAllOf;
-use Fastly::Object::LoggingGcsCommon;
-use Fastly::Object::LoggingGcsResponse;
-use Fastly::Object::LoggingGenericCommon;
-use Fastly::Object::LoggingGooglePubsub;
-use Fastly::Object::LoggingGooglePubsubAllOf;
-use Fastly::Object::LoggingGooglePubsubResponse;
-use Fastly::Object::LoggingHeroku;
-use Fastly::Object::LoggingHerokuAllOf;
-use Fastly::Object::LoggingHerokuResponse;
-use Fastly::Object::LoggingHoneycomb;
-use Fastly::Object::LoggingHoneycombAllOf;
-use Fastly::Object::LoggingHoneycombResponse;
-use Fastly::Object::LoggingHttps;
-use Fastly::Object::LoggingHttpsAllOf;
-use Fastly::Object::LoggingHttpsResponse;
-use Fastly::Object::LoggingKafka;
-use Fastly::Object::LoggingKafkaAllOf;
-use Fastly::Object::LoggingKafkaResponse;
-use Fastly::Object::LoggingKinesis;
-use Fastly::Object::LoggingKinesisResponse;
-use Fastly::Object::LoggingLogentries;
-use Fastly::Object::LoggingLogentriesAllOf;
-use Fastly::Object::LoggingLogentriesResponse;
-use Fastly::Object::LoggingLoggly;
-use Fastly::Object::LoggingLogglyAllOf;
-use Fastly::Object::LoggingLogglyResponse;
-use Fastly::Object::LoggingLogshuttle;
-use Fastly::Object::LoggingLogshuttleAllOf;
-use Fastly::Object::LoggingLogshuttleResponse;
-use Fastly::Object::LoggingMessageType;
-use Fastly::Object::LoggingNewrelic;
-use Fastly::Object::LoggingNewrelicAllOf;
-use Fastly::Object::LoggingNewrelicResponse;
-use Fastly::Object::LoggingOpenstack;
-use Fastly::Object::LoggingOpenstackAllOf;
-use Fastly::Object::LoggingOpenstackResponse;
-use Fastly::Object::LoggingPapertrail;
-use Fastly::Object::LoggingPapertrailResponse;
-use Fastly::Object::LoggingPlacement;
-use Fastly::Object::LoggingRequestCapsCommon;
-use Fastly::Object::LoggingS3;
-use Fastly::Object::LoggingS3AllOf;
-use Fastly::Object::LoggingS3Response;
-use Fastly::Object::LoggingScalyr;
-use Fastly::Object::LoggingScalyrAllOf;
-use Fastly::Object::LoggingScalyrResponse;
-use Fastly::Object::LoggingSftp;
-use Fastly::Object::LoggingSftpAllOf;
-use Fastly::Object::LoggingSftpResponse;
-use Fastly::Object::LoggingSplunk;
-use Fastly::Object::LoggingSplunkAllOf;
-use Fastly::Object::LoggingSplunkResponse;
-use Fastly::Object::LoggingSumologic;
-use Fastly::Object::LoggingSumologicAllOf;
-use Fastly::Object::LoggingSumologicResponse;
-use Fastly::Object::LoggingSyslog;
-use Fastly::Object::LoggingSyslogAllOf;
-use Fastly::Object::LoggingSyslogResponse;
-use Fastly::Object::LoggingTlsCommon;
-use Fastly::Object::LoggingUseTls;
-use Fastly::Object::ModelPackage;
-use Fastly::Object::PackageMetadata;
-use Fastly::Object::PackageResponse;
-use Fastly::Object::PackageResponseAllOf;
-use Fastly::Object::Pagination;
-use Fastly::Object::PaginationLinks;
-use Fastly::Object::PaginationMeta;
-use Fastly::Object::Permission;
-use Fastly::Object::Pool;
-use Fastly::Object::PoolAllOf;
-use Fastly::Object::PoolResponse;
-use Fastly::Object::PoolResponseAllOf;
-use Fastly::Object::Pop;
-use Fastly::Object::PopCoordinates;
-use Fastly::Object::PublicIpList;
-use Fastly::Object::PurgeKeys;
-use Fastly::Object::PurgeResponse;
-use Fastly::Object::RateLimiter;
-use Fastly::Object::RateLimiterResponse;
-use Fastly::Object::RateLimiterResponse1;
-use Fastly::Object::RateLimiterResponseAllOf;
-use Fastly::Object::Realtime;
-use Fastly::Object::RealtimeEntry;
-use Fastly::Object::RealtimeEntryAggregated;
-use Fastly::Object::RealtimeMeasurements;
-use Fastly::Object::RelationshipCommonName;
-use Fastly::Object::RelationshipCustomer;
-use Fastly::Object::RelationshipCustomerCustomer;
-use Fastly::Object::RelationshipMemberCustomer;
-use Fastly::Object::RelationshipMemberService;
-use Fastly::Object::RelationshipMemberServiceInvitation;
-use Fastly::Object::RelationshipMemberTlsActivation;
-use Fastly::Object::RelationshipMemberTlsBulkCertificate;
-use Fastly::Object::RelationshipMemberTlsCertificate;
-use Fastly::Object::RelationshipMemberTlsConfiguration;
-use Fastly::Object::RelationshipMemberTlsDnsRecord;
-use Fastly::Object::RelationshipMemberTlsDomain;
-use Fastly::Object::RelationshipMemberTlsPrivateKey;
-use Fastly::Object::RelationshipMemberTlsSubscription;
-use Fastly::Object::RelationshipMemberWafActiveRule;
-use Fastly::Object::RelationshipMemberWafFirewall;
-use Fastly::Object::RelationshipMemberWafFirewallVersion;
-use Fastly::Object::RelationshipMemberWafRule;
-use Fastly::Object::RelationshipMemberWafRuleRevision;
-use Fastly::Object::RelationshipMemberWafTag;
-use Fastly::Object::RelationshipService;
-use Fastly::Object::RelationshipServiceInvitations;
-use Fastly::Object::RelationshipServiceInvitationsCreate;
-use Fastly::Object::RelationshipServiceInvitationsCreateServiceInvitations;
-use Fastly::Object::RelationshipServiceInvitationsServiceInvitations;
-use Fastly::Object::RelationshipServiceService;
-use Fastly::Object::RelationshipServices;
-use Fastly::Object::RelationshipTlsActivation;
-use Fastly::Object::RelationshipTlsActivationTlsActivation;
-use Fastly::Object::RelationshipTlsActivations;
-use Fastly::Object::RelationshipTlsBulkCertificate;
-use Fastly::Object::RelationshipTlsBulkCertificateTlsBulkCertificate;
-use Fastly::Object::RelationshipTlsBulkCertificates;
-use Fastly::Object::RelationshipTlsCertificate;
-use Fastly::Object::RelationshipTlsCertificateTlsCertificate;
-use Fastly::Object::RelationshipTlsCertificates;
-use Fastly::Object::RelationshipTlsConfiguration;
-use Fastly::Object::RelationshipTlsConfigurationTlsConfiguration;
-use Fastly::Object::RelationshipTlsConfigurations;
-use Fastly::Object::RelationshipTlsDnsRecord;
-use Fastly::Object::RelationshipTlsDnsRecordDnsRecord;
-use Fastly::Object::RelationshipTlsDnsRecords;
-use Fastly::Object::RelationshipTlsDomain;
-use Fastly::Object::RelationshipTlsDomainTlsDomain;
-use Fastly::Object::RelationshipTlsDomains;
-use Fastly::Object::RelationshipTlsPrivateKey;
-use Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey;
-use Fastly::Object::RelationshipTlsPrivateKeys;
-use Fastly::Object::RelationshipTlsSubscription;
-use Fastly::Object::RelationshipTlsSubscriptionTlsSubscription;
-use Fastly::Object::RelationshipTlsSubscriptions;
-use Fastly::Object::RelationshipUser;
-use Fastly::Object::RelationshipUserUser;
-use Fastly::Object::RelationshipUserUserData;
-use Fastly::Object::RelationshipWafActiveRules;
-use Fastly::Object::RelationshipWafActiveRulesWafActiveRules;
-use Fastly::Object::RelationshipWafFirewall;
-use Fastly::Object::RelationshipWafFirewallVersion;
-use Fastly::Object::RelationshipWafFirewallVersionWafFirewallVersion;
-use Fastly::Object::RelationshipWafFirewallVersions;
-use Fastly::Object::RelationshipWafFirewallWafFirewall;
-use Fastly::Object::RelationshipWafRule;
-use Fastly::Object::RelationshipWafRuleRevision;
-use Fastly::Object::RelationshipWafRuleRevisionWafRuleRevisions;
-use Fastly::Object::RelationshipWafRuleRevisions;
-use Fastly::Object::RelationshipWafRuleWafRule;
-use Fastly::Object::RelationshipWafRules;
-use Fastly::Object::RelationshipWafTags;
-use Fastly::Object::RelationshipWafTagsWafTags;
-use Fastly::Object::RelationshipsForInvitation;
-use Fastly::Object::RelationshipsForStar;
-use Fastly::Object::RelationshipsForTlsActivation;
-use Fastly::Object::RelationshipsForTlsBulkCertificate;
-use Fastly::Object::RelationshipsForTlsConfiguration;
-use Fastly::Object::RelationshipsForTlsDomain;
-use Fastly::Object::RelationshipsForTlsPrivateKey;
-use Fastly::Object::RelationshipsForTlsSubscription;
-use Fastly::Object::RelationshipsForWafActiveRule;
-use Fastly::Object::RelationshipsForWafExclusion;
-use Fastly::Object::RelationshipsForWafFirewallVersion;
-use Fastly::Object::RelationshipsForWafRule;
-use Fastly::Object::RequestSettings;
-use Fastly::Object::RequestSettingsResponse;
-use Fastly::Object::Resource;
-use Fastly::Object::ResourceCreate;
-use Fastly::Object::ResourceCreateAllOf;
-use Fastly::Object::ResourceResponse;
-use Fastly::Object::ResourceResponseAllOf;
-use Fastly::Object::ResponseObject;
-use Fastly::Object::ResponseObjectResponse;
-use Fastly::Object::Results;
-use Fastly::Object::RoleUser;
-use Fastly::Object::SchemasContactResponse;
-use Fastly::Object::SchemasSnippetResponse;
-use Fastly::Object::SchemasUserResponse;
-use Fastly::Object::SchemasVclResponse;
-use Fastly::Object::SchemasVersion;
-use Fastly::Object::SchemasVersionResponse;
-use Fastly::Object::SchemasWafFirewallVersion;
-use Fastly::Object::SchemasWafFirewallVersionData;
-use Fastly::Object::Server;
-use Fastly::Object::ServerResponse;
-use Fastly::Object::ServerResponseAllOf;
-use Fastly::Object::Service;
-use Fastly::Object::ServiceAuthorization;
-use Fastly::Object::ServiceAuthorizationData;
-use Fastly::Object::ServiceAuthorizationDataAttributes;
-use Fastly::Object::ServiceAuthorizationDataRelationships;
-use Fastly::Object::ServiceAuthorizationDataRelationshipsAllOf;
-use Fastly::Object::ServiceAuthorizationDataRelationshipsAllOf1;
-use Fastly::Object::ServiceAuthorizationResponse;
-use Fastly::Object::ServiceAuthorizationResponseData;
-use Fastly::Object::ServiceAuthorizationResponseDataAllOf;
-use Fastly::Object::ServiceAuthorizationsResponse;
-use Fastly::Object::ServiceAuthorizationsResponseAllOf;
-use Fastly::Object::ServiceCreate;
-use Fastly::Object::ServiceCreateAllOf;
-use Fastly::Object::ServiceDetail;
-use Fastly::Object::ServiceDetailAllOf;
-use Fastly::Object::ServiceIdAndVersion;
-use Fastly::Object::ServiceInvitation;
-use Fastly::Object::ServiceInvitationData;
-use Fastly::Object::ServiceInvitationDataAttributes;
-use Fastly::Object::ServiceInvitationDataRelationships;
-use Fastly::Object::ServiceInvitationResponse;
-use Fastly::Object::ServiceInvitationResponseAllOf;
-use Fastly::Object::ServiceInvitationResponseAllOfData;
-use Fastly::Object::ServiceListResponse;
-use Fastly::Object::ServiceListResponseAllOf;
-use Fastly::Object::ServiceResponse;
-use Fastly::Object::ServiceResponseAllOf;
-use Fastly::Object::ServiceVersionDetail;
-use Fastly::Object::ServiceVersionDetailOrNull;
-use Fastly::Object::Settings;
-use Fastly::Object::SettingsResponse;
-use Fastly::Object::Snippet;
-use Fastly::Object::SnippetResponse;
-use Fastly::Object::SnippetResponseAllOf;
-use Fastly::Object::Star;
-use Fastly::Object::StarData;
-use Fastly::Object::StarResponse;
-use Fastly::Object::StarResponseAllOf;
-use Fastly::Object::Stats;
-use Fastly::Object::Timestamps;
-use Fastly::Object::TimestampsNoDelete;
-use Fastly::Object::TlsActivation;
-use Fastly::Object::TlsActivationData;
-use Fastly::Object::TlsActivationResponse;
-use Fastly::Object::TlsActivationResponseData;
-use Fastly::Object::TlsActivationResponseDataAllOf;
-use Fastly::Object::TlsActivationsResponse;
-use Fastly::Object::TlsActivationsResponseAllOf;
-use Fastly::Object::TlsBulkCertificate;
-use Fastly::Object::TlsBulkCertificateData;
-use Fastly::Object::TlsBulkCertificateDataAttributes;
-use Fastly::Object::TlsBulkCertificateResponse;
-use Fastly::Object::TlsBulkCertificateResponseAttributes;
-use Fastly::Object::TlsBulkCertificateResponseAttributesAllOf;
-use Fastly::Object::TlsBulkCertificateResponseData;
-use Fastly::Object::TlsBulkCertificateResponseDataAllOf;
-use Fastly::Object::TlsBulkCertificatesResponse;
-use Fastly::Object::TlsBulkCertificatesResponseAllOf;
-use Fastly::Object::TlsCertificate;
-use Fastly::Object::TlsCertificateData;
-use Fastly::Object::TlsCertificateDataAttributes;
-use Fastly::Object::TlsCertificateResponse;
-use Fastly::Object::TlsCertificateResponseAttributes;
-use Fastly::Object::TlsCertificateResponseAttributesAllOf;
-use Fastly::Object::TlsCertificateResponseData;
-use Fastly::Object::TlsCertificateResponseDataAllOf;
-use Fastly::Object::TlsCertificatesResponse;
-use Fastly::Object::TlsCertificatesResponseAllOf;
-use Fastly::Object::TlsCommon;
-use Fastly::Object::TlsConfiguration;
-use Fastly::Object::TlsConfigurationData;
-use Fastly::Object::TlsConfigurationDataAttributes;
-use Fastly::Object::TlsConfigurationResponse;
-use Fastly::Object::TlsConfigurationResponseAttributes;
-use Fastly::Object::TlsConfigurationResponseAttributesAllOf;
-use Fastly::Object::TlsConfigurationResponseData;
-use Fastly::Object::TlsConfigurationResponseDataAllOf;
-use Fastly::Object::TlsConfigurationsResponse;
-use Fastly::Object::TlsConfigurationsResponseAllOf;
-use Fastly::Object::TlsDnsRecord;
-use Fastly::Object::TlsDomainData;
-use Fastly::Object::TlsDomainsResponse;
-use Fastly::Object::TlsDomainsResponseAllOf;
-use Fastly::Object::TlsPrivateKey;
-use Fastly::Object::TlsPrivateKeyData;
-use Fastly::Object::TlsPrivateKeyDataAttributes;
-use Fastly::Object::TlsPrivateKeyResponse;
-use Fastly::Object::TlsPrivateKeyResponseAttributes;
-use Fastly::Object::TlsPrivateKeyResponseAttributesAllOf;
-use Fastly::Object::TlsPrivateKeyResponseData;
-use Fastly::Object::TlsPrivateKeysResponse;
-use Fastly::Object::TlsPrivateKeysResponseAllOf;
-use Fastly::Object::TlsSubscription;
-use Fastly::Object::TlsSubscriptionData;
-use Fastly::Object::TlsSubscriptionDataAttributes;
-use Fastly::Object::TlsSubscriptionResponse;
-use Fastly::Object::TlsSubscriptionResponseAttributes;
-use Fastly::Object::TlsSubscriptionResponseAttributesAllOf;
-use Fastly::Object::TlsSubscriptionResponseData;
-use Fastly::Object::TlsSubscriptionResponseDataAllOf;
-use Fastly::Object::TlsSubscriptionsResponse;
-use Fastly::Object::TlsSubscriptionsResponseAllOf;
-use Fastly::Object::Token;
-use Fastly::Object::TokenCreatedResponse;
-use Fastly::Object::TokenCreatedResponseAllOf;
-use Fastly::Object::TokenResponse;
-use Fastly::Object::TokenResponseAllOf;
-use Fastly::Object::TypeBillingAddress;
-use Fastly::Object::TypeContact;
-use Fastly::Object::TypeCustomer;
-use Fastly::Object::TypeEvent;
-use Fastly::Object::TypeInvitation;
-use Fastly::Object::TypeResource;
-use Fastly::Object::TypeService;
-use Fastly::Object::TypeServiceAuthorization;
-use Fastly::Object::TypeServiceInvitation;
-use Fastly::Object::TypeStar;
-use Fastly::Object::TypeTlsActivation;
-use Fastly::Object::TypeTlsBulkCertificate;
-use Fastly::Object::TypeTlsCertificate;
-use Fastly::Object::TypeTlsConfiguration;
-use Fastly::Object::TypeTlsDnsRecord;
-use Fastly::Object::TypeTlsDomain;
-use Fastly::Object::TypeTlsPrivateKey;
-use Fastly::Object::TypeTlsSubscription;
-use Fastly::Object::TypeUser;
-use Fastly::Object::TypeWafActiveRule;
-use Fastly::Object::TypeWafExclusion;
-use Fastly::Object::TypeWafFirewall;
-use Fastly::Object::TypeWafFirewallVersion;
-use Fastly::Object::TypeWafRule;
-use Fastly::Object::TypeWafRuleRevision;
-use Fastly::Object::TypeWafTag;
-use Fastly::Object::UpdateBillingAddressRequest;
-use Fastly::Object::UpdateBillingAddressRequestData;
-use Fastly::Object::User;
-use Fastly::Object::UserResponse;
-use Fastly::Object::UserResponseAllOf;
-use Fastly::Object::Vcl;
-use Fastly::Object::VclDiff;
-use Fastly::Object::VclResponse;
-use Fastly::Object::Version;
-use Fastly::Object::VersionCreateResponse;
-use Fastly::Object::VersionDetail;
-use Fastly::Object::VersionDetailSettings;
-use Fastly::Object::VersionResponse;
-use Fastly::Object::VersionResponseAllOf;
-use Fastly::Object::WafActiveRule;
-use Fastly::Object::WafActiveRuleCreationResponse;
-use Fastly::Object::WafActiveRuleData;
-use Fastly::Object::WafActiveRuleDataAttributes;
-use Fastly::Object::WafActiveRuleResponse;
-use Fastly::Object::WafActiveRuleResponseData;
-use Fastly::Object::WafActiveRuleResponseDataAllOf;
-use Fastly::Object::WafActiveRuleResponseDataAttributes;
-use Fastly::Object::WafActiveRuleResponseDataAttributesAllOf;
-use Fastly::Object::WafActiveRuleResponseDataRelationships;
-use Fastly::Object::WafActiveRulesResponse;
-use Fastly::Object::WafActiveRulesResponseAllOf;
-use Fastly::Object::WafExclusion;
-use Fastly::Object::WafExclusionData;
-use Fastly::Object::WafExclusionDataAttributes;
-use Fastly::Object::WafExclusionResponse;
-use Fastly::Object::WafExclusionResponseData;
-use Fastly::Object::WafExclusionResponseDataAllOf;
-use Fastly::Object::WafExclusionResponseDataAttributes;
-use Fastly::Object::WafExclusionResponseDataAttributesAllOf;
-use Fastly::Object::WafExclusionResponseDataRelationships;
-use Fastly::Object::WafExclusionsResponse;
-use Fastly::Object::WafExclusionsResponseAllOf;
-use Fastly::Object::WafFirewall;
-use Fastly::Object::WafFirewallData;
-use Fastly::Object::WafFirewallDataAttributes;
-use Fastly::Object::WafFirewallResponse;
-use Fastly::Object::WafFirewallResponseData;
-use Fastly::Object::WafFirewallResponseDataAllOf;
-use Fastly::Object::WafFirewallResponseDataAttributes;
-use Fastly::Object::WafFirewallResponseDataAttributesAllOf;
-use Fastly::Object::WafFirewallVersion;
-use Fastly::Object::WafFirewallVersionData;
-use Fastly::Object::WafFirewallVersionDataAttributes;
-use Fastly::Object::WafFirewallVersionResponse;
-use Fastly::Object::WafFirewallVersionResponseData;
-use Fastly::Object::WafFirewallVersionResponseDataAllOf;
-use Fastly::Object::WafFirewallVersionResponseDataAttributes;
-use Fastly::Object::WafFirewallVersionResponseDataAttributesAllOf;
-use Fastly::Object::WafFirewallVersionsResponse;
-use Fastly::Object::WafFirewallVersionsResponseAllOf;
-use Fastly::Object::WafFirewallsResponse;
-use Fastly::Object::WafFirewallsResponseAllOf;
-use Fastly::Object::WafRule;
-use Fastly::Object::WafRuleAttributes;
-use Fastly::Object::WafRuleResponse;
-use Fastly::Object::WafRuleResponseData;
-use Fastly::Object::WafRuleResponseDataAllOf;
-use Fastly::Object::WafRuleRevision;
-use Fastly::Object::WafRuleRevisionAttributes;
-use Fastly::Object::WafRuleRevisionOrLatest;
-use Fastly::Object::WafRuleRevisionResponse;
-use Fastly::Object::WafRuleRevisionResponseData;
-use Fastly::Object::WafRuleRevisionResponseDataAllOf;
-use Fastly::Object::WafRuleRevisionsResponse;
-use Fastly::Object::WafRuleRevisionsResponseAllOf;
-use Fastly::Object::WafRulesResponse;
-use Fastly::Object::WafRulesResponseAllOf;
-use Fastly::Object::WafTag;
-use Fastly::Object::WafTagAttributes;
-use Fastly::Object::WafTagsResponse;
-use Fastly::Object::WafTagsResponseAllOf;
-use Fastly::Object::WafTagsResponseDataItem;
+use WebService::Fastly::Object::Acl;
+use WebService::Fastly::Object::AclEntry;
+use WebService::Fastly::Object::AclEntryResponse;
+use WebService::Fastly::Object::AclEntryResponseAllOf;
+use WebService::Fastly::Object::AclResponse;
+use WebService::Fastly::Object::AclResponseAllOf;
+use WebService::Fastly::Object::ApexRedirect;
+use WebService::Fastly::Object::ApexRedirectAllOf;
+use WebService::Fastly::Object::Backend;
+use WebService::Fastly::Object::BackendResponse;
+use WebService::Fastly::Object::BackendResponseAllOf;
+use WebService::Fastly::Object::Billing;
+use WebService::Fastly::Object::BillingAddressAttributes;
+use WebService::Fastly::Object::BillingAddressRequest;
+use WebService::Fastly::Object::BillingAddressRequestData;
+use WebService::Fastly::Object::BillingAddressResponse;
+use WebService::Fastly::Object::BillingAddressResponseData;
+use WebService::Fastly::Object::BillingEstimateResponse;
+use WebService::Fastly::Object::BillingEstimateResponseAllOf;
+use WebService::Fastly::Object::BillingEstimateResponseAllOfLine;
+use WebService::Fastly::Object::BillingEstimateResponseAllOfLines;
+use WebService::Fastly::Object::BillingResponse;
+use WebService::Fastly::Object::BillingResponseAllOf;
+use WebService::Fastly::Object::BillingResponseLineItem;
+use WebService::Fastly::Object::BillingResponseLineItemAllOf;
+use WebService::Fastly::Object::BillingStatus;
+use WebService::Fastly::Object::BillingTotal;
+use WebService::Fastly::Object::BillingTotalExtras;
+use WebService::Fastly::Object::BulkUpdateAclEntriesRequest;
+use WebService::Fastly::Object::BulkUpdateAclEntry;
+use WebService::Fastly::Object::BulkUpdateAclEntryAllOf;
+use WebService::Fastly::Object::BulkUpdateDictionaryItem;
+use WebService::Fastly::Object::BulkUpdateDictionaryItemAllOf;
+use WebService::Fastly::Object::BulkUpdateDictionaryListRequest;
+use WebService::Fastly::Object::BulkWafActiveRules;
+use WebService::Fastly::Object::CacheSetting;
+use WebService::Fastly::Object::CacheSettingResponse;
+use WebService::Fastly::Object::Condition;
+use WebService::Fastly::Object::ConditionResponse;
+use WebService::Fastly::Object::Contact;
+use WebService::Fastly::Object::ContactResponse;
+use WebService::Fastly::Object::ContactResponseAllOf;
+use WebService::Fastly::Object::Content;
+use WebService::Fastly::Object::Customer;
+use WebService::Fastly::Object::CustomerResponse;
+use WebService::Fastly::Object::CustomerResponseAllOf;
+use WebService::Fastly::Object::Dictionary;
+use WebService::Fastly::Object::DictionaryInfoResponse;
+use WebService::Fastly::Object::DictionaryItem;
+use WebService::Fastly::Object::DictionaryItemResponse;
+use WebService::Fastly::Object::DictionaryItemResponseAllOf;
+use WebService::Fastly::Object::DictionaryResponse;
+use WebService::Fastly::Object::DictionaryResponseAllOf;
+use WebService::Fastly::Object::DiffResponse;
+use WebService::Fastly::Object::Director;
+use WebService::Fastly::Object::DirectorBackend;
+use WebService::Fastly::Object::DirectorBackendAllOf;
+use WebService::Fastly::Object::DirectorResponse;
+use WebService::Fastly::Object::Domain;
+use WebService::Fastly::Object::DomainCheckItem;
+use WebService::Fastly::Object::DomainResponse;
+use WebService::Fastly::Object::Event;
+use WebService::Fastly::Object::EventAttributes;
+use WebService::Fastly::Object::EventResponse;
+use WebService::Fastly::Object::EventsResponse;
+use WebService::Fastly::Object::EventsResponseAllOf;
+use WebService::Fastly::Object::GenericTokenError;
+use WebService::Fastly::Object::Gzip;
+use WebService::Fastly::Object::GzipResponse;
+use WebService::Fastly::Object::Header;
+use WebService::Fastly::Object::HeaderResponse;
+use WebService::Fastly::Object::Healthcheck;
+use WebService::Fastly::Object::HealthcheckResponse;
+use WebService::Fastly::Object::Historical;
+use WebService::Fastly::Object::HistoricalAggregateResponse;
+use WebService::Fastly::Object::HistoricalAggregateResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldAggregateResponse;
+use WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldResponse;
+use WebService::Fastly::Object::HistoricalFieldResponseAllOf;
+use WebService::Fastly::Object::HistoricalMeta;
+use WebService::Fastly::Object::HistoricalRegionsResponse;
+use WebService::Fastly::Object::HistoricalRegionsResponseAllOf;
+use WebService::Fastly::Object::HistoricalResponse;
+use WebService::Fastly::Object::HistoricalResponseAllOf;
+use WebService::Fastly::Object::HistoricalUsageAggregateResponse;
+use WebService::Fastly::Object::HistoricalUsageMonthResponse;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOf;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData;
+use WebService::Fastly::Object::HistoricalUsageResults;
+use WebService::Fastly::Object::HistoricalUsageServiceResponse;
+use WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
+use WebService::Fastly::Object::Http3;
+use WebService::Fastly::Object::Http3AllOf;
+use WebService::Fastly::Object::IamPermission;
+use WebService::Fastly::Object::IamRole;
+use WebService::Fastly::Object::IamRoleAllOf;
+use WebService::Fastly::Object::IamServiceGroup;
+use WebService::Fastly::Object::IamServiceGroupAllOf;
+use WebService::Fastly::Object::IamUserGroup;
+use WebService::Fastly::Object::IamUserGroupAllOf;
+use WebService::Fastly::Object::IncludedWithWafActiveRuleItem;
+use WebService::Fastly::Object::IncludedWithWafExclusionItem;
+use WebService::Fastly::Object::IncludedWithWafFirewallVersionItem;
+use WebService::Fastly::Object::IncludedWithWafRuleItem;
+use WebService::Fastly::Object::InlineResponse200;
+use WebService::Fastly::Object::InlineResponse2001;
+use WebService::Fastly::Object::Invitation;
+use WebService::Fastly::Object::InvitationData;
+use WebService::Fastly::Object::InvitationDataAttributes;
+use WebService::Fastly::Object::InvitationResponse;
+use WebService::Fastly::Object::InvitationResponseAllOf;
+use WebService::Fastly::Object::InvitationResponseData;
+use WebService::Fastly::Object::InvitationResponseDataAllOf;
+use WebService::Fastly::Object::InvitationsResponse;
+use WebService::Fastly::Object::InvitationsResponseAllOf;
+use WebService::Fastly::Object::LoggingAddressAndPort;
+use WebService::Fastly::Object::LoggingAzureblob;
+use WebService::Fastly::Object::LoggingAzureblobAllOf;
+use WebService::Fastly::Object::LoggingAzureblobResponse;
+use WebService::Fastly::Object::LoggingBigquery;
+use WebService::Fastly::Object::LoggingBigqueryAllOf;
+use WebService::Fastly::Object::LoggingBigqueryResponse;
+use WebService::Fastly::Object::LoggingCloudfiles;
+use WebService::Fastly::Object::LoggingCloudfilesAllOf;
+use WebService::Fastly::Object::LoggingCloudfilesResponse;
+use WebService::Fastly::Object::LoggingCommon;
+use WebService::Fastly::Object::LoggingDatadog;
+use WebService::Fastly::Object::LoggingDatadogAllOf;
+use WebService::Fastly::Object::LoggingDatadogResponse;
+use WebService::Fastly::Object::LoggingDigitalocean;
+use WebService::Fastly::Object::LoggingDigitaloceanAllOf;
+use WebService::Fastly::Object::LoggingDigitaloceanResponse;
+use WebService::Fastly::Object::LoggingElasticsearch;
+use WebService::Fastly::Object::LoggingElasticsearchAllOf;
+use WebService::Fastly::Object::LoggingElasticsearchResponse;
+use WebService::Fastly::Object::LoggingFormatVersion;
+use WebService::Fastly::Object::LoggingFtp;
+use WebService::Fastly::Object::LoggingFtpAllOf;
+use WebService::Fastly::Object::LoggingFtpResponse;
+use WebService::Fastly::Object::LoggingGcs;
+use WebService::Fastly::Object::LoggingGcsAllOf;
+use WebService::Fastly::Object::LoggingGcsCommon;
+use WebService::Fastly::Object::LoggingGcsResponse;
+use WebService::Fastly::Object::LoggingGenericCommon;
+use WebService::Fastly::Object::LoggingGooglePubsub;
+use WebService::Fastly::Object::LoggingGooglePubsubAllOf;
+use WebService::Fastly::Object::LoggingGooglePubsubResponse;
+use WebService::Fastly::Object::LoggingHeroku;
+use WebService::Fastly::Object::LoggingHerokuAllOf;
+use WebService::Fastly::Object::LoggingHerokuResponse;
+use WebService::Fastly::Object::LoggingHoneycomb;
+use WebService::Fastly::Object::LoggingHoneycombAllOf;
+use WebService::Fastly::Object::LoggingHoneycombResponse;
+use WebService::Fastly::Object::LoggingHttps;
+use WebService::Fastly::Object::LoggingHttpsAllOf;
+use WebService::Fastly::Object::LoggingHttpsResponse;
+use WebService::Fastly::Object::LoggingKafka;
+use WebService::Fastly::Object::LoggingKafkaAllOf;
+use WebService::Fastly::Object::LoggingKafkaResponse;
+use WebService::Fastly::Object::LoggingKinesis;
+use WebService::Fastly::Object::LoggingKinesisResponse;
+use WebService::Fastly::Object::LoggingLogentries;
+use WebService::Fastly::Object::LoggingLogentriesAllOf;
+use WebService::Fastly::Object::LoggingLogentriesResponse;
+use WebService::Fastly::Object::LoggingLoggly;
+use WebService::Fastly::Object::LoggingLogglyAllOf;
+use WebService::Fastly::Object::LoggingLogglyResponse;
+use WebService::Fastly::Object::LoggingLogshuttle;
+use WebService::Fastly::Object::LoggingLogshuttleAllOf;
+use WebService::Fastly::Object::LoggingLogshuttleResponse;
+use WebService::Fastly::Object::LoggingMessageType;
+use WebService::Fastly::Object::LoggingNewrelic;
+use WebService::Fastly::Object::LoggingNewrelicAllOf;
+use WebService::Fastly::Object::LoggingNewrelicResponse;
+use WebService::Fastly::Object::LoggingOpenstack;
+use WebService::Fastly::Object::LoggingOpenstackAllOf;
+use WebService::Fastly::Object::LoggingOpenstackResponse;
+use WebService::Fastly::Object::LoggingPapertrail;
+use WebService::Fastly::Object::LoggingPapertrailResponse;
+use WebService::Fastly::Object::LoggingPlacement;
+use WebService::Fastly::Object::LoggingRequestCapsCommon;
+use WebService::Fastly::Object::LoggingS3;
+use WebService::Fastly::Object::LoggingS3AllOf;
+use WebService::Fastly::Object::LoggingS3Response;
+use WebService::Fastly::Object::LoggingScalyr;
+use WebService::Fastly::Object::LoggingScalyrAllOf;
+use WebService::Fastly::Object::LoggingScalyrResponse;
+use WebService::Fastly::Object::LoggingSftp;
+use WebService::Fastly::Object::LoggingSftpAllOf;
+use WebService::Fastly::Object::LoggingSftpResponse;
+use WebService::Fastly::Object::LoggingSplunk;
+use WebService::Fastly::Object::LoggingSplunkAllOf;
+use WebService::Fastly::Object::LoggingSplunkResponse;
+use WebService::Fastly::Object::LoggingSumologic;
+use WebService::Fastly::Object::LoggingSumologicAllOf;
+use WebService::Fastly::Object::LoggingSumologicResponse;
+use WebService::Fastly::Object::LoggingSyslog;
+use WebService::Fastly::Object::LoggingSyslogAllOf;
+use WebService::Fastly::Object::LoggingSyslogResponse;
+use WebService::Fastly::Object::LoggingTlsCommon;
+use WebService::Fastly::Object::LoggingUseTls;
+use WebService::Fastly::Object::ModelPackage;
+use WebService::Fastly::Object::PackageMetadata;
+use WebService::Fastly::Object::PackageResponse;
+use WebService::Fastly::Object::PackageResponseAllOf;
+use WebService::Fastly::Object::Pagination;
+use WebService::Fastly::Object::PaginationLinks;
+use WebService::Fastly::Object::PaginationMeta;
+use WebService::Fastly::Object::Permission;
+use WebService::Fastly::Object::Pool;
+use WebService::Fastly::Object::PoolAllOf;
+use WebService::Fastly::Object::PoolResponse;
+use WebService::Fastly::Object::PoolResponseAllOf;
+use WebService::Fastly::Object::Pop;
+use WebService::Fastly::Object::PopCoordinates;
+use WebService::Fastly::Object::PublicIpList;
+use WebService::Fastly::Object::PurgeKeys;
+use WebService::Fastly::Object::PurgeResponse;
+use WebService::Fastly::Object::RateLimiter;
+use WebService::Fastly::Object::RateLimiterResponse;
+use WebService::Fastly::Object::RateLimiterResponse1;
+use WebService::Fastly::Object::RateLimiterResponseAllOf;
+use WebService::Fastly::Object::Realtime;
+use WebService::Fastly::Object::RealtimeEntry;
+use WebService::Fastly::Object::RealtimeMeasurements;
+use WebService::Fastly::Object::RelationshipCommonName;
+use WebService::Fastly::Object::RelationshipCustomer;
+use WebService::Fastly::Object::RelationshipCustomerCustomer;
+use WebService::Fastly::Object::RelationshipMemberCustomer;
+use WebService::Fastly::Object::RelationshipMemberService;
+use WebService::Fastly::Object::RelationshipMemberServiceInvitation;
+use WebService::Fastly::Object::RelationshipMemberTlsActivation;
+use WebService::Fastly::Object::RelationshipMemberTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipMemberTlsCertificate;
+use WebService::Fastly::Object::RelationshipMemberTlsConfiguration;
+use WebService::Fastly::Object::RelationshipMemberTlsDnsRecord;
+use WebService::Fastly::Object::RelationshipMemberTlsDomain;
+use WebService::Fastly::Object::RelationshipMemberTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipMemberTlsSubscription;
+use WebService::Fastly::Object::RelationshipMemberWafActiveRule;
+use WebService::Fastly::Object::RelationshipMemberWafFirewall;
+use WebService::Fastly::Object::RelationshipMemberWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipMemberWafRule;
+use WebService::Fastly::Object::RelationshipMemberWafRuleRevision;
+use WebService::Fastly::Object::RelationshipMemberWafTag;
+use WebService::Fastly::Object::RelationshipService;
+use WebService::Fastly::Object::RelationshipServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceInvitationsCreate;
+use WebService::Fastly::Object::RelationshipServiceInvitationsCreateServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceInvitationsServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceService;
+use WebService::Fastly::Object::RelationshipServices;
+use WebService::Fastly::Object::RelationshipTlsActivation;
+use WebService::Fastly::Object::RelationshipTlsActivationTlsActivation;
+use WebService::Fastly::Object::RelationshipTlsActivations;
+use WebService::Fastly::Object::RelationshipTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipTlsBulkCertificateTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipTlsBulkCertificates;
+use WebService::Fastly::Object::RelationshipTlsCertificate;
+use WebService::Fastly::Object::RelationshipTlsCertificateTlsCertificate;
+use WebService::Fastly::Object::RelationshipTlsCertificates;
+use WebService::Fastly::Object::RelationshipTlsConfiguration;
+use WebService::Fastly::Object::RelationshipTlsConfigurationTlsConfiguration;
+use WebService::Fastly::Object::RelationshipTlsConfigurations;
+use WebService::Fastly::Object::RelationshipTlsDnsRecord;
+use WebService::Fastly::Object::RelationshipTlsDnsRecordDnsRecord;
+use WebService::Fastly::Object::RelationshipTlsDnsRecords;
+use WebService::Fastly::Object::RelationshipTlsDomain;
+use WebService::Fastly::Object::RelationshipTlsDomainTlsDomain;
+use WebService::Fastly::Object::RelationshipTlsDomains;
+use WebService::Fastly::Object::RelationshipTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipTlsPrivateKeys;
+use WebService::Fastly::Object::RelationshipTlsSubscription;
+use WebService::Fastly::Object::RelationshipTlsSubscriptionTlsSubscription;
+use WebService::Fastly::Object::RelationshipTlsSubscriptions;
+use WebService::Fastly::Object::RelationshipUser;
+use WebService::Fastly::Object::RelationshipUserUser;
+use WebService::Fastly::Object::RelationshipUserUserData;
+use WebService::Fastly::Object::RelationshipWafActiveRules;
+use WebService::Fastly::Object::RelationshipWafActiveRulesWafActiveRules;
+use WebService::Fastly::Object::RelationshipWafFirewall;
+use WebService::Fastly::Object::RelationshipWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipWafFirewallVersionWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipWafFirewallVersions;
+use WebService::Fastly::Object::RelationshipWafFirewallWafFirewall;
+use WebService::Fastly::Object::RelationshipWafRule;
+use WebService::Fastly::Object::RelationshipWafRuleRevision;
+use WebService::Fastly::Object::RelationshipWafRuleRevisionWafRuleRevisions;
+use WebService::Fastly::Object::RelationshipWafRuleRevisions;
+use WebService::Fastly::Object::RelationshipWafRuleWafRule;
+use WebService::Fastly::Object::RelationshipWafRules;
+use WebService::Fastly::Object::RelationshipWafTags;
+use WebService::Fastly::Object::RelationshipWafTagsWafTags;
+use WebService::Fastly::Object::RelationshipsForInvitation;
+use WebService::Fastly::Object::RelationshipsForStar;
+use WebService::Fastly::Object::RelationshipsForTlsActivation;
+use WebService::Fastly::Object::RelationshipsForTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipsForTlsConfiguration;
+use WebService::Fastly::Object::RelationshipsForTlsDomain;
+use WebService::Fastly::Object::RelationshipsForTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipsForTlsSubscription;
+use WebService::Fastly::Object::RelationshipsForWafActiveRule;
+use WebService::Fastly::Object::RelationshipsForWafExclusion;
+use WebService::Fastly::Object::RelationshipsForWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipsForWafRule;
+use WebService::Fastly::Object::RequestSettings;
+use WebService::Fastly::Object::RequestSettingsResponse;
+use WebService::Fastly::Object::Resource;
+use WebService::Fastly::Object::ResourceCreate;
+use WebService::Fastly::Object::ResourceCreateAllOf;
+use WebService::Fastly::Object::ResourceResponse;
+use WebService::Fastly::Object::ResourceResponseAllOf;
+use WebService::Fastly::Object::ResponseObject;
+use WebService::Fastly::Object::ResponseObjectResponse;
+use WebService::Fastly::Object::Results;
+use WebService::Fastly::Object::RoleUser;
+use WebService::Fastly::Object::SchemasContactResponse;
+use WebService::Fastly::Object::SchemasSnippetResponse;
+use WebService::Fastly::Object::SchemasUserResponse;
+use WebService::Fastly::Object::SchemasVclResponse;
+use WebService::Fastly::Object::SchemasVersion;
+use WebService::Fastly::Object::SchemasVersionResponse;
+use WebService::Fastly::Object::SchemasWafFirewallVersion;
+use WebService::Fastly::Object::SchemasWafFirewallVersionData;
+use WebService::Fastly::Object::Server;
+use WebService::Fastly::Object::ServerResponse;
+use WebService::Fastly::Object::ServerResponseAllOf;
+use WebService::Fastly::Object::Service;
+use WebService::Fastly::Object::ServiceAuthorization;
+use WebService::Fastly::Object::ServiceAuthorizationData;
+use WebService::Fastly::Object::ServiceAuthorizationDataAttributes;
+use WebService::Fastly::Object::ServiceAuthorizationResponse;
+use WebService::Fastly::Object::ServiceAuthorizationResponseData;
+use WebService::Fastly::Object::ServiceAuthorizationResponseDataAllOf;
+use WebService::Fastly::Object::ServiceAuthorizationsResponse;
+use WebService::Fastly::Object::ServiceAuthorizationsResponseAllOf;
+use WebService::Fastly::Object::ServiceCreate;
+use WebService::Fastly::Object::ServiceCreateAllOf;
+use WebService::Fastly::Object::ServiceDetail;
+use WebService::Fastly::Object::ServiceDetailAllOf;
+use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceInvitation;
+use WebService::Fastly::Object::ServiceInvitationData;
+use WebService::Fastly::Object::ServiceInvitationDataAttributes;
+use WebService::Fastly::Object::ServiceInvitationResponse;
+use WebService::Fastly::Object::ServiceInvitationResponseAllOf;
+use WebService::Fastly::Object::ServiceInvitationResponseAllOfData;
+use WebService::Fastly::Object::ServiceListResponse;
+use WebService::Fastly::Object::ServiceListResponseAllOf;
+use WebService::Fastly::Object::ServiceResponse;
+use WebService::Fastly::Object::ServiceResponseAllOf;
+use WebService::Fastly::Object::ServiceVersionDetail;
+use WebService::Fastly::Object::ServiceVersionDetailOrNull;
+use WebService::Fastly::Object::Settings;
+use WebService::Fastly::Object::SettingsResponse;
+use WebService::Fastly::Object::Snippet;
+use WebService::Fastly::Object::SnippetResponse;
+use WebService::Fastly::Object::SnippetResponseAllOf;
+use WebService::Fastly::Object::Star;
+use WebService::Fastly::Object::StarData;
+use WebService::Fastly::Object::StarResponse;
+use WebService::Fastly::Object::StarResponseAllOf;
+use WebService::Fastly::Object::Stats;
+use WebService::Fastly::Object::Timestamps;
+use WebService::Fastly::Object::TimestampsNoDelete;
+use WebService::Fastly::Object::TlsActivation;
+use WebService::Fastly::Object::TlsActivationData;
+use WebService::Fastly::Object::TlsActivationResponse;
+use WebService::Fastly::Object::TlsActivationResponseData;
+use WebService::Fastly::Object::TlsActivationResponseDataAllOf;
+use WebService::Fastly::Object::TlsActivationsResponse;
+use WebService::Fastly::Object::TlsActivationsResponseAllOf;
+use WebService::Fastly::Object::TlsBulkCertificate;
+use WebService::Fastly::Object::TlsBulkCertificateData;
+use WebService::Fastly::Object::TlsBulkCertificateDataAttributes;
+use WebService::Fastly::Object::TlsBulkCertificateResponse;
+use WebService::Fastly::Object::TlsBulkCertificateResponseAttributes;
+use WebService::Fastly::Object::TlsBulkCertificateResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsBulkCertificateResponseData;
+use WebService::Fastly::Object::TlsBulkCertificateResponseDataAllOf;
+use WebService::Fastly::Object::TlsBulkCertificatesResponse;
+use WebService::Fastly::Object::TlsBulkCertificatesResponseAllOf;
+use WebService::Fastly::Object::TlsCertificate;
+use WebService::Fastly::Object::TlsCertificateData;
+use WebService::Fastly::Object::TlsCertificateDataAttributes;
+use WebService::Fastly::Object::TlsCertificateResponse;
+use WebService::Fastly::Object::TlsCertificateResponseAttributes;
+use WebService::Fastly::Object::TlsCertificateResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsCertificateResponseData;
+use WebService::Fastly::Object::TlsCertificateResponseDataAllOf;
+use WebService::Fastly::Object::TlsCertificatesResponse;
+use WebService::Fastly::Object::TlsCertificatesResponseAllOf;
+use WebService::Fastly::Object::TlsCommon;
+use WebService::Fastly::Object::TlsConfiguration;
+use WebService::Fastly::Object::TlsConfigurationData;
+use WebService::Fastly::Object::TlsConfigurationDataAttributes;
+use WebService::Fastly::Object::TlsConfigurationResponse;
+use WebService::Fastly::Object::TlsConfigurationResponseAttributes;
+use WebService::Fastly::Object::TlsConfigurationResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsConfigurationResponseData;
+use WebService::Fastly::Object::TlsConfigurationResponseDataAllOf;
+use WebService::Fastly::Object::TlsConfigurationsResponse;
+use WebService::Fastly::Object::TlsConfigurationsResponseAllOf;
+use WebService::Fastly::Object::TlsDnsRecord;
+use WebService::Fastly::Object::TlsDomainData;
+use WebService::Fastly::Object::TlsDomainsResponse;
+use WebService::Fastly::Object::TlsDomainsResponseAllOf;
+use WebService::Fastly::Object::TlsPrivateKey;
+use WebService::Fastly::Object::TlsPrivateKeyData;
+use WebService::Fastly::Object::TlsPrivateKeyDataAttributes;
+use WebService::Fastly::Object::TlsPrivateKeyResponse;
+use WebService::Fastly::Object::TlsPrivateKeyResponseAttributes;
+use WebService::Fastly::Object::TlsPrivateKeyResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsPrivateKeyResponseData;
+use WebService::Fastly::Object::TlsPrivateKeysResponse;
+use WebService::Fastly::Object::TlsPrivateKeysResponseAllOf;
+use WebService::Fastly::Object::TlsSubscription;
+use WebService::Fastly::Object::TlsSubscriptionData;
+use WebService::Fastly::Object::TlsSubscriptionDataAttributes;
+use WebService::Fastly::Object::TlsSubscriptionResponse;
+use WebService::Fastly::Object::TlsSubscriptionResponseAttributes;
+use WebService::Fastly::Object::TlsSubscriptionResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsSubscriptionResponseData;
+use WebService::Fastly::Object::TlsSubscriptionResponseDataAllOf;
+use WebService::Fastly::Object::TlsSubscriptionsResponse;
+use WebService::Fastly::Object::TlsSubscriptionsResponseAllOf;
+use WebService::Fastly::Object::Token;
+use WebService::Fastly::Object::TokenCreatedResponse;
+use WebService::Fastly::Object::TokenCreatedResponseAllOf;
+use WebService::Fastly::Object::TokenResponse;
+use WebService::Fastly::Object::TokenResponseAllOf;
+use WebService::Fastly::Object::TypeBillingAddress;
+use WebService::Fastly::Object::TypeContact;
+use WebService::Fastly::Object::TypeCustomer;
+use WebService::Fastly::Object::TypeEvent;
+use WebService::Fastly::Object::TypeInvitation;
+use WebService::Fastly::Object::TypeResource;
+use WebService::Fastly::Object::TypeService;
+use WebService::Fastly::Object::TypeServiceAuthorization;
+use WebService::Fastly::Object::TypeServiceInvitation;
+use WebService::Fastly::Object::TypeStar;
+use WebService::Fastly::Object::TypeTlsActivation;
+use WebService::Fastly::Object::TypeTlsBulkCertificate;
+use WebService::Fastly::Object::TypeTlsCertificate;
+use WebService::Fastly::Object::TypeTlsConfiguration;
+use WebService::Fastly::Object::TypeTlsDnsRecord;
+use WebService::Fastly::Object::TypeTlsDomain;
+use WebService::Fastly::Object::TypeTlsPrivateKey;
+use WebService::Fastly::Object::TypeTlsSubscription;
+use WebService::Fastly::Object::TypeUser;
+use WebService::Fastly::Object::TypeWafActiveRule;
+use WebService::Fastly::Object::TypeWafExclusion;
+use WebService::Fastly::Object::TypeWafFirewall;
+use WebService::Fastly::Object::TypeWafFirewallVersion;
+use WebService::Fastly::Object::TypeWafRule;
+use WebService::Fastly::Object::TypeWafRuleRevision;
+use WebService::Fastly::Object::TypeWafTag;
+use WebService::Fastly::Object::UpdateBillingAddressRequest;
+use WebService::Fastly::Object::UpdateBillingAddressRequestData;
+use WebService::Fastly::Object::User;
+use WebService::Fastly::Object::UserResponse;
+use WebService::Fastly::Object::UserResponseAllOf;
+use WebService::Fastly::Object::Vcl;
+use WebService::Fastly::Object::VclDiff;
+use WebService::Fastly::Object::VclResponse;
+use WebService::Fastly::Object::Version;
+use WebService::Fastly::Object::VersionCreateResponse;
+use WebService::Fastly::Object::VersionDetail;
+use WebService::Fastly::Object::VersionResponse;
+use WebService::Fastly::Object::VersionResponseAllOf;
+use WebService::Fastly::Object::WafActiveRule;
+use WebService::Fastly::Object::WafActiveRuleCreationResponse;
+use WebService::Fastly::Object::WafActiveRuleData;
+use WebService::Fastly::Object::WafActiveRuleDataAttributes;
+use WebService::Fastly::Object::WafActiveRuleResponse;
+use WebService::Fastly::Object::WafActiveRuleResponseData;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAllOf;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAttributes;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafActiveRuleResponseDataRelationships;
+use WebService::Fastly::Object::WafActiveRulesResponse;
+use WebService::Fastly::Object::WafActiveRulesResponseAllOf;
+use WebService::Fastly::Object::WafExclusion;
+use WebService::Fastly::Object::WafExclusionData;
+use WebService::Fastly::Object::WafExclusionDataAttributes;
+use WebService::Fastly::Object::WafExclusionResponse;
+use WebService::Fastly::Object::WafExclusionResponseData;
+use WebService::Fastly::Object::WafExclusionResponseDataAllOf;
+use WebService::Fastly::Object::WafExclusionResponseDataAttributes;
+use WebService::Fastly::Object::WafExclusionResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafExclusionResponseDataRelationships;
+use WebService::Fastly::Object::WafExclusionsResponse;
+use WebService::Fastly::Object::WafExclusionsResponseAllOf;
+use WebService::Fastly::Object::WafFirewall;
+use WebService::Fastly::Object::WafFirewallData;
+use WebService::Fastly::Object::WafFirewallDataAttributes;
+use WebService::Fastly::Object::WafFirewallResponse;
+use WebService::Fastly::Object::WafFirewallResponseData;
+use WebService::Fastly::Object::WafFirewallResponseDataAllOf;
+use WebService::Fastly::Object::WafFirewallResponseDataAttributes;
+use WebService::Fastly::Object::WafFirewallResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafFirewallVersion;
+use WebService::Fastly::Object::WafFirewallVersionData;
+use WebService::Fastly::Object::WafFirewallVersionDataAttributes;
+use WebService::Fastly::Object::WafFirewallVersionResponse;
+use WebService::Fastly::Object::WafFirewallVersionResponseData;
+use WebService::Fastly::Object::WafFirewallVersionResponseDataAllOf;
+use WebService::Fastly::Object::WafFirewallVersionResponseDataAttributes;
+use WebService::Fastly::Object::WafFirewallVersionResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafFirewallVersionsResponse;
+use WebService::Fastly::Object::WafFirewallVersionsResponseAllOf;
+use WebService::Fastly::Object::WafFirewallsResponse;
+use WebService::Fastly::Object::WafFirewallsResponseAllOf;
+use WebService::Fastly::Object::WafRule;
+use WebService::Fastly::Object::WafRuleAttributes;
+use WebService::Fastly::Object::WafRuleResponse;
+use WebService::Fastly::Object::WafRuleResponseData;
+use WebService::Fastly::Object::WafRuleResponseDataAllOf;
+use WebService::Fastly::Object::WafRuleRevision;
+use WebService::Fastly::Object::WafRuleRevisionAttributes;
+use WebService::Fastly::Object::WafRuleRevisionOrLatest;
+use WebService::Fastly::Object::WafRuleRevisionResponse;
+use WebService::Fastly::Object::WafRuleRevisionResponseData;
+use WebService::Fastly::Object::WafRuleRevisionResponseDataAllOf;
+use WebService::Fastly::Object::WafRuleRevisionsResponse;
+use WebService::Fastly::Object::WafRuleRevisionsResponseAllOf;
+use WebService::Fastly::Object::WafRulesResponse;
+use WebService::Fastly::Object::WafRulesResponseAllOf;
+use WebService::Fastly::Object::WafTag;
+use WebService::Fastly::Object::WafTagAttributes;
+use WebService::Fastly::Object::WafTagsResponse;
+use WebService::Fastly::Object::WafTagsResponseAllOf;
+use WebService::Fastly::Object::WafTagsResponseDataItem;
 
 ````
 
@@ -900,657 +885,642 @@ use lib 'lib';
 use strict;
 use warnings;
 # load the API package
-use Fastly::AclApi;
-use Fastly::AclEntryApi;
-use Fastly::ApexRedirectApi;
-use Fastly::BackendApi;
-use Fastly::BillingApi;
-use Fastly::BillingAddressApi;
-use Fastly::CacheSettingsApi;
-use Fastly::ConditionApi;
-use Fastly::ContactApi;
-use Fastly::ContentApi;
-use Fastly::CustomerApi;
-use Fastly::DictionaryApi;
-use Fastly::DictionaryInfoApi;
-use Fastly::DictionaryItemApi;
-use Fastly::DiffApi;
-use Fastly::DirectorApi;
-use Fastly::DirectorBackendApi;
-use Fastly::DocsApi;
-use Fastly::DomainApi;
-use Fastly::DomainOwnershipsApi;
-use Fastly::EventsApi;
-use Fastly::GzipApi;
-use Fastly::HeaderApi;
-use Fastly::HealthcheckApi;
-use Fastly::HistoricalApi;
-use Fastly::Http3Api;
-use Fastly::IamPermissionsApi;
-use Fastly::IamRolesApi;
-use Fastly::IamServiceGroupsApi;
-use Fastly::IamUserGroupsApi;
-use Fastly::InvitationsApi;
-use Fastly::LoggingAzureblobApi;
-use Fastly::LoggingBigqueryApi;
-use Fastly::LoggingCloudfilesApi;
-use Fastly::LoggingDatadogApi;
-use Fastly::LoggingDigitaloceanApi;
-use Fastly::LoggingElasticsearchApi;
-use Fastly::LoggingFtpApi;
-use Fastly::LoggingGcsApi;
-use Fastly::LoggingHerokuApi;
-use Fastly::LoggingHoneycombApi;
-use Fastly::LoggingHttpsApi;
-use Fastly::LoggingKafkaApi;
-use Fastly::LoggingKinesisApi;
-use Fastly::LoggingLogentriesApi;
-use Fastly::LoggingLogglyApi;
-use Fastly::LoggingLogshuttleApi;
-use Fastly::LoggingNewrelicApi;
-use Fastly::LoggingOpenstackApi;
-use Fastly::LoggingPapertrailApi;
-use Fastly::LoggingPubsubApi;
-use Fastly::LoggingS3Api;
-use Fastly::LoggingScalyrApi;
-use Fastly::LoggingSftpApi;
-use Fastly::LoggingSplunkApi;
-use Fastly::LoggingSumologicApi;
-use Fastly::LoggingSyslogApi;
-use Fastly::PackageApi;
-use Fastly::PoolApi;
-use Fastly::PopApi;
-use Fastly::PublicIpListApi;
-use Fastly::PurgeApi;
-use Fastly::RateLimiterApi;
-use Fastly::RealtimeApi;
-use Fastly::RequestSettingsApi;
-use Fastly::ResourceApi;
-use Fastly::ResponseObjectApi;
-use Fastly::ServerApi;
-use Fastly::ServiceApi;
-use Fastly::ServiceAuthorizationsApi;
-use Fastly::SettingsApi;
-use Fastly::SnippetApi;
-use Fastly::StarApi;
-use Fastly::StatsApi;
-use Fastly::TlsActivationsApi;
-use Fastly::TlsBulkCertificatesApi;
-use Fastly::TlsCertificatesApi;
-use Fastly::TlsConfigurationsApi;
-use Fastly::TlsDomainsApi;
-use Fastly::TlsPrivateKeysApi;
-use Fastly::TlsSubscriptionsApi;
-use Fastly::TokensApi;
-use Fastly::UserApi;
-use Fastly::VclApi;
-use Fastly::VclDiffApi;
-use Fastly::VersionApi;
-use Fastly::WafActiveRulesApi;
-use Fastly::WafExclusionsApi;
-use Fastly::WafFirewallVersionsApi;
-use Fastly::WafFirewallsApi;
-use Fastly::WafRuleRevisionsApi;
-use Fastly::WafRulesApi;
-use Fastly::WafTagsApi;
+use WebService::Fastly::AclApi;
+use WebService::Fastly::AclEntryApi;
+use WebService::Fastly::ApexRedirectApi;
+use WebService::Fastly::BackendApi;
+use WebService::Fastly::BillingApi;
+use WebService::Fastly::BillingAddressApi;
+use WebService::Fastly::CacheSettingsApi;
+use WebService::Fastly::ConditionApi;
+use WebService::Fastly::ContactApi;
+use WebService::Fastly::ContentApi;
+use WebService::Fastly::CustomerApi;
+use WebService::Fastly::DictionaryApi;
+use WebService::Fastly::DictionaryInfoApi;
+use WebService::Fastly::DictionaryItemApi;
+use WebService::Fastly::DiffApi;
+use WebService::Fastly::DirectorApi;
+use WebService::Fastly::DirectorBackendApi;
+use WebService::Fastly::DocsApi;
+use WebService::Fastly::DomainApi;
+use WebService::Fastly::DomainOwnershipsApi;
+use WebService::Fastly::EventsApi;
+use WebService::Fastly::GzipApi;
+use WebService::Fastly::HeaderApi;
+use WebService::Fastly::HealthcheckApi;
+use WebService::Fastly::HistoricalApi;
+use WebService::Fastly::Http3Api;
+use WebService::Fastly::IamPermissionsApi;
+use WebService::Fastly::IamRolesApi;
+use WebService::Fastly::IamServiceGroupsApi;
+use WebService::Fastly::IamUserGroupsApi;
+use WebService::Fastly::InvitationsApi;
+use WebService::Fastly::LoggingAzureblobApi;
+use WebService::Fastly::LoggingBigqueryApi;
+use WebService::Fastly::LoggingCloudfilesApi;
+use WebService::Fastly::LoggingDatadogApi;
+use WebService::Fastly::LoggingDigitaloceanApi;
+use WebService::Fastly::LoggingElasticsearchApi;
+use WebService::Fastly::LoggingFtpApi;
+use WebService::Fastly::LoggingGcsApi;
+use WebService::Fastly::LoggingHerokuApi;
+use WebService::Fastly::LoggingHoneycombApi;
+use WebService::Fastly::LoggingHttpsApi;
+use WebService::Fastly::LoggingKafkaApi;
+use WebService::Fastly::LoggingKinesisApi;
+use WebService::Fastly::LoggingLogentriesApi;
+use WebService::Fastly::LoggingLogglyApi;
+use WebService::Fastly::LoggingLogshuttleApi;
+use WebService::Fastly::LoggingNewrelicApi;
+use WebService::Fastly::LoggingOpenstackApi;
+use WebService::Fastly::LoggingPapertrailApi;
+use WebService::Fastly::LoggingPubsubApi;
+use WebService::Fastly::LoggingS3Api;
+use WebService::Fastly::LoggingScalyrApi;
+use WebService::Fastly::LoggingSftpApi;
+use WebService::Fastly::LoggingSplunkApi;
+use WebService::Fastly::LoggingSumologicApi;
+use WebService::Fastly::LoggingSyslogApi;
+use WebService::Fastly::PackageApi;
+use WebService::Fastly::PoolApi;
+use WebService::Fastly::PopApi;
+use WebService::Fastly::PublicIpListApi;
+use WebService::Fastly::PurgeApi;
+use WebService::Fastly::RateLimiterApi;
+use WebService::Fastly::RealtimeApi;
+use WebService::Fastly::RequestSettingsApi;
+use WebService::Fastly::ResourceApi;
+use WebService::Fastly::ResponseObjectApi;
+use WebService::Fastly::ServerApi;
+use WebService::Fastly::ServiceApi;
+use WebService::Fastly::ServiceAuthorizationsApi;
+use WebService::Fastly::SettingsApi;
+use WebService::Fastly::SnippetApi;
+use WebService::Fastly::StarApi;
+use WebService::Fastly::StatsApi;
+use WebService::Fastly::TlsActivationsApi;
+use WebService::Fastly::TlsBulkCertificatesApi;
+use WebService::Fastly::TlsCertificatesApi;
+use WebService::Fastly::TlsConfigurationsApi;
+use WebService::Fastly::TlsDomainsApi;
+use WebService::Fastly::TlsPrivateKeysApi;
+use WebService::Fastly::TlsSubscriptionsApi;
+use WebService::Fastly::TokensApi;
+use WebService::Fastly::UserApi;
+use WebService::Fastly::VclApi;
+use WebService::Fastly::VclDiffApi;
+use WebService::Fastly::VersionApi;
+use WebService::Fastly::WafActiveRulesApi;
+use WebService::Fastly::WafExclusionsApi;
+use WebService::Fastly::WafFirewallVersionsApi;
+use WebService::Fastly::WafFirewallsApi;
+use WebService::Fastly::WafRuleRevisionsApi;
+use WebService::Fastly::WafRulesApi;
+use WebService::Fastly::WafTagsApi;
 
 # load the models
-use Fastly::Object::Acl;
-use Fastly::Object::AclEntry;
-use Fastly::Object::AclEntryResponse;
-use Fastly::Object::AclEntryResponseAllOf;
-use Fastly::Object::AclResponse;
-use Fastly::Object::AclResponseAllOf;
-use Fastly::Object::ApexRedirect;
-use Fastly::Object::ApexRedirectAllOf;
-use Fastly::Object::Backend;
-use Fastly::Object::BackendResponse;
-use Fastly::Object::BackendResponseAllOf;
-use Fastly::Object::Billing;
-use Fastly::Object::BillingAddressAttributes;
-use Fastly::Object::BillingAddressRequest;
-use Fastly::Object::BillingAddressRequestData;
-use Fastly::Object::BillingAddressResponse;
-use Fastly::Object::BillingAddressResponseData;
-use Fastly::Object::BillingEstimateResponse;
-use Fastly::Object::BillingEstimateResponseAllOf;
-use Fastly::Object::BillingEstimateResponseAllOfLine;
-use Fastly::Object::BillingEstimateResponseAllOfLines;
-use Fastly::Object::BillingRegionsValue;
-use Fastly::Object::BillingRegionsValueValue;
-use Fastly::Object::BillingRegionsValueValueTiersInner;
-use Fastly::Object::BillingResponse;
-use Fastly::Object::BillingResponseAllOf;
-use Fastly::Object::BillingResponseLineItem;
-use Fastly::Object::BillingResponseLineItemAllOf;
-use Fastly::Object::BillingStatus;
-use Fastly::Object::BillingTotal;
-use Fastly::Object::BillingTotalExtrasInner;
-use Fastly::Object::BulkUpdateAclEntriesRequest;
-use Fastly::Object::BulkUpdateAclEntry;
-use Fastly::Object::BulkUpdateAclEntryAllOf;
-use Fastly::Object::BulkUpdateDictionaryItem;
-use Fastly::Object::BulkUpdateDictionaryItemAllOf;
-use Fastly::Object::BulkUpdateDictionaryListRequest;
-use Fastly::Object::BulkWafActiveRules;
-use Fastly::Object::CacheSetting;
-use Fastly::Object::CacheSettingResponse;
-use Fastly::Object::Condition;
-use Fastly::Object::ConditionResponse;
-use Fastly::Object::Contact;
-use Fastly::Object::ContactResponse;
-use Fastly::Object::ContactResponseAllOf;
-use Fastly::Object::Content;
-use Fastly::Object::Customer;
-use Fastly::Object::CustomerResponse;
-use Fastly::Object::CustomerResponseAllOf;
-use Fastly::Object::DeleteAcl200Response;
-use Fastly::Object::Dictionary;
-use Fastly::Object::DictionaryInfoResponse;
-use Fastly::Object::DictionaryItem;
-use Fastly::Object::DictionaryItemResponse;
-use Fastly::Object::DictionaryItemResponseAllOf;
-use Fastly::Object::DictionaryResponse;
-use Fastly::Object::DictionaryResponseAllOf;
-use Fastly::Object::DiffResponse;
-use Fastly::Object::Director;
-use Fastly::Object::DirectorBackend;
-use Fastly::Object::DirectorBackendAllOf;
-use Fastly::Object::DirectorResponse;
-use Fastly::Object::Domain;
-use Fastly::Object::DomainCheckItem;
-use Fastly::Object::DomainResponse;
-use Fastly::Object::Event;
-use Fastly::Object::EventAttributes;
-use Fastly::Object::EventResponse;
-use Fastly::Object::EventsResponse;
-use Fastly::Object::EventsResponseAllOf;
-use Fastly::Object::GenericTokenError;
-use Fastly::Object::Gzip;
-use Fastly::Object::GzipResponse;
-use Fastly::Object::Header;
-use Fastly::Object::HeaderResponse;
-use Fastly::Object::Healthcheck;
-use Fastly::Object::HealthcheckResponse;
-use Fastly::Object::Historical;
-use Fastly::Object::HistoricalAggregateResponse;
-use Fastly::Object::HistoricalAggregateResponseAllOf;
-use Fastly::Object::HistoricalFieldAggregateResponse;
-use Fastly::Object::HistoricalFieldAggregateResponseAllOf;
-use Fastly::Object::HistoricalFieldResponse;
-use Fastly::Object::HistoricalFieldResponseAllOf;
-use Fastly::Object::HistoricalFieldResultsInner;
-use Fastly::Object::HistoricalMeta;
-use Fastly::Object::HistoricalRegionsResponse;
-use Fastly::Object::HistoricalRegionsResponseAllOf;
-use Fastly::Object::HistoricalResponse;
-use Fastly::Object::HistoricalResponseAllOf;
-use Fastly::Object::HistoricalServicesValue;
-use Fastly::Object::HistoricalUsageAggregateResponse;
-use Fastly::Object::HistoricalUsageMonthResponse;
-use Fastly::Object::HistoricalUsageMonthResponseAllOf;
-use Fastly::Object::HistoricalUsageMonthResponseAllOfData;
-use Fastly::Object::HistoricalUsageResults;
-use Fastly::Object::HistoricalUsageServiceResponse;
-use Fastly::Object::HistoricalUsageServiceResponseAllOf;
-use Fastly::Object::Http3;
-use Fastly::Object::Http3AllOf;
-use Fastly::Object::IamPermission;
-use Fastly::Object::IamRole;
-use Fastly::Object::IamRoleAllOf;
-use Fastly::Object::IamServiceGroup;
-use Fastly::Object::IamServiceGroupAllOf;
-use Fastly::Object::IamUserGroup;
-use Fastly::Object::IamUserGroupAllOf;
-use Fastly::Object::IncludedWithWafActiveRuleItem;
-use Fastly::Object::IncludedWithWafExclusionItem;
-use Fastly::Object::IncludedWithWafFirewallVersionItem;
-use Fastly::Object::IncludedWithWafRuleItem;
-use Fastly::Object::Invitation;
-use Fastly::Object::InvitationData;
-use Fastly::Object::InvitationDataAttributes;
-use Fastly::Object::InvitationResponse;
-use Fastly::Object::InvitationResponseAllOf;
-use Fastly::Object::InvitationResponseData;
-use Fastly::Object::InvitationResponseDataAllOf;
-use Fastly::Object::InvitationsResponse;
-use Fastly::Object::InvitationsResponseAllOf;
-use Fastly::Object::ListDomainOwnerships200Response;
-use Fastly::Object::ListServiceStars200Response;
-use Fastly::Object::ListServiceStars200ResponseAllOf;
-use Fastly::Object::ListServiceStars200ResponseAllOfDataInner;
-use Fastly::Object::ListServiceStars200ResponseAllOfDataInnerAllOf;
-use Fastly::Object::LoggingAddressAndPort;
-use Fastly::Object::LoggingAzureblob;
-use Fastly::Object::LoggingAzureblobAllOf;
-use Fastly::Object::LoggingAzureblobResponse;
-use Fastly::Object::LoggingBigquery;
-use Fastly::Object::LoggingBigqueryAllOf;
-use Fastly::Object::LoggingBigqueryResponse;
-use Fastly::Object::LoggingCloudfiles;
-use Fastly::Object::LoggingCloudfilesAllOf;
-use Fastly::Object::LoggingCloudfilesResponse;
-use Fastly::Object::LoggingCommon;
-use Fastly::Object::LoggingDatadog;
-use Fastly::Object::LoggingDatadogAllOf;
-use Fastly::Object::LoggingDatadogResponse;
-use Fastly::Object::LoggingDigitalocean;
-use Fastly::Object::LoggingDigitaloceanAllOf;
-use Fastly::Object::LoggingDigitaloceanResponse;
-use Fastly::Object::LoggingElasticsearch;
-use Fastly::Object::LoggingElasticsearchAllOf;
-use Fastly::Object::LoggingElasticsearchResponse;
-use Fastly::Object::LoggingFormatVersion;
-use Fastly::Object::LoggingFtp;
-use Fastly::Object::LoggingFtpAllOf;
-use Fastly::Object::LoggingFtpResponse;
-use Fastly::Object::LoggingGcs;
-use Fastly::Object::LoggingGcsAllOf;
-use Fastly::Object::LoggingGcsCommon;
-use Fastly::Object::LoggingGcsResponse;
-use Fastly::Object::LoggingGenericCommon;
-use Fastly::Object::LoggingGooglePubsub;
-use Fastly::Object::LoggingGooglePubsubAllOf;
-use Fastly::Object::LoggingGooglePubsubResponse;
-use Fastly::Object::LoggingHeroku;
-use Fastly::Object::LoggingHerokuAllOf;
-use Fastly::Object::LoggingHerokuResponse;
-use Fastly::Object::LoggingHoneycomb;
-use Fastly::Object::LoggingHoneycombAllOf;
-use Fastly::Object::LoggingHoneycombResponse;
-use Fastly::Object::LoggingHttps;
-use Fastly::Object::LoggingHttpsAllOf;
-use Fastly::Object::LoggingHttpsResponse;
-use Fastly::Object::LoggingKafka;
-use Fastly::Object::LoggingKafkaAllOf;
-use Fastly::Object::LoggingKafkaResponse;
-use Fastly::Object::LoggingKinesis;
-use Fastly::Object::LoggingKinesisResponse;
-use Fastly::Object::LoggingLogentries;
-use Fastly::Object::LoggingLogentriesAllOf;
-use Fastly::Object::LoggingLogentriesResponse;
-use Fastly::Object::LoggingLoggly;
-use Fastly::Object::LoggingLogglyAllOf;
-use Fastly::Object::LoggingLogglyResponse;
-use Fastly::Object::LoggingLogshuttle;
-use Fastly::Object::LoggingLogshuttleAllOf;
-use Fastly::Object::LoggingLogshuttleResponse;
-use Fastly::Object::LoggingMessageType;
-use Fastly::Object::LoggingNewrelic;
-use Fastly::Object::LoggingNewrelicAllOf;
-use Fastly::Object::LoggingNewrelicResponse;
-use Fastly::Object::LoggingOpenstack;
-use Fastly::Object::LoggingOpenstackAllOf;
-use Fastly::Object::LoggingOpenstackResponse;
-use Fastly::Object::LoggingPapertrail;
-use Fastly::Object::LoggingPapertrailResponse;
-use Fastly::Object::LoggingPlacement;
-use Fastly::Object::LoggingRequestCapsCommon;
-use Fastly::Object::LoggingS3;
-use Fastly::Object::LoggingS3AllOf;
-use Fastly::Object::LoggingS3Response;
-use Fastly::Object::LoggingScalyr;
-use Fastly::Object::LoggingScalyrAllOf;
-use Fastly::Object::LoggingScalyrResponse;
-use Fastly::Object::LoggingSftp;
-use Fastly::Object::LoggingSftpAllOf;
-use Fastly::Object::LoggingSftpResponse;
-use Fastly::Object::LoggingSplunk;
-use Fastly::Object::LoggingSplunkAllOf;
-use Fastly::Object::LoggingSplunkResponse;
-use Fastly::Object::LoggingSumologic;
-use Fastly::Object::LoggingSumologicAllOf;
-use Fastly::Object::LoggingSumologicResponse;
-use Fastly::Object::LoggingSyslog;
-use Fastly::Object::LoggingSyslogAllOf;
-use Fastly::Object::LoggingSyslogResponse;
-use Fastly::Object::LoggingTlsCommon;
-use Fastly::Object::LoggingUseTls;
-use Fastly::Object::ModelPackage;
-use Fastly::Object::PackageMetadata;
-use Fastly::Object::PackageResponse;
-use Fastly::Object::PackageResponseAllOf;
-use Fastly::Object::Pagination;
-use Fastly::Object::PaginationLinks;
-use Fastly::Object::PaginationMeta;
-use Fastly::Object::Permission;
-use Fastly::Object::Pool;
-use Fastly::Object::PoolAllOf;
-use Fastly::Object::PoolResponse;
-use Fastly::Object::PoolResponseAllOf;
-use Fastly::Object::Pop;
-use Fastly::Object::PopCoordinates;
-use Fastly::Object::PublicIpList;
-use Fastly::Object::PurgeKeys;
-use Fastly::Object::PurgeResponse;
-use Fastly::Object::RateLimiter;
-use Fastly::Object::RateLimiterResponse;
-use Fastly::Object::RateLimiterResponse1;
-use Fastly::Object::RateLimiterResponseAllOf;
-use Fastly::Object::Realtime;
-use Fastly::Object::RealtimeEntry;
-use Fastly::Object::RealtimeEntryAggregated;
-use Fastly::Object::RealtimeMeasurements;
-use Fastly::Object::RelationshipCommonName;
-use Fastly::Object::RelationshipCustomer;
-use Fastly::Object::RelationshipCustomerCustomer;
-use Fastly::Object::RelationshipMemberCustomer;
-use Fastly::Object::RelationshipMemberService;
-use Fastly::Object::RelationshipMemberServiceInvitation;
-use Fastly::Object::RelationshipMemberTlsActivation;
-use Fastly::Object::RelationshipMemberTlsBulkCertificate;
-use Fastly::Object::RelationshipMemberTlsCertificate;
-use Fastly::Object::RelationshipMemberTlsConfiguration;
-use Fastly::Object::RelationshipMemberTlsDnsRecord;
-use Fastly::Object::RelationshipMemberTlsDomain;
-use Fastly::Object::RelationshipMemberTlsPrivateKey;
-use Fastly::Object::RelationshipMemberTlsSubscription;
-use Fastly::Object::RelationshipMemberWafActiveRule;
-use Fastly::Object::RelationshipMemberWafFirewall;
-use Fastly::Object::RelationshipMemberWafFirewallVersion;
-use Fastly::Object::RelationshipMemberWafRule;
-use Fastly::Object::RelationshipMemberWafRuleRevision;
-use Fastly::Object::RelationshipMemberWafTag;
-use Fastly::Object::RelationshipService;
-use Fastly::Object::RelationshipServiceInvitations;
-use Fastly::Object::RelationshipServiceInvitationsCreate;
-use Fastly::Object::RelationshipServiceInvitationsCreateServiceInvitations;
-use Fastly::Object::RelationshipServiceInvitationsServiceInvitations;
-use Fastly::Object::RelationshipServiceService;
-use Fastly::Object::RelationshipServices;
-use Fastly::Object::RelationshipTlsActivation;
-use Fastly::Object::RelationshipTlsActivationTlsActivation;
-use Fastly::Object::RelationshipTlsActivations;
-use Fastly::Object::RelationshipTlsBulkCertificate;
-use Fastly::Object::RelationshipTlsBulkCertificateTlsBulkCertificate;
-use Fastly::Object::RelationshipTlsBulkCertificates;
-use Fastly::Object::RelationshipTlsCertificate;
-use Fastly::Object::RelationshipTlsCertificateTlsCertificate;
-use Fastly::Object::RelationshipTlsCertificates;
-use Fastly::Object::RelationshipTlsConfiguration;
-use Fastly::Object::RelationshipTlsConfigurationTlsConfiguration;
-use Fastly::Object::RelationshipTlsConfigurations;
-use Fastly::Object::RelationshipTlsDnsRecord;
-use Fastly::Object::RelationshipTlsDnsRecordDnsRecord;
-use Fastly::Object::RelationshipTlsDnsRecords;
-use Fastly::Object::RelationshipTlsDomain;
-use Fastly::Object::RelationshipTlsDomainTlsDomain;
-use Fastly::Object::RelationshipTlsDomains;
-use Fastly::Object::RelationshipTlsPrivateKey;
-use Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey;
-use Fastly::Object::RelationshipTlsPrivateKeys;
-use Fastly::Object::RelationshipTlsSubscription;
-use Fastly::Object::RelationshipTlsSubscriptionTlsSubscription;
-use Fastly::Object::RelationshipTlsSubscriptions;
-use Fastly::Object::RelationshipUser;
-use Fastly::Object::RelationshipUserUser;
-use Fastly::Object::RelationshipUserUserData;
-use Fastly::Object::RelationshipWafActiveRules;
-use Fastly::Object::RelationshipWafActiveRulesWafActiveRules;
-use Fastly::Object::RelationshipWafFirewall;
-use Fastly::Object::RelationshipWafFirewallVersion;
-use Fastly::Object::RelationshipWafFirewallVersionWafFirewallVersion;
-use Fastly::Object::RelationshipWafFirewallVersions;
-use Fastly::Object::RelationshipWafFirewallWafFirewall;
-use Fastly::Object::RelationshipWafRule;
-use Fastly::Object::RelationshipWafRuleRevision;
-use Fastly::Object::RelationshipWafRuleRevisionWafRuleRevisions;
-use Fastly::Object::RelationshipWafRuleRevisions;
-use Fastly::Object::RelationshipWafRuleWafRule;
-use Fastly::Object::RelationshipWafRules;
-use Fastly::Object::RelationshipWafTags;
-use Fastly::Object::RelationshipWafTagsWafTags;
-use Fastly::Object::RelationshipsForInvitation;
-use Fastly::Object::RelationshipsForStar;
-use Fastly::Object::RelationshipsForTlsActivation;
-use Fastly::Object::RelationshipsForTlsBulkCertificate;
-use Fastly::Object::RelationshipsForTlsConfiguration;
-use Fastly::Object::RelationshipsForTlsDomain;
-use Fastly::Object::RelationshipsForTlsPrivateKey;
-use Fastly::Object::RelationshipsForTlsSubscription;
-use Fastly::Object::RelationshipsForWafActiveRule;
-use Fastly::Object::RelationshipsForWafExclusion;
-use Fastly::Object::RelationshipsForWafFirewallVersion;
-use Fastly::Object::RelationshipsForWafRule;
-use Fastly::Object::RequestSettings;
-use Fastly::Object::RequestSettingsResponse;
-use Fastly::Object::Resource;
-use Fastly::Object::ResourceCreate;
-use Fastly::Object::ResourceCreateAllOf;
-use Fastly::Object::ResourceResponse;
-use Fastly::Object::ResourceResponseAllOf;
-use Fastly::Object::ResponseObject;
-use Fastly::Object::ResponseObjectResponse;
-use Fastly::Object::Results;
-use Fastly::Object::RoleUser;
-use Fastly::Object::SchemasContactResponse;
-use Fastly::Object::SchemasSnippetResponse;
-use Fastly::Object::SchemasUserResponse;
-use Fastly::Object::SchemasVclResponse;
-use Fastly::Object::SchemasVersion;
-use Fastly::Object::SchemasVersionResponse;
-use Fastly::Object::SchemasWafFirewallVersion;
-use Fastly::Object::SchemasWafFirewallVersionData;
-use Fastly::Object::Server;
-use Fastly::Object::ServerResponse;
-use Fastly::Object::ServerResponseAllOf;
-use Fastly::Object::Service;
-use Fastly::Object::ServiceAuthorization;
-use Fastly::Object::ServiceAuthorizationData;
-use Fastly::Object::ServiceAuthorizationDataAttributes;
-use Fastly::Object::ServiceAuthorizationDataRelationships;
-use Fastly::Object::ServiceAuthorizationDataRelationshipsAllOf;
-use Fastly::Object::ServiceAuthorizationDataRelationshipsAllOf1;
-use Fastly::Object::ServiceAuthorizationResponse;
-use Fastly::Object::ServiceAuthorizationResponseData;
-use Fastly::Object::ServiceAuthorizationResponseDataAllOf;
-use Fastly::Object::ServiceAuthorizationsResponse;
-use Fastly::Object::ServiceAuthorizationsResponseAllOf;
-use Fastly::Object::ServiceCreate;
-use Fastly::Object::ServiceCreateAllOf;
-use Fastly::Object::ServiceDetail;
-use Fastly::Object::ServiceDetailAllOf;
-use Fastly::Object::ServiceIdAndVersion;
-use Fastly::Object::ServiceInvitation;
-use Fastly::Object::ServiceInvitationData;
-use Fastly::Object::ServiceInvitationDataAttributes;
-use Fastly::Object::ServiceInvitationDataRelationships;
-use Fastly::Object::ServiceInvitationResponse;
-use Fastly::Object::ServiceInvitationResponseAllOf;
-use Fastly::Object::ServiceInvitationResponseAllOfData;
-use Fastly::Object::ServiceListResponse;
-use Fastly::Object::ServiceListResponseAllOf;
-use Fastly::Object::ServiceResponse;
-use Fastly::Object::ServiceResponseAllOf;
-use Fastly::Object::ServiceVersionDetail;
-use Fastly::Object::ServiceVersionDetailOrNull;
-use Fastly::Object::Settings;
-use Fastly::Object::SettingsResponse;
-use Fastly::Object::Snippet;
-use Fastly::Object::SnippetResponse;
-use Fastly::Object::SnippetResponseAllOf;
-use Fastly::Object::Star;
-use Fastly::Object::StarData;
-use Fastly::Object::StarResponse;
-use Fastly::Object::StarResponseAllOf;
-use Fastly::Object::Stats;
-use Fastly::Object::Timestamps;
-use Fastly::Object::TimestampsNoDelete;
-use Fastly::Object::TlsActivation;
-use Fastly::Object::TlsActivationData;
-use Fastly::Object::TlsActivationResponse;
-use Fastly::Object::TlsActivationResponseData;
-use Fastly::Object::TlsActivationResponseDataAllOf;
-use Fastly::Object::TlsActivationsResponse;
-use Fastly::Object::TlsActivationsResponseAllOf;
-use Fastly::Object::TlsBulkCertificate;
-use Fastly::Object::TlsBulkCertificateData;
-use Fastly::Object::TlsBulkCertificateDataAttributes;
-use Fastly::Object::TlsBulkCertificateResponse;
-use Fastly::Object::TlsBulkCertificateResponseAttributes;
-use Fastly::Object::TlsBulkCertificateResponseAttributesAllOf;
-use Fastly::Object::TlsBulkCertificateResponseData;
-use Fastly::Object::TlsBulkCertificateResponseDataAllOf;
-use Fastly::Object::TlsBulkCertificatesResponse;
-use Fastly::Object::TlsBulkCertificatesResponseAllOf;
-use Fastly::Object::TlsCertificate;
-use Fastly::Object::TlsCertificateData;
-use Fastly::Object::TlsCertificateDataAttributes;
-use Fastly::Object::TlsCertificateResponse;
-use Fastly::Object::TlsCertificateResponseAttributes;
-use Fastly::Object::TlsCertificateResponseAttributesAllOf;
-use Fastly::Object::TlsCertificateResponseData;
-use Fastly::Object::TlsCertificateResponseDataAllOf;
-use Fastly::Object::TlsCertificatesResponse;
-use Fastly::Object::TlsCertificatesResponseAllOf;
-use Fastly::Object::TlsCommon;
-use Fastly::Object::TlsConfiguration;
-use Fastly::Object::TlsConfigurationData;
-use Fastly::Object::TlsConfigurationDataAttributes;
-use Fastly::Object::TlsConfigurationResponse;
-use Fastly::Object::TlsConfigurationResponseAttributes;
-use Fastly::Object::TlsConfigurationResponseAttributesAllOf;
-use Fastly::Object::TlsConfigurationResponseData;
-use Fastly::Object::TlsConfigurationResponseDataAllOf;
-use Fastly::Object::TlsConfigurationsResponse;
-use Fastly::Object::TlsConfigurationsResponseAllOf;
-use Fastly::Object::TlsDnsRecord;
-use Fastly::Object::TlsDomainData;
-use Fastly::Object::TlsDomainsResponse;
-use Fastly::Object::TlsDomainsResponseAllOf;
-use Fastly::Object::TlsPrivateKey;
-use Fastly::Object::TlsPrivateKeyData;
-use Fastly::Object::TlsPrivateKeyDataAttributes;
-use Fastly::Object::TlsPrivateKeyResponse;
-use Fastly::Object::TlsPrivateKeyResponseAttributes;
-use Fastly::Object::TlsPrivateKeyResponseAttributesAllOf;
-use Fastly::Object::TlsPrivateKeyResponseData;
-use Fastly::Object::TlsPrivateKeysResponse;
-use Fastly::Object::TlsPrivateKeysResponseAllOf;
-use Fastly::Object::TlsSubscription;
-use Fastly::Object::TlsSubscriptionData;
-use Fastly::Object::TlsSubscriptionDataAttributes;
-use Fastly::Object::TlsSubscriptionResponse;
-use Fastly::Object::TlsSubscriptionResponseAttributes;
-use Fastly::Object::TlsSubscriptionResponseAttributesAllOf;
-use Fastly::Object::TlsSubscriptionResponseData;
-use Fastly::Object::TlsSubscriptionResponseDataAllOf;
-use Fastly::Object::TlsSubscriptionsResponse;
-use Fastly::Object::TlsSubscriptionsResponseAllOf;
-use Fastly::Object::Token;
-use Fastly::Object::TokenCreatedResponse;
-use Fastly::Object::TokenCreatedResponseAllOf;
-use Fastly::Object::TokenResponse;
-use Fastly::Object::TokenResponseAllOf;
-use Fastly::Object::TypeBillingAddress;
-use Fastly::Object::TypeContact;
-use Fastly::Object::TypeCustomer;
-use Fastly::Object::TypeEvent;
-use Fastly::Object::TypeInvitation;
-use Fastly::Object::TypeResource;
-use Fastly::Object::TypeService;
-use Fastly::Object::TypeServiceAuthorization;
-use Fastly::Object::TypeServiceInvitation;
-use Fastly::Object::TypeStar;
-use Fastly::Object::TypeTlsActivation;
-use Fastly::Object::TypeTlsBulkCertificate;
-use Fastly::Object::TypeTlsCertificate;
-use Fastly::Object::TypeTlsConfiguration;
-use Fastly::Object::TypeTlsDnsRecord;
-use Fastly::Object::TypeTlsDomain;
-use Fastly::Object::TypeTlsPrivateKey;
-use Fastly::Object::TypeTlsSubscription;
-use Fastly::Object::TypeUser;
-use Fastly::Object::TypeWafActiveRule;
-use Fastly::Object::TypeWafExclusion;
-use Fastly::Object::TypeWafFirewall;
-use Fastly::Object::TypeWafFirewallVersion;
-use Fastly::Object::TypeWafRule;
-use Fastly::Object::TypeWafRuleRevision;
-use Fastly::Object::TypeWafTag;
-use Fastly::Object::UpdateBillingAddressRequest;
-use Fastly::Object::UpdateBillingAddressRequestData;
-use Fastly::Object::User;
-use Fastly::Object::UserResponse;
-use Fastly::Object::UserResponseAllOf;
-use Fastly::Object::Vcl;
-use Fastly::Object::VclDiff;
-use Fastly::Object::VclResponse;
-use Fastly::Object::Version;
-use Fastly::Object::VersionCreateResponse;
-use Fastly::Object::VersionDetail;
-use Fastly::Object::VersionDetailSettings;
-use Fastly::Object::VersionResponse;
-use Fastly::Object::VersionResponseAllOf;
-use Fastly::Object::WafActiveRule;
-use Fastly::Object::WafActiveRuleCreationResponse;
-use Fastly::Object::WafActiveRuleData;
-use Fastly::Object::WafActiveRuleDataAttributes;
-use Fastly::Object::WafActiveRuleResponse;
-use Fastly::Object::WafActiveRuleResponseData;
-use Fastly::Object::WafActiveRuleResponseDataAllOf;
-use Fastly::Object::WafActiveRuleResponseDataAttributes;
-use Fastly::Object::WafActiveRuleResponseDataAttributesAllOf;
-use Fastly::Object::WafActiveRuleResponseDataRelationships;
-use Fastly::Object::WafActiveRulesResponse;
-use Fastly::Object::WafActiveRulesResponseAllOf;
-use Fastly::Object::WafExclusion;
-use Fastly::Object::WafExclusionData;
-use Fastly::Object::WafExclusionDataAttributes;
-use Fastly::Object::WafExclusionResponse;
-use Fastly::Object::WafExclusionResponseData;
-use Fastly::Object::WafExclusionResponseDataAllOf;
-use Fastly::Object::WafExclusionResponseDataAttributes;
-use Fastly::Object::WafExclusionResponseDataAttributesAllOf;
-use Fastly::Object::WafExclusionResponseDataRelationships;
-use Fastly::Object::WafExclusionsResponse;
-use Fastly::Object::WafExclusionsResponseAllOf;
-use Fastly::Object::WafFirewall;
-use Fastly::Object::WafFirewallData;
-use Fastly::Object::WafFirewallDataAttributes;
-use Fastly::Object::WafFirewallResponse;
-use Fastly::Object::WafFirewallResponseData;
-use Fastly::Object::WafFirewallResponseDataAllOf;
-use Fastly::Object::WafFirewallResponseDataAttributes;
-use Fastly::Object::WafFirewallResponseDataAttributesAllOf;
-use Fastly::Object::WafFirewallVersion;
-use Fastly::Object::WafFirewallVersionData;
-use Fastly::Object::WafFirewallVersionDataAttributes;
-use Fastly::Object::WafFirewallVersionResponse;
-use Fastly::Object::WafFirewallVersionResponseData;
-use Fastly::Object::WafFirewallVersionResponseDataAllOf;
-use Fastly::Object::WafFirewallVersionResponseDataAttributes;
-use Fastly::Object::WafFirewallVersionResponseDataAttributesAllOf;
-use Fastly::Object::WafFirewallVersionsResponse;
-use Fastly::Object::WafFirewallVersionsResponseAllOf;
-use Fastly::Object::WafFirewallsResponse;
-use Fastly::Object::WafFirewallsResponseAllOf;
-use Fastly::Object::WafRule;
-use Fastly::Object::WafRuleAttributes;
-use Fastly::Object::WafRuleResponse;
-use Fastly::Object::WafRuleResponseData;
-use Fastly::Object::WafRuleResponseDataAllOf;
-use Fastly::Object::WafRuleRevision;
-use Fastly::Object::WafRuleRevisionAttributes;
-use Fastly::Object::WafRuleRevisionOrLatest;
-use Fastly::Object::WafRuleRevisionResponse;
-use Fastly::Object::WafRuleRevisionResponseData;
-use Fastly::Object::WafRuleRevisionResponseDataAllOf;
-use Fastly::Object::WafRuleRevisionsResponse;
-use Fastly::Object::WafRuleRevisionsResponseAllOf;
-use Fastly::Object::WafRulesResponse;
-use Fastly::Object::WafRulesResponseAllOf;
-use Fastly::Object::WafTag;
-use Fastly::Object::WafTagAttributes;
-use Fastly::Object::WafTagsResponse;
-use Fastly::Object::WafTagsResponseAllOf;
-use Fastly::Object::WafTagsResponseDataItem;
+use WebService::Fastly::Object::Acl;
+use WebService::Fastly::Object::AclEntry;
+use WebService::Fastly::Object::AclEntryResponse;
+use WebService::Fastly::Object::AclEntryResponseAllOf;
+use WebService::Fastly::Object::AclResponse;
+use WebService::Fastly::Object::AclResponseAllOf;
+use WebService::Fastly::Object::ApexRedirect;
+use WebService::Fastly::Object::ApexRedirectAllOf;
+use WebService::Fastly::Object::Backend;
+use WebService::Fastly::Object::BackendResponse;
+use WebService::Fastly::Object::BackendResponseAllOf;
+use WebService::Fastly::Object::Billing;
+use WebService::Fastly::Object::BillingAddressAttributes;
+use WebService::Fastly::Object::BillingAddressRequest;
+use WebService::Fastly::Object::BillingAddressRequestData;
+use WebService::Fastly::Object::BillingAddressResponse;
+use WebService::Fastly::Object::BillingAddressResponseData;
+use WebService::Fastly::Object::BillingEstimateResponse;
+use WebService::Fastly::Object::BillingEstimateResponseAllOf;
+use WebService::Fastly::Object::BillingEstimateResponseAllOfLine;
+use WebService::Fastly::Object::BillingEstimateResponseAllOfLines;
+use WebService::Fastly::Object::BillingResponse;
+use WebService::Fastly::Object::BillingResponseAllOf;
+use WebService::Fastly::Object::BillingResponseLineItem;
+use WebService::Fastly::Object::BillingResponseLineItemAllOf;
+use WebService::Fastly::Object::BillingStatus;
+use WebService::Fastly::Object::BillingTotal;
+use WebService::Fastly::Object::BillingTotalExtras;
+use WebService::Fastly::Object::BulkUpdateAclEntriesRequest;
+use WebService::Fastly::Object::BulkUpdateAclEntry;
+use WebService::Fastly::Object::BulkUpdateAclEntryAllOf;
+use WebService::Fastly::Object::BulkUpdateDictionaryItem;
+use WebService::Fastly::Object::BulkUpdateDictionaryItemAllOf;
+use WebService::Fastly::Object::BulkUpdateDictionaryListRequest;
+use WebService::Fastly::Object::BulkWafActiveRules;
+use WebService::Fastly::Object::CacheSetting;
+use WebService::Fastly::Object::CacheSettingResponse;
+use WebService::Fastly::Object::Condition;
+use WebService::Fastly::Object::ConditionResponse;
+use WebService::Fastly::Object::Contact;
+use WebService::Fastly::Object::ContactResponse;
+use WebService::Fastly::Object::ContactResponseAllOf;
+use WebService::Fastly::Object::Content;
+use WebService::Fastly::Object::Customer;
+use WebService::Fastly::Object::CustomerResponse;
+use WebService::Fastly::Object::CustomerResponseAllOf;
+use WebService::Fastly::Object::Dictionary;
+use WebService::Fastly::Object::DictionaryInfoResponse;
+use WebService::Fastly::Object::DictionaryItem;
+use WebService::Fastly::Object::DictionaryItemResponse;
+use WebService::Fastly::Object::DictionaryItemResponseAllOf;
+use WebService::Fastly::Object::DictionaryResponse;
+use WebService::Fastly::Object::DictionaryResponseAllOf;
+use WebService::Fastly::Object::DiffResponse;
+use WebService::Fastly::Object::Director;
+use WebService::Fastly::Object::DirectorBackend;
+use WebService::Fastly::Object::DirectorBackendAllOf;
+use WebService::Fastly::Object::DirectorResponse;
+use WebService::Fastly::Object::Domain;
+use WebService::Fastly::Object::DomainCheckItem;
+use WebService::Fastly::Object::DomainResponse;
+use WebService::Fastly::Object::Event;
+use WebService::Fastly::Object::EventAttributes;
+use WebService::Fastly::Object::EventResponse;
+use WebService::Fastly::Object::EventsResponse;
+use WebService::Fastly::Object::EventsResponseAllOf;
+use WebService::Fastly::Object::GenericTokenError;
+use WebService::Fastly::Object::Gzip;
+use WebService::Fastly::Object::GzipResponse;
+use WebService::Fastly::Object::Header;
+use WebService::Fastly::Object::HeaderResponse;
+use WebService::Fastly::Object::Healthcheck;
+use WebService::Fastly::Object::HealthcheckResponse;
+use WebService::Fastly::Object::Historical;
+use WebService::Fastly::Object::HistoricalAggregateResponse;
+use WebService::Fastly::Object::HistoricalAggregateResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldAggregateResponse;
+use WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldResponse;
+use WebService::Fastly::Object::HistoricalFieldResponseAllOf;
+use WebService::Fastly::Object::HistoricalMeta;
+use WebService::Fastly::Object::HistoricalRegionsResponse;
+use WebService::Fastly::Object::HistoricalRegionsResponseAllOf;
+use WebService::Fastly::Object::HistoricalResponse;
+use WebService::Fastly::Object::HistoricalResponseAllOf;
+use WebService::Fastly::Object::HistoricalUsageAggregateResponse;
+use WebService::Fastly::Object::HistoricalUsageMonthResponse;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOf;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData;
+use WebService::Fastly::Object::HistoricalUsageResults;
+use WebService::Fastly::Object::HistoricalUsageServiceResponse;
+use WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
+use WebService::Fastly::Object::Http3;
+use WebService::Fastly::Object::Http3AllOf;
+use WebService::Fastly::Object::IamPermission;
+use WebService::Fastly::Object::IamRole;
+use WebService::Fastly::Object::IamRoleAllOf;
+use WebService::Fastly::Object::IamServiceGroup;
+use WebService::Fastly::Object::IamServiceGroupAllOf;
+use WebService::Fastly::Object::IamUserGroup;
+use WebService::Fastly::Object::IamUserGroupAllOf;
+use WebService::Fastly::Object::IncludedWithWafActiveRuleItem;
+use WebService::Fastly::Object::IncludedWithWafExclusionItem;
+use WebService::Fastly::Object::IncludedWithWafFirewallVersionItem;
+use WebService::Fastly::Object::IncludedWithWafRuleItem;
+use WebService::Fastly::Object::InlineResponse200;
+use WebService::Fastly::Object::InlineResponse2001;
+use WebService::Fastly::Object::Invitation;
+use WebService::Fastly::Object::InvitationData;
+use WebService::Fastly::Object::InvitationDataAttributes;
+use WebService::Fastly::Object::InvitationResponse;
+use WebService::Fastly::Object::InvitationResponseAllOf;
+use WebService::Fastly::Object::InvitationResponseData;
+use WebService::Fastly::Object::InvitationResponseDataAllOf;
+use WebService::Fastly::Object::InvitationsResponse;
+use WebService::Fastly::Object::InvitationsResponseAllOf;
+use WebService::Fastly::Object::LoggingAddressAndPort;
+use WebService::Fastly::Object::LoggingAzureblob;
+use WebService::Fastly::Object::LoggingAzureblobAllOf;
+use WebService::Fastly::Object::LoggingAzureblobResponse;
+use WebService::Fastly::Object::LoggingBigquery;
+use WebService::Fastly::Object::LoggingBigqueryAllOf;
+use WebService::Fastly::Object::LoggingBigqueryResponse;
+use WebService::Fastly::Object::LoggingCloudfiles;
+use WebService::Fastly::Object::LoggingCloudfilesAllOf;
+use WebService::Fastly::Object::LoggingCloudfilesResponse;
+use WebService::Fastly::Object::LoggingCommon;
+use WebService::Fastly::Object::LoggingDatadog;
+use WebService::Fastly::Object::LoggingDatadogAllOf;
+use WebService::Fastly::Object::LoggingDatadogResponse;
+use WebService::Fastly::Object::LoggingDigitalocean;
+use WebService::Fastly::Object::LoggingDigitaloceanAllOf;
+use WebService::Fastly::Object::LoggingDigitaloceanResponse;
+use WebService::Fastly::Object::LoggingElasticsearch;
+use WebService::Fastly::Object::LoggingElasticsearchAllOf;
+use WebService::Fastly::Object::LoggingElasticsearchResponse;
+use WebService::Fastly::Object::LoggingFormatVersion;
+use WebService::Fastly::Object::LoggingFtp;
+use WebService::Fastly::Object::LoggingFtpAllOf;
+use WebService::Fastly::Object::LoggingFtpResponse;
+use WebService::Fastly::Object::LoggingGcs;
+use WebService::Fastly::Object::LoggingGcsAllOf;
+use WebService::Fastly::Object::LoggingGcsCommon;
+use WebService::Fastly::Object::LoggingGcsResponse;
+use WebService::Fastly::Object::LoggingGenericCommon;
+use WebService::Fastly::Object::LoggingGooglePubsub;
+use WebService::Fastly::Object::LoggingGooglePubsubAllOf;
+use WebService::Fastly::Object::LoggingGooglePubsubResponse;
+use WebService::Fastly::Object::LoggingHeroku;
+use WebService::Fastly::Object::LoggingHerokuAllOf;
+use WebService::Fastly::Object::LoggingHerokuResponse;
+use WebService::Fastly::Object::LoggingHoneycomb;
+use WebService::Fastly::Object::LoggingHoneycombAllOf;
+use WebService::Fastly::Object::LoggingHoneycombResponse;
+use WebService::Fastly::Object::LoggingHttps;
+use WebService::Fastly::Object::LoggingHttpsAllOf;
+use WebService::Fastly::Object::LoggingHttpsResponse;
+use WebService::Fastly::Object::LoggingKafka;
+use WebService::Fastly::Object::LoggingKafkaAllOf;
+use WebService::Fastly::Object::LoggingKafkaResponse;
+use WebService::Fastly::Object::LoggingKinesis;
+use WebService::Fastly::Object::LoggingKinesisResponse;
+use WebService::Fastly::Object::LoggingLogentries;
+use WebService::Fastly::Object::LoggingLogentriesAllOf;
+use WebService::Fastly::Object::LoggingLogentriesResponse;
+use WebService::Fastly::Object::LoggingLoggly;
+use WebService::Fastly::Object::LoggingLogglyAllOf;
+use WebService::Fastly::Object::LoggingLogglyResponse;
+use WebService::Fastly::Object::LoggingLogshuttle;
+use WebService::Fastly::Object::LoggingLogshuttleAllOf;
+use WebService::Fastly::Object::LoggingLogshuttleResponse;
+use WebService::Fastly::Object::LoggingMessageType;
+use WebService::Fastly::Object::LoggingNewrelic;
+use WebService::Fastly::Object::LoggingNewrelicAllOf;
+use WebService::Fastly::Object::LoggingNewrelicResponse;
+use WebService::Fastly::Object::LoggingOpenstack;
+use WebService::Fastly::Object::LoggingOpenstackAllOf;
+use WebService::Fastly::Object::LoggingOpenstackResponse;
+use WebService::Fastly::Object::LoggingPapertrail;
+use WebService::Fastly::Object::LoggingPapertrailResponse;
+use WebService::Fastly::Object::LoggingPlacement;
+use WebService::Fastly::Object::LoggingRequestCapsCommon;
+use WebService::Fastly::Object::LoggingS3;
+use WebService::Fastly::Object::LoggingS3AllOf;
+use WebService::Fastly::Object::LoggingS3Response;
+use WebService::Fastly::Object::LoggingScalyr;
+use WebService::Fastly::Object::LoggingScalyrAllOf;
+use WebService::Fastly::Object::LoggingScalyrResponse;
+use WebService::Fastly::Object::LoggingSftp;
+use WebService::Fastly::Object::LoggingSftpAllOf;
+use WebService::Fastly::Object::LoggingSftpResponse;
+use WebService::Fastly::Object::LoggingSplunk;
+use WebService::Fastly::Object::LoggingSplunkAllOf;
+use WebService::Fastly::Object::LoggingSplunkResponse;
+use WebService::Fastly::Object::LoggingSumologic;
+use WebService::Fastly::Object::LoggingSumologicAllOf;
+use WebService::Fastly::Object::LoggingSumologicResponse;
+use WebService::Fastly::Object::LoggingSyslog;
+use WebService::Fastly::Object::LoggingSyslogAllOf;
+use WebService::Fastly::Object::LoggingSyslogResponse;
+use WebService::Fastly::Object::LoggingTlsCommon;
+use WebService::Fastly::Object::LoggingUseTls;
+use WebService::Fastly::Object::ModelPackage;
+use WebService::Fastly::Object::PackageMetadata;
+use WebService::Fastly::Object::PackageResponse;
+use WebService::Fastly::Object::PackageResponseAllOf;
+use WebService::Fastly::Object::Pagination;
+use WebService::Fastly::Object::PaginationLinks;
+use WebService::Fastly::Object::PaginationMeta;
+use WebService::Fastly::Object::Permission;
+use WebService::Fastly::Object::Pool;
+use WebService::Fastly::Object::PoolAllOf;
+use WebService::Fastly::Object::PoolResponse;
+use WebService::Fastly::Object::PoolResponseAllOf;
+use WebService::Fastly::Object::Pop;
+use WebService::Fastly::Object::PopCoordinates;
+use WebService::Fastly::Object::PublicIpList;
+use WebService::Fastly::Object::PurgeKeys;
+use WebService::Fastly::Object::PurgeResponse;
+use WebService::Fastly::Object::RateLimiter;
+use WebService::Fastly::Object::RateLimiterResponse;
+use WebService::Fastly::Object::RateLimiterResponse1;
+use WebService::Fastly::Object::RateLimiterResponseAllOf;
+use WebService::Fastly::Object::Realtime;
+use WebService::Fastly::Object::RealtimeEntry;
+use WebService::Fastly::Object::RealtimeMeasurements;
+use WebService::Fastly::Object::RelationshipCommonName;
+use WebService::Fastly::Object::RelationshipCustomer;
+use WebService::Fastly::Object::RelationshipCustomerCustomer;
+use WebService::Fastly::Object::RelationshipMemberCustomer;
+use WebService::Fastly::Object::RelationshipMemberService;
+use WebService::Fastly::Object::RelationshipMemberServiceInvitation;
+use WebService::Fastly::Object::RelationshipMemberTlsActivation;
+use WebService::Fastly::Object::RelationshipMemberTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipMemberTlsCertificate;
+use WebService::Fastly::Object::RelationshipMemberTlsConfiguration;
+use WebService::Fastly::Object::RelationshipMemberTlsDnsRecord;
+use WebService::Fastly::Object::RelationshipMemberTlsDomain;
+use WebService::Fastly::Object::RelationshipMemberTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipMemberTlsSubscription;
+use WebService::Fastly::Object::RelationshipMemberWafActiveRule;
+use WebService::Fastly::Object::RelationshipMemberWafFirewall;
+use WebService::Fastly::Object::RelationshipMemberWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipMemberWafRule;
+use WebService::Fastly::Object::RelationshipMemberWafRuleRevision;
+use WebService::Fastly::Object::RelationshipMemberWafTag;
+use WebService::Fastly::Object::RelationshipService;
+use WebService::Fastly::Object::RelationshipServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceInvitationsCreate;
+use WebService::Fastly::Object::RelationshipServiceInvitationsCreateServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceInvitationsServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceService;
+use WebService::Fastly::Object::RelationshipServices;
+use WebService::Fastly::Object::RelationshipTlsActivation;
+use WebService::Fastly::Object::RelationshipTlsActivationTlsActivation;
+use WebService::Fastly::Object::RelationshipTlsActivations;
+use WebService::Fastly::Object::RelationshipTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipTlsBulkCertificateTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipTlsBulkCertificates;
+use WebService::Fastly::Object::RelationshipTlsCertificate;
+use WebService::Fastly::Object::RelationshipTlsCertificateTlsCertificate;
+use WebService::Fastly::Object::RelationshipTlsCertificates;
+use WebService::Fastly::Object::RelationshipTlsConfiguration;
+use WebService::Fastly::Object::RelationshipTlsConfigurationTlsConfiguration;
+use WebService::Fastly::Object::RelationshipTlsConfigurations;
+use WebService::Fastly::Object::RelationshipTlsDnsRecord;
+use WebService::Fastly::Object::RelationshipTlsDnsRecordDnsRecord;
+use WebService::Fastly::Object::RelationshipTlsDnsRecords;
+use WebService::Fastly::Object::RelationshipTlsDomain;
+use WebService::Fastly::Object::RelationshipTlsDomainTlsDomain;
+use WebService::Fastly::Object::RelationshipTlsDomains;
+use WebService::Fastly::Object::RelationshipTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipTlsPrivateKeys;
+use WebService::Fastly::Object::RelationshipTlsSubscription;
+use WebService::Fastly::Object::RelationshipTlsSubscriptionTlsSubscription;
+use WebService::Fastly::Object::RelationshipTlsSubscriptions;
+use WebService::Fastly::Object::RelationshipUser;
+use WebService::Fastly::Object::RelationshipUserUser;
+use WebService::Fastly::Object::RelationshipUserUserData;
+use WebService::Fastly::Object::RelationshipWafActiveRules;
+use WebService::Fastly::Object::RelationshipWafActiveRulesWafActiveRules;
+use WebService::Fastly::Object::RelationshipWafFirewall;
+use WebService::Fastly::Object::RelationshipWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipWafFirewallVersionWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipWafFirewallVersions;
+use WebService::Fastly::Object::RelationshipWafFirewallWafFirewall;
+use WebService::Fastly::Object::RelationshipWafRule;
+use WebService::Fastly::Object::RelationshipWafRuleRevision;
+use WebService::Fastly::Object::RelationshipWafRuleRevisionWafRuleRevisions;
+use WebService::Fastly::Object::RelationshipWafRuleRevisions;
+use WebService::Fastly::Object::RelationshipWafRuleWafRule;
+use WebService::Fastly::Object::RelationshipWafRules;
+use WebService::Fastly::Object::RelationshipWafTags;
+use WebService::Fastly::Object::RelationshipWafTagsWafTags;
+use WebService::Fastly::Object::RelationshipsForInvitation;
+use WebService::Fastly::Object::RelationshipsForStar;
+use WebService::Fastly::Object::RelationshipsForTlsActivation;
+use WebService::Fastly::Object::RelationshipsForTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipsForTlsConfiguration;
+use WebService::Fastly::Object::RelationshipsForTlsDomain;
+use WebService::Fastly::Object::RelationshipsForTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipsForTlsSubscription;
+use WebService::Fastly::Object::RelationshipsForWafActiveRule;
+use WebService::Fastly::Object::RelationshipsForWafExclusion;
+use WebService::Fastly::Object::RelationshipsForWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipsForWafRule;
+use WebService::Fastly::Object::RequestSettings;
+use WebService::Fastly::Object::RequestSettingsResponse;
+use WebService::Fastly::Object::Resource;
+use WebService::Fastly::Object::ResourceCreate;
+use WebService::Fastly::Object::ResourceCreateAllOf;
+use WebService::Fastly::Object::ResourceResponse;
+use WebService::Fastly::Object::ResourceResponseAllOf;
+use WebService::Fastly::Object::ResponseObject;
+use WebService::Fastly::Object::ResponseObjectResponse;
+use WebService::Fastly::Object::Results;
+use WebService::Fastly::Object::RoleUser;
+use WebService::Fastly::Object::SchemasContactResponse;
+use WebService::Fastly::Object::SchemasSnippetResponse;
+use WebService::Fastly::Object::SchemasUserResponse;
+use WebService::Fastly::Object::SchemasVclResponse;
+use WebService::Fastly::Object::SchemasVersion;
+use WebService::Fastly::Object::SchemasVersionResponse;
+use WebService::Fastly::Object::SchemasWafFirewallVersion;
+use WebService::Fastly::Object::SchemasWafFirewallVersionData;
+use WebService::Fastly::Object::Server;
+use WebService::Fastly::Object::ServerResponse;
+use WebService::Fastly::Object::ServerResponseAllOf;
+use WebService::Fastly::Object::Service;
+use WebService::Fastly::Object::ServiceAuthorization;
+use WebService::Fastly::Object::ServiceAuthorizationData;
+use WebService::Fastly::Object::ServiceAuthorizationDataAttributes;
+use WebService::Fastly::Object::ServiceAuthorizationResponse;
+use WebService::Fastly::Object::ServiceAuthorizationResponseData;
+use WebService::Fastly::Object::ServiceAuthorizationResponseDataAllOf;
+use WebService::Fastly::Object::ServiceAuthorizationsResponse;
+use WebService::Fastly::Object::ServiceAuthorizationsResponseAllOf;
+use WebService::Fastly::Object::ServiceCreate;
+use WebService::Fastly::Object::ServiceCreateAllOf;
+use WebService::Fastly::Object::ServiceDetail;
+use WebService::Fastly::Object::ServiceDetailAllOf;
+use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceInvitation;
+use WebService::Fastly::Object::ServiceInvitationData;
+use WebService::Fastly::Object::ServiceInvitationDataAttributes;
+use WebService::Fastly::Object::ServiceInvitationResponse;
+use WebService::Fastly::Object::ServiceInvitationResponseAllOf;
+use WebService::Fastly::Object::ServiceInvitationResponseAllOfData;
+use WebService::Fastly::Object::ServiceListResponse;
+use WebService::Fastly::Object::ServiceListResponseAllOf;
+use WebService::Fastly::Object::ServiceResponse;
+use WebService::Fastly::Object::ServiceResponseAllOf;
+use WebService::Fastly::Object::ServiceVersionDetail;
+use WebService::Fastly::Object::ServiceVersionDetailOrNull;
+use WebService::Fastly::Object::Settings;
+use WebService::Fastly::Object::SettingsResponse;
+use WebService::Fastly::Object::Snippet;
+use WebService::Fastly::Object::SnippetResponse;
+use WebService::Fastly::Object::SnippetResponseAllOf;
+use WebService::Fastly::Object::Star;
+use WebService::Fastly::Object::StarData;
+use WebService::Fastly::Object::StarResponse;
+use WebService::Fastly::Object::StarResponseAllOf;
+use WebService::Fastly::Object::Stats;
+use WebService::Fastly::Object::Timestamps;
+use WebService::Fastly::Object::TimestampsNoDelete;
+use WebService::Fastly::Object::TlsActivation;
+use WebService::Fastly::Object::TlsActivationData;
+use WebService::Fastly::Object::TlsActivationResponse;
+use WebService::Fastly::Object::TlsActivationResponseData;
+use WebService::Fastly::Object::TlsActivationResponseDataAllOf;
+use WebService::Fastly::Object::TlsActivationsResponse;
+use WebService::Fastly::Object::TlsActivationsResponseAllOf;
+use WebService::Fastly::Object::TlsBulkCertificate;
+use WebService::Fastly::Object::TlsBulkCertificateData;
+use WebService::Fastly::Object::TlsBulkCertificateDataAttributes;
+use WebService::Fastly::Object::TlsBulkCertificateResponse;
+use WebService::Fastly::Object::TlsBulkCertificateResponseAttributes;
+use WebService::Fastly::Object::TlsBulkCertificateResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsBulkCertificateResponseData;
+use WebService::Fastly::Object::TlsBulkCertificateResponseDataAllOf;
+use WebService::Fastly::Object::TlsBulkCertificatesResponse;
+use WebService::Fastly::Object::TlsBulkCertificatesResponseAllOf;
+use WebService::Fastly::Object::TlsCertificate;
+use WebService::Fastly::Object::TlsCertificateData;
+use WebService::Fastly::Object::TlsCertificateDataAttributes;
+use WebService::Fastly::Object::TlsCertificateResponse;
+use WebService::Fastly::Object::TlsCertificateResponseAttributes;
+use WebService::Fastly::Object::TlsCertificateResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsCertificateResponseData;
+use WebService::Fastly::Object::TlsCertificateResponseDataAllOf;
+use WebService::Fastly::Object::TlsCertificatesResponse;
+use WebService::Fastly::Object::TlsCertificatesResponseAllOf;
+use WebService::Fastly::Object::TlsCommon;
+use WebService::Fastly::Object::TlsConfiguration;
+use WebService::Fastly::Object::TlsConfigurationData;
+use WebService::Fastly::Object::TlsConfigurationDataAttributes;
+use WebService::Fastly::Object::TlsConfigurationResponse;
+use WebService::Fastly::Object::TlsConfigurationResponseAttributes;
+use WebService::Fastly::Object::TlsConfigurationResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsConfigurationResponseData;
+use WebService::Fastly::Object::TlsConfigurationResponseDataAllOf;
+use WebService::Fastly::Object::TlsConfigurationsResponse;
+use WebService::Fastly::Object::TlsConfigurationsResponseAllOf;
+use WebService::Fastly::Object::TlsDnsRecord;
+use WebService::Fastly::Object::TlsDomainData;
+use WebService::Fastly::Object::TlsDomainsResponse;
+use WebService::Fastly::Object::TlsDomainsResponseAllOf;
+use WebService::Fastly::Object::TlsPrivateKey;
+use WebService::Fastly::Object::TlsPrivateKeyData;
+use WebService::Fastly::Object::TlsPrivateKeyDataAttributes;
+use WebService::Fastly::Object::TlsPrivateKeyResponse;
+use WebService::Fastly::Object::TlsPrivateKeyResponseAttributes;
+use WebService::Fastly::Object::TlsPrivateKeyResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsPrivateKeyResponseData;
+use WebService::Fastly::Object::TlsPrivateKeysResponse;
+use WebService::Fastly::Object::TlsPrivateKeysResponseAllOf;
+use WebService::Fastly::Object::TlsSubscription;
+use WebService::Fastly::Object::TlsSubscriptionData;
+use WebService::Fastly::Object::TlsSubscriptionDataAttributes;
+use WebService::Fastly::Object::TlsSubscriptionResponse;
+use WebService::Fastly::Object::TlsSubscriptionResponseAttributes;
+use WebService::Fastly::Object::TlsSubscriptionResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsSubscriptionResponseData;
+use WebService::Fastly::Object::TlsSubscriptionResponseDataAllOf;
+use WebService::Fastly::Object::TlsSubscriptionsResponse;
+use WebService::Fastly::Object::TlsSubscriptionsResponseAllOf;
+use WebService::Fastly::Object::Token;
+use WebService::Fastly::Object::TokenCreatedResponse;
+use WebService::Fastly::Object::TokenCreatedResponseAllOf;
+use WebService::Fastly::Object::TokenResponse;
+use WebService::Fastly::Object::TokenResponseAllOf;
+use WebService::Fastly::Object::TypeBillingAddress;
+use WebService::Fastly::Object::TypeContact;
+use WebService::Fastly::Object::TypeCustomer;
+use WebService::Fastly::Object::TypeEvent;
+use WebService::Fastly::Object::TypeInvitation;
+use WebService::Fastly::Object::TypeResource;
+use WebService::Fastly::Object::TypeService;
+use WebService::Fastly::Object::TypeServiceAuthorization;
+use WebService::Fastly::Object::TypeServiceInvitation;
+use WebService::Fastly::Object::TypeStar;
+use WebService::Fastly::Object::TypeTlsActivation;
+use WebService::Fastly::Object::TypeTlsBulkCertificate;
+use WebService::Fastly::Object::TypeTlsCertificate;
+use WebService::Fastly::Object::TypeTlsConfiguration;
+use WebService::Fastly::Object::TypeTlsDnsRecord;
+use WebService::Fastly::Object::TypeTlsDomain;
+use WebService::Fastly::Object::TypeTlsPrivateKey;
+use WebService::Fastly::Object::TypeTlsSubscription;
+use WebService::Fastly::Object::TypeUser;
+use WebService::Fastly::Object::TypeWafActiveRule;
+use WebService::Fastly::Object::TypeWafExclusion;
+use WebService::Fastly::Object::TypeWafFirewall;
+use WebService::Fastly::Object::TypeWafFirewallVersion;
+use WebService::Fastly::Object::TypeWafRule;
+use WebService::Fastly::Object::TypeWafRuleRevision;
+use WebService::Fastly::Object::TypeWafTag;
+use WebService::Fastly::Object::UpdateBillingAddressRequest;
+use WebService::Fastly::Object::UpdateBillingAddressRequestData;
+use WebService::Fastly::Object::User;
+use WebService::Fastly::Object::UserResponse;
+use WebService::Fastly::Object::UserResponseAllOf;
+use WebService::Fastly::Object::Vcl;
+use WebService::Fastly::Object::VclDiff;
+use WebService::Fastly::Object::VclResponse;
+use WebService::Fastly::Object::Version;
+use WebService::Fastly::Object::VersionCreateResponse;
+use WebService::Fastly::Object::VersionDetail;
+use WebService::Fastly::Object::VersionResponse;
+use WebService::Fastly::Object::VersionResponseAllOf;
+use WebService::Fastly::Object::WafActiveRule;
+use WebService::Fastly::Object::WafActiveRuleCreationResponse;
+use WebService::Fastly::Object::WafActiveRuleData;
+use WebService::Fastly::Object::WafActiveRuleDataAttributes;
+use WebService::Fastly::Object::WafActiveRuleResponse;
+use WebService::Fastly::Object::WafActiveRuleResponseData;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAllOf;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAttributes;
+use WebService::Fastly::Object::WafActiveRuleResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafActiveRuleResponseDataRelationships;
+use WebService::Fastly::Object::WafActiveRulesResponse;
+use WebService::Fastly::Object::WafActiveRulesResponseAllOf;
+use WebService::Fastly::Object::WafExclusion;
+use WebService::Fastly::Object::WafExclusionData;
+use WebService::Fastly::Object::WafExclusionDataAttributes;
+use WebService::Fastly::Object::WafExclusionResponse;
+use WebService::Fastly::Object::WafExclusionResponseData;
+use WebService::Fastly::Object::WafExclusionResponseDataAllOf;
+use WebService::Fastly::Object::WafExclusionResponseDataAttributes;
+use WebService::Fastly::Object::WafExclusionResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafExclusionResponseDataRelationships;
+use WebService::Fastly::Object::WafExclusionsResponse;
+use WebService::Fastly::Object::WafExclusionsResponseAllOf;
+use WebService::Fastly::Object::WafFirewall;
+use WebService::Fastly::Object::WafFirewallData;
+use WebService::Fastly::Object::WafFirewallDataAttributes;
+use WebService::Fastly::Object::WafFirewallResponse;
+use WebService::Fastly::Object::WafFirewallResponseData;
+use WebService::Fastly::Object::WafFirewallResponseDataAllOf;
+use WebService::Fastly::Object::WafFirewallResponseDataAttributes;
+use WebService::Fastly::Object::WafFirewallResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafFirewallVersion;
+use WebService::Fastly::Object::WafFirewallVersionData;
+use WebService::Fastly::Object::WafFirewallVersionDataAttributes;
+use WebService::Fastly::Object::WafFirewallVersionResponse;
+use WebService::Fastly::Object::WafFirewallVersionResponseData;
+use WebService::Fastly::Object::WafFirewallVersionResponseDataAllOf;
+use WebService::Fastly::Object::WafFirewallVersionResponseDataAttributes;
+use WebService::Fastly::Object::WafFirewallVersionResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafFirewallVersionsResponse;
+use WebService::Fastly::Object::WafFirewallVersionsResponseAllOf;
+use WebService::Fastly::Object::WafFirewallsResponse;
+use WebService::Fastly::Object::WafFirewallsResponseAllOf;
+use WebService::Fastly::Object::WafRule;
+use WebService::Fastly::Object::WafRuleAttributes;
+use WebService::Fastly::Object::WafRuleResponse;
+use WebService::Fastly::Object::WafRuleResponseData;
+use WebService::Fastly::Object::WafRuleResponseDataAllOf;
+use WebService::Fastly::Object::WafRuleRevision;
+use WebService::Fastly::Object::WafRuleRevisionAttributes;
+use WebService::Fastly::Object::WafRuleRevisionOrLatest;
+use WebService::Fastly::Object::WafRuleRevisionResponse;
+use WebService::Fastly::Object::WafRuleRevisionResponseData;
+use WebService::Fastly::Object::WafRuleRevisionResponseDataAllOf;
+use WebService::Fastly::Object::WafRuleRevisionsResponse;
+use WebService::Fastly::Object::WafRuleRevisionsResponseAllOf;
+use WebService::Fastly::Object::WafRulesResponse;
+use WebService::Fastly::Object::WafRulesResponseAllOf;
+use WebService::Fastly::Object::WafTag;
+use WebService::Fastly::Object::WafTagAttributes;
+use WebService::Fastly::Object::WafTagsResponse;
+use WebService::Fastly::Object::WafTagsResponseAllOf;
+use WebService::Fastly::Object::WafTagsResponseDataItem;
 
 # for displaying the API response data
 use Data::Dumper;
 
 
-my $api_instance = Fastly::AclApi->new(
+my $api_instance = WebService::Fastly::AclApi->new(
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -1985,556 +1955,541 @@ Class | Method | HTTP request | Description
 
 
 # DOCUMENTATION FOR MODELS
- - [Fastly::Object::Acl](docs/Acl.md)
- - [Fastly::Object::AclEntry](docs/AclEntry.md)
- - [Fastly::Object::AclEntryResponse](docs/AclEntryResponse.md)
- - [Fastly::Object::AclEntryResponseAllOf](docs/AclEntryResponseAllOf.md)
- - [Fastly::Object::AclResponse](docs/AclResponse.md)
- - [Fastly::Object::AclResponseAllOf](docs/AclResponseAllOf.md)
- - [Fastly::Object::ApexRedirect](docs/ApexRedirect.md)
- - [Fastly::Object::ApexRedirectAllOf](docs/ApexRedirectAllOf.md)
- - [Fastly::Object::Backend](docs/Backend.md)
- - [Fastly::Object::BackendResponse](docs/BackendResponse.md)
- - [Fastly::Object::BackendResponseAllOf](docs/BackendResponseAllOf.md)
- - [Fastly::Object::Billing](docs/Billing.md)
- - [Fastly::Object::BillingAddressAttributes](docs/BillingAddressAttributes.md)
- - [Fastly::Object::BillingAddressRequest](docs/BillingAddressRequest.md)
- - [Fastly::Object::BillingAddressRequestData](docs/BillingAddressRequestData.md)
- - [Fastly::Object::BillingAddressResponse](docs/BillingAddressResponse.md)
- - [Fastly::Object::BillingAddressResponseData](docs/BillingAddressResponseData.md)
- - [Fastly::Object::BillingEstimateResponse](docs/BillingEstimateResponse.md)
- - [Fastly::Object::BillingEstimateResponseAllOf](docs/BillingEstimateResponseAllOf.md)
- - [Fastly::Object::BillingEstimateResponseAllOfLine](docs/BillingEstimateResponseAllOfLine.md)
- - [Fastly::Object::BillingEstimateResponseAllOfLines](docs/BillingEstimateResponseAllOfLines.md)
- - [Fastly::Object::BillingRegionsValue](docs/BillingRegionsValue.md)
- - [Fastly::Object::BillingRegionsValueValue](docs/BillingRegionsValueValue.md)
- - [Fastly::Object::BillingRegionsValueValueTiersInner](docs/BillingRegionsValueValueTiersInner.md)
- - [Fastly::Object::BillingResponse](docs/BillingResponse.md)
- - [Fastly::Object::BillingResponseAllOf](docs/BillingResponseAllOf.md)
- - [Fastly::Object::BillingResponseLineItem](docs/BillingResponseLineItem.md)
- - [Fastly::Object::BillingResponseLineItemAllOf](docs/BillingResponseLineItemAllOf.md)
- - [Fastly::Object::BillingStatus](docs/BillingStatus.md)
- - [Fastly::Object::BillingTotal](docs/BillingTotal.md)
- - [Fastly::Object::BillingTotalExtrasInner](docs/BillingTotalExtrasInner.md)
- - [Fastly::Object::BulkUpdateAclEntriesRequest](docs/BulkUpdateAclEntriesRequest.md)
- - [Fastly::Object::BulkUpdateAclEntry](docs/BulkUpdateAclEntry.md)
- - [Fastly::Object::BulkUpdateAclEntryAllOf](docs/BulkUpdateAclEntryAllOf.md)
- - [Fastly::Object::BulkUpdateDictionaryItem](docs/BulkUpdateDictionaryItem.md)
- - [Fastly::Object::BulkUpdateDictionaryItemAllOf](docs/BulkUpdateDictionaryItemAllOf.md)
- - [Fastly::Object::BulkUpdateDictionaryListRequest](docs/BulkUpdateDictionaryListRequest.md)
- - [Fastly::Object::BulkWafActiveRules](docs/BulkWafActiveRules.md)
- - [Fastly::Object::CacheSetting](docs/CacheSetting.md)
- - [Fastly::Object::CacheSettingResponse](docs/CacheSettingResponse.md)
- - [Fastly::Object::Condition](docs/Condition.md)
- - [Fastly::Object::ConditionResponse](docs/ConditionResponse.md)
- - [Fastly::Object::Contact](docs/Contact.md)
- - [Fastly::Object::ContactResponse](docs/ContactResponse.md)
- - [Fastly::Object::ContactResponseAllOf](docs/ContactResponseAllOf.md)
- - [Fastly::Object::Content](docs/Content.md)
- - [Fastly::Object::Customer](docs/Customer.md)
- - [Fastly::Object::CustomerResponse](docs/CustomerResponse.md)
- - [Fastly::Object::CustomerResponseAllOf](docs/CustomerResponseAllOf.md)
- - [Fastly::Object::DeleteAcl200Response](docs/DeleteAcl200Response.md)
- - [Fastly::Object::Dictionary](docs/Dictionary.md)
- - [Fastly::Object::DictionaryInfoResponse](docs/DictionaryInfoResponse.md)
- - [Fastly::Object::DictionaryItem](docs/DictionaryItem.md)
- - [Fastly::Object::DictionaryItemResponse](docs/DictionaryItemResponse.md)
- - [Fastly::Object::DictionaryItemResponseAllOf](docs/DictionaryItemResponseAllOf.md)
- - [Fastly::Object::DictionaryResponse](docs/DictionaryResponse.md)
- - [Fastly::Object::DictionaryResponseAllOf](docs/DictionaryResponseAllOf.md)
- - [Fastly::Object::DiffResponse](docs/DiffResponse.md)
- - [Fastly::Object::Director](docs/Director.md)
- - [Fastly::Object::DirectorBackend](docs/DirectorBackend.md)
- - [Fastly::Object::DirectorBackendAllOf](docs/DirectorBackendAllOf.md)
- - [Fastly::Object::DirectorResponse](docs/DirectorResponse.md)
- - [Fastly::Object::Domain](docs/Domain.md)
- - [Fastly::Object::DomainCheckItem](docs/DomainCheckItem.md)
- - [Fastly::Object::DomainResponse](docs/DomainResponse.md)
- - [Fastly::Object::Event](docs/Event.md)
- - [Fastly::Object::EventAttributes](docs/EventAttributes.md)
- - [Fastly::Object::EventResponse](docs/EventResponse.md)
- - [Fastly::Object::EventsResponse](docs/EventsResponse.md)
- - [Fastly::Object::EventsResponseAllOf](docs/EventsResponseAllOf.md)
- - [Fastly::Object::GenericTokenError](docs/GenericTokenError.md)
- - [Fastly::Object::Gzip](docs/Gzip.md)
- - [Fastly::Object::GzipResponse](docs/GzipResponse.md)
- - [Fastly::Object::Header](docs/Header.md)
- - [Fastly::Object::HeaderResponse](docs/HeaderResponse.md)
- - [Fastly::Object::Healthcheck](docs/Healthcheck.md)
- - [Fastly::Object::HealthcheckResponse](docs/HealthcheckResponse.md)
- - [Fastly::Object::Historical](docs/Historical.md)
- - [Fastly::Object::HistoricalAggregateResponse](docs/HistoricalAggregateResponse.md)
- - [Fastly::Object::HistoricalAggregateResponseAllOf](docs/HistoricalAggregateResponseAllOf.md)
- - [Fastly::Object::HistoricalFieldAggregateResponse](docs/HistoricalFieldAggregateResponse.md)
- - [Fastly::Object::HistoricalFieldAggregateResponseAllOf](docs/HistoricalFieldAggregateResponseAllOf.md)
- - [Fastly::Object::HistoricalFieldResponse](docs/HistoricalFieldResponse.md)
- - [Fastly::Object::HistoricalFieldResponseAllOf](docs/HistoricalFieldResponseAllOf.md)
- - [Fastly::Object::HistoricalFieldResultsInner](docs/HistoricalFieldResultsInner.md)
- - [Fastly::Object::HistoricalMeta](docs/HistoricalMeta.md)
- - [Fastly::Object::HistoricalRegionsResponse](docs/HistoricalRegionsResponse.md)
- - [Fastly::Object::HistoricalRegionsResponseAllOf](docs/HistoricalRegionsResponseAllOf.md)
- - [Fastly::Object::HistoricalResponse](docs/HistoricalResponse.md)
- - [Fastly::Object::HistoricalResponseAllOf](docs/HistoricalResponseAllOf.md)
- - [Fastly::Object::HistoricalServicesValue](docs/HistoricalServicesValue.md)
- - [Fastly::Object::HistoricalUsageAggregateResponse](docs/HistoricalUsageAggregateResponse.md)
- - [Fastly::Object::HistoricalUsageMonthResponse](docs/HistoricalUsageMonthResponse.md)
- - [Fastly::Object::HistoricalUsageMonthResponseAllOf](docs/HistoricalUsageMonthResponseAllOf.md)
- - [Fastly::Object::HistoricalUsageMonthResponseAllOfData](docs/HistoricalUsageMonthResponseAllOfData.md)
- - [Fastly::Object::HistoricalUsageResults](docs/HistoricalUsageResults.md)
- - [Fastly::Object::HistoricalUsageServiceResponse](docs/HistoricalUsageServiceResponse.md)
- - [Fastly::Object::HistoricalUsageServiceResponseAllOf](docs/HistoricalUsageServiceResponseAllOf.md)
- - [Fastly::Object::Http3](docs/Http3.md)
- - [Fastly::Object::Http3AllOf](docs/Http3AllOf.md)
- - [Fastly::Object::IamPermission](docs/IamPermission.md)
- - [Fastly::Object::IamRole](docs/IamRole.md)
- - [Fastly::Object::IamRoleAllOf](docs/IamRoleAllOf.md)
- - [Fastly::Object::IamServiceGroup](docs/IamServiceGroup.md)
- - [Fastly::Object::IamServiceGroupAllOf](docs/IamServiceGroupAllOf.md)
- - [Fastly::Object::IamUserGroup](docs/IamUserGroup.md)
- - [Fastly::Object::IamUserGroupAllOf](docs/IamUserGroupAllOf.md)
- - [Fastly::Object::IncludedWithWafActiveRuleItem](docs/IncludedWithWafActiveRuleItem.md)
- - [Fastly::Object::IncludedWithWafExclusionItem](docs/IncludedWithWafExclusionItem.md)
- - [Fastly::Object::IncludedWithWafFirewallVersionItem](docs/IncludedWithWafFirewallVersionItem.md)
- - [Fastly::Object::IncludedWithWafRuleItem](docs/IncludedWithWafRuleItem.md)
- - [Fastly::Object::Invitation](docs/Invitation.md)
- - [Fastly::Object::InvitationData](docs/InvitationData.md)
- - [Fastly::Object::InvitationDataAttributes](docs/InvitationDataAttributes.md)
- - [Fastly::Object::InvitationResponse](docs/InvitationResponse.md)
- - [Fastly::Object::InvitationResponseAllOf](docs/InvitationResponseAllOf.md)
- - [Fastly::Object::InvitationResponseData](docs/InvitationResponseData.md)
- - [Fastly::Object::InvitationResponseDataAllOf](docs/InvitationResponseDataAllOf.md)
- - [Fastly::Object::InvitationsResponse](docs/InvitationsResponse.md)
- - [Fastly::Object::InvitationsResponseAllOf](docs/InvitationsResponseAllOf.md)
- - [Fastly::Object::ListDomainOwnerships200Response](docs/ListDomainOwnerships200Response.md)
- - [Fastly::Object::ListServiceStars200Response](docs/ListServiceStars200Response.md)
- - [Fastly::Object::ListServiceStars200ResponseAllOf](docs/ListServiceStars200ResponseAllOf.md)
- - [Fastly::Object::ListServiceStars200ResponseAllOfDataInner](docs/ListServiceStars200ResponseAllOfDataInner.md)
- - [Fastly::Object::ListServiceStars200ResponseAllOfDataInnerAllOf](docs/ListServiceStars200ResponseAllOfDataInnerAllOf.md)
- - [Fastly::Object::LoggingAddressAndPort](docs/LoggingAddressAndPort.md)
- - [Fastly::Object::LoggingAzureblob](docs/LoggingAzureblob.md)
- - [Fastly::Object::LoggingAzureblobAllOf](docs/LoggingAzureblobAllOf.md)
- - [Fastly::Object::LoggingAzureblobResponse](docs/LoggingAzureblobResponse.md)
- - [Fastly::Object::LoggingBigquery](docs/LoggingBigquery.md)
- - [Fastly::Object::LoggingBigqueryAllOf](docs/LoggingBigqueryAllOf.md)
- - [Fastly::Object::LoggingBigqueryResponse](docs/LoggingBigqueryResponse.md)
- - [Fastly::Object::LoggingCloudfiles](docs/LoggingCloudfiles.md)
- - [Fastly::Object::LoggingCloudfilesAllOf](docs/LoggingCloudfilesAllOf.md)
- - [Fastly::Object::LoggingCloudfilesResponse](docs/LoggingCloudfilesResponse.md)
- - [Fastly::Object::LoggingCommon](docs/LoggingCommon.md)
- - [Fastly::Object::LoggingDatadog](docs/LoggingDatadog.md)
- - [Fastly::Object::LoggingDatadogAllOf](docs/LoggingDatadogAllOf.md)
- - [Fastly::Object::LoggingDatadogResponse](docs/LoggingDatadogResponse.md)
- - [Fastly::Object::LoggingDigitalocean](docs/LoggingDigitalocean.md)
- - [Fastly::Object::LoggingDigitaloceanAllOf](docs/LoggingDigitaloceanAllOf.md)
- - [Fastly::Object::LoggingDigitaloceanResponse](docs/LoggingDigitaloceanResponse.md)
- - [Fastly::Object::LoggingElasticsearch](docs/LoggingElasticsearch.md)
- - [Fastly::Object::LoggingElasticsearchAllOf](docs/LoggingElasticsearchAllOf.md)
- - [Fastly::Object::LoggingElasticsearchResponse](docs/LoggingElasticsearchResponse.md)
- - [Fastly::Object::LoggingFormatVersion](docs/LoggingFormatVersion.md)
- - [Fastly::Object::LoggingFtp](docs/LoggingFtp.md)
- - [Fastly::Object::LoggingFtpAllOf](docs/LoggingFtpAllOf.md)
- - [Fastly::Object::LoggingFtpResponse](docs/LoggingFtpResponse.md)
- - [Fastly::Object::LoggingGcs](docs/LoggingGcs.md)
- - [Fastly::Object::LoggingGcsAllOf](docs/LoggingGcsAllOf.md)
- - [Fastly::Object::LoggingGcsCommon](docs/LoggingGcsCommon.md)
- - [Fastly::Object::LoggingGcsResponse](docs/LoggingGcsResponse.md)
- - [Fastly::Object::LoggingGenericCommon](docs/LoggingGenericCommon.md)
- - [Fastly::Object::LoggingGooglePubsub](docs/LoggingGooglePubsub.md)
- - [Fastly::Object::LoggingGooglePubsubAllOf](docs/LoggingGooglePubsubAllOf.md)
- - [Fastly::Object::LoggingGooglePubsubResponse](docs/LoggingGooglePubsubResponse.md)
- - [Fastly::Object::LoggingHeroku](docs/LoggingHeroku.md)
- - [Fastly::Object::LoggingHerokuAllOf](docs/LoggingHerokuAllOf.md)
- - [Fastly::Object::LoggingHerokuResponse](docs/LoggingHerokuResponse.md)
- - [Fastly::Object::LoggingHoneycomb](docs/LoggingHoneycomb.md)
- - [Fastly::Object::LoggingHoneycombAllOf](docs/LoggingHoneycombAllOf.md)
- - [Fastly::Object::LoggingHoneycombResponse](docs/LoggingHoneycombResponse.md)
- - [Fastly::Object::LoggingHttps](docs/LoggingHttps.md)
- - [Fastly::Object::LoggingHttpsAllOf](docs/LoggingHttpsAllOf.md)
- - [Fastly::Object::LoggingHttpsResponse](docs/LoggingHttpsResponse.md)
- - [Fastly::Object::LoggingKafka](docs/LoggingKafka.md)
- - [Fastly::Object::LoggingKafkaAllOf](docs/LoggingKafkaAllOf.md)
- - [Fastly::Object::LoggingKafkaResponse](docs/LoggingKafkaResponse.md)
- - [Fastly::Object::LoggingKinesis](docs/LoggingKinesis.md)
- - [Fastly::Object::LoggingKinesisResponse](docs/LoggingKinesisResponse.md)
- - [Fastly::Object::LoggingLogentries](docs/LoggingLogentries.md)
- - [Fastly::Object::LoggingLogentriesAllOf](docs/LoggingLogentriesAllOf.md)
- - [Fastly::Object::LoggingLogentriesResponse](docs/LoggingLogentriesResponse.md)
- - [Fastly::Object::LoggingLoggly](docs/LoggingLoggly.md)
- - [Fastly::Object::LoggingLogglyAllOf](docs/LoggingLogglyAllOf.md)
- - [Fastly::Object::LoggingLogglyResponse](docs/LoggingLogglyResponse.md)
- - [Fastly::Object::LoggingLogshuttle](docs/LoggingLogshuttle.md)
- - [Fastly::Object::LoggingLogshuttleAllOf](docs/LoggingLogshuttleAllOf.md)
- - [Fastly::Object::LoggingLogshuttleResponse](docs/LoggingLogshuttleResponse.md)
- - [Fastly::Object::LoggingMessageType](docs/LoggingMessageType.md)
- - [Fastly::Object::LoggingNewrelic](docs/LoggingNewrelic.md)
- - [Fastly::Object::LoggingNewrelicAllOf](docs/LoggingNewrelicAllOf.md)
- - [Fastly::Object::LoggingNewrelicResponse](docs/LoggingNewrelicResponse.md)
- - [Fastly::Object::LoggingOpenstack](docs/LoggingOpenstack.md)
- - [Fastly::Object::LoggingOpenstackAllOf](docs/LoggingOpenstackAllOf.md)
- - [Fastly::Object::LoggingOpenstackResponse](docs/LoggingOpenstackResponse.md)
- - [Fastly::Object::LoggingPapertrail](docs/LoggingPapertrail.md)
- - [Fastly::Object::LoggingPapertrailResponse](docs/LoggingPapertrailResponse.md)
- - [Fastly::Object::LoggingPlacement](docs/LoggingPlacement.md)
- - [Fastly::Object::LoggingRequestCapsCommon](docs/LoggingRequestCapsCommon.md)
- - [Fastly::Object::LoggingS3](docs/LoggingS3.md)
- - [Fastly::Object::LoggingS3AllOf](docs/LoggingS3AllOf.md)
- - [Fastly::Object::LoggingS3Response](docs/LoggingS3Response.md)
- - [Fastly::Object::LoggingScalyr](docs/LoggingScalyr.md)
- - [Fastly::Object::LoggingScalyrAllOf](docs/LoggingScalyrAllOf.md)
- - [Fastly::Object::LoggingScalyrResponse](docs/LoggingScalyrResponse.md)
- - [Fastly::Object::LoggingSftp](docs/LoggingSftp.md)
- - [Fastly::Object::LoggingSftpAllOf](docs/LoggingSftpAllOf.md)
- - [Fastly::Object::LoggingSftpResponse](docs/LoggingSftpResponse.md)
- - [Fastly::Object::LoggingSplunk](docs/LoggingSplunk.md)
- - [Fastly::Object::LoggingSplunkAllOf](docs/LoggingSplunkAllOf.md)
- - [Fastly::Object::LoggingSplunkResponse](docs/LoggingSplunkResponse.md)
- - [Fastly::Object::LoggingSumologic](docs/LoggingSumologic.md)
- - [Fastly::Object::LoggingSumologicAllOf](docs/LoggingSumologicAllOf.md)
- - [Fastly::Object::LoggingSumologicResponse](docs/LoggingSumologicResponse.md)
- - [Fastly::Object::LoggingSyslog](docs/LoggingSyslog.md)
- - [Fastly::Object::LoggingSyslogAllOf](docs/LoggingSyslogAllOf.md)
- - [Fastly::Object::LoggingSyslogResponse](docs/LoggingSyslogResponse.md)
- - [Fastly::Object::LoggingTlsCommon](docs/LoggingTlsCommon.md)
- - [Fastly::Object::LoggingUseTls](docs/LoggingUseTls.md)
- - [Fastly::Object::ModelPackage](docs/ModelPackage.md)
- - [Fastly::Object::PackageMetadata](docs/PackageMetadata.md)
- - [Fastly::Object::PackageResponse](docs/PackageResponse.md)
- - [Fastly::Object::PackageResponseAllOf](docs/PackageResponseAllOf.md)
- - [Fastly::Object::Pagination](docs/Pagination.md)
- - [Fastly::Object::PaginationLinks](docs/PaginationLinks.md)
- - [Fastly::Object::PaginationMeta](docs/PaginationMeta.md)
- - [Fastly::Object::Permission](docs/Permission.md)
- - [Fastly::Object::Pool](docs/Pool.md)
- - [Fastly::Object::PoolAllOf](docs/PoolAllOf.md)
- - [Fastly::Object::PoolResponse](docs/PoolResponse.md)
- - [Fastly::Object::PoolResponseAllOf](docs/PoolResponseAllOf.md)
- - [Fastly::Object::Pop](docs/Pop.md)
- - [Fastly::Object::PopCoordinates](docs/PopCoordinates.md)
- - [Fastly::Object::PublicIpList](docs/PublicIpList.md)
- - [Fastly::Object::PurgeKeys](docs/PurgeKeys.md)
- - [Fastly::Object::PurgeResponse](docs/PurgeResponse.md)
- - [Fastly::Object::RateLimiter](docs/RateLimiter.md)
- - [Fastly::Object::RateLimiterResponse](docs/RateLimiterResponse.md)
- - [Fastly::Object::RateLimiterResponse1](docs/RateLimiterResponse1.md)
- - [Fastly::Object::RateLimiterResponseAllOf](docs/RateLimiterResponseAllOf.md)
- - [Fastly::Object::Realtime](docs/Realtime.md)
- - [Fastly::Object::RealtimeEntry](docs/RealtimeEntry.md)
- - [Fastly::Object::RealtimeEntryAggregated](docs/RealtimeEntryAggregated.md)
- - [Fastly::Object::RealtimeMeasurements](docs/RealtimeMeasurements.md)
- - [Fastly::Object::RelationshipCommonName](docs/RelationshipCommonName.md)
- - [Fastly::Object::RelationshipCustomer](docs/RelationshipCustomer.md)
- - [Fastly::Object::RelationshipCustomerCustomer](docs/RelationshipCustomerCustomer.md)
- - [Fastly::Object::RelationshipMemberCustomer](docs/RelationshipMemberCustomer.md)
- - [Fastly::Object::RelationshipMemberService](docs/RelationshipMemberService.md)
- - [Fastly::Object::RelationshipMemberServiceInvitation](docs/RelationshipMemberServiceInvitation.md)
- - [Fastly::Object::RelationshipMemberTlsActivation](docs/RelationshipMemberTlsActivation.md)
- - [Fastly::Object::RelationshipMemberTlsBulkCertificate](docs/RelationshipMemberTlsBulkCertificate.md)
- - [Fastly::Object::RelationshipMemberTlsCertificate](docs/RelationshipMemberTlsCertificate.md)
- - [Fastly::Object::RelationshipMemberTlsConfiguration](docs/RelationshipMemberTlsConfiguration.md)
- - [Fastly::Object::RelationshipMemberTlsDnsRecord](docs/RelationshipMemberTlsDnsRecord.md)
- - [Fastly::Object::RelationshipMemberTlsDomain](docs/RelationshipMemberTlsDomain.md)
- - [Fastly::Object::RelationshipMemberTlsPrivateKey](docs/RelationshipMemberTlsPrivateKey.md)
- - [Fastly::Object::RelationshipMemberTlsSubscription](docs/RelationshipMemberTlsSubscription.md)
- - [Fastly::Object::RelationshipMemberWafActiveRule](docs/RelationshipMemberWafActiveRule.md)
- - [Fastly::Object::RelationshipMemberWafFirewall](docs/RelationshipMemberWafFirewall.md)
- - [Fastly::Object::RelationshipMemberWafFirewallVersion](docs/RelationshipMemberWafFirewallVersion.md)
- - [Fastly::Object::RelationshipMemberWafRule](docs/RelationshipMemberWafRule.md)
- - [Fastly::Object::RelationshipMemberWafRuleRevision](docs/RelationshipMemberWafRuleRevision.md)
- - [Fastly::Object::RelationshipMemberWafTag](docs/RelationshipMemberWafTag.md)
- - [Fastly::Object::RelationshipService](docs/RelationshipService.md)
- - [Fastly::Object::RelationshipServiceInvitations](docs/RelationshipServiceInvitations.md)
- - [Fastly::Object::RelationshipServiceInvitationsCreate](docs/RelationshipServiceInvitationsCreate.md)
- - [Fastly::Object::RelationshipServiceInvitationsCreateServiceInvitations](docs/RelationshipServiceInvitationsCreateServiceInvitations.md)
- - [Fastly::Object::RelationshipServiceInvitationsServiceInvitations](docs/RelationshipServiceInvitationsServiceInvitations.md)
- - [Fastly::Object::RelationshipServiceService](docs/RelationshipServiceService.md)
- - [Fastly::Object::RelationshipServices](docs/RelationshipServices.md)
- - [Fastly::Object::RelationshipTlsActivation](docs/RelationshipTlsActivation.md)
- - [Fastly::Object::RelationshipTlsActivationTlsActivation](docs/RelationshipTlsActivationTlsActivation.md)
- - [Fastly::Object::RelationshipTlsActivations](docs/RelationshipTlsActivations.md)
- - [Fastly::Object::RelationshipTlsBulkCertificate](docs/RelationshipTlsBulkCertificate.md)
- - [Fastly::Object::RelationshipTlsBulkCertificateTlsBulkCertificate](docs/RelationshipTlsBulkCertificateTlsBulkCertificate.md)
- - [Fastly::Object::RelationshipTlsBulkCertificates](docs/RelationshipTlsBulkCertificates.md)
- - [Fastly::Object::RelationshipTlsCertificate](docs/RelationshipTlsCertificate.md)
- - [Fastly::Object::RelationshipTlsCertificateTlsCertificate](docs/RelationshipTlsCertificateTlsCertificate.md)
- - [Fastly::Object::RelationshipTlsCertificates](docs/RelationshipTlsCertificates.md)
- - [Fastly::Object::RelationshipTlsConfiguration](docs/RelationshipTlsConfiguration.md)
- - [Fastly::Object::RelationshipTlsConfigurationTlsConfiguration](docs/RelationshipTlsConfigurationTlsConfiguration.md)
- - [Fastly::Object::RelationshipTlsConfigurations](docs/RelationshipTlsConfigurations.md)
- - [Fastly::Object::RelationshipTlsDnsRecord](docs/RelationshipTlsDnsRecord.md)
- - [Fastly::Object::RelationshipTlsDnsRecordDnsRecord](docs/RelationshipTlsDnsRecordDnsRecord.md)
- - [Fastly::Object::RelationshipTlsDnsRecords](docs/RelationshipTlsDnsRecords.md)
- - [Fastly::Object::RelationshipTlsDomain](docs/RelationshipTlsDomain.md)
- - [Fastly::Object::RelationshipTlsDomainTlsDomain](docs/RelationshipTlsDomainTlsDomain.md)
- - [Fastly::Object::RelationshipTlsDomains](docs/RelationshipTlsDomains.md)
- - [Fastly::Object::RelationshipTlsPrivateKey](docs/RelationshipTlsPrivateKey.md)
- - [Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey](docs/RelationshipTlsPrivateKeyTlsPrivateKey.md)
- - [Fastly::Object::RelationshipTlsPrivateKeys](docs/RelationshipTlsPrivateKeys.md)
- - [Fastly::Object::RelationshipTlsSubscription](docs/RelationshipTlsSubscription.md)
- - [Fastly::Object::RelationshipTlsSubscriptionTlsSubscription](docs/RelationshipTlsSubscriptionTlsSubscription.md)
- - [Fastly::Object::RelationshipTlsSubscriptions](docs/RelationshipTlsSubscriptions.md)
- - [Fastly::Object::RelationshipUser](docs/RelationshipUser.md)
- - [Fastly::Object::RelationshipUserUser](docs/RelationshipUserUser.md)
- - [Fastly::Object::RelationshipUserUserData](docs/RelationshipUserUserData.md)
- - [Fastly::Object::RelationshipWafActiveRules](docs/RelationshipWafActiveRules.md)
- - [Fastly::Object::RelationshipWafActiveRulesWafActiveRules](docs/RelationshipWafActiveRulesWafActiveRules.md)
- - [Fastly::Object::RelationshipWafFirewall](docs/RelationshipWafFirewall.md)
- - [Fastly::Object::RelationshipWafFirewallVersion](docs/RelationshipWafFirewallVersion.md)
- - [Fastly::Object::RelationshipWafFirewallVersionWafFirewallVersion](docs/RelationshipWafFirewallVersionWafFirewallVersion.md)
- - [Fastly::Object::RelationshipWafFirewallVersions](docs/RelationshipWafFirewallVersions.md)
- - [Fastly::Object::RelationshipWafFirewallWafFirewall](docs/RelationshipWafFirewallWafFirewall.md)
- - [Fastly::Object::RelationshipWafRule](docs/RelationshipWafRule.md)
- - [Fastly::Object::RelationshipWafRuleRevision](docs/RelationshipWafRuleRevision.md)
- - [Fastly::Object::RelationshipWafRuleRevisionWafRuleRevisions](docs/RelationshipWafRuleRevisionWafRuleRevisions.md)
- - [Fastly::Object::RelationshipWafRuleRevisions](docs/RelationshipWafRuleRevisions.md)
- - [Fastly::Object::RelationshipWafRuleWafRule](docs/RelationshipWafRuleWafRule.md)
- - [Fastly::Object::RelationshipWafRules](docs/RelationshipWafRules.md)
- - [Fastly::Object::RelationshipWafTags](docs/RelationshipWafTags.md)
- - [Fastly::Object::RelationshipWafTagsWafTags](docs/RelationshipWafTagsWafTags.md)
- - [Fastly::Object::RelationshipsForInvitation](docs/RelationshipsForInvitation.md)
- - [Fastly::Object::RelationshipsForStar](docs/RelationshipsForStar.md)
- - [Fastly::Object::RelationshipsForTlsActivation](docs/RelationshipsForTlsActivation.md)
- - [Fastly::Object::RelationshipsForTlsBulkCertificate](docs/RelationshipsForTlsBulkCertificate.md)
- - [Fastly::Object::RelationshipsForTlsConfiguration](docs/RelationshipsForTlsConfiguration.md)
- - [Fastly::Object::RelationshipsForTlsDomain](docs/RelationshipsForTlsDomain.md)
- - [Fastly::Object::RelationshipsForTlsPrivateKey](docs/RelationshipsForTlsPrivateKey.md)
- - [Fastly::Object::RelationshipsForTlsSubscription](docs/RelationshipsForTlsSubscription.md)
- - [Fastly::Object::RelationshipsForWafActiveRule](docs/RelationshipsForWafActiveRule.md)
- - [Fastly::Object::RelationshipsForWafExclusion](docs/RelationshipsForWafExclusion.md)
- - [Fastly::Object::RelationshipsForWafFirewallVersion](docs/RelationshipsForWafFirewallVersion.md)
- - [Fastly::Object::RelationshipsForWafRule](docs/RelationshipsForWafRule.md)
- - [Fastly::Object::RequestSettings](docs/RequestSettings.md)
- - [Fastly::Object::RequestSettingsResponse](docs/RequestSettingsResponse.md)
- - [Fastly::Object::Resource](docs/Resource.md)
- - [Fastly::Object::ResourceCreate](docs/ResourceCreate.md)
- - [Fastly::Object::ResourceCreateAllOf](docs/ResourceCreateAllOf.md)
- - [Fastly::Object::ResourceResponse](docs/ResourceResponse.md)
- - [Fastly::Object::ResourceResponseAllOf](docs/ResourceResponseAllOf.md)
- - [Fastly::Object::ResponseObject](docs/ResponseObject.md)
- - [Fastly::Object::ResponseObjectResponse](docs/ResponseObjectResponse.md)
- - [Fastly::Object::Results](docs/Results.md)
- - [Fastly::Object::RoleUser](docs/RoleUser.md)
- - [Fastly::Object::SchemasContactResponse](docs/SchemasContactResponse.md)
- - [Fastly::Object::SchemasSnippetResponse](docs/SchemasSnippetResponse.md)
- - [Fastly::Object::SchemasUserResponse](docs/SchemasUserResponse.md)
- - [Fastly::Object::SchemasVclResponse](docs/SchemasVclResponse.md)
- - [Fastly::Object::SchemasVersion](docs/SchemasVersion.md)
- - [Fastly::Object::SchemasVersionResponse](docs/SchemasVersionResponse.md)
- - [Fastly::Object::SchemasWafFirewallVersion](docs/SchemasWafFirewallVersion.md)
- - [Fastly::Object::SchemasWafFirewallVersionData](docs/SchemasWafFirewallVersionData.md)
- - [Fastly::Object::Server](docs/Server.md)
- - [Fastly::Object::ServerResponse](docs/ServerResponse.md)
- - [Fastly::Object::ServerResponseAllOf](docs/ServerResponseAllOf.md)
- - [Fastly::Object::Service](docs/Service.md)
- - [Fastly::Object::ServiceAuthorization](docs/ServiceAuthorization.md)
- - [Fastly::Object::ServiceAuthorizationData](docs/ServiceAuthorizationData.md)
- - [Fastly::Object::ServiceAuthorizationDataAttributes](docs/ServiceAuthorizationDataAttributes.md)
- - [Fastly::Object::ServiceAuthorizationDataRelationships](docs/ServiceAuthorizationDataRelationships.md)
- - [Fastly::Object::ServiceAuthorizationDataRelationshipsAllOf](docs/ServiceAuthorizationDataRelationshipsAllOf.md)
- - [Fastly::Object::ServiceAuthorizationDataRelationshipsAllOf1](docs/ServiceAuthorizationDataRelationshipsAllOf1.md)
- - [Fastly::Object::ServiceAuthorizationResponse](docs/ServiceAuthorizationResponse.md)
- - [Fastly::Object::ServiceAuthorizationResponseData](docs/ServiceAuthorizationResponseData.md)
- - [Fastly::Object::ServiceAuthorizationResponseDataAllOf](docs/ServiceAuthorizationResponseDataAllOf.md)
- - [Fastly::Object::ServiceAuthorizationsResponse](docs/ServiceAuthorizationsResponse.md)
- - [Fastly::Object::ServiceAuthorizationsResponseAllOf](docs/ServiceAuthorizationsResponseAllOf.md)
- - [Fastly::Object::ServiceCreate](docs/ServiceCreate.md)
- - [Fastly::Object::ServiceCreateAllOf](docs/ServiceCreateAllOf.md)
- - [Fastly::Object::ServiceDetail](docs/ServiceDetail.md)
- - [Fastly::Object::ServiceDetailAllOf](docs/ServiceDetailAllOf.md)
- - [Fastly::Object::ServiceIdAndVersion](docs/ServiceIdAndVersion.md)
- - [Fastly::Object::ServiceInvitation](docs/ServiceInvitation.md)
- - [Fastly::Object::ServiceInvitationData](docs/ServiceInvitationData.md)
- - [Fastly::Object::ServiceInvitationDataAttributes](docs/ServiceInvitationDataAttributes.md)
- - [Fastly::Object::ServiceInvitationDataRelationships](docs/ServiceInvitationDataRelationships.md)
- - [Fastly::Object::ServiceInvitationResponse](docs/ServiceInvitationResponse.md)
- - [Fastly::Object::ServiceInvitationResponseAllOf](docs/ServiceInvitationResponseAllOf.md)
- - [Fastly::Object::ServiceInvitationResponseAllOfData](docs/ServiceInvitationResponseAllOfData.md)
- - [Fastly::Object::ServiceListResponse](docs/ServiceListResponse.md)
- - [Fastly::Object::ServiceListResponseAllOf](docs/ServiceListResponseAllOf.md)
- - [Fastly::Object::ServiceResponse](docs/ServiceResponse.md)
- - [Fastly::Object::ServiceResponseAllOf](docs/ServiceResponseAllOf.md)
- - [Fastly::Object::ServiceVersionDetail](docs/ServiceVersionDetail.md)
- - [Fastly::Object::ServiceVersionDetailOrNull](docs/ServiceVersionDetailOrNull.md)
- - [Fastly::Object::Settings](docs/Settings.md)
- - [Fastly::Object::SettingsResponse](docs/SettingsResponse.md)
- - [Fastly::Object::Snippet](docs/Snippet.md)
- - [Fastly::Object::SnippetResponse](docs/SnippetResponse.md)
- - [Fastly::Object::SnippetResponseAllOf](docs/SnippetResponseAllOf.md)
- - [Fastly::Object::Star](docs/Star.md)
- - [Fastly::Object::StarData](docs/StarData.md)
- - [Fastly::Object::StarResponse](docs/StarResponse.md)
- - [Fastly::Object::StarResponseAllOf](docs/StarResponseAllOf.md)
- - [Fastly::Object::Stats](docs/Stats.md)
- - [Fastly::Object::Timestamps](docs/Timestamps.md)
- - [Fastly::Object::TimestampsNoDelete](docs/TimestampsNoDelete.md)
- - [Fastly::Object::TlsActivation](docs/TlsActivation.md)
- - [Fastly::Object::TlsActivationData](docs/TlsActivationData.md)
- - [Fastly::Object::TlsActivationResponse](docs/TlsActivationResponse.md)
- - [Fastly::Object::TlsActivationResponseData](docs/TlsActivationResponseData.md)
- - [Fastly::Object::TlsActivationResponseDataAllOf](docs/TlsActivationResponseDataAllOf.md)
- - [Fastly::Object::TlsActivationsResponse](docs/TlsActivationsResponse.md)
- - [Fastly::Object::TlsActivationsResponseAllOf](docs/TlsActivationsResponseAllOf.md)
- - [Fastly::Object::TlsBulkCertificate](docs/TlsBulkCertificate.md)
- - [Fastly::Object::TlsBulkCertificateData](docs/TlsBulkCertificateData.md)
- - [Fastly::Object::TlsBulkCertificateDataAttributes](docs/TlsBulkCertificateDataAttributes.md)
- - [Fastly::Object::TlsBulkCertificateResponse](docs/TlsBulkCertificateResponse.md)
- - [Fastly::Object::TlsBulkCertificateResponseAttributes](docs/TlsBulkCertificateResponseAttributes.md)
- - [Fastly::Object::TlsBulkCertificateResponseAttributesAllOf](docs/TlsBulkCertificateResponseAttributesAllOf.md)
- - [Fastly::Object::TlsBulkCertificateResponseData](docs/TlsBulkCertificateResponseData.md)
- - [Fastly::Object::TlsBulkCertificateResponseDataAllOf](docs/TlsBulkCertificateResponseDataAllOf.md)
- - [Fastly::Object::TlsBulkCertificatesResponse](docs/TlsBulkCertificatesResponse.md)
- - [Fastly::Object::TlsBulkCertificatesResponseAllOf](docs/TlsBulkCertificatesResponseAllOf.md)
- - [Fastly::Object::TlsCertificate](docs/TlsCertificate.md)
- - [Fastly::Object::TlsCertificateData](docs/TlsCertificateData.md)
- - [Fastly::Object::TlsCertificateDataAttributes](docs/TlsCertificateDataAttributes.md)
- - [Fastly::Object::TlsCertificateResponse](docs/TlsCertificateResponse.md)
- - [Fastly::Object::TlsCertificateResponseAttributes](docs/TlsCertificateResponseAttributes.md)
- - [Fastly::Object::TlsCertificateResponseAttributesAllOf](docs/TlsCertificateResponseAttributesAllOf.md)
- - [Fastly::Object::TlsCertificateResponseData](docs/TlsCertificateResponseData.md)
- - [Fastly::Object::TlsCertificateResponseDataAllOf](docs/TlsCertificateResponseDataAllOf.md)
- - [Fastly::Object::TlsCertificatesResponse](docs/TlsCertificatesResponse.md)
- - [Fastly::Object::TlsCertificatesResponseAllOf](docs/TlsCertificatesResponseAllOf.md)
- - [Fastly::Object::TlsCommon](docs/TlsCommon.md)
- - [Fastly::Object::TlsConfiguration](docs/TlsConfiguration.md)
- - [Fastly::Object::TlsConfigurationData](docs/TlsConfigurationData.md)
- - [Fastly::Object::TlsConfigurationDataAttributes](docs/TlsConfigurationDataAttributes.md)
- - [Fastly::Object::TlsConfigurationResponse](docs/TlsConfigurationResponse.md)
- - [Fastly::Object::TlsConfigurationResponseAttributes](docs/TlsConfigurationResponseAttributes.md)
- - [Fastly::Object::TlsConfigurationResponseAttributesAllOf](docs/TlsConfigurationResponseAttributesAllOf.md)
- - [Fastly::Object::TlsConfigurationResponseData](docs/TlsConfigurationResponseData.md)
- - [Fastly::Object::TlsConfigurationResponseDataAllOf](docs/TlsConfigurationResponseDataAllOf.md)
- - [Fastly::Object::TlsConfigurationsResponse](docs/TlsConfigurationsResponse.md)
- - [Fastly::Object::TlsConfigurationsResponseAllOf](docs/TlsConfigurationsResponseAllOf.md)
- - [Fastly::Object::TlsDnsRecord](docs/TlsDnsRecord.md)
- - [Fastly::Object::TlsDomainData](docs/TlsDomainData.md)
- - [Fastly::Object::TlsDomainsResponse](docs/TlsDomainsResponse.md)
- - [Fastly::Object::TlsDomainsResponseAllOf](docs/TlsDomainsResponseAllOf.md)
- - [Fastly::Object::TlsPrivateKey](docs/TlsPrivateKey.md)
- - [Fastly::Object::TlsPrivateKeyData](docs/TlsPrivateKeyData.md)
- - [Fastly::Object::TlsPrivateKeyDataAttributes](docs/TlsPrivateKeyDataAttributes.md)
- - [Fastly::Object::TlsPrivateKeyResponse](docs/TlsPrivateKeyResponse.md)
- - [Fastly::Object::TlsPrivateKeyResponseAttributes](docs/TlsPrivateKeyResponseAttributes.md)
- - [Fastly::Object::TlsPrivateKeyResponseAttributesAllOf](docs/TlsPrivateKeyResponseAttributesAllOf.md)
- - [Fastly::Object::TlsPrivateKeyResponseData](docs/TlsPrivateKeyResponseData.md)
- - [Fastly::Object::TlsPrivateKeysResponse](docs/TlsPrivateKeysResponse.md)
- - [Fastly::Object::TlsPrivateKeysResponseAllOf](docs/TlsPrivateKeysResponseAllOf.md)
- - [Fastly::Object::TlsSubscription](docs/TlsSubscription.md)
- - [Fastly::Object::TlsSubscriptionData](docs/TlsSubscriptionData.md)
- - [Fastly::Object::TlsSubscriptionDataAttributes](docs/TlsSubscriptionDataAttributes.md)
- - [Fastly::Object::TlsSubscriptionResponse](docs/TlsSubscriptionResponse.md)
- - [Fastly::Object::TlsSubscriptionResponseAttributes](docs/TlsSubscriptionResponseAttributes.md)
- - [Fastly::Object::TlsSubscriptionResponseAttributesAllOf](docs/TlsSubscriptionResponseAttributesAllOf.md)
- - [Fastly::Object::TlsSubscriptionResponseData](docs/TlsSubscriptionResponseData.md)
- - [Fastly::Object::TlsSubscriptionResponseDataAllOf](docs/TlsSubscriptionResponseDataAllOf.md)
- - [Fastly::Object::TlsSubscriptionsResponse](docs/TlsSubscriptionsResponse.md)
- - [Fastly::Object::TlsSubscriptionsResponseAllOf](docs/TlsSubscriptionsResponseAllOf.md)
- - [Fastly::Object::Token](docs/Token.md)
- - [Fastly::Object::TokenCreatedResponse](docs/TokenCreatedResponse.md)
- - [Fastly::Object::TokenCreatedResponseAllOf](docs/TokenCreatedResponseAllOf.md)
- - [Fastly::Object::TokenResponse](docs/TokenResponse.md)
- - [Fastly::Object::TokenResponseAllOf](docs/TokenResponseAllOf.md)
- - [Fastly::Object::TypeBillingAddress](docs/TypeBillingAddress.md)
- - [Fastly::Object::TypeContact](docs/TypeContact.md)
- - [Fastly::Object::TypeCustomer](docs/TypeCustomer.md)
- - [Fastly::Object::TypeEvent](docs/TypeEvent.md)
- - [Fastly::Object::TypeInvitation](docs/TypeInvitation.md)
- - [Fastly::Object::TypeResource](docs/TypeResource.md)
- - [Fastly::Object::TypeService](docs/TypeService.md)
- - [Fastly::Object::TypeServiceAuthorization](docs/TypeServiceAuthorization.md)
- - [Fastly::Object::TypeServiceInvitation](docs/TypeServiceInvitation.md)
- - [Fastly::Object::TypeStar](docs/TypeStar.md)
- - [Fastly::Object::TypeTlsActivation](docs/TypeTlsActivation.md)
- - [Fastly::Object::TypeTlsBulkCertificate](docs/TypeTlsBulkCertificate.md)
- - [Fastly::Object::TypeTlsCertificate](docs/TypeTlsCertificate.md)
- - [Fastly::Object::TypeTlsConfiguration](docs/TypeTlsConfiguration.md)
- - [Fastly::Object::TypeTlsDnsRecord](docs/TypeTlsDnsRecord.md)
- - [Fastly::Object::TypeTlsDomain](docs/TypeTlsDomain.md)
- - [Fastly::Object::TypeTlsPrivateKey](docs/TypeTlsPrivateKey.md)
- - [Fastly::Object::TypeTlsSubscription](docs/TypeTlsSubscription.md)
- - [Fastly::Object::TypeUser](docs/TypeUser.md)
- - [Fastly::Object::TypeWafActiveRule](docs/TypeWafActiveRule.md)
- - [Fastly::Object::TypeWafExclusion](docs/TypeWafExclusion.md)
- - [Fastly::Object::TypeWafFirewall](docs/TypeWafFirewall.md)
- - [Fastly::Object::TypeWafFirewallVersion](docs/TypeWafFirewallVersion.md)
- - [Fastly::Object::TypeWafRule](docs/TypeWafRule.md)
- - [Fastly::Object::TypeWafRuleRevision](docs/TypeWafRuleRevision.md)
- - [Fastly::Object::TypeWafTag](docs/TypeWafTag.md)
- - [Fastly::Object::UpdateBillingAddressRequest](docs/UpdateBillingAddressRequest.md)
- - [Fastly::Object::UpdateBillingAddressRequestData](docs/UpdateBillingAddressRequestData.md)
- - [Fastly::Object::User](docs/User.md)
- - [Fastly::Object::UserResponse](docs/UserResponse.md)
- - [Fastly::Object::UserResponseAllOf](docs/UserResponseAllOf.md)
- - [Fastly::Object::Vcl](docs/Vcl.md)
- - [Fastly::Object::VclDiff](docs/VclDiff.md)
- - [Fastly::Object::VclResponse](docs/VclResponse.md)
- - [Fastly::Object::Version](docs/Version.md)
- - [Fastly::Object::VersionCreateResponse](docs/VersionCreateResponse.md)
- - [Fastly::Object::VersionDetail](docs/VersionDetail.md)
- - [Fastly::Object::VersionDetailSettings](docs/VersionDetailSettings.md)
- - [Fastly::Object::VersionResponse](docs/VersionResponse.md)
- - [Fastly::Object::VersionResponseAllOf](docs/VersionResponseAllOf.md)
- - [Fastly::Object::WafActiveRule](docs/WafActiveRule.md)
- - [Fastly::Object::WafActiveRuleCreationResponse](docs/WafActiveRuleCreationResponse.md)
- - [Fastly::Object::WafActiveRuleData](docs/WafActiveRuleData.md)
- - [Fastly::Object::WafActiveRuleDataAttributes](docs/WafActiveRuleDataAttributes.md)
- - [Fastly::Object::WafActiveRuleResponse](docs/WafActiveRuleResponse.md)
- - [Fastly::Object::WafActiveRuleResponseData](docs/WafActiveRuleResponseData.md)
- - [Fastly::Object::WafActiveRuleResponseDataAllOf](docs/WafActiveRuleResponseDataAllOf.md)
- - [Fastly::Object::WafActiveRuleResponseDataAttributes](docs/WafActiveRuleResponseDataAttributes.md)
- - [Fastly::Object::WafActiveRuleResponseDataAttributesAllOf](docs/WafActiveRuleResponseDataAttributesAllOf.md)
- - [Fastly::Object::WafActiveRuleResponseDataRelationships](docs/WafActiveRuleResponseDataRelationships.md)
- - [Fastly::Object::WafActiveRulesResponse](docs/WafActiveRulesResponse.md)
- - [Fastly::Object::WafActiveRulesResponseAllOf](docs/WafActiveRulesResponseAllOf.md)
- - [Fastly::Object::WafExclusion](docs/WafExclusion.md)
- - [Fastly::Object::WafExclusionData](docs/WafExclusionData.md)
- - [Fastly::Object::WafExclusionDataAttributes](docs/WafExclusionDataAttributes.md)
- - [Fastly::Object::WafExclusionResponse](docs/WafExclusionResponse.md)
- - [Fastly::Object::WafExclusionResponseData](docs/WafExclusionResponseData.md)
- - [Fastly::Object::WafExclusionResponseDataAllOf](docs/WafExclusionResponseDataAllOf.md)
- - [Fastly::Object::WafExclusionResponseDataAttributes](docs/WafExclusionResponseDataAttributes.md)
- - [Fastly::Object::WafExclusionResponseDataAttributesAllOf](docs/WafExclusionResponseDataAttributesAllOf.md)
- - [Fastly::Object::WafExclusionResponseDataRelationships](docs/WafExclusionResponseDataRelationships.md)
- - [Fastly::Object::WafExclusionsResponse](docs/WafExclusionsResponse.md)
- - [Fastly::Object::WafExclusionsResponseAllOf](docs/WafExclusionsResponseAllOf.md)
- - [Fastly::Object::WafFirewall](docs/WafFirewall.md)
- - [Fastly::Object::WafFirewallData](docs/WafFirewallData.md)
- - [Fastly::Object::WafFirewallDataAttributes](docs/WafFirewallDataAttributes.md)
- - [Fastly::Object::WafFirewallResponse](docs/WafFirewallResponse.md)
- - [Fastly::Object::WafFirewallResponseData](docs/WafFirewallResponseData.md)
- - [Fastly::Object::WafFirewallResponseDataAllOf](docs/WafFirewallResponseDataAllOf.md)
- - [Fastly::Object::WafFirewallResponseDataAttributes](docs/WafFirewallResponseDataAttributes.md)
- - [Fastly::Object::WafFirewallResponseDataAttributesAllOf](docs/WafFirewallResponseDataAttributesAllOf.md)
- - [Fastly::Object::WafFirewallVersion](docs/WafFirewallVersion.md)
- - [Fastly::Object::WafFirewallVersionData](docs/WafFirewallVersionData.md)
- - [Fastly::Object::WafFirewallVersionDataAttributes](docs/WafFirewallVersionDataAttributes.md)
- - [Fastly::Object::WafFirewallVersionResponse](docs/WafFirewallVersionResponse.md)
- - [Fastly::Object::WafFirewallVersionResponseData](docs/WafFirewallVersionResponseData.md)
- - [Fastly::Object::WafFirewallVersionResponseDataAllOf](docs/WafFirewallVersionResponseDataAllOf.md)
- - [Fastly::Object::WafFirewallVersionResponseDataAttributes](docs/WafFirewallVersionResponseDataAttributes.md)
- - [Fastly::Object::WafFirewallVersionResponseDataAttributesAllOf](docs/WafFirewallVersionResponseDataAttributesAllOf.md)
- - [Fastly::Object::WafFirewallVersionsResponse](docs/WafFirewallVersionsResponse.md)
- - [Fastly::Object::WafFirewallVersionsResponseAllOf](docs/WafFirewallVersionsResponseAllOf.md)
- - [Fastly::Object::WafFirewallsResponse](docs/WafFirewallsResponse.md)
- - [Fastly::Object::WafFirewallsResponseAllOf](docs/WafFirewallsResponseAllOf.md)
- - [Fastly::Object::WafRule](docs/WafRule.md)
- - [Fastly::Object::WafRuleAttributes](docs/WafRuleAttributes.md)
- - [Fastly::Object::WafRuleResponse](docs/WafRuleResponse.md)
- - [Fastly::Object::WafRuleResponseData](docs/WafRuleResponseData.md)
- - [Fastly::Object::WafRuleResponseDataAllOf](docs/WafRuleResponseDataAllOf.md)
- - [Fastly::Object::WafRuleRevision](docs/WafRuleRevision.md)
- - [Fastly::Object::WafRuleRevisionAttributes](docs/WafRuleRevisionAttributes.md)
- - [Fastly::Object::WafRuleRevisionOrLatest](docs/WafRuleRevisionOrLatest.md)
- - [Fastly::Object::WafRuleRevisionResponse](docs/WafRuleRevisionResponse.md)
- - [Fastly::Object::WafRuleRevisionResponseData](docs/WafRuleRevisionResponseData.md)
- - [Fastly::Object::WafRuleRevisionResponseDataAllOf](docs/WafRuleRevisionResponseDataAllOf.md)
- - [Fastly::Object::WafRuleRevisionsResponse](docs/WafRuleRevisionsResponse.md)
- - [Fastly::Object::WafRuleRevisionsResponseAllOf](docs/WafRuleRevisionsResponseAllOf.md)
- - [Fastly::Object::WafRulesResponse](docs/WafRulesResponse.md)
- - [Fastly::Object::WafRulesResponseAllOf](docs/WafRulesResponseAllOf.md)
- - [Fastly::Object::WafTag](docs/WafTag.md)
- - [Fastly::Object::WafTagAttributes](docs/WafTagAttributes.md)
- - [Fastly::Object::WafTagsResponse](docs/WafTagsResponse.md)
- - [Fastly::Object::WafTagsResponseAllOf](docs/WafTagsResponseAllOf.md)
- - [Fastly::Object::WafTagsResponseDataItem](docs/WafTagsResponseDataItem.md)
+ - [WebService::Fastly::Object::Acl](docs/Acl.md)
+ - [WebService::Fastly::Object::AclEntry](docs/AclEntry.md)
+ - [WebService::Fastly::Object::AclEntryResponse](docs/AclEntryResponse.md)
+ - [WebService::Fastly::Object::AclEntryResponseAllOf](docs/AclEntryResponseAllOf.md)
+ - [WebService::Fastly::Object::AclResponse](docs/AclResponse.md)
+ - [WebService::Fastly::Object::AclResponseAllOf](docs/AclResponseAllOf.md)
+ - [WebService::Fastly::Object::ApexRedirect](docs/ApexRedirect.md)
+ - [WebService::Fastly::Object::ApexRedirectAllOf](docs/ApexRedirectAllOf.md)
+ - [WebService::Fastly::Object::Backend](docs/Backend.md)
+ - [WebService::Fastly::Object::BackendResponse](docs/BackendResponse.md)
+ - [WebService::Fastly::Object::BackendResponseAllOf](docs/BackendResponseAllOf.md)
+ - [WebService::Fastly::Object::Billing](docs/Billing.md)
+ - [WebService::Fastly::Object::BillingAddressAttributes](docs/BillingAddressAttributes.md)
+ - [WebService::Fastly::Object::BillingAddressRequest](docs/BillingAddressRequest.md)
+ - [WebService::Fastly::Object::BillingAddressRequestData](docs/BillingAddressRequestData.md)
+ - [WebService::Fastly::Object::BillingAddressResponse](docs/BillingAddressResponse.md)
+ - [WebService::Fastly::Object::BillingAddressResponseData](docs/BillingAddressResponseData.md)
+ - [WebService::Fastly::Object::BillingEstimateResponse](docs/BillingEstimateResponse.md)
+ - [WebService::Fastly::Object::BillingEstimateResponseAllOf](docs/BillingEstimateResponseAllOf.md)
+ - [WebService::Fastly::Object::BillingEstimateResponseAllOfLine](docs/BillingEstimateResponseAllOfLine.md)
+ - [WebService::Fastly::Object::BillingEstimateResponseAllOfLines](docs/BillingEstimateResponseAllOfLines.md)
+ - [WebService::Fastly::Object::BillingResponse](docs/BillingResponse.md)
+ - [WebService::Fastly::Object::BillingResponseAllOf](docs/BillingResponseAllOf.md)
+ - [WebService::Fastly::Object::BillingResponseLineItem](docs/BillingResponseLineItem.md)
+ - [WebService::Fastly::Object::BillingResponseLineItemAllOf](docs/BillingResponseLineItemAllOf.md)
+ - [WebService::Fastly::Object::BillingStatus](docs/BillingStatus.md)
+ - [WebService::Fastly::Object::BillingTotal](docs/BillingTotal.md)
+ - [WebService::Fastly::Object::BillingTotalExtras](docs/BillingTotalExtras.md)
+ - [WebService::Fastly::Object::BulkUpdateAclEntriesRequest](docs/BulkUpdateAclEntriesRequest.md)
+ - [WebService::Fastly::Object::BulkUpdateAclEntry](docs/BulkUpdateAclEntry.md)
+ - [WebService::Fastly::Object::BulkUpdateAclEntryAllOf](docs/BulkUpdateAclEntryAllOf.md)
+ - [WebService::Fastly::Object::BulkUpdateDictionaryItem](docs/BulkUpdateDictionaryItem.md)
+ - [WebService::Fastly::Object::BulkUpdateDictionaryItemAllOf](docs/BulkUpdateDictionaryItemAllOf.md)
+ - [WebService::Fastly::Object::BulkUpdateDictionaryListRequest](docs/BulkUpdateDictionaryListRequest.md)
+ - [WebService::Fastly::Object::BulkWafActiveRules](docs/BulkWafActiveRules.md)
+ - [WebService::Fastly::Object::CacheSetting](docs/CacheSetting.md)
+ - [WebService::Fastly::Object::CacheSettingResponse](docs/CacheSettingResponse.md)
+ - [WebService::Fastly::Object::Condition](docs/Condition.md)
+ - [WebService::Fastly::Object::ConditionResponse](docs/ConditionResponse.md)
+ - [WebService::Fastly::Object::Contact](docs/Contact.md)
+ - [WebService::Fastly::Object::ContactResponse](docs/ContactResponse.md)
+ - [WebService::Fastly::Object::ContactResponseAllOf](docs/ContactResponseAllOf.md)
+ - [WebService::Fastly::Object::Content](docs/Content.md)
+ - [WebService::Fastly::Object::Customer](docs/Customer.md)
+ - [WebService::Fastly::Object::CustomerResponse](docs/CustomerResponse.md)
+ - [WebService::Fastly::Object::CustomerResponseAllOf](docs/CustomerResponseAllOf.md)
+ - [WebService::Fastly::Object::Dictionary](docs/Dictionary.md)
+ - [WebService::Fastly::Object::DictionaryInfoResponse](docs/DictionaryInfoResponse.md)
+ - [WebService::Fastly::Object::DictionaryItem](docs/DictionaryItem.md)
+ - [WebService::Fastly::Object::DictionaryItemResponse](docs/DictionaryItemResponse.md)
+ - [WebService::Fastly::Object::DictionaryItemResponseAllOf](docs/DictionaryItemResponseAllOf.md)
+ - [WebService::Fastly::Object::DictionaryResponse](docs/DictionaryResponse.md)
+ - [WebService::Fastly::Object::DictionaryResponseAllOf](docs/DictionaryResponseAllOf.md)
+ - [WebService::Fastly::Object::DiffResponse](docs/DiffResponse.md)
+ - [WebService::Fastly::Object::Director](docs/Director.md)
+ - [WebService::Fastly::Object::DirectorBackend](docs/DirectorBackend.md)
+ - [WebService::Fastly::Object::DirectorBackendAllOf](docs/DirectorBackendAllOf.md)
+ - [WebService::Fastly::Object::DirectorResponse](docs/DirectorResponse.md)
+ - [WebService::Fastly::Object::Domain](docs/Domain.md)
+ - [WebService::Fastly::Object::DomainCheckItem](docs/DomainCheckItem.md)
+ - [WebService::Fastly::Object::DomainResponse](docs/DomainResponse.md)
+ - [WebService::Fastly::Object::Event](docs/Event.md)
+ - [WebService::Fastly::Object::EventAttributes](docs/EventAttributes.md)
+ - [WebService::Fastly::Object::EventResponse](docs/EventResponse.md)
+ - [WebService::Fastly::Object::EventsResponse](docs/EventsResponse.md)
+ - [WebService::Fastly::Object::EventsResponseAllOf](docs/EventsResponseAllOf.md)
+ - [WebService::Fastly::Object::GenericTokenError](docs/GenericTokenError.md)
+ - [WebService::Fastly::Object::Gzip](docs/Gzip.md)
+ - [WebService::Fastly::Object::GzipResponse](docs/GzipResponse.md)
+ - [WebService::Fastly::Object::Header](docs/Header.md)
+ - [WebService::Fastly::Object::HeaderResponse](docs/HeaderResponse.md)
+ - [WebService::Fastly::Object::Healthcheck](docs/Healthcheck.md)
+ - [WebService::Fastly::Object::HealthcheckResponse](docs/HealthcheckResponse.md)
+ - [WebService::Fastly::Object::Historical](docs/Historical.md)
+ - [WebService::Fastly::Object::HistoricalAggregateResponse](docs/HistoricalAggregateResponse.md)
+ - [WebService::Fastly::Object::HistoricalAggregateResponseAllOf](docs/HistoricalAggregateResponseAllOf.md)
+ - [WebService::Fastly::Object::HistoricalFieldAggregateResponse](docs/HistoricalFieldAggregateResponse.md)
+ - [WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf](docs/HistoricalFieldAggregateResponseAllOf.md)
+ - [WebService::Fastly::Object::HistoricalFieldResponse](docs/HistoricalFieldResponse.md)
+ - [WebService::Fastly::Object::HistoricalFieldResponseAllOf](docs/HistoricalFieldResponseAllOf.md)
+ - [WebService::Fastly::Object::HistoricalMeta](docs/HistoricalMeta.md)
+ - [WebService::Fastly::Object::HistoricalRegionsResponse](docs/HistoricalRegionsResponse.md)
+ - [WebService::Fastly::Object::HistoricalRegionsResponseAllOf](docs/HistoricalRegionsResponseAllOf.md)
+ - [WebService::Fastly::Object::HistoricalResponse](docs/HistoricalResponse.md)
+ - [WebService::Fastly::Object::HistoricalResponseAllOf](docs/HistoricalResponseAllOf.md)
+ - [WebService::Fastly::Object::HistoricalUsageAggregateResponse](docs/HistoricalUsageAggregateResponse.md)
+ - [WebService::Fastly::Object::HistoricalUsageMonthResponse](docs/HistoricalUsageMonthResponse.md)
+ - [WebService::Fastly::Object::HistoricalUsageMonthResponseAllOf](docs/HistoricalUsageMonthResponseAllOf.md)
+ - [WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData](docs/HistoricalUsageMonthResponseAllOfData.md)
+ - [WebService::Fastly::Object::HistoricalUsageResults](docs/HistoricalUsageResults.md)
+ - [WebService::Fastly::Object::HistoricalUsageServiceResponse](docs/HistoricalUsageServiceResponse.md)
+ - [WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf](docs/HistoricalUsageServiceResponseAllOf.md)
+ - [WebService::Fastly::Object::Http3](docs/Http3.md)
+ - [WebService::Fastly::Object::Http3AllOf](docs/Http3AllOf.md)
+ - [WebService::Fastly::Object::IamPermission](docs/IamPermission.md)
+ - [WebService::Fastly::Object::IamRole](docs/IamRole.md)
+ - [WebService::Fastly::Object::IamRoleAllOf](docs/IamRoleAllOf.md)
+ - [WebService::Fastly::Object::IamServiceGroup](docs/IamServiceGroup.md)
+ - [WebService::Fastly::Object::IamServiceGroupAllOf](docs/IamServiceGroupAllOf.md)
+ - [WebService::Fastly::Object::IamUserGroup](docs/IamUserGroup.md)
+ - [WebService::Fastly::Object::IamUserGroupAllOf](docs/IamUserGroupAllOf.md)
+ - [WebService::Fastly::Object::IncludedWithWafActiveRuleItem](docs/IncludedWithWafActiveRuleItem.md)
+ - [WebService::Fastly::Object::IncludedWithWafExclusionItem](docs/IncludedWithWafExclusionItem.md)
+ - [WebService::Fastly::Object::IncludedWithWafFirewallVersionItem](docs/IncludedWithWafFirewallVersionItem.md)
+ - [WebService::Fastly::Object::IncludedWithWafRuleItem](docs/IncludedWithWafRuleItem.md)
+ - [WebService::Fastly::Object::InlineResponse200](docs/InlineResponse200.md)
+ - [WebService::Fastly::Object::InlineResponse2001](docs/InlineResponse2001.md)
+ - [WebService::Fastly::Object::Invitation](docs/Invitation.md)
+ - [WebService::Fastly::Object::InvitationData](docs/InvitationData.md)
+ - [WebService::Fastly::Object::InvitationDataAttributes](docs/InvitationDataAttributes.md)
+ - [WebService::Fastly::Object::InvitationResponse](docs/InvitationResponse.md)
+ - [WebService::Fastly::Object::InvitationResponseAllOf](docs/InvitationResponseAllOf.md)
+ - [WebService::Fastly::Object::InvitationResponseData](docs/InvitationResponseData.md)
+ - [WebService::Fastly::Object::InvitationResponseDataAllOf](docs/InvitationResponseDataAllOf.md)
+ - [WebService::Fastly::Object::InvitationsResponse](docs/InvitationsResponse.md)
+ - [WebService::Fastly::Object::InvitationsResponseAllOf](docs/InvitationsResponseAllOf.md)
+ - [WebService::Fastly::Object::LoggingAddressAndPort](docs/LoggingAddressAndPort.md)
+ - [WebService::Fastly::Object::LoggingAzureblob](docs/LoggingAzureblob.md)
+ - [WebService::Fastly::Object::LoggingAzureblobAllOf](docs/LoggingAzureblobAllOf.md)
+ - [WebService::Fastly::Object::LoggingAzureblobResponse](docs/LoggingAzureblobResponse.md)
+ - [WebService::Fastly::Object::LoggingBigquery](docs/LoggingBigquery.md)
+ - [WebService::Fastly::Object::LoggingBigqueryAllOf](docs/LoggingBigqueryAllOf.md)
+ - [WebService::Fastly::Object::LoggingBigqueryResponse](docs/LoggingBigqueryResponse.md)
+ - [WebService::Fastly::Object::LoggingCloudfiles](docs/LoggingCloudfiles.md)
+ - [WebService::Fastly::Object::LoggingCloudfilesAllOf](docs/LoggingCloudfilesAllOf.md)
+ - [WebService::Fastly::Object::LoggingCloudfilesResponse](docs/LoggingCloudfilesResponse.md)
+ - [WebService::Fastly::Object::LoggingCommon](docs/LoggingCommon.md)
+ - [WebService::Fastly::Object::LoggingDatadog](docs/LoggingDatadog.md)
+ - [WebService::Fastly::Object::LoggingDatadogAllOf](docs/LoggingDatadogAllOf.md)
+ - [WebService::Fastly::Object::LoggingDatadogResponse](docs/LoggingDatadogResponse.md)
+ - [WebService::Fastly::Object::LoggingDigitalocean](docs/LoggingDigitalocean.md)
+ - [WebService::Fastly::Object::LoggingDigitaloceanAllOf](docs/LoggingDigitaloceanAllOf.md)
+ - [WebService::Fastly::Object::LoggingDigitaloceanResponse](docs/LoggingDigitaloceanResponse.md)
+ - [WebService::Fastly::Object::LoggingElasticsearch](docs/LoggingElasticsearch.md)
+ - [WebService::Fastly::Object::LoggingElasticsearchAllOf](docs/LoggingElasticsearchAllOf.md)
+ - [WebService::Fastly::Object::LoggingElasticsearchResponse](docs/LoggingElasticsearchResponse.md)
+ - [WebService::Fastly::Object::LoggingFormatVersion](docs/LoggingFormatVersion.md)
+ - [WebService::Fastly::Object::LoggingFtp](docs/LoggingFtp.md)
+ - [WebService::Fastly::Object::LoggingFtpAllOf](docs/LoggingFtpAllOf.md)
+ - [WebService::Fastly::Object::LoggingFtpResponse](docs/LoggingFtpResponse.md)
+ - [WebService::Fastly::Object::LoggingGcs](docs/LoggingGcs.md)
+ - [WebService::Fastly::Object::LoggingGcsAllOf](docs/LoggingGcsAllOf.md)
+ - [WebService::Fastly::Object::LoggingGcsCommon](docs/LoggingGcsCommon.md)
+ - [WebService::Fastly::Object::LoggingGcsResponse](docs/LoggingGcsResponse.md)
+ - [WebService::Fastly::Object::LoggingGenericCommon](docs/LoggingGenericCommon.md)
+ - [WebService::Fastly::Object::LoggingGooglePubsub](docs/LoggingGooglePubsub.md)
+ - [WebService::Fastly::Object::LoggingGooglePubsubAllOf](docs/LoggingGooglePubsubAllOf.md)
+ - [WebService::Fastly::Object::LoggingGooglePubsubResponse](docs/LoggingGooglePubsubResponse.md)
+ - [WebService::Fastly::Object::LoggingHeroku](docs/LoggingHeroku.md)
+ - [WebService::Fastly::Object::LoggingHerokuAllOf](docs/LoggingHerokuAllOf.md)
+ - [WebService::Fastly::Object::LoggingHerokuResponse](docs/LoggingHerokuResponse.md)
+ - [WebService::Fastly::Object::LoggingHoneycomb](docs/LoggingHoneycomb.md)
+ - [WebService::Fastly::Object::LoggingHoneycombAllOf](docs/LoggingHoneycombAllOf.md)
+ - [WebService::Fastly::Object::LoggingHoneycombResponse](docs/LoggingHoneycombResponse.md)
+ - [WebService::Fastly::Object::LoggingHttps](docs/LoggingHttps.md)
+ - [WebService::Fastly::Object::LoggingHttpsAllOf](docs/LoggingHttpsAllOf.md)
+ - [WebService::Fastly::Object::LoggingHttpsResponse](docs/LoggingHttpsResponse.md)
+ - [WebService::Fastly::Object::LoggingKafka](docs/LoggingKafka.md)
+ - [WebService::Fastly::Object::LoggingKafkaAllOf](docs/LoggingKafkaAllOf.md)
+ - [WebService::Fastly::Object::LoggingKafkaResponse](docs/LoggingKafkaResponse.md)
+ - [WebService::Fastly::Object::LoggingKinesis](docs/LoggingKinesis.md)
+ - [WebService::Fastly::Object::LoggingKinesisResponse](docs/LoggingKinesisResponse.md)
+ - [WebService::Fastly::Object::LoggingLogentries](docs/LoggingLogentries.md)
+ - [WebService::Fastly::Object::LoggingLogentriesAllOf](docs/LoggingLogentriesAllOf.md)
+ - [WebService::Fastly::Object::LoggingLogentriesResponse](docs/LoggingLogentriesResponse.md)
+ - [WebService::Fastly::Object::LoggingLoggly](docs/LoggingLoggly.md)
+ - [WebService::Fastly::Object::LoggingLogglyAllOf](docs/LoggingLogglyAllOf.md)
+ - [WebService::Fastly::Object::LoggingLogglyResponse](docs/LoggingLogglyResponse.md)
+ - [WebService::Fastly::Object::LoggingLogshuttle](docs/LoggingLogshuttle.md)
+ - [WebService::Fastly::Object::LoggingLogshuttleAllOf](docs/LoggingLogshuttleAllOf.md)
+ - [WebService::Fastly::Object::LoggingLogshuttleResponse](docs/LoggingLogshuttleResponse.md)
+ - [WebService::Fastly::Object::LoggingMessageType](docs/LoggingMessageType.md)
+ - [WebService::Fastly::Object::LoggingNewrelic](docs/LoggingNewrelic.md)
+ - [WebService::Fastly::Object::LoggingNewrelicAllOf](docs/LoggingNewrelicAllOf.md)
+ - [WebService::Fastly::Object::LoggingNewrelicResponse](docs/LoggingNewrelicResponse.md)
+ - [WebService::Fastly::Object::LoggingOpenstack](docs/LoggingOpenstack.md)
+ - [WebService::Fastly::Object::LoggingOpenstackAllOf](docs/LoggingOpenstackAllOf.md)
+ - [WebService::Fastly::Object::LoggingOpenstackResponse](docs/LoggingOpenstackResponse.md)
+ - [WebService::Fastly::Object::LoggingPapertrail](docs/LoggingPapertrail.md)
+ - [WebService::Fastly::Object::LoggingPapertrailResponse](docs/LoggingPapertrailResponse.md)
+ - [WebService::Fastly::Object::LoggingPlacement](docs/LoggingPlacement.md)
+ - [WebService::Fastly::Object::LoggingRequestCapsCommon](docs/LoggingRequestCapsCommon.md)
+ - [WebService::Fastly::Object::LoggingS3](docs/LoggingS3.md)
+ - [WebService::Fastly::Object::LoggingS3AllOf](docs/LoggingS3AllOf.md)
+ - [WebService::Fastly::Object::LoggingS3Response](docs/LoggingS3Response.md)
+ - [WebService::Fastly::Object::LoggingScalyr](docs/LoggingScalyr.md)
+ - [WebService::Fastly::Object::LoggingScalyrAllOf](docs/LoggingScalyrAllOf.md)
+ - [WebService::Fastly::Object::LoggingScalyrResponse](docs/LoggingScalyrResponse.md)
+ - [WebService::Fastly::Object::LoggingSftp](docs/LoggingSftp.md)
+ - [WebService::Fastly::Object::LoggingSftpAllOf](docs/LoggingSftpAllOf.md)
+ - [WebService::Fastly::Object::LoggingSftpResponse](docs/LoggingSftpResponse.md)
+ - [WebService::Fastly::Object::LoggingSplunk](docs/LoggingSplunk.md)
+ - [WebService::Fastly::Object::LoggingSplunkAllOf](docs/LoggingSplunkAllOf.md)
+ - [WebService::Fastly::Object::LoggingSplunkResponse](docs/LoggingSplunkResponse.md)
+ - [WebService::Fastly::Object::LoggingSumologic](docs/LoggingSumologic.md)
+ - [WebService::Fastly::Object::LoggingSumologicAllOf](docs/LoggingSumologicAllOf.md)
+ - [WebService::Fastly::Object::LoggingSumologicResponse](docs/LoggingSumologicResponse.md)
+ - [WebService::Fastly::Object::LoggingSyslog](docs/LoggingSyslog.md)
+ - [WebService::Fastly::Object::LoggingSyslogAllOf](docs/LoggingSyslogAllOf.md)
+ - [WebService::Fastly::Object::LoggingSyslogResponse](docs/LoggingSyslogResponse.md)
+ - [WebService::Fastly::Object::LoggingTlsCommon](docs/LoggingTlsCommon.md)
+ - [WebService::Fastly::Object::LoggingUseTls](docs/LoggingUseTls.md)
+ - [WebService::Fastly::Object::ModelPackage](docs/ModelPackage.md)
+ - [WebService::Fastly::Object::PackageMetadata](docs/PackageMetadata.md)
+ - [WebService::Fastly::Object::PackageResponse](docs/PackageResponse.md)
+ - [WebService::Fastly::Object::PackageResponseAllOf](docs/PackageResponseAllOf.md)
+ - [WebService::Fastly::Object::Pagination](docs/Pagination.md)
+ - [WebService::Fastly::Object::PaginationLinks](docs/PaginationLinks.md)
+ - [WebService::Fastly::Object::PaginationMeta](docs/PaginationMeta.md)
+ - [WebService::Fastly::Object::Permission](docs/Permission.md)
+ - [WebService::Fastly::Object::Pool](docs/Pool.md)
+ - [WebService::Fastly::Object::PoolAllOf](docs/PoolAllOf.md)
+ - [WebService::Fastly::Object::PoolResponse](docs/PoolResponse.md)
+ - [WebService::Fastly::Object::PoolResponseAllOf](docs/PoolResponseAllOf.md)
+ - [WebService::Fastly::Object::Pop](docs/Pop.md)
+ - [WebService::Fastly::Object::PopCoordinates](docs/PopCoordinates.md)
+ - [WebService::Fastly::Object::PublicIpList](docs/PublicIpList.md)
+ - [WebService::Fastly::Object::PurgeKeys](docs/PurgeKeys.md)
+ - [WebService::Fastly::Object::PurgeResponse](docs/PurgeResponse.md)
+ - [WebService::Fastly::Object::RateLimiter](docs/RateLimiter.md)
+ - [WebService::Fastly::Object::RateLimiterResponse](docs/RateLimiterResponse.md)
+ - [WebService::Fastly::Object::RateLimiterResponse1](docs/RateLimiterResponse1.md)
+ - [WebService::Fastly::Object::RateLimiterResponseAllOf](docs/RateLimiterResponseAllOf.md)
+ - [WebService::Fastly::Object::Realtime](docs/Realtime.md)
+ - [WebService::Fastly::Object::RealtimeEntry](docs/RealtimeEntry.md)
+ - [WebService::Fastly::Object::RealtimeMeasurements](docs/RealtimeMeasurements.md)
+ - [WebService::Fastly::Object::RelationshipCommonName](docs/RelationshipCommonName.md)
+ - [WebService::Fastly::Object::RelationshipCustomer](docs/RelationshipCustomer.md)
+ - [WebService::Fastly::Object::RelationshipCustomerCustomer](docs/RelationshipCustomerCustomer.md)
+ - [WebService::Fastly::Object::RelationshipMemberCustomer](docs/RelationshipMemberCustomer.md)
+ - [WebService::Fastly::Object::RelationshipMemberService](docs/RelationshipMemberService.md)
+ - [WebService::Fastly::Object::RelationshipMemberServiceInvitation](docs/RelationshipMemberServiceInvitation.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsActivation](docs/RelationshipMemberTlsActivation.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsBulkCertificate](docs/RelationshipMemberTlsBulkCertificate.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsCertificate](docs/RelationshipMemberTlsCertificate.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsConfiguration](docs/RelationshipMemberTlsConfiguration.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsDnsRecord](docs/RelationshipMemberTlsDnsRecord.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsDomain](docs/RelationshipMemberTlsDomain.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsPrivateKey](docs/RelationshipMemberTlsPrivateKey.md)
+ - [WebService::Fastly::Object::RelationshipMemberTlsSubscription](docs/RelationshipMemberTlsSubscription.md)
+ - [WebService::Fastly::Object::RelationshipMemberWafActiveRule](docs/RelationshipMemberWafActiveRule.md)
+ - [WebService::Fastly::Object::RelationshipMemberWafFirewall](docs/RelationshipMemberWafFirewall.md)
+ - [WebService::Fastly::Object::RelationshipMemberWafFirewallVersion](docs/RelationshipMemberWafFirewallVersion.md)
+ - [WebService::Fastly::Object::RelationshipMemberWafRule](docs/RelationshipMemberWafRule.md)
+ - [WebService::Fastly::Object::RelationshipMemberWafRuleRevision](docs/RelationshipMemberWafRuleRevision.md)
+ - [WebService::Fastly::Object::RelationshipMemberWafTag](docs/RelationshipMemberWafTag.md)
+ - [WebService::Fastly::Object::RelationshipService](docs/RelationshipService.md)
+ - [WebService::Fastly::Object::RelationshipServiceInvitations](docs/RelationshipServiceInvitations.md)
+ - [WebService::Fastly::Object::RelationshipServiceInvitationsCreate](docs/RelationshipServiceInvitationsCreate.md)
+ - [WebService::Fastly::Object::RelationshipServiceInvitationsCreateServiceInvitations](docs/RelationshipServiceInvitationsCreateServiceInvitations.md)
+ - [WebService::Fastly::Object::RelationshipServiceInvitationsServiceInvitations](docs/RelationshipServiceInvitationsServiceInvitations.md)
+ - [WebService::Fastly::Object::RelationshipServiceService](docs/RelationshipServiceService.md)
+ - [WebService::Fastly::Object::RelationshipServices](docs/RelationshipServices.md)
+ - [WebService::Fastly::Object::RelationshipTlsActivation](docs/RelationshipTlsActivation.md)
+ - [WebService::Fastly::Object::RelationshipTlsActivationTlsActivation](docs/RelationshipTlsActivationTlsActivation.md)
+ - [WebService::Fastly::Object::RelationshipTlsActivations](docs/RelationshipTlsActivations.md)
+ - [WebService::Fastly::Object::RelationshipTlsBulkCertificate](docs/RelationshipTlsBulkCertificate.md)
+ - [WebService::Fastly::Object::RelationshipTlsBulkCertificateTlsBulkCertificate](docs/RelationshipTlsBulkCertificateTlsBulkCertificate.md)
+ - [WebService::Fastly::Object::RelationshipTlsBulkCertificates](docs/RelationshipTlsBulkCertificates.md)
+ - [WebService::Fastly::Object::RelationshipTlsCertificate](docs/RelationshipTlsCertificate.md)
+ - [WebService::Fastly::Object::RelationshipTlsCertificateTlsCertificate](docs/RelationshipTlsCertificateTlsCertificate.md)
+ - [WebService::Fastly::Object::RelationshipTlsCertificates](docs/RelationshipTlsCertificates.md)
+ - [WebService::Fastly::Object::RelationshipTlsConfiguration](docs/RelationshipTlsConfiguration.md)
+ - [WebService::Fastly::Object::RelationshipTlsConfigurationTlsConfiguration](docs/RelationshipTlsConfigurationTlsConfiguration.md)
+ - [WebService::Fastly::Object::RelationshipTlsConfigurations](docs/RelationshipTlsConfigurations.md)
+ - [WebService::Fastly::Object::RelationshipTlsDnsRecord](docs/RelationshipTlsDnsRecord.md)
+ - [WebService::Fastly::Object::RelationshipTlsDnsRecordDnsRecord](docs/RelationshipTlsDnsRecordDnsRecord.md)
+ - [WebService::Fastly::Object::RelationshipTlsDnsRecords](docs/RelationshipTlsDnsRecords.md)
+ - [WebService::Fastly::Object::RelationshipTlsDomain](docs/RelationshipTlsDomain.md)
+ - [WebService::Fastly::Object::RelationshipTlsDomainTlsDomain](docs/RelationshipTlsDomainTlsDomain.md)
+ - [WebService::Fastly::Object::RelationshipTlsDomains](docs/RelationshipTlsDomains.md)
+ - [WebService::Fastly::Object::RelationshipTlsPrivateKey](docs/RelationshipTlsPrivateKey.md)
+ - [WebService::Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey](docs/RelationshipTlsPrivateKeyTlsPrivateKey.md)
+ - [WebService::Fastly::Object::RelationshipTlsPrivateKeys](docs/RelationshipTlsPrivateKeys.md)
+ - [WebService::Fastly::Object::RelationshipTlsSubscription](docs/RelationshipTlsSubscription.md)
+ - [WebService::Fastly::Object::RelationshipTlsSubscriptionTlsSubscription](docs/RelationshipTlsSubscriptionTlsSubscription.md)
+ - [WebService::Fastly::Object::RelationshipTlsSubscriptions](docs/RelationshipTlsSubscriptions.md)
+ - [WebService::Fastly::Object::RelationshipUser](docs/RelationshipUser.md)
+ - [WebService::Fastly::Object::RelationshipUserUser](docs/RelationshipUserUser.md)
+ - [WebService::Fastly::Object::RelationshipUserUserData](docs/RelationshipUserUserData.md)
+ - [WebService::Fastly::Object::RelationshipWafActiveRules](docs/RelationshipWafActiveRules.md)
+ - [WebService::Fastly::Object::RelationshipWafActiveRulesWafActiveRules](docs/RelationshipWafActiveRulesWafActiveRules.md)
+ - [WebService::Fastly::Object::RelationshipWafFirewall](docs/RelationshipWafFirewall.md)
+ - [WebService::Fastly::Object::RelationshipWafFirewallVersion](docs/RelationshipWafFirewallVersion.md)
+ - [WebService::Fastly::Object::RelationshipWafFirewallVersionWafFirewallVersion](docs/RelationshipWafFirewallVersionWafFirewallVersion.md)
+ - [WebService::Fastly::Object::RelationshipWafFirewallVersions](docs/RelationshipWafFirewallVersions.md)
+ - [WebService::Fastly::Object::RelationshipWafFirewallWafFirewall](docs/RelationshipWafFirewallWafFirewall.md)
+ - [WebService::Fastly::Object::RelationshipWafRule](docs/RelationshipWafRule.md)
+ - [WebService::Fastly::Object::RelationshipWafRuleRevision](docs/RelationshipWafRuleRevision.md)
+ - [WebService::Fastly::Object::RelationshipWafRuleRevisionWafRuleRevisions](docs/RelationshipWafRuleRevisionWafRuleRevisions.md)
+ - [WebService::Fastly::Object::RelationshipWafRuleRevisions](docs/RelationshipWafRuleRevisions.md)
+ - [WebService::Fastly::Object::RelationshipWafRuleWafRule](docs/RelationshipWafRuleWafRule.md)
+ - [WebService::Fastly::Object::RelationshipWafRules](docs/RelationshipWafRules.md)
+ - [WebService::Fastly::Object::RelationshipWafTags](docs/RelationshipWafTags.md)
+ - [WebService::Fastly::Object::RelationshipWafTagsWafTags](docs/RelationshipWafTagsWafTags.md)
+ - [WebService::Fastly::Object::RelationshipsForInvitation](docs/RelationshipsForInvitation.md)
+ - [WebService::Fastly::Object::RelationshipsForStar](docs/RelationshipsForStar.md)
+ - [WebService::Fastly::Object::RelationshipsForTlsActivation](docs/RelationshipsForTlsActivation.md)
+ - [WebService::Fastly::Object::RelationshipsForTlsBulkCertificate](docs/RelationshipsForTlsBulkCertificate.md)
+ - [WebService::Fastly::Object::RelationshipsForTlsConfiguration](docs/RelationshipsForTlsConfiguration.md)
+ - [WebService::Fastly::Object::RelationshipsForTlsDomain](docs/RelationshipsForTlsDomain.md)
+ - [WebService::Fastly::Object::RelationshipsForTlsPrivateKey](docs/RelationshipsForTlsPrivateKey.md)
+ - [WebService::Fastly::Object::RelationshipsForTlsSubscription](docs/RelationshipsForTlsSubscription.md)
+ - [WebService::Fastly::Object::RelationshipsForWafActiveRule](docs/RelationshipsForWafActiveRule.md)
+ - [WebService::Fastly::Object::RelationshipsForWafExclusion](docs/RelationshipsForWafExclusion.md)
+ - [WebService::Fastly::Object::RelationshipsForWafFirewallVersion](docs/RelationshipsForWafFirewallVersion.md)
+ - [WebService::Fastly::Object::RelationshipsForWafRule](docs/RelationshipsForWafRule.md)
+ - [WebService::Fastly::Object::RequestSettings](docs/RequestSettings.md)
+ - [WebService::Fastly::Object::RequestSettingsResponse](docs/RequestSettingsResponse.md)
+ - [WebService::Fastly::Object::Resource](docs/Resource.md)
+ - [WebService::Fastly::Object::ResourceCreate](docs/ResourceCreate.md)
+ - [WebService::Fastly::Object::ResourceCreateAllOf](docs/ResourceCreateAllOf.md)
+ - [WebService::Fastly::Object::ResourceResponse](docs/ResourceResponse.md)
+ - [WebService::Fastly::Object::ResourceResponseAllOf](docs/ResourceResponseAllOf.md)
+ - [WebService::Fastly::Object::ResponseObject](docs/ResponseObject.md)
+ - [WebService::Fastly::Object::ResponseObjectResponse](docs/ResponseObjectResponse.md)
+ - [WebService::Fastly::Object::Results](docs/Results.md)
+ - [WebService::Fastly::Object::RoleUser](docs/RoleUser.md)
+ - [WebService::Fastly::Object::SchemasContactResponse](docs/SchemasContactResponse.md)
+ - [WebService::Fastly::Object::SchemasSnippetResponse](docs/SchemasSnippetResponse.md)
+ - [WebService::Fastly::Object::SchemasUserResponse](docs/SchemasUserResponse.md)
+ - [WebService::Fastly::Object::SchemasVclResponse](docs/SchemasVclResponse.md)
+ - [WebService::Fastly::Object::SchemasVersion](docs/SchemasVersion.md)
+ - [WebService::Fastly::Object::SchemasVersionResponse](docs/SchemasVersionResponse.md)
+ - [WebService::Fastly::Object::SchemasWafFirewallVersion](docs/SchemasWafFirewallVersion.md)
+ - [WebService::Fastly::Object::SchemasWafFirewallVersionData](docs/SchemasWafFirewallVersionData.md)
+ - [WebService::Fastly::Object::Server](docs/Server.md)
+ - [WebService::Fastly::Object::ServerResponse](docs/ServerResponse.md)
+ - [WebService::Fastly::Object::ServerResponseAllOf](docs/ServerResponseAllOf.md)
+ - [WebService::Fastly::Object::Service](docs/Service.md)
+ - [WebService::Fastly::Object::ServiceAuthorization](docs/ServiceAuthorization.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationData](docs/ServiceAuthorizationData.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationDataAttributes](docs/ServiceAuthorizationDataAttributes.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationResponse](docs/ServiceAuthorizationResponse.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationResponseData](docs/ServiceAuthorizationResponseData.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationResponseDataAllOf](docs/ServiceAuthorizationResponseDataAllOf.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationsResponse](docs/ServiceAuthorizationsResponse.md)
+ - [WebService::Fastly::Object::ServiceAuthorizationsResponseAllOf](docs/ServiceAuthorizationsResponseAllOf.md)
+ - [WebService::Fastly::Object::ServiceCreate](docs/ServiceCreate.md)
+ - [WebService::Fastly::Object::ServiceCreateAllOf](docs/ServiceCreateAllOf.md)
+ - [WebService::Fastly::Object::ServiceDetail](docs/ServiceDetail.md)
+ - [WebService::Fastly::Object::ServiceDetailAllOf](docs/ServiceDetailAllOf.md)
+ - [WebService::Fastly::Object::ServiceIdAndVersion](docs/ServiceIdAndVersion.md)
+ - [WebService::Fastly::Object::ServiceInvitation](docs/ServiceInvitation.md)
+ - [WebService::Fastly::Object::ServiceInvitationData](docs/ServiceInvitationData.md)
+ - [WebService::Fastly::Object::ServiceInvitationDataAttributes](docs/ServiceInvitationDataAttributes.md)
+ - [WebService::Fastly::Object::ServiceInvitationResponse](docs/ServiceInvitationResponse.md)
+ - [WebService::Fastly::Object::ServiceInvitationResponseAllOf](docs/ServiceInvitationResponseAllOf.md)
+ - [WebService::Fastly::Object::ServiceInvitationResponseAllOfData](docs/ServiceInvitationResponseAllOfData.md)
+ - [WebService::Fastly::Object::ServiceListResponse](docs/ServiceListResponse.md)
+ - [WebService::Fastly::Object::ServiceListResponseAllOf](docs/ServiceListResponseAllOf.md)
+ - [WebService::Fastly::Object::ServiceResponse](docs/ServiceResponse.md)
+ - [WebService::Fastly::Object::ServiceResponseAllOf](docs/ServiceResponseAllOf.md)
+ - [WebService::Fastly::Object::ServiceVersionDetail](docs/ServiceVersionDetail.md)
+ - [WebService::Fastly::Object::ServiceVersionDetailOrNull](docs/ServiceVersionDetailOrNull.md)
+ - [WebService::Fastly::Object::Settings](docs/Settings.md)
+ - [WebService::Fastly::Object::SettingsResponse](docs/SettingsResponse.md)
+ - [WebService::Fastly::Object::Snippet](docs/Snippet.md)
+ - [WebService::Fastly::Object::SnippetResponse](docs/SnippetResponse.md)
+ - [WebService::Fastly::Object::SnippetResponseAllOf](docs/SnippetResponseAllOf.md)
+ - [WebService::Fastly::Object::Star](docs/Star.md)
+ - [WebService::Fastly::Object::StarData](docs/StarData.md)
+ - [WebService::Fastly::Object::StarResponse](docs/StarResponse.md)
+ - [WebService::Fastly::Object::StarResponseAllOf](docs/StarResponseAllOf.md)
+ - [WebService::Fastly::Object::Stats](docs/Stats.md)
+ - [WebService::Fastly::Object::Timestamps](docs/Timestamps.md)
+ - [WebService::Fastly::Object::TimestampsNoDelete](docs/TimestampsNoDelete.md)
+ - [WebService::Fastly::Object::TlsActivation](docs/TlsActivation.md)
+ - [WebService::Fastly::Object::TlsActivationData](docs/TlsActivationData.md)
+ - [WebService::Fastly::Object::TlsActivationResponse](docs/TlsActivationResponse.md)
+ - [WebService::Fastly::Object::TlsActivationResponseData](docs/TlsActivationResponseData.md)
+ - [WebService::Fastly::Object::TlsActivationResponseDataAllOf](docs/TlsActivationResponseDataAllOf.md)
+ - [WebService::Fastly::Object::TlsActivationsResponse](docs/TlsActivationsResponse.md)
+ - [WebService::Fastly::Object::TlsActivationsResponseAllOf](docs/TlsActivationsResponseAllOf.md)
+ - [WebService::Fastly::Object::TlsBulkCertificate](docs/TlsBulkCertificate.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateData](docs/TlsBulkCertificateData.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateDataAttributes](docs/TlsBulkCertificateDataAttributes.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateResponse](docs/TlsBulkCertificateResponse.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateResponseAttributes](docs/TlsBulkCertificateResponseAttributes.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateResponseAttributesAllOf](docs/TlsBulkCertificateResponseAttributesAllOf.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateResponseData](docs/TlsBulkCertificateResponseData.md)
+ - [WebService::Fastly::Object::TlsBulkCertificateResponseDataAllOf](docs/TlsBulkCertificateResponseDataAllOf.md)
+ - [WebService::Fastly::Object::TlsBulkCertificatesResponse](docs/TlsBulkCertificatesResponse.md)
+ - [WebService::Fastly::Object::TlsBulkCertificatesResponseAllOf](docs/TlsBulkCertificatesResponseAllOf.md)
+ - [WebService::Fastly::Object::TlsCertificate](docs/TlsCertificate.md)
+ - [WebService::Fastly::Object::TlsCertificateData](docs/TlsCertificateData.md)
+ - [WebService::Fastly::Object::TlsCertificateDataAttributes](docs/TlsCertificateDataAttributes.md)
+ - [WebService::Fastly::Object::TlsCertificateResponse](docs/TlsCertificateResponse.md)
+ - [WebService::Fastly::Object::TlsCertificateResponseAttributes](docs/TlsCertificateResponseAttributes.md)
+ - [WebService::Fastly::Object::TlsCertificateResponseAttributesAllOf](docs/TlsCertificateResponseAttributesAllOf.md)
+ - [WebService::Fastly::Object::TlsCertificateResponseData](docs/TlsCertificateResponseData.md)
+ - [WebService::Fastly::Object::TlsCertificateResponseDataAllOf](docs/TlsCertificateResponseDataAllOf.md)
+ - [WebService::Fastly::Object::TlsCertificatesResponse](docs/TlsCertificatesResponse.md)
+ - [WebService::Fastly::Object::TlsCertificatesResponseAllOf](docs/TlsCertificatesResponseAllOf.md)
+ - [WebService::Fastly::Object::TlsCommon](docs/TlsCommon.md)
+ - [WebService::Fastly::Object::TlsConfiguration](docs/TlsConfiguration.md)
+ - [WebService::Fastly::Object::TlsConfigurationData](docs/TlsConfigurationData.md)
+ - [WebService::Fastly::Object::TlsConfigurationDataAttributes](docs/TlsConfigurationDataAttributes.md)
+ - [WebService::Fastly::Object::TlsConfigurationResponse](docs/TlsConfigurationResponse.md)
+ - [WebService::Fastly::Object::TlsConfigurationResponseAttributes](docs/TlsConfigurationResponseAttributes.md)
+ - [WebService::Fastly::Object::TlsConfigurationResponseAttributesAllOf](docs/TlsConfigurationResponseAttributesAllOf.md)
+ - [WebService::Fastly::Object::TlsConfigurationResponseData](docs/TlsConfigurationResponseData.md)
+ - [WebService::Fastly::Object::TlsConfigurationResponseDataAllOf](docs/TlsConfigurationResponseDataAllOf.md)
+ - [WebService::Fastly::Object::TlsConfigurationsResponse](docs/TlsConfigurationsResponse.md)
+ - [WebService::Fastly::Object::TlsConfigurationsResponseAllOf](docs/TlsConfigurationsResponseAllOf.md)
+ - [WebService::Fastly::Object::TlsDnsRecord](docs/TlsDnsRecord.md)
+ - [WebService::Fastly::Object::TlsDomainData](docs/TlsDomainData.md)
+ - [WebService::Fastly::Object::TlsDomainsResponse](docs/TlsDomainsResponse.md)
+ - [WebService::Fastly::Object::TlsDomainsResponseAllOf](docs/TlsDomainsResponseAllOf.md)
+ - [WebService::Fastly::Object::TlsPrivateKey](docs/TlsPrivateKey.md)
+ - [WebService::Fastly::Object::TlsPrivateKeyData](docs/TlsPrivateKeyData.md)
+ - [WebService::Fastly::Object::TlsPrivateKeyDataAttributes](docs/TlsPrivateKeyDataAttributes.md)
+ - [WebService::Fastly::Object::TlsPrivateKeyResponse](docs/TlsPrivateKeyResponse.md)
+ - [WebService::Fastly::Object::TlsPrivateKeyResponseAttributes](docs/TlsPrivateKeyResponseAttributes.md)
+ - [WebService::Fastly::Object::TlsPrivateKeyResponseAttributesAllOf](docs/TlsPrivateKeyResponseAttributesAllOf.md)
+ - [WebService::Fastly::Object::TlsPrivateKeyResponseData](docs/TlsPrivateKeyResponseData.md)
+ - [WebService::Fastly::Object::TlsPrivateKeysResponse](docs/TlsPrivateKeysResponse.md)
+ - [WebService::Fastly::Object::TlsPrivateKeysResponseAllOf](docs/TlsPrivateKeysResponseAllOf.md)
+ - [WebService::Fastly::Object::TlsSubscription](docs/TlsSubscription.md)
+ - [WebService::Fastly::Object::TlsSubscriptionData](docs/TlsSubscriptionData.md)
+ - [WebService::Fastly::Object::TlsSubscriptionDataAttributes](docs/TlsSubscriptionDataAttributes.md)
+ - [WebService::Fastly::Object::TlsSubscriptionResponse](docs/TlsSubscriptionResponse.md)
+ - [WebService::Fastly::Object::TlsSubscriptionResponseAttributes](docs/TlsSubscriptionResponseAttributes.md)
+ - [WebService::Fastly::Object::TlsSubscriptionResponseAttributesAllOf](docs/TlsSubscriptionResponseAttributesAllOf.md)
+ - [WebService::Fastly::Object::TlsSubscriptionResponseData](docs/TlsSubscriptionResponseData.md)
+ - [WebService::Fastly::Object::TlsSubscriptionResponseDataAllOf](docs/TlsSubscriptionResponseDataAllOf.md)
+ - [WebService::Fastly::Object::TlsSubscriptionsResponse](docs/TlsSubscriptionsResponse.md)
+ - [WebService::Fastly::Object::TlsSubscriptionsResponseAllOf](docs/TlsSubscriptionsResponseAllOf.md)
+ - [WebService::Fastly::Object::Token](docs/Token.md)
+ - [WebService::Fastly::Object::TokenCreatedResponse](docs/TokenCreatedResponse.md)
+ - [WebService::Fastly::Object::TokenCreatedResponseAllOf](docs/TokenCreatedResponseAllOf.md)
+ - [WebService::Fastly::Object::TokenResponse](docs/TokenResponse.md)
+ - [WebService::Fastly::Object::TokenResponseAllOf](docs/TokenResponseAllOf.md)
+ - [WebService::Fastly::Object::TypeBillingAddress](docs/TypeBillingAddress.md)
+ - [WebService::Fastly::Object::TypeContact](docs/TypeContact.md)
+ - [WebService::Fastly::Object::TypeCustomer](docs/TypeCustomer.md)
+ - [WebService::Fastly::Object::TypeEvent](docs/TypeEvent.md)
+ - [WebService::Fastly::Object::TypeInvitation](docs/TypeInvitation.md)
+ - [WebService::Fastly::Object::TypeResource](docs/TypeResource.md)
+ - [WebService::Fastly::Object::TypeService](docs/TypeService.md)
+ - [WebService::Fastly::Object::TypeServiceAuthorization](docs/TypeServiceAuthorization.md)
+ - [WebService::Fastly::Object::TypeServiceInvitation](docs/TypeServiceInvitation.md)
+ - [WebService::Fastly::Object::TypeStar](docs/TypeStar.md)
+ - [WebService::Fastly::Object::TypeTlsActivation](docs/TypeTlsActivation.md)
+ - [WebService::Fastly::Object::TypeTlsBulkCertificate](docs/TypeTlsBulkCertificate.md)
+ - [WebService::Fastly::Object::TypeTlsCertificate](docs/TypeTlsCertificate.md)
+ - [WebService::Fastly::Object::TypeTlsConfiguration](docs/TypeTlsConfiguration.md)
+ - [WebService::Fastly::Object::TypeTlsDnsRecord](docs/TypeTlsDnsRecord.md)
+ - [WebService::Fastly::Object::TypeTlsDomain](docs/TypeTlsDomain.md)
+ - [WebService::Fastly::Object::TypeTlsPrivateKey](docs/TypeTlsPrivateKey.md)
+ - [WebService::Fastly::Object::TypeTlsSubscription](docs/TypeTlsSubscription.md)
+ - [WebService::Fastly::Object::TypeUser](docs/TypeUser.md)
+ - [WebService::Fastly::Object::TypeWafActiveRule](docs/TypeWafActiveRule.md)
+ - [WebService::Fastly::Object::TypeWafExclusion](docs/TypeWafExclusion.md)
+ - [WebService::Fastly::Object::TypeWafFirewall](docs/TypeWafFirewall.md)
+ - [WebService::Fastly::Object::TypeWafFirewallVersion](docs/TypeWafFirewallVersion.md)
+ - [WebService::Fastly::Object::TypeWafRule](docs/TypeWafRule.md)
+ - [WebService::Fastly::Object::TypeWafRuleRevision](docs/TypeWafRuleRevision.md)
+ - [WebService::Fastly::Object::TypeWafTag](docs/TypeWafTag.md)
+ - [WebService::Fastly::Object::UpdateBillingAddressRequest](docs/UpdateBillingAddressRequest.md)
+ - [WebService::Fastly::Object::UpdateBillingAddressRequestData](docs/UpdateBillingAddressRequestData.md)
+ - [WebService::Fastly::Object::User](docs/User.md)
+ - [WebService::Fastly::Object::UserResponse](docs/UserResponse.md)
+ - [WebService::Fastly::Object::UserResponseAllOf](docs/UserResponseAllOf.md)
+ - [WebService::Fastly::Object::Vcl](docs/Vcl.md)
+ - [WebService::Fastly::Object::VclDiff](docs/VclDiff.md)
+ - [WebService::Fastly::Object::VclResponse](docs/VclResponse.md)
+ - [WebService::Fastly::Object::Version](docs/Version.md)
+ - [WebService::Fastly::Object::VersionCreateResponse](docs/VersionCreateResponse.md)
+ - [WebService::Fastly::Object::VersionDetail](docs/VersionDetail.md)
+ - [WebService::Fastly::Object::VersionResponse](docs/VersionResponse.md)
+ - [WebService::Fastly::Object::VersionResponseAllOf](docs/VersionResponseAllOf.md)
+ - [WebService::Fastly::Object::WafActiveRule](docs/WafActiveRule.md)
+ - [WebService::Fastly::Object::WafActiveRuleCreationResponse](docs/WafActiveRuleCreationResponse.md)
+ - [WebService::Fastly::Object::WafActiveRuleData](docs/WafActiveRuleData.md)
+ - [WebService::Fastly::Object::WafActiveRuleDataAttributes](docs/WafActiveRuleDataAttributes.md)
+ - [WebService::Fastly::Object::WafActiveRuleResponse](docs/WafActiveRuleResponse.md)
+ - [WebService::Fastly::Object::WafActiveRuleResponseData](docs/WafActiveRuleResponseData.md)
+ - [WebService::Fastly::Object::WafActiveRuleResponseDataAllOf](docs/WafActiveRuleResponseDataAllOf.md)
+ - [WebService::Fastly::Object::WafActiveRuleResponseDataAttributes](docs/WafActiveRuleResponseDataAttributes.md)
+ - [WebService::Fastly::Object::WafActiveRuleResponseDataAttributesAllOf](docs/WafActiveRuleResponseDataAttributesAllOf.md)
+ - [WebService::Fastly::Object::WafActiveRuleResponseDataRelationships](docs/WafActiveRuleResponseDataRelationships.md)
+ - [WebService::Fastly::Object::WafActiveRulesResponse](docs/WafActiveRulesResponse.md)
+ - [WebService::Fastly::Object::WafActiveRulesResponseAllOf](docs/WafActiveRulesResponseAllOf.md)
+ - [WebService::Fastly::Object::WafExclusion](docs/WafExclusion.md)
+ - [WebService::Fastly::Object::WafExclusionData](docs/WafExclusionData.md)
+ - [WebService::Fastly::Object::WafExclusionDataAttributes](docs/WafExclusionDataAttributes.md)
+ - [WebService::Fastly::Object::WafExclusionResponse](docs/WafExclusionResponse.md)
+ - [WebService::Fastly::Object::WafExclusionResponseData](docs/WafExclusionResponseData.md)
+ - [WebService::Fastly::Object::WafExclusionResponseDataAllOf](docs/WafExclusionResponseDataAllOf.md)
+ - [WebService::Fastly::Object::WafExclusionResponseDataAttributes](docs/WafExclusionResponseDataAttributes.md)
+ - [WebService::Fastly::Object::WafExclusionResponseDataAttributesAllOf](docs/WafExclusionResponseDataAttributesAllOf.md)
+ - [WebService::Fastly::Object::WafExclusionResponseDataRelationships](docs/WafExclusionResponseDataRelationships.md)
+ - [WebService::Fastly::Object::WafExclusionsResponse](docs/WafExclusionsResponse.md)
+ - [WebService::Fastly::Object::WafExclusionsResponseAllOf](docs/WafExclusionsResponseAllOf.md)
+ - [WebService::Fastly::Object::WafFirewall](docs/WafFirewall.md)
+ - [WebService::Fastly::Object::WafFirewallData](docs/WafFirewallData.md)
+ - [WebService::Fastly::Object::WafFirewallDataAttributes](docs/WafFirewallDataAttributes.md)
+ - [WebService::Fastly::Object::WafFirewallResponse](docs/WafFirewallResponse.md)
+ - [WebService::Fastly::Object::WafFirewallResponseData](docs/WafFirewallResponseData.md)
+ - [WebService::Fastly::Object::WafFirewallResponseDataAllOf](docs/WafFirewallResponseDataAllOf.md)
+ - [WebService::Fastly::Object::WafFirewallResponseDataAttributes](docs/WafFirewallResponseDataAttributes.md)
+ - [WebService::Fastly::Object::WafFirewallResponseDataAttributesAllOf](docs/WafFirewallResponseDataAttributesAllOf.md)
+ - [WebService::Fastly::Object::WafFirewallVersion](docs/WafFirewallVersion.md)
+ - [WebService::Fastly::Object::WafFirewallVersionData](docs/WafFirewallVersionData.md)
+ - [WebService::Fastly::Object::WafFirewallVersionDataAttributes](docs/WafFirewallVersionDataAttributes.md)
+ - [WebService::Fastly::Object::WafFirewallVersionResponse](docs/WafFirewallVersionResponse.md)
+ - [WebService::Fastly::Object::WafFirewallVersionResponseData](docs/WafFirewallVersionResponseData.md)
+ - [WebService::Fastly::Object::WafFirewallVersionResponseDataAllOf](docs/WafFirewallVersionResponseDataAllOf.md)
+ - [WebService::Fastly::Object::WafFirewallVersionResponseDataAttributes](docs/WafFirewallVersionResponseDataAttributes.md)
+ - [WebService::Fastly::Object::WafFirewallVersionResponseDataAttributesAllOf](docs/WafFirewallVersionResponseDataAttributesAllOf.md)
+ - [WebService::Fastly::Object::WafFirewallVersionsResponse](docs/WafFirewallVersionsResponse.md)
+ - [WebService::Fastly::Object::WafFirewallVersionsResponseAllOf](docs/WafFirewallVersionsResponseAllOf.md)
+ - [WebService::Fastly::Object::WafFirewallsResponse](docs/WafFirewallsResponse.md)
+ - [WebService::Fastly::Object::WafFirewallsResponseAllOf](docs/WafFirewallsResponseAllOf.md)
+ - [WebService::Fastly::Object::WafRule](docs/WafRule.md)
+ - [WebService::Fastly::Object::WafRuleAttributes](docs/WafRuleAttributes.md)
+ - [WebService::Fastly::Object::WafRuleResponse](docs/WafRuleResponse.md)
+ - [WebService::Fastly::Object::WafRuleResponseData](docs/WafRuleResponseData.md)
+ - [WebService::Fastly::Object::WafRuleResponseDataAllOf](docs/WafRuleResponseDataAllOf.md)
+ - [WebService::Fastly::Object::WafRuleRevision](docs/WafRuleRevision.md)
+ - [WebService::Fastly::Object::WafRuleRevisionAttributes](docs/WafRuleRevisionAttributes.md)
+ - [WebService::Fastly::Object::WafRuleRevisionOrLatest](docs/WafRuleRevisionOrLatest.md)
+ - [WebService::Fastly::Object::WafRuleRevisionResponse](docs/WafRuleRevisionResponse.md)
+ - [WebService::Fastly::Object::WafRuleRevisionResponseData](docs/WafRuleRevisionResponseData.md)
+ - [WebService::Fastly::Object::WafRuleRevisionResponseDataAllOf](docs/WafRuleRevisionResponseDataAllOf.md)
+ - [WebService::Fastly::Object::WafRuleRevisionsResponse](docs/WafRuleRevisionsResponse.md)
+ - [WebService::Fastly::Object::WafRuleRevisionsResponseAllOf](docs/WafRuleRevisionsResponseAllOf.md)
+ - [WebService::Fastly::Object::WafRulesResponse](docs/WafRulesResponse.md)
+ - [WebService::Fastly::Object::WafRulesResponseAllOf](docs/WafRulesResponseAllOf.md)
+ - [WebService::Fastly::Object::WafTag](docs/WafTag.md)
+ - [WebService::Fastly::Object::WafTagAttributes](docs/WafTagAttributes.md)
+ - [WebService::Fastly::Object::WafTagsResponse](docs/WafTagsResponse.md)
+ - [WebService::Fastly::Object::WafTagsResponseAllOf](docs/WafTagsResponseAllOf.md)
+ - [WebService::Fastly::Object::WafTagsResponseDataItem](docs/WafTagsResponseDataItem.md)
 
 
 # DOCUMENTATION FOR AUTHORIZATION

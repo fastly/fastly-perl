@@ -1,8 +1,8 @@
-# Fastly::ServiceAuthorizationsApi
+# WebService::Fastly::ServiceAuthorizationsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ServiceAuthorizationsApi;
+use WebService::Fastly::Object::ServiceAuthorizationsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create service authorization.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceAuthorizationsApi;
-my $api_instance = Fastly::ServiceAuthorizationsApi->new(
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -35,7 +35,7 @@ my $api_instance = Fastly::ServiceAuthorizationsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $service_authorization = Fastly::Object::ServiceAuthorization->new(); # ServiceAuthorization | 
+my $service_authorization = WebService::Fastly::Object::ServiceAuthorization->new(); # ServiceAuthorization | 
 
 eval {
     my $result = $api_instance->create_service_authorization(service_authorization => $service_authorization);
@@ -77,8 +77,8 @@ Delete service authorization.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceAuthorizationsApi;
-my $api_instance = Fastly::ServiceAuthorizationsApi->new(
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -127,8 +127,8 @@ List service authorizations.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceAuthorizationsApi;
-my $api_instance = Fastly::ServiceAuthorizationsApi->new(
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -180,8 +180,8 @@ Show service authorization.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceAuthorizationsApi;
-my $api_instance = Fastly::ServiceAuthorizationsApi->new(
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -231,8 +231,8 @@ Update service authorization.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServiceAuthorizationsApi;
-my $api_instance = Fastly::ServiceAuthorizationsApi->new(
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -241,7 +241,7 @@ my $api_instance = Fastly::ServiceAuthorizationsApi->new(
 );
 
 my $service_authorization_id = "service_authorization_id_example"; # string | Alphanumeric string identifying a service authorization.
-my $service_authorization = Fastly::Object::ServiceAuthorization->new(); # ServiceAuthorization | 
+my $service_authorization = WebService::Fastly::Object::ServiceAuthorization->new(); # ServiceAuthorization | 
 
 eval {
     my $result = $api_instance->update_service_authorization(service_authorization_id => $service_authorization_id, service_authorization => $service_authorization);

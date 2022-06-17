@@ -1,8 +1,8 @@
-# Fastly::Object::TlsBulkCertificateResponseAttributesAllOf
+# WebService::Fastly::Object::TlsBulkCertificateResponseAttributesAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsBulkCertificateResponseAttributesAllOf;
+use WebService::Fastly::Object::TlsBulkCertificateResponseAttributesAllOf;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::VclApi
+# WebService::Fastly::VclApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::VclApi;
+use WebService::Fastly::Object::VclApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -32,8 +32,8 @@ Upload a VCL for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_custom_vcl**
-> DeleteAcl200Response delete_custom_vcl(service_id => $service_id, version_id => $version_id, vcl_name => $vcl_name)
+> InlineResponse200 delete_custom_vcl(service_id => $service_id, version_id => $version_id, vcl_name => $vcl_name)
 
 Delete a custom VCL file
 
@@ -91,8 +91,8 @@ Delete the uploaded VCL for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -146,8 +146,8 @@ Get the uploaded VCL for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ Return boilerplate VCL with the service's TTL from the [settings](/reference/api
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Display the generated VCL for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -309,8 +309,8 @@ Display the content of generated VCL with HTML syntax highlighting. Include line
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -361,8 +361,8 @@ Get the uploaded VCL for a particular service and version with HTML syntax highl
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -415,8 +415,8 @@ Download the specified VCL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -470,8 +470,8 @@ List the uploaded VCLs for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -523,8 +523,8 @@ Set the specified VCL as the main.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -578,8 +578,8 @@ Update the uploaded VCL for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclApi;
-my $api_instance = Fastly::VclApi->new(
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

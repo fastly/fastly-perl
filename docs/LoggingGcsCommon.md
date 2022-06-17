@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingGcsCommon
+# WebService::Fastly::Object::LoggingGcsCommon
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingGcsCommon;
+use WebService::Fastly::Object::LoggingGcsCommon;
 ```
 
 ## Properties

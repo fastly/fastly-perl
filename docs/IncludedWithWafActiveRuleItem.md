@@ -1,8 +1,8 @@
-# Fastly::Object::IncludedWithWafActiveRuleItem
+# WebService::Fastly::Object::IncludedWithWafActiveRuleItem
 
 ## Load the model package
 ```perl
-use Fastly::Object::IncludedWithWafActiveRuleItem;
+use WebService::Fastly::Object::IncludedWithWafActiveRuleItem;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::TlsDomainsApi
+# WebService::Fastly::TlsDomainsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TlsDomainsApi;
+use WebService::Fastly::Object::TlsDomainsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ List all TLS domains.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsDomainsApi;
-my $api_instance = Fastly::TlsDomainsApi->new(
+use WebService::Fastly::TlsDomainsApi;
+my $api_instance = WebService::Fastly::TlsDomainsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

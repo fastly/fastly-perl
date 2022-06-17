@@ -1,8 +1,8 @@
-# Fastly::ContactApi
+# WebService::Fastly::ContactApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ContactApi;
+use WebService::Fastly::Object::ContactApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **delete_contact**
-> DeleteAcl200Response delete_contact(customer_id => $customer_id, contact_id => $contact_id)
+> InlineResponse200 delete_contact(customer_id => $customer_id, contact_id => $contact_id)
 
 Delete a contact
 
@@ -23,8 +23,8 @@ Delete a contact.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ContactApi;
-my $api_instance = Fastly::ContactApi->new(
+use WebService::Fastly::ContactApi;
+my $api_instance = WebService::Fastly::ContactApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -76,8 +76,8 @@ List all contacts from a specified customer ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ContactApi;
-my $api_instance = Fastly::ContactApi->new(
+use WebService::Fastly::ContactApi;
+my $api_instance = WebService::Fastly::ContactApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

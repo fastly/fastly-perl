@@ -1,8 +1,8 @@
-# Fastly::LoggingLogshuttleApi
+# WebService::Fastly::LoggingLogshuttleApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingLogshuttleApi;
+use WebService::Fastly::Object::LoggingLogshuttleApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Log Shuttle logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogshuttleApi;
-my $api_instance = Fastly::LoggingLogshuttleApi->new(
+use WebService::Fastly::LoggingLogshuttleApi;
+my $api_instance = WebService::Fastly::LoggingLogshuttleApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_logshuttle**
-> DeleteAcl200Response delete_log_logshuttle(service_id => $service_id, version_id => $version_id, logging_logshuttle_name => $logging_logshuttle_name)
+> InlineResponse200 delete_log_logshuttle(service_id => $service_id, version_id => $version_id, logging_logshuttle_name => $logging_logshuttle_name)
 
 Delete a Log Shuttle log endpoint
 
@@ -93,8 +93,8 @@ Delete the Log Shuttle logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogshuttleApi;
-my $api_instance = Fastly::LoggingLogshuttleApi->new(
+use WebService::Fastly::LoggingLogshuttleApi;
+my $api_instance = WebService::Fastly::LoggingLogshuttleApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ Get the Log Shuttle logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogshuttleApi;
-my $api_instance = Fastly::LoggingLogshuttleApi->new(
+use WebService::Fastly::LoggingLogshuttleApi;
+my $api_instance = WebService::Fastly::LoggingLogshuttleApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ List all of the Log Shuttle logging endpoints for a particular service and versi
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogshuttleApi;
-my $api_instance = Fastly::LoggingLogshuttleApi->new(
+use WebService::Fastly::LoggingLogshuttleApi;
+my $api_instance = WebService::Fastly::LoggingLogshuttleApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Update the Log Shuttle logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogshuttleApi;
-my $api_instance = Fastly::LoggingLogshuttleApi->new(
+use WebService::Fastly::LoggingLogshuttleApi;
+my $api_instance = WebService::Fastly::LoggingLogshuttleApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::DictionaryInfoApi
+# WebService::Fastly::DictionaryInfoApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DictionaryInfoApi;
+use WebService::Fastly::Object::DictionaryInfoApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Retrieve metadata for a single dictionary by ID for a version and service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DictionaryInfoApi;
-my $api_instance = Fastly::DictionaryInfoApi->new(
+use WebService::Fastly::DictionaryInfoApi;
+my $api_instance = WebService::Fastly::DictionaryInfoApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

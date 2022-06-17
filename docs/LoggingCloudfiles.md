@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingCloudfiles
+# WebService::Fastly::Object::LoggingCloudfiles
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingCloudfiles;
+use WebService::Fastly::Object::LoggingCloudfiles;
 ```
 
 ## Properties
@@ -20,9 +20,9 @@ Name | Type | Description | Notes
 **compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
 **access_key** | **string** | Your Cloud Files account access key. | [optional] 
 **bucket_name** | **string** | The name of your Cloud Files container. | [optional] 
-**path** | **string** | The path to upload logs to. | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] [default to &#39;null&#39;]
 **region** | **string** | The region to stream logs to. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **user** | **string** | The username for your Cloud Files account. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

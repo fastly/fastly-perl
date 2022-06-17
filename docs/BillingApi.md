@@ -1,8 +1,8 @@
-# Fastly::BillingApi
+# WebService::Fastly::BillingApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::BillingApi;
+use WebService::Fastly::Object::BillingApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Get the invoice for a given year and month. Can be any month from when the Custo
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingApi;
-my $api_instance = Fastly::BillingApi->new(
+use WebService::Fastly::BillingApi;
+my $api_instance = WebService::Fastly::BillingApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -77,8 +77,8 @@ Get the invoice for the given invoice_id.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingApi;
-my $api_instance = Fastly::BillingApi->new(
+use WebService::Fastly::BillingApi;
+my $api_instance = WebService::Fastly::BillingApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -130,8 +130,8 @@ Get the current month-to-date estimate. This endpoint has two different response
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::BillingApi;
-my $api_instance = Fastly::BillingApi->new(
+use WebService::Fastly::BillingApi;
+my $api_instance = WebService::Fastly::BillingApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

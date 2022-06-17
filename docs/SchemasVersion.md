@@ -1,8 +1,8 @@
-# Fastly::Object::SchemasVersion
+# WebService::Fastly::Object::SchemasVersion
 
 ## Load the model package
 ```perl
-use Fastly::Object::SchemasVersion;
+use WebService::Fastly::Object::SchemasVersion;
 ```
 
 ## Properties

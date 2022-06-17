@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceInvitationDataAttributes
+# WebService::Fastly::Object::ServiceInvitationDataAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceInvitationDataAttributes;
+use WebService::Fastly::Object::ServiceInvitationDataAttributes;
 ```
 
 ## Properties

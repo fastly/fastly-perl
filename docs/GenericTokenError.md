@@ -1,8 +1,8 @@
-# Fastly::Object::GenericTokenError
+# WebService::Fastly::Object::GenericTokenError
 
 ## Load the model package
 ```perl
-use Fastly::Object::GenericTokenError;
+use WebService::Fastly::Object::GenericTokenError;
 ```
 
 ## Properties

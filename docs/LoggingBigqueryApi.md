@@ -1,8 +1,8 @@
-# Fastly::LoggingBigqueryApi
+# WebService::Fastly::LoggingBigqueryApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingBigqueryApi;
+use WebService::Fastly::Object::LoggingBigqueryApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a BigQuery logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingBigqueryApi;
-my $api_instance = Fastly::LoggingBigqueryApi->new(
+use WebService::Fastly::LoggingBigqueryApi;
+my $api_instance = WebService::Fastly::LoggingBigqueryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_bigquery**
-> DeleteAcl200Response delete_log_bigquery(service_id => $service_id, version_id => $version_id, logging_bigquery_name => $logging_bigquery_name)
+> InlineResponse200 delete_log_bigquery(service_id => $service_id, version_id => $version_id, logging_bigquery_name => $logging_bigquery_name)
 
 Delete a BigQuery log endpoint
 
@@ -101,8 +101,8 @@ Delete a BigQuery logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingBigqueryApi;
-my $api_instance = Fastly::LoggingBigqueryApi->new(
+use WebService::Fastly::LoggingBigqueryApi;
+my $api_instance = WebService::Fastly::LoggingBigqueryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -156,8 +156,8 @@ Get the details for a BigQuery logging object for a particular service and versi
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingBigqueryApi;
-my $api_instance = Fastly::LoggingBigqueryApi->new(
+use WebService::Fastly::LoggingBigqueryApi;
+my $api_instance = WebService::Fastly::LoggingBigqueryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -211,8 +211,8 @@ List all of the BigQuery logging objects for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingBigqueryApi;
-my $api_instance = Fastly::LoggingBigqueryApi->new(
+use WebService::Fastly::LoggingBigqueryApi;
+my $api_instance = WebService::Fastly::LoggingBigqueryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -264,8 +264,8 @@ Update a BigQuery logging object for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingBigqueryApi;
-my $api_instance = Fastly::LoggingBigqueryApi->new(
+use WebService::Fastly::LoggingBigqueryApi;
+my $api_instance = WebService::Fastly::LoggingBigqueryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

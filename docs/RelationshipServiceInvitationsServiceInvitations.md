@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipServiceInvitationsServiceInvitations
+# WebService::Fastly::Object::RelationshipServiceInvitationsServiceInvitations
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipServiceInvitationsServiceInvitations;
+use WebService::Fastly::Object::RelationshipServiceInvitationsServiceInvitations;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::DirectorBackendAllOf
+# WebService::Fastly::Object::DirectorBackendAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::DirectorBackendAllOf;
+use WebService::Fastly::Object::DirectorBackendAllOf;
 ```
 
 ## Properties

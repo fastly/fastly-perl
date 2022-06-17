@@ -1,8 +1,8 @@
-# Fastly::LoggingSumologicApi
+# WebService::Fastly::LoggingSumologicApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingSumologicApi;
+use WebService::Fastly::Object::LoggingSumologicApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Sumologic for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSumologicApi;
-my $api_instance = Fastly::LoggingSumologicApi->new(
+use WebService::Fastly::LoggingSumologicApi;
+my $api_instance = WebService::Fastly::LoggingSumologicApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -42,7 +42,7 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-my $message_type = new Fastly.LoggingMessageType(); # LoggingMessageType | 
+my $message_type = new WebService::Fastly.LoggingMessageType(); # LoggingMessageType | 
 my $url = "url_example"; # string | The URL to post logs to.
 
 eval {
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_sumologic**
-> DeleteAcl200Response delete_log_sumologic(service_id => $service_id, version_id => $version_id, logging_sumologic_name => $logging_sumologic_name)
+> InlineResponse200 delete_log_sumologic(service_id => $service_id, version_id => $version_id, logging_sumologic_name => $logging_sumologic_name)
 
 Delete a Sumologic log endpoint
 
@@ -93,8 +93,8 @@ Delete the Sumologic for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSumologicApi;
-my $api_instance = Fastly::LoggingSumologicApi->new(
+use WebService::Fastly::LoggingSumologicApi;
+my $api_instance = WebService::Fastly::LoggingSumologicApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ Get the Sumologic for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSumologicApi;
-my $api_instance = Fastly::LoggingSumologicApi->new(
+use WebService::Fastly::LoggingSumologicApi;
+my $api_instance = WebService::Fastly::LoggingSumologicApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ List all of the Sumologics for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSumologicApi;
-my $api_instance = Fastly::LoggingSumologicApi->new(
+use WebService::Fastly::LoggingSumologicApi;
+my $api_instance = WebService::Fastly::LoggingSumologicApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Update the Sumologic for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingSumologicApi;
-my $api_instance = Fastly::LoggingSumologicApi->new(
+use WebService::Fastly::LoggingSumologicApi;
+my $api_instance = WebService::Fastly::LoggingSumologicApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -273,7 +273,7 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-my $message_type = new Fastly.LoggingMessageType(); # LoggingMessageType | 
+my $message_type = new WebService::Fastly.LoggingMessageType(); # LoggingMessageType | 
 my $url = "url_example"; # string | The URL to post logs to.
 
 eval {

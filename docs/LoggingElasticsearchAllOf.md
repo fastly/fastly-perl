@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingElasticsearchAllOf
+# WebService::Fastly::Object::LoggingElasticsearchAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingElasticsearchAllOf;
+use WebService::Fastly::Object::LoggingElasticsearchAllOf;
 ```
 
 ## Properties

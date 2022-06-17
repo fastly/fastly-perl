@@ -1,15 +1,15 @@
-# Fastly::Object::PoolAllOf
+# WebService::Fastly::Object::PoolAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::PoolAllOf;
+use WebService::Fastly::Object::PoolAllOf;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Name for the Pool. | [optional] 
-**shield** | **string** | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] 
+**shield** | **string** | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
 **max_conn_default** | **int** | Maximum number of connections. Optional. | [optional] [default to 200]
 **connect_timeout** | **int** | How long to wait for a timeout in milliseconds. Optional. | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **healthcheck** | **string** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] 
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **type** | **string** | What type of load balance group to use. | [optional] 
-**override_host** | **string** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] 
+**override_host** | **string** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [default to &#39;null&#39;]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

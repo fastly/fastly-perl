@@ -1,8 +1,8 @@
-# Fastly::Object::HistoricalUsageAggregateResponse
+# WebService::Fastly::Object::HistoricalUsageAggregateResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::HistoricalUsageAggregateResponse;
+use WebService::Fastly::Object::HistoricalUsageAggregateResponse;
 ```
 
 ## Properties

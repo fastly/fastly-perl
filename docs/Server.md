@@ -1,8 +1,8 @@
-# Fastly::Object::Server
+# WebService::Fastly::Object::Server
 
 ## Load the model package
 ```perl
-use Fastly::Object::Server;
+use WebService::Fastly::Object::Server;
 ```
 
 ## Properties
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **address** | **string** | A hostname, IPv4, or IPv6 address for the server. Required. | [optional] 
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **disabled** | **boolean** | Allows servers to be enabled and disabled in a pool. | [optional] [default to false]
-**override_host** | **string** | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] 
+**override_host** | **string** | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [default to &#39;null&#39;]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

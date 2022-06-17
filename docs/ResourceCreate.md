@@ -1,8 +1,8 @@
-# Fastly::Object::ResourceCreate
+# WebService::Fastly::Object::ResourceCreate
 
 ## Load the model package
 ```perl
-use Fastly::Object::ResourceCreate;
+use WebService::Fastly::Object::ResourceCreate;
 ```
 
 ## Properties

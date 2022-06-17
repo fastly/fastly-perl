@@ -1,8 +1,8 @@
-# Fastly::Object::BillingEstimateResponseAllOfLine
+# WebService::Fastly::Object::BillingEstimateResponseAllOfLine
 
 ## Load the model package
 ```perl
-use Fastly::Object::BillingEstimateResponseAllOfLine;
+use WebService::Fastly::Object::BillingEstimateResponseAllOfLine;
 ```
 
 ## Properties

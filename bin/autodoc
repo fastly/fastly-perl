@@ -15,14 +15,14 @@ my $my_app = $options{c} || 'My::App';
 if ($options{c}) {
     eval <<LOAD;
 use $my_app;
-apply_all_roles($my_app, "Fastly::Role::AutoDoc");
+apply_all_roles($my_app, "WebService::Fastly::Role::AutoDoc");
 LOAD
     die $@ if $@;
 }
 else {
     package My::App;
     use Moose;
-    with ('Fastly::Role', 'Fastly::Role::AutoDoc');
+    with ('WebService::Fastly::Role', 'WebService::Fastly::Role::AutoDoc');
 }
 
 package main;

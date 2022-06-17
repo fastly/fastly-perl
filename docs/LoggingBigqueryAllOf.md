@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingBigqueryAllOf
+# WebService::Fastly::Object::LoggingBigqueryAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingBigqueryAllOf;
+use WebService::Fastly::Object::LoggingBigqueryAllOf;
 ```
 
 ## Properties

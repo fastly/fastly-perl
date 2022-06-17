@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipMemberTlsDnsRecord
+# WebService::Fastly::Object::RelationshipMemberTlsDnsRecord
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipMemberTlsDnsRecord;
+use WebService::Fastly::Object::RelationshipMemberTlsDnsRecord;
 ```
 
 ## Properties

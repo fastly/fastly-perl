@@ -1,8 +1,8 @@
-# Fastly::Object::PackageMetadata
+# WebService::Fastly::Object::PackageMetadata
 
 ## Load the model package
 ```perl
-use Fastly::Object::PackageMetadata;
+use WebService::Fastly::Object::PackageMetadata;
 ```
 
 ## Properties

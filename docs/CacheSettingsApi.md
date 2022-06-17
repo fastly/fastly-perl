@@ -1,8 +1,8 @@
-# Fastly::CacheSettingsApi
+# WebService::Fastly::CacheSettingsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::CacheSettingsApi;
+use WebService::Fastly::Object::CacheSettingsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a cache settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CacheSettingsApi;
-my $api_instance = Fastly::CacheSettingsApi->new(
+use WebService::Fastly::CacheSettingsApi;
+my $api_instance = WebService::Fastly::CacheSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_cache_settings**
-> DeleteAcl200Response delete_cache_settings(service_id => $service_id, version_id => $version_id, cache_settings_name => $cache_settings_name)
+> InlineResponse200 delete_cache_settings(service_id => $service_id, version_id => $version_id, cache_settings_name => $cache_settings_name)
 
 Delete a cache settings object
 
@@ -89,8 +89,8 @@ Delete a specific cache settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CacheSettingsApi;
-my $api_instance = Fastly::CacheSettingsApi->new(
+use WebService::Fastly::CacheSettingsApi;
+my $api_instance = WebService::Fastly::CacheSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -144,8 +144,8 @@ Get a specific cache settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CacheSettingsApi;
-my $api_instance = Fastly::CacheSettingsApi->new(
+use WebService::Fastly::CacheSettingsApi;
+my $api_instance = WebService::Fastly::CacheSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -199,8 +199,8 @@ Get a list of all cache settings for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CacheSettingsApi;
-my $api_instance = Fastly::CacheSettingsApi->new(
+use WebService::Fastly::CacheSettingsApi;
+my $api_instance = WebService::Fastly::CacheSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -252,8 +252,8 @@ Update a specific cache settings object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::CacheSettingsApi;
-my $api_instance = Fastly::CacheSettingsApi->new(
+use WebService::Fastly::CacheSettingsApi;
+my $api_instance = WebService::Fastly::CacheSettingsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

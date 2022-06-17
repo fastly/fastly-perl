@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingUseTls
+# WebService::Fastly::Object::LoggingUseTls
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingUseTls;
+use WebService::Fastly::Object::LoggingUseTls;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::LoggingKafkaApi
+# WebService::Fastly::LoggingKafkaApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingKafkaApi;
+use WebService::Fastly::Object::LoggingKafkaApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Create a Kafka logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKafkaApi;
-my $api_instance = Fastly::LoggingKafkaApi->new(
+use WebService::Fastly::LoggingKafkaApi;
+my $api_instance = WebService::Fastly::LoggingKafkaApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -41,10 +41,10 @@ my $placement = "placement_example"; # string | Where in the generated VCL the l
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
-my $tls_ca_cert = "tls_ca_cert_example"; # string | A secure certificate to authenticate a server with. Must be in PEM format.
-my $tls_client_cert = "tls_client_cert_example"; # string | The client certificate used to make authenticated requests. Must be in PEM format.
-my $tls_client_key = "tls_client_key_example"; # string | The client private key used to make authenticated requests. Must be in PEM format.
-my $tls_hostname = "tls_hostname_example"; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
+my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
+my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
+my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
+my $tls_hostname = 'null'; # string | The hostname to verify the server's certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported.
 my $topic = "topic_example"; # string | The Kafka topic to send logs to. Required.
 my $brokers = "brokers_example"; # string | A comma-separated list of IP addresses or hostnames of Kafka brokers. Required.
 my $compression_codec = "compression_codec_example"; # string | The codec used for compression of your logs.
@@ -54,7 +54,7 @@ my $parse_log_keyvals = null; # boolean | Enables parsing of key=value tuples fr
 my $auth_method = "auth_method_example"; # string | SASL authentication method.
 my $user = "user_example"; # string | SASL user.
 my $password = "password_example"; # string | SASL password.
-my $use_tls = new Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
 
 eval {
     my $result = $api_instance->create_log_kafka(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, topic => $topic, brokers => $brokers, compression_codec => $compression_codec, required_acks => $required_acks, request_max_bytes => $request_max_bytes, parse_log_keyvals => $parse_log_keyvals, auth_method => $auth_method, user => $user, password => $password, use_tls => $use_tls);
@@ -76,10 +76,10 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.   | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] [default to &#39;%h %l %u %t &quot;%r&quot; %&amp;gt;s %b&#39;]
- **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] 
- **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] 
- **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] 
+ **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+ **tls_hostname** | **string**| The hostname to verify the server&#39;s certificate. This should be one of the Subject Alternative Name (SAN) fields for the certificate. Common Names (CN) are not supported. | [optional] [default to &#39;null&#39;]
  **topic** | **string**| The Kafka topic to send logs to. Required. | [optional] 
  **brokers** | **string**| A comma-separated list of IP addresses or hostnames of Kafka brokers. Required. | [optional] 
  **compression_codec** | **string**| The codec used for compression of your logs. | [optional] 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_kafka**
-> DeleteAcl200Response delete_log_kafka(service_id => $service_id, version_id => $version_id, logging_kafka_name => $logging_kafka_name)
+> InlineResponse200 delete_log_kafka(service_id => $service_id, version_id => $version_id, logging_kafka_name => $logging_kafka_name)
 
 Delete the Kafka log endpoint
 
@@ -116,8 +116,8 @@ Delete the Kafka logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKafkaApi;
-my $api_instance = Fastly::LoggingKafkaApi->new(
+use WebService::Fastly::LoggingKafkaApi;
+my $api_instance = WebService::Fastly::LoggingKafkaApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -171,8 +171,8 @@ Get the Kafka logging endpoint for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKafkaApi;
-my $api_instance = Fastly::LoggingKafkaApi->new(
+use WebService::Fastly::LoggingKafkaApi;
+my $api_instance = WebService::Fastly::LoggingKafkaApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -226,8 +226,8 @@ List all of the Kafka logging endpoints for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingKafkaApi;
-my $api_instance = Fastly::LoggingKafkaApi->new(
+use WebService::Fastly::LoggingKafkaApi;
+my $api_instance = WebService::Fastly::LoggingKafkaApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

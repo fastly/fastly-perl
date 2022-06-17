@@ -1,8 +1,8 @@
-# Fastly::Object::IamRoleAllOf
+# WebService::Fastly::Object::IamRoleAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::IamRoleAllOf;
+use WebService::Fastly::Object::IamRoleAllOf;
 ```
 
 ## Properties

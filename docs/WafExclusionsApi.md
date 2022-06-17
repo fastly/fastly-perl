@@ -1,8 +1,8 @@
-# Fastly::WafExclusionsApi
+# WebService::Fastly::WafExclusionsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::WafExclusionsApi;
+use WebService::Fastly::Object::WafExclusionsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a WAF exclusion for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafExclusionsApi;
-my $api_instance = Fastly::WafExclusionsApi->new(
+use WebService::Fastly::WafExclusionsApi;
+my $api_instance = WebService::Fastly::WafExclusionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -37,7 +37,7 @@ my $api_instance = Fastly::WafExclusionsApi->new(
 
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $firewall_version_number = 56; # int | Integer identifying a WAF firewall version.
-my $waf_exclusion = Fastly::Object::WafExclusion->new(); # WafExclusion | 
+my $waf_exclusion = WebService::Fastly::Object::WafExclusion->new(); # WafExclusion | 
 
 eval {
     my $result = $api_instance->create_waf_rule_exclusion(firewall_id => $firewall_id, firewall_version_number => $firewall_version_number, waf_exclusion => $waf_exclusion);
@@ -81,8 +81,8 @@ Delete a WAF exclusion for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafExclusionsApi;
-my $api_instance = Fastly::WafExclusionsApi->new(
+use WebService::Fastly::WafExclusionsApi;
+my $api_instance = WebService::Fastly::WafExclusionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -135,8 +135,8 @@ Get a specific WAF exclusion object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafExclusionsApi;
-my $api_instance = Fastly::WafExclusionsApi->new(
+use WebService::Fastly::WafExclusionsApi;
+my $api_instance = WebService::Fastly::WafExclusionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -190,8 +190,8 @@ List all exclusions for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafExclusionsApi;
-my $api_instance = Fastly::WafExclusionsApi->new(
+use WebService::Fastly::WafExclusionsApi;
+my $api_instance = WebService::Fastly::WafExclusionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -255,8 +255,8 @@ Update a WAF exclusion for a particular firewall version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafExclusionsApi;
-my $api_instance = Fastly::WafExclusionsApi->new(
+use WebService::Fastly::WafExclusionsApi;
+my $api_instance = WebService::Fastly::WafExclusionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -267,7 +267,7 @@ my $api_instance = Fastly::WafExclusionsApi->new(
 my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
 my $firewall_version_number = 56; # int | Integer identifying a WAF firewall version.
 my $exclusion_number = 56; # int | A numeric ID identifying a WAF exclusion.
-my $waf_exclusion = Fastly::Object::WafExclusion->new(); # WafExclusion | 
+my $waf_exclusion = WebService::Fastly::Object::WafExclusion->new(); # WafExclusion | 
 
 eval {
     my $result = $api_instance->update_waf_rule_exclusion(firewall_id => $firewall_id, firewall_version_number => $firewall_version_number, exclusion_number => $exclusion_number, waf_exclusion => $waf_exclusion);

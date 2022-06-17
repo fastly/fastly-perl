@@ -1,8 +1,8 @@
-# Fastly::InvitationsApi
+# WebService::Fastly::InvitationsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::InvitationsApi;
+use WebService::Fastly::Object::InvitationsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Create an invitation.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::InvitationsApi;
-my $api_instance = Fastly::InvitationsApi->new(
+use WebService::Fastly::InvitationsApi;
+my $api_instance = WebService::Fastly::InvitationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -33,7 +33,7 @@ my $api_instance = Fastly::InvitationsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $invitation = Fastly::Object::Invitation->new(); # Invitation | 
+my $invitation = WebService::Fastly::Object::Invitation->new(); # Invitation | 
 
 eval {
     my $result = $api_instance->create_invitation(invitation => $invitation);
@@ -75,8 +75,8 @@ Delete an invitation.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::InvitationsApi;
-my $api_instance = Fastly::InvitationsApi->new(
+use WebService::Fastly::InvitationsApi;
+my $api_instance = WebService::Fastly::InvitationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,8 +125,8 @@ List all invitations.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::InvitationsApi;
-my $api_instance = Fastly::InvitationsApi->new(
+use WebService::Fastly::InvitationsApi;
+my $api_instance = WebService::Fastly::InvitationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

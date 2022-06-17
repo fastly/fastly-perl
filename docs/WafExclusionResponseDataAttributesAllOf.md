@@ -1,8 +1,8 @@
-# Fastly::Object::WafExclusionResponseDataAttributesAllOf
+# WebService::Fastly::Object::WafExclusionResponseDataAttributesAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafExclusionResponseDataAttributesAllOf;
+use WebService::Fastly::Object::WafExclusionResponseDataAttributesAllOf;
 ```
 
 ## Properties

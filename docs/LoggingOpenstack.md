@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingOpenstack
+# WebService::Fastly::Object::LoggingOpenstack
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingOpenstack;
+use WebService::Fastly::Object::LoggingOpenstack;
 ```
 
 ## Properties
@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
 **access_key** | **string** | Your OpenStack account access key. | [optional] 
 **bucket_name** | **string** | The name of your OpenStack container. | [optional] 
-**path** | **string** | The path to upload logs to. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] [default to &#39;null&#39;]
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **url** | **string** | Your OpenStack auth url. | [optional] 
 **user** | **string** | The username for your OpenStack account. | [optional] 
 

@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipMemberTlsConfiguration
+# WebService::Fastly::Object::RelationshipMemberTlsConfiguration
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipMemberTlsConfiguration;
+use WebService::Fastly::Object::RelationshipMemberTlsConfiguration;
 ```
 
 ## Properties

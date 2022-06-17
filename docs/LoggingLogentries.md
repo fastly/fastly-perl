@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingLogentries
+# WebService::Fastly::Object::LoggingLogentries
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingLogentries;
+use WebService::Fastly::Object::LoggingLogentries;
 ```
 
 ## Properties

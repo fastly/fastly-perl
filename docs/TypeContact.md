@@ -1,8 +1,8 @@
-# Fastly::Object::TypeContact
+# WebService::Fastly::Object::TypeContact
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeContact;
+use WebService::Fastly::Object::TypeContact;
 ```
 
 ## Properties

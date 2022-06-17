@@ -1,8 +1,8 @@
-# Fastly::LoggingHerokuApi
+# WebService::Fastly::LoggingHerokuApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingHerokuApi;
+use WebService::Fastly::Object::LoggingHerokuApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Heroku for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingHerokuApi;
-my $api_instance = Fastly::LoggingHerokuApi->new(
+use WebService::Fastly::LoggingHerokuApi;
+my $api_instance = WebService::Fastly::LoggingHerokuApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_heroku**
-> DeleteAcl200Response delete_log_heroku(service_id => $service_id, version_id => $version_id, logging_heroku_name => $logging_heroku_name)
+> InlineResponse200 delete_log_heroku(service_id => $service_id, version_id => $version_id, logging_heroku_name => $logging_heroku_name)
 
 Delete the Heroku log endpoint
 
@@ -93,8 +93,8 @@ Delete the Heroku for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingHerokuApi;
-my $api_instance = Fastly::LoggingHerokuApi->new(
+use WebService::Fastly::LoggingHerokuApi;
+my $api_instance = WebService::Fastly::LoggingHerokuApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ Get the Heroku for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingHerokuApi;
-my $api_instance = Fastly::LoggingHerokuApi->new(
+use WebService::Fastly::LoggingHerokuApi;
+my $api_instance = WebService::Fastly::LoggingHerokuApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ List all of the Herokus for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingHerokuApi;
-my $api_instance = Fastly::LoggingHerokuApi->new(
+use WebService::Fastly::LoggingHerokuApi;
+my $api_instance = WebService::Fastly::LoggingHerokuApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Update the Heroku for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingHerokuApi;
-my $api_instance = Fastly::LoggingHerokuApi->new(
+use WebService::Fastly::LoggingHerokuApi;
+my $api_instance = WebService::Fastly::LoggingHerokuApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

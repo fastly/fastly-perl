@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipsForStar
+# WebService::Fastly::Object::RelationshipsForStar
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipsForStar;
+use WebService::Fastly::Object::RelationshipsForStar;
 ```
 
 ## Properties

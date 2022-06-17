@@ -1,8 +1,8 @@
-# Fastly::Object::SchemasContactResponse
+# WebService::Fastly::Object::SchemasContactResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::SchemasContactResponse;
+use WebService::Fastly::Object::SchemasContactResponse;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::Object::TypeEvent
+# WebService::Fastly::Object::TypeEvent
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeEvent;
+use WebService::Fastly::Object::TypeEvent;
 ```
 
 ## Properties

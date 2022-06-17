@@ -1,8 +1,8 @@
-# Fastly::WafTagsApi
+# WebService::Fastly::WafTagsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::WafTagsApi;
+use WebService::Fastly::Object::WafTagsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ List all tags.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::WafTagsApi;
-my $api_instance = Fastly::WafTagsApi->new(
+use WebService::Fastly::WafTagsApi;
+my $api_instance = WebService::Fastly::WafTagsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

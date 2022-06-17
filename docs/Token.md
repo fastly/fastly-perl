@@ -1,8 +1,8 @@
-# Fastly::Object::Token
+# WebService::Fastly::Object::Token
 
 ## Load the model package
 ```perl
-use Fastly::Object::Token;
+use WebService::Fastly::Object::Token;
 ```
 
 ## Properties

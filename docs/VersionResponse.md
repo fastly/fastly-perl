@@ -1,8 +1,8 @@
-# Fastly::Object::VersionResponse
+# WebService::Fastly::Object::VersionResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::VersionResponse;
+use WebService::Fastly::Object::VersionResponse;
 ```
 
 ## Properties

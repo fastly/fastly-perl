@@ -1,8 +1,8 @@
-# Fastly::Object::SchemasWafFirewallVersionData
+# WebService::Fastly::Object::SchemasWafFirewallVersionData
 
 ## Load the model package
 ```perl
-use Fastly::Object::SchemasWafFirewallVersionData;
+use WebService::Fastly::Object::SchemasWafFirewallVersionData;
 ```
 
 ## Properties

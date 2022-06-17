@@ -1,8 +1,8 @@
-# Fastly::VersionApi
+# WebService::Fastly::VersionApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::VersionApi;
+use WebService::Fastly::Object::VersionApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -30,8 +30,8 @@ Activate the current version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -83,8 +83,8 @@ Clone the current configuration into a new version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -136,8 +136,8 @@ Create a version for a particular service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -187,8 +187,8 @@ Deactivate the current version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -240,8 +240,8 @@ Get the version for a particular service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -293,8 +293,8 @@ List the versions for a particular service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -344,8 +344,8 @@ Locks the specified version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -397,8 +397,8 @@ Update a particular version for a particular service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **validate_service_version**
-> DeleteAcl200Response validate_service_version(service_id => $service_id, version_id => $version_id)
+> InlineResponse200 validate_service_version(service_id => $service_id, version_id => $version_id)
 
 Validate a service version
 
@@ -464,8 +464,8 @@ Validate the version for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VersionApi;
-my $api_instance = Fastly::VersionApi->new(
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -494,7 +494,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

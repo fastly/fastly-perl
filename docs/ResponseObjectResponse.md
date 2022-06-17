@@ -1,8 +1,8 @@
-# Fastly::Object::ResponseObjectResponse
+# WebService::Fastly::Object::ResponseObjectResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::ResponseObjectResponse;
+use WebService::Fastly::Object::ResponseObjectResponse;
 ```
 
 ## Properties
@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **status** | **int** | The HTTP status code. | [optional] [default to 200]
 **response** | **string** | The HTTP response. | [optional] [default to &#39;Ok&#39;]
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

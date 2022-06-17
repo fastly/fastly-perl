@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingNewrelicAllOf
+# WebService::Fastly::Object::LoggingNewrelicAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingNewrelicAllOf;
+use WebService::Fastly::Object::LoggingNewrelicAllOf;
 ```
 
 ## Properties

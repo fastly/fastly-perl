@@ -1,8 +1,8 @@
-# Fastly::LoggingFtpApi
+# WebService::Fastly::LoggingFtpApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingFtpApi;
+use WebService::Fastly::Object::LoggingFtpApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a FTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingFtpApi;
-my $api_instance = Fastly::LoggingFtpApi->new(
+use WebService::Fastly::LoggingFtpApi;
+my $api_instance = WebService::Fastly::LoggingFtpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -53,7 +53,7 @@ my $ipv4 = "ipv4_example"; # string | IPv4 address of the host.
 my $password = "password_example"; # string | The password for the server. For anonymous use an email address.
 my $path = "path_example"; # string | The path to upload log files to. If the path ends in `/` then it is treated as a directory.
 my $port = 21; # int | The port number.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $user = "user_example"; # string | The username for the server. Can be anonymous.
 
 eval {
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
  **password** | **string**| The password for the server. For anonymous use an email address. | [optional] 
  **path** | **string**| The path to upload log files to. If the path ends in `/` then it is treated as a directory. | [optional] 
  **port** | **int**| The port number. | [optional] [default to 21]
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **user** | **string**| The username for the server. Can be anonymous. | [optional] 
 
 ### Return type
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_ftp**
-> DeleteAcl200Response delete_log_ftp(service_id => $service_id, version_id => $version_id, logging_ftp_name => $logging_ftp_name)
+> InlineResponse200 delete_log_ftp(service_id => $service_id, version_id => $version_id, logging_ftp_name => $logging_ftp_name)
 
 Delete an FTP log endpoint
 
@@ -115,8 +115,8 @@ Delete the FTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingFtpApi;
-my $api_instance = Fastly::LoggingFtpApi->new(
+use WebService::Fastly::LoggingFtpApi;
+my $api_instance = WebService::Fastly::LoggingFtpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -170,8 +170,8 @@ Get the FTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingFtpApi;
-my $api_instance = Fastly::LoggingFtpApi->new(
+use WebService::Fastly::LoggingFtpApi;
+my $api_instance = WebService::Fastly::LoggingFtpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -225,8 +225,8 @@ List all of the FTPs for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingFtpApi;
-my $api_instance = Fastly::LoggingFtpApi->new(
+use WebService::Fastly::LoggingFtpApi;
+my $api_instance = WebService::Fastly::LoggingFtpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -278,8 +278,8 @@ Update the FTP for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingFtpApi;
-my $api_instance = Fastly::LoggingFtpApi->new(
+use WebService::Fastly::LoggingFtpApi;
+my $api_instance = WebService::Fastly::LoggingFtpApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -306,7 +306,7 @@ my $ipv4 = "ipv4_example"; # string | IPv4 address of the host.
 my $password = "password_example"; # string | The password for the server. For anonymous use an email address.
 my $path = "path_example"; # string | The path to upload log files to. If the path ends in `/` then it is treated as a directory.
 my $port = 21; # int | The port number.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 my $user = "user_example"; # string | The username for the server. Can be anonymous.
 
 eval {
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
  **password** | **string**| The password for the server. For anonymous use an email address. | [optional] 
  **path** | **string**| The path to upload log files to. If the path ends in `/` then it is treated as a directory. | [optional] 
  **port** | **int**| The port number. | [optional] [default to 21]
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
  **user** | **string**| The username for the server. Can be anonymous. | [optional] 
 
 ### Return type

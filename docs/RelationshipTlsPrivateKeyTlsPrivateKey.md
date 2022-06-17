@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey
+# WebService::Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey;
+use WebService::Fastly::Object::RelationshipTlsPrivateKeyTlsPrivateKey;
 ```
 
 ## Properties

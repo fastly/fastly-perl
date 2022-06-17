@@ -1,8 +1,8 @@
-# Fastly::Object::Http3AllOf
+# WebService::Fastly::Object::Http3AllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::Http3AllOf;
+use WebService::Fastly::Object::Http3AllOf;
 ```
 
 ## Properties

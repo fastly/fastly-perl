@@ -1,8 +1,8 @@
-# Fastly::Object::TokenResponseAllOf
+# WebService::Fastly::Object::TokenResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::TokenResponseAllOf;
+use WebService::Fastly::Object::TokenResponseAllOf;
 ```
 
 ## Properties

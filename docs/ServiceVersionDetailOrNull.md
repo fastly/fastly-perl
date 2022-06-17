@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceVersionDetailOrNull
+# WebService::Fastly::Object::ServiceVersionDetailOrNull
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceVersionDetailOrNull;
+use WebService::Fastly::Object::ServiceVersionDetailOrNull;
 ```
 
 ## Properties
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **healthchecks** | [**ARRAY[HealthcheckResponse]**](HealthcheckResponse.md) | List of healthchecks associated to this service. | [optional] 
 **request_settings** | [**ARRAY[RequestSettingsResponse]**](RequestSettingsResponse.md) | List of request settings for this service. | [optional] 
 **response_objects** | [**ARRAY[ResponseObjectResponse]**](ResponseObjectResponse.md) | List of response objects for this service. | [optional] 
-**settings** | [**VersionDetailSettings**](VersionDetailSettings.md) |  | [optional] 
+**settings** | [**Settings**](Settings.md) | List of default settings for this service. | [optional] 
 **snippets** | [**ARRAY[SchemasSnippetResponse]**](SchemasSnippetResponse.md) | List of VCL snippets for this service. | [optional] 
 **vcls** | [**ARRAY[SchemasVclResponse]**](SchemasVclResponse.md) | List of VCL files for this service. | [optional] 
 **wordpress** | **ARRAY[object]** | A list of Wordpress rules with this service. | [optional] 

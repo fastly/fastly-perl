@@ -1,15 +1,15 @@
-# Fastly::Object::HistoricalUsageMonthResponseAllOfData
+# WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData
 
 ## Load the model package
 ```perl
-use Fastly::Object::HistoricalUsageMonthResponseAllOfData;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **customer_id** | **string** |  | [optional] [readonly] 
-**services** | [**HASH[string,HistoricalServicesValue]**](HistoricalServicesValue.md) |  | [optional] 
+**services** | **HASH[string,HASH[string,HistoricalUsageResults]]** |  | [optional] 
 **total** | [**HistoricalUsageResults**](HistoricalUsageResults.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

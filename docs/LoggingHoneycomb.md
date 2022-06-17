@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingHoneycomb
+# WebService::Fastly::Object::LoggingHoneycomb
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingHoneycomb;
+use WebService::Fastly::Object::LoggingHoneycomb;
 ```
 
 ## Properties

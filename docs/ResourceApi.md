@@ -1,8 +1,8 @@
-# Fastly::ResourceApi
+# WebService::Fastly::ResourceApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ResourceApi;
+use WebService::Fastly::Object::ResourceApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a resource.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResourceApi;
-my $api_instance = Fastly::ResourceApi->new(
+use WebService::Fastly::ResourceApi;
+my $api_instance = WebService::Fastly::ResourceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_resource**
-> DeleteAcl200Response delete_resource(service_id => $service_id, version_id => $version_id, resource_id => $resource_id)
+> InlineResponse200 delete_resource(service_id => $service_id, version_id => $version_id, resource_id => $resource_id)
 
 Delete a resource
 
@@ -83,8 +83,8 @@ Delete a resource.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResourceApi;
-my $api_instance = Fastly::ResourceApi->new(
+use WebService::Fastly::ResourceApi;
+my $api_instance = WebService::Fastly::ResourceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -138,8 +138,8 @@ Display a resource by its identifier.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResourceApi;
-my $api_instance = Fastly::ResourceApi->new(
+use WebService::Fastly::ResourceApi;
+my $api_instance = WebService::Fastly::ResourceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -193,8 +193,8 @@ List resources.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResourceApi;
-my $api_instance = Fastly::ResourceApi->new(
+use WebService::Fastly::ResourceApi;
+my $api_instance = WebService::Fastly::ResourceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -246,8 +246,8 @@ Update a resource.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ResourceApi;
-my $api_instance = Fastly::ResourceApi->new(
+use WebService::Fastly::ResourceApi;
+my $api_instance = WebService::Fastly::ResourceApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::CacheSettingResponse
+# WebService::Fastly::Object::CacheSettingResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::CacheSettingResponse;
+use WebService::Fastly::Object::CacheSettingResponse;
 ```
 
 ## Properties
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **name** | **string** | Name for the cache settings object. | [optional] 
 **stale_ttl** | **int** | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] 
 **ttl** | **int** | Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

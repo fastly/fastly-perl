@@ -1,8 +1,8 @@
-# Fastly::Object::WafRulesResponseAllOf
+# WebService::Fastly::Object::WafRulesResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafRulesResponseAllOf;
+use WebService::Fastly::Object::WafRulesResponseAllOf;
 ```
 
 ## Properties

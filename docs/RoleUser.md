@@ -1,8 +1,8 @@
-# Fastly::Object::RoleUser
+# WebService::Fastly::Object::RoleUser
 
 ## Load the model package
 ```perl
-use Fastly::Object::RoleUser;
+use WebService::Fastly::Object::RoleUser;
 ```
 
 ## Properties

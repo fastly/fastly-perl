@@ -1,8 +1,8 @@
-# Fastly::LoggingLogentriesApi
+# WebService::Fastly::LoggingLogentriesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingLogentriesApi;
+use WebService::Fastly::Object::LoggingLogentriesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a Logentry for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogentriesApi;
-my $api_instance = Fastly::LoggingLogentriesApi->new(
+use WebService::Fastly::LoggingLogentriesApi;
+my $api_instance = WebService::Fastly::LoggingLogentriesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -44,7 +44,7 @@ my $response_condition = "response_condition_example"; # string | The name of an
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
 my $port = 20000; # int | The port number.
 my $token = "token_example"; # string | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
-my $use_tls = new Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
 my $region = "region_example"; # string | The region to which to stream logs.
 
 eval {
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_logentries**
-> DeleteAcl200Response delete_log_logentries(service_id => $service_id, version_id => $version_id, logging_logentries_name => $logging_logentries_name)
+> InlineResponse200 delete_log_logentries(service_id => $service_id, version_id => $version_id, logging_logentries_name => $logging_logentries_name)
 
 Delete a Logentries log endpoint
 
@@ -97,8 +97,8 @@ Delete the Logentry for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogentriesApi;
-my $api_instance = Fastly::LoggingLogentriesApi->new(
+use WebService::Fastly::LoggingLogentriesApi;
+my $api_instance = WebService::Fastly::LoggingLogentriesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -152,8 +152,8 @@ Get the Logentry for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogentriesApi;
-my $api_instance = Fastly::LoggingLogentriesApi->new(
+use WebService::Fastly::LoggingLogentriesApi;
+my $api_instance = WebService::Fastly::LoggingLogentriesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -207,8 +207,8 @@ List all of the Logentries for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogentriesApi;
-my $api_instance = Fastly::LoggingLogentriesApi->new(
+use WebService::Fastly::LoggingLogentriesApi;
+my $api_instance = WebService::Fastly::LoggingLogentriesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -260,8 +260,8 @@ Update the Logentry for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingLogentriesApi;
-my $api_instance = Fastly::LoggingLogentriesApi->new(
+use WebService::Fastly::LoggingLogentriesApi;
+my $api_instance = WebService::Fastly::LoggingLogentriesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -279,7 +279,7 @@ my $response_condition = "response_condition_example"; # string | The name of an
 my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
 my $port = 20000; # int | The port number.
 my $token = "token_example"; # string | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).
-my $use_tls = new Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
 my $region = "region_example"; # string | The region to which to stream logs.
 
 eval {

@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingSumologic
+# WebService::Fastly::Object::LoggingSumologic
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingSumologic;
+use WebService::Fastly::Object::LoggingSumologic;
 ```
 
 ## Properties

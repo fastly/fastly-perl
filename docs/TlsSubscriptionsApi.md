@@ -1,8 +1,8 @@
-# Fastly::TlsSubscriptionsApi
+# WebService::Fastly::TlsSubscriptionsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TlsSubscriptionsApi;
+use WebService::Fastly::Object::TlsSubscriptionsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -28,8 +28,8 @@ Creates an email challenge for a domain on a GlobalSign subscription. An email c
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -39,7 +39,7 @@ my $api_instance = Fastly::TlsSubscriptionsApi->new(
 
 my $tls_subscription_id = "tls_subscription_id_example"; # string | Alphanumeric string identifying a TLS subscription.
 my $tls_authorization_id = "tls_authorization_id_example"; # string | Alphanumeric string identifying a TLS subscription.
-my $request_body = Fastly::Object::HASH[string,AnyType]->new(); # HASH[string,AnyType] | 
+my $request_body = WebService::Fastly::Object::HASH[string,object]->new(); # HASH[string,object] | 
 
 eval {
     my $result = $api_instance->create_globalsign_email_challenge(tls_subscription_id => $tls_subscription_id, tls_authorization_id => $tls_authorization_id, request_body => $request_body);
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tls_subscription_id** | **string**| Alphanumeric string identifying a TLS subscription. | 
  **tls_authorization_id** | **string**| Alphanumeric string identifying a TLS subscription. | 
- **request_body** | [**HASH[string,AnyType]**](AnyType.md)|  | [optional] 
+ **request_body** | [**HASH[string,object]**](object.md)|  | [optional] 
 
 ### Return type
 
@@ -83,8 +83,8 @@ Create a new TLS subscription. This response includes a list of possible challen
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -93,7 +93,7 @@ my $api_instance = Fastly::TlsSubscriptionsApi->new(
 );
 
 my $force = true; # boolean | A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
-my $tls_subscription = Fastly::Object::TlsSubscription->new(); # TlsSubscription | 
+my $tls_subscription = WebService::Fastly::Object::TlsSubscription->new(); # TlsSubscription | 
 
 eval {
     my $result = $api_instance->create_tls_sub(force => $force, tls_subscription => $tls_subscription);
@@ -136,8 +136,8 @@ Deletes a GlobalSign email challenge. After a GlobalSign email challenge is dele
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -190,8 +190,8 @@ Destroy a TLS subscription. A subscription cannot be destroyed if there are doma
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -240,8 +240,8 @@ Show a TLS subscription.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -293,8 +293,8 @@ List all TLS subscriptions.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -356,8 +356,8 @@ Change the TLS domains or common name associated with this subscription, or upda
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsSubscriptionsApi;
-my $api_instance = Fastly::TlsSubscriptionsApi->new(
+use WebService::Fastly::TlsSubscriptionsApi;
+my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -367,7 +367,7 @@ my $api_instance = Fastly::TlsSubscriptionsApi->new(
 
 my $tls_subscription_id = "tls_subscription_id_example"; # string | Alphanumeric string identifying a TLS subscription.
 my $force = true; # boolean | A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
-my $tls_subscription = Fastly::Object::TlsSubscription->new(); # TlsSubscription | 
+my $tls_subscription = WebService::Fastly::Object::TlsSubscription->new(); # TlsSubscription | 
 
 eval {
     my $result = $api_instance->patch_tls_sub(tls_subscription_id => $tls_subscription_id, force => $force, tls_subscription => $tls_subscription);

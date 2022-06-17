@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceAuthorizationDataAttributes
+# WebService::Fastly::Object::ServiceAuthorizationDataAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceAuthorizationDataAttributes;
+use WebService::Fastly::Object::ServiceAuthorizationDataAttributes;
 ```
 
 ## Properties

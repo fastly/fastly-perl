@@ -1,8 +1,8 @@
-# Fastly::UserApi
+# WebService::Fastly::UserApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::UserApi;
+use WebService::Fastly::Object::UserApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -28,8 +28,8 @@ Create a user.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -42,7 +42,7 @@ my $name = "name_example"; # string | The real life name of the user.
 my $limit_services = null; # boolean | Indicates that the user has limited access to the customer's services.
 my $locked = null; # boolean | Indicates whether the is account is locked for editing or not.
 my $require_new_password = null; # boolean | Indicates if a new password is required at next login.
-my $role = new Fastly.RoleUser(); # RoleUser | 
+my $role = new WebService::Fastly.RoleUser(); # RoleUser | 
 my $two_factor_auth_enabled = null; # boolean | Indicates if 2FA is enabled on the user.
 my $two_factor_setup_required = null; # boolean | Indicates if 2FA is required by the user's customer account.
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_user**
-> DeleteAcl200Response delete_user(user_id => $user_id)
+> InlineResponse200 delete_user(user_id => $user_id)
 
 Delete a user
 
@@ -93,8 +93,8 @@ Delete a user.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -144,8 +144,8 @@ Get the logged in user.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -191,8 +191,8 @@ Get a specific user.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **request_password_reset**
-> DeleteAcl200Response request_password_reset(user_login => $user_login)
+> InlineResponse200 request_password_reset(user_login => $user_login)
 
 Request a password reset
 
@@ -242,8 +242,8 @@ Requests a password reset for the specified user.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -293,8 +293,8 @@ Update a user. Only users with the role of `superuser` can make changes to other
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -308,7 +308,7 @@ my $name = "name_example"; # string | The real life name of the user.
 my $limit_services = null; # boolean | Indicates that the user has limited access to the customer's services.
 my $locked = null; # boolean | Indicates whether the is account is locked for editing or not.
 my $require_new_password = null; # boolean | Indicates if a new password is required at next login.
-my $role = new Fastly.RoleUser(); # RoleUser | 
+my $role = new WebService::Fastly.RoleUser(); # RoleUser | 
 my $two_factor_auth_enabled = null; # boolean | Indicates if 2FA is enabled on the user.
 my $two_factor_setup_required = null; # boolean | Indicates if 2FA is required by the user's customer account.
 
@@ -360,8 +360,8 @@ Update the user's password to a new one.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::UserApi;
-my $api_instance = Fastly::UserApi->new(
+use WebService::Fastly::UserApi;
+my $api_instance = WebService::Fastly::UserApi->new(
 
     # Configure HTTP basic authorization: session_password_change
     username => 'YOUR_USERNAME',

@@ -1,8 +1,8 @@
-# Fastly::Object::DomainCheckItem
+# WebService::Fastly::Object::DomainCheckItem
 
 ## Load the model package
 ```perl
-use Fastly::Object::DomainCheckItem;
+use WebService::Fastly::Object::DomainCheckItem;
 ```
 
 ## Properties

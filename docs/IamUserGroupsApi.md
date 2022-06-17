@@ -1,8 +1,8 @@
-# Fastly::IamUserGroupsApi
+# WebService::Fastly::IamUserGroupsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::IamUserGroupsApi;
+use WebService::Fastly::Object::IamUserGroupsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -27,8 +27,8 @@ Delete a user group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamUserGroupsApi;
-my $api_instance = Fastly::IamUserGroupsApi->new(
+use WebService::Fastly::IamUserGroupsApi;
+my $api_instance = WebService::Fastly::IamUserGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -77,8 +77,8 @@ Get a user group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamUserGroupsApi;
-my $api_instance = Fastly::IamUserGroupsApi->new(
+use WebService::Fastly::IamUserGroupsApi;
+my $api_instance = WebService::Fastly::IamUserGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -128,8 +128,8 @@ List members of a user group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamUserGroupsApi;
-my $api_instance = Fastly::IamUserGroupsApi->new(
+use WebService::Fastly::IamUserGroupsApi;
+my $api_instance = WebService::Fastly::IamUserGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -183,8 +183,8 @@ List roles in a user group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamUserGroupsApi;
-my $api_instance = Fastly::IamUserGroupsApi->new(
+use WebService::Fastly::IamUserGroupsApi;
+my $api_instance = WebService::Fastly::IamUserGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -238,8 +238,8 @@ List service groups in a user group.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamUserGroupsApi;
-my $api_instance = Fastly::IamUserGroupsApi->new(
+use WebService::Fastly::IamUserGroupsApi;
+my $api_instance = WebService::Fastly::IamUserGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -293,8 +293,8 @@ List all user groups.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::IamUserGroupsApi;
-my $api_instance = Fastly::IamUserGroupsApi->new(
+use WebService::Fastly::IamUserGroupsApi;
+my $api_instance = WebService::Fastly::IamUserGroupsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

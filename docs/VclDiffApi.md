@@ -1,8 +1,8 @@
-# Fastly::VclDiffApi
+# WebService::Fastly::VclDiffApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::VclDiffApi;
+use WebService::Fastly::Object::VclDiffApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ Get a comparison of the VCL changes between two service versions.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::VclDiffApi;
-my $api_instance = Fastly::VclDiffApi->new(
+use WebService::Fastly::VclDiffApi;
+my $api_instance = WebService::Fastly::VclDiffApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

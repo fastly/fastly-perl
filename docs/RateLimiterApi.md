@@ -1,8 +1,8 @@
-# Fastly::RateLimiterApi
+# WebService::Fastly::RateLimiterApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::RateLimiterApi;
+use WebService::Fastly::Object::RateLimiterApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a rate limiter for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RateLimiterApi;
-my $api_instance = Fastly::RateLimiterApi->new(
+use WebService::Fastly::RateLimiterApi;
+my $api_instance = WebService::Fastly::RateLimiterApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -45,7 +45,7 @@ my $window_size = 56; # int | Number of seconds during which the RPS limit must 
 my $client_key = [("null")]; # ARRAY[string] | Array of VCL variables used to generate a counter key to identify a client. Example variables include `req.http.Fastly-Client-IP`, `req.http.User-Agent`, or a custom header like `req.http.API-Key`.
 my $penalty_box_duration = 56; # int | Length of time in minutes that the rate limiter is in effect after the initial violation is detected.
 my $action = "action_example"; # string | The action to take when a rate limiter violation is detected.
-my $response = new Fastly.RateLimiterResponse1(); # RateLimiterResponse1 | 
+my $response = new WebService::Fastly.RateLimiterResponse1(); # RateLimiterResponse1 | 
 my $response_object_name = "response_object_name_example"; # string | Name of existing response object. Required if `action` is `response_object`. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration.
 my $logger_type = "logger_type_example"; # string | Name of the type of logging endpoint to be used when action is `log_only`. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries.
 my $feature_revision = 56; # int | Revision number of the rate limiting feature implementation. Defaults to the most recent revision.
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_rate_limiter**
-> DeleteAcl200Response delete_rate_limiter(rate_limiter_id => $rate_limiter_id)
+> InlineResponse200 delete_rate_limiter(rate_limiter_id => $rate_limiter_id)
 
 Delete a rate limiter
 
@@ -103,8 +103,8 @@ Delete a rate limiter by its ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RateLimiterApi;
-my $api_instance = Fastly::RateLimiterApi->new(
+use WebService::Fastly::RateLimiterApi;
+my $api_instance = WebService::Fastly::RateLimiterApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -154,8 +154,8 @@ Get a rate limiter by its ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RateLimiterApi;
-my $api_instance = Fastly::RateLimiterApi->new(
+use WebService::Fastly::RateLimiterApi;
+my $api_instance = WebService::Fastly::RateLimiterApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -205,8 +205,8 @@ List all rate limiters for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RateLimiterApi;
-my $api_instance = Fastly::RateLimiterApi->new(
+use WebService::Fastly::RateLimiterApi;
+my $api_instance = WebService::Fastly::RateLimiterApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -258,8 +258,8 @@ Update a rate limiter by its ID.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::RateLimiterApi;
-my $api_instance = Fastly::RateLimiterApi->new(
+use WebService::Fastly::RateLimiterApi;
+my $api_instance = WebService::Fastly::RateLimiterApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -276,7 +276,7 @@ my $window_size = 56; # int | Number of seconds during which the RPS limit must 
 my $client_key = [("null")]; # ARRAY[string] | Array of VCL variables used to generate a counter key to identify a client. Example variables include `req.http.Fastly-Client-IP`, `req.http.User-Agent`, or a custom header like `req.http.API-Key`.
 my $penalty_box_duration = 56; # int | Length of time in minutes that the rate limiter is in effect after the initial violation is detected.
 my $action = "action_example"; # string | The action to take when a rate limiter violation is detected.
-my $response = new Fastly.RateLimiterResponse1(); # RateLimiterResponse1 | 
+my $response = new WebService::Fastly.RateLimiterResponse1(); # RateLimiterResponse1 | 
 my $response_object_name = "response_object_name_example"; # string | Name of existing response object. Required if `action` is `response_object`. Note that the rate limiter response is only updated to reflect the response object content when saving the rate limiter configuration.
 my $logger_type = "logger_type_example"; # string | Name of the type of logging endpoint to be used when action is `log_only`. The logging endpoint type is used to determine the appropriate log format to use when emitting log entries.
 my $feature_revision = 56; # int | Revision number of the rate limiting feature implementation. Defaults to the most recent revision.

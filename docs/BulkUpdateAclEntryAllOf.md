@@ -1,8 +1,8 @@
-# Fastly::Object::BulkUpdateAclEntryAllOf
+# WebService::Fastly::Object::BulkUpdateAclEntryAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::BulkUpdateAclEntryAllOf;
+use WebService::Fastly::Object::BulkUpdateAclEntryAllOf;
 ```
 
 ## Properties

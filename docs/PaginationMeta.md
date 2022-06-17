@@ -1,8 +1,8 @@
-# Fastly::Object::PaginationMeta
+# WebService::Fastly::Object::PaginationMeta
 
 ## Load the model package
 ```perl
-use Fastly::Object::PaginationMeta;
+use WebService::Fastly::Object::PaginationMeta;
 ```
 
 ## Properties

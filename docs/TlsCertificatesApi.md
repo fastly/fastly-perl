@@ -1,8 +1,8 @@
-# Fastly::TlsCertificatesApi
+# WebService::Fastly::TlsCertificatesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TlsCertificatesApi;
+use WebService::Fastly::Object::TlsCertificatesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a TLS certificate.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsCertificatesApi;
-my $api_instance = Fastly::TlsCertificatesApi->new(
+use WebService::Fastly::TlsCertificatesApi;
+my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -35,7 +35,7 @@ my $api_instance = Fastly::TlsCertificatesApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $tls_certificate = Fastly::Object::TlsCertificate->new(); # TlsCertificate | 
+my $tls_certificate = WebService::Fastly::Object::TlsCertificate->new(); # TlsCertificate | 
 
 eval {
     my $result = $api_instance->create_tls_cert(tls_certificate => $tls_certificate);
@@ -77,8 +77,8 @@ Destroy a TLS certificate. TLS certificates already enabled for a domain cannot 
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsCertificatesApi;
-my $api_instance = Fastly::TlsCertificatesApi->new(
+use WebService::Fastly::TlsCertificatesApi;
+my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -127,8 +127,8 @@ Show a TLS certificate.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsCertificatesApi;
-my $api_instance = Fastly::TlsCertificatesApi->new(
+use WebService::Fastly::TlsCertificatesApi;
+my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -178,8 +178,8 @@ List all TLS certificates.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsCertificatesApi;
-my $api_instance = Fastly::TlsCertificatesApi->new(
+use WebService::Fastly::TlsCertificatesApi;
+my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -239,8 +239,8 @@ Replace a TLS certificate with a newly reissued TLS certificate, or update a TLS
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsCertificatesApi;
-my $api_instance = Fastly::TlsCertificatesApi->new(
+use WebService::Fastly::TlsCertificatesApi;
+my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -249,7 +249,7 @@ my $api_instance = Fastly::TlsCertificatesApi->new(
 );
 
 my $tls_certificate_id = "tls_certificate_id_example"; # string | Alphanumeric string identifying a TLS certificate.
-my $tls_certificate = Fastly::Object::TlsCertificate->new(); # TlsCertificate | 
+my $tls_certificate = WebService::Fastly::Object::TlsCertificate->new(); # TlsCertificate | 
 
 eval {
     my $result = $api_instance->update_tls_cert(tls_certificate_id => $tls_certificate_id, tls_certificate => $tls_certificate);

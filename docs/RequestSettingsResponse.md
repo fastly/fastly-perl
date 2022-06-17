@@ -1,8 +1,8 @@
-# Fastly::Object::RequestSettingsResponse
+# WebService::Fastly::Object::RequestSettingsResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::RequestSettingsResponse;
+use WebService::Fastly::Object::RequestSettingsResponse;
 ```
 
 ## Properties
@@ -20,8 +20,8 @@ Name | Type | Description | Notes
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
 **timer_support** | **int** | Injects the X-Timer info into the request for viewing origin fetch durations. | [optional] 
 **xff** | **string** | Short for X-Forwarded-For. | [optional] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

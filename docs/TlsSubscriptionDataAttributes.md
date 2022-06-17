@@ -1,8 +1,8 @@
-# Fastly::Object::TlsSubscriptionDataAttributes
+# WebService::Fastly::Object::TlsSubscriptionDataAttributes
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsSubscriptionDataAttributes;
+use WebService::Fastly::Object::TlsSubscriptionDataAttributes;
 ```
 
 ## Properties

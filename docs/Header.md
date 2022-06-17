@@ -1,8 +1,8 @@
-# Fastly::Object::Header
+# WebService::Fastly::Object::Header
 
 ## Load the model package
 ```perl
-use Fastly::Object::Header;
+use WebService::Fastly::Object::Header;
 ```
 
 ## Properties

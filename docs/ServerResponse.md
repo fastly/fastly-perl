@@ -1,8 +1,8 @@
-# Fastly::Object::ServerResponse
+# WebService::Fastly::Object::ServerResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServerResponse;
+use WebService::Fastly::Object::ServerResponse;
 ```
 
 ## Properties
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **address** | **string** | A hostname, IPv4, or IPv6 address for the server. Required. | [optional] 
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **disabled** | **boolean** | Allows servers to be enabled and disabled in a pool. | [optional] [default to false]
-**override_host** | **string** | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] 
+**override_host** | **string** | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [default to &#39;null&#39;]
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

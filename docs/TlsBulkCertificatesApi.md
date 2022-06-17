@@ -1,8 +1,8 @@
-# Fastly::TlsBulkCertificatesApi
+# WebService::Fastly::TlsBulkCertificatesApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TlsBulkCertificatesApi;
+use WebService::Fastly::Object::TlsBulkCertificatesApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Destroy a certificate. This disables TLS for all domains listed as SAN entries.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsBulkCertificatesApi;
-my $api_instance = Fastly::TlsBulkCertificatesApi->new(
+use WebService::Fastly::TlsBulkCertificatesApi;
+my $api_instance = WebService::Fastly::TlsBulkCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -76,8 +76,8 @@ Retrieve a single certificate.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsBulkCertificatesApi;
-my $api_instance = Fastly::TlsBulkCertificatesApi->new(
+use WebService::Fastly::TlsBulkCertificatesApi;
+my $api_instance = WebService::Fastly::TlsBulkCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -127,8 +127,8 @@ List all certificates.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsBulkCertificatesApi;
-my $api_instance = Fastly::TlsBulkCertificatesApi->new(
+use WebService::Fastly::TlsBulkCertificatesApi;
+my $api_instance = WebService::Fastly::TlsBulkCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -184,8 +184,8 @@ Replace a certificate with a newly reissued certificate. By using this endpoint,
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsBulkCertificatesApi;
-my $api_instance = Fastly::TlsBulkCertificatesApi->new(
+use WebService::Fastly::TlsBulkCertificatesApi;
+my $api_instance = WebService::Fastly::TlsBulkCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -194,7 +194,7 @@ my $api_instance = Fastly::TlsBulkCertificatesApi->new(
 );
 
 my $certificate_id = "certificate_id_example"; # string | Alphanumeric string identifying a TLS bulk certificate.
-my $tls_bulk_certificate = Fastly::Object::TlsBulkCertificate->new(); # TlsBulkCertificate | 
+my $tls_bulk_certificate = WebService::Fastly::Object::TlsBulkCertificate->new(); # TlsBulkCertificate | 
 
 eval {
     my $result = $api_instance->update_bulk_tls_cert(certificate_id => $certificate_id, tls_bulk_certificate => $tls_bulk_certificate);
@@ -237,8 +237,8 @@ Upload a new certificate. TLS domains are automatically enabled upon certificate
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsBulkCertificatesApi;
-my $api_instance = Fastly::TlsBulkCertificatesApi->new(
+use WebService::Fastly::TlsBulkCertificatesApi;
+my $api_instance = WebService::Fastly::TlsBulkCertificatesApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -246,7 +246,7 @@ my $api_instance = Fastly::TlsBulkCertificatesApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $tls_bulk_certificate = Fastly::Object::TlsBulkCertificate->new(); # TlsBulkCertificate | 
+my $tls_bulk_certificate = WebService::Fastly::Object::TlsBulkCertificate->new(); # TlsBulkCertificate | 
 
 eval {
     my $result = $api_instance->upload_tls_bulk_cert(tls_bulk_certificate => $tls_bulk_certificate);

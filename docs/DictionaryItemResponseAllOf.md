@@ -1,8 +1,8 @@
-# Fastly::Object::DictionaryItemResponseAllOf
+# WebService::Fastly::Object::DictionaryItemResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::DictionaryItemResponseAllOf;
+use WebService::Fastly::Object::DictionaryItemResponseAllOf;
 ```
 
 ## Properties

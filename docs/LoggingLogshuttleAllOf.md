@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingLogshuttleAllOf
+# WebService::Fastly::Object::LoggingLogshuttleAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingLogshuttleAllOf;
+use WebService::Fastly::Object::LoggingLogshuttleAllOf;
 ```
 
 ## Properties

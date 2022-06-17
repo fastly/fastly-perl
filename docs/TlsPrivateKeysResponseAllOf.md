@@ -1,8 +1,8 @@
-# Fastly::Object::TlsPrivateKeysResponseAllOf
+# WebService::Fastly::Object::TlsPrivateKeysResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsPrivateKeysResponseAllOf;
+use WebService::Fastly::Object::TlsPrivateKeysResponseAllOf;
 ```
 
 ## Properties

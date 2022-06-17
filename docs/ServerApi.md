@@ -1,8 +1,8 @@
-# Fastly::ServerApi
+# WebService::Fastly::ServerApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ServerApi;
+use WebService::Fastly::Object::ServerApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Creates a single server for a particular service and pool.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServerApi;
-my $api_instance = Fastly::ServerApi->new(
+use WebService::Fastly::ServerApi;
+my $api_instance = WebService::Fastly::ServerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -43,7 +43,7 @@ my $port = 80; # int | Port number. Setting port `443` does not force TLS. Set `
 my $address = "address_example"; # string | A hostname, IPv4, or IPv6 address for the server. Required.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $disabled = false; # boolean | Allows servers to be enabled and disabled in a pool.
-my $override_host = "override_host_example"; # string | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
+my $override_host = 'null'; # string | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
 
 eval {
     my $result = $api_instance->create_pool_server(service_id => $service_id, pool_id => $pool_id, weight => $weight, max_conn => $max_conn, port => $port, address => $address, comment => $comment, disabled => $disabled, override_host => $override_host);
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
  **address** | **string**| A hostname, IPv4, or IPv6 address for the server. Required. | [optional] 
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **disabled** | **boolean**| Allows servers to be enabled and disabled in a pool. | [optional] [default to false]
- **override_host** | **string**| The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] 
+ **override_host** | **string**| The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [default to &#39;null&#39;]
 
 ### Return type
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_pool_server**
-> DeleteAcl200Response delete_pool_server(service_id => $service_id, pool_id => $pool_id, server_id => $server_id)
+> InlineResponse200 delete_pool_server(service_id => $service_id, pool_id => $pool_id, server_id => $server_id)
 
 Delete a server from a pool
 
@@ -93,8 +93,8 @@ Deletes a single server for a particular service and pool.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServerApi;
-my $api_instance = Fastly::ServerApi->new(
+use WebService::Fastly::ServerApi;
+my $api_instance = WebService::Fastly::ServerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ Gets a single server for a particular service and pool.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServerApi;
-my $api_instance = Fastly::ServerApi->new(
+use WebService::Fastly::ServerApi;
+my $api_instance = WebService::Fastly::ServerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ Lists all servers for a particular service and pool.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServerApi;
-my $api_instance = Fastly::ServerApi->new(
+use WebService::Fastly::ServerApi;
+my $api_instance = WebService::Fastly::ServerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Updates a single server for a particular service and pool.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ServerApi;
-my $api_instance = Fastly::ServerApi->new(
+use WebService::Fastly::ServerApi;
+my $api_instance = WebService::Fastly::ServerApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -274,7 +274,7 @@ my $port = 80; # int | Port number. Setting port `443` does not force TLS. Set `
 my $address = "address_example"; # string | A hostname, IPv4, or IPv6 address for the server. Required.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $disabled = false; # boolean | Allows servers to be enabled and disabled in a pool.
-my $override_host = "override_host_example"; # string | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
+my $override_host = 'null'; # string | The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting.
 
 eval {
     my $result = $api_instance->update_pool_server(service_id => $service_id, pool_id => $pool_id, server_id => $server_id, weight => $weight, max_conn => $max_conn, port => $port, address => $address, comment => $comment, disabled => $disabled, override_host => $override_host);
@@ -298,7 +298,7 @@ Name | Type | Description  | Notes
  **address** | **string**| A hostname, IPv4, or IPv6 address for the server. Required. | [optional] 
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **disabled** | **boolean**| Allows servers to be enabled and disabled in a pool. | [optional] [default to false]
- **override_host** | **string**| The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] 
+ **override_host** | **string**| The hostname to override the Host header. Defaults to `null` meaning no override of the Host header if not set. This setting can also be added to a Pool definition. However, the server setting will override the Pool setting. | [optional] [default to &#39;null&#39;]
 
 ### Return type
 

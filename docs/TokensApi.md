@@ -1,8 +1,8 @@
-# Fastly::TokensApi
+# WebService::Fastly::TokensApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TokensApi;
+use WebService::Fastly::Object::TokensApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Get a single token based on the access_token used in the request.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TokensApi;
-my $api_instance = Fastly::TokensApi->new(
+use WebService::Fastly::TokensApi;
+my $api_instance = WebService::Fastly::TokensApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -73,8 +73,8 @@ List all tokens belonging to a specific customer.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TokensApi;
-my $api_instance = Fastly::TokensApi->new(
+use WebService::Fastly::TokensApi;
+my $api_instance = WebService::Fastly::TokensApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -124,8 +124,8 @@ List all tokens belonging to the authenticated user.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TokensApi;
-my $api_instance = Fastly::TokensApi->new(
+use WebService::Fastly::TokensApi;
+my $api_instance = WebService::Fastly::TokensApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -171,8 +171,8 @@ Revoke a specific token by its id.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TokensApi;
-my $api_instance = Fastly::TokensApi->new(
+use WebService::Fastly::TokensApi;
+my $api_instance = WebService::Fastly::TokensApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -221,8 +221,8 @@ Revoke a token that is used to authenticate the request.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TokensApi;
-my $api_instance = Fastly::TokensApi->new(
+use WebService::Fastly::TokensApi;
+my $api_instance = WebService::Fastly::TokensApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

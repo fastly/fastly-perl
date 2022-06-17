@@ -1,8 +1,8 @@
-# Fastly::Object::RealtimeMeasurements
+# WebService::Fastly::Object::RealtimeMeasurements
 
 ## Load the model package
 ```perl
-use Fastly::Object::RealtimeMeasurements;
+use WebService::Fastly::Object::RealtimeMeasurements;
 ```
 
 ## Properties

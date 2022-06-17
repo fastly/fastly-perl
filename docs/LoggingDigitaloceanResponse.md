@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingDigitaloceanResponse
+# WebService::Fastly::Object::LoggingDigitaloceanResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingDigitaloceanResponse;
+use WebService::Fastly::Object::LoggingDigitaloceanResponse;
 ```
 
 ## Properties
@@ -22,13 +22,13 @@ Name | Type | Description | Notes
 **access_key** | **string** | Your DigitalOcean Spaces account access key. | [optional] 
 **secret_key** | **string** | Your DigitalOcean Spaces account secret key. | [optional] 
 **domain** | **string** | The domain of the DigitalOcean Spaces endpoint. | [optional] [default to &#39;nyc3.digitaloceanspaces.com&#39;]
-**path** | **string** | The path to upload logs to. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] [default to &#39;null&#39;]
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

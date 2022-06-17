@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingAzureblobResponse
+# WebService::Fastly::Object::LoggingAzureblobResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingAzureblobResponse;
+use WebService::Fastly::Object::LoggingAzureblobResponse;
 ```
 
 ## Properties
@@ -18,17 +18,17 @@ Name | Type | Description | Notes
 **period** | **int** | How frequently log files are finalized so they can be available for reading (in seconds). | [optional] [default to 3600]
 **gzip_level** | **int** | The level of gzip encoding when sending logs (default `0`, no compression). Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] [default to 0]
 **compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
-**path** | **string** | The path to upload logs to. | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] [default to &#39;null&#39;]
 **account_name** | **string** | The unique Azure Blob Storage namespace in which your data objects are stored. Required. | [optional] 
 **container** | **string** | The name of the Azure Blob Storage container in which to store logs. Required. | [optional] 
 **sas_token** | **string** | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **file_max_bytes** | **int** | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipMemberTlsBulkCertificate
+# WebService::Fastly::Object::RelationshipMemberTlsBulkCertificate
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipMemberTlsBulkCertificate;
+use WebService::Fastly::Object::RelationshipMemberTlsBulkCertificate;
 ```
 
 ## Properties

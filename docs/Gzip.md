@@ -1,8 +1,8 @@
-# Fastly::Object::Gzip
+# WebService::Fastly::Object::Gzip
 
 ## Load the model package
 ```perl
-use Fastly::Object::Gzip;
+use WebService::Fastly::Object::Gzip;
 ```
 
 ## Properties

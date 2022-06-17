@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingCommon
+# WebService::Fastly::Object::LoggingCommon
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingCommon;
+use WebService::Fastly::Object::LoggingCommon;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::HistoricalApi
+# WebService::Fastly::HistoricalApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::HistoricalApi;
+use WebService::Fastly::Object::HistoricalApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -30,8 +30,8 @@ Fetches historical stats for each of your Fastly services and groups the results
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -87,8 +87,8 @@ Fetches historical stats information aggregated across all of your Fastly servic
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -144,8 +144,8 @@ Fetches the specified field from the historical stats for each of your services 
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ Fetches historical stats for a given service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -262,8 +262,8 @@ Fetches the specified field from the historical stats for a given service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -323,8 +323,8 @@ Fetches the list of codes for regions that are covered by the Fastly CDN service
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -370,8 +370,8 @@ Returns usage information aggregated across all Fastly services and grouped by r
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -423,8 +423,8 @@ Returns month-to-date usage details for a given month and year. Usage details ar
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -478,8 +478,8 @@ Returns usage information aggregated by service and grouped by service and regio
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HistoricalApi;
-my $api_instance = Fastly::HistoricalApi->new(
+use WebService::Fastly::HistoricalApi;
+my $api_instance = WebService::Fastly::HistoricalApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

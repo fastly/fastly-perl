@@ -1,8 +1,8 @@
-# Fastly::Object::DictionaryItem
+# WebService::Fastly::Object::DictionaryItem
 
 ## Load the model package
 ```perl
-use Fastly::Object::DictionaryItem;
+use WebService::Fastly::Object::DictionaryItem;
 ```
 
 ## Properties

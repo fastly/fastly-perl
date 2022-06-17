@@ -1,8 +1,8 @@
-# Fastly::DirectorBackendApi
+# WebService::Fastly::DirectorBackendApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DirectorBackendApi;
+use WebService::Fastly::Object::DirectorBackendApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Establishes a relationship between a Backend and a Director. The Backend is then
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorBackendApi;
-my $api_instance = Fastly::DirectorBackendApi->new(
+use WebService::Fastly::DirectorBackendApi;
+my $api_instance = WebService::Fastly::DirectorBackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_director_backend**
-> DeleteAcl200Response delete_director_backend(director_name => $director_name, service_id => $service_id, version_id => $version_id, backend_name => $backend_name)
+> InlineResponse200 delete_director_backend(director_name => $director_name, service_id => $service_id, version_id => $version_id, backend_name => $backend_name)
 
 Delete a director-backend relationship
 
@@ -81,8 +81,8 @@ Deletes the relationship between a Backend and a Director. The Backend is no lon
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorBackendApi;
-my $api_instance = Fastly::DirectorBackendApi->new(
+use WebService::Fastly::DirectorBackendApi;
+my $api_instance = WebService::Fastly::DirectorBackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -138,8 +138,8 @@ Returns the relationship between a Backend and a Director. If the Backend has be
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorBackendApi;
-my $api_instance = Fastly::DirectorBackendApi->new(
+use WebService::Fastly::DirectorBackendApi;
+my $api_instance = WebService::Fastly::DirectorBackendApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

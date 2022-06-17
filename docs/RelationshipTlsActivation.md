@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipTlsActivation
+# WebService::Fastly::Object::RelationshipTlsActivation
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipTlsActivation;
+use WebService::Fastly::Object::RelationshipTlsActivation;
 ```
 
 ## Properties

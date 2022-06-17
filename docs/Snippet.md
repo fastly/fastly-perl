@@ -1,8 +1,8 @@
-# Fastly::Object::Snippet
+# WebService::Fastly::Object::Snippet
 
 ## Load the model package
 ```perl
-use Fastly::Object::Snippet;
+use WebService::Fastly::Object::Snippet;
 ```
 
 ## Properties

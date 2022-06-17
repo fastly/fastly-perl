@@ -1,8 +1,8 @@
-# Fastly::Object::SchemasSnippetResponse
+# WebService::Fastly::Object::SchemasSnippetResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::SchemasSnippetResponse;
+use WebService::Fastly::Object::SchemasSnippetResponse;
 ```
 
 ## Properties
@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] 
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional] 
 **priority** | **int** | Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

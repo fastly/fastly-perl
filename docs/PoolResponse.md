@@ -1,20 +1,20 @@
-# Fastly::Object::PoolResponse
+# WebService::Fastly::Object::PoolResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::PoolResponse;
+use WebService::Fastly::Object::PoolResponse;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tls_ca_cert** | **string** | A secure certificate to authenticate a server with. Must be in PEM format. | [optional] 
-**tls_client_cert** | **string** | The client certificate used to make authenticated requests. Must be in PEM format. | [optional] 
-**tls_client_key** | **string** | The client private key used to make authenticated requests. Must be in PEM format. | [optional] 
-**tls_cert_hostname** | **string** | The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). | [optional] 
+**tls_ca_cert** | **string** | A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+**tls_client_cert** | **string** | The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+**tls_client_key** | **string** | The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
+**tls_cert_hostname** | **string** | The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). | [optional] [default to &#39;null&#39;]
 **use_tls** | **int** | Whether to use TLS. | [optional] [default to 0]
 **name** | **string** | Name for the Pool. | [optional] 
-**shield** | **string** | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] 
+**shield** | **string** | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
 **request_condition** | **string** | Condition which, if met, will select this configuration during a request. Optional. | [optional] 
 **max_conn_default** | **int** | Maximum number of connections. Optional. | [optional] [default to 200]
 **connect_timeout** | **int** | How long to wait for a timeout in milliseconds. Optional. | [optional] 
@@ -28,12 +28,12 @@ Name | Type | Description | Notes
 **healthcheck** | **string** | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] 
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **type** | **string** | What type of load balance group to use. | [optional] 
-**override_host** | **string** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] 
+**override_host** | **string** | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [default to &#39;null&#39;]
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 **id** | **string** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

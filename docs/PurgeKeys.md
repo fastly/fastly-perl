@@ -1,8 +1,8 @@
-# Fastly::Object::PurgeKeys
+# WebService::Fastly::Object::PurgeKeys
 
 ## Load the model package
 ```perl
-use Fastly::Object::PurgeKeys;
+use WebService::Fastly::Object::PurgeKeys;
 ```
 
 ## Properties

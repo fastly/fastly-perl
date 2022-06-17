@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceAuthorization
+# WebService::Fastly::Object::ServiceAuthorization
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceAuthorization;
+use WebService::Fastly::Object::ServiceAuthorization;
 ```
 
 ## Properties

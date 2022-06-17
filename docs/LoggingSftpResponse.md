@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingSftpResponse
+# WebService::Fastly::Object::LoggingSftpResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingSftpResponse;
+use WebService::Fastly::Object::LoggingSftpResponse;
 ```
 
 ## Properties
@@ -21,16 +21,16 @@ Name | Type | Description | Notes
 **address** | **string** | A hostname or IPv4 address. | [optional] 
 **port** | [**AnyType**](.md) | The port number. | [optional] 
 **password** | **string** | The password for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] 
-**path** | **string** | The path to upload logs to. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
-**secret_key** | **string** | The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] 
+**path** | **string** | The path to upload logs to. | [optional] [default to &#39;null&#39;]
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
+**secret_key** | **string** | The SSH private key for the server. If both `password` and `secret_key` are passed, `secret_key` will be used in preference. | [optional] [default to &#39;null&#39;]
 **ssh_known_hosts** | **string** | A list of host keys for all hosts we can connect to over SFTP. | [optional] 
 **user** | **string** | The username for the server. | [optional] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,8 +1,8 @@
-# Fastly::Object::HistoricalUsageResults
+# WebService::Fastly::Object::HistoricalUsageResults
 
 ## Load the model package
 ```perl
-use Fastly::Object::HistoricalUsageResults;
+use WebService::Fastly::Object::HistoricalUsageResults;
 ```
 
 ## Properties

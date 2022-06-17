@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingScalyr
+# WebService::Fastly::Object::LoggingScalyr
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingScalyr;
+use WebService::Fastly::Object::LoggingScalyr;
 ```
 
 ## Properties

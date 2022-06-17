@@ -1,8 +1,8 @@
-# Fastly::Object::DiffResponse
+# WebService::Fastly::Object::DiffResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::DiffResponse;
+use WebService::Fastly::Object::DiffResponse;
 ```
 
 ## Properties

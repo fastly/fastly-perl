@@ -1,8 +1,8 @@
-# Fastly::TlsConfigurationsApi
+# WebService::Fastly::TlsConfigurationsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::TlsConfigurationsApi;
+use WebService::Fastly::Object::TlsConfigurationsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Show a TLS configuration.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsConfigurationsApi;
-my $api_instance = Fastly::TlsConfigurationsApi->new(
+use WebService::Fastly::TlsConfigurationsApi;
+my $api_instance = WebService::Fastly::TlsConfigurationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -77,8 +77,8 @@ List all TLS configurations.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsConfigurationsApi;
-my $api_instance = Fastly::TlsConfigurationsApi->new(
+use WebService::Fastly::TlsConfigurationsApi;
+my $api_instance = WebService::Fastly::TlsConfigurationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -134,8 +134,8 @@ Update a TLS configuration.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::TlsConfigurationsApi;
-my $api_instance = Fastly::TlsConfigurationsApi->new(
+use WebService::Fastly::TlsConfigurationsApi;
+my $api_instance = WebService::Fastly::TlsConfigurationsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -144,7 +144,7 @@ my $api_instance = Fastly::TlsConfigurationsApi->new(
 );
 
 my $tls_configuration_id = "tls_configuration_id_example"; # string | Alphanumeric string identifying a TLS configuration.
-my $tls_configuration = Fastly::Object::TlsConfiguration->new(); # TlsConfiguration | 
+my $tls_configuration = WebService::Fastly::Object::TlsConfiguration->new(); # TlsConfiguration | 
 
 eval {
     my $result = $api_instance->update_tls_config(tls_configuration_id => $tls_configuration_id, tls_configuration => $tls_configuration);

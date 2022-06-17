@@ -1,8 +1,8 @@
-# Fastly::Object::ServiceDetailAllOf
+# WebService::Fastly::Object::ServiceDetailAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::ServiceDetailAllOf;
+use WebService::Fastly::Object::ServiceDetailAllOf;
 ```
 
 ## Properties

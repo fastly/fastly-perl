@@ -1,8 +1,8 @@
-# Fastly::LoggingDigitaloceanApi
+# WebService::Fastly::LoggingDigitaloceanApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::LoggingDigitaloceanApi;
+use WebService::Fastly::Object::LoggingDigitaloceanApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a DigitalOcean Space for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDigitaloceanApi;
-my $api_instance = Fastly::LoggingDigitaloceanApi->new(
+use WebService::Fastly::LoggingDigitaloceanApi;
+my $api_instance = WebService::Fastly::LoggingDigitaloceanApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -51,8 +51,8 @@ my $bucket_name = "bucket_name_example"; # string | The name of the DigitalOcean
 my $access_key = "access_key_example"; # string | Your DigitalOcean Spaces account access key.
 my $secret_key = "secret_key_example"; # string | Your DigitalOcean Spaces account secret key.
 my $domain = 'nyc3.digitaloceanspaces.com'; # string | The domain of the DigitalOcean Spaces endpoint.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 
 eval {
     my $result = $api_instance->create_log_digocean(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, message_type => $message_type, timestamp_format => $timestamp_format, period => $period, gzip_level => $gzip_level, compression_codec => $compression_codec, bucket_name => $bucket_name, access_key => $access_key, secret_key => $secret_key, domain => $domain, path => $path, public_key => $public_key);
@@ -83,8 +83,8 @@ Name | Type | Description  | Notes
  **access_key** | **string**| Your DigitalOcean Spaces account access key. | [optional] 
  **secret_key** | **string**| Your DigitalOcean Spaces account secret key. | [optional] 
  **domain** | **string**| The domain of the DigitalOcean Spaces endpoint. | [optional] [default to &#39;nyc3.digitaloceanspaces.com&#39;]
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 
 ### Return type
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_log_digocean**
-> DeleteAcl200Response delete_log_digocean(service_id => $service_id, version_id => $version_id, logging_digitalocean_name => $logging_digitalocean_name)
+> InlineResponse200 delete_log_digocean(service_id => $service_id, version_id => $version_id, logging_digitalocean_name => $logging_digitalocean_name)
 
 Delete a DigitalOcean Spaces log endpoint
 
@@ -111,8 +111,8 @@ Delete the DigitalOcean Space for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDigitaloceanApi;
-my $api_instance = Fastly::LoggingDigitaloceanApi->new(
+use WebService::Fastly::LoggingDigitaloceanApi;
+my $api_instance = WebService::Fastly::LoggingDigitaloceanApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -166,8 +166,8 @@ Get the DigitalOcean Space for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDigitaloceanApi;
-my $api_instance = Fastly::LoggingDigitaloceanApi->new(
+use WebService::Fastly::LoggingDigitaloceanApi;
+my $api_instance = WebService::Fastly::LoggingDigitaloceanApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -221,8 +221,8 @@ List all of the DigitalOcean Spaces for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDigitaloceanApi;
-my $api_instance = Fastly::LoggingDigitaloceanApi->new(
+use WebService::Fastly::LoggingDigitaloceanApi;
+my $api_instance = WebService::Fastly::LoggingDigitaloceanApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -274,8 +274,8 @@ Update the DigitalOcean Space for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::LoggingDigitaloceanApi;
-my $api_instance = Fastly::LoggingDigitaloceanApi->new(
+use WebService::Fastly::LoggingDigitaloceanApi;
+my $api_instance = WebService::Fastly::LoggingDigitaloceanApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -300,8 +300,8 @@ my $bucket_name = "bucket_name_example"; # string | The name of the DigitalOcean
 my $access_key = "access_key_example"; # string | Your DigitalOcean Spaces account access key.
 my $secret_key = "secret_key_example"; # string | Your DigitalOcean Spaces account secret key.
 my $domain = 'nyc3.digitaloceanspaces.com'; # string | The domain of the DigitalOcean Spaces endpoint.
-my $path = "path_example"; # string | The path to upload logs to.
-my $public_key = "public_key_example"; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
+my $path = 'null'; # string | The path to upload logs to.
+my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
 
 eval {
     my $result = $api_instance->update_log_digocean(service_id => $service_id, version_id => $version_id, logging_digitalocean_name => $logging_digitalocean_name, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, message_type => $message_type, timestamp_format => $timestamp_format, period => $period, gzip_level => $gzip_level, compression_codec => $compression_codec, bucket_name => $bucket_name, access_key => $access_key, secret_key => $secret_key, domain => $domain, path => $path, public_key => $public_key);
@@ -333,8 +333,8 @@ Name | Type | Description  | Notes
  **access_key** | **string**| Your DigitalOcean Spaces account access key. | [optional] 
  **secret_key** | **string**| Your DigitalOcean Spaces account secret key. | [optional] 
  **domain** | **string**| The domain of the DigitalOcean Spaces endpoint. | [optional] [default to &#39;nyc3.digitaloceanspaces.com&#39;]
- **path** | **string**| The path to upload logs to. | [optional] 
- **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+ **path** | **string**| The path to upload logs to. | [optional] [default to &#39;null&#39;]
+ **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 
 ### Return type
 

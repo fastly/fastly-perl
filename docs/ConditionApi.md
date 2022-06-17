@@ -1,8 +1,8 @@
-# Fastly::ConditionApi
+# WebService::Fastly::ConditionApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::ConditionApi;
+use WebService::Fastly::Object::ConditionApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Creates a new condition.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ConditionApi;
-my $api_instance = Fastly::ConditionApi->new(
+use WebService::Fastly::ConditionApi;
+my $api_instance = WebService::Fastly::ConditionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_condition**
-> DeleteAcl200Response delete_condition(service_id => $service_id, version_id => $version_id, condition_name => $condition_name)
+> InlineResponse200 delete_condition(service_id => $service_id, version_id => $version_id, condition_name => $condition_name)
 
 Delete a condition
 
@@ -93,8 +93,8 @@ Deletes the specified condition.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ConditionApi;
-my $api_instance = Fastly::ConditionApi->new(
+use WebService::Fastly::ConditionApi;
+my $api_instance = WebService::Fastly::ConditionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,8 +148,8 @@ Gets the specified condition.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ConditionApi;
-my $api_instance = Fastly::ConditionApi->new(
+use WebService::Fastly::ConditionApi;
+my $api_instance = WebService::Fastly::ConditionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -203,8 +203,8 @@ Gets all conditions for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ConditionApi;
-my $api_instance = Fastly::ConditionApi->new(
+use WebService::Fastly::ConditionApi;
+my $api_instance = WebService::Fastly::ConditionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -256,8 +256,8 @@ Updates the specified condition.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::ConditionApi;
-my $api_instance = Fastly::ConditionApi->new(
+use WebService::Fastly::ConditionApi;
+my $api_instance = WebService::Fastly::ConditionApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::BillingEstimateResponse
+# WebService::Fastly::Object::BillingEstimateResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::BillingEstimateResponse;
+use WebService::Fastly::Object::BillingEstimateResponse;
 ```
 
 ## Properties
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **customer_id** | **string** |  | [optional] [readonly] 
 **status** | [**BillingStatus**](BillingStatus.md) |  | [optional] 
 **total** | [**BillingTotal**](BillingTotal.md) |  | [optional] 
-**regions** | [**HASH[string,BillingRegionsValue]**](BillingRegionsValue.md) |  | [optional] 
+**regions** | **HASH[string,HASH[string,object]]** |  | [optional] 
 **lines** | [**ARRAY[BillingEstimateResponseAllOfLines]**](BillingEstimateResponseAllOfLines.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

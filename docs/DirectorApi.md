@@ -1,8 +1,8 @@
-# Fastly::DirectorApi
+# WebService::Fastly::DirectorApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DirectorApi;
+use WebService::Fastly::Object::DirectorApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -25,8 +25,8 @@ Create a director for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorApi;
-my $api_instance = Fastly::DirectorApi->new(
+use WebService::Fastly::DirectorApi;
+my $api_instance = WebService::Fastly::DirectorApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -36,12 +36,12 @@ my $api_instance = Fastly::DirectorApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
-my $backends = [(new Fastly.Backend())]; # ARRAY[Backend] | List of backends associated to a director.
+my $backends = [(new WebService::Fastly.Backend())]; # ARRAY[Backend] | List of backends associated to a director.
 my $capacity = 56; # int | Unused.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $name = "name_example"; # string | Name for the Director.
 my $quorum = 75; # int | The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`.
-my $shield = "shield_example"; # string | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+my $shield = 'null'; # string | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
 my $type = 1; # int | What type of load balance group to use.
 my $retries = 5; # int | How many backends to search if it fails.
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **name** | **string**| Name for the Director. | [optional] 
  **quorum** | **int**| The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`. | [optional] [default to 75]
- **shield** | **string**| Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] 
+ **shield** | **string**| Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
  **type** | **int**| What type of load balance group to use. | [optional] [default to 1]
  **retries** | **int**| How many backends to search if it fails. | [optional] [default to 5]
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_director**
-> DeleteAcl200Response delete_director(service_id => $service_id, version_id => $version_id, director_name => $director_name)
+> InlineResponse200 delete_director(service_id => $service_id, version_id => $version_id, director_name => $director_name)
 
 Delete a director
 
@@ -94,8 +94,8 @@ Delete the director for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorApi;
-my $api_instance = Fastly::DirectorApi->new(
+use WebService::Fastly::DirectorApi;
+my $api_instance = WebService::Fastly::DirectorApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -149,8 +149,8 @@ Get the director for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorApi;
-my $api_instance = Fastly::DirectorApi->new(
+use WebService::Fastly::DirectorApi;
+my $api_instance = WebService::Fastly::DirectorApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -204,8 +204,8 @@ List the directors for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DirectorApi;
-my $api_instance = Fastly::DirectorApi->new(
+use WebService::Fastly::DirectorApi;
+my $api_instance = WebService::Fastly::DirectorApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

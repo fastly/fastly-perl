@@ -1,8 +1,8 @@
-# Fastly::Object::SchemasUserResponse
+# WebService::Fastly::Object::SchemasUserResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::SchemasUserResponse;
+use WebService::Fastly::Object::SchemasUserResponse;
 ```
 
 ## Properties

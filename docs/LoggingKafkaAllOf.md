@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingKafkaAllOf
+# WebService::Fastly::Object::LoggingKafkaAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingKafkaAllOf;
+use WebService::Fastly::Object::LoggingKafkaAllOf;
 ```
 
 ## Properties

@@ -1,8 +1,8 @@
-# Fastly::HeaderApi
+# WebService::Fastly::HeaderApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::HeaderApi;
+use WebService::Fastly::Object::HeaderApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Creates a new Header object.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HeaderApi;
-my $api_instance = Fastly::HeaderApi->new(
+use WebService::Fastly::HeaderApi;
+my $api_instance = WebService::Fastly::HeaderApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_header_object**
-> DeleteAcl200Response delete_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name)
+> InlineResponse200 delete_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name)
 
 Delete a Header object
 
@@ -103,8 +103,8 @@ Deletes a Header object by name.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HeaderApi;
-my $api_instance = Fastly::HeaderApi->new(
+use WebService::Fastly::HeaderApi;
+my $api_instance = WebService::Fastly::HeaderApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -158,8 +158,8 @@ Retrieves a Header object by name.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HeaderApi;
-my $api_instance = Fastly::HeaderApi->new(
+use WebService::Fastly::HeaderApi;
+my $api_instance = WebService::Fastly::HeaderApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -213,8 +213,8 @@ Retrieves all Header objects for a particular Version of a Service.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HeaderApi;
-my $api_instance = Fastly::HeaderApi->new(
+use WebService::Fastly::HeaderApi;
+my $api_instance = WebService::Fastly::HeaderApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -266,8 +266,8 @@ Modifies an existing Header object by name.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::HeaderApi;
-my $api_instance = Fastly::HeaderApi->new(
+use WebService::Fastly::HeaderApi;
+my $api_instance = WebService::Fastly::HeaderApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

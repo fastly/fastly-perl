@@ -1,8 +1,8 @@
-# Fastly::PublicIpListApi
+# WebService::Fastly::PublicIpListApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::PublicIpListApi;
+use WebService::Fastly::Object::PublicIpListApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -22,8 +22,8 @@ List the public IP addresses for the Fastly network.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::PublicIpListApi;
-my $api_instance = Fastly::PublicIpListApi->new(
+use WebService::Fastly::PublicIpListApi;
+my $api_instance = WebService::Fastly::PublicIpListApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

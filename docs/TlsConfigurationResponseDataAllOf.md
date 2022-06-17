@@ -1,8 +1,8 @@
-# Fastly::Object::TlsConfigurationResponseDataAllOf
+# WebService::Fastly::Object::TlsConfigurationResponseDataAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::TlsConfigurationResponseDataAllOf;
+use WebService::Fastly::Object::TlsConfigurationResponseDataAllOf;
 ```
 
 ## Properties

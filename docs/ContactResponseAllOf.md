@@ -1,8 +1,8 @@
-# Fastly::Object::ContactResponseAllOf
+# WebService::Fastly::Object::ContactResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::ContactResponseAllOf;
+use WebService::Fastly::Object::ContactResponseAllOf;
 ```
 
 ## Properties

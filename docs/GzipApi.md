@@ -1,8 +1,8 @@
-# Fastly::GzipApi
+# WebService::Fastly::GzipApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::GzipApi;
+use WebService::Fastly::Object::GzipApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -26,8 +26,8 @@ Create a named gzip configuration on a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::GzipApi;
-my $api_instance = Fastly::GzipApi->new(
+use WebService::Fastly::GzipApi;
+my $api_instance = WebService::Fastly::GzipApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_gzip_config**
-> DeleteAcl200Response delete_gzip_config(service_id => $service_id, version_id => $version_id, gzip_name => $gzip_name)
+> InlineResponse200 delete_gzip_config(service_id => $service_id, version_id => $version_id, gzip_name => $gzip_name)
 
 Delete a gzip configuration
 
@@ -87,8 +87,8 @@ Delete a named gzip configuration on a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::GzipApi;
-my $api_instance = Fastly::GzipApi->new(
+use WebService::Fastly::GzipApi;
+my $api_instance = WebService::Fastly::GzipApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -142,8 +142,8 @@ Get the gzip configuration for a particular service, version, and name.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::GzipApi;
-my $api_instance = Fastly::GzipApi->new(
+use WebService::Fastly::GzipApi;
+my $api_instance = WebService::Fastly::GzipApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -197,8 +197,8 @@ List all gzip configurations for a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::GzipApi;
-my $api_instance = Fastly::GzipApi->new(
+use WebService::Fastly::GzipApi;
+my $api_instance = WebService::Fastly::GzipApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -250,8 +250,8 @@ Update a named gzip configuration on a particular service and version.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::GzipApi;
-my $api_instance = Fastly::GzipApi->new(
+use WebService::Fastly::GzipApi;
+my $api_instance = WebService::Fastly::GzipApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::TypeTlsConfiguration
+# WebService::Fastly::Object::TypeTlsConfiguration
 
 ## Load the model package
 ```perl
-use Fastly::Object::TypeTlsConfiguration;
+use WebService::Fastly::Object::TypeTlsConfiguration;
 ```
 
 ## Properties

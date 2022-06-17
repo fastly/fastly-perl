@@ -1,8 +1,8 @@
-# Fastly::DomainOwnershipsApi
+# WebService::Fastly::DomainOwnershipsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DomainOwnershipsApi;
+use WebService::Fastly::Object::DomainOwnershipsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **list_domain_ownerships**
-> ListDomainOwnerships200Response list_domain_ownerships()
+> InlineResponse2001 list_domain_ownerships()
 
 List domain-ownerships
 
@@ -22,8 +22,8 @@ List all domain-ownerships.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DomainOwnershipsApi;
-my $api_instance = Fastly::DomainOwnershipsApi->new(
+use WebService::Fastly::DomainOwnershipsApi;
+my $api_instance = WebService::Fastly::DomainOwnershipsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -46,7 +46,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ListDomainOwnerships200Response**](ListDomainOwnerships200Response.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 

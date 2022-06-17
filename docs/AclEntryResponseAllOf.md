@@ -1,8 +1,8 @@
-# Fastly::Object::AclEntryResponseAllOf
+# WebService::Fastly::Object::AclEntryResponseAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::AclEntryResponseAllOf;
+use WebService::Fastly::Object::AclEntryResponseAllOf;
 ```
 
 ## Properties

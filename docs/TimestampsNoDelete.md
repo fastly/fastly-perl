@@ -1,8 +1,8 @@
-# Fastly::Object::TimestampsNoDelete
+# WebService::Fastly::Object::TimestampsNoDelete
 
 ## Load the model package
 ```perl
-use Fastly::Object::TimestampsNoDelete;
+use WebService::Fastly::Object::TimestampsNoDelete;
 ```
 
 ## Properties

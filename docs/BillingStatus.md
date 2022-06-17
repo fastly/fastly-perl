@@ -1,8 +1,8 @@
-# Fastly::Object::BillingStatus
+# WebService::Fastly::Object::BillingStatus
 
 ## Load the model package
 ```perl
-use Fastly::Object::BillingStatus;
+use WebService::Fastly::Object::BillingStatus;
 ```
 
 ## Properties

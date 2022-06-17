@@ -1,8 +1,8 @@
-# Fastly::DocsApi
+# WebService::Fastly::DocsApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::DocsApi;
+use WebService::Fastly::Object::DocsApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -24,8 +24,8 @@ Gets all documentation associated with the Fastly API.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DocsApi;
-my $api_instance = Fastly::DocsApi->new(
+use WebService::Fastly::DocsApi;
+my $api_instance = WebService::Fastly::DocsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -71,8 +71,8 @@ Gets all documentation associated with a given Categorical Section where `sectio
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DocsApi;
-my $api_instance = Fastly::DocsApi->new(
+use WebService::Fastly::DocsApi;
+my $api_instance = WebService::Fastly::DocsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -123,8 +123,8 @@ Gets all documentation relating to a given 'Subject'.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::DocsApi;
-my $api_instance = Fastly::DocsApi->new(
+use WebService::Fastly::DocsApi;
+my $api_instance = WebService::Fastly::DocsApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},

@@ -1,8 +1,8 @@
-# Fastly::Object::RelationshipsForWafFirewallVersion
+# WebService::Fastly::Object::RelationshipsForWafFirewallVersion
 
 ## Load the model package
 ```perl
-use Fastly::Object::RelationshipsForWafFirewallVersion;
+use WebService::Fastly::Object::RelationshipsForWafFirewallVersion;
 ```
 
 ## Properties

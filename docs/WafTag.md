@@ -1,8 +1,8 @@
-# Fastly::Object::WafTag
+# WebService::Fastly::Object::WafTag
 
 ## Load the model package
 ```perl
-use Fastly::Object::WafTag;
+use WebService::Fastly::Object::WafTag;
 ```
 
 ## Properties

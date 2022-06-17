@@ -1,8 +1,8 @@
-# Fastly::Object::IamServiceGroupAllOf
+# WebService::Fastly::Object::IamServiceGroupAllOf
 
 ## Load the model package
 ```perl
-use Fastly::Object::IamServiceGroupAllOf;
+use WebService::Fastly::Object::IamServiceGroupAllOf;
 ```
 
 ## Properties

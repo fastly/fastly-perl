@@ -1,8 +1,8 @@
-# Fastly::AclEntryApi
+# WebService::Fastly::AclEntryApi
 
 ## Load the API package
 ```perl
-use Fastly::Object::AclEntryApi;
+use WebService::Fastly::Object::AclEntryApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **bulk_update_acl_entries**
-> DeleteAcl200Response bulk_update_acl_entries(service_id => $service_id, acl_id => $acl_id, bulk_update_acl_entries_request => $bulk_update_acl_entries_request)
+> InlineResponse200 bulk_update_acl_entries(service_id => $service_id, acl_id => $acl_id, bulk_update_acl_entries_request => $bulk_update_acl_entries_request)
 
 Update multiple ACL entries
 
@@ -27,8 +27,8 @@ Update multiple ACL entries on the same ACL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclEntryApi;
-my $api_instance = Fastly::AclEntryApi->new(
+use WebService::Fastly::AclEntryApi;
+my $api_instance = WebService::Fastly::AclEntryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -38,7 +38,7 @@ my $api_instance = Fastly::AclEntryApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $acl_id = "acl_id_example"; # string | Alphanumeric string identifying a ACL.
-my $bulk_update_acl_entries_request = Fastly::Object::BulkUpdateAclEntriesRequest->new(); # BulkUpdateAclEntriesRequest | 
+my $bulk_update_acl_entries_request = WebService::Fastly::Object::BulkUpdateAclEntriesRequest->new(); # BulkUpdateAclEntriesRequest | 
 
 eval {
     my $result = $api_instance->bulk_update_acl_entries(service_id => $service_id, acl_id => $acl_id, bulk_update_acl_entries_request => $bulk_update_acl_entries_request);
@@ -59,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -82,8 +82,8 @@ Add an ACL entry to an ACL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclEntryApi;
-my $api_instance = Fastly::AclEntryApi->new(
+use WebService::Fastly::AclEntryApi;
+my $api_instance = WebService::Fastly::AclEntryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -93,7 +93,7 @@ my $api_instance = Fastly::AclEntryApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $acl_id = "acl_id_example"; # string | Alphanumeric string identifying a ACL.
-my $acl_entry = Fastly::Object::AclEntry->new(); # AclEntry | 
+my $acl_entry = WebService::Fastly::Object::AclEntry->new(); # AclEntry | 
 
 eval {
     my $result = $api_instance->create_acl_entry(service_id => $service_id, acl_id => $acl_id, acl_entry => $acl_entry);
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_acl_entry**
-> DeleteAcl200Response delete_acl_entry(service_id => $service_id, acl_id => $acl_id, acl_entry_id => $acl_entry_id)
+> InlineResponse200 delete_acl_entry(service_id => $service_id, acl_id => $acl_id, acl_entry_id => $acl_entry_id)
 
 Delete an ACL entry
 
@@ -137,8 +137,8 @@ Delete an ACL entry from a specified ACL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclEntryApi;
-my $api_instance = Fastly::AclEntryApi->new(
+use WebService::Fastly::AclEntryApi;
+my $api_instance = WebService::Fastly::AclEntryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAcl200Response**](DeleteAcl200Response.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -192,8 +192,8 @@ Retrieve a single ACL entry.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclEntryApi;
-my $api_instance = Fastly::AclEntryApi->new(
+use WebService::Fastly::AclEntryApi;
+my $api_instance = WebService::Fastly::AclEntryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -247,8 +247,8 @@ List ACL entries for a specified ACL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclEntryApi;
-my $api_instance = Fastly::AclEntryApi->new(
+use WebService::Fastly::AclEntryApi;
+my $api_instance = WebService::Fastly::AclEntryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -308,8 +308,8 @@ Update an ACL entry for a specified ACL.
 ### Example
 ```perl
 use Data::Dumper;
-use Fastly::AclEntryApi;
-my $api_instance = Fastly::AclEntryApi->new(
+use WebService::Fastly::AclEntryApi;
+my $api_instance = WebService::Fastly::AclEntryApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -320,7 +320,7 @@ my $api_instance = Fastly::AclEntryApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $acl_id = "acl_id_example"; # string | Alphanumeric string identifying a ACL.
 my $acl_entry_id = "acl_entry_id_example"; # string | Alphanumeric string identifying an ACL Entry.
-my $acl_entry = Fastly::Object::AclEntry->new(); # AclEntry | 
+my $acl_entry = WebService::Fastly::Object::AclEntry->new(); # AclEntry | 
 
 eval {
     my $result = $api_instance->update_acl_entry(service_id => $service_id, acl_id => $acl_id, acl_entry_id => $acl_entry_id, acl_entry => $acl_entry);

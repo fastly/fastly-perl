@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingPlacement
+# WebService::Fastly::Object::LoggingPlacement
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingPlacement;
+use WebService::Fastly::Object::LoggingPlacement;
 ```
 
 ## Properties

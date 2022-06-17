@@ -1,8 +1,8 @@
-# Fastly::Object::LoggingGcsResponse
+# WebService::Fastly::Object::LoggingGcsResponse
 
 ## Load the model package
 ```perl
-use Fastly::Object::LoggingGcsResponse;
+use WebService::Fastly::Object::LoggingGcsResponse;
 ```
 
 ## Properties
@@ -22,12 +22,12 @@ Name | Type | Description | Notes
 **secret_key** | **string** | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Required. | [optional] 
 **bucket_name** | **string** | The name of the GCS bucket. | [optional] 
 **path** | **string** | The path to upload logs to. | [optional] 
-**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] 
+**public_key** | **string** | A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
-**service_id** | **string** | Alphanumeric string identifying the service. | [optional] 
-**version** | **int** | Integer identifying a service version. | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**version** | **int** |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
