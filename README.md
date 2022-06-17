@@ -2,16 +2,16 @@
 
 WebService::Fastly - an interface to most facets of the [Fastly API](https://developer.fastly.com/reference/api).
 
+# VERSION
+
+2.0.0-alpha1
+
 > ⚠️ This client library (`2.0.0-alpha1`)  is an early-access release. Features may change without notice. Use at your own risk.
 
 **We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 
 Read about the [Fastly Product Lifecycle](https://docs.fastly.com/products/fastly-product-lifecycle).
 
-
-# VERSION
-
-2.0.0-alpha1
 
 # SYNOPSIS
 
