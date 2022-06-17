@@ -341,6 +341,9 @@ sub update_params_for_auth {
         }
         elsif ($auth eq 'token') {
             my $api_key = $self->get_api_key_with_prefix('Fastly-Key');
+            if ($auth eq 'token') {
+                $api_key //= $ENV{'FASTLY_API_TOKEN'};
+            }
             if ($api_key) {
                 $header_params->{'Fastly-Key'} = $api_key;
             }
