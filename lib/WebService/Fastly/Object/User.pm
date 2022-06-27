@@ -86,7 +86,7 @@ sub init
 # return perl hash
 sub to_hash {
     my $self = shift;
-    my $_hash = decode_json(JSON->new->convert_blessed->encode($self));
+    my $_hash = decode_json(JSON->new->allow_blessed->convert_blessed->encode($self));
 
     return $_hash;
 }
@@ -96,9 +96,7 @@ sub TO_JSON {
     my $self = shift;
     my $_data = {};
     foreach my $_key (keys %{$self->attribute_map}) {
-        if (defined $self->{$_key}) {
-            $_data->{$self->attribute_map->{$_key}} = $self->{$_key};
-        }
+        $_data->{$self->attribute_map->{$_key}} = $self->{$_key};
     }
 
     return $_data;
@@ -164,9 +162,9 @@ __PACKAGE__->method_documentation({
     'login' => {
         datatype => 'string',
         base_name => 'login',
-        description => 'The login associated with the user (typically, an email address).',
+        description => '',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
     'name' => {
         datatype => 'string',
@@ -244,6 +242,7 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'login' => 'true',
 } );
 
 

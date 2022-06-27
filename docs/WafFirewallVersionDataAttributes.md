@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **allowed_request_content_type** | **string** | Allowed request content types. | [optional] [default to &#39;application/x-www-form-urlencoded|multipart/form-data|text/xml|application/xml|application/x-amf|application/json|text/plain&#39;]
 **allowed_request_content_type_charset** | **string** | Allowed request content type charset. | [optional] [default to &#39;utf-8|iso-8859-1|iso-8859-15|windows-1252&#39;]
 **arg_name_length** | **int** | The maximum allowed argument name length. | [optional] [default to 100]
-**arg_length** | **int** | The maximum number of arguments allowed. | [optional] [default to 400]
+**arg_length** | **int** | The maximum allowed length of an argument. | [optional] [default to 400]
 **combined_file_sizes** | **int** | The maximum allowed size of all files (in bytes). | [optional] [default to 10000000]
 **comment** | **string** | A freeform descriptive note. | [optional] 
 **critical_anomaly_score** | **int** | Score value to add for critical anomalies. | [optional] [default to 6]

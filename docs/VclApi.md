@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**get_custom_vcl_generated_highlighted**](VclApi.md#get_custom_vcl_generated_highlighted) | **GET** /service/{service_id}/version/{version_id}/generated_vcl/content | Get the generated VCL with syntax highlighting
 [**get_custom_vcl_highlighted**](VclApi.md#get_custom_vcl_highlighted) | **GET** /service/{service_id}/version/{version_id}/vcl/{vcl_name}/content | Get a custom VCL file with syntax highlighting
 [**get_custom_vcl_raw**](VclApi.md#get_custom_vcl_raw) | **GET** /service/{service_id}/version/{version_id}/vcl/{vcl_name}/download | Download a custom VCL file
+[**lint_vcl_for_service**](VclApi.md#lint_vcl_for_service) | **POST** /service/{service_id}/lint | Lint (validate) VCL using flags set for the service.
 [**list_custom_vcl**](VclApi.md#list_custom_vcl) | **GET** /service/{service_id}/version/{version_id}/vcl | List custom VCL files
 [**set_custom_vcl_main**](VclApi.md#set_custom_vcl_main) | **PUT** /service/{service_id}/version/{version_id}/vcl/{vcl_name}/main | Set a custom VCL file as main
 [**update_custom_vcl**](VclApi.md#update_custom_vcl) | **PUT** /service/{service_id}/version/{version_id}/vcl/{vcl_name} | Update a custom VCL file
@@ -457,6 +458,59 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **lint_vcl_for_service**
+> ValidatorResult lint_vcl_for_service(service_id => $service_id, inline_object => $inline_object)
+
+Lint (validate) VCL using flags set for the service.
+
+Services may have flags set by a Fastly employee or by the purchase of products as addons to the service, which modify the way VCL is interpreted by that service.  This endpoint validates the submitted VCL in the context of the specified service.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::VclApi;
+my $api_instance = WebService::Fastly::VclApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $inline_object = WebService::Fastly::Object::InlineObject->new(); # InlineObject | 
+
+eval {
+    my $result = $api_instance->lint_vcl_for_service(service_id => $service_id, inline_object => $inline_object);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling VclApi->lint_vcl_for_service: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **inline_object** | [**InlineObject**](InlineObject.md)|  | 
+
+### Return type
+
+[**ValidatorResult**](ValidatorResult.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

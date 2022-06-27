@@ -37,7 +37,7 @@ my $api_instance = WebService::Fastly::UserApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $login = "login_example"; # string | The login associated with the user (typically, an email address).
+my $login = null; # string | 
 my $name = "name_example"; # string | The real life name of the user.
 my $limit_services = null; # boolean | Indicates that the user has limited access to the customer's services.
 my $locked = null; # boolean | Indicates whether the is account is locked for editing or not.
@@ -59,7 +59,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **login** | **string**| The login associated with the user (typically, an email address). | [optional] 
+ **login** | [**string**](string.md)|  | [optional] 
  **name** | **string**| The real life name of the user. | [optional] 
  **limit_services** | **boolean**| Indicates that the user has limited access to the customer&#39;s services. | [optional] 
  **locked** | **boolean**| Indicates whether the is account is locked for editing or not. | [optional] 
@@ -303,7 +303,7 @@ my $api_instance = WebService::Fastly::UserApi->new(
 );
 
 my $user_id = "user_id_example"; # string | Alphanumeric string identifying the user.
-my $login = "login_example"; # string | The login associated with the user (typically, an email address).
+my $login = null; # string | 
 my $name = "name_example"; # string | The real life name of the user.
 my $limit_services = null; # boolean | Indicates that the user has limited access to the customer's services.
 my $locked = null; # boolean | Indicates whether the is account is locked for editing or not.
@@ -326,7 +326,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **string**| Alphanumeric string identifying the user. | 
- **login** | **string**| The login associated with the user (typically, an email address). | [optional] 
+ **login** | [**string**](string.md)|  | [optional] 
  **name** | **string**| The real life name of the user. | [optional] 
  **limit_services** | **boolean**| Indicates that the user has limited access to the customer&#39;s services. | [optional] 
  **locked** | **boolean**| Indicates whether the is account is locked for editing or not. | [optional] 

@@ -87,7 +87,7 @@ sub init
 # return perl hash
 sub to_hash {
     my $self = shift;
-    my $_hash = decode_json(JSON->new->convert_blessed->encode($self));
+    my $_hash = decode_json(JSON->new->allow_blessed->convert_blessed->encode($self));
 
     return $_hash;
 }
@@ -97,9 +97,7 @@ sub TO_JSON {
     my $self = shift;
     my $_data = {};
     foreach my $_key (keys %{$self->attribute_map}) {
-        if (defined $self->{$_key}) {
-            $_data->{$self->attribute_map->{$_key}} = $self->{$_key};
-        }
+        $_data->{$self->attribute_map->{$_key}} = $self->{$_key};
     }
 
     return $_data;

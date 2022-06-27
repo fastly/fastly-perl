@@ -835,6 +835,89 @@ sub get_custom_vcl_raw {
 }
 
 #
+# lint_vcl_for_service
+#
+# Lint (validate) VCL using flags set for the service.
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+# @param InlineObject $inline_object  (required)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    'inline_object' => {
+        data_type => 'InlineObject',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'lint_vcl_for_service' } = {
+        summary => 'Lint (validate) VCL using flags set for the service.',
+        params => $params,
+        returns => 'ValidatorResult',
+        };
+}
+# @return ValidatorResult
+#
+sub lint_vcl_for_service {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling lint_vcl_for_service");
+    }
+
+    # verify the required parameter 'inline_object' is set
+    unless (exists $args{'inline_object'}) {
+      croak("Missing the required parameter 'inline_object' when calling lint_vcl_for_service");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service/{service_id}/lint';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'inline_object'}) {
+        $_body_data = $args{'inline_object'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ValidatorResult', $response);
+    return $_response_object;
+}
+
+#
 # list_custom_vcl
 #
 # List custom VCL files

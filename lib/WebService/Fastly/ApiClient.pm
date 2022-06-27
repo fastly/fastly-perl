@@ -30,7 +30,7 @@ use HTTP::Status;
 use URI::Query;
 use JSON;
 use URI::Escape;
-use Scalar::Util;
+use Scalar::Util 'blessed';
 use Log::Any qw($log);
 use Carp;
 use Module::Runtime qw(use_module);
@@ -98,7 +98,13 @@ sub call_api {
     }
 
     # body data
-    $body_data = to_json($body_data->to_hash) if defined $body_data && $body_data->can('to_hash'); # model to json string
+    if (defined $body_data) {
+        if (blessed $body_data && $body_data->can('to_hash')) {
+            $body_data = $body_data->to_hash;
+        }
+        # model to json string
+        $body_data = to_json($body_data);
+    }
     my $_body_data = %$post_params ? $post_params : $body_data;
 
     # Make the HTTP request
@@ -120,16 +126,13 @@ sub call_api {
 
     }
     elsif ($method eq 'GET') {
-        my $headers = HTTP::Headers->new(%$header_params);
         $_request = GET($_url, %$header_params);
     }
     elsif ($method eq 'HEAD') {
-        my $headers = HTTP::Headers->new(%$header_params);
-        $_request = HEAD($_url,%$header_params);
+        $_request = HEAD($_url, %$header_params);
     }
     elsif ($method eq 'DELETE') { #TODO support form data
-        my $headers = HTTP::Headers->new(%$header_params);
-        $_request = DELETE($_url, %$headers);
+        $_request = DELETE($_url, %$header_params);
     }
     elsif ($method eq 'PATCH') { #TODO
     }

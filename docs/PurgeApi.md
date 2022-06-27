@@ -35,7 +35,7 @@ my $api_instance = WebService::Fastly::PurgeApi->new(
 );
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
-my $fastly_soft_purge = 1; # int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
+my $fastly_soft_purge = 1; # int | If present, this header triggers the purge to be 'soft', which marks the affected object as stale rather than making it inaccessible.  Typically set to \"1\" when used, but the value is not important.
 my $surrogate_key = key_1 key_2 key_3; # string | Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified.
 my $purge_response = WebService::Fastly::Object::PurgeResponse->new(); # PurgeResponse | 
 
@@ -53,7 +53,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
- **fastly_soft_purge** | **int**| Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible. | [optional] [default to 1]
+ **fastly_soft_purge** | **int**| If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. | [optional] 
  **surrogate_key** | **string**| Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. | [optional] 
  **purge_response** | [**PurgeResponse**](PurgeResponse.md)|  | [optional] 
 
@@ -143,7 +143,7 @@ my $api_instance = WebService::Fastly::PurgeApi->new(
 );
 
 my $host = www.example.com; # string | The hostname for the content you'll be purging.
-my $fastly_soft_purge = 1; # int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
+my $fastly_soft_purge = 1; # int | If present, this header triggers the purge to be 'soft', which marks the affected object as stale rather than making it inaccessible.  Typically set to \"1\" when used, but the value is not important.
 
 eval {
     my $result = $api_instance->purge_single_url(host => $host, fastly_soft_purge => $fastly_soft_purge);
@@ -159,7 +159,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **host** | **string**| The hostname for the content you&#39;ll be purging. | 
- **fastly_soft_purge** | **int**| Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible. | [optional] [default to 1]
+ **fastly_soft_purge** | **int**| If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. | [optional] 
 
 ### Return type
 
@@ -197,7 +197,7 @@ my $api_instance = WebService::Fastly::PurgeApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $surrogate_key = key_1; # string | Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request.
-my $fastly_soft_purge = 1; # int | Optional header indicating that the operation should be a 'soft' purge, which marks the affected object as stale rather than making it inaccessible.
+my $fastly_soft_purge = 1; # int | If present, this header triggers the purge to be 'soft', which marks the affected object as stale rather than making it inaccessible.  Typically set to \"1\" when used, but the value is not important.
 
 eval {
     my $result = $api_instance->purge_tag(service_id => $service_id, surrogate_key => $surrogate_key, fastly_soft_purge => $fastly_soft_purge);
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **surrogate_key** | **string**| Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. | 
- **fastly_soft_purge** | **int**| Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible. | [optional] [default to 1]
+ **fastly_soft_purge** | **int**| If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. | [optional] 
 
 ### Return type
 

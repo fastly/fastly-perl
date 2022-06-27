@@ -52,7 +52,7 @@ sub new {
 # Purge multiple surrogate key tags
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
-# @param int $fastly_soft_purge Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible. (optional, default to 1)
+# @param int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
 # @param string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
 # @param PurgeResponse $purge_response  (optional)
 {
@@ -64,7 +64,7 @@ sub new {
     },
     'fastly_soft_purge' => {
         data_type => 'int',
-        description => 'Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible.',
+        description => 'If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.',
         required => '0',
     },
     'surrogate_key' => {
@@ -219,7 +219,7 @@ sub purge_all {
 # Purge a URL
 #
 # @param string $host The hostname for the content you&#39;ll be purging. (required)
-# @param int $fastly_soft_purge Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible. (optional, default to 1)
+# @param int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
 {
     my $params = {
     'host' => {
@@ -229,7 +229,7 @@ sub purge_all {
     },
     'fastly_soft_purge' => {
         data_type => 'int',
-        description => 'Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible.',
+        description => 'If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.',
         required => '0',
     },
     };
@@ -296,7 +296,7 @@ sub purge_single_url {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
-# @param int $fastly_soft_purge Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible. (optional, default to 1)
+# @param int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
 {
     my $params = {
     'service_id' => {
@@ -311,7 +311,7 @@ sub purge_single_url {
     },
     'fastly_soft_purge' => {
         data_type => 'int',
-        description => 'Optional header indicating that the operation should be a &#39;soft&#39; purge, which marks the affected object as stale rather than making it inaccessible.',
+        description => 'If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.',
         required => '0',
     },
     };

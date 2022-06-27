@@ -51,7 +51,7 @@ sub new {
 #
 # Create a user
 #
-# @param string $login The login associated with the user (typically, an email address). (optional)
+# @param string $login  (optional)
 # @param string $name The real life name of the user. (optional)
 # @param boolean $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
 # @param boolean $locked Indicates whether the is account is locked for editing or not. (optional)
@@ -63,7 +63,7 @@ sub new {
     my $params = {
     'login' => {
         data_type => 'string',
-        description => 'The login associated with the user (typically, an email address).',
+        description => '',
         required => '0',
     },
     'name' => {
@@ -439,7 +439,7 @@ sub request_password_reset {
 # Update a user
 #
 # @param string $user_id Alphanumeric string identifying the user. (required)
-# @param string $login The login associated with the user (typically, an email address). (optional)
+# @param string $login  (optional)
 # @param string $name The real life name of the user. (optional)
 # @param boolean $limit_services Indicates that the user has limited access to the customer&#39;s services. (optional)
 # @param boolean $locked Indicates whether the is account is locked for editing or not. (optional)
@@ -456,7 +456,7 @@ sub request_password_reset {
     },
     'login' => {
         data_type => 'string',
-        description => 'The login associated with the user (typically, an email address).',
+        description => '',
         required => '0',
     },
     'name' => {
