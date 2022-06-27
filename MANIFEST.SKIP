@@ -1,1 +1,4 @@
 deploy.sh
+fastly-perl.iml
+.openapi-generator-ignore
+.tmp.fastly.err.log

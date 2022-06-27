@@ -1,6 +1,7 @@
-Revision history for Perl module Net::Fastly
+Revision history for Perl module WebService::Fastly
 
-2.0.0-TRIAL1
+2.00 2022-06-29
+    * Moved from Net::Fastly to WebService::Fastly
     * Initial Generated Client Prerelease
 
 1.12 2020-09-03

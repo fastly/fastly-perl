@@ -118,6 +118,7 @@ WebService::Fastly::Role - a Moose role for the Fastly API
 Automatically generated:
 
 =over 4
+
 =item Build package: org.openapitools.codegen.languages.PerlClientCodegen
 
 =item Codegen version:

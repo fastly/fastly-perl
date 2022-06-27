@@ -48,7 +48,7 @@
          "web" : "https://github.com/fastly/fastly-perl"
       }
    },
-   "version" : "2.0.0",
+   "version" : "2.00",
    "x_contributors" : [
       "andri <andriantoniades@gmail.com>",
       "Andri Antoniades <andriantoniades@users.noreply.github.com>",

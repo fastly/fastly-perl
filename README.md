@@ -4,9 +4,9 @@ WebService::Fastly - an interface to most facets of the [Fastly API](https://dev
 
 # VERSION
 
-2.0.0-TRIAL1
+2.00-TRIAL1
 
-> ⚠️ This client library (`2.0.0-TRIAL1`)  is an early-access release. Features may change without notice. Use at your own risk.
+> ⚠️ This client library (`2.00-TRIAL1`)  is an early-access release. Features may change without notice. Use at your own risk.
 
 **We strongly recommend that you do not install alpha and beta releases on live production services.** No official support is provided for such releases. Please try out the library in a test environment, see what breaks without worrying about consequences, and give us [feedback](#issues).
 

@@ -22,3 +22,6 @@ nytprof.out
 # Generator artifacts
 .openapi*
 .tmp*
+
+*.iml
+/WebService-Fastly-*
