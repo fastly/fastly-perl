@@ -1,10 +1,10 @@
 {
-   "abstract" : "client library for interacting with the Fastly web acceleration service",
+   "abstract" : "an interface to most facets of the [Fastly API](https://developer.fastly.com/reference/api).",
    "author" : [
-      "- Fastly Inc"
+      "Fastly Inc., oss@fastly.com"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.17, Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150001",
+   "generated_by" : "Dist::Milla version v1.0.21, Dist::Zilla version 6.025, CPAN::Meta::Converter version 2.150010",
    "license" : [
       "perl_5"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : 2
    },
-   "name" : "Net-Fastly",
+   "name" : "WebService-Fastly",
    "no_index" : {
       "directory" : [
          "eg",
@@ -31,32 +31,12 @@
       },
       "develop" : {
          "requires" : {
-            "Dist::Milla" : "v1.0.17",
+            "Dist::Milla" : "v1.0.21",
             "Test::Pod" : "1.41"
-         }
-      },
-      "runtime" : {
-         "recommends" : {
-            "Term::ANSIColor" : "0",
-            "Term::ShellUI" : "0"
-         },
-         "requires" : {
-            "Class::Accessor::Fast" : "0",
-            "File::Basename" : "0",
-            "File::Spec" : "0",
-            "File::Temp" : "0",
-            "IO::Socket::SSL" : "!= 1.38",
-            "JSON::XS" : "0",
-            "LWP::Protocol::https" : "0",
-            "LWP::UserAgent" : "5.813",
-            "Test::More" : "0",
-            "URI" : "0",
-            "URI::Escape" : "0",
-            "YAML" : "0"
          }
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/fastly/fastly-perl/issues"
@@ -68,20 +48,29 @@
          "web" : "https://github.com/fastly/fastly-perl"
       }
    },
-   "version" : "1.12",
+   "version" : "2.00",
    "x_contributors" : [
+      "andri <andriantoniades@gmail.com>",
+      "Andri Antoniades <andriantoniades@users.noreply.github.com>",
       "Artur Bergman <sky@crucially.net>",
+      "Eric Hodel <drbrain@segment7.net>",
       "Gabor Szabo <szabgab@gmail.com>",
       "Geoffrey Schorkopf <gschorkopf@gmail.com>",
+      "Katsuyuki Omuro <komuro@fastly.com>",
       "Leon Brocard <lbrocard@fastly.com>",
       "Matthew Wodrich <matthew.wodrich@dreamhost.com>",
       "Michael May <michael@fastly.com>",
       "Michael May <mmay@users.noreply.github.com>",
       "Simon Wistow <simon@fastly.com>",
       "Simon Wistow <simon@thegestalt.org>",
+      "Steve Ivy <steveivy@gmail.com>",
       "Tatsuhiko Miyagawa <miyagawa@bulknews.net>",
+      "Tatsuhiko Miyagawa <miyagawa@gmail.com>",
       "Thom Mahoney <mahoneyt@gmail.com>"
    ],
-   "x_serialization_backend" : "Cpanel::JSON::XS version 3.0115"
+   "x_generated_by_perl" : "v5.34.0",
+   "x_serialization_backend" : "Cpanel::JSON::XS version 4.30",
+   "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later",
+   "x_static_install" : 1
 }
 
