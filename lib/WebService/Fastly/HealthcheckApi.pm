@@ -56,7 +56,7 @@ sub new {
 # @param int $check_interval How often to run the health check in milliseconds. (optional)
 # @param string $comment A freeform descriptive note. (optional)
 # @param int $expected_response The status code expected from the host. (optional)
-# @param ARRAY[string] $headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time. (optional)
+# @param ARRAY[string] $headers Array of custom headers that will be added to the health check probes. (optional)
 # @param string $host Which host to check. (optional)
 # @param string $http_version Whether to use version 1.0 or 1.1 HTTP. (optional)
 # @param int $initial When loading a config, the initial number of probes to be seen as OK. (optional)
@@ -95,7 +95,7 @@ sub new {
     },
     'headers' => {
         data_type => 'ARRAY[string]',
-        description => 'Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.',
+        description => 'Array of custom headers that will be added to the health check probes.',
         required => '0',
     },
     'host' => {
@@ -576,7 +576,7 @@ sub list_healthchecks {
 # @param int $check_interval How often to run the health check in milliseconds. (optional)
 # @param string $comment A freeform descriptive note. (optional)
 # @param int $expected_response The status code expected from the host. (optional)
-# @param ARRAY[string] $headers Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time. (optional)
+# @param ARRAY[string] $headers Array of custom headers that will be added to the health check probes. (optional)
 # @param string $host Which host to check. (optional)
 # @param string $http_version Whether to use version 1.0 or 1.1 HTTP. (optional)
 # @param int $initial When loading a config, the initial number of probes to be seen as OK. (optional)
@@ -620,7 +620,7 @@ sub list_healthchecks {
     },
     'headers' => {
         data_type => 'ARRAY[string]',
-        description => 'Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.',
+        description => 'Array of custom headers that will be added to the health check probes.',
         required => '0',
     },
     'host' => {

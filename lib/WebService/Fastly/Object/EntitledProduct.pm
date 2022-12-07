@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::Healthcheck;
+package WebService::Fastly::Object::EntitledProduct;
 
 require 5.6.0;
 use strict;
@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::EnabledProductProduct;
+use WebService::Fastly::Object::EntitledProductLinks;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -153,140 +155,58 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'Healthcheck',
+                                  class => 'EntitledProduct',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'check_interval' => {
-        datatype => 'int',
-        base_name => 'check_interval',
-        description => 'How often to run the health check in milliseconds.',
+    'product' => {
+        datatype => 'EnabledProductProduct',
+        base_name => 'product',
+        description => '',
         format => '',
         read_only => 'false',
             },
-    'comment' => {
+    'has_access' => {
+        datatype => 'boolean',
+        base_name => 'has_access',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'access_level' => {
         datatype => 'string',
-        base_name => 'comment',
-        description => 'A freeform descriptive note.',
+        base_name => 'access_level',
+        description => '',
         format => '',
         read_only => 'false',
             },
-    'expected_response' => {
-        datatype => 'int',
-        base_name => 'expected_response',
-        description => 'The status code expected from the host.',
-        format => '',
-        read_only => 'false',
-            },
-    'headers' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'headers',
-        description => 'Array of custom headers that will be added to the health check probes.',
-        format => '',
-        read_only => 'false',
-            },
-    'host' => {
-        datatype => 'string',
-        base_name => 'host',
-        description => 'Which host to check.',
-        format => '',
-        read_only => 'false',
-            },
-    'http_version' => {
-        datatype => 'string',
-        base_name => 'http_version',
-        description => 'Whether to use version 1.0 or 1.1 HTTP.',
-        format => '',
-        read_only => 'false',
-            },
-    'initial' => {
-        datatype => 'int',
-        base_name => 'initial',
-        description => 'When loading a config, the initial number of probes to be seen as OK.',
-        format => '',
-        read_only => 'false',
-            },
-    'method' => {
-        datatype => 'string',
-        base_name => 'method',
-        description => 'Which HTTP method to use.',
-        format => '',
-        read_only => 'false',
-            },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'The name of the health check.',
-        format => '',
-        read_only => 'false',
-            },
-    'path' => {
-        datatype => 'string',
-        base_name => 'path',
-        description => 'The path to check.',
-        format => '',
-        read_only => 'false',
-            },
-    'threshold' => {
-        datatype => 'int',
-        base_name => 'threshold',
-        description => 'How many health checks must succeed to be considered healthy.',
-        format => '',
-        read_only => 'false',
-            },
-    'timeout' => {
-        datatype => 'int',
-        base_name => 'timeout',
-        description => 'Timeout in milliseconds.',
-        format => '',
-        read_only => 'false',
-            },
-    'window' => {
-        datatype => 'int',
-        base_name => 'window',
-        description => 'The number of most recent health check queries to keep for this health check.',
+    '_links' => {
+        datatype => 'EntitledProductLinks',
+        base_name => '_links',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'check_interval' => 'int',
-    'comment' => 'string',
-    'expected_response' => 'int',
-    'headers' => 'ARRAY[string]',
-    'host' => 'string',
-    'http_version' => 'string',
-    'initial' => 'int',
-    'method' => 'string',
-    'name' => 'string',
-    'path' => 'string',
-    'threshold' => 'int',
-    'timeout' => 'int',
-    'window' => 'int'
+    'product' => 'EnabledProductProduct',
+    'has_access' => 'boolean',
+    'access_level' => 'string',
+    '_links' => 'EntitledProductLinks'
 } );
 
 __PACKAGE__->attribute_map( {
-    'check_interval' => 'check_interval',
-    'comment' => 'comment',
-    'expected_response' => 'expected_response',
-    'headers' => 'headers',
-    'host' => 'host',
-    'http_version' => 'http_version',
-    'initial' => 'initial',
-    'method' => 'method',
-    'name' => 'name',
-    'path' => 'path',
-    'threshold' => 'threshold',
-    'timeout' => 'timeout',
-    'window' => 'window'
+    'product' => 'product',
+    'has_access' => 'has_access',
+    'access_level' => 'access_level',
+    '_links' => '_links'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'comment' => 'true',
 } );
 
 

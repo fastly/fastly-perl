@@ -185,7 +185,7 @@ __PACKAGE__->method_documentation({
     'headers' => {
         datatype => 'ARRAY[string]',
         base_name => 'headers',
-        description => 'Array of custom headers that will be added to the health check probes. This feature is part of an **alpha release**, which may be subject to breaking changes and improvements over time.',
+        description => 'Array of custom headers that will be added to the health check probes.',
         format => '',
         read_only => 'false',
             },
