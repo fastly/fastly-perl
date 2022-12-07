@@ -34,9 +34,21 @@
             "Dist::Milla" : "v1.0.21",
             "Test::Pod" : "1.41"
          }
+      },
+      "runtime" : {
+         "requires" : {
+            "Class::Accessor" : "0",
+            "Class::Data::Inheritable" : "0",
+            "DateTime" : "0",
+            "JSON" : "0",
+            "LWP::Protocol::https" : "0",
+            "LWP::UserAgent" : "0",
+            "Log::Any" : "0",
+            "URI::Query" : "0"
+         }
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/fastly/fastly-perl/issues"
@@ -48,26 +60,7 @@
          "web" : "https://github.com/fastly/fastly-perl"
       }
    },
-   "version" : "2.00",
-   "x_contributors" : [
-      "andri <andriantoniades@gmail.com>",
-      "Andri Antoniades <andriantoniades@users.noreply.github.com>",
-      "Artur Bergman <sky@crucially.net>",
-      "Eric Hodel <drbrain@segment7.net>",
-      "Gabor Szabo <szabgab@gmail.com>",
-      "Geoffrey Schorkopf <gschorkopf@gmail.com>",
-      "Katsuyuki Omuro <komuro@fastly.com>",
-      "Leon Brocard <lbrocard@fastly.com>",
-      "Matthew Wodrich <matthew.wodrich@dreamhost.com>",
-      "Michael May <michael@fastly.com>",
-      "Michael May <mmay@users.noreply.github.com>",
-      "Simon Wistow <simon@fastly.com>",
-      "Simon Wistow <simon@thegestalt.org>",
-      "Steve Ivy <steveivy@gmail.com>",
-      "Tatsuhiko Miyagawa <miyagawa@bulknews.net>",
-      "Tatsuhiko Miyagawa <miyagawa@gmail.com>",
-      "Thom Mahoney <mahoneyt@gmail.com>"
-   ],
+   "version" : "2.01",
    "x_generated_by_perl" : "v5.34.0",
    "x_serialization_backend" : "Cpanel::JSON::XS version 4.30",
    "x_spdx_expression" : "Artistic-1.0-Perl OR GPL-1.0-or-later",
