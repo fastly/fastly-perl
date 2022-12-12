@@ -21,7 +21,7 @@ require 5.6.0;
 use strict;
 use warnings;
 use utf8;
-use JSON qw(decode_json);
+use JSON::MaybeXS qw(decode_json);
 use Data::Dumper;
 use Module::Runtime qw(use_module);
 use Log::Any qw($log);
@@ -100,7 +100,7 @@ sub init
 # return perl hash
 sub to_hash {
     my $self = shift;
-    my $_hash = decode_json(JSON->new->allow_blessed->convert_blessed->encode($self));
+    my $_hash = decode_json(JSON()->new->allow_blessed->convert_blessed->encode($self));
 
     return $_hash;
 }

@@ -1,0 +1,86 @@
+#!perl -w
+
+use strict;
+use warnings;
+use Net::Fastly;
+use File::Basename;
+
+=head1 NAME
+
+fastly_upload_vcl - upload raw VCL files to Fastly
+
+=head1 USAGE
+
+    fastly_upload_vcl <options> <service id or name> <path to vcl file>
+
+=head1 CONFIGURATION
+
+You can either have a config file in either ~/.fastly or /etc/fastly with
+
+    api_key = <key>
+    
+or a config file with
+
+    user     = <login>
+    password = <password>
+
+Alternatively you can pass in any of those options on the command line
+
+    fastly_upload_vcl --api_key  <key> <service id or name> <path to vcl file>
+    fastly_upload_vcl --user <login> --password <password> <service id or name> <path to vcl file>
+
+=cut
+
+sub slurp {
+  my $file = shift;
+  open(my $fh, $file) || die "Couldn't open $file: $!\n";
+  my $content = join("", <$fh>);
+  close($fh);
+  return $content;
+}
+
+my %opts   = Net::Fastly::get_options($ENV{HOME}."/.fastly", "/etc/fastly");
+my $fastly = Net::Fastly->new(%opts);
+
+my $service_id  = shift || die("You must pass in a service id or name");
+my $vcl_file    = shift || die("You must pass in a vcl file");
+
+die "Couldn't find vcl file #{vcl_file}\n" unless -f $vcl_file;
+
+my ($service) = eval { $fastly->get_service($service_id) } || eval { $fastly->search_services(name => $service_id) } || die "Couldn't find service $service_id\n";
+
+my $version = $service->version;
+die "Can't upload a vcl file the latest (".$version->number.") version of ".$service->name." (".$service->id.") is locked\n" if $version->locked;
+print "Uploading $vcl_file to version  ".$version->number."\n";
+eval {
+  my $name = basename($vcl_file, ".vcl");
+  my $vcl  = eval { $version->vcl($name) };
+  my $cont = slurp($vcl_file);
+  if ($vcl) {
+      $vcl->content($cont);
+      $vcl->save;
+  } else {
+      $version->upload_vcl($name, $cont);
+  }
+  #$version->activate;
+};
+die "Couldn't upload: $@\n" if $@;
+print "Done! You should now go and activate it at https://app.fastly.com/#configure\n";
+
+=pod 
+
+=head1 COPYRIGHT
+
+Copyright 2011 - Fastly Inc
+
+Mail support at fastly dot com if you have problems.
+
+=head1 DEVELOPERS
+
+http://github.com/fastly/fastly-perl
+
+http://www.fastly.com/documentation
+
+=cut
+
+

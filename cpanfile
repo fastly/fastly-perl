@@ -1,5 +1,5 @@
 requires "DateTime";
-requires "JSON";
+requires "JSON::MaybeXS";
 requires "Class::Accessor";
 requires "Class::Data::Inheritable";
 requires "Log::Any";

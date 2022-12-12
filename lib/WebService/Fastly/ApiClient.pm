@@ -28,7 +28,7 @@ use HTTP::Response;
 use HTTP::Request::Common qw(DELETE POST GET HEAD PUT);
 use HTTP::Status;
 use URI::Query;
-use JSON;
+use JSON::MaybeXS qw(JSON to_json encode_json decode_json);
 use URI::Escape;
 use Scalar::Util 'blessed';
 use Log::Any qw($log);
