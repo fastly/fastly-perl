@@ -29,12 +29,11 @@ Fastly Inc., oss@fastly.com
 
 =head1 COPYRIGHT
 
-Copyright 2022- Fastly, Inc.
+Copyright (C) 2022 - Fastly, Inc.
 
 =head1 LICENSE
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+MIT
 
 =head1 SEE ALSO
 
