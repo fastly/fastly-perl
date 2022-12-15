@@ -20,12 +20,12 @@ fi
 
 # fastly-perl versions are either x.yyy or x.yyy-"trial"z
 VERSION_PURE="${VERSION%-trial*([0-9])}"
-echo "VERSION=${VERSION}"
-echo "VERSION_PURE=${VERSION_PURE}"
+VERSION_TITLE="v${VERSION}"
 if [ "${VERSION}" != "${VERSION_PURE}" ]; then
   TRIAL_ID="${VERSION#${VERSION_PURE}-trial}"
   VERSION="${VERSION_PURE}"
   PUBLISH_TAG=trial
+  VERSION_TITLE="v${VERSION}-TRIAL${TRIAL_ID}"
 fi
 PUBLISH_TAG="${PUBLISH_TAG:-latest}"
 
@@ -33,6 +33,7 @@ echo "API_CLIENT_NAME=Perl"
 echo "PROJECT_NAME=fastly-php"
 echo "PACKAGE_REPO_NAME=CPAN"
 echo "VERSION=${VERSION}"
+echo "VERSION_TITLE=${VERSION_TITLE}"
 echo "DRY_RUN=${DRY_RUN}"
 echo "PUBLISH_TAG=${PUBLISH_TAG}"
 echo "TRIAL_ID=${TRIAL_ID}"

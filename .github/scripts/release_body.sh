@@ -1,4 +1,4 @@
-printf '%s' "## ${API_CLIENT_NAME} API client v${VERSION}"
+printf '%s' "## ${API_CLIENT_NAME} API client v${VERSION_TITLE}"
 
 if [ "${DRY_RUN}" == "1" ]; then
   printf '%s' " (dry run)"
@@ -21,5 +21,5 @@ echo ""
 echo "Generated on: $(date)"
 echo "G-code: ${G_CODE}, D-code: ${D_CODE}"
 if [ "${PUBLISH_TAG}" != "latest" ]; then
-  echo "Pre-release Tag: ${PUBLISH_TAG}"
+  echo "Pre-release Tag: ${PUBLISH_TAG} ${TRIAL_ID}"
 fi
