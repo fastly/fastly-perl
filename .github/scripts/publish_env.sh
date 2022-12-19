@@ -30,7 +30,7 @@ fi
 PUBLISH_TAG="${PUBLISH_TAG:-latest}"
 
 echo "API_CLIENT_NAME=Perl"
-echo "PROJECT_NAME=fastly-php"
+echo "PROJECT_NAME=fastly-perl"
 echo "PACKAGE_REPO_NAME=CPAN"
 echo "VERSION=${VERSION}"
 echo "VERSION_TITLE=${VERSION_TITLE}"
