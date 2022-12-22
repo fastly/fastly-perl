@@ -2,6 +2,10 @@
 
 Net::Fastly - client library for interacting with the Fastly web acceleration service
 
+> NOTE: This version of Fastly Perl Client is no longer maintained.
+> Fastly now provides a [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) to cover the Fastly API.
+> The current version is available at https://github.com/fastly/fastly-perl/tree/master.
+
 # SYNOPSIS
 
     use Net::Fastly;
