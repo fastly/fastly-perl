@@ -1,4 +1,4 @@
-printf '%s' "## ${API_CLIENT_NAME} API client v${VERSION_TITLE}"
+printf '%s' "## ${API_CLIENT_NAME} API client ${VERSION_TITLE}"
 
 if [ "${DRY_RUN}" == "1" ]; then
   printf '%s' " (dry run)"
