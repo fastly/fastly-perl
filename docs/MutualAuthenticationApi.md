@@ -118,7 +118,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_mutual_authentication**
-> MutualAuthenticationResponse get_mutual_authentication(mutual_authentication_id => $mutual_authentication_id)
+> MutualAuthenticationResponse get_mutual_authentication(mutual_authentication_id => $mutual_authentication_id, include => $include)
 
 Get a Mutual Authentication
 
@@ -137,9 +137,10 @@ my $api_instance = WebService::Fastly::MutualAuthenticationApi->new(
 );
 
 my $mutual_authentication_id = "mutual_authentication_id_example"; # string | Alphanumeric string identifying a mutual authentication.
+my $include = "include_example"; # string | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
 
 eval {
-    my $result = $api_instance->get_mutual_authentication(mutual_authentication_id => $mutual_authentication_id);
+    my $result = $api_instance->get_mutual_authentication(mutual_authentication_id => $mutual_authentication_id, include => $include);
     print Dumper($result);
 };
 if ($@) {
@@ -152,6 +153,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **mutual_authentication_id** | **string**| Alphanumeric string identifying a mutual authentication. | 
+ **include** | **string**| Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.  | [optional] 
 
 ### Return type
 
@@ -169,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_mutual_authentications**
-> MutualAuthenticationsResponse list_mutual_authentications(page[number] => $page[number], page[size] => $page[size])
+> MutualAuthenticationsResponse list_mutual_authentications(include => $include, page[number] => $page[number], page[size] => $page[size])
 
 List Mutual Authentications
 
@@ -187,11 +189,12 @@ my $api_instance = WebService::Fastly::MutualAuthenticationApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
+my $include = "include_example"; # string | Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. 
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
 
 eval {
-    my $result = $api_instance->list_mutual_authentications(page[number] => $page[number], page[size] => $page[size]);
+    my $result = $api_instance->list_mutual_authentications(include => $include, page[number] => $page[number], page[size] => $page[size]);
     print Dumper($result);
 };
 if ($@) {
@@ -203,6 +206,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **include** | **string**| Comma-separated list of related objects to include (optional). Permitted values: `tls_activations`. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.  | [optional] 
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
 

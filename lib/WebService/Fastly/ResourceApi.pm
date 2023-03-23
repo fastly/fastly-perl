@@ -49,12 +49,12 @@ sub new {
 #
 # create_resource
 #
-# Create a resource
+# Create a resource link
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $name The name of the resource. (optional)
-# @param string $resource_id The ID of the linked resource. (optional)
+# @param string $resource_id The ID of the underlying linked resource. (optional)
+# @param string $name The name of the resource link. (optional)
 {
     my $params = {
     'service_id' => {
@@ -67,19 +67,19 @@ sub new {
         description => 'Integer identifying a service version.',
         required => '1',
     },
-    'name' => {
-        data_type => 'string',
-        description => 'The name of the resource.',
-        required => '0',
-    },
     'resource_id' => {
         data_type => 'string',
-        description => 'The ID of the linked resource.',
+        description => 'The ID of the underlying linked resource.',
+        required => '0',
+    },
+    'name' => {
+        data_type => 'string',
+        description => 'The name of the resource link.',
         required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'create_resource' } = {
-        summary => 'Create a resource',
+        summary => 'Create a resource link',
         params => $params,
         returns => 'ResourceResponse',
         };
@@ -129,13 +129,13 @@ sub create_resource {
     }
 
     # form params
-    if ( exists $args{'name'} ) {
-                $form_params->{'name'} = $self->{api_client}->to_form_value($args{'name'});
+    if ( exists $args{'resource_id'} ) {
+                $form_params->{'resource_id'} = $self->{api_client}->to_form_value($args{'resource_id'});
     }
 
     # form params
-    if ( exists $args{'resource_id'} ) {
-                $form_params->{'resource_id'} = $self->{api_client}->to_form_value($args{'resource_id'});
+    if ( exists $args{'name'} ) {
+                $form_params->{'name'} = $self->{api_client}->to_form_value($args{'name'});
     }
 
     my $_body_data;
@@ -156,11 +156,11 @@ sub create_resource {
 #
 # delete_resource
 #
-# Delete a resource
+# Delete a resource link
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $resource_id An alphanumeric string identifying the resource. (required)
+# @param string $id An alphanumeric string identifying the resource link. (required)
 {
     my $params = {
     'service_id' => {
@@ -173,14 +173,14 @@ sub create_resource {
         description => 'Integer identifying a service version.',
         required => '1',
     },
-    'resource_id' => {
+    'id' => {
         data_type => 'string',
-        description => 'An alphanumeric string identifying the resource.',
+        description => 'An alphanumeric string identifying the resource link.',
         required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_resource' } = {
-        summary => 'Delete a resource',
+        summary => 'Delete a resource link',
         params => $params,
         returns => 'InlineResponse200',
         };
@@ -200,13 +200,13 @@ sub delete_resource {
       croak("Missing the required parameter 'version_id' when calling delete_resource");
     }
 
-    # verify the required parameter 'resource_id' is set
-    unless (exists $args{'resource_id'}) {
-      croak("Missing the required parameter 'resource_id' when calling delete_resource");
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling delete_resource");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/version/{version_id}/resource/{resource_id}';
+    my $_resource_path = '/service/{service_id}/version/{version_id}/resource/{id}';
 
     my $_method = 'DELETE';
     my $query_params = {};
@@ -235,9 +235,9 @@ sub delete_resource {
     }
 
     # path params
-    if ( exists $args{'resource_id'}) {
-        my $_base_variable = "{" . "resource_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'resource_id'});
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -259,11 +259,11 @@ sub delete_resource {
 #
 # get_resource
 #
-# Display a resource
+# Display a resource link
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $resource_id An alphanumeric string identifying the resource. (required)
+# @param string $id An alphanumeric string identifying the resource link. (required)
 {
     my $params = {
     'service_id' => {
@@ -276,14 +276,14 @@ sub delete_resource {
         description => 'Integer identifying a service version.',
         required => '1',
     },
-    'resource_id' => {
+    'id' => {
         data_type => 'string',
-        description => 'An alphanumeric string identifying the resource.',
+        description => 'An alphanumeric string identifying the resource link.',
         required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_resource' } = {
-        summary => 'Display a resource',
+        summary => 'Display a resource link',
         params => $params,
         returns => 'ResourceResponse',
         };
@@ -303,13 +303,13 @@ sub get_resource {
       croak("Missing the required parameter 'version_id' when calling get_resource");
     }
 
-    # verify the required parameter 'resource_id' is set
-    unless (exists $args{'resource_id'}) {
-      croak("Missing the required parameter 'resource_id' when calling get_resource");
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling get_resource");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/version/{version_id}/resource/{resource_id}';
+    my $_resource_path = '/service/{service_id}/version/{version_id}/resource/{id}';
 
     my $_method = 'GET';
     my $query_params = {};
@@ -338,9 +338,9 @@ sub get_resource {
     }
 
     # path params
-    if ( exists $args{'resource_id'}) {
-        my $_base_variable = "{" . "resource_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'resource_id'});
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -362,7 +362,7 @@ sub get_resource {
 #
 # list_resources
 #
-# List resources
+# List resource links
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -380,7 +380,7 @@ sub get_resource {
     },
     };
     __PACKAGE__->method_documentation->{ 'list_resources' } = {
-        summary => 'List resources',
+        summary => 'List resource links',
         params => $params,
         returns => 'ARRAY[ResourceResponse]',
         };
@@ -447,12 +447,13 @@ sub list_resources {
 #
 # update_resource
 #
-# Update a resource
+# Update a resource link
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $resource_id An alphanumeric string identifying the resource. (required)
-# @param string $name The name of the resource. (optional)
+# @param string $id An alphanumeric string identifying the resource link. (required)
+# @param string $resource_id The ID of the underlying linked resource. (optional)
+# @param string $name The name of the resource link. (optional)
 {
     my $params = {
     'service_id' => {
@@ -465,19 +466,24 @@ sub list_resources {
         description => 'Integer identifying a service version.',
         required => '1',
     },
+    'id' => {
+        data_type => 'string',
+        description => 'An alphanumeric string identifying the resource link.',
+        required => '1',
+    },
     'resource_id' => {
         data_type => 'string',
-        description => 'An alphanumeric string identifying the resource.',
-        required => '1',
+        description => 'The ID of the underlying linked resource.',
+        required => '0',
     },
     'name' => {
         data_type => 'string',
-        description => 'The name of the resource.',
+        description => 'The name of the resource link.',
         required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'update_resource' } = {
-        summary => 'Update a resource',
+        summary => 'Update a resource link',
         params => $params,
         returns => 'ResourceResponse',
         };
@@ -497,13 +503,13 @@ sub update_resource {
       croak("Missing the required parameter 'version_id' when calling update_resource");
     }
 
-    # verify the required parameter 'resource_id' is set
-    unless (exists $args{'resource_id'}) {
-      croak("Missing the required parameter 'resource_id' when calling update_resource");
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling update_resource");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/version/{version_id}/resource/{resource_id}';
+    my $_resource_path = '/service/{service_id}/version/{version_id}/resource/{id}';
 
     my $_method = 'PUT';
     my $query_params = {};
@@ -532,10 +538,15 @@ sub update_resource {
     }
 
     # path params
-    if ( exists $args{'resource_id'}) {
-        my $_base_variable = "{" . "resource_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'resource_id'});
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # form params
+    if ( exists $args{'resource_id'} ) {
+                $form_params->{'resource_id'} = $self->{api_client}->to_form_value($args{'resource_id'});
     }
 
     # form params

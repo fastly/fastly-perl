@@ -175,12 +175,18 @@ sub delete_mutual_tls {
 # Get a Mutual Authentication
 #
 # @param string $mutual_authentication_id Alphanumeric string identifying a mutual authentication. (required)
+# @param string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.  (optional)
 {
     my $params = {
     'mutual_authentication_id' => {
         data_type => 'string',
         description => 'Alphanumeric string identifying a mutual authentication.',
         required => '1',
+    },
+    'include' => {
+        data_type => 'string',
+        description => 'Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. ',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_mutual_authentication' } = {
@@ -214,6 +220,11 @@ sub get_mutual_authentication {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # query params
+    if ( exists $args{'include'}) {
+        $query_params->{'include'} = $self->{api_client}->to_query_value($args{'include'});
+    }
+
     # path params
     if ( exists $args{'mutual_authentication_id'}) {
         my $_base_variable = "{" . "mutual_authentication_id" . "}";
@@ -241,10 +252,16 @@ sub get_mutual_authentication {
 #
 # List Mutual Authentications
 #
+# @param string $include Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication.  (optional)
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
 {
     my $params = {
+    'include' => {
+        data_type => 'string',
+        description => 'Comma-separated list of related objects to include (optional). Permitted values: &#x60;tls_activations&#x60;. Including TLS activations will provide you with the TLS domain names that are related to your Mutual TLS authentication. ',
+        required => '0',
+    },
     'page[number]' => {
         data_type => 'int',
         description => 'Current page.',
@@ -281,6 +298,11 @@ sub list_mutual_authentications {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'include'}) {
+        $query_params->{'include'} = $self->{api_client}->to_query_value($args{'include'});
+    }
 
     # query params
     if ( exists $args{'page[number]'}) {

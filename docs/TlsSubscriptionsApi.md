@@ -302,7 +302,7 @@ my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $filter[state] = "filter[state]_example"; # string | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, and `renewing`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
+my $filter[state] = "filter[state]_example"; # string | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
 my $filter[tls_domains/id] = "filter[tls_domains/id]_example"; # string | Limit the returned subscriptions to those that include the specific domain.
 my $filter[has_active_order] = null; # boolean | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. 
 my $include = tls_authorizations; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. 
@@ -323,7 +323,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter[state]** | **string**| Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, and `renewing`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] 
+ **filter[state]** | **string**| Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] 
  **filter[tls_domains/id]** | **string**| Limit the returned subscriptions to those that include the specific domain. | [optional] 
  **filter[has_active_order]** | **boolean**| Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.  | [optional] 
  **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.  | [optional] 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 Update a TLS subscription
 
-Change the TLS domains or common name associated with this subscription, or update the TLS configuration for this set of domains.
+Change the TLS domains or common name associated with this subscription, update the TLS configuration for this set of domains, or retry a subscription with state `failed` by setting the state to `retry`.
 
 ### Example
 ```perl

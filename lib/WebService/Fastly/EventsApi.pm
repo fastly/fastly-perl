@@ -123,6 +123,7 @@ sub get_event {
 # @param string $filter[service_id] Limit the results returned to a specific service. (optional)
 # @param string $filter[user_id] Limit the results returned to a specific user. (optional)
 # @param string $filter[token_id] Limit the returned events to a specific token. (optional)
+# @param string $filter[created_at] Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12).  (optional)
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
 # @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -151,6 +152,11 @@ sub get_event {
     'filter[token_id]' => {
         data_type => 'string',
         description => 'Limit the returned events to a specific token.',
+        required => '0',
+    },
+    'filter[created_at]' => {
+        data_type => 'string',
+        description => 'Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). ',
         required => '0',
     },
     'page[number]' => {
@@ -218,6 +224,11 @@ sub list_events {
     # query params
     if ( exists $args{'filter[token_id]'}) {
         $query_params->{'filter[token_id]'} = $self->{api_client}->to_query_value($args{'filter[token_id]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[created_at]'}) {
+        $query_params->{'filter[created_at]'} = $self->{api_client}->to_query_value($args{'filter[created_at]'});
     }
 
     # query params

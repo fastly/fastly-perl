@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_events**
-> EventsResponse list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> EventsResponse list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], filter[created_at] => $filter[created_at], page[number] => $page[number], page[size] => $page[size], sort => $sort)
 
 List events
 
@@ -88,12 +88,13 @@ my $filter[event_type] = "filter[event_type]_example"; # string | Limit the retu
 my $filter[service_id] = "filter[service_id]_example"; # string | Limit the results returned to a specific service.
 my $filter[user_id] = "filter[user_id]_example"; # string | Limit the results returned to a specific user.
 my $filter[token_id] = "filter[token_id]_example"; # string | Limit the returned events to a specific token.
+my $filter[created_at] = "filter[created_at]_example"; # string | Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]=2022-01-12). 
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
 my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], filter[created_at] => $filter[created_at], page[number] => $page[number], page[size] => $page[size], sort => $sort);
     print Dumper($result);
 };
 if ($@) {
@@ -110,6 +111,7 @@ Name | Type | Description  | Notes
  **filter[service_id]** | **string**| Limit the results returned to a specific service. | [optional] 
  **filter[user_id]** | **string**| Limit the results returned to a specific user. | [optional] 
  **filter[token_id]** | **string**| Limit the returned events to a specific token. | [optional] 
+ **filter[created_at]** | **string**| Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12).  | [optional] 
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
  **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]

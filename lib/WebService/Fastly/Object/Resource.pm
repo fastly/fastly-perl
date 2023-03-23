@@ -158,20 +158,29 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'resource_id' => {
+        datatype => 'string',
+        base_name => 'resource_id',
+        description => 'The ID of the underlying linked resource.',
+        format => '',
+        read_only => 'false',
+            },
     'name' => {
         datatype => 'string',
         base_name => 'name',
-        description => 'The name of the resource.',
+        description => 'The name of the resource link.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
+    'resource_id' => 'string',
     'name' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
+    'resource_id' => 'resource_id',
     'name' => 'name'
 } );
 

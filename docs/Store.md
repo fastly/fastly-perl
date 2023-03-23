@@ -1,15 +1,14 @@
-# WebService::Fastly::Object::EnabledProductLinks
+# WebService::Fastly::Object::Store
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::EnabledProductLinks;
+use WebService::Fastly::Object::Store;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**self** | **string** |  | [optional] 
-**service** | **string** |  | [optional] 
+**name** | **string** | A human-readable name for the store. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

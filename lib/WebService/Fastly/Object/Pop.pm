@@ -162,14 +162,14 @@ __PACKAGE__->method_documentation({
     'code' => {
         datatype => 'string',
         base_name => 'code',
-        description => '',
+        description => 'the three-letter code for the [POP](https://developer.fastly.com/learning/concepts/pop/)',
         format => '',
         read_only => 'false',
             },
     'name' => {
         datatype => 'string',
         base_name => 'name',
-        description => '',
+        description => 'the name of the POP',
         format => '',
         read_only => 'false',
             },
@@ -177,6 +177,27 @@ __PACKAGE__->method_documentation({
         datatype => 'string',
         base_name => 'group',
         description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'region' => {
+        datatype => 'string',
+        base_name => 'region',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'stats_region' => {
+        datatype => 'string',
+        base_name => 'stats_region',
+        description => 'the region used for stats reporting',
+        format => '',
+        read_only => 'false',
+            },
+    'billing_region' => {
+        datatype => 'string',
+        base_name => 'billing_region',
+        description => 'the region used for billing',
         format => '',
         read_only => 'false',
             },
@@ -190,7 +211,7 @@ __PACKAGE__->method_documentation({
     'shield' => {
         datatype => 'string',
         base_name => 'shield',
-        description => '',
+        description => 'the name of the [shield code](https://developer.fastly.com/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding',
         format => '',
         read_only => 'false',
             },
@@ -200,6 +221,9 @@ __PACKAGE__->openapi_types( {
     'code' => 'string',
     'name' => 'string',
     'group' => 'string',
+    'region' => 'string',
+    'stats_region' => 'string',
+    'billing_region' => 'string',
     'coordinates' => 'PopCoordinates',
     'shield' => 'string'
 } );
@@ -208,6 +232,9 @@ __PACKAGE__->attribute_map( {
     'code' => 'code',
     'name' => 'name',
     'group' => 'group',
+    'region' => 'region',
+    'stats_region' => 'stats_region',
+    'billing_region' => 'billing_region',
     'coordinates' => 'coordinates',
     'shield' => 'shield'
 } );

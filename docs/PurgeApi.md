@@ -136,10 +136,10 @@ use Data::Dumper;
 use WebService::Fastly::PurgeApi;
 my $api_instance = WebService::Fastly::PurgeApi->new(
 
-    # Configure HTTP basic authorization: url_purge
-    username => 'YOUR_USERNAME',
-    password => 'YOUR_PASSWORD',
-    
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
 my $cached_url = www.example.com/path/to/object-to-purge; # string | URL of object in cache to be purged.
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[url_purge](../README.md#url_purge)
+[token](../README.md#token)
 
 ### HTTP request headers
 

@@ -162,7 +162,7 @@ __PACKAGE__->method_documentation({
     'id' => {
         datatype => 'string',
         base_name => 'id',
-        description => 'An alphanumeric string identifying the resource.',
+        description => 'An alphanumeric string identifying the resource link.',
         format => '',
         read_only => 'false',
             },

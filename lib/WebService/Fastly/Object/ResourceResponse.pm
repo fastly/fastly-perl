@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ResourceCreate;
+use WebService::Fastly::Object::Resource;
 use WebService::Fastly::Object::ResourceResponseAllOf;
 use WebService::Fastly::Object::Timestamps;
 use WebService::Fastly::Object::TypeResource;
@@ -162,6 +162,20 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'resource_id' => {
+        datatype => 'string',
+        base_name => 'resource_id',
+        description => 'The ID of the underlying linked resource.',
+        format => '',
+        read_only => 'false',
+            },
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'The name of the resource link.',
+        format => '',
+        read_only => 'false',
+            },
     'created_at' => {
         datatype => 'DateTime',
         base_name => 'created_at',
@@ -183,24 +197,10 @@ __PACKAGE__->method_documentation({
         format => 'date-time',
         read_only => 'true',
             },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'The name of the resource.',
-        format => '',
-        read_only => 'false',
-            },
-    'resource_id' => {
-        datatype => 'string',
-        base_name => 'resource_id',
-        description => 'The ID of the linked resource.',
-        format => '',
-        read_only => 'false',
-            },
     'id' => {
         datatype => 'string',
         base_name => 'id',
-        description => 'An alphanumeric string identifying the resource.',
+        description => 'An alphanumeric string identifying the resource link.',
         format => '',
         read_only => 'false',
             },
@@ -235,11 +235,11 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
+    'resource_id' => 'string',
+    'name' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
-    'name' => 'string',
-    'resource_id' => 'string',
     'id' => 'string',
     'href' => 'string',
     'service_id' => 'string',
@@ -248,11 +248,11 @@ __PACKAGE__->openapi_types( {
 } );
 
 __PACKAGE__->attribute_map( {
+    'resource_id' => 'resource_id',
+    'name' => 'name',
     'created_at' => 'created_at',
     'deleted_at' => 'deleted_at',
     'updated_at' => 'updated_at',
-    'name' => 'name',
-    'resource_id' => 'resource_id',
     'id' => 'id',
     'href' => 'href',
     'service_id' => 'service_id',

@@ -186,7 +186,7 @@ __PACKAGE__->method_documentation({
         base_name => 'state',
         description => 'The current state of your subscription.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
 });
 

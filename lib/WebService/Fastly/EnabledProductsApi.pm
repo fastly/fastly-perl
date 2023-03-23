@@ -150,10 +150,10 @@ sub disable_product {
     __PACKAGE__->method_documentation->{ 'enable_product' } = {
         summary => 'Enable a product',
         params => $params,
-        returns => 'EnabledProduct',
+        returns => 'EnabledProductResponse',
         };
 }
-# @return EnabledProduct
+# @return EnabledProductResponse
 #
 sub enable_product {
     my ($self, %args) = @_;
@@ -208,7 +208,7 @@ sub enable_product {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('EnabledProduct', $response);
+    my $_response_object = $self->{api_client}->deserialize('EnabledProductResponse', $response);
     return $_response_object;
 }
 
@@ -235,10 +235,10 @@ sub enable_product {
     __PACKAGE__->method_documentation->{ 'get_enabled_product' } = {
         summary => 'Get enabled product',
         params => $params,
-        returns => 'EnabledProduct',
+        returns => 'EnabledProductResponse',
         };
 }
-# @return EnabledProduct
+# @return EnabledProductResponse
 #
 sub get_enabled_product {
     my ($self, %args) = @_;
@@ -293,7 +293,7 @@ sub get_enabled_product {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('EnabledProduct', $response);
+    my $_response_object = $self->{api_client}->deserialize('EnabledProductResponse', $response);
     return $_response_object;
 }
 

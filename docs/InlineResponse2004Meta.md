@@ -1,15 +1,15 @@
-# WebService::Fastly::Object::EnabledProductProduct
+# WebService::Fastly::Object::InlineResponse2004Meta
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::EnabledProductProduct;
+use WebService::Fastly::Object::InlineResponse2004Meta;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] 
-**object** | **string** |  | [optional] 
+**next_cursor** | **string** |  | [optional] 
+**limit** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

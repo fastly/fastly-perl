@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#the geographic location of the POP
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,26 +152,12 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
+__PACKAGE__->class_documentation({description => 'the geographic location of the POP',
                                   class => 'PopCoordinates',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'x' => {
-        datatype => 'double',
-        base_name => 'x',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'y' => {
-        datatype => 'double',
-        base_name => 'y',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
     'latitude' => {
         datatype => 'double',
         base_name => 'latitude',
@@ -189,15 +175,11 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'x' => 'double',
-    'y' => 'double',
     'latitude' => 'double',
     'longitude' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
-    'x' => 'x',
-    'y' => 'y',
     'latitude' => 'latitude',
     'longitude' => 'longitude'
 } );

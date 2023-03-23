@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 Disable a product
 
-Disable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Disable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Example
 ```perl
@@ -67,11 +67,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **enable_product**
-> EnabledProduct enable_product(product_id => $product_id, service_id => $service_id)
+> EnabledProductResponse enable_product(product_id => $product_id, service_id => $service_id)
 
 Enable a product
 
-Enable a product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Enable a product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Example
 ```perl
@@ -106,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnabledProduct**](EnabledProduct.md)
+[**EnabledProductResponse**](EnabledProductResponse.md)
 
 ### Authorization
 
@@ -120,11 +120,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_enabled_product**
-> EnabledProduct get_enabled_product(product_id => $product_id, service_id => $service_id)
+> EnabledProductResponse get_enabled_product(product_id => $product_id, service_id => $service_id)
 
 Get enabled product
 
-Get enabled product on a service. Supported product IDs: `origin_inspector`,`domain_inspector`,`image_optimizer`, and `websockets`.
+Get enabled product on a service. Supported product IDs: `brotli_compression`,`domain_inspector`,`fanout`,`image_optimizer`,`origin_inspector`, and `websockets`.
 
 ### Example
 ```perl
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnabledProduct**](EnabledProduct.md)
+[**EnabledProductResponse**](EnabledProductResponse.md)
 
 ### Authorization
 

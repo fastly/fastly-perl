@@ -4,7 +4,11 @@ WebService::Fastly - an interface to most facets of the [Fastly API](https://dev
 
 # VERSION
 
-2.01
+2.02
+
+> NOTE: This 2.x release is a new [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) for the Fastly API.
+> The previous 1.x version is no longer supported, but can be found at https://github.com/fastly/fastly-perl/tree/v1.x.
+
 
 
 # SYNOPSIS
@@ -128,6 +132,7 @@ Class | Method | HTTP request | Description
 *DomainApi* | [**get_domain**](docs/DomainApi.md#get_domain) | **GET** /service/{service_id}/version/{version_id}/domain/{domain_name} | Describe a domain
 *DomainApi* | [**list_domains**](docs/DomainApi.md#list_domains) | **GET** /service/{service_id}/version/{version_id}/domain | List domains
 *DomainApi* | [**update_domain**](docs/DomainApi.md#update_domain) | **PUT** /service/{service_id}/version/{version_id}/domain/{domain_name} | Update a domain
+*DomainOwnershipsApi* | [**list_domain_ownerships**](docs/DomainOwnershipsApi.md#list_domain_ownerships) | **GET** /domain-ownerships | List domain-ownerships
 *EnabledProductsApi* | [**disable_product**](docs/EnabledProductsApi.md#disable_product) | **DELETE** /enabled-products/{product_id}/services/{service_id} | Disable a product
 *EnabledProductsApi* | [**enable_product**](docs/EnabledProductsApi.md#enable_product) | **PUT** /enabled-products/{product_id}/services/{service_id} | Enable a product
 *EnabledProductsApi* | [**get_enabled_product**](docs/EnabledProductsApi.md#get_enabled_product) | **GET** /enabled-products/{product_id}/services/{service_id} | Get enabled product
@@ -311,6 +316,14 @@ Class | Method | HTTP request | Description
 *MutualAuthenticationApi* | [**get_mutual_authentication**](docs/MutualAuthenticationApi.md#get_mutual_authentication) | **GET** /tls/mutual_authentications/{mutual_authentication_id} | Get a Mutual Authentication
 *MutualAuthenticationApi* | [**list_mutual_authentications**](docs/MutualAuthenticationApi.md#list_mutual_authentications) | **GET** /tls/mutual_authentications | List Mutual Authentications
 *MutualAuthenticationApi* | [**patch_mutual_authentication**](docs/MutualAuthenticationApi.md#patch_mutual_authentication) | **PATCH** /tls/mutual_authentications/{mutual_authentication_id} | Update a Mutual Authentication
+*ObjectStoreApi* | [**create_store**](docs/ObjectStoreApi.md#create_store) | **POST** /resources/stores/object | Create an object store.
+*ObjectStoreApi* | [**delete_store**](docs/ObjectStoreApi.md#delete_store) | **DELETE** /resources/stores/object/{store_id} | Delete an object store.
+*ObjectStoreApi* | [**get_store**](docs/ObjectStoreApi.md#get_store) | **GET** /resources/stores/object/{store_id} | Describe an object store.
+*ObjectStoreApi* | [**get_stores**](docs/ObjectStoreApi.md#get_stores) | **GET** /resources/stores/object | List object stores.
+*ObjectStoreItemApi* | [**delete_key_from_store**](docs/ObjectStoreItemApi.md#delete_key_from_store) | **DELETE** /resources/stores/object/{store_id}/keys/{key_name} | Delete object store item.
+*ObjectStoreItemApi* | [**get_keys**](docs/ObjectStoreItemApi.md#get_keys) | **GET** /resources/stores/object/{store_id}/keys | List object store keys.
+*ObjectStoreItemApi* | [**get_value_for_key**](docs/ObjectStoreItemApi.md#get_value_for_key) | **GET** /resources/stores/object/{store_id}/keys/{key_name} | Get the value of an object store item
+*ObjectStoreItemApi* | [**set_value_for_key**](docs/ObjectStoreItemApi.md#set_value_for_key) | **PUT** /resources/stores/object/{store_id}/keys/{key_name} | Insert an item into an object store
 *PackageApi* | [**get_package**](docs/PackageApi.md#get_package) | **GET** /service/{service_id}/version/{version_id}/package | Get details of the service&#39;s Compute@Edge package.
 *PackageApi* | [**put_package**](docs/PackageApi.md#put_package) | **PUT** /service/{service_id}/version/{version_id}/package | Upload a Compute@Edge package.
 *PoolApi* | [**create_server_pool**](docs/PoolApi.md#create_server_pool) | **POST** /service/{service_id}/version/{version_id}/pool | Create a server pool
@@ -335,11 +348,11 @@ Class | Method | HTTP request | Description
 *RequestSettingsApi* | [**get_request_settings**](docs/RequestSettingsApi.md#get_request_settings) | **GET** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Get a Request Settings object
 *RequestSettingsApi* | [**list_request_settings**](docs/RequestSettingsApi.md#list_request_settings) | **GET** /service/{service_id}/version/{version_id}/request_settings | List Request Settings objects
 *RequestSettingsApi* | [**update_request_settings**](docs/RequestSettingsApi.md#update_request_settings) | **PUT** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Update a Request Settings object
-*ResourceApi* | [**create_resource**](docs/ResourceApi.md#create_resource) | **POST** /service/{service_id}/version/{version_id}/resource | Create a resource
-*ResourceApi* | [**delete_resource**](docs/ResourceApi.md#delete_resource) | **DELETE** /service/{service_id}/version/{version_id}/resource/{resource_id} | Delete a resource
-*ResourceApi* | [**get_resource**](docs/ResourceApi.md#get_resource) | **GET** /service/{service_id}/version/{version_id}/resource/{resource_id} | Display a resource
-*ResourceApi* | [**list_resources**](docs/ResourceApi.md#list_resources) | **GET** /service/{service_id}/version/{version_id}/resource | List resources
-*ResourceApi* | [**update_resource**](docs/ResourceApi.md#update_resource) | **PUT** /service/{service_id}/version/{version_id}/resource/{resource_id} | Update a resource
+*ResourceApi* | [**create_resource**](docs/ResourceApi.md#create_resource) | **POST** /service/{service_id}/version/{version_id}/resource | Create a resource link
+*ResourceApi* | [**delete_resource**](docs/ResourceApi.md#delete_resource) | **DELETE** /service/{service_id}/version/{version_id}/resource/{id} | Delete a resource link
+*ResourceApi* | [**get_resource**](docs/ResourceApi.md#get_resource) | **GET** /service/{service_id}/version/{version_id}/resource/{id} | Display a resource link
+*ResourceApi* | [**list_resources**](docs/ResourceApi.md#list_resources) | **GET** /service/{service_id}/version/{version_id}/resource | List resource links
+*ResourceApi* | [**update_resource**](docs/ResourceApi.md#update_resource) | **PUT** /service/{service_id}/version/{version_id}/resource/{id} | Update a resource link
 *ResponseObjectApi* | [**delete_response_object**](docs/ResponseObjectApi.md#delete_response_object) | **DELETE** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Delete a Response Object
 *ResponseObjectApi* | [**get_response_object**](docs/ResponseObjectApi.md#get_response_object) | **GET** /service/{service_id}/version/{version_id}/response_object/{response_object_name} | Get a Response object
 *ResponseObjectApi* | [**list_response_objects**](docs/ResponseObjectApi.md#list_response_objects) | **GET** /service/{service_id}/version/{version_id}/response_object | List Response objects
@@ -477,14 +490,19 @@ The fastly-perl API client currently does not support the following endpoints:
 - [`/metrics/domains/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/domain-inspector/historical) (GET)
 - [`/metrics/origins/services/{service_id}`](https://developer.fastly.com/reference/api/metrics-stats/origin-inspector/historical) (GET)
 - [`/rate-limiters/{rate_limiter_id}`](https://developer.fastly.com/reference/api/vcl-services/rate-limiter) (PUT)
-- [`/resources/stores/object/{store_id}/keys/{key_name}`](https://developer.fastly.com/reference/api/) (DELETE, GET, PUT)
-- [`/resources/stores/object/{store_id}/keys`](https://developer.fastly.com/reference/api/) (GET)
-- [`/resources/stores/object/{store_id}`](https://developer.fastly.com/reference/api/) (DELETE, GET)
-- [`/resources/stores/object`](https://developer.fastly.com/reference/api/) (GET, POST)
-- [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/) (DELETE, GET)
-- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/) (GET, POST)
-- [`/resources/stores/secret/{store_id}`](https://developer.fastly.com/reference/api/) (DELETE, GET)
-- [`/resources/stores/secret`](https://developer.fastly.com/reference/api/) (GET, POST)
+- [`/resources/stores/config/{config_store_id}/info`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET)
+- [`/resources/stores/config/{config_store_id}/item/{config_store_item_key}`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (DELETE, GET, PATCH, PUT)
+- [`/resources/stores/config/{config_store_id}/item`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (POST)
+- [`/resources/stores/config/{config_store_id}/items`](https://developer.fastly.com/reference/api/services/resources/config-store-item) (GET, PATCH)
+- [`/resources/stores/config/{config_store_id}/services`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET)
+- [`/resources/stores/config/{config_store_id}`](https://developer.fastly.com/reference/api/services/resources/config-store) (DELETE, GET, PUT)
+- [`/resources/stores/config`](https://developer.fastly.com/reference/api/services/resources/config-store) (GET, POST)
+- [`/resources/stores/secret/client-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (POST)
+- [`/resources/stores/secret/signing-key`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET)
+- [`/resources/stores/secret/{store_id}/secrets/{secret_name}`](https://developer.fastly.com/reference/api/services/resources/secret) (DELETE, GET)
+- [`/resources/stores/secret/{store_id}/secrets`](https://developer.fastly.com/reference/api/services/resources/secret) (GET, POST)
+- [`/resources/stores/secret/{store_id}`](https://developer.fastly.com/reference/api/services/resources/secret-store) (DELETE, GET)
+- [`/resources/stores/secret`](https://developer.fastly.com/reference/api/services/resources/secret-store) (GET, POST)
 - [`/roles/{role_id}/permissions`](https://developer.fastly.com/reference/api/account/roles) (DELETE, POST)
 - [`/roles/{role_id}`](https://developer.fastly.com/reference/api/account/roles) (PATCH)
 - [`/roles`](https://developer.fastly.com/reference/api/account/roles) (POST)

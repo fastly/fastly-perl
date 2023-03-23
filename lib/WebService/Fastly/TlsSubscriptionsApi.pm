@@ -458,7 +458,7 @@ sub get_tls_sub {
 #
 # List TLS subscriptions
 #
-# @param string $filter[state] Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, and &#x60;renewing&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;).  (optional)
+# @param string $filter[state] Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;).  (optional)
 # @param string $filter[tls_domains/id] Limit the returned subscriptions to those that include the specific domain. (optional)
 # @param boolean $filter[has_active_order] Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;.  (optional)
 # @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60; and &#x60;tls_authorizations.globalsign_email_challenge&#x60;.  (optional)
@@ -469,7 +469,7 @@ sub get_tls_sub {
     my $params = {
     'filter[state]' => {
         data_type => 'string',
-        description => 'Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, and &#x60;renewing&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). ',
+        description => 'Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;). ',
         required => '0',
     },
     'filter[tls_domains/id]' => {
