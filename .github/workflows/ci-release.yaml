@@ -54,7 +54,7 @@ jobs:
         if: ${{ env.DRY_RUN != '1' }}
         uses: softprops/action-gh-release@v1
         with:
-          name: v${{ env.VERSION_TITLE }}
+          name: ${{ env.VERSION_TITLE }}
           body_path: ./dist/release_body.txt
           files: |
             ./dist/${{ env.PACKAGE_FILENAME }}
