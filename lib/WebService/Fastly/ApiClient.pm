@@ -163,10 +163,15 @@ sub call_api {
 #  Take value and turn it into a string suitable for inclusion in
 #  the path, by url-encoding.
 #  @param string $value a string which will be part of the path
+#  @param boolean $allow_reserved if set to true, then value will not be url-encoded. Default false.
 #  @return string the serialized object
 sub to_path_value {
-    my ($self, $value) = @_;
-    return uri_escape($self->to_string($value));
+    my ($self, $value, $allow_reserved) = @_;
+    $str = $self->to_string($value);
+    if (!$allow_reserved) {
+        $str = uri_escape($str);
+    }
+    return $str;
 }
 
 

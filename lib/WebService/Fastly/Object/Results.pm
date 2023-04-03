@@ -1621,6 +1621,48 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'ddos_action_limit_streams_connections' => {
+        datatype => 'int',
+        base_name => 'ddos_action_limit_streams_connections',
+        description => 'For HTTP/2, the number of connections the limit-streams action was applied to. The limit-streams action caps the allowed number of concurrent streams in a connection.',
+        format => '',
+        read_only => 'false',
+            },
+    'ddos_action_limit_streams_requests' => {
+        datatype => 'int',
+        base_name => 'ddos_action_limit_streams_requests',
+        description => 'For HTTP/2, the number of requests made on a connection for which the limit-streams action was taken. The limit-streams action caps the allowed number of concurrent streams in a connection.',
+        format => '',
+        read_only => 'false',
+            },
+    'ddos_action_tarpit_accept' => {
+        datatype => 'int',
+        base_name => 'ddos_action_tarpit_accept',
+        description => 'The number of times the tarpit-accept action was taken. The tarpit-accept action adds a delay when accepting future connections.',
+        format => '',
+        read_only => 'false',
+            },
+    'ddos_action_tarpit' => {
+        datatype => 'int',
+        base_name => 'ddos_action_tarpit',
+        description => 'The number of times the tarpit action was taken. The tarpit action delays writing the response to the client.',
+        format => '',
+        read_only => 'false',
+            },
+    'ddos_action_close' => {
+        datatype => 'int',
+        base_name => 'ddos_action_close',
+        description => 'The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent.',
+        format => '',
+        read_only => 'false',
+            },
+    'ddos_action_blackhole' => {
+        datatype => 'int',
+        base_name => 'ddos_action_blackhole',
+        description => 'The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped).',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -1832,7 +1874,13 @@ __PACKAGE__->openapi_types( {
     'fanout_bereq_body_bytes' => 'int',
     'fanout_beresp_header_bytes' => 'int',
     'fanout_beresp_body_bytes' => 'int',
-    'fanout_conn_time_ms' => 'int'
+    'fanout_conn_time_ms' => 'int',
+    'ddos_action_limit_streams_connections' => 'int',
+    'ddos_action_limit_streams_requests' => 'int',
+    'ddos_action_tarpit_accept' => 'int',
+    'ddos_action_tarpit' => 'int',
+    'ddos_action_close' => 'int',
+    'ddos_action_blackhole' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -2044,7 +2092,13 @@ __PACKAGE__->attribute_map( {
     'fanout_bereq_body_bytes' => 'fanout_bereq_body_bytes',
     'fanout_beresp_header_bytes' => 'fanout_beresp_header_bytes',
     'fanout_beresp_body_bytes' => 'fanout_beresp_body_bytes',
-    'fanout_conn_time_ms' => 'fanout_conn_time_ms'
+    'fanout_conn_time_ms' => 'fanout_conn_time_ms',
+    'ddos_action_limit_streams_connections' => 'ddos_action_limit_streams_connections',
+    'ddos_action_limit_streams_requests' => 'ddos_action_limit_streams_requests',
+    'ddos_action_tarpit_accept' => 'ddos_action_tarpit_accept',
+    'ddos_action_tarpit' => 'ddos_action_tarpit',
+    'ddos_action_close' => 'ddos_action_close',
+    'ddos_action_blackhole' => 'ddos_action_blackhole'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

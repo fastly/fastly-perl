@@ -53,6 +53,7 @@ sub new {
 #
 # @param string $store_id  (required)
 # @param string $key_name  (required)
+# @param boolean $force  (optional)
 {
     my $params = {
     'store_id' => {
@@ -64,6 +65,11 @@ sub new {
         data_type => 'string',
         description => '',
         required => '1',
+    },
+    'force' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_key_from_store' } = {
@@ -102,6 +108,11 @@ sub delete_key_from_store {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # query params
+    if ( exists $args{'force'}) {
+        $query_params->{'force'} = $self->{api_client}->to_query_value($args{'force'});
+    }
+
     # path params
     if ( exists $args{'store_id'}) {
         my $_base_variable = "{" . "store_id" . "}";
@@ -135,6 +146,7 @@ sub delete_key_from_store {
 # @param string $store_id  (required)
 # @param string $cursor  (optional)
 # @param int $limit  (optional, default to 100)
+# @param string $prefix  (optional)
 {
     my $params = {
     'store_id' => {
@@ -149,6 +161,11 @@ sub delete_key_from_store {
     },
     'limit' => {
         data_type => 'int',
+        description => '',
+        required => '0',
+    },
+    'prefix' => {
+        data_type => 'string',
         description => '',
         required => '0',
     },
@@ -192,6 +209,11 @@ sub get_keys {
     # query params
     if ( exists $args{'limit'}) {
         $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'prefix'}) {
+        $query_params->{'prefix'} = $self->{api_client}->to_query_value($args{'prefix'});
     }
 
     # path params
@@ -308,6 +330,13 @@ sub get_value_for_key {
 #
 # @param string $store_id  (required)
 # @param string $key_name  (required)
+# @param int $if_generation_match  (optional)
+# @param int $time_to_live_sec  (optional)
+# @param string $metadata  (optional)
+# @param boolean $add  (optional)
+# @param boolean $append  (optional)
+# @param boolean $prepend  (optional)
+# @param boolean $background_fetch  (optional)
 # @param string $body  (optional)
 {
     my $params = {
@@ -320,6 +349,41 @@ sub get_value_for_key {
         data_type => 'string',
         description => '',
         required => '1',
+    },
+    'if_generation_match' => {
+        data_type => 'int',
+        description => '',
+        required => '0',
+    },
+    'time_to_live_sec' => {
+        data_type => 'int',
+        description => '',
+        required => '0',
+    },
+    'metadata' => {
+        data_type => 'string',
+        description => '',
+        required => '0',
+    },
+    'add' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
+    },
+    'append' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
+    },
+    'prepend' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
+    },
+    'background_fetch' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
     },
     'body' => {
         data_type => 'string',
@@ -362,6 +426,41 @@ sub set_value_for_key {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/octet-stream');
+
+    # query params
+    if ( exists $args{'add'}) {
+        $query_params->{'add'} = $self->{api_client}->to_query_value($args{'add'});
+    }
+
+    # query params
+    if ( exists $args{'append'}) {
+        $query_params->{'append'} = $self->{api_client}->to_query_value($args{'append'});
+    }
+
+    # query params
+    if ( exists $args{'prepend'}) {
+        $query_params->{'prepend'} = $self->{api_client}->to_query_value($args{'prepend'});
+    }
+
+    # query params
+    if ( exists $args{'background_fetch'}) {
+        $query_params->{'background_fetch'} = $self->{api_client}->to_query_value($args{'background_fetch'});
+    }
+
+    # header params
+    if ( exists $args{'if_generation_match'}) {
+        $header_params->{'if-generation-match'} = $self->{api_client}->to_header_value($args{'if_generation_match'});
+    }
+
+    # header params
+    if ( exists $args{'time_to_live_sec'}) {
+        $header_params->{'time_to_live_sec'} = $self->{api_client}->to_header_value($args{'time_to_live_sec'});
+    }
+
+    # header params
+    if ( exists $args{'metadata'}) {
+        $header_params->{'metadata'} = $self->{api_client}->to_header_value($args{'metadata'});
+    }
 
     # path params
     if ( exists $args{'store_id'}) {

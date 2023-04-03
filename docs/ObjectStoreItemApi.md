@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **delete_key_from_store**
-> delete_key_from_store(store_id => $store_id, key_name => $key_name)
+> delete_key_from_store(store_id => $store_id, key_name => $key_name, force => $force)
 
 Delete object store item.
 
@@ -36,9 +36,10 @@ my $api_instance = WebService::Fastly::ObjectStoreItemApi->new(
 
 my $store_id = "store_id_example"; # string | 
 my $key_name = "key_name_example"; # string | 
+my $force = null; # boolean | 
 
 eval {
-    $api_instance->delete_key_from_store(store_id => $store_id, key_name => $key_name);
+    $api_instance->delete_key_from_store(store_id => $store_id, key_name => $key_name, force => $force);
 };
 if ($@) {
     warn "Exception when calling ObjectStoreItemApi->delete_key_from_store: $@\n";
@@ -51,6 +52,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **store_id** | **string**|  | 
  **key_name** | **string**|  | 
+ **force** | **boolean**|  | [optional] 
 
 ### Return type
 
@@ -68,7 +70,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_keys**
-> InlineResponse2004 get_keys(store_id => $store_id, cursor => $cursor, limit => $limit)
+> InlineResponse2004 get_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix)
 
 List object store keys.
 
@@ -89,9 +91,10 @@ my $api_instance = WebService::Fastly::ObjectStoreItemApi->new(
 my $store_id = "store_id_example"; # string | 
 my $cursor = "cursor_example"; # string | 
 my $limit = 100; # int | 
+my $prefix = "prefix_example"; # string | 
 
 eval {
-    my $result = $api_instance->get_keys(store_id => $store_id, cursor => $cursor, limit => $limit);
+    my $result = $api_instance->get_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix);
     print Dumper($result);
 };
 if ($@) {
@@ -106,6 +109,7 @@ Name | Type | Description  | Notes
  **store_id** | **string**|  | 
  **cursor** | **string**|  | [optional] 
  **limit** | **int**|  | [optional] [default to 100]
+ **prefix** | **string**|  | [optional] 
 
 ### Return type
 
@@ -176,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **set_value_for_key**
-> string set_value_for_key(store_id => $store_id, key_name => $key_name, body => $body)
+> string set_value_for_key(store_id => $store_id, key_name => $key_name, if_generation_match => $if_generation_match, time_to_live_sec => $time_to_live_sec, metadata => $metadata, add => $add, append => $append, prepend => $prepend, background_fetch => $background_fetch, body => $body)
 
 Insert an item into an object store
 
@@ -196,10 +200,17 @@ my $api_instance = WebService::Fastly::ObjectStoreItemApi->new(
 
 my $store_id = "store_id_example"; # string | 
 my $key_name = "key_name_example"; # string | 
+my $if_generation_match = 56; # int | 
+my $time_to_live_sec = 56; # int | 
+my $metadata = "metadata_example"; # string | 
+my $add = null; # boolean | 
+my $append = null; # boolean | 
+my $prepend = null; # boolean | 
+my $background_fetch = null; # boolean | 
 my $body = WebService::Fastly::Object::string->new(); # string | 
 
 eval {
-    my $result = $api_instance->set_value_for_key(store_id => $store_id, key_name => $key_name, body => $body);
+    my $result = $api_instance->set_value_for_key(store_id => $store_id, key_name => $key_name, if_generation_match => $if_generation_match, time_to_live_sec => $time_to_live_sec, metadata => $metadata, add => $add, append => $append, prepend => $prepend, background_fetch => $background_fetch, body => $body);
     print Dumper($result);
 };
 if ($@) {
@@ -213,6 +224,13 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **store_id** | **string**|  | 
  **key_name** | **string**|  | 
+ **if_generation_match** | **int**|  | [optional] 
+ **time_to_live_sec** | **int**|  | [optional] 
+ **metadata** | **string**|  | [optional] 
+ **add** | **boolean**|  | [optional] 
+ **append** | **boolean**|  | [optional] 
+ **prepend** | **boolean**|  | [optional] 
+ **background_fetch** | **boolean**|  | [optional] 
  **body** | **string****string**|  | [optional] 
 
 ### Return type

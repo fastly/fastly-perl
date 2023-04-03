@@ -51,9 +51,15 @@ sub new {
 #
 # Create an object store.
 #
+# @param string $location  (optional)
 # @param Store $store  (optional)
 {
     my $params = {
+    'location' => {
+        data_type => 'string',
+        description => '',
+        required => '0',
+    },
     'store' => {
         data_type => 'Store',
         description => '',
@@ -86,6 +92,11 @@ sub create_store {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
+    # query params
+    if ( exists $args{'location'}) {
+        $query_params->{'location'} = $self->{api_client}->to_query_value($args{'location'});
+    }
+
     my $_body_data;
     # body params
     if ( exists $args{'store'}) {
@@ -112,12 +123,18 @@ sub create_store {
 # Delete an object store.
 #
 # @param string $store_id  (required)
+# @param boolean $force  (optional)
 {
     my $params = {
     'store_id' => {
         data_type => 'string',
         description => '',
         required => '1',
+    },
+    'force' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_store' } = {
@@ -150,6 +167,11 @@ sub delete_store {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # header params
+    if ( exists $args{'force'}) {
+        $header_params->{'force'} = $self->{api_client}->to_header_value($args{'force'});
+    }
 
     # path params
     if ( exists $args{'store_id'}) {

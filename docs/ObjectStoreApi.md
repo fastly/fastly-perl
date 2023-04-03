@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **create_store**
-> StoreResponse create_store(store => $store)
+> StoreResponse create_store(location => $location, store => $store)
 
 Create an object store.
 
@@ -34,10 +34,11 @@ my $api_instance = WebService::Fastly::ObjectStoreApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
+my $location = "location_example"; # string | 
 my $store = WebService::Fastly::Object::Store->new(); # Store | 
 
 eval {
-    my $result = $api_instance->create_store(store => $store);
+    my $result = $api_instance->create_store(location => $location, store => $store);
     print Dumper($result);
 };
 if ($@) {
@@ -49,6 +50,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **location** | **string**|  | [optional] 
  **store** | [**Store**](Store.md)|  | [optional] 
 
 ### Return type
@@ -67,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_store**
-> delete_store(store_id => $store_id)
+> delete_store(store_id => $store_id, force => $force)
 
 Delete an object store.
 
@@ -86,9 +88,10 @@ my $api_instance = WebService::Fastly::ObjectStoreApi->new(
 );
 
 my $store_id = "store_id_example"; # string | 
+my $force = null; # boolean | 
 
 eval {
-    $api_instance->delete_store(store_id => $store_id);
+    $api_instance->delete_store(store_id => $store_id, force => $force);
 };
 if ($@) {
     warn "Exception when calling ObjectStoreApi->delete_store: $@\n";
@@ -100,6 +103,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **store_id** | **string**|  | 
+ **force** | **boolean**|  | [optional] 
 
 ### Return type
 

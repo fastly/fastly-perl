@@ -1,5 +1,13 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+2.03 2023-04-03
+    * fix(purge): avoid escaping URL parameter
+    * feat(object-store): add 'location' property to 'create_store'
+    * feat(object-store): add 'force' property to 'delete_store'
+    * feat(realtime): additional DDoS properties
+    * docs(acl-entries): document batch updating
+    * docs(object-store): new properties for 'set_value_for_key'
+
 2.02 2023-03-23
     * fix(purge): switch authentication type to 'token'
     * feat(domain-ownerships): List domain-ownerships

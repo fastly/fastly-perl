@@ -272,7 +272,7 @@ sub purge_single_url {
     # path params
     if ( exists $args{'cached_url'}) {
         my $_base_variable = "{" . "cached_url" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'cached_url'});
+        my $_base_value = $self->{api_client}->to_path_value($args{'cached_url'}, 1);
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
