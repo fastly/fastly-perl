@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
  **append** | **boolean**|  | [optional] 
  **prepend** | **boolean**|  | [optional] 
  **background_fetch** | **boolean**|  | [optional] 
- **body** | **string****string**|  | [optional] 
+ **body** | **string**|  | [optional] 
 
 ### Return type
 

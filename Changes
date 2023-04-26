@@ -1,5 +1,9 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+2.04 2023-04-26
+    * fix(object-store-item): use correct type for key value
+    * fix(tls-csrs): remove internal endpoint
+
 2.03 2023-04-03
     * fix(purge): avoid escaping URL parameter
     * feat(object-store): add 'location' property to 'create_store'
