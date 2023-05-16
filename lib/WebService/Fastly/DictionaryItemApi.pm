@@ -47,6 +47,102 @@ sub new {
 
 
 #
+# bulk_update_dictionary_item
+#
+# Update multiple entries in an edge dictionary
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+# @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
+# @param BulkUpdateDictionaryListRequest $bulk_update_dictionary_list_request  (optional)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    'dictionary_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying a Dictionary.',
+        required => '1',
+    },
+    'bulk_update_dictionary_list_request' => {
+        data_type => 'BulkUpdateDictionaryListRequest',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'bulk_update_dictionary_item' } = {
+        summary => 'Update multiple entries in an edge dictionary',
+        params => $params,
+        returns => 'InlineResponse200',
+        };
+}
+# @return InlineResponse200
+#
+sub bulk_update_dictionary_item {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling bulk_update_dictionary_item");
+    }
+
+    # verify the required parameter 'dictionary_id' is set
+    unless (exists $args{'dictionary_id'}) {
+      croak("Missing the required parameter 'dictionary_id' when calling bulk_update_dictionary_item");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service/{service_id}/dictionary/{dictionary_id}/items';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'dictionary_id'}) {
+        my $_base_variable = "{" . "dictionary_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'dictionary_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'bulk_update_dictionary_list_request'}) {
+        $_body_data = $args{'bulk_update_dictionary_list_request'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse200', $response);
+    return $_response_object;
+}
+
+#
 # create_dictionary_item
 #
 # Create an entry in an edge dictionary

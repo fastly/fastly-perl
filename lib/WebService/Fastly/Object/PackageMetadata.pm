@@ -200,6 +200,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'files_hash' => {
+        datatype => 'string',
+        base_name => 'files_hash',
+        description => 'Hash of the files within the Compute@Edge package.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -208,7 +215,8 @@ __PACKAGE__->openapi_types( {
     'authors' => 'ARRAY[string]',
     'language' => 'string',
     'size' => 'int',
-    'hashsum' => 'string'
+    'hashsum' => 'string',
+    'files_hash' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -217,7 +225,8 @@ __PACKAGE__->attribute_map( {
     'authors' => 'authors',
     'language' => 'language',
     'size' => 'size',
-    'hashsum' => 'hashsum'
+    'hashsum' => 'hashsum',
+    'files_hash' => 'files_hash'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

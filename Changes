@@ -1,5 +1,11 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+3.00 2023-05-16
+    * breaking(object_store): rename to kv_store.
+    * feat(dictionary_item): add 'bulk' PATCH endpoint.
+    * feat(package): add `files_hash` metadata property.
+    * feat(tls_certificates): add `filter[in_use]` parameter.
+
 2.04 2023-04-26
     * fix(object-store-item): use correct type for key value
     * fix(tls-csrs): remove internal endpoint

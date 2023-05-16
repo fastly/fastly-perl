@@ -241,6 +241,7 @@ sub get_tls_cert {
 #
 # List TLS certificates
 #
+# @param string $filter[in_use] Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. (optional)
 # @param string $filter[not_after] Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  (optional)
 # @param string $filter[tls_domains/id] Limit the returned certificates to those that include the specific domain. (optional)
 # @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;.  (optional)
@@ -249,6 +250,11 @@ sub get_tls_cert {
 # @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
 {
     my $params = {
+    'filter[in_use]' => {
+        data_type => 'string',
+        description => 'Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.',
+        required => '0',
+    },
     'filter[not_after]' => {
         data_type => 'string',
         description => 'Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05). ',
@@ -305,6 +311,11 @@ sub list_tls_certs {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'filter[in_use]'}) {
+        $query_params->{'filter[in_use]'} = $self->{api_client}->to_query_value($args{'filter[in_use]'});
+    }
 
     # query params
     if ( exists $args{'filter[not_after]'}) {

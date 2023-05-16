@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tls_certs**
-> TlsCertificatesResponse list_tls_certs(filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> TlsCertificatesResponse list_tls_certs(filter[in_use] => $filter[in_use], filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort)
 
 List TLS certificates
 
@@ -187,6 +187,7 @@ my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
+my $filter[in_use] = "filter[in_use]_example"; # string | Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false.
 my $filter[not_after] = "filter[not_after]_example"; # string | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05). 
 my $filter[tls_domains/id] = "filter[tls_domains/id]_example"; # string | Limit the returned certificates to those that include the specific domain.
 my $include = "include_example"; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. 
@@ -195,7 +196,7 @@ my $page[size] = 20; # int | Number of records per page.
 my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_tls_certs(filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_tls_certs(filter[in_use] => $filter[in_use], filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort);
     print Dumper($result);
 };
 if ($@) {
@@ -207,6 +208,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **filter[in_use]** | **string**| Optional. Limit the returned certificates to those currently using Fastly to terminate TLS (that is, certificates associated with an activation). Permitted values: true, false. | [optional] 
  **filter[not_after]** | **string**| Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  | [optional] 
  **filter[tls_domains/id]** | **string**| Limit the returned certificates to those that include the specific domain. | [optional] 
  **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.  | [optional] 

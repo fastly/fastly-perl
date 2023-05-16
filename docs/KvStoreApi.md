@@ -1,32 +1,32 @@
-# WebService::Fastly::ObjectStoreApi
+# WebService::Fastly::KvStoreApi
 
 ## Load the API package
 ```perl
-use WebService::Fastly::Object::ObjectStoreApi;
+use WebService::Fastly::Object::KvStoreApi;
 ```
 
 All URIs are relative to *https://api.fastly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_store**](ObjectStoreApi.md#create_store) | **POST** /resources/stores/object | Create an object store.
-[**delete_store**](ObjectStoreApi.md#delete_store) | **DELETE** /resources/stores/object/{store_id} | Delete an object store.
-[**get_store**](ObjectStoreApi.md#get_store) | **GET** /resources/stores/object/{store_id} | Describe an object store.
-[**get_stores**](ObjectStoreApi.md#get_stores) | **GET** /resources/stores/object | List object stores.
+[**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create an kv store.
+[**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete an kv store.
+[**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe an kv store.
+[**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List kv stores.
 
 
 # **create_store**
 > StoreResponse create_store(location => $location, store => $store)
 
-Create an object store.
+Create an kv store.
 
-Create a new object store.
+Create a new kv store.
 
 ### Example
 ```perl
 use Data::Dumper;
-use WebService::Fastly::ObjectStoreApi;
-my $api_instance = WebService::Fastly::ObjectStoreApi->new(
+use WebService::Fastly::KvStoreApi;
+my $api_instance = WebService::Fastly::KvStoreApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -42,7 +42,7 @@ eval {
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling ObjectStoreApi->create_store: $@\n";
+    warn "Exception when calling KvStoreApi->create_store: $@\n";
 }
 ```
 
@@ -71,15 +71,15 @@ Name | Type | Description  | Notes
 # **delete_store**
 > delete_store(store_id => $store_id, force => $force)
 
-Delete an object store.
+Delete an kv store.
 
-An object store must be empty before it can be deleted.  Deleting an object store that still contains keys will result in a `409` (Conflict).
+An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
 
 ### Example
 ```perl
 use Data::Dumper;
-use WebService::Fastly::ObjectStoreApi;
-my $api_instance = WebService::Fastly::ObjectStoreApi->new(
+use WebService::Fastly::KvStoreApi;
+my $api_instance = WebService::Fastly::KvStoreApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -94,7 +94,7 @@ eval {
     $api_instance->delete_store(store_id => $store_id, force => $force);
 };
 if ($@) {
-    warn "Exception when calling ObjectStoreApi->delete_store: $@\n";
+    warn "Exception when calling KvStoreApi->delete_store: $@\n";
 }
 ```
 
@@ -123,15 +123,15 @@ void (empty response body)
 # **get_store**
 > StoreResponse get_store(store_id => $store_id)
 
-Describe an object store.
+Describe an kv store.
 
-Get an object store by ID.
+Get an kv store by ID.
 
 ### Example
 ```perl
 use Data::Dumper;
-use WebService::Fastly::ObjectStoreApi;
-my $api_instance = WebService::Fastly::ObjectStoreApi->new(
+use WebService::Fastly::KvStoreApi;
+my $api_instance = WebService::Fastly::KvStoreApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -146,7 +146,7 @@ eval {
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling ObjectStoreApi->get_store: $@\n";
+    warn "Exception when calling KvStoreApi->get_store: $@\n";
 }
 ```
 
@@ -174,15 +174,15 @@ Name | Type | Description  | Notes
 # **get_stores**
 > InlineResponse2003 get_stores(cursor => $cursor, limit => $limit)
 
-List object stores.
+List kv stores.
 
 Get all stores for a given customer.
 
 ### Example
 ```perl
 use Data::Dumper;
-use WebService::Fastly::ObjectStoreApi;
-my $api_instance = WebService::Fastly::ObjectStoreApi->new(
+use WebService::Fastly::KvStoreApi;
+my $api_instance = WebService::Fastly::KvStoreApi->new(
 
     # Configure API key authorization: token
     api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
@@ -198,7 +198,7 @@ eval {
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling ObjectStoreApi->get_stores: $@\n";
+    warn "Exception when calling KvStoreApi->get_stores: $@\n";
 }
 ```
 
