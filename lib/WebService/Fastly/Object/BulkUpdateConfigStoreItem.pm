@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BulkUpdateDictionaryItem;
+package WebService::Fastly::Object::BulkUpdateConfigStoreItem;
 
 require 5.6.0;
 use strict;
@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::BulkUpdateConfigStoreItemAllOf;
-use WebService::Fastly::Object::DictionaryItem;
+use WebService::Fastly::Object::ConfigStoreItem;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,7 +155,7 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BulkUpdateDictionaryItem',
+                                  class => 'BulkUpdateConfigStoreItem',
                                   required => [], # TODO
 }                                 );
 

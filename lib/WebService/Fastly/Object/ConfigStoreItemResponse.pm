@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BulkUpdateDictionaryItem;
+package WebService::Fastly::Object::ConfigStoreItemResponse;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,9 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BulkUpdateConfigStoreItemAllOf;
-use WebService::Fastly::Object::DictionaryItem;
+use WebService::Fastly::Object::ConfigStoreItem;
+use WebService::Fastly::Object::ConfigStoreItemResponseAllOf;
+use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,7 +156,7 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BulkUpdateDictionaryItem',
+                                  class => 'ConfigStoreItemResponse',
                                   required => [], # TODO
 }                                 );
 
@@ -174,30 +175,60 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'op' => {
+    'created_at' => {
+        datatype => 'DateTime',
+        base_name => 'created_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'deleted_at' => {
+        datatype => 'DateTime',
+        base_name => 'deleted_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'updated_at' => {
+        datatype => 'DateTime',
+        base_name => 'updated_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'store_id' => {
         datatype => 'string',
-        base_name => 'op',
+        base_name => 'store_id',
         description => '',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
 });
 
 __PACKAGE__->openapi_types( {
     'item_key' => 'string',
     'item_value' => 'string',
-    'op' => 'string'
+    'created_at' => 'DateTime',
+    'deleted_at' => 'DateTime',
+    'updated_at' => 'DateTime',
+    'store_id' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'item_key' => 'item_key',
     'item_value' => 'item_value',
-    'op' => 'op'
+    'created_at' => 'created_at',
+    'deleted_at' => 'deleted_at',
+    'updated_at' => 'updated_at',
+    'store_id' => 'store_id'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'created_at' => 'true',
+    'deleted_at' => 'true',
+    'updated_at' => 'true',
 } );
 
 

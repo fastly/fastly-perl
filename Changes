@@ -1,5 +1,8 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+3.01 2023-05-17
+    * feat(config_store): add Config Store endpoints.
+
 3.00 2023-05-16
     * breaking(object_store): rename to kv_store.
     * feat(dictionary_item): add 'bulk' PATCH endpoint.

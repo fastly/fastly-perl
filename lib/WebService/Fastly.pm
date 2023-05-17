@@ -2,7 +2,7 @@ package WebService::Fastly;
 
 use strict;
 use 5.008_005;
-our $VERSION = '3.00';
+our $VERSION = '3.01';
 
 1;
 __END__

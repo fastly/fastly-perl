@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BulkUpdateDictionaryItem;
+package WebService::Fastly::Object::ConfigStoreResponse;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,9 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BulkUpdateConfigStoreItemAllOf;
-use WebService::Fastly::Object::DictionaryItem;
+use WebService::Fastly::Object::ConfigStore;
+use WebService::Fastly::Object::ConfigStoreResponseAllOf;
+use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,49 +156,70 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BulkUpdateDictionaryItem',
+                                  class => 'ConfigStoreResponse',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'item_key' => {
+    'created_at' => {
+        datatype => 'DateTime',
+        base_name => 'created_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'deleted_at' => {
+        datatype => 'DateTime',
+        base_name => 'deleted_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'updated_at' => {
+        datatype => 'DateTime',
+        base_name => 'updated_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'name' => {
         datatype => 'string',
-        base_name => 'item_key',
-        description => 'Item key, maximum 256 characters.',
+        base_name => 'name',
+        description => 'The name of the config store.',
         format => '',
         read_only => 'false',
             },
-    'item_value' => {
+    'id' => {
         datatype => 'string',
-        base_name => 'item_value',
-        description => 'Item value, maximum 8000 characters.',
-        format => '',
-        read_only => 'false',
-            },
-    'op' => {
-        datatype => 'string',
-        base_name => 'op',
-        description => '',
+        base_name => 'id',
+        description => 'An alphanumeric string identifying the config store.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'item_key' => 'string',
-    'item_value' => 'string',
-    'op' => 'string'
+    'created_at' => 'DateTime',
+    'deleted_at' => 'DateTime',
+    'updated_at' => 'DateTime',
+    'name' => 'string',
+    'id' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'item_key' => 'item_key',
-    'item_value' => 'item_value',
-    'op' => 'op'
+    'created_at' => 'created_at',
+    'deleted_at' => 'deleted_at',
+    'updated_at' => 'updated_at',
+    'name' => 'name',
+    'id' => 'id'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'created_at' => 'true',
+    'deleted_at' => 'true',
+    'updated_at' => 'true',
 } );
 
 

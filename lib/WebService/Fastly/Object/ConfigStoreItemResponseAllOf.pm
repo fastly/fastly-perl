@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BulkUpdateDictionaryItem;
+package WebService::Fastly::Object::ConfigStoreItemResponseAllOf;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BulkUpdateConfigStoreItemAllOf;
-use WebService::Fastly::Object::DictionaryItem;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,44 +153,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BulkUpdateDictionaryItem',
+                                  class => 'ConfigStoreItemResponseAllOf',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'item_key' => {
+    'store_id' => {
         datatype => 'string',
-        base_name => 'item_key',
-        description => 'Item key, maximum 256 characters.',
-        format => '',
-        read_only => 'false',
-            },
-    'item_value' => {
-        datatype => 'string',
-        base_name => 'item_value',
-        description => 'Item value, maximum 8000 characters.',
-        format => '',
-        read_only => 'false',
-            },
-    'op' => {
-        datatype => 'string',
-        base_name => 'op',
+        base_name => 'store_id',
         description => '',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'item_key' => 'string',
-    'item_value' => 'string',
-    'op' => 'string'
+    'store_id' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'item_key' => 'item_key',
-    'item_value' => 'item_value',
-    'op' => 'op'
+    'store_id' => 'store_id'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

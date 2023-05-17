@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BulkUpdateDictionaryItem;
+package WebService::Fastly::Object::ConfigStoreItem;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BulkUpdateConfigStoreItemAllOf;
-use WebService::Fastly::Object::DictionaryItem;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,7 +153,7 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BulkUpdateDictionaryItem',
+                                  class => 'ConfigStoreItem',
                                   required => [], # TODO
 }                                 );
 
@@ -174,25 +172,16 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'op' => {
-        datatype => 'string',
-        base_name => 'op',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
     'item_key' => 'string',
-    'item_value' => 'string',
-    'op' => 'string'
+    'item_value' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'item_key' => 'item_key',
-    'item_value' => 'item_value',
-    'op' => 'op'
+    'item_value' => 'item_value'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
