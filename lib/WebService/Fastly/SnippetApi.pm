@@ -57,7 +57,7 @@ sub new {
 # @param int $dynamic Sets the snippet version. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
-# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+# @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
 {
     my $params = {
     'service_id' => {
@@ -91,7 +91,7 @@ sub new {
         required => '0',
     },
     'priority' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
@@ -573,7 +573,7 @@ sub list_snippets {
 # @param int $dynamic Sets the snippet version. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
-# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+# @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
 {
     my $params = {
     'service_id' => {
@@ -607,7 +607,7 @@ sub list_snippets {
         required => '0',
     },
     'priority' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },

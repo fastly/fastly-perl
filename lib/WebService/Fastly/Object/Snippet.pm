@@ -187,7 +187,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'priority' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'priority',
         description => 'Priority determines execution order. Lower numbers execute first.',
         format => '',
@@ -200,7 +200,7 @@ __PACKAGE__->openapi_types( {
     'dynamic' => 'int',
     'type' => 'string',
     'content' => 'string',
-    'priority' => 'int'
+    'priority' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {

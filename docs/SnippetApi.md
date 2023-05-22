@@ -42,7 +42,7 @@ my $name = "name_example"; # string | The name for the snippet.
 my $dynamic = 56; # int | Sets the snippet version.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
-my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
+my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
 
 eval {
     my $result = $api_instance->create_snippet(service_id => $service_id, version_id => $version_id, name => $name, dynamic => $dynamic, type => $type, content => $content, priority => $priority);
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
  **dynamic** | **int**| Sets the snippet version. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 
- **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+ **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
 
 ### Return type
 
@@ -321,7 +321,7 @@ my $name = "name_example"; # string | The name for the snippet.
 my $dynamic = 56; # int | Sets the snippet version.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
-my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
+my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
 
 eval {
     my $result = $api_instance->update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, dynamic => $dynamic, type => $type, content => $content, priority => $priority);
@@ -342,7 +342,7 @@ Name | Type | Description  | Notes
  **dynamic** | **int**| Sets the snippet version. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 
- **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+ **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
 
 ### Return type
 

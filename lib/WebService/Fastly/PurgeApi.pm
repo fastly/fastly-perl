@@ -368,7 +368,7 @@ sub purge_tag {
     # path params
     if ( exists $args{'surrogate_key'}) {
         my $_base_variable = "{" . "surrogate_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'surrogate_key'});
+        my $_base_value = $self->{api_client}->to_path_value($args{'surrogate_key'}, 1);
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 

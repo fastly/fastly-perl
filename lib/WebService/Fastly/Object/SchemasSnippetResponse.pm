@@ -28,7 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ServiceIdAndVersion;
 use WebService::Fastly::Object::Snippet;
 use WebService::Fastly::Object::SnippetResponseAllOf;
 use WebService::Fastly::Object::Timestamps;
@@ -191,25 +190,11 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'priority' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'priority',
         description => 'Priority determines execution order. Lower numbers execute first.',
         format => '',
         read_only => 'false',
-            },
-    'service_id' => {
-        datatype => 'string',
-        base_name => 'service_id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'version' => {
-        datatype => 'int',
-        base_name => 'version',
-        description => '',
-        format => '',
-        read_only => 'true',
             },
     'created_at' => {
         datatype => 'DateTime',
@@ -232,6 +217,20 @@ __PACKAGE__->method_documentation({
         format => 'date-time',
         read_only => 'true',
             },
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'version' => {
+        datatype => 'string',
+        base_name => 'version',
+        description => 'String representing the number identifying a version of the service.',
+        format => '',
+        read_only => 'true',
+            },
     'id' => {
         datatype => 'string',
         base_name => 'id',
@@ -246,12 +245,12 @@ __PACKAGE__->openapi_types( {
     'dynamic' => 'int',
     'type' => 'string',
     'content' => 'string',
-    'priority' => 'int',
-    'service_id' => 'string',
-    'version' => 'int',
+    'priority' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
+    'service_id' => 'string',
+    'version' => 'string',
     'id' => 'string'
 } );
 
@@ -261,11 +260,11 @@ __PACKAGE__->attribute_map( {
     'type' => 'type',
     'content' => 'content',
     'priority' => 'priority',
-    'service_id' => 'service_id',
-    'version' => 'version',
     'created_at' => 'created_at',
     'deleted_at' => 'deleted_at',
     'updated_at' => 'updated_at',
+    'service_id' => 'service_id',
+    'version' => 'version',
     'id' => 'id'
 } );
 

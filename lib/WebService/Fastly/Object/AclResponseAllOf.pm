@@ -158,6 +158,20 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'version' => {
+        datatype => 'string',
+        base_name => 'version',
+        description => 'String representing the number identifying a version of the service.',
+        format => '',
+        read_only => 'true',
+            },
     'id' => {
         datatype => 'string',
         base_name => 'id',
@@ -168,10 +182,14 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
+    'service_id' => 'string',
+    'version' => 'string',
     'id' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
+    'service_id' => 'service_id',
+    'version' => 'version',
     'id' => 'id'
 } );
 

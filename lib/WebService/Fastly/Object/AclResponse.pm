@@ -30,7 +30,6 @@ use DateTime;
 
 use WebService::Fastly::Object::Acl;
 use WebService::Fastly::Object::AclResponseAllOf;
-use WebService::Fastly::Object::ServiceIdAndVersion;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -198,9 +197,9 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
-        description => '',
+        description => 'String representing the number identifying a version of the service.',
         format => '',
         read_only => 'true',
             },
@@ -219,7 +218,7 @@ __PACKAGE__->openapi_types( {
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'service_id' => 'string',
-    'version' => 'int',
+    'version' => 'string',
     'id' => 'string'
 } );
 

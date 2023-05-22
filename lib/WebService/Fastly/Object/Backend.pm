@@ -452,6 +452,7 @@ __PACKAGE__->openapi_nullable( {
     'shield' => 'true',
     'ssl_ca_cert' => 'true',
     'ssl_cert_hostname' => 'true',
+    'ssl_check_cert' => 'true',
     'ssl_ciphers' => 'true',
     'ssl_client_cert' => 'true',
     'ssl_client_key' => 'true',
