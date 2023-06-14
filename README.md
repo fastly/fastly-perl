@@ -6,11 +6,6 @@ WebService::Fastly - an interface to most facets of the [Fastly API](https://dev
 
 3.02
 
-> NOTE: This 2.x release is a new [generated API client](https://dev.to/fastly/better-fastly-api-clients-with-openapi-generator-3lno) for the Fastly API.
-> The previous 1.x version is no longer supported, but can be found at https://github.com/fastly/fastly-perl/tree/v1.x.
-
-
-
 # SYNOPSIS
 
 ```perl5
