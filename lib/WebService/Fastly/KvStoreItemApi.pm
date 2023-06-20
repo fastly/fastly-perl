@@ -53,7 +53,6 @@ sub new {
 #
 # @param string $store_id  (required)
 # @param string $key_name  (required)
-# @param boolean $force  (optional)
 {
     my $params = {
     'store_id' => {
@@ -65,11 +64,6 @@ sub new {
         data_type => 'string',
         description => '',
         required => '1',
-    },
-    'force' => {
-        data_type => 'boolean',
-        description => '',
-        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_key_from_store' } = {
@@ -107,11 +101,6 @@ sub delete_key_from_store {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # query params
-    if ( exists $args{'force'}) {
-        $query_params->{'force'} = $self->{api_client}->to_query_value($args{'force'});
-    }
 
     # path params
     if ( exists $args{'store_id'}) {

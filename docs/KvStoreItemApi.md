@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **delete_key_from_store**
-> delete_key_from_store(store_id => $store_id, key_name => $key_name, force => $force)
+> delete_key_from_store(store_id => $store_id, key_name => $key_name)
 
 Delete kv store item.
 
@@ -36,10 +36,9 @@ my $api_instance = WebService::Fastly::KvStoreItemApi->new(
 
 my $store_id = "store_id_example"; # string | 
 my $key_name = "key_name_example"; # string | 
-my $force = null; # boolean | 
 
 eval {
-    $api_instance->delete_key_from_store(store_id => $store_id, key_name => $key_name, force => $force);
+    $api_instance->delete_key_from_store(store_id => $store_id, key_name => $key_name);
 };
 if ($@) {
     warn "Exception when calling KvStoreItemApi->delete_key_from_store: $@\n";
@@ -52,7 +51,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **store_id** | **string**|  | 
  **key_name** | **string**|  | 
- **force** | **boolean**|  | [optional] 
 
 ### Return type
 

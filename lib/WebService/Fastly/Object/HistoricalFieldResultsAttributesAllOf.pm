@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf;
+package WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf;
 
 require 5.6.0;
 use strict;
@@ -28,7 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalFieldResultsAttributes;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -154,14 +153,21 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalFieldAggregateResponseAllOf',
+                                  class => 'HistoricalFieldResultsAttributesAllOf',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ARRAY[HistoricalFieldResultsAttributes]',
-        base_name => 'data',
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'start_time' => {
+        datatype => 'int',
+        base_name => 'start_time',
         description => '',
         format => '',
         read_only => 'false',
@@ -169,16 +175,19 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[HistoricalFieldResultsAttributes]'
+    'service_id' => 'string',
+    'start_time' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'service_id' => 'service_id',
+    'start_time' => 'start_time'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'service_id' => 'true',
 } );
 
 

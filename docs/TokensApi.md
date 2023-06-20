@@ -9,12 +9,64 @@ All URIs are relative to *https://api.fastly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**get_token**](TokensApi.md#get_token) | **GET** /tokens/{token_id} | Get a token
 [**get_token_current**](TokensApi.md#get_token_current) | **GET** /tokens/self | Get the current token
 [**list_tokens_customer**](TokensApi.md#list_tokens_customer) | **GET** /customer/{customer_id}/tokens | List tokens for a customer
 [**list_tokens_user**](TokensApi.md#list_tokens_user) | **GET** /tokens | List tokens for the authenticated user
 [**revoke_token**](TokensApi.md#revoke_token) | **DELETE** /tokens/{token_id} | Revoke a token
 [**revoke_token_current**](TokensApi.md#revoke_token_current) | **DELETE** /tokens/self | Revoke the current token
 
+
+# **get_token**
+> TokenResponse get_token(token_id => $token_id)
+
+Get a token
+
+Get a single token by its id.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::TokensApi;
+my $api_instance = WebService::Fastly::TokensApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $token_id = "token_id_example"; # string | Alphanumeric string identifying a token.
+
+eval {
+    my $result = $api_instance->get_token(token_id => $token_id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TokensApi->get_token: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **token_id** | **string**| Alphanumeric string identifying a token. | 
+
+### Return type
+
+[**TokenResponse**](TokenResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_token_current**
 > TokenResponse get_token_current()

@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_store**
-> delete_store(store_id => $store_id, force => $force)
+> delete_store(store_id => $store_id)
 
 Delete an kv store.
 
@@ -88,10 +88,9 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 );
 
 my $store_id = "store_id_example"; # string | 
-my $force = null; # boolean | 
 
 eval {
-    $api_instance->delete_store(store_id => $store_id, force => $force);
+    $api_instance->delete_store(store_id => $store_id);
 };
 if ($@) {
     warn "Exception when calling KvStoreApi->delete_store: $@\n";
@@ -103,7 +102,6 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **store_id** | **string**|  | 
- **force** | **boolean**|  | [optional] 
 
 ### Return type
 

@@ -1,14 +1,15 @@
-# WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf
+# WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ARRAY[HistoricalFieldResultsAttributes]**](HistoricalFieldResultsAttributes.md) |  | [optional] 
+**service_id** | **string** |  | [optional] [readonly] 
+**start_time** | **int** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -123,18 +123,12 @@ sub create_store {
 # Delete an kv store.
 #
 # @param string $store_id  (required)
-# @param boolean $force  (optional)
 {
     my $params = {
     'store_id' => {
         data_type => 'string',
         description => '',
         required => '1',
-    },
-    'force' => {
-        data_type => 'boolean',
-        description => '',
-        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_store' } = {
@@ -167,11 +161,6 @@ sub delete_store {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # header params
-    if ( exists $args{'force'}) {
-        $header_params->{'force'} = $self->{api_client}->to_header_value($args{'force'});
-    }
 
     # path params
     if ( exists $args{'store_id'}) {

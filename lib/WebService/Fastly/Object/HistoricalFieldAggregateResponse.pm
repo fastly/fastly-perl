@@ -30,6 +30,7 @@ use DateTime;
 
 use WebService::Fastly::Object::Historical;
 use WebService::Fastly::Object::HistoricalFieldAggregateResponseAllOf;
+use WebService::Fastly::Object::HistoricalFieldResultsAttributes;
 use WebService::Fastly::Object::HistoricalMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -183,7 +184,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'data' => {
-        datatype => 'ARRAY[HASH[string,string]]',
+        datatype => 'ARRAY[HistoricalFieldResultsAttributes]',
         base_name => 'data',
         description => '',
         format => '',
@@ -195,7 +196,7 @@ __PACKAGE__->openapi_types( {
     'status' => 'string',
     'meta' => 'HistoricalMeta',
     'msg' => 'string',
-    'data' => 'ARRAY[HASH[string,string]]'
+    'data' => 'ARRAY[HistoricalFieldResultsAttributes]'
 } );
 
 __PACKAGE__->attribute_map( {
