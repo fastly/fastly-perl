@@ -28,8 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::RelationshipCommonName;
+use WebService::Fastly::Object::RelationshipMemberTlsDomain;
 use WebService::Fastly::Object::RelationshipTlsCertificates;
 use WebService::Fastly::Object::RelationshipTlsCertificatesTlsCertificates;
+use WebService::Fastly::Object::RelationshipTlsConfigurationForTlsSubscription;
 use WebService::Fastly::Object::RelationshipTlsConfigurationTlsConfiguration;
 use WebService::Fastly::Object::RelationshipTlsDomains;
 use WebService::Fastly::Object::RelationshipTlsDomainsTlsDomains;
@@ -163,6 +166,20 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'tls_configuration' => {
+        datatype => 'RelationshipTlsConfigurationTlsConfiguration',
+        base_name => 'tls_configuration',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'common_name' => {
+        datatype => 'RelationshipMemberTlsDomain',
+        base_name => 'common_name',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
     'tls_domains' => {
         datatype => 'RelationshipTlsDomainsTlsDomains',
         base_name => 'tls_domains',
@@ -177,25 +194,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'tls_configuration' => {
-        datatype => 'RelationshipTlsConfigurationTlsConfiguration',
-        base_name => 'tls_configuration',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
+    'tls_configuration' => 'RelationshipTlsConfigurationTlsConfiguration',
+    'common_name' => 'RelationshipMemberTlsDomain',
     'tls_domains' => 'RelationshipTlsDomainsTlsDomains',
-    'tls_certificates' => 'RelationshipTlsCertificatesTlsCertificates',
-    'tls_configuration' => 'RelationshipTlsConfigurationTlsConfiguration'
+    'tls_certificates' => 'RelationshipTlsCertificatesTlsCertificates'
 } );
 
 __PACKAGE__->attribute_map( {
+    'tls_configuration' => 'tls_configuration',
+    'common_name' => 'common_name',
     'tls_domains' => 'tls_domains',
-    'tls_certificates' => 'tls_certificates',
-    'tls_configuration' => 'tls_configuration'
+    'tls_certificates' => 'tls_certificates'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

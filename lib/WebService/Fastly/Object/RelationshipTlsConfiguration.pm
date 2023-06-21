@@ -33,7 +33,7 @@ use WebService::Fastly::Object::RelationshipTlsConfigurationTlsConfiguration;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#The [TLS configuration](/reference/api/tls/custom-certs/configuration/) being used to terminate TLS traffic. Optional.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,7 +153,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
+__PACKAGE__->class_documentation({description => 'The [TLS configuration](/reference/api/tls/custom-certs/configuration/) being used to terminate TLS traffic. Optional.',
                                   class => 'RelationshipTlsConfiguration',
                                   required => [], # TODO
 }                                 );

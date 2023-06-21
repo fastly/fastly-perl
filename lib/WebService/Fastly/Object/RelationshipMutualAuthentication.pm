@@ -33,7 +33,7 @@ use WebService::Fastly::Object::RelationshipMutualAuthenticationMutualAuthentica
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#The [Mutual Authentication](/reference/api/tls/mutual-tls/authentication/) for client-to-server authentication. Optional.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,7 +153,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
+__PACKAGE__->class_documentation({description => 'The [Mutual Authentication](/reference/api/tls/mutual-tls/authentication/) for client-to-server authentication. Optional.',
                                   class => 'RelationshipMutualAuthentication',
                                   required => [], # TODO
 }                                 );
