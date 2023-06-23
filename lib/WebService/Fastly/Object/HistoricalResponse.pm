@@ -30,7 +30,7 @@ use DateTime;
 
 use WebService::Fastly::Object::Historical;
 use WebService::Fastly::Object::HistoricalMeta;
-use WebService::Fastly::Object::HistoricalResponseAllOf;
+use WebService::Fastly::Object::HistoricalResponseDataField;
 use WebService::Fastly::Object::Results;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");

@@ -1,14 +1,14 @@
-# WebService::Fastly::Object::HistoricalResponseAllOf
+# WebService::Fastly::Object::HistoricalService
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::HistoricalResponseAllOf;
+use WebService::Fastly::Object::HistoricalService;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **HASH[string,ARRAY]** | Contains the results of the query, organized by *service ID*, into arrays where each element describes one service over a *time span*. | [optional] 
+**name** | **string** | The name of the service. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

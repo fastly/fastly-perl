@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -160,7 +160,7 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'HistoricalUsageMonthResponseAllOfData',
+        datatype => 'HistoricalUsageMonthResponseData',
         base_name => 'data',
         description => '',
         format => '',
@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'HistoricalUsageMonthResponseAllOfData'
+    'data' => 'HistoricalUsageMonthResponseData'
 } );
 
 __PACKAGE__->attribute_map( {

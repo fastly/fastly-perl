@@ -31,7 +31,7 @@ use DateTime;
 use WebService::Fastly::Object::Historical;
 use WebService::Fastly::Object::HistoricalMeta;
 use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOf;
-use WebService::Fastly::Object::HistoricalUsageMonthResponseAllOfData;
+use WebService::Fastly::Object::HistoricalUsageMonthResponseData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -184,7 +184,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'data' => {
-        datatype => 'HistoricalUsageMonthResponseAllOfData',
+        datatype => 'HistoricalUsageMonthResponseData',
         base_name => 'data',
         description => '',
         format => '',
@@ -196,7 +196,7 @@ __PACKAGE__->openapi_types( {
     'status' => 'string',
     'meta' => 'HistoricalMeta',
     'msg' => 'string',
-    'data' => 'HistoricalUsageMonthResponseAllOfData'
+    'data' => 'HistoricalUsageMonthResponseData'
 } );
 
 __PACKAGE__->attribute_map( {

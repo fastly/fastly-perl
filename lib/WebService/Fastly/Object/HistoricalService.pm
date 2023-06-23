@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalFieldResponse;
+package WebService::Fastly::Object::HistoricalService;
 
 require 5.6.0;
 use strict;
@@ -28,10 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Historical;
-use WebService::Fastly::Object::HistoricalFieldResponseDataField;
-use WebService::Fastly::Object::HistoricalFieldResultsAttributes;
-use WebService::Fastly::Object::HistoricalMeta;
+use WebService::Fastly::Object::HistoricalUsageResults;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -157,59 +154,31 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalFieldResponse',
+                                  class => 'HistoricalService',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'status' => {
+    'name' => {
         datatype => 'string',
-        base_name => 'status',
-        description => 'Whether or not we were able to successfully execute the query.',
-        format => '',
-        read_only => 'false',
-            },
-    'meta' => {
-        datatype => 'HistoricalMeta',
-        base_name => 'meta',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'msg' => {
-        datatype => 'string',
-        base_name => 'msg',
-        description => 'If the query was not successful, this will provide a string that explains why.',
-        format => '',
-        read_only => 'false',
-            },
-    'data' => {
-        datatype => 'HASH[string,ARRAY]',
-        base_name => 'data',
-        description => '',
+        base_name => 'name',
+        description => 'The name of the service.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'status' => 'string',
-    'meta' => 'HistoricalMeta',
-    'msg' => 'string',
-    'data' => 'HASH[string,ARRAY]'
+    'name' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'status' => 'status',
-    'meta' => 'meta',
-    'msg' => 'msg',
-    'data' => 'data'
+    'name' => 'name'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'msg' => 'true',
 } );
 
 

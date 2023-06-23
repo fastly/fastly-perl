@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalFieldResponse;
+package WebService::Fastly::Object::HistoricalUsageMonthResponseData;
 
 require 5.6.0;
 use strict;
@@ -28,10 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Historical;
-use WebService::Fastly::Object::HistoricalFieldResponseDataField;
-use WebService::Fastly::Object::HistoricalFieldResultsAttributes;
-use WebService::Fastly::Object::HistoricalMeta;
+use WebService::Fastly::Object::HistoricalService;
+use WebService::Fastly::Object::HistoricalUsageResults;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -157,35 +155,28 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalFieldResponse',
+                                  class => 'HistoricalUsageMonthResponseData',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'status' => {
+    'customer_id' => {
         datatype => 'string',
-        base_name => 'status',
-        description => 'Whether or not we were able to successfully execute the query.',
+        base_name => 'customer_id',
+        description => '',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
-    'meta' => {
-        datatype => 'HistoricalMeta',
-        base_name => 'meta',
+    'services' => {
+        datatype => 'HASH[string,HistoricalService]',
+        base_name => 'services',
         description => '',
         format => '',
         read_only => 'false',
             },
-    'msg' => {
-        datatype => 'string',
-        base_name => 'msg',
-        description => 'If the query was not successful, this will provide a string that explains why.',
-        format => '',
-        read_only => 'false',
-            },
-    'data' => {
-        datatype => 'HASH[string,ARRAY]',
-        base_name => 'data',
+    'total' => {
+        datatype => 'HistoricalUsageResults',
+        base_name => 'total',
         description => '',
         format => '',
         read_only => 'false',
@@ -193,23 +184,20 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'status' => 'string',
-    'meta' => 'HistoricalMeta',
-    'msg' => 'string',
-    'data' => 'HASH[string,ARRAY]'
+    'customer_id' => 'string',
+    'services' => 'HASH[string,HistoricalService]',
+    'total' => 'HistoricalUsageResults'
 } );
 
 __PACKAGE__->attribute_map( {
-    'status' => 'status',
-    'meta' => 'meta',
-    'msg' => 'msg',
-    'data' => 'data'
+    'customer_id' => 'customer_id',
+    'services' => 'services',
+    'total' => 'total'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'msg' => 'true',
 } );
 
 
