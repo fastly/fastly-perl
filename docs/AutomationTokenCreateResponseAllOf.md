@@ -8,9 +8,9 @@ use WebService::Fastly::Object::AutomationTokenCreateResponseAllOf;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly] 
-**user_id** | **string** |  | [optional] [readonly] 
-**customer_id** | **string** |  | [optional] [readonly] 
+**id** | [**ReadOnlyId**](ReadOnlyId.md) |  | [optional] 
+**user_id** | [**ReadOnlyUserId**](ReadOnlyUserId.md) |  | [optional] 
+**customer_id** | [**ReadOnlyCustomerId**](ReadOnlyCustomerId.md) |  | [optional] 
 **sudo_expires_at** | **DateTime** |  | [optional] [readonly] 
 **created_at** | **DateTime** | A UTC time-stamp of when the token was created.  | [optional] [readonly] 
 **access_token** | **string** |  | [optional] [readonly] 

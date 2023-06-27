@@ -8,8 +8,8 @@ use WebService::Fastly::Object::AutomationTokenResponseAllOf;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional] [readonly] 
-**customer_id** | **string** |  | [optional] [readonly] 
+**id** | [**ReadOnlyId**](ReadOnlyId.md) |  | [optional] 
+**customer_id** | [**ReadOnlyCustomerId**](ReadOnlyCustomerId.md) |  | [optional] 
 **role** | **string** |  | [optional] 
 **ip** | **string** | The IP address of the client that last used the token. | [optional] 
 **user_agent** | **string** | The User-Agent header of the client that last used the token. | [optional] 

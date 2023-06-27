@@ -30,6 +30,8 @@ use DateTime;
 
 use WebService::Fastly::Object::AutomationToken;
 use WebService::Fastly::Object::AutomationTokenResponseAllOf;
+use WebService::Fastly::Object::ReadOnlyCustomerId;
+use WebService::Fastly::Object::ReadOnlyId;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -218,18 +220,18 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyId',
         base_name => 'id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'customer_id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyCustomerId',
         base_name => 'customer_id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'ip' => {
         datatype => 'string',
@@ -270,8 +272,8 @@ __PACKAGE__->openapi_types( {
     'created_at' => 'string',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
-    'id' => 'string',
-    'customer_id' => 'string',
+    'id' => 'ReadOnlyId',
+    'customer_id' => 'ReadOnlyCustomerId',
     'ip' => 'string',
     'user_agent' => 'string',
     'sudo_expires_at' => 'string',
@@ -300,8 +302,6 @@ __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 __PACKAGE__->openapi_nullable( {
     'deleted_at' => 'true',
     'updated_at' => 'true',
-    'id' => 'true',
-    'customer_id' => 'true',
 } );
 
 

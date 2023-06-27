@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::ReadOnlyIdService;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -159,11 +160,11 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'service_id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyIdService',
         base_name => 'service_id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'start_time' => {
         datatype => 'int',
@@ -175,7 +176,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'service_id' => 'string',
+    'service_id' => 'ReadOnlyIdService',
     'start_time' => 'int'
 } );
 
@@ -187,7 +188,6 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'service_id' => 'true',
 } );
 
 

@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::RateLimiter;
-use WebService::Fastly::Object::RateLimiterResponse1;
 use WebService::Fastly::Object::RateLimiterResponseAllOf;
 use WebService::Fastly::Object::ServiceIdAndVersion;
 use WebService::Fastly::Object::Timestamps;
@@ -220,9 +219,9 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'response' => {
-        datatype => 'RateLimiterResponse1',
+        datatype => 'HASH[string,string]',
         base_name => 'response',
-        description => '',
+        description => 'Custom response to be sent when the rate limit is exceeded. Required if &#x60;action&#x60; is &#x60;response&#x60;.',
         format => '',
         read_only => 'false',
             },
@@ -300,7 +299,7 @@ __PACKAGE__->openapi_types( {
     'client_key' => 'ARRAY[string]',
     'penalty_box_duration' => 'int',
     'action' => 'string',
-    'response' => 'RateLimiterResponse1',
+    'response' => 'HASH[string,string]',
     'response_object_name' => 'string',
     'logger_type' => 'string',
     'feature_revision' => 'int',

@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ErrorResponseData;
+use WebService::Fastly::Object::AnyType;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -159,9 +159,30 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'detail' => {
+        datatype => 'string',
+        base_name => 'detail',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
     'errors' => {
-        datatype => 'ARRAY[ErrorResponseData]',
+        datatype => 'ARRAY[AnyType]',
         base_name => 'errors',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'status' => {
+        datatype => 'int',
+        base_name => 'status',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'title' => {
+        datatype => 'string',
+        base_name => 'title',
         description => '',
         format => '',
         read_only => 'false',
@@ -169,11 +190,17 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'errors' => 'ARRAY[ErrorResponseData]'
+    'detail' => 'string',
+    'errors' => 'ARRAY[AnyType]',
+    'status' => 'int',
+    'title' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'errors' => 'errors'
+    'detail' => 'detail',
+    'errors' => 'errors',
+    'status' => 'status',
+    'title' => 'title'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

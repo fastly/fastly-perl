@@ -350,10 +350,10 @@ sub list_automation_tokens {
     __PACKAGE__->method_documentation->{ 'revoke_automation_token_id' } = {
         summary => 'Revoke an Automation Token by ID',
         params => $params,
-        returns => undef,
+        returns => 'ErrorResponse',
         };
 }
-# @return void
+# @return ErrorResponse
 #
 sub revoke_automation_token_id {
     my ($self, %args) = @_;
@@ -390,10 +390,14 @@ sub revoke_automation_token_id {
     my $auth_settings = [qw(token )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ErrorResponse', $response);
+    return $_response_object;
 }
 
 1;

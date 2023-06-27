@@ -1,15 +1,17 @@
-# WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf
+# WebService::Fastly::Object::ErrorResponse
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf;
+use WebService::Fastly::Object::ErrorResponse;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**service_id** | [**ReadOnlyIdService**](ReadOnlyIdService.md) |  | [optional] 
-**start_time** | **int** |  | [optional] 
+**detail** | **string** |  | [optional] 
+**errors** | [**ARRAY[AnyType]**](AnyType.md) |  | [optional] 
+**status** | **int** |  | [optional] 
+**title** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

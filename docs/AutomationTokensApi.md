@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **revoke_automation_token_id**
-> revoke_automation_token_id(id => $id)
+> ErrorResponse revoke_automation_token_id(id => $id)
 
 Revoke an Automation Token by ID
 
@@ -248,7 +248,8 @@ my $api_instance = WebService::Fastly::AutomationTokensApi->new(
 my $id = "id_example"; # string | 
 
 eval {
-    $api_instance->revoke_automation_token_id(id => $id);
+    my $result = $api_instance->revoke_automation_token_id(id => $id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling AutomationTokensApi->revoke_automation_token_id: $@\n";
@@ -263,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**ErrorResponse**](ErrorResponse.md)
 
 ### Authorization
 

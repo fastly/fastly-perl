@@ -29,6 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf;
+use WebService::Fastly::Object::ReadOnlyIdService;
 use WebService::Fastly::Object::Results;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -1673,11 +1674,11 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'service_id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyIdService',
         base_name => 'service_id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'start_time' => {
         datatype => 'int',
@@ -1905,7 +1906,7 @@ __PACKAGE__->openapi_types( {
     'ddos_action_tarpit' => 'int',
     'ddos_action_close' => 'int',
     'ddos_action_blackhole' => 'int',
-    'service_id' => 'string',
+    'service_id' => 'ReadOnlyIdService',
     'start_time' => 'int'
 } );
 
@@ -2134,7 +2135,6 @@ __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
     'hit_ratio' => 'true',
-    'service_id' => 'true',
 } );
 
 

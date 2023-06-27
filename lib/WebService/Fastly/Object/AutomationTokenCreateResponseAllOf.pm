@@ -28,6 +28,9 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::ReadOnlyCustomerId;
+use WebService::Fastly::Object::ReadOnlyId;
+use WebService::Fastly::Object::ReadOnlyUserId;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -159,25 +162,25 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyId',
         base_name => 'id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'user_id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyUserId',
         base_name => 'user_id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'customer_id' => {
-        datatype => 'string',
+        datatype => 'ReadOnlyCustomerId',
         base_name => 'customer_id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'sudo_expires_at' => {
         datatype => 'DateTime',
@@ -217,9 +220,9 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'id' => 'string',
-    'user_id' => 'string',
-    'customer_id' => 'string',
+    'id' => 'ReadOnlyId',
+    'user_id' => 'ReadOnlyUserId',
+    'customer_id' => 'ReadOnlyCustomerId',
     'sudo_expires_at' => 'DateTime',
     'created_at' => 'DateTime',
     'access_token' => 'string',
@@ -241,9 +244,6 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'id' => 'true',
-    'user_id' => 'true',
-    'customer_id' => 'true',
 } );
 
 
