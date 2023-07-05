@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_custom_vcl_generated_highlighted**
-> get_custom_vcl_generated_highlighted(service_id => $service_id, version_id => $version_id)
+> VclSyntaxHighlightingResponse get_custom_vcl_generated_highlighted(service_id => $service_id, version_id => $version_id)
 
 Get the generated VCL with syntax highlighting
 
@@ -324,7 +324,8 @@ my $service_id = "service_id_example"; # string | Alphanumeric string identifyin
 my $version_id = 56; # int | Integer identifying a service version.
 
 eval {
-    $api_instance->get_custom_vcl_generated_highlighted(service_id => $service_id, version_id => $version_id);
+    my $result = $api_instance->get_custom_vcl_generated_highlighted(service_id => $service_id, version_id => $version_id);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling VclApi->get_custom_vcl_generated_highlighted: $@\n";
@@ -340,7 +341,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**VclSyntaxHighlightingResponse**](VclSyntaxHighlightingResponse.md)
 
 ### Authorization
 
@@ -354,7 +355,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_custom_vcl_highlighted**
-> get_custom_vcl_highlighted(service_id => $service_id, version_id => $version_id, vcl_name => $vcl_name)
+> VclSyntaxHighlightingResponse get_custom_vcl_highlighted(service_id => $service_id, version_id => $version_id, vcl_name => $vcl_name)
 
 Get a custom VCL file with syntax highlighting
 
@@ -377,7 +378,8 @@ my $version_id = 56; # int | Integer identifying a service version.
 my $vcl_name = "vcl_name_example"; # string | The name of this VCL.
 
 eval {
-    $api_instance->get_custom_vcl_highlighted(service_id => $service_id, version_id => $version_id, vcl_name => $vcl_name);
+    my $result = $api_instance->get_custom_vcl_highlighted(service_id => $service_id, version_id => $version_id, vcl_name => $vcl_name);
+    print Dumper($result);
 };
 if ($@) {
     warn "Exception when calling VclApi->get_custom_vcl_highlighted: $@\n";
@@ -394,7 +396,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**VclSyntaxHighlightingResponse**](VclSyntaxHighlightingResponse.md)
 
 ### Authorization
 

@@ -1,5 +1,10 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+3.07 2023-07-05
+    * feat(settings): support update endpoint.
+    * fix(snippet): dynamic field switched from int to string.
+    * fix(vcl): implement correct response models.
+
 3.06 2023-06-27
     * feat(rate_limiter): implement POST/PUT endpoints.
     * fix(automation_tokens): generate explicit error response type.

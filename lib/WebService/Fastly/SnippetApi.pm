@@ -54,7 +54,7 @@ sub new {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $name The name for the snippet. (optional)
-# @param int $dynamic Sets the snippet version. (optional)
+# @param string $dynamic Sets the snippet version. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
 # @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
@@ -76,7 +76,7 @@ sub new {
         required => '0',
     },
     'dynamic' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Sets the snippet version.',
         required => '0',
     },
@@ -570,7 +570,7 @@ sub list_snippets {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
 # @param string $name The name for the snippet. (optional)
-# @param int $dynamic Sets the snippet version. (optional)
+# @param string $dynamic Sets the snippet version. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
 # @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
@@ -592,7 +592,7 @@ sub list_snippets {
         required => '0',
     },
     'dynamic' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Sets the snippet version.',
         required => '0',
     },

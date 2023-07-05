@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::Batch;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
+use WebService::Fastly::Object::BatchErrors;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,27 +153,45 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'Batch',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
-        description => '',
+    'title' => {
+        datatype => 'string',
+        base_name => 'title',
+        description => 'A descriptor for the response of the entire batch',
+        format => '',
+        read_only => 'false',
+            },
+    'type' => {
+        datatype => 'string',
+        base_name => 'type',
+        description => 'If an error is present in any of the requests, this field will describe that error',
+        format => '',
+        read_only => 'false',
+            },
+    'errors' => {
+        datatype => 'ARRAY[BatchErrors]',
+        base_name => 'errors',
+        description => 'Per-key errors which failed to parse, validate, or otherwise transmit',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    'title' => 'string',
+    'type' => 'string',
+    'errors' => 'ARRAY[BatchErrors]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'title' => 'title',
+    'type' => 'type',
+    'errors' => 'errors'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

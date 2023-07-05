@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::TokensAdditionalProps;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,27 +152,20 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'TokensAdditionalProps',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

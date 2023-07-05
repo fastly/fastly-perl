@@ -1,17 +1,14 @@
-# WebService::Fastly::Object::ValidatorResultMessages
+# WebService::Fastly::Object::VclSyntaxHighlightingResponse
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::ValidatorResultMessages;
+use WebService::Fastly::Object::VclSyntaxHighlightingResponse;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **string** |  | 
-**warning** | **boolean** |  | 
-**message** | **string** |  | 
-**tokens** | **ARRAY[HASH[string,AnyOfstringnumber]]** |  | 
+**content** | **string** | VCL with HTML syntax highlighting. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::ValidatorResultData;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
+use WebService::Fastly::Object::ValidatorResultDataAttributes;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,15 +153,29 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'ValidatorResultData',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
+    'id' => {
+        datatype => 'string',
+        base_name => 'id',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'type' => {
+        datatype => 'string',
+        base_name => 'type',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'attributes' => {
+        datatype => 'ValidatorResultDataAttributes',
+        base_name => 'attributes',
         description => '',
         format => '',
         read_only => 'false',
@@ -169,11 +183,15 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    'id' => 'string',
+    'type' => 'string',
+    'attributes' => 'ValidatorResultDataAttributes'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'id' => 'id',
+    'type' => 'type',
+    'attributes' => 'attributes'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

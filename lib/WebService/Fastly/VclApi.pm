@@ -574,10 +574,10 @@ sub get_custom_vcl_generated {
     __PACKAGE__->method_documentation->{ 'get_custom_vcl_generated_highlighted' } = {
         summary => 'Get the generated VCL with syntax highlighting',
         params => $params,
-        returns => undef,
+        returns => 'VclSyntaxHighlightingResponse',
         };
 }
-# @return void
+# @return VclSyntaxHighlightingResponse
 #
 sub get_custom_vcl_generated_highlighted {
     my ($self, %args) = @_;
@@ -626,10 +626,14 @@ sub get_custom_vcl_generated_highlighted {
     my $auth_settings = [qw(token )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('VclSyntaxHighlightingResponse', $response);
+    return $_response_object;
 }
 
 #
@@ -661,10 +665,10 @@ sub get_custom_vcl_generated_highlighted {
     __PACKAGE__->method_documentation->{ 'get_custom_vcl_highlighted' } = {
         summary => 'Get a custom VCL file with syntax highlighting',
         params => $params,
-        returns => undef,
+        returns => 'VclSyntaxHighlightingResponse',
         };
 }
-# @return void
+# @return VclSyntaxHighlightingResponse
 #
 sub get_custom_vcl_highlighted {
     my ($self, %args) = @_;
@@ -725,10 +729,14 @@ sub get_custom_vcl_highlighted {
     my $auth_settings = [qw(token )];
 
     # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    return;
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('VclSyntaxHighlightingResponse', $response);
+    return $_response_object;
 }
 
 #

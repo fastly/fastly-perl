@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::ValidatorResultDataAttributes;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
+use WebService::Fastly::Object::ValidatorResultDataAttributesMessages;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,15 +153,43 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'ValidatorResultDataAttributes',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
+    'msg' => {
+        datatype => 'string',
+        base_name => 'msg',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'status' => {
+        datatype => 'string',
+        base_name => 'status',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'errors' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'errors',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'warnings' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'warnings',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'messages' => {
+        datatype => 'ARRAY[ValidatorResultDataAttributesMessages]',
+        base_name => 'messages',
         description => '',
         format => '',
         read_only => 'false',
@@ -169,16 +197,25 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    'msg' => 'string',
+    'status' => 'string',
+    'errors' => 'ARRAY[string]',
+    'warnings' => 'ARRAY[string]',
+    'messages' => 'ARRAY[ValidatorResultDataAttributesMessages]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'msg' => 'msg',
+    'status' => 'status',
+    'errors' => 'errors',
+    'warnings' => 'warnings',
+    'messages' => 'messages'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'msg' => 'true',
 } );
 
 

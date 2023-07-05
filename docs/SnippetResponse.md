@@ -9,7 +9,7 @@ use WebService::Fastly::Object::SnippetResponse;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | The name for the snippet. | [optional] 
-**dynamic** | **int** | Sets the snippet version. | [optional] 
+**dynamic** | **string** | Sets the snippet version. | [optional] 
 **type** | **string** | The location in generated VCL where the snippet should be placed. | [optional] 
 **content** | **string** | The VCL code that specifies exactly what the snippet does. | [optional] 
 **priority** | **string** | Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]

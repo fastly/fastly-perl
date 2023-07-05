@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::VclSyntaxHighlightingResponse;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,27 +152,27 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'VclSyntaxHighlightingResponse',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
-        description => '',
+    'content' => {
+        datatype => 'string',
+        base_name => 'content',
+        description => 'VCL with HTML syntax highlighting.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    'content' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'content' => 'content'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -39,7 +39,7 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name for the snippet.
-my $dynamic = 56; # int | Sets the snippet version.
+my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
 my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
  **name** | **string**| The name for the snippet. | [optional] 
- **dynamic** | **int**| Sets the snippet version. | [optional] 
+ **dynamic** | **string**| Sets the snippet version. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 
  **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
@@ -318,7 +318,7 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $snippet_id = "snippet_id_example"; # string | Alphanumeric string identifying a VCL Snippet.
 my $name = "name_example"; # string | The name for the snippet.
-my $dynamic = 56; # int | Sets the snippet version.
+my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
 my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **snippet_id** | **string**| Alphanumeric string identifying a VCL Snippet. | 
  **name** | **string**| The name for the snippet. | [optional] 
- **dynamic** | **int**| Sets the snippet version. | [optional] 
+ **dynamic** | **string**| Sets the snippet version. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 
  **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]

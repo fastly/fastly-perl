@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::ValidatorResultDataAttributesMessages;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
+use WebService::Fastly::Object::TokensAdditionalProps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,15 +153,36 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'ValidatorResultDataAttributesMessages',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
+    'type' => {
+        datatype => 'string',
+        base_name => 'type',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'warning' => {
+        datatype => 'boolean',
+        base_name => 'warning',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'message' => {
+        datatype => 'string',
+        base_name => 'message',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'tokens' => {
+        datatype => 'ARRAY[HASH[string,TokensAdditionalProps]]',
+        base_name => 'tokens',
         description => '',
         format => '',
         read_only => 'false',
@@ -169,11 +190,17 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    'type' => 'string',
+    'warning' => 'boolean',
+    'message' => 'string',
+    'tokens' => 'ARRAY[HASH[string,TokensAdditionalProps]]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'type' => 'type',
+    'warning' => 'warning',
+    'message' => 'message',
+    'tokens' => 'tokens'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

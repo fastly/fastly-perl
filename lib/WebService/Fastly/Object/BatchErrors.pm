@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::ValidatorResult;
+package WebService::Fastly::Object::BatchErrors;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ValidatorResultData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Results from VCL linting
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,27 +152,54 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Results from VCL linting',
-                                  class => 'ValidatorResult',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'BatchErrors',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ValidatorResultData',
-        base_name => 'data',
-        description => '',
+    'key' => {
+        datatype => 'string',
+        base_name => 'key',
+        description => 'The key that the error corresponds to. This field will be empty if the object or one of its fields was unable to be parsed.',
+        format => '',
+        read_only => 'false',
+            },
+    'index' => {
+        datatype => 'int',
+        base_name => 'index',
+        description => 'The line number of the payload on which the error occurred (starting from 0 for the first line).',
+        format => '',
+        read_only => 'false',
+            },
+    'code' => {
+        datatype => 'string',
+        base_name => 'code',
+        description => 'The HTTP response code for the request, or a 400 if the request was not able to be completed.',
+        format => '',
+        read_only => 'false',
+            },
+    'reason' => {
+        datatype => 'string',
+        base_name => 'reason',
+        description => 'A descriptor of this particular item&#39;s error.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ValidatorResultData'
+    'key' => 'string',
+    'index' => 'int',
+    'code' => 'string',
+    'reason' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'key' => 'key',
+    'index' => 'index',
+    'code' => 'code',
+    'reason' => 'reason'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

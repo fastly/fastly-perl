@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'dynamic' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'dynamic',
         description => 'Sets the snippet version.',
         format => '',
@@ -242,7 +242,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'name' => 'string',
-    'dynamic' => 'int',
+    'dynamic' => 'string',
     'type' => 'string',
     'content' => 'string',
     'priority' => 'string',
