@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::AnyType;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -257,7 +258,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'miss_histogram' => {
-        datatype => 'object',
+        datatype => 'HASH[string,object]',
         base_name => 'miss_histogram',
         description => 'A histogram. Each key represents the upper bound of a span of 10 milliseconds and the values represent the number of requests to origin during that 10ms period. Any origin request that takes more than 60 seconds to return will be in the 60000 bucket.',
         format => '',
@@ -1701,7 +1702,7 @@ __PACKAGE__->openapi_types( {
     'errors' => 'int',
     'hits_time' => 'double',
     'miss_time' => 'double',
-    'miss_histogram' => 'object',
+    'miss_histogram' => 'HASH[string,object]',
     'compute_requests' => 'int',
     'compute_execution_time_ms' => 'double',
     'compute_ram_used' => 'int',

@@ -47,6 +47,139 @@ sub new {
 
 
 #
+# create_contacts
+#
+# Add a new customer contact
+#
+# @param string $customer_id Alphanumeric string identifying the customer. (required)
+# @param string $user_id The alphanumeric string representing the user for this customer contact. (optional)
+# @param string $contact_type The type of contact. (optional)
+# @param string $name The name of this contact, when user_id is not provided. (optional)
+# @param string $email The email of this contact, when a user_id is not provided. (optional)
+# @param string $phone The phone number for this contact. Required for primary, technical, and security contact types. (optional)
+# @param string $customer_id The alphanumeric string representing the customer for this customer contact. (optional)
+{
+    my $params = {
+    'customer_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the customer.',
+        required => '1',
+    },
+    'user_id' => {
+        data_type => 'string',
+        description => 'The alphanumeric string representing the user for this customer contact.',
+        required => '0',
+    },
+    'contact_type' => {
+        data_type => 'string',
+        description => 'The type of contact.',
+        required => '0',
+    },
+    'name' => {
+        data_type => 'string',
+        description => 'The name of this contact, when user_id is not provided.',
+        required => '0',
+    },
+    'email' => {
+        data_type => 'string',
+        description => 'The email of this contact, when a user_id is not provided.',
+        required => '0',
+    },
+    'phone' => {
+        data_type => 'string',
+        description => 'The phone number for this contact. Required for primary, technical, and security contact types.',
+        required => '0',
+    },
+    'customer_id' => {
+        data_type => 'string',
+        description => 'The alphanumeric string representing the customer for this customer contact.',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'create_contacts' } = {
+        summary => 'Add a new customer contact',
+        params => $params,
+        returns => 'ContactResponse',
+        };
+}
+# @return ContactResponse
+#
+sub create_contacts {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'customer_id' is set
+    unless (exists $args{'customer_id'}) {
+      croak("Missing the required parameter 'customer_id' when calling create_contacts");
+    }
+
+    # parse inputs
+    my $_resource_path = '/customer/{customer_id}/contacts';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/x-www-form-urlencoded');
+
+    # path params
+    if ( exists $args{'customer_id'}) {
+        my $_base_variable = "{" . "customer_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'customer_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # form params
+    if ( exists $args{'user_id'} ) {
+                $form_params->{'user_id'} = $self->{api_client}->to_form_value($args{'user_id'});
+    }
+
+    # form params
+    if ( exists $args{'contact_type'} ) {
+                $form_params->{'contact_type'} = $self->{api_client}->to_form_value($args{'contact_type'});
+    }
+
+    # form params
+    if ( exists $args{'name'} ) {
+                $form_params->{'name'} = $self->{api_client}->to_form_value($args{'name'});
+    }
+
+    # form params
+    if ( exists $args{'email'} ) {
+                $form_params->{'email'} = $self->{api_client}->to_form_value($args{'email'});
+    }
+
+    # form params
+    if ( exists $args{'phone'} ) {
+                $form_params->{'phone'} = $self->{api_client}->to_form_value($args{'phone'});
+    }
+
+    # form params
+    if ( exists $args{'customer_id'} ) {
+                $form_params->{'customer_id'} = $self->{api_client}->to_form_value($args{'customer_id'});
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ContactResponse', $response);
+    return $_response_object;
+}
+
+#
 # delete_contact
 #
 # Delete a contact

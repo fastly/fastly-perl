@@ -631,4 +631,107 @@ sub list_log_kafka {
     return $_response_object;
 }
 
+#
+# update_log_kafka
+#
+# Update the Kafka log endpoint
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+# @param int $version_id Integer identifying a service version. (required)
+# @param string $logging_kafka_name The name for the real-time logging configuration. (required)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    'version_id' => {
+        data_type => 'int',
+        description => 'Integer identifying a service version.',
+        required => '1',
+    },
+    'logging_kafka_name' => {
+        data_type => 'string',
+        description => 'The name for the real-time logging configuration.',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_log_kafka' } = {
+        summary => 'Update the Kafka log endpoint',
+        params => $params,
+        returns => 'LoggingKafkaResponse',
+        };
+}
+# @return LoggingKafkaResponse
+#
+sub update_log_kafka {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling update_log_kafka");
+    }
+
+    # verify the required parameter 'version_id' is set
+    unless (exists $args{'version_id'}) {
+      croak("Missing the required parameter 'version_id' when calling update_log_kafka");
+    }
+
+    # verify the required parameter 'logging_kafka_name' is set
+    unless (exists $args{'logging_kafka_name'}) {
+      croak("Missing the required parameter 'logging_kafka_name' when calling update_log_kafka");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name}';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/x-www-form-urlencoded');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'version_id'}) {
+        my $_base_variable = "{" . "version_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'version_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'logging_kafka_name'}) {
+        my $_base_variable = "{" . "logging_kafka_name" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'logging_kafka_name'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('LoggingKafkaResponse', $response);
+    return $_response_object;
+}
+
 1;

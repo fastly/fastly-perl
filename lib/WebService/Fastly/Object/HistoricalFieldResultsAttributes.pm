@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalFieldResultsAttributesAllOf;
+use WebService::Fastly::Object::HistoricalFieldResultsAttributesAdditional;
 use WebService::Fastly::Object::ReadOnlyIdService;
 use WebService::Fastly::Object::Results;
 

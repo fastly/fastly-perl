@@ -9,6 +9,7 @@ All URIs are relative to *https://api.fastly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**bulk_delete_waf_active_rules**](WafActiveRulesApi.md#bulk_delete_waf_active_rules) | **DELETE** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Delete multiple active rules from a WAF
 [**bulk_update_waf_active_rules**](WafActiveRulesApi.md#bulk_update_waf_active_rules) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/bulk | Update multiple active rules
 [**create_waf_active_rule**](WafActiveRulesApi.md#create_waf_active_rule) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | Add a rule to a WAF as an active rule
 [**create_waf_active_rules_tag**](WafActiveRulesApi.md#create_waf_active_rules_tag) | **POST** /waf/firewalls/{firewall_id}/versions/{version_id}/tags/{waf_tag_name}/active-rules | Create active rules by tag
@@ -17,6 +18,60 @@ Method | HTTP request | Description
 [**list_waf_active_rules**](WafActiveRulesApi.md#list_waf_active_rules) | **GET** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules | List active rules on a WAF
 [**update_waf_active_rule**](WafActiveRulesApi.md#update_waf_active_rule) | **PATCH** /waf/firewalls/{firewall_id}/versions/{version_id}/active-rules/{waf_rule_id} | Update an active rule
 
+
+# **bulk_delete_waf_active_rules**
+> bulk_delete_waf_active_rules(firewall_id => $firewall_id, version_id => $version_id, request_body => $request_body)
+
+Delete multiple active rules from a WAF
+
+Delete many active rules on a particular firewall version using the active rule ID. Limited to 500 rules per request.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::WafActiveRulesApi;
+my $api_instance = WebService::Fastly::WafActiveRulesApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $firewall_id = "firewall_id_example"; # string | Alphanumeric string identifying a WAF Firewall.
+my $version_id = 56; # int | Integer identifying a service version.
+my $request_body = WebService::Fastly::Object::HASH[string,object]->new(); # HASH[string,object] | 
+
+eval {
+    $api_instance->bulk_delete_waf_active_rules(firewall_id => $firewall_id, version_id => $version_id, request_body => $request_body);
+};
+if ($@) {
+    warn "Exception when calling WafActiveRulesApi->bulk_delete_waf_active_rules: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **firewall_id** | **string**| Alphanumeric string identifying a WAF Firewall. | 
+ **version_id** | **int**| Integer identifying a service version. | 
+ **request_body** | [**HASH[string,object]**](object.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json; ext=bulk
+ - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **bulk_update_waf_active_rules**
 > bulk_update_waf_active_rules(firewall_id => $firewall_id, version_id => $version_id, body => $body)

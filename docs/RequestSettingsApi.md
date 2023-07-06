@@ -9,11 +9,65 @@ All URIs are relative to *https://api.fastly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**create_request_settings**](RequestSettingsApi.md#create_request_settings) | **POST** /service/{service_id}/version/{version_id}/request_settings | Create a Request Settings object
 [**delete_request_settings**](RequestSettingsApi.md#delete_request_settings) | **DELETE** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Delete a Request Settings object
 [**get_request_settings**](RequestSettingsApi.md#get_request_settings) | **GET** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Get a Request Settings object
 [**list_request_settings**](RequestSettingsApi.md#list_request_settings) | **GET** /service/{service_id}/version/{version_id}/request_settings | List Request Settings objects
 [**update_request_settings**](RequestSettingsApi.md#update_request_settings) | **PUT** /service/{service_id}/version/{version_id}/request_settings/{request_settings_name} | Update a Request Settings object
 
+
+# **create_request_settings**
+> RequestSettingsResponse create_request_settings(service_id => $service_id, version_id => $version_id)
+
+Create a Request Settings object
+
+Creates a new Request Settings object.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::RequestSettingsApi;
+my $api_instance = WebService::Fastly::RequestSettingsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $version_id = 56; # int | Integer identifying a service version.
+
+eval {
+    my $result = $api_instance->create_request_settings(service_id => $service_id, version_id => $version_id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RequestSettingsApi->create_request_settings: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **version_id** | **int**| Integer identifying a service version. | 
+
+### Return type
+
+[**RequestSettingsResponse**](RequestSettingsResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_request_settings**
 > InlineResponse200 delete_request_settings(service_id => $service_id, version_id => $version_id, request_settings_name => $request_settings_name)

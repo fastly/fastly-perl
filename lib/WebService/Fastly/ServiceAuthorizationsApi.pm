@@ -170,6 +170,66 @@ sub delete_service_authorization {
 }
 
 #
+# delete_service_authorization2
+#
+# Delete service authorizations
+#
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'delete_service_authorization2' } = {
+        summary => 'Delete service authorizations',
+        params => $params,
+        returns => 'InlineResponse2007',
+        };
+}
+# @return InlineResponse2007
+#
+sub delete_service_authorization2 {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/service-authorizations';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json; ext=bulk');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/vnd.api+json; ext=bulk');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2007', $response);
+    return $_response_object;
+}
+
+#
 # list_service_authorization
 #
 # List service authorizations
@@ -382,6 +442,66 @@ sub update_service_authorization {
         return;
     }
     my $_response_object = $self->{api_client}->deserialize('ServiceAuthorizationResponse', $response);
+    return $_response_object;
+}
+
+#
+# update_service_authorization2
+#
+# Update service authorizations
+#
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_service_authorization2' } = {
+        summary => 'Update service authorizations',
+        params => $params,
+        returns => 'ServiceAuthorizationsResponse',
+        };
+}
+# @return ServiceAuthorizationsResponse
+#
+sub update_service_authorization2 {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/service-authorizations';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json; ext=bulk');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/vnd.api+json; ext=bulk');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ServiceAuthorizationsResponse', $response);
     return $_response_object;
 }
 

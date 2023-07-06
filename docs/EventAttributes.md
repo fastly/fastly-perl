@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **description** | **string** | Description of the event. | [optional] 
 **event_type** | **string** | Type of event. Can be used with `filter[event_type]` | [optional] 
 **ip** | **string** | IP addresses that the event was requested from. | [optional] 
-**metadata** | **object** | Hash of key value pairs of additional information. | [optional] 
+**metadata** | **HASH[string,object]** | Hash of key value pairs of additional information. | [optional] 
 **service_id** | **string** |  | [optional] [readonly] 
 **user_id** | **string** |  | [optional] [readonly] 
 **token_id** | **string** |  | [optional] [readonly] 

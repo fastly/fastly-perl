@@ -47,6 +47,144 @@ sub new {
 
 
 #
+# add_role_permissions
+#
+# Add permissions to a role
+#
+# @param string $role_id Alphanumeric string identifying the role. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'role_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the role.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'add_role_permissions' } = {
+        summary => 'Add permissions to a role',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub add_role_permissions {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'role_id' is set
+    unless (exists $args{'role_id'}) {
+      croak("Missing the required parameter 'role_id' when calling add_role_permissions");
+    }
+
+    # parse inputs
+    my $_resource_path = '/roles/{role_id}/permissions';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'role_id'}) {
+        my $_base_variable = "{" . "role_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# create_a_role
+#
+# Create a role
+#
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'create_a_role' } = {
+        summary => 'Create a role',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub create_a_role {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/roles';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
 # delete_a_role
 #
 # Delete a role
@@ -300,6 +438,158 @@ sub list_roles {
     }
 
     my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# remove_role_permissions
+#
+# Remove permissions from a role
+#
+# @param string $role_id Alphanumeric string identifying the role. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'role_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the role.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'remove_role_permissions' } = {
+        summary => 'Remove permissions from a role',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub remove_role_permissions {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'role_id' is set
+    unless (exists $args{'role_id'}) {
+      croak("Missing the required parameter 'role_id' when calling remove_role_permissions");
+    }
+
+    # parse inputs
+    my $_resource_path = '/roles/{role_id}/permissions';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'role_id'}) {
+        my $_base_variable = "{" . "role_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
+# update_a_role
+#
+# Update a role
+#
+# @param string $role_id Alphanumeric string identifying the role. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'role_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the role.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_a_role' } = {
+        summary => 'Update a role',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub update_a_role {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'role_id' is set
+    unless (exists $args{'role_id'}) {
+      croak("Missing the required parameter 'role_id' when calling update_a_role");
+    }
+
+    # parse inputs
+    my $_resource_path = '/roles/{role_id}';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'role_id'}) {
+        my $_base_variable = "{" . "role_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 

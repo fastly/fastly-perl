@@ -47,6 +47,300 @@ sub new {
 
 
 #
+# add_user_group_members
+#
+# Add members to a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'add_user_group_members' } = {
+        summary => 'Add members to a user group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub add_user_group_members {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling add_user_group_members");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}/members';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# add_user_group_roles
+#
+# Add roles to a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'add_user_group_roles' } = {
+        summary => 'Add roles to a user group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub add_user_group_roles {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling add_user_group_roles");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}/roles';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# add_user_group_service_groups
+#
+# Add service groups to a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'add_user_group_service_groups' } = {
+        summary => 'Add service groups to a user group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub add_user_group_service_groups {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling add_user_group_service_groups");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}/service-groups';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# create_a_user_group
+#
+# Create a user group
+#
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'create_a_user_group' } = {
+        summary => 'Create a user group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub create_a_user_group {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/user-groups';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
 # delete_a_user_group
 #
 # Delete a user group
@@ -500,6 +794,306 @@ sub list_user_groups {
     }
 
     my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# remove_user_group_members
+#
+# Remove members of a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'remove_user_group_members' } = {
+        summary => 'Remove members of a user group',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub remove_user_group_members {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling remove_user_group_members");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}/members';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
+# remove_user_group_roles
+#
+# Remove roles from a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'remove_user_group_roles' } = {
+        summary => 'Remove roles from a user group',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub remove_user_group_roles {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling remove_user_group_roles");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}/roles';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
+# remove_user_group_service_groups
+#
+# Remove service groups from a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'remove_user_group_service_groups' } = {
+        summary => 'Remove service groups from a user group',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub remove_user_group_service_groups {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling remove_user_group_service_groups");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}/service-groups';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
+# update_a_user_group
+#
+# Update a user group
+#
+# @param string $user_group_id Alphanumeric string identifying the user group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'user_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the user group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_a_user_group' } = {
+        summary => 'Update a user group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub update_a_user_group {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'user_group_id' is set
+    unless (exists $args{'user_group_id'}) {
+      croak("Missing the required parameter 'user_group_id' when calling update_a_user_group");
+    }
+
+    # parse inputs
+    my $_resource_path = '/user-groups/{user_group_id}';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'user_group_id'}) {
+        my $_base_variable = "{" . "user_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'user_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 

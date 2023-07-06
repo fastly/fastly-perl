@@ -47,6 +47,144 @@ sub new {
 
 
 #
+# add_service_group_services
+#
+# Add services in a service group
+#
+# @param string $service_group_id Alphanumeric string identifying the service group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'service_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'add_service_group_services' } = {
+        summary => 'Add services in a service group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub add_service_group_services {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_group_id' is set
+    unless (exists $args{'service_group_id'}) {
+      croak("Missing the required parameter 'service_group_id' when calling add_service_group_services");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service-groups/{service_group_id}/services';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_group_id'}) {
+        my $_base_variable = "{" . "service_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# create_a_service_group
+#
+# Create a service group
+#
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'create_a_service_group' } = {
+        summary => 'Create a service group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub create_a_service_group {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/service-groups';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
 # delete_a_service_group
 #
 # Delete a service group
@@ -322,6 +460,158 @@ sub list_service_groups {
     }
 
     my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    return $_response_object;
+}
+
+#
+# remove_service_group_services
+#
+# Remove services from a service group
+#
+# @param string $service_group_id Alphanumeric string identifying the service group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'service_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'remove_service_group_services' } = {
+        summary => 'Remove services from a service group',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub remove_service_group_services {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_group_id' is set
+    unless (exists $args{'service_group_id'}) {
+      croak("Missing the required parameter 'service_group_id' when calling remove_service_group_services");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service-groups/{service_group_id}/services';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_group_id'}) {
+        my $_base_variable = "{" . "service_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
+# update_a_service_group
+#
+# Update a service group
+#
+# @param string $service_group_id Alphanumeric string identifying the service group. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'service_group_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service group.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_a_service_group' } = {
+        summary => 'Update a service group',
+        params => $params,
+        returns => 'object',
+        };
+}
+# @return object
+#
+sub update_a_service_group {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_group_id' is set
+    unless (exists $args{'service_group_id'}) {
+      croak("Missing the required parameter 'service_group_id' when calling update_a_service_group");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service-groups/{service_group_id}';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_group_id'}) {
+        my $_base_variable = "{" . "service_group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 

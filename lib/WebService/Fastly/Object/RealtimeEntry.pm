@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::RealtimeEntryAggregated;
+use WebService::Fastly::Object::RealtimeEntryRecorded;
 use WebService::Fastly::Object::RealtimeMeasurements;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -160,16 +162,16 @@ __PACKAGE__->class_documentation({description => 'A list of records, each repres
 
 __PACKAGE__->method_documentation({
     'recorded' => {
-        datatype => 'int',
+        datatype => 'RealtimeEntryRecorded',
         base_name => 'recorded',
-        description => 'The Unix timestamp at which this record&#39;s data was generated.',
+        description => '',
         format => '',
         read_only => 'false',
             },
     'aggregated' => {
-        datatype => 'RealtimeMeasurements',
+        datatype => 'RealtimeEntryAggregated',
         base_name => 'aggregated',
-        description => 'Aggregates [measurements](#measurements-data-model) across all Fastly POPs.',
+        description => '',
         format => '',
         read_only => 'false',
             },
@@ -183,8 +185,8 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'recorded' => 'int',
-    'aggregated' => 'RealtimeMeasurements',
+    'recorded' => 'RealtimeEntryRecorded',
+    'aggregated' => 'RealtimeEntryAggregated',
     'datacenter' => 'HASH[string,RealtimeMeasurements]'
 } );
 

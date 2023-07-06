@@ -9,8 +9,8 @@ use WebService::Fastly::Object::Content;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hash** | **string** |  | [optional] 
-**request** | **object** |  | [optional] 
-**response** | **object** |  | [optional] 
+**request** | **HASH[string,object]** |  | [optional] 
+**response** | **HASH[string,object]** |  | [optional] 
 **response_time** | **double** |  | [optional] 
 **server** | **string** |  | [optional] 
 **pop** | **string** |  | [optional] 

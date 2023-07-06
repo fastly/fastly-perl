@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Event;
-use WebService::Fastly::Object::EventsResponseAllOf;
+use WebService::Fastly::Object::EventData;
 use WebService::Fastly::Object::Pagination;
 use WebService::Fastly::Object::PaginationLinks;
 use WebService::Fastly::Object::PaginationMeta;

@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::Domain;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 

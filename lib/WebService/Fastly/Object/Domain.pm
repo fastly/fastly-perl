@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#Domain details
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,7 +152,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
+__PACKAGE__->class_documentation({description => 'Domain details',
                                   class => 'Domain',
                                   required => [], # TODO
 }                                 );

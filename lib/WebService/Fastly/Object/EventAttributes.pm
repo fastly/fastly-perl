@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::AnyType;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -201,7 +202,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'metadata' => {
-        datatype => 'object',
+        datatype => 'HASH[string,object]',
         base_name => 'metadata',
         description => 'Hash of key value pairs of additional information.',
         format => '',
@@ -237,7 +238,7 @@ __PACKAGE__->openapi_types( {
     'description' => 'string',
     'event_type' => 'string',
     'ip' => 'string',
-    'metadata' => 'object',
+    'metadata' => 'HASH[string,object]',
     'service_id' => 'string',
     'user_id' => 'string',
     'token_id' => 'string'

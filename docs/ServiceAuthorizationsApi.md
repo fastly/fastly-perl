@@ -11,9 +11,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_service_authorization**](ServiceAuthorizationsApi.md#create_service_authorization) | **POST** /service-authorizations | Create service authorization
 [**delete_service_authorization**](ServiceAuthorizationsApi.md#delete_service_authorization) | **DELETE** /service-authorizations/{service_authorization_id} | Delete service authorization
+[**delete_service_authorization2**](ServiceAuthorizationsApi.md#delete_service_authorization2) | **DELETE** /service-authorizations | Delete service authorizations
 [**list_service_authorization**](ServiceAuthorizationsApi.md#list_service_authorization) | **GET** /service-authorizations | List service authorizations
 [**show_service_authorization**](ServiceAuthorizationsApi.md#show_service_authorization) | **GET** /service-authorizations/{service_authorization_id} | Show service authorization
 [**update_service_authorization**](ServiceAuthorizationsApi.md#update_service_authorization) | **PATCH** /service-authorizations/{service_authorization_id} | Update service authorization
+[**update_service_authorization2**](ServiceAuthorizationsApi.md#update_service_authorization2) | **PATCH** /service-authorizations | Update service authorizations
 
 
 # **create_service_authorization**
@@ -114,6 +116,57 @@ void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_service_authorization2**
+> InlineResponse2007 delete_service_authorization2(request_body => $request_body)
+
+Delete service authorizations
+
+Delete service authorizations.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $request_body = WebService::Fastly::Object::HASH[string,object]->new(); # HASH[string,object] | 
+
+eval {
+    my $result = $api_instance->delete_service_authorization2(request_body => $request_body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ServiceAuthorizationsApi->delete_service_authorization2: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request_body** | [**HASH[string,object]**](object.md)|  | [optional] 
+
+### Return type
+
+[**InlineResponse2007**](InlineResponse2007.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json; ext=bulk
+ - **Accept**: application/vnd.api+json; ext=bulk
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -271,6 +324,57 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json
  - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_service_authorization2**
+> ServiceAuthorizationsResponse update_service_authorization2(request_body => $request_body)
+
+Update service authorizations
+
+Update service authorizations.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ServiceAuthorizationsApi;
+my $api_instance = WebService::Fastly::ServiceAuthorizationsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $request_body = WebService::Fastly::Object::HASH[string,object]->new(); # HASH[string,object] | 
+
+eval {
+    my $result = $api_instance->update_service_authorization2(request_body => $request_body);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ServiceAuthorizationsApi->update_service_authorization2: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **request_body** | [**HASH[string,object]**](object.md)|  | [optional] 
+
+### Return type
+
+[**ServiceAuthorizationsResponse**](ServiceAuthorizationsResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/vnd.api+json; ext=bulk
+ - **Accept**: application/vnd.api+json; ext=bulk
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

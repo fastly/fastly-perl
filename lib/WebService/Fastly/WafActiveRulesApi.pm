@@ -47,6 +47,98 @@ sub new {
 
 
 #
+# bulk_delete_waf_active_rules
+#
+# Delete multiple active rules from a WAF
+#
+# @param string $firewall_id Alphanumeric string identifying a WAF Firewall. (required)
+# @param int $version_id Integer identifying a service version. (required)
+# @param HASH[string,object] $request_body  (optional)
+{
+    my $params = {
+    'firewall_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying a WAF Firewall.',
+        required => '1',
+    },
+    'version_id' => {
+        data_type => 'int',
+        description => 'Integer identifying a service version.',
+        required => '1',
+    },
+    'request_body' => {
+        data_type => 'HASH[string,object]',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'bulk_delete_waf_active_rules' } = {
+        summary => 'Delete multiple active rules from a WAF',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub bulk_delete_waf_active_rules {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'firewall_id' is set
+    unless (exists $args{'firewall_id'}) {
+      croak("Missing the required parameter 'firewall_id' when calling bulk_delete_waf_active_rules");
+    }
+
+    # verify the required parameter 'version_id' is set
+    unless (exists $args{'version_id'}) {
+      croak("Missing the required parameter 'version_id' when calling bulk_delete_waf_active_rules");
+    }
+
+    # parse inputs
+    my $_resource_path = '/waf/firewalls/{firewall_id}/versions/{version_id}/active-rules';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/vnd.api+json; ext=bulk');
+
+    # path params
+    if ( exists $args{'firewall_id'}) {
+        my $_base_variable = "{" . "firewall_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'firewall_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'version_id'}) {
+        my $_base_variable = "{" . "version_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'version_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'request_body'}) {
+        $_body_data = $args{'request_body'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
 # bulk_update_waf_active_rules
 #
 # Update multiple active rules

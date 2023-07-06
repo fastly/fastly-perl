@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**delete_log_kafka**](LoggingKafkaApi.md#delete_log_kafka) | **DELETE** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Delete the Kafka log endpoint
 [**get_log_kafka**](LoggingKafkaApi.md#get_log_kafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Get a Kafka log endpoint
 [**list_log_kafka**](LoggingKafkaApi.md#list_log_kafka) | **GET** /service/{service_id}/version/{version_id}/logging/kafka | List Kafka log endpoints
+[**update_log_kafka**](LoggingKafkaApi.md#update_log_kafka) | **PUT** /service/{service_id}/version/{version_id}/logging/kafka/{logging_kafka_name} | Update the Kafka log endpoint
 
 
 # **create_log_kafka**
@@ -265,6 +266,61 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_log_kafka**
+> LoggingKafkaResponse update_log_kafka(service_id => $service_id, version_id => $version_id, logging_kafka_name => $logging_kafka_name)
+
+Update the Kafka log endpoint
+
+Update the Kafka logging endpoint for a particular service and version.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::LoggingKafkaApi;
+my $api_instance = WebService::Fastly::LoggingKafkaApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $version_id = 56; # int | Integer identifying a service version.
+my $logging_kafka_name = "logging_kafka_name_example"; # string | The name for the real-time logging configuration.
+
+eval {
+    my $result = $api_instance->update_log_kafka(service_id => $service_id, version_id => $version_id, logging_kafka_name => $logging_kafka_name);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling LoggingKafkaApi->update_log_kafka: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **version_id** | **int**| Integer identifying a service version. | 
+ **logging_kafka_name** | **string**| The name for the real-time logging configuration. | 
+
+### Return type
+
+[**LoggingKafkaResponse**](LoggingKafkaResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/x-www-form-urlencoded
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
