@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Billing;
-use WebService::Fastly::Object::BillingResponseAllOf;
+use WebService::Fastly::Object::BillingResponseItemItemsData;
 use WebService::Fastly::Object::BillingResponseLineItem;
 use WebService::Fastly::Object::BillingStatus;
 use WebService::Fastly::Object::BillingTotal;

@@ -1,15 +1,15 @@
-# WebService::Fastly::Object::BillingResponseLineItemAllOf
+# WebService::Fastly::Object::LineItemData
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::BillingResponseLineItemAllOf;
+use WebService::Fastly::Object::LineItemData;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **amount** | **double** |  | [optional] 
-**aria_invoice_id** | **string** |  | [optional] [readonly] 
+**aria_invoice_id** | [**LineItemDataReadOnlyInvoiceId**](LineItemDataReadOnlyInvoiceId.md) |  | [optional] 
 **client_service_id** | **string** |  | [optional] 
 **credit_coupon_code** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 

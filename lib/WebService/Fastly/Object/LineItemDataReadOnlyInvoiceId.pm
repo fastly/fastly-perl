@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::SchemasUserResponse;
+package WebService::Fastly::Object::LineItemDataReadOnlyInvoiceId;
 
 require 5.6.0;
 use strict;
@@ -28,10 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::RoleUser;
-use WebService::Fastly::Object::SchemasUserResponseReadOnly;
-use WebService::Fastly::Object::Timestamps;
-use WebService::Fastly::Object::User;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -157,154 +153,24 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'SchemasUserResponse',
+                                  class => 'LineItemDataReadOnlyInvoiceId',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'login' => {
-        datatype => 'string',
-        base_name => 'login',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'The real life name of the user.',
-        format => '',
-        read_only => 'false',
-            },
-    'limit_services' => {
-        datatype => 'boolean',
-        base_name => 'limit_services',
-        description => 'Indicates that the user has limited access to the customer&#39;s services.',
-        format => '',
-        read_only => 'false',
-            },
-    'locked' => {
-        datatype => 'boolean',
-        base_name => 'locked',
-        description => 'Indicates whether the is account is locked for editing or not.',
-        format => '',
-        read_only => 'false',
-            },
-    'require_new_password' => {
-        datatype => 'boolean',
-        base_name => 'require_new_password',
-        description => 'Indicates if a new password is required at next login.',
-        format => '',
-        read_only => 'false',
-            },
-    'role' => {
-        datatype => 'RoleUser',
-        base_name => 'role',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'two_factor_auth_enabled' => {
-        datatype => 'boolean',
-        base_name => 'two_factor_auth_enabled',
-        description => 'Indicates if 2FA is enabled on the user.',
-        format => '',
-        read_only => 'false',
-            },
-    'two_factor_setup_required' => {
-        datatype => 'boolean',
-        base_name => 'two_factor_setup_required',
-        description => 'Indicates if 2FA is required by the user&#39;s customer account.',
-        format => '',
-        read_only => 'false',
-            },
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'id' => {
-        datatype => 'string',
-        base_name => 'id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'email_hash' => {
-        datatype => 'string',
-        base_name => 'email_hash',
-        description => 'The alphanumeric string identifying a email login.',
-        format => '',
-        read_only => 'true',
-            },
-    'customer_id' => {
-        datatype => 'string',
-        base_name => 'customer_id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
 });
 
 __PACKAGE__->openapi_types( {
-    'login' => 'string',
-    'name' => 'string',
-    'limit_services' => 'boolean',
-    'locked' => 'boolean',
-    'require_new_password' => 'boolean',
-    'role' => 'RoleUser',
-    'two_factor_auth_enabled' => 'boolean',
-    'two_factor_setup_required' => 'boolean',
-    'created_at' => 'DateTime',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'id' => 'string',
-    'email_hash' => 'string',
-    'customer_id' => 'string'
+    
 } );
 
 __PACKAGE__->attribute_map( {
-    'login' => 'login',
-    'name' => 'name',
-    'limit_services' => 'limit_services',
-    'locked' => 'locked',
-    'require_new_password' => 'require_new_password',
-    'role' => 'role',
-    'two_factor_auth_enabled' => 'two_factor_auth_enabled',
-    'two_factor_setup_required' => 'two_factor_setup_required',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
-    'id' => 'id',
-    'email_hash' => 'email_hash',
-    'customer_id' => 'customer_id'
+    
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'locked' => 'true',
-    'require_new_password' => 'true',
-    'two_factor_auth_enabled' => 'true',
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
 } );
 
 

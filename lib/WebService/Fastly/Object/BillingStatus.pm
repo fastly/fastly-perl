@@ -168,9 +168,9 @@ __PACKAGE__->method_documentation({
     'sent_at' => {
         datatype => 'DateTime',
         base_name => 'sent_at',
-        description => '',
-        format => '',
-        read_only => 'false',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
             },
 });
 
@@ -187,6 +187,7 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'sent_at' => 'true',
 } );
 
 

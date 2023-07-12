@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::SchemasUserResponse;
+package WebService::Fastly::Object::LineItemData;
 
 require 5.6.0;
 use strict;
@@ -28,10 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::RoleUser;
-use WebService::Fastly::Object::SchemasUserResponseReadOnly;
-use WebService::Fastly::Object::Timestamps;
-use WebService::Fastly::Object::User;
+use WebService::Fastly::Object::LineItemDataReadOnlyInvoiceId;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -157,154 +154,180 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'SchemasUserResponse',
+                                  class => 'LineItemData',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'login' => {
-        datatype => 'string',
-        base_name => 'login',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'The real life name of the user.',
-        format => '',
-        read_only => 'false',
-            },
-    'limit_services' => {
-        datatype => 'boolean',
-        base_name => 'limit_services',
-        description => 'Indicates that the user has limited access to the customer&#39;s services.',
-        format => '',
-        read_only => 'false',
-            },
-    'locked' => {
-        datatype => 'boolean',
-        base_name => 'locked',
-        description => 'Indicates whether the is account is locked for editing or not.',
-        format => '',
-        read_only => 'false',
-            },
-    'require_new_password' => {
-        datatype => 'boolean',
-        base_name => 'require_new_password',
-        description => 'Indicates if a new password is required at next login.',
-        format => '',
-        read_only => 'false',
-            },
-    'role' => {
-        datatype => 'RoleUser',
-        base_name => 'role',
+    'amount' => {
+        datatype => 'double',
+        base_name => 'amount',
         description => '',
         format => '',
         read_only => 'false',
             },
-    'two_factor_auth_enabled' => {
-        datatype => 'boolean',
-        base_name => 'two_factor_auth_enabled',
-        description => 'Indicates if 2FA is enabled on the user.',
+    'aria_invoice_id' => {
+        datatype => 'LineItemDataReadOnlyInvoiceId',
+        base_name => 'aria_invoice_id',
+        description => '',
         format => '',
         read_only => 'false',
             },
-    'two_factor_setup_required' => {
-        datatype => 'boolean',
-        base_name => 'two_factor_setup_required',
-        description => 'Indicates if 2FA is required by the user&#39;s customer account.',
+    'client_service_id' => {
+        datatype => 'string',
+        base_name => 'client_service_id',
+        description => '',
         format => '',
         read_only => 'false',
             },
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
+    'credit_coupon_code' => {
+        datatype => 'string',
+        base_name => 'credit_coupon_code',
+        description => '',
+        format => '',
+        read_only => 'false',
             },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
+    'description' => {
+        datatype => 'string',
+        base_name => 'description',
+        description => '',
+        format => '',
+        read_only => 'false',
             },
     'id' => {
         datatype => 'string',
         base_name => 'id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
-    'email_hash' => {
-        datatype => 'string',
-        base_name => 'email_hash',
-        description => 'The alphanumeric string identifying a email login.',
-        format => '',
-        read_only => 'true',
-            },
-    'customer_id' => {
-        datatype => 'string',
-        base_name => 'customer_id',
+    'line_number' => {
+        datatype => 'int',
+        base_name => 'line_number',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
+            },
+    'plan_name' => {
+        datatype => 'string',
+        base_name => 'plan_name',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'plan_no' => {
+        datatype => 'double',
+        base_name => 'plan_no',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'rate_per_unit' => {
+        datatype => 'double',
+        base_name => 'rate_per_unit',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'rate_schedule_no' => {
+        datatype => 'double',
+        base_name => 'rate_schedule_no',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'rate_schedule_tier_no' => {
+        datatype => 'double',
+        base_name => 'rate_schedule_tier_no',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'service_name' => {
+        datatype => 'string',
+        base_name => 'service_name',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'service_no' => {
+        datatype => 'double',
+        base_name => 'service_no',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'units' => {
+        datatype => 'double',
+        base_name => 'units',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'usage_type_cd' => {
+        datatype => 'string',
+        base_name => 'usage_type_cd',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'usage_type_no' => {
+        datatype => 'double',
+        base_name => 'usage_type_no',
+        description => '',
+        format => '',
+        read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'login' => 'string',
-    'name' => 'string',
-    'limit_services' => 'boolean',
-    'locked' => 'boolean',
-    'require_new_password' => 'boolean',
-    'role' => 'RoleUser',
-    'two_factor_auth_enabled' => 'boolean',
-    'two_factor_setup_required' => 'boolean',
-    'created_at' => 'DateTime',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
+    'amount' => 'double',
+    'aria_invoice_id' => 'LineItemDataReadOnlyInvoiceId',
+    'client_service_id' => 'string',
+    'credit_coupon_code' => 'string',
+    'description' => 'string',
     'id' => 'string',
-    'email_hash' => 'string',
-    'customer_id' => 'string'
+    'line_number' => 'int',
+    'plan_name' => 'string',
+    'plan_no' => 'double',
+    'rate_per_unit' => 'double',
+    'rate_schedule_no' => 'double',
+    'rate_schedule_tier_no' => 'double',
+    'service_name' => 'string',
+    'service_no' => 'double',
+    'units' => 'double',
+    'usage_type_cd' => 'string',
+    'usage_type_no' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
-    'login' => 'login',
-    'name' => 'name',
-    'limit_services' => 'limit_services',
-    'locked' => 'locked',
-    'require_new_password' => 'require_new_password',
-    'role' => 'role',
-    'two_factor_auth_enabled' => 'two_factor_auth_enabled',
-    'two_factor_setup_required' => 'two_factor_setup_required',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
+    'amount' => 'amount',
+    'aria_invoice_id' => 'aria_invoice_id',
+    'client_service_id' => 'client_service_id',
+    'credit_coupon_code' => 'credit_coupon_code',
+    'description' => 'description',
     'id' => 'id',
-    'email_hash' => 'email_hash',
-    'customer_id' => 'customer_id'
+    'line_number' => 'line_number',
+    'plan_name' => 'plan_name',
+    'plan_no' => 'plan_no',
+    'rate_per_unit' => 'rate_per_unit',
+    'rate_schedule_no' => 'rate_schedule_no',
+    'rate_schedule_tier_no' => 'rate_schedule_tier_no',
+    'service_name' => 'service_name',
+    'service_no' => 'service_no',
+    'units' => 'units',
+    'usage_type_cd' => 'usage_type_cd',
+    'usage_type_no' => 'usage_type_no'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'locked' => 'true',
-    'require_new_password' => 'true',
-    'two_factor_auth_enabled' => 'true',
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
+    'credit_coupon_code' => 'true',
+    'rate_schedule_no' => 'true',
+    'rate_schedule_tier_no' => 'true',
+    'usage_type_cd' => 'true',
+    'usage_type_no' => 'true',
 } );
 
 

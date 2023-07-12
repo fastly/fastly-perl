@@ -28,7 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BillingResponseLineItemAllOf;
+use WebService::Fastly::Object::LineItemData;
+use WebService::Fastly::Object::LineItemDataReadOnlyInvoiceId;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -189,11 +190,11 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'aria_invoice_id' => {
-        datatype => 'string',
+        datatype => 'LineItemDataReadOnlyInvoiceId',
         base_name => 'aria_invoice_id',
         description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'client_service_id' => {
         datatype => 'string',
@@ -307,7 +308,7 @@ __PACKAGE__->openapi_types( {
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'amount' => 'double',
-    'aria_invoice_id' => 'string',
+    'aria_invoice_id' => 'LineItemDataReadOnlyInvoiceId',
     'client_service_id' => 'string',
     'credit_coupon_code' => 'string',
     'description' => 'string',

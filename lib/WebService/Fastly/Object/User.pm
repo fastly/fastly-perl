@@ -242,6 +242,9 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'locked' => 'true',
+    'require_new_password' => 'true',
+    'two_factor_auth_enabled' => 'true',
 } );
 
 

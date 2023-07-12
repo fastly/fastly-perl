@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **status** | [**BillingStatus**](BillingStatus.md) |  | [optional] 
 **total** | [**BillingTotal**](BillingTotal.md) |  | [optional] 
 **regions** | **HASH[string,HASH[string,object]]** | Breakdown of regional data for products that are region based. | [optional] 
-**lines** | [**ARRAY[BillingEstimateResponseAllOfLines]**](BillingEstimateResponseAllOfLines.md) |  | [optional] 
+**line_items** | [**ARRAY[BillingEstimateLinesLineItems]**](BillingEstimateLinesLineItems.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

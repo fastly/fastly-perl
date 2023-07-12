@@ -31,7 +31,7 @@ use DateTime;
 use WebService::Fastly::Object::RoleUser;
 use WebService::Fastly::Object::Timestamps;
 use WebService::Fastly::Object::User;
-use WebService::Fastly::Object::UserResponseAllOf;
+use WebService::Fastly::Object::UserResponseReadOnly;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -299,6 +299,9 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'locked' => 'true',
+    'require_new_password' => 'true',
+    'two_factor_auth_enabled' => 'true',
     'created_at' => 'true',
     'deleted_at' => 'true',
     'updated_at' => 'true',

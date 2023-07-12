@@ -1,8 +1,8 @@
-# WebService::Fastly::Object::UserResponseAllOf
+# WebService::Fastly::Object::UserResponseReadOnly
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::UserResponseAllOf;
+use WebService::Fastly::Object::UserResponseReadOnly;
 ```
 
 ## Properties

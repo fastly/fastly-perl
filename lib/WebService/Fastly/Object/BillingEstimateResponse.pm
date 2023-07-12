@@ -29,8 +29,8 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Billing;
-use WebService::Fastly::Object::BillingEstimateResponseAllOf;
-use WebService::Fastly::Object::BillingEstimateResponseAllOfLines;
+use WebService::Fastly::Object::BillingEstimateLines;
+use WebService::Fastly::Object::BillingEstimateLinesLineItems;
 use WebService::Fastly::Object::BillingStatus;
 use WebService::Fastly::Object::BillingTotal;
 
@@ -219,9 +219,9 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'lines' => {
-        datatype => 'ARRAY[BillingEstimateResponseAllOfLines]',
-        base_name => 'lines',
+    'line_items' => {
+        datatype => 'ARRAY[BillingEstimateLinesLineItems]',
+        base_name => 'line_items',
         description => '',
         format => '',
         read_only => 'false',
@@ -237,7 +237,7 @@ __PACKAGE__->openapi_types( {
     'status' => 'BillingStatus',
     'total' => 'BillingTotal',
     'regions' => 'HASH[string,HASH[string,object]]',
-    'lines' => 'ARRAY[BillingEstimateResponseAllOfLines]'
+    'line_items' => 'ARRAY[BillingEstimateLinesLineItems]'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -249,7 +249,7 @@ __PACKAGE__->attribute_map( {
     'status' => 'status',
     'total' => 'total',
     'regions' => 'regions',
-    'lines' => 'lines'
+    'line_items' => 'line_items'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
