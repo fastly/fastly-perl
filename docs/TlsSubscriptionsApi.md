@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_globalsign_email_challenge**
-> delete_globalsign_email_challenge(tls_subscription_id => $tls_subscription_id, globalsign_email_challenge_id => $globalsign_email_challenge_id, tls_authorization_id => $tls_authorization_id)
+> delete_globalsign_email_challenge(tls_subscription_id => $tls_subscription_id, tls_authorization_id => $tls_authorization_id, globalsign_email_challenge_id => $globalsign_email_challenge_id)
 
 Delete a GlobalSign email challenge
 
@@ -146,11 +146,11 @@ my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 );
 
 my $tls_subscription_id = "tls_subscription_id_example"; # string | Alphanumeric string identifying a TLS subscription.
-my $globalsign_email_challenge_id = gU3guUGZzb2W9Euo4Mo0r; # string | Alphanumeric string identifying a GlobalSign email challenge.
 my $tls_authorization_id = "tls_authorization_id_example"; # string | Alphanumeric string identifying a TLS subscription.
+my $globalsign_email_challenge_id = gU3guUGZzb2W9Euo4Mo0r; # string | Alphanumeric string identifying a GlobalSign email challenge.
 
 eval {
-    $api_instance->delete_globalsign_email_challenge(tls_subscription_id => $tls_subscription_id, globalsign_email_challenge_id => $globalsign_email_challenge_id, tls_authorization_id => $tls_authorization_id);
+    $api_instance->delete_globalsign_email_challenge(tls_subscription_id => $tls_subscription_id, tls_authorization_id => $tls_authorization_id, globalsign_email_challenge_id => $globalsign_email_challenge_id);
 };
 if ($@) {
     warn "Exception when calling TlsSubscriptionsApi->delete_globalsign_email_challenge: $@\n";
@@ -162,8 +162,8 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tls_subscription_id** | **string**| Alphanumeric string identifying a TLS subscription. | 
- **globalsign_email_challenge_id** | **string**| Alphanumeric string identifying a GlobalSign email challenge. | 
  **tls_authorization_id** | **string**| Alphanumeric string identifying a TLS subscription. | 
+ **globalsign_email_challenge_id** | **string**| Alphanumeric string identifying a GlobalSign email challenge. | 
 
 ### Return type
 

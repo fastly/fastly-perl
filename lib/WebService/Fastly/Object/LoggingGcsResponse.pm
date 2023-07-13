@@ -28,7 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::AnyType;
 use WebService::Fastly::Object::LoggingGcs;
 use WebService::Fastly::Object::ServiceIdAndVersion;
 use WebService::Fastly::Object::Timestamps;
@@ -263,7 +262,7 @@ __PACKAGE__->method_documentation({
     'path' => {
         datatype => 'string',
         base_name => 'path',
-        description => 'The path to upload logs to.',
+        description => '',
         format => '',
         read_only => 'false',
             },

@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::OriginInspectorDimensions;
-use WebService::Fastly::Object::Values;
+use WebService::Fastly::Object::OriginInspectorValues;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -168,9 +168,9 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'values' => {
-        datatype => 'Values',
+        datatype => 'ARRAY[OriginInspectorValues]',
         base_name => 'values',
-        description => '',
+        description => 'An array of values representing the metric values at each point in time. Note that this dataset is sparse: only the keys with non-zero values will be included in the record. ',
         format => '',
         read_only => 'false',
             },
@@ -178,7 +178,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'dimensions' => 'OriginInspectorDimensions',
-    'values' => 'Values'
+    'values' => 'ARRAY[OriginInspectorValues]'
 } );
 
 __PACKAGE__->attribute_map( {

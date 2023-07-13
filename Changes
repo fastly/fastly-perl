@@ -1,5 +1,10 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+4.02 2023-07-13
+    * fix(logging_gcs): set expected default value for 'path'.
+    * fix(origin_inspector_historical): use correct type for 'values'.
+    * fix(tls_subscriptions): fix argument order for deleting globalsign email challenge.
+
 4.01 2023-07-12
     * fix(billing): rename response field 'lines' to 'line_items'.
     * fix(billing): restructure response models like 'aria_invoice_id'.

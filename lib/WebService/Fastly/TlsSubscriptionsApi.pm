@@ -219,8 +219,8 @@ sub create_tls_sub {
 # Delete a GlobalSign email challenge
 #
 # @param string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-# @param string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
 # @param string $tls_authorization_id Alphanumeric string identifying a TLS subscription. (required)
+# @param string $globalsign_email_challenge_id Alphanumeric string identifying a GlobalSign email challenge. (required)
 {
     my $params = {
     'tls_subscription_id' => {
@@ -228,14 +228,14 @@ sub create_tls_sub {
         description => 'Alphanumeric string identifying a TLS subscription.',
         required => '1',
     },
-    'globalsign_email_challenge_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying a GlobalSign email challenge.',
-        required => '1',
-    },
     'tls_authorization_id' => {
         data_type => 'string',
         description => 'Alphanumeric string identifying a TLS subscription.',
+        required => '1',
+    },
+    'globalsign_email_challenge_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying a GlobalSign email challenge.',
         required => '1',
     },
     };
@@ -255,14 +255,14 @@ sub delete_globalsign_email_challenge {
       croak("Missing the required parameter 'tls_subscription_id' when calling delete_globalsign_email_challenge");
     }
 
-    # verify the required parameter 'globalsign_email_challenge_id' is set
-    unless (exists $args{'globalsign_email_challenge_id'}) {
-      croak("Missing the required parameter 'globalsign_email_challenge_id' when calling delete_globalsign_email_challenge");
-    }
-
     # verify the required parameter 'tls_authorization_id' is set
     unless (exists $args{'tls_authorization_id'}) {
       croak("Missing the required parameter 'tls_authorization_id' when calling delete_globalsign_email_challenge");
+    }
+
+    # verify the required parameter 'globalsign_email_challenge_id' is set
+    unless (exists $args{'globalsign_email_challenge_id'}) {
+      croak("Missing the required parameter 'globalsign_email_challenge_id' when calling delete_globalsign_email_challenge");
     }
 
     # parse inputs
@@ -288,16 +288,16 @@ sub delete_globalsign_email_challenge {
     }
 
     # path params
-    if ( exists $args{'globalsign_email_challenge_id'}) {
-        my $_base_variable = "{" . "globalsign_email_challenge_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'globalsign_email_challenge_id'});
+    if ( exists $args{'tls_authorization_id'}) {
+        my $_base_variable = "{" . "tls_authorization_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'tls_authorization_id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
     # path params
-    if ( exists $args{'tls_authorization_id'}) {
-        my $_base_variable = "{" . "tls_authorization_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'tls_authorization_id'});
+    if ( exists $args{'globalsign_email_challenge_id'}) {
+        my $_base_variable = "{" . "globalsign_email_challenge_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'globalsign_email_challenge_id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
