@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **check_domain**
-> ARRAY[DomainCheckItem] check_domain(service_id => $service_id, version_id => $version_id, domain_name => $domain_name)
+> ARRAY[AnyType] check_domain(service_id => $service_id, version_id => $version_id, domain_name => $domain_name)
 
 Validate DNS configuration for a single domain on a service
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ARRAY[DomainCheckItem]**](DomainCheckItem.md)
+[**ARRAY[AnyType]**](AnyType.md)
 
 ### Authorization
 

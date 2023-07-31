@@ -40,8 +40,8 @@ my $version_id = 56; # int | Integer identifying a service version.
 my $action = "action_example"; # string | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
 my $cache_condition = "cache_condition_example"; # string | Name of the cache condition controlling when this configuration applies.
 my $name = "name_example"; # string | Name for the cache settings object.
-my $stale_ttl = 56; # int | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
-my $ttl = 56; # int | Maximum time to consider the object fresh in the cache (the cache 'time to live').
+my $stale_ttl = "stale_ttl_example"; # string | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+my $ttl = "ttl_example"; # string | Maximum time to consider the object fresh in the cache (the cache 'time to live').
 
 eval {
     my $result = $api_instance->create_cache_settings(service_id => $service_id, version_id => $version_id, action => $action, cache_condition => $cache_condition, name => $name, stale_ttl => $stale_ttl, ttl => $ttl);
@@ -61,8 +61,8 @@ Name | Type | Description  | Notes
  **action** | **string**| If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.  | [optional] 
  **cache_condition** | **string**| Name of the cache condition controlling when this configuration applies. | [optional] 
  **name** | **string**| Name for the cache settings object. | [optional] 
- **stale_ttl** | **int**| Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] 
- **ttl** | **int**| Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] 
+ **stale_ttl** | **string**| Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] 
+ **ttl** | **string**| Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] 
 
 ### Return type
 
@@ -267,8 +267,8 @@ my $cache_settings_name = "cache_settings_name_example"; # string | Name for the
 my $action = "action_example"; # string | If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule. 
 my $cache_condition = "cache_condition_example"; # string | Name of the cache condition controlling when this configuration applies.
 my $name = "name_example"; # string | Name for the cache settings object.
-my $stale_ttl = 56; # int | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
-my $ttl = 56; # int | Maximum time to consider the object fresh in the cache (the cache 'time to live').
+my $stale_ttl = "stale_ttl_example"; # string | Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as 'stale if error').
+my $ttl = "ttl_example"; # string | Maximum time to consider the object fresh in the cache (the cache 'time to live').
 
 eval {
     my $result = $api_instance->update_cache_settings(service_id => $service_id, version_id => $version_id, cache_settings_name => $cache_settings_name, action => $action, cache_condition => $cache_condition, name => $name, stale_ttl => $stale_ttl, ttl => $ttl);
@@ -289,8 +289,8 @@ Name | Type | Description  | Notes
  **action** | **string**| If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.  | [optional] 
  **cache_condition** | **string**| Name of the cache condition controlling when this configuration applies. | [optional] 
  **name** | **string**| Name for the cache settings object. | [optional] 
- **stale_ttl** | **int**| Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] 
- **ttl** | **int**| Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] 
+ **stale_ttl** | **string**| Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). | [optional] 
+ **ttl** | **string**| Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). | [optional] 
 
 ### Return type
 

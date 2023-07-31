@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **create_log_kinesis**
-> LoggingKinesisResponse create_log_kinesis(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, format => $format, topic => $topic, region => $region, secret_key => $secret_key, access_key => $access_key, iam_role => $iam_role)
+> LoggingKinesisResponse create_log_kinesis(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format => $format, topic => $topic, region => $region, secret_key => $secret_key, access_key => $access_key, iam_role => $iam_role, format_version => $format_version)
 
 Create  an Amazon Kinesis log endpoint
 
@@ -39,16 +39,16 @@ my $service_id = "service_id_example"; # string | Alphanumeric string identifyin
 my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name for the real-time logging configuration.
 my $placement = new WebService::Fastly.LoggingPlacement(); # LoggingPlacement | 
-my $format_version = new WebService::Fastly.LoggingFormatVersion(); # LoggingFormatVersion | 
 my $format = '{"timestamp":"%{begin:%Y-%m-%dT%H:%M:%S}t","time_elapsed":"%{time.elapsed.usec}V","is_tls":"%{if(req.is_ssl, \"true\", \"false\")}V","client_ip":"%{req.http.Fastly-Client-IP}V","geo_city":"%{client.geo.city}V","geo_country_code":"%{client.geo.country_code}V","request":"%{req.request}V","host":"%{req.http.Fastly-Orig-Host}V","url":"%{json.escape(req.url)}V","request_referer":"%{json.escape(req.http.Referer)}V","request_user_agent":"%{json.escape(req.http.User-Agent)}V","request_accept_language":"%{json.escape(req.http.Accept-Language)}V","request_accept_charset":"%{json.escape(req.http.Accept-Charset)}V","cache_status":"%{regsub(fastly_info.state, \"^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\", \"\\2\\3\") }V"}'; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest.
 my $topic = "topic_example"; # string | The Amazon Kinesis stream to send logs to. Required.
 my $region = new WebService::Fastly.AwsRegion(); # AwsRegion | 
 my $secret_key = "secret_key_example"; # string | The secret key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified.
 my $access_key = "access_key_example"; # string | The access key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified.
 my $iam_role = "iam_role_example"; # string | The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if `access_key` and `secret_key` are provided.
+my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 
 eval {
-    my $result = $api_instance->create_log_kinesis(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, format => $format, topic => $topic, region => $region, secret_key => $secret_key, access_key => $access_key, iam_role => $iam_role);
+    my $result = $api_instance->create_log_kinesis(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format => $format, topic => $topic, region => $region, secret_key => $secret_key, access_key => $access_key, iam_role => $iam_role, format_version => $format_version);
     print Dumper($result);
 };
 if ($@) {
@@ -64,13 +64,13 @@ Name | Type | Description  | Notes
  **version_id** | **int**| Integer identifying a service version. | 
  **name** | **string**| The name for the real-time logging configuration. | [optional] 
  **placement** | [**LoggingPlacement**](LoggingPlacement.md)|  | [optional] 
- **format_version** | [**LoggingFormatVersion**](LoggingFormatVersion.md)|  | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Kinesis can ingest. | [optional] [default to &#39;{&quot;timestamp&quot;:&quot;%{begin:%Y-%m-%dT%H:%M:%S}t&quot;,&quot;time_elapsed&quot;:&quot;%{time.elapsed.usec}V&quot;,&quot;is_tls&quot;:&quot;%{if(req.is_ssl, \&quot;true\&quot;, \&quot;false\&quot;)}V&quot;,&quot;client_ip&quot;:&quot;%{req.http.Fastly-Client-IP}V&quot;,&quot;geo_city&quot;:&quot;%{client.geo.city}V&quot;,&quot;geo_country_code&quot;:&quot;%{client.geo.country_code}V&quot;,&quot;request&quot;:&quot;%{req.request}V&quot;,&quot;host&quot;:&quot;%{req.http.Fastly-Orig-Host}V&quot;,&quot;url&quot;:&quot;%{json.escape(req.url)}V&quot;,&quot;request_referer&quot;:&quot;%{json.escape(req.http.Referer)}V&quot;,&quot;request_user_agent&quot;:&quot;%{json.escape(req.http.User-Agent)}V&quot;,&quot;request_accept_language&quot;:&quot;%{json.escape(req.http.Accept-Language)}V&quot;,&quot;request_accept_charset&quot;:&quot;%{json.escape(req.http.Accept-Charset)}V&quot;,&quot;cache_status&quot;:&quot;%{regsub(fastly_info.state, \&quot;^(HIT-(SYNTH)|(HITPASS|HIT|MISS|PASS|ERROR|PIPE)).*\&quot;, \&quot;\\2\\3\&quot;) }V&quot;}&#39;]
  **topic** | **string**| The Amazon Kinesis stream to send logs to. Required. | [optional] 
  **region** | [**AwsRegion**](AwsRegion.md)|  | [optional] 
  **secret_key** | **string**| The secret key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified. | [optional] 
  **access_key** | **string**| The access key associated with the target Amazon Kinesis stream. Not required if `iam_role` is specified. | [optional] 
  **iam_role** | **string**| The ARN for an IAM role granting Fastly access to the target Amazon Kinesis stream. Not required if `access_key` and `secret_key` are provided. | [optional] 
+ **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
 
 ### Return type
 

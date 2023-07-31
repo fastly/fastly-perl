@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::ResponseObject;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -190,7 +190,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'status' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'status',
         description => 'The HTTP status code.',
         format => '',
@@ -218,7 +218,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
         description => '',
         format => '',
@@ -252,11 +252,11 @@ __PACKAGE__->openapi_types( {
     'content' => 'string',
     'content_type' => 'string',
     'name' => 'string',
-    'status' => 'int',
+    'status' => 'string',
     'response' => 'string',
     'request_condition' => 'string',
     'service_id' => 'string',
-    'version' => 'int',
+    'version' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime'

@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Gzip;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -197,7 +197,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
         description => '',
         format => '',
@@ -232,7 +232,7 @@ __PACKAGE__->openapi_types( {
     'extensions' => 'string',
     'name' => 'string',
     'service_id' => 'string',
-    'version' => 'int',
+    'version' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime'

@@ -28,8 +28,9 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::RequestSettings;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::RequestSettingsAdditional;
+use WebService::Fastly::Object::RequestSettingsResponseAllOf;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -161,104 +162,6 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'action' => {
-        datatype => 'string',
-        base_name => 'action',
-        description => 'Allows you to terminate request handling and immediately perform an action.',
-        format => '',
-        read_only => 'false',
-            },
-    'bypass_busy_wait' => {
-        datatype => 'int',
-        base_name => 'bypass_busy_wait',
-        description => 'Disable collapsed forwarding, so you don&#39;t wait for other objects to origin.',
-        format => '',
-        read_only => 'false',
-            },
-    'default_host' => {
-        datatype => 'string',
-        base_name => 'default_host',
-        description => 'Sets the host header.',
-        format => '',
-        read_only => 'false',
-            },
-    'force_miss' => {
-        datatype => 'int',
-        base_name => 'force_miss',
-        description => 'Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.',
-        format => '',
-        read_only => 'false',
-            },
-    'force_ssl' => {
-        datatype => 'int',
-        base_name => 'force_ssl',
-        description => 'Forces the request use SSL (redirects a non-SSL to SSL).',
-        format => '',
-        read_only => 'false',
-            },
-    'geo_headers' => {
-        datatype => 'int',
-        base_name => 'geo_headers',
-        description => 'Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.',
-        format => '',
-        read_only => 'false',
-            },
-    'hash_keys' => {
-        datatype => 'string',
-        base_name => 'hash_keys',
-        description => 'Comma separated list of varnish request object fields that should be in the hash key.',
-        format => '',
-        read_only => 'false',
-            },
-    'max_stale_age' => {
-        datatype => 'int',
-        base_name => 'max_stale_age',
-        description => 'How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.',
-        format => '',
-        read_only => 'false',
-            },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'Name for the request settings.',
-        format => '',
-        read_only => 'false',
-            },
-    'request_condition' => {
-        datatype => 'string',
-        base_name => 'request_condition',
-        description => 'Condition which, if met, will select this configuration during a request. Optional.',
-        format => '',
-        read_only => 'false',
-            },
-    'timer_support' => {
-        datatype => 'int',
-        base_name => 'timer_support',
-        description => 'Injects the X-Timer info into the request for viewing origin fetch durations.',
-        format => '',
-        read_only => 'false',
-            },
-    'xff' => {
-        datatype => 'string',
-        base_name => 'xff',
-        description => 'Short for X-Forwarded-For.',
-        format => '',
-        read_only => 'false',
-            },
-    'service_id' => {
-        datatype => 'string',
-        base_name => 'service_id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'version' => {
-        datatype => 'int',
-        base_name => 'version',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
     'created_at' => {
         datatype => 'DateTime',
         base_name => 'created_at',
@@ -280,58 +183,156 @@ __PACKAGE__->method_documentation({
         format => 'date-time',
         read_only => 'true',
             },
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'version' => {
+        datatype => 'string',
+        base_name => 'version',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'action' => {
+        datatype => 'string',
+        base_name => 'action',
+        description => 'Allows you to terminate request handling and immediately perform an action.',
+        format => '',
+        read_only => 'false',
+            },
+    'default_host' => {
+        datatype => 'string',
+        base_name => 'default_host',
+        description => 'Sets the host header.',
+        format => '',
+        read_only => 'false',
+            },
+    'hash_keys' => {
+        datatype => 'string',
+        base_name => 'hash_keys',
+        description => 'Comma separated list of varnish request object fields that should be in the hash key.',
+        format => '',
+        read_only => 'false',
+            },
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'Name for the request settings.',
+        format => '',
+        read_only => 'false',
+            },
+    'request_condition' => {
+        datatype => 'string',
+        base_name => 'request_condition',
+        description => 'Condition which, if met, will select this configuration during a request. Optional.',
+        format => '',
+        read_only => 'false',
+            },
+    'xff' => {
+        datatype => 'string',
+        base_name => 'xff',
+        description => 'Short for X-Forwarded-For.',
+        format => '',
+        read_only => 'false',
+            },
+    'bypass_busy_wait' => {
+        datatype => 'string',
+        base_name => 'bypass_busy_wait',
+        description => 'Disable collapsed forwarding, so you don&#39;t wait for other objects to origin.',
+        format => '',
+        read_only => 'false',
+            },
+    'force_miss' => {
+        datatype => 'string',
+        base_name => 'force_miss',
+        description => 'Allows you to force a cache miss for the request. Replaces the item in the cache if the content is cacheable.',
+        format => '',
+        read_only => 'false',
+            },
+    'force_ssl' => {
+        datatype => 'string',
+        base_name => 'force_ssl',
+        description => 'Forces the request use SSL (redirects a non-SSL to SSL).',
+        format => '',
+        read_only => 'false',
+            },
+    'geo_headers' => {
+        datatype => 'string',
+        base_name => 'geo_headers',
+        description => 'Injects Fastly-Geo-Country, Fastly-Geo-City, and Fastly-Geo-Region into the request headers.',
+        format => '',
+        read_only => 'false',
+            },
+    'max_stale_age' => {
+        datatype => 'string',
+        base_name => 'max_stale_age',
+        description => 'How old an object is allowed to be to serve stale-if-error or stale-while-revalidate.',
+        format => '',
+        read_only => 'false',
+            },
+    'timer_support' => {
+        datatype => 'string',
+        base_name => 'timer_support',
+        description => 'Injects the X-Timer info into the request for viewing origin fetch durations.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'action' => 'string',
-    'bypass_busy_wait' => 'int',
-    'default_host' => 'string',
-    'force_miss' => 'int',
-    'force_ssl' => 'int',
-    'geo_headers' => 'int',
-    'hash_keys' => 'string',
-    'max_stale_age' => 'int',
-    'name' => 'string',
-    'request_condition' => 'string',
-    'timer_support' => 'int',
-    'xff' => 'string',
-    'service_id' => 'string',
-    'version' => 'int',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime'
+    'updated_at' => 'DateTime',
+    'service_id' => 'string',
+    'version' => 'string',
+    'action' => 'string',
+    'default_host' => 'string',
+    'hash_keys' => 'string',
+    'name' => 'string',
+    'request_condition' => 'string',
+    'xff' => 'string',
+    'bypass_busy_wait' => 'string',
+    'force_miss' => 'string',
+    'force_ssl' => 'string',
+    'geo_headers' => 'string',
+    'max_stale_age' => 'string',
+    'timer_support' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
+    'created_at' => 'created_at',
+    'deleted_at' => 'deleted_at',
+    'updated_at' => 'updated_at',
+    'service_id' => 'service_id',
+    'version' => 'version',
     'action' => 'action',
-    'bypass_busy_wait' => 'bypass_busy_wait',
     'default_host' => 'default_host',
+    'hash_keys' => 'hash_keys',
+    'name' => 'name',
+    'request_condition' => 'request_condition',
+    'xff' => 'xff',
+    'bypass_busy_wait' => 'bypass_busy_wait',
     'force_miss' => 'force_miss',
     'force_ssl' => 'force_ssl',
     'geo_headers' => 'geo_headers',
-    'hash_keys' => 'hash_keys',
     'max_stale_age' => 'max_stale_age',
-    'name' => 'name',
-    'request_condition' => 'request_condition',
-    'timer_support' => 'timer_support',
-    'xff' => 'xff',
-    'service_id' => 'service_id',
-    'version' => 'version',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at'
+    'timer_support' => 'timer_support'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'created_at' => 'true',
+    'deleted_at' => 'true',
+    'updated_at' => 'true',
     'action' => 'true',
     'default_host' => 'true',
     'hash_keys' => 'true',
     'request_condition' => 'true',
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
 } );
 
 

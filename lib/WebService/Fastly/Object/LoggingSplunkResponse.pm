@@ -28,9 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LoggingSplunk;
+use WebService::Fastly::Object::LoggingCommonResponse;
+use WebService::Fastly::Object::LoggingRequestCapsCommon;
+use WebService::Fastly::Object::LoggingSplunkAdditional;
+use WebService::Fastly::Object::LoggingTlsCommon;
 use WebService::Fastly::Object::LoggingUseTls;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -176,13 +179,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'format_version' => {
-        datatype => 'int',
-        base_name => 'format_version',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        format => '',
-        read_only => 'false',
-            },
     'response_condition' => {
         datatype => 'string',
         base_name => 'response_condition',
@@ -194,6 +190,13 @@ __PACKAGE__->method_documentation({
         datatype => 'string',
         base_name => 'format',
         description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
+        format => '',
+        read_only => 'false',
+            },
+    'format_version' => {
+        datatype => 'string',
+        base_name => 'format_version',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
         format => '',
         read_only => 'false',
             },
@@ -289,7 +292,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
         description => '',
         format => '',
@@ -300,9 +303,9 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'name' => 'string',
     'placement' => 'string',
-    'format_version' => 'int',
     'response_condition' => 'string',
     'format' => 'string',
+    'format_version' => 'string',
     'tls_ca_cert' => 'string',
     'tls_client_cert' => 'string',
     'tls_client_key' => 'string',
@@ -316,15 +319,15 @@ __PACKAGE__->openapi_types( {
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'service_id' => 'string',
-    'version' => 'int'
+    'version' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'name' => 'name',
     'placement' => 'placement',
-    'format_version' => 'format_version',
     'response_condition' => 'response_condition',
     'format' => 'format',
+    'format_version' => 'format_version',
     'tls_ca_cert' => 'tls_ca_cert',
     'tls_client_cert' => 'tls_client_cert',
     'tls_client_key' => 'tls_client_key',

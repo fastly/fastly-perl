@@ -55,14 +55,14 @@ sub new {
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $name The name for the real-time logging configuration. (optional)
 # @param string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;.  (optional)
-# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $message_type How the message should be formatted. (optional, default to 'classic')
 # @param string $timestamp_format A timestamp format (optional)
+# @param string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
 # @param int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
 # @param int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-# @param string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
 # @param string $address A hostname or IPv4 address. (optional)
 # @param int $port The port number. (optional, default to 22)
 # @param string $password The password for the server. If both &#x60;password&#x60; and &#x60;secret_key&#x60; are passed, &#x60;secret_key&#x60; will be used in preference. (optional)
@@ -93,11 +93,6 @@ sub new {
         description => 'Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. ',
         required => '0',
     },
-    'format_version' => {
-        data_type => 'int',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        required => '0',
-    },
     'response_condition' => {
         data_type => 'string',
         description => 'The name of an existing condition in the configured endpoint, or leave blank to always execute.',
@@ -106,6 +101,11 @@ sub new {
     'format' => {
         data_type => 'string',
         description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
+        required => '0',
+    },
+    'format_version' => {
+        data_type => 'int',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
         required => '0',
     },
     'message_type' => {
@@ -118,6 +118,11 @@ sub new {
         description => 'A timestamp format',
         required => '0',
     },
+    'compression_codec' => {
+        data_type => 'string',
+        description => 'The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
+        required => '0',
+    },
     'period' => {
         data_type => 'int',
         description => 'How frequently log files are finalized so they can be available for reading (in seconds).',
@@ -126,11 +131,6 @@ sub new {
     'gzip_level' => {
         data_type => 'int',
         description => 'The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
-        required => '0',
-    },
-    'compression_codec' => {
-        data_type => 'string',
-        description => 'The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
         required => '0',
     },
     'address' => {
@@ -235,11 +235,6 @@ sub create_log_sftp {
     }
 
     # form params
-    if ( exists $args{'format_version'} ) {
-                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
-    }
-
-    # form params
     if ( exists $args{'response_condition'} ) {
                 $form_params->{'response_condition'} = $self->{api_client}->to_form_value($args{'response_condition'});
     }
@@ -247,6 +242,11 @@ sub create_log_sftp {
     # form params
     if ( exists $args{'format'} ) {
                 $form_params->{'format'} = $self->{api_client}->to_form_value($args{'format'});
+    }
+
+    # form params
+    if ( exists $args{'format_version'} ) {
+                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
     }
 
     # form params
@@ -260,6 +260,11 @@ sub create_log_sftp {
     }
 
     # form params
+    if ( exists $args{'compression_codec'} ) {
+                $form_params->{'compression_codec'} = $self->{api_client}->to_form_value($args{'compression_codec'});
+    }
+
+    # form params
     if ( exists $args{'period'} ) {
                 $form_params->{'period'} = $self->{api_client}->to_form_value($args{'period'});
     }
@@ -267,11 +272,6 @@ sub create_log_sftp {
     # form params
     if ( exists $args{'gzip_level'} ) {
                 $form_params->{'gzip_level'} = $self->{api_client}->to_form_value($args{'gzip_level'});
-    }
-
-    # form params
-    if ( exists $args{'compression_codec'} ) {
-                $form_params->{'compression_codec'} = $self->{api_client}->to_form_value($args{'compression_codec'});
     }
 
     # form params
@@ -630,14 +630,14 @@ sub list_log_sftp {
 # @param string $logging_sftp_name The name for the real-time logging configuration. (required)
 # @param string $name The name for the real-time logging configuration. (optional)
 # @param string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;.  (optional)
-# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
+# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $message_type How the message should be formatted. (optional, default to 'classic')
 # @param string $timestamp_format A timestamp format (optional)
+# @param string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
 # @param int $period How frequently log files are finalized so they can be available for reading (in seconds). (optional, default to 3600)
 # @param int $gzip_level The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional, default to 0)
-# @param string $compression_codec The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error. (optional)
 # @param string $address A hostname or IPv4 address. (optional)
 # @param int $port The port number. (optional, default to 22)
 # @param string $password The password for the server. If both &#x60;password&#x60; and &#x60;secret_key&#x60; are passed, &#x60;secret_key&#x60; will be used in preference. (optional)
@@ -673,11 +673,6 @@ sub list_log_sftp {
         description => 'Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. ',
         required => '0',
     },
-    'format_version' => {
-        data_type => 'int',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        required => '0',
-    },
     'response_condition' => {
         data_type => 'string',
         description => 'The name of an existing condition in the configured endpoint, or leave blank to always execute.',
@@ -686,6 +681,11 @@ sub list_log_sftp {
     'format' => {
         data_type => 'string',
         description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
+        required => '0',
+    },
+    'format_version' => {
+        data_type => 'int',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
         required => '0',
     },
     'message_type' => {
@@ -698,6 +698,11 @@ sub list_log_sftp {
         description => 'A timestamp format',
         required => '0',
     },
+    'compression_codec' => {
+        data_type => 'string',
+        description => 'The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
+        required => '0',
+    },
     'period' => {
         data_type => 'int',
         description => 'How frequently log files are finalized so they can be available for reading (in seconds).',
@@ -706,11 +711,6 @@ sub list_log_sftp {
     'gzip_level' => {
         data_type => 'int',
         description => 'The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
-        required => '0',
-    },
-    'compression_codec' => {
-        data_type => 'string',
-        description => 'The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
         required => '0',
     },
     'address' => {
@@ -827,11 +827,6 @@ sub update_log_sftp {
     }
 
     # form params
-    if ( exists $args{'format_version'} ) {
-                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
-    }
-
-    # form params
     if ( exists $args{'response_condition'} ) {
                 $form_params->{'response_condition'} = $self->{api_client}->to_form_value($args{'response_condition'});
     }
@@ -839,6 +834,11 @@ sub update_log_sftp {
     # form params
     if ( exists $args{'format'} ) {
                 $form_params->{'format'} = $self->{api_client}->to_form_value($args{'format'});
+    }
+
+    # form params
+    if ( exists $args{'format_version'} ) {
+                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
     }
 
     # form params
@@ -852,6 +852,11 @@ sub update_log_sftp {
     }
 
     # form params
+    if ( exists $args{'compression_codec'} ) {
+                $form_params->{'compression_codec'} = $self->{api_client}->to_form_value($args{'compression_codec'});
+    }
+
+    # form params
     if ( exists $args{'period'} ) {
                 $form_params->{'period'} = $self->{api_client}->to_form_value($args{'period'});
     }
@@ -859,11 +864,6 @@ sub update_log_sftp {
     # form params
     if ( exists $args{'gzip_level'} ) {
                 $form_params->{'gzip_level'} = $self->{api_client}->to_form_value($args{'gzip_level'});
-    }
-
-    # form params
-    if ( exists $args{'compression_codec'} ) {
-                $form_params->{'compression_codec'} = $self->{api_client}->to_form_value($args{'compression_codec'});
     }
 
     # form params

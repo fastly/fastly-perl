@@ -28,8 +28,10 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LoggingS3;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::LoggingCommonResponse;
+use WebService::Fastly::Object::LoggingGenericCommonResponse;
+use WebService::Fastly::Object::LoggingS3Additional;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -175,13 +177,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'format_version' => {
-        datatype => 'int',
-        base_name => 'format_version',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        format => '',
-        read_only => 'false',
-            },
     'response_condition' => {
         datatype => 'string',
         base_name => 'response_condition',
@@ -193,6 +188,13 @@ __PACKAGE__->method_documentation({
         datatype => 'string',
         base_name => 'format',
         description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
+        format => '',
+        read_only => 'false',
+            },
+    'format_version' => {
+        datatype => 'string',
+        base_name => 'format_version',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
         format => '',
         read_only => 'false',
             },
@@ -210,26 +212,61 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'true',
             },
-    'period' => {
-        datatype => 'int',
-        base_name => 'period',
-        description => 'How frequently log files are finalized so they can be available for reading (in seconds).',
-        format => '',
-        read_only => 'false',
-            },
-    'gzip_level' => {
-        datatype => 'int',
-        base_name => 'gzip_level',
-        description => 'The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
-        format => '',
-        read_only => 'false',
-            },
     'compression_codec' => {
         datatype => 'string',
         base_name => 'compression_codec',
         description => 'The codec used for compressing your logs. Valid values are &#x60;zstd&#x60;, &#x60;snappy&#x60;, and &#x60;gzip&#x60;. Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
         format => '',
         read_only => 'false',
+            },
+    'period' => {
+        datatype => 'string',
+        base_name => 'period',
+        description => 'How frequently log files are finalized so they can be available for reading (in seconds).',
+        format => '',
+        read_only => 'false',
+            },
+    'gzip_level' => {
+        datatype => 'string',
+        base_name => 'gzip_level',
+        description => 'The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
+        format => '',
+        read_only => 'false',
+            },
+    'created_at' => {
+        datatype => 'DateTime',
+        base_name => 'created_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'deleted_at' => {
+        datatype => 'DateTime',
+        base_name => 'deleted_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'updated_at' => {
+        datatype => 'DateTime',
+        base_name => 'updated_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'version' => {
+        datatype => 'string',
+        base_name => 'version',
+        description => '',
+        format => '',
+        read_only => 'true',
             },
     'access_key' => {
         datatype => 'string',
@@ -308,54 +345,24 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'service_id' => {
-        datatype => 'string',
-        base_name => 'service_id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'version' => {
-        datatype => 'int',
-        base_name => 'version',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
 });
 
 __PACKAGE__->openapi_types( {
     'name' => 'string',
     'placement' => 'string',
-    'format_version' => 'int',
     'response_condition' => 'string',
     'format' => 'string',
+    'format_version' => 'string',
     'message_type' => 'string',
     'timestamp_format' => 'string',
-    'period' => 'int',
-    'gzip_level' => 'int',
     'compression_codec' => 'string',
+    'period' => 'string',
+    'gzip_level' => 'string',
+    'created_at' => 'DateTime',
+    'deleted_at' => 'DateTime',
+    'updated_at' => 'DateTime',
+    'service_id' => 'string',
+    'version' => 'string',
     'access_key' => 'string',
     'acl' => 'string',
     'bucket_name' => 'string',
@@ -366,25 +373,25 @@ __PACKAGE__->openapi_types( {
     'redundancy' => 'string',
     'secret_key' => 'string',
     'server_side_encryption_kms_key_id' => 'string',
-    'server_side_encryption' => 'string',
-    'created_at' => 'DateTime',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'service_id' => 'string',
-    'version' => 'int'
+    'server_side_encryption' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'name' => 'name',
     'placement' => 'placement',
-    'format_version' => 'format_version',
     'response_condition' => 'response_condition',
     'format' => 'format',
+    'format_version' => 'format_version',
     'message_type' => 'message_type',
     'timestamp_format' => 'timestamp_format',
+    'compression_codec' => 'compression_codec',
     'period' => 'period',
     'gzip_level' => 'gzip_level',
-    'compression_codec' => 'compression_codec',
+    'created_at' => 'created_at',
+    'deleted_at' => 'deleted_at',
+    'updated_at' => 'updated_at',
+    'service_id' => 'service_id',
+    'version' => 'version',
     'access_key' => 'access_key',
     'acl' => 'acl',
     'bucket_name' => 'bucket_name',
@@ -395,12 +402,7 @@ __PACKAGE__->attribute_map( {
     'redundancy' => 'redundancy',
     'secret_key' => 'secret_key',
     'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id',
-    'server_side_encryption' => 'server_side_encryption',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
-    'service_id' => 'service_id',
-    'version' => 'version'
+    'server_side_encryption' => 'server_side_encryption'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
@@ -409,6 +411,9 @@ __PACKAGE__->openapi_nullable( {
     'placement' => 'true',
     'response_condition' => 'true',
     'timestamp_format' => 'true',
+    'created_at' => 'true',
+    'deleted_at' => 'true',
+    'updated_at' => 'true',
     'access_key' => 'true',
     'iam_role' => 'true',
     'path' => 'true',
@@ -417,9 +422,6 @@ __PACKAGE__->openapi_nullable( {
     'secret_key' => 'true',
     'server_side_encryption_kms_key_id' => 'true',
     'server_side_encryption' => 'true',
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
 } );
 
 

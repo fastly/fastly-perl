@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::TlsSubscriptionResponseAttributes;
-use WebService::Fastly::Object::TlsSubscriptionResponseDataAllOf;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 

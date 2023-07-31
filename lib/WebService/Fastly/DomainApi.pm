@@ -75,10 +75,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'check_domain' } = {
         summary => 'Validate DNS configuration for a single domain on a service',
         params => $params,
-        returns => 'ARRAY[DomainCheckItem]',
+        returns => 'ARRAY[AnyType]',
         };
 }
-# @return ARRAY[DomainCheckItem]
+# @return ARRAY[AnyType]
 #
 sub check_domain {
     my ($self, %args) = @_;
@@ -145,7 +145,7 @@ sub check_domain {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[DomainCheckItem]', $response);
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[AnyType]', $response);
     return $_response_object;
 }
 

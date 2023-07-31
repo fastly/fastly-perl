@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **create_log_elasticsearch**
-> LoggingElasticsearchResponse create_log_elasticsearch(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password)
+> LoggingElasticsearchResponse create_log_elasticsearch(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password)
 
 Create an Elasticsearch log endpoint
 
@@ -39,9 +39,9 @@ my $service_id = "service_id_example"; # string | Alphanumeric string identifyin
 my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name for the real-time logging configuration.
 my $placement = "placement_example"; # string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
-my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
 my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
 my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
@@ -55,7 +55,7 @@ my $user = "user_example"; # string | Basic Auth username.
 my $password = "password_example"; # string | Basic Auth password.
 
 eval {
-    my $result = $api_instance->create_log_elasticsearch(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password);
+    my $result = $api_instance->create_log_elasticsearch(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password);
     print Dumper($result);
 };
 if ($@) {
@@ -71,9 +71,9 @@ Name | Type | Description  | Notes
  **version_id** | **int**| Integer identifying a service version. | 
  **name** | **string**| The name for the real-time logging configuration. | [optional] 
  **placement** | **string**| Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] 
- **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest. | [optional] 
+ **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
  **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
  **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_log_elasticsearch**
-> LoggingElasticsearchResponse update_log_elasticsearch(service_id => $service_id, version_id => $version_id, logging_elasticsearch_name => $logging_elasticsearch_name, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password)
+> LoggingElasticsearchResponse update_log_elasticsearch(service_id => $service_id, version_id => $version_id, logging_elasticsearch_name => $logging_elasticsearch_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password)
 
 Update an Elasticsearch log endpoint
 
@@ -288,9 +288,9 @@ my $version_id = 56; # int | Integer identifying a service version.
 my $logging_elasticsearch_name = "logging_elasticsearch_name_example"; # string | The name for the real-time logging configuration.
 my $name = "name_example"; # string | The name for the real-time logging configuration.
 my $placement = "placement_example"; # string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
-my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
 my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest.
+my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $tls_ca_cert = 'null'; # string | A secure certificate to authenticate a server with. Must be in PEM format.
 my $tls_client_cert = 'null'; # string | The client certificate used to make authenticated requests. Must be in PEM format.
 my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
@@ -304,7 +304,7 @@ my $user = "user_example"; # string | Basic Auth username.
 my $password = "password_example"; # string | Basic Auth password.
 
 eval {
-    my $result = $api_instance->update_log_elasticsearch(service_id => $service_id, version_id => $version_id, logging_elasticsearch_name => $logging_elasticsearch_name, name => $name, placement => $placement, format_version => $format_version, response_condition => $response_condition, format => $format, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password);
+    my $result = $api_instance->update_log_elasticsearch(service_id => $service_id, version_id => $version_id, logging_elasticsearch_name => $logging_elasticsearch_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, index => $index, url => $url, pipeline => $pipeline, user => $user, password => $password);
     print Dumper($result);
 };
 if ($@) {
@@ -321,9 +321,9 @@ Name | Type | Description  | Notes
  **logging_elasticsearch_name** | **string**| The name for the real-time logging configuration. | 
  **name** | **string**| The name for the real-time logging configuration. | [optional] 
  **placement** | **string**| Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] 
- **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
  **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce valid JSON that Elasticsearch can ingest. | [optional] 
+ **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **tls_ca_cert** | **string**| A secure certificate to authenticate a server with. Must be in PEM format. | [optional] [default to &#39;null&#39;]
  **tls_client_cert** | **string**| The client certificate used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
  **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]

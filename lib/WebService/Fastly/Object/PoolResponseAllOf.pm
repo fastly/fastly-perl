@@ -158,21 +158,21 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'id' => {
+    'quorum' => {
         datatype => 'string',
-        base_name => 'id',
-        description => '',
+        base_name => 'quorum',
+        description => 'Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'id' => 'string'
+    'quorum' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'id' => 'id'
+    'quorum' => 'quorum'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

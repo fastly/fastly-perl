@@ -28,10 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Pool;
+use WebService::Fastly::Object::PoolAdditional;
 use WebService::Fastly::Object::PoolResponseAllOf;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::PoolResponseCommon;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
+use WebService::Fastly::Object::TlsCommonResponse;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -191,11 +193,46 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'use_tls' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'use_tls',
         description => 'Whether to use TLS.',
         format => '',
         read_only => 'false',
+            },
+    'created_at' => {
+        datatype => 'DateTime',
+        base_name => 'created_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'deleted_at' => {
+        datatype => 'DateTime',
+        base_name => 'deleted_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'updated_at' => {
+        datatype => 'DateTime',
+        base_name => 'updated_at',
+        description => 'Date and time in ISO 8601 format.',
+        format => 'date-time',
+        read_only => 'true',
+            },
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'version' => {
+        datatype => 'string',
+        base_name => 'version',
+        description => '',
+        format => '',
+        read_only => 'true',
             },
     'name' => {
         datatype => 'string',
@@ -218,34 +255,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'max_conn_default' => {
-        datatype => 'int',
-        base_name => 'max_conn_default',
-        description => 'Maximum number of connections. Optional.',
-        format => '',
-        read_only => 'false',
-            },
-    'connect_timeout' => {
-        datatype => 'int',
-        base_name => 'connect_timeout',
-        description => 'How long to wait for a timeout in milliseconds. Optional.',
-        format => '',
-        read_only => 'false',
-            },
-    'first_byte_timeout' => {
-        datatype => 'int',
-        base_name => 'first_byte_timeout',
-        description => 'How long to wait for the first byte in milliseconds. Optional.',
-        format => '',
-        read_only => 'false',
-            },
-    'quorum' => {
-        datatype => 'int',
-        base_name => 'quorum',
-        description => 'Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up.',
-        format => '',
-        read_only => 'false',
-            },
     'tls_ciphers' => {
         datatype => 'string',
         base_name => 'tls_ciphers',
@@ -257,13 +266,6 @@ __PACKAGE__->method_documentation({
         datatype => 'string',
         base_name => 'tls_sni_hostname',
         description => 'SNI hostname. Optional.',
-        format => '',
-        read_only => 'false',
-            },
-    'tls_check_cert' => {
-        datatype => 'int',
-        base_name => 'tls_check_cert',
-        description => 'Be strict on checking TLS certs. Optional.',
         format => '',
         read_only => 'false',
             },
@@ -309,40 +311,40 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'service_id' => {
+    'between_bytes_timeout' => {
         datatype => 'string',
-        base_name => 'service_id',
-        description => '',
+        base_name => 'between_bytes_timeout',
+        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
-    'version' => {
-        datatype => 'int',
-        base_name => 'version',
-        description => '',
+    'connect_timeout' => {
+        datatype => 'string',
+        base_name => 'connect_timeout',
+        description => 'How long to wait for a timeout in milliseconds.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
+            },
+    'first_byte_timeout' => {
+        datatype => 'string',
+        base_name => 'first_byte_timeout',
+        description => 'How long to wait for the first byte in milliseconds.',
+        format => '',
+        read_only => 'false',
+            },
+    'max_conn_default' => {
+        datatype => 'string',
+        base_name => 'max_conn_default',
+        description => 'Maximum number of connections.',
+        format => '',
+        read_only => 'false',
+            },
+    'tls_check_cert' => {
+        datatype => 'string',
+        base_name => 'tls_check_cert',
+        description => 'Be strict on checking TLS certs.',
+        format => '',
+        read_only => 'false',
             },
     'id' => {
         datatype => 'string',
@@ -351,6 +353,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'true',
             },
+    'quorum' => {
+        datatype => 'string',
+        base_name => 'quorum',
+        description => 'Percentage of capacity (&#x60;0-100&#x60;) that needs to be operationally available for a pool to be considered up.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -358,29 +367,30 @@ __PACKAGE__->openapi_types( {
     'tls_client_cert' => 'string',
     'tls_client_key' => 'string',
     'tls_cert_hostname' => 'string',
-    'use_tls' => 'int',
+    'use_tls' => 'string',
+    'created_at' => 'DateTime',
+    'deleted_at' => 'DateTime',
+    'updated_at' => 'DateTime',
+    'service_id' => 'string',
+    'version' => 'string',
     'name' => 'string',
     'shield' => 'string',
     'request_condition' => 'string',
-    'max_conn_default' => 'int',
-    'connect_timeout' => 'int',
-    'first_byte_timeout' => 'int',
-    'quorum' => 'int',
     'tls_ciphers' => 'string',
     'tls_sni_hostname' => 'string',
-    'tls_check_cert' => 'int',
     'min_tls_version' => 'int',
     'max_tls_version' => 'int',
     'healthcheck' => 'string',
     'comment' => 'string',
     'type' => 'string',
     'override_host' => 'string',
-    'created_at' => 'DateTime',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'service_id' => 'string',
-    'version' => 'int',
-    'id' => 'string'
+    'between_bytes_timeout' => 'string',
+    'connect_timeout' => 'string',
+    'first_byte_timeout' => 'string',
+    'max_conn_default' => 'string',
+    'tls_check_cert' => 'string',
+    'id' => 'string',
+    'quorum' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -389,28 +399,29 @@ __PACKAGE__->attribute_map( {
     'tls_client_key' => 'tls_client_key',
     'tls_cert_hostname' => 'tls_cert_hostname',
     'use_tls' => 'use_tls',
+    'created_at' => 'created_at',
+    'deleted_at' => 'deleted_at',
+    'updated_at' => 'updated_at',
+    'service_id' => 'service_id',
+    'version' => 'version',
     'name' => 'name',
     'shield' => 'shield',
     'request_condition' => 'request_condition',
-    'max_conn_default' => 'max_conn_default',
-    'connect_timeout' => 'connect_timeout',
-    'first_byte_timeout' => 'first_byte_timeout',
-    'quorum' => 'quorum',
     'tls_ciphers' => 'tls_ciphers',
     'tls_sni_hostname' => 'tls_sni_hostname',
-    'tls_check_cert' => 'tls_check_cert',
     'min_tls_version' => 'min_tls_version',
     'max_tls_version' => 'max_tls_version',
     'healthcheck' => 'healthcheck',
     'comment' => 'comment',
     'type' => 'type',
     'override_host' => 'override_host',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
-    'service_id' => 'service_id',
-    'version' => 'version',
-    'id' => 'id'
+    'between_bytes_timeout' => 'between_bytes_timeout',
+    'connect_timeout' => 'connect_timeout',
+    'first_byte_timeout' => 'first_byte_timeout',
+    'max_conn_default' => 'max_conn_default',
+    'tls_check_cert' => 'tls_check_cert',
+    'id' => 'id',
+    'quorum' => 'quorum'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
@@ -420,19 +431,19 @@ __PACKAGE__->openapi_nullable( {
     'tls_client_cert' => 'true',
     'tls_client_key' => 'true',
     'tls_cert_hostname' => 'true',
+    'created_at' => 'true',
+    'deleted_at' => 'true',
+    'updated_at' => 'true',
     'shield' => 'true',
     'request_condition' => 'true',
     'tls_ciphers' => 'true',
     'tls_sni_hostname' => 'true',
-    'tls_check_cert' => 'true',
     'min_tls_version' => 'true',
     'max_tls_version' => 'true',
     'healthcheck' => 'true',
     'comment' => 'true',
     'override_host' => 'true',
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
+    'tls_check_cert' => 'true',
 } );
 
 

@@ -56,15 +56,15 @@ sub new {
 # @param string $action Accepts a string value. (optional)
 # @param string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
 # @param string $dst Header to set. (optional)
-# @param int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
 # @param string $name A handle to refer to this Header object. (optional)
-# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
 # @param string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
 # @param string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
 # @param string $response_condition Optional name of a response condition to apply. (optional)
 # @param string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
 # @param string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
 # @param string $type Accepts a string value. (optional)
+# @param int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
+# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
 {
     my $params = {
     'service_id' => {
@@ -92,19 +92,9 @@ sub new {
         description => 'Header to set.',
         required => '0',
     },
-    'ignore_if_set' => {
-        data_type => 'int',
-        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
-        required => '0',
-    },
     'name' => {
         data_type => 'string',
         description => 'A handle to refer to this Header object.',
-        required => '0',
-    },
-    'priority' => {
-        data_type => 'int',
-        description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
     'regex' => {
@@ -135,6 +125,16 @@ sub new {
     'type' => {
         data_type => 'string',
         description => 'Accepts a string value.',
+        required => '0',
+    },
+    'ignore_if_set' => {
+        data_type => 'int',
+        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
+        required => '0',
+    },
+    'priority' => {
+        data_type => 'int',
+        description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
     };
@@ -204,18 +204,8 @@ sub create_header_object {
     }
 
     # form params
-    if ( exists $args{'ignore_if_set'} ) {
-                $form_params->{'ignore_if_set'} = $self->{api_client}->to_form_value($args{'ignore_if_set'});
-    }
-
-    # form params
     if ( exists $args{'name'} ) {
                 $form_params->{'name'} = $self->{api_client}->to_form_value($args{'name'});
-    }
-
-    # form params
-    if ( exists $args{'priority'} ) {
-                $form_params->{'priority'} = $self->{api_client}->to_form_value($args{'priority'});
     }
 
     # form params
@@ -246,6 +236,16 @@ sub create_header_object {
     # form params
     if ( exists $args{'type'} ) {
                 $form_params->{'type'} = $self->{api_client}->to_form_value($args{'type'});
+    }
+
+    # form params
+    if ( exists $args{'ignore_if_set'} ) {
+                $form_params->{'ignore_if_set'} = $self->{api_client}->to_form_value($args{'ignore_if_set'});
+    }
+
+    # form params
+    if ( exists $args{'priority'} ) {
+                $form_params->{'priority'} = $self->{api_client}->to_form_value($args{'priority'});
     }
 
     my $_body_data;
@@ -565,15 +565,15 @@ sub list_header_objects {
 # @param string $action Accepts a string value. (optional)
 # @param string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
 # @param string $dst Header to set. (optional)
-# @param int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
 # @param string $name A handle to refer to this Header object. (optional)
-# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
 # @param string $regex Regular expression to use. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
 # @param string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
 # @param string $response_condition Optional name of a response condition to apply. (optional)
 # @param string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
 # @param string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
 # @param string $type Accepts a string value. (optional)
+# @param int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
+# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
 {
     my $params = {
     'service_id' => {
@@ -606,19 +606,9 @@ sub list_header_objects {
         description => 'Header to set.',
         required => '0',
     },
-    'ignore_if_set' => {
-        data_type => 'int',
-        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
-        required => '0',
-    },
     'name' => {
         data_type => 'string',
         description => 'A handle to refer to this Header object.',
-        required => '0',
-    },
-    'priority' => {
-        data_type => 'int',
-        description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
     'regex' => {
@@ -649,6 +639,16 @@ sub list_header_objects {
     'type' => {
         data_type => 'string',
         description => 'Accepts a string value.',
+        required => '0',
+    },
+    'ignore_if_set' => {
+        data_type => 'int',
+        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
+        required => '0',
+    },
+    'priority' => {
+        data_type => 'int',
+        description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
     };
@@ -730,18 +730,8 @@ sub update_header_object {
     }
 
     # form params
-    if ( exists $args{'ignore_if_set'} ) {
-                $form_params->{'ignore_if_set'} = $self->{api_client}->to_form_value($args{'ignore_if_set'});
-    }
-
-    # form params
     if ( exists $args{'name'} ) {
                 $form_params->{'name'} = $self->{api_client}->to_form_value($args{'name'});
-    }
-
-    # form params
-    if ( exists $args{'priority'} ) {
-                $form_params->{'priority'} = $self->{api_client}->to_form_value($args{'priority'});
     }
 
     # form params
@@ -772,6 +762,16 @@ sub update_header_object {
     # form params
     if ( exists $args{'type'} ) {
                 $form_params->{'type'} = $self->{api_client}->to_form_value($args{'type'});
+    }
+
+    # form params
+    if ( exists $args{'ignore_if_set'} ) {
+                $form_params->{'ignore_if_set'} = $self->{api_client}->to_form_value($args{'ignore_if_set'});
+    }
+
+    # form params
+    if ( exists $args{'priority'} ) {
+                $form_params->{'priority'} = $self->{api_client}->to_form_value($args{'priority'});
     }
 
     my $_body_data;

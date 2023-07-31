@@ -172,20 +172,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'true',
             },
-    'period' => {
-        datatype => 'int',
-        base_name => 'period',
-        description => 'How frequently log files are finalized so they can be available for reading (in seconds).',
-        format => '',
-        read_only => 'false',
-            },
-    'gzip_level' => {
-        datatype => 'int',
-        base_name => 'gzip_level',
-        description => 'The level of gzip encoding when sending logs (default &#x60;0&#x60;, no compression). Specifying both &#x60;compression_codec&#x60; and &#x60;gzip_level&#x60; in the same API request will result in an error.',
-        format => '',
-        read_only => 'false',
-            },
     'compression_codec' => {
         datatype => 'string',
         base_name => 'compression_codec',
@@ -198,16 +184,12 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'message_type' => 'string',
     'timestamp_format' => 'string',
-    'period' => 'int',
-    'gzip_level' => 'int',
     'compression_codec' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'message_type' => 'message_type',
     'timestamp_format' => 'timestamp_format',
-    'period' => 'period',
-    'gzip_level' => 'gzip_level',
     'compression_codec' => 'compression_codec'
 } );
 

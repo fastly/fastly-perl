@@ -56,8 +56,8 @@ sub new {
 # @param string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.  (optional)
 # @param string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
 # @param string $name Name for the cache settings object. (optional)
-# @param int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-# @param int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+# @param string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+# @param string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
 {
     my $params = {
     'service_id' => {
@@ -86,12 +86,12 @@ sub new {
         required => '0',
     },
     'stale_ttl' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).',
         required => '0',
     },
     'ttl' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).',
         required => '0',
     },
@@ -488,8 +488,8 @@ sub list_cache_settings {
 # @param string $action If set, will cause vcl_fetch to terminate after processing this rule with the return state specified. If not set, other configuration logic in vcl_fetch with a lower priority will run after this rule.  (optional)
 # @param string $cache_condition Name of the cache condition controlling when this configuration applies. (optional)
 # @param string $name Name for the cache settings object. (optional)
-# @param int $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
-# @param int $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
+# @param string $stale_ttl Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;). (optional)
+# @param string $ttl Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;). (optional)
 {
     my $params = {
     'service_id' => {
@@ -523,12 +523,12 @@ sub list_cache_settings {
         required => '0',
     },
     'stale_ttl' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).',
         required => '0',
     },
     'ttl' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).',
         required => '0',
     },

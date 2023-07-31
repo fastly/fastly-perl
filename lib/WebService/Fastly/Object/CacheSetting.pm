@@ -180,14 +180,14 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'stale_ttl' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'stale_ttl',
         description => 'Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).',
         format => '',
         read_only => 'false',
             },
     'ttl' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'ttl',
         description => 'Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).',
         format => '',
@@ -199,8 +199,8 @@ __PACKAGE__->openapi_types( {
     'action' => 'string',
     'cache_condition' => 'string',
     'name' => 'string',
-    'stale_ttl' => 'int',
-    'ttl' => 'int'
+    'stale_ttl' => 'string',
+    'ttl' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {

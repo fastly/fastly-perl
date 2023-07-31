@@ -187,7 +187,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'status' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'status',
         description => 'The HTTP status code.',
         format => '',
@@ -214,7 +214,7 @@ __PACKAGE__->openapi_types( {
     'content' => 'string',
     'content_type' => 'string',
     'name' => 'string',
-    'status' => 'int',
+    'status' => 'string',
     'response' => 'string',
     'request_condition' => 'string'
 } );

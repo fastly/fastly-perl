@@ -55,9 +55,9 @@ sub new {
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
 # @param string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;.  (optional)
-# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified. (optional)
 # @param string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified. (optional)
 # @param string $account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided. (optional)
@@ -87,11 +87,6 @@ sub new {
         description => 'Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. ',
         required => '0',
     },
-    'format_version' => {
-        data_type => 'int',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        required => '0',
-    },
     'response_condition' => {
         data_type => 'string',
         description => 'The name of an existing condition in the configured endpoint, or leave blank to always execute.',
@@ -100,6 +95,11 @@ sub new {
     'format' => {
         data_type => 'string',
         description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.',
+        required => '0',
+    },
+    'format_version' => {
+        data_type => 'int',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
         required => '0',
     },
     'user' => {
@@ -199,11 +199,6 @@ sub create_log_bigquery {
     }
 
     # form params
-    if ( exists $args{'format_version'} ) {
-                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
-    }
-
-    # form params
     if ( exists $args{'response_condition'} ) {
                 $form_params->{'response_condition'} = $self->{api_client}->to_form_value($args{'response_condition'});
     }
@@ -211,6 +206,11 @@ sub create_log_bigquery {
     # form params
     if ( exists $args{'format'} ) {
                 $form_params->{'format'} = $self->{api_client}->to_form_value($args{'format'});
+    }
+
+    # form params
+    if ( exists $args{'format_version'} ) {
+                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
     }
 
     # form params
@@ -564,9 +564,9 @@ sub list_log_bigquery {
 # @param string $logging_bigquery_name The name for the real-time logging configuration. (required)
 # @param string $name The name of the BigQuery logging object. Used as a primary key for API access. (optional)
 # @param string $placement Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;.  (optional)
-# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $response_condition The name of an existing condition in the configured endpoint, or leave blank to always execute. (optional)
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. (optional)
+# @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $user Your Google Cloud Platform service account email address. The &#x60;client_email&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified. (optional)
 # @param string $secret_key Your Google Cloud Platform account secret key. The &#x60;private_key&#x60; field in your service account authentication JSON. Not required if &#x60;account_name&#x60; is specified. (optional)
 # @param string $account_name The name of the Google Cloud Platform service account associated with the target log collection service. Not required if &#x60;user&#x60; and &#x60;secret_key&#x60; are provided. (optional)
@@ -601,11 +601,6 @@ sub list_log_bigquery {
         description => 'Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. ',
         required => '0',
     },
-    'format_version' => {
-        data_type => 'int',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        required => '0',
-    },
     'response_condition' => {
         data_type => 'string',
         description => 'The name of an existing condition in the configured endpoint, or leave blank to always execute.',
@@ -614,6 +609,11 @@ sub list_log_bigquery {
     'format' => {
         data_type => 'string',
         description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.',
+        required => '0',
+    },
+    'format_version' => {
+        data_type => 'int',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
         required => '0',
     },
     'user' => {
@@ -725,11 +725,6 @@ sub update_log_bigquery {
     }
 
     # form params
-    if ( exists $args{'format_version'} ) {
-                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
-    }
-
-    # form params
     if ( exists $args{'response_condition'} ) {
                 $form_params->{'response_condition'} = $self->{api_client}->to_form_value($args{'response_condition'});
     }
@@ -737,6 +732,11 @@ sub update_log_bigquery {
     # form params
     if ( exists $args{'format'} ) {
                 $form_params->{'format'} = $self->{api_client}->to_form_value($args{'format'});
+    }
+
+    # form params
+    if ( exists $args{'format_version'} ) {
+                $form_params->{'format_version'} = $self->{api_client}->to_form_value($args{'format_version'});
     }
 
     # form params

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **create_server_pool**
-> PoolResponse create_server_pool(service_id => $service_id, version_id => $version_id, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, name => $name, shield => $shield, request_condition => $request_condition, max_conn_default => $max_conn_default, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, quorum => $quorum, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, tls_check_cert => $tls_check_cert, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host)
+> PoolResponsePost create_server_pool(service_id => $service_id, version_id => $version_id, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, created_at => $created_at, deleted_at => $deleted_at, updated_at => $updated_at, service_id => $service_id, version => $version, name => $name, shield => $shield, request_condition => $request_condition, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host, between_bytes_timeout => $between_bytes_timeout, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, max_conn_default => $max_conn_default, quorum => $quorum, tls_check_cert => $tls_check_cert)
 
 Create a server pool
 
@@ -42,25 +42,31 @@ my $tls_client_cert = 'null'; # string | The client certificate used to make aut
 my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
 my $tls_cert_hostname = 'null'; # string | The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
 my $use_tls = 0; # int | Whether to use TLS.
+my $created_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
+my $deleted_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
+my $updated_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
+my $service_id = "service_id_example"; # string | 
+my $version = "version_example"; # string | 
 my $name = "name_example"; # string | Name for the Pool.
 my $shield = 'null'; # string | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
 my $request_condition = "request_condition_example"; # string | Condition which, if met, will select this configuration during a request. Optional.
-my $max_conn_default = 200; # int | Maximum number of connections. Optional.
-my $connect_timeout = 56; # int | How long to wait for a timeout in milliseconds. Optional.
-my $first_byte_timeout = 56; # int | How long to wait for the first byte in milliseconds. Optional.
-my $quorum = 75; # int | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
 my $tls_ciphers = "tls_ciphers_example"; # string | List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
 my $tls_sni_hostname = "tls_sni_hostname_example"; # string | SNI hostname. Optional.
-my $tls_check_cert = 56; # int | Be strict on checking TLS certs. Optional.
 my $min_tls_version = 56; # int | Minimum allowed TLS version on connections to this server. Optional.
 my $max_tls_version = 56; # int | Maximum allowed TLS version on connections to this server. Optional.
 my $healthcheck = "healthcheck_example"; # string | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $type = "type_example"; # string | What type of load balance group to use.
 my $override_host = 'null'; # string | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+my $between_bytes_timeout = 10000; # int | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+my $connect_timeout = 56; # int | How long to wait for a timeout in milliseconds. Optional.
+my $first_byte_timeout = 56; # int | How long to wait for the first byte in milliseconds. Optional.
+my $max_conn_default = 200; # int | Maximum number of connections. Optional.
+my $quorum = 75; # int | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+my $tls_check_cert = 56; # int | Be strict on checking TLS certs. Optional.
 
 eval {
-    my $result = $api_instance->create_server_pool(service_id => $service_id, version_id => $version_id, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, name => $name, shield => $shield, request_condition => $request_condition, max_conn_default => $max_conn_default, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, quorum => $quorum, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, tls_check_cert => $tls_check_cert, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host);
+    my $result = $api_instance->create_server_pool(service_id => $service_id, version_id => $version_id, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, created_at => $created_at, deleted_at => $deleted_at, updated_at => $updated_at, service_id => $service_id, version => $version, name => $name, shield => $shield, request_condition => $request_condition, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host, between_bytes_timeout => $between_bytes_timeout, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, max_conn_default => $max_conn_default, quorum => $quorum, tls_check_cert => $tls_check_cert);
     print Dumper($result);
 };
 if ($@) {
@@ -79,26 +85,32 @@ Name | Type | Description  | Notes
  **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
  **tls_cert_hostname** | **string**| The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). | [optional] [default to &#39;null&#39;]
  **use_tls** | **int**| Whether to use TLS. | [optional] [default to 0]
+ **created_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
+ **deleted_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
+ **updated_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
+ **service_id** | **string**|  | [optional] 
+ **version** | **string**|  | [optional] 
  **name** | **string**| Name for the Pool. | [optional] 
  **shield** | **string**| Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
  **request_condition** | **string**| Condition which, if met, will select this configuration during a request. Optional. | [optional] 
- **max_conn_default** | **int**| Maximum number of connections. Optional. | [optional] [default to 200]
- **connect_timeout** | **int**| How long to wait for a timeout in milliseconds. Optional. | [optional] 
- **first_byte_timeout** | **int**| How long to wait for the first byte in milliseconds. Optional. | [optional] 
- **quorum** | **int**| Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional] [default to 75]
  **tls_ciphers** | **string**| List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional. | [optional] 
  **tls_sni_hostname** | **string**| SNI hostname. Optional. | [optional] 
- **tls_check_cert** | **int**| Be strict on checking TLS certs. Optional. | [optional] 
  **min_tls_version** | **int**| Minimum allowed TLS version on connections to this server. Optional. | [optional] 
  **max_tls_version** | **int**| Maximum allowed TLS version on connections to this server. Optional. | [optional] 
  **healthcheck** | **string**| Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] 
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **type** | **string**| What type of load balance group to use. | [optional] 
  **override_host** | **string**| The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [default to &#39;null&#39;]
+ **between_bytes_timeout** | **int**| Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] [default to 10000]
+ **connect_timeout** | **int**| How long to wait for a timeout in milliseconds. Optional. | [optional] 
+ **first_byte_timeout** | **int**| How long to wait for the first byte in milliseconds. Optional. | [optional] 
+ **max_conn_default** | **int**| Maximum number of connections. Optional. | [optional] [default to 200]
+ **quorum** | **int**| Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional] [default to 75]
+ **tls_check_cert** | **int**| Be strict on checking TLS certs. Optional. | [optional] 
 
 ### Return type
 
-[**PoolResponse**](PoolResponse.md)
+[**PoolResponsePost**](PoolResponsePost.md)
 
 ### Authorization
 
@@ -275,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_server_pool**
-> PoolResponse update_server_pool(service_id => $service_id, version_id => $version_id, pool_name => $pool_name, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, name => $name, shield => $shield, request_condition => $request_condition, max_conn_default => $max_conn_default, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, quorum => $quorum, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, tls_check_cert => $tls_check_cert, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host)
+> PoolResponse update_server_pool(service_id => $service_id, version_id => $version_id, pool_name => $pool_name, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, created_at => $created_at, deleted_at => $deleted_at, updated_at => $updated_at, service_id => $service_id, version => $version, name => $name, shield => $shield, request_condition => $request_condition, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host, between_bytes_timeout => $between_bytes_timeout, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, max_conn_default => $max_conn_default, quorum => $quorum, tls_check_cert => $tls_check_cert)
 
 Update a server pool
 
@@ -301,25 +313,31 @@ my $tls_client_cert = 'null'; # string | The client certificate used to make aut
 my $tls_client_key = 'null'; # string | The client private key used to make authenticated requests. Must be in PEM format.
 my $tls_cert_hostname = 'null'; # string | The hostname used to verify a server's certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN).
 my $use_tls = 0; # int | Whether to use TLS.
+my $created_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
+my $deleted_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
+my $updated_at = DateTime->from_epoch(epoch => str2time('null')); # DateTime | Date and time in ISO 8601 format.
+my $service_id = "service_id_example"; # string | 
+my $version = "version_example"; # string | 
 my $name = "name_example"; # string | Name for the Pool.
 my $shield = 'null'; # string | Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
 my $request_condition = "request_condition_example"; # string | Condition which, if met, will select this configuration during a request. Optional.
-my $max_conn_default = 200; # int | Maximum number of connections. Optional.
-my $connect_timeout = 56; # int | How long to wait for a timeout in milliseconds. Optional.
-my $first_byte_timeout = 56; # int | How long to wait for the first byte in milliseconds. Optional.
-my $quorum = 75; # int | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
 my $tls_ciphers = "tls_ciphers_example"; # string | List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional.
 my $tls_sni_hostname = "tls_sni_hostname_example"; # string | SNI hostname. Optional.
-my $tls_check_cert = 56; # int | Be strict on checking TLS certs. Optional.
 my $min_tls_version = 56; # int | Minimum allowed TLS version on connections to this server. Optional.
 my $max_tls_version = 56; # int | Maximum allowed TLS version on connections to this server. Optional.
 my $healthcheck = "healthcheck_example"; # string | Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $type = "type_example"; # string | What type of load balance group to use.
 my $override_host = 'null'; # string | The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.
+my $between_bytes_timeout = 10000; # int | Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`.
+my $connect_timeout = 56; # int | How long to wait for a timeout in milliseconds. Optional.
+my $first_byte_timeout = 56; # int | How long to wait for the first byte in milliseconds. Optional.
+my $max_conn_default = 200; # int | Maximum number of connections. Optional.
+my $quorum = 75; # int | Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up.
+my $tls_check_cert = 56; # int | Be strict on checking TLS certs. Optional.
 
 eval {
-    my $result = $api_instance->update_server_pool(service_id => $service_id, version_id => $version_id, pool_name => $pool_name, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, name => $name, shield => $shield, request_condition => $request_condition, max_conn_default => $max_conn_default, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, quorum => $quorum, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, tls_check_cert => $tls_check_cert, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host);
+    my $result = $api_instance->update_server_pool(service_id => $service_id, version_id => $version_id, pool_name => $pool_name, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_cert_hostname => $tls_cert_hostname, use_tls => $use_tls, created_at => $created_at, deleted_at => $deleted_at, updated_at => $updated_at, service_id => $service_id, version => $version, name => $name, shield => $shield, request_condition => $request_condition, tls_ciphers => $tls_ciphers, tls_sni_hostname => $tls_sni_hostname, min_tls_version => $min_tls_version, max_tls_version => $max_tls_version, healthcheck => $healthcheck, comment => $comment, type => $type, override_host => $override_host, between_bytes_timeout => $between_bytes_timeout, connect_timeout => $connect_timeout, first_byte_timeout => $first_byte_timeout, max_conn_default => $max_conn_default, quorum => $quorum, tls_check_cert => $tls_check_cert);
     print Dumper($result);
 };
 if ($@) {
@@ -339,22 +357,28 @@ Name | Type | Description  | Notes
  **tls_client_key** | **string**| The client private key used to make authenticated requests. Must be in PEM format. | [optional] [default to &#39;null&#39;]
  **tls_cert_hostname** | **string**| The hostname used to verify a server&#39;s certificate. It can either be the Common Name (CN) or a Subject Alternative Name (SAN). | [optional] [default to &#39;null&#39;]
  **use_tls** | **int**| Whether to use TLS. | [optional] [default to 0]
+ **created_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
+ **deleted_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
+ **updated_at** | **DateTime**| Date and time in ISO 8601 format. | [optional] 
+ **service_id** | **string**|  | [optional] 
+ **version** | **string**|  | [optional] 
  **name** | **string**| Name for the Pool. | [optional] 
  **shield** | **string**| Selected POP to serve as a shield for the servers. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
  **request_condition** | **string**| Condition which, if met, will select this configuration during a request. Optional. | [optional] 
- **max_conn_default** | **int**| Maximum number of connections. Optional. | [optional] [default to 200]
- **connect_timeout** | **int**| How long to wait for a timeout in milliseconds. Optional. | [optional] 
- **first_byte_timeout** | **int**| How long to wait for the first byte in milliseconds. Optional. | [optional] 
- **quorum** | **int**| Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional] [default to 75]
  **tls_ciphers** | **string**| List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional. | [optional] 
  **tls_sni_hostname** | **string**| SNI hostname. Optional. | [optional] 
- **tls_check_cert** | **int**| Be strict on checking TLS certs. Optional. | [optional] 
  **min_tls_version** | **int**| Minimum allowed TLS version on connections to this server. Optional. | [optional] 
  **max_tls_version** | **int**| Maximum allowed TLS version on connections to this server. Optional. | [optional] 
  **healthcheck** | **string**| Name of the healthcheck to use with this pool. Can be empty and could be reused across multiple backend and pools. | [optional] 
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **type** | **string**| What type of load balance group to use. | [optional] 
  **override_host** | **string**| The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to `null` meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. | [optional] [default to &#39;null&#39;]
+ **between_bytes_timeout** | **int**| Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using `bereq.between_bytes_timeout`. | [optional] [default to 10000]
+ **connect_timeout** | **int**| How long to wait for a timeout in milliseconds. Optional. | [optional] 
+ **first_byte_timeout** | **int**| How long to wait for the first byte in milliseconds. Optional. | [optional] 
+ **max_conn_default** | **int**| Maximum number of connections. Optional. | [optional] [default to 200]
+ **quorum** | **int**| Percentage of capacity (`0-100`) that needs to be operationally available for a pool to be considered up. | [optional] [default to 75]
+ **tls_check_cert** | **int**| Be strict on checking TLS certs. Optional. | [optional] 
 
 ### Return type
 

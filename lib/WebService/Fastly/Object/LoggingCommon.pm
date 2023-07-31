@@ -172,13 +172,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'format_version' => {
-        datatype => 'int',
-        base_name => 'format_version',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        format => '',
-        read_only => 'false',
-            },
     'response_condition' => {
         datatype => 'string',
         base_name => 'response_condition',
@@ -198,7 +191,6 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'name' => 'string',
     'placement' => 'string',
-    'format_version' => 'int',
     'response_condition' => 'string',
     'format' => 'string'
 } );
@@ -206,7 +198,6 @@ __PACKAGE__->openapi_types( {
 __PACKAGE__->attribute_map( {
     'name' => 'name',
     'placement' => 'placement',
-    'format_version' => 'format_version',
     'response_condition' => 'response_condition',
     'format' => 'format'
 } );

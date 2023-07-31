@@ -1,5 +1,16 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+5.00 2023-07-31
+    * refactor: general restructure OpenAPI schemas.
+    * refactor(domain): remove explicit schema type for 'any'.
+    * fix: change response `version` type to string.
+    * fix(cache_settings): change response `stale_ttl` and `ttl` types to strings.
+    * fix(header): change response `ignore_if_set` and `priority` types to strings.
+    * fix(logging): change response `period` and `gzip_level` types to strings.
+    * fix(pool): change response `use_tls`, `max_conn_default`, `first_byte_timeout`, `quorum` and `tls_check_cert` types to strings.
+    * fix(request_settings): change response `bypass_busy_wait`, `force_miss`, `force_ssl`, `geo_headers`, `max_stale_age` and `timer_support` types to strings.
+    * fix(response_object): change response `status` type to string.
+
 4.02 2023-07-13
     * fix(logging_gcs): set expected default value for 'path'.
     * fix(origin_inspector_historical): use correct type for 'values'.

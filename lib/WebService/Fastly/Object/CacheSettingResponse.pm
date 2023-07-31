@@ -29,7 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::CacheSetting;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -183,14 +183,14 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'stale_ttl' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'stale_ttl',
         description => 'Maximum time in seconds to continue to use a stale version of the object if future requests to your backend server fail (also known as &#39;stale if error&#39;).',
         format => '',
         read_only => 'false',
             },
     'ttl' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'ttl',
         description => 'Maximum time to consider the object fresh in the cache (the cache &#39;time to live&#39;).',
         format => '',
@@ -204,7 +204,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
         description => '',
         format => '',
@@ -237,10 +237,10 @@ __PACKAGE__->openapi_types( {
     'action' => 'string',
     'cache_condition' => 'string',
     'name' => 'string',
-    'stale_ttl' => 'int',
-    'ttl' => 'int',
+    'stale_ttl' => 'string',
+    'ttl' => 'string',
     'service_id' => 'string',
-    'version' => 'int',
+    'version' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime'

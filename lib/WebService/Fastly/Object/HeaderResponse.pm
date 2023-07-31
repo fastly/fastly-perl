@@ -29,7 +29,8 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Header;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::HeaderResponseAdditional;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -182,24 +183,10 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'ignore_if_set' => {
-        datatype => 'int',
-        base_name => 'ignore_if_set',
-        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
-        format => '',
-        read_only => 'false',
-            },
     'name' => {
         datatype => 'string',
         base_name => 'name',
         description => 'A handle to refer to this Header object.',
-        format => '',
-        read_only => 'false',
-            },
-    'priority' => {
-        datatype => 'int',
-        base_name => 'priority',
-        description => 'Priority determines execution order. Lower numbers execute first.',
         format => '',
         read_only => 'false',
             },
@@ -245,6 +232,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'ignore_if_set' => {
+        datatype => 'string',
+        base_name => 'ignore_if_set',
+        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\&quot;0\&quot; &#x3D; false, \&quot;1\&quot; &#x3D; true)',
+        format => '',
+        read_only => 'false',
+            },
+    'priority' => {
+        datatype => 'string',
+        base_name => 'priority',
+        description => 'Priority determines execution order. Lower numbers execute first.',
+        format => '',
+        read_only => 'false',
+            },
     'service_id' => {
         datatype => 'string',
         base_name => 'service_id',
@@ -253,7 +254,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
         description => '',
         format => '',
@@ -286,17 +287,17 @@ __PACKAGE__->openapi_types( {
     'action' => 'string',
     'cache_condition' => 'string',
     'dst' => 'string',
-    'ignore_if_set' => 'int',
     'name' => 'string',
-    'priority' => 'int',
     'regex' => 'string',
     'request_condition' => 'string',
     'response_condition' => 'string',
     'src' => 'string',
     'substitution' => 'string',
     'type' => 'string',
+    'ignore_if_set' => 'string',
+    'priority' => 'string',
     'service_id' => 'string',
-    'version' => 'int',
+    'version' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime'
@@ -306,15 +307,15 @@ __PACKAGE__->attribute_map( {
     'action' => 'action',
     'cache_condition' => 'cache_condition',
     'dst' => 'dst',
-    'ignore_if_set' => 'ignore_if_set',
     'name' => 'name',
-    'priority' => 'priority',
     'regex' => 'regex',
     'request_condition' => 'request_condition',
     'response_condition' => 'response_condition',
     'src' => 'src',
     'substitution' => 'substitution',
     'type' => 'type',
+    'ignore_if_set' => 'ignore_if_set',
+    'priority' => 'priority',
     'service_id' => 'service_id',
     'version' => 'version',
     'created_at' => 'created_at',

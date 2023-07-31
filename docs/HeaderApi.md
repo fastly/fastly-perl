@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **create_header_object**
-> HeaderResponse create_header_object(service_id => $service_id, version_id => $version_id, action => $action, cache_condition => $cache_condition, dst => $dst, ignore_if_set => $ignore_if_set, name => $name, priority => $priority, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type)
+> HeaderResponse create_header_object(service_id => $service_id, version_id => $version_id, action => $action, cache_condition => $cache_condition, dst => $dst, name => $name, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type, ignore_if_set => $ignore_if_set, priority => $priority)
 
 Create a Header object
 
@@ -40,18 +40,18 @@ my $version_id = 56; # int | Integer identifying a service version.
 my $action = "action_example"; # string | Accepts a string value.
 my $cache_condition = "cache_condition_example"; # string | Name of the cache condition controlling when this configuration applies.
 my $dst = "dst_example"; # string | Header to set.
-my $ignore_if_set = 56; # int | Don't add the header if it is added already. Only applies to 'set' action.
 my $name = "name_example"; # string | A handle to refer to this Header object.
-my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
 my $regex = "regex_example"; # string | Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
 my $request_condition = "request_condition_example"; # string | Condition which, if met, will select this configuration during a request. Optional.
 my $response_condition = "response_condition_example"; # string | Optional name of a response condition to apply.
 my $src = "src_example"; # string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 my $substitution = "substitution_example"; # string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 my $type = "type_example"; # string | Accepts a string value.
+my $ignore_if_set = 56; # int | Don't add the header if it is added already. Only applies to 'set' action.
+my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
 
 eval {
-    my $result = $api_instance->create_header_object(service_id => $service_id, version_id => $version_id, action => $action, cache_condition => $cache_condition, dst => $dst, ignore_if_set => $ignore_if_set, name => $name, priority => $priority, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type);
+    my $result = $api_instance->create_header_object(service_id => $service_id, version_id => $version_id, action => $action, cache_condition => $cache_condition, dst => $dst, name => $name, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type, ignore_if_set => $ignore_if_set, priority => $priority);
     print Dumper($result);
 };
 if ($@) {
@@ -68,15 +68,15 @@ Name | Type | Description  | Notes
  **action** | **string**| Accepts a string value. | [optional] 
  **cache_condition** | **string**| Name of the cache condition controlling when this configuration applies. | [optional] 
  **dst** | **string**| Header to set. | [optional] 
- **ignore_if_set** | **int**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] 
  **name** | **string**| A handle to refer to this Header object. | [optional] 
- **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
  **regex** | **string**| Regular expression to use. Only applies to `regex` and `regex_repeat` actions. | [optional] 
  **request_condition** | **string**| Condition which, if met, will select this configuration during a request. Optional. | [optional] 
  **response_condition** | **string**| Optional name of a response condition to apply. | [optional] 
  **src** | **string**| Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] 
  **substitution** | **string**| Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] 
  **type** | **string**| Accepts a string value. | [optional] 
+ **ignore_if_set** | **int**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] 
+ **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
 
 ### Return type
 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_header_object**
-> HeaderResponse update_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name, action => $action, cache_condition => $cache_condition, dst => $dst, ignore_if_set => $ignore_if_set, name => $name, priority => $priority, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type)
+> HeaderResponse update_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name, action => $action, cache_condition => $cache_condition, dst => $dst, name => $name, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type, ignore_if_set => $ignore_if_set, priority => $priority)
 
 Update a Header object
 
@@ -281,18 +281,18 @@ my $header_name = "header_name_example"; # string | A handle to refer to this He
 my $action = "action_example"; # string | Accepts a string value.
 my $cache_condition = "cache_condition_example"; # string | Name of the cache condition controlling when this configuration applies.
 my $dst = "dst_example"; # string | Header to set.
-my $ignore_if_set = 56; # int | Don't add the header if it is added already. Only applies to 'set' action.
 my $name = "name_example"; # string | A handle to refer to this Header object.
-my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
 my $regex = "regex_example"; # string | Regular expression to use. Only applies to `regex` and `regex_repeat` actions.
 my $request_condition = "request_condition_example"; # string | Condition which, if met, will select this configuration during a request. Optional.
 my $response_condition = "response_condition_example"; # string | Optional name of a response condition to apply.
 my $src = "src_example"; # string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 my $substitution = "substitution_example"; # string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 my $type = "type_example"; # string | Accepts a string value.
+my $ignore_if_set = 56; # int | Don't add the header if it is added already. Only applies to 'set' action.
+my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
 
 eval {
-    my $result = $api_instance->update_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name, action => $action, cache_condition => $cache_condition, dst => $dst, ignore_if_set => $ignore_if_set, name => $name, priority => $priority, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type);
+    my $result = $api_instance->update_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name, action => $action, cache_condition => $cache_condition, dst => $dst, name => $name, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type, ignore_if_set => $ignore_if_set, priority => $priority);
     print Dumper($result);
 };
 if ($@) {
@@ -310,15 +310,15 @@ Name | Type | Description  | Notes
  **action** | **string**| Accepts a string value. | [optional] 
  **cache_condition** | **string**| Name of the cache condition controlling when this configuration applies. | [optional] 
  **dst** | **string**| Header to set. | [optional] 
- **ignore_if_set** | **int**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] 
  **name** | **string**| A handle to refer to this Header object. | [optional] 
- **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
  **regex** | **string**| Regular expression to use. Only applies to `regex` and `regex_repeat` actions. | [optional] 
  **request_condition** | **string**| Condition which, if met, will select this configuration during a request. Optional. | [optional] 
  **response_condition** | **string**| Optional name of a response condition to apply. | [optional] 
  **src** | **string**| Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] 
  **substitution** | **string**| Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] 
  **type** | **string**| Accepts a string value. | [optional] 
+ **ignore_if_set** | **int**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] 
+ **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
 
 ### Return type
 

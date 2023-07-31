@@ -29,10 +29,10 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::AwsRegion;
-use WebService::Fastly::Object::LoggingFormatVersion;
-use WebService::Fastly::Object::LoggingKinesis;
+use WebService::Fastly::Object::LoggingFormatVersionString;
+use WebService::Fastly::Object::LoggingKinesisAdditional;
 use WebService::Fastly::Object::LoggingPlacement;
-use WebService::Fastly::Object::ServiceIdAndVersion;
+use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -178,13 +178,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'format_version' => {
-        datatype => 'LoggingFormatVersion',
-        base_name => 'format_version',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
     'format' => {
         datatype => 'string',
         base_name => 'format',
@@ -227,6 +220,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'format_version' => {
+        datatype => 'string',
+        base_name => 'format_version',
+        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
+        format => '',
+        read_only => 'false',
+            },
     'created_at' => {
         datatype => 'DateTime',
         base_name => 'created_at',
@@ -256,7 +256,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'version' => {
-        datatype => 'int',
+        datatype => 'string',
         base_name => 'version',
         description => '',
         format => '',
@@ -267,30 +267,30 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'name' => 'string',
     'placement' => 'LoggingPlacement',
-    'format_version' => 'LoggingFormatVersion',
     'format' => 'string',
     'topic' => 'string',
     'region' => 'AwsRegion',
     'secret_key' => 'string',
     'access_key' => 'string',
     'iam_role' => 'string',
+    'format_version' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'service_id' => 'string',
-    'version' => 'int'
+    'version' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'name' => 'name',
     'placement' => 'placement',
-    'format_version' => 'format_version',
     'format' => 'format',
     'topic' => 'topic',
     'region' => 'region',
     'secret_key' => 'secret_key',
     'access_key' => 'access_key',
     'iam_role' => 'iam_role',
+    'format_version' => 'format_version',
     'created_at' => 'created_at',
     'deleted_at' => 'deleted_at',
     'updated_at' => 'updated_at',
