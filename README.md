@@ -4,7 +4,7 @@ WebService::Fastly - an interface to most facets of the Fastly API (https://deve
 
 # VERSION
 
-5.01
+5.02
 
 
 # SYNOPSIS

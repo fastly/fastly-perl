@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_events**
-> EventsResponse list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], filter[created_at] => $filter[created_at], page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> EventsResponse list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], filter[created_at] => $filter[created_at], filter[created_at][lte] => $filter[created_at][lte], filter[created_at][lt] => $filter[created_at][lt], filter[created_at][gte] => $filter[created_at][gte], filter[created_at][gt] => $filter[created_at][gt], page[number] => $page[number], page[size] => $page[size], sort => $sort)
 
 List events
 
@@ -89,12 +89,16 @@ my $filter[service_id] = "filter[service_id]_example"; # string | Limit the resu
 my $filter[user_id] = "filter[user_id]_example"; # string | Limit the results returned to a specific user.
 my $filter[token_id] = "filter[token_id]_example"; # string | Limit the returned events to a specific token.
 my $filter[created_at] = "filter[created_at]_example"; # string | Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]=2022-01-12). 
+my $filter[created_at][lte] = "filter[created_at][lte]_example"; # string | Return events on and before a date and time in ISO 8601 format. 
+my $filter[created_at][lt] = "filter[created_at][lt]_example"; # string | Return events before a date and time in ISO 8601 format. 
+my $filter[created_at][gte] = "filter[created_at][gte]_example"; # string | Return events on and after a date and time in ISO 8601 format. 
+my $filter[created_at][gt] = "filter[created_at][gt]_example"; # string | Return events after a date and time in ISO 8601 format. 
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
 my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], filter[created_at] => $filter[created_at], page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_events(filter[customer_id] => $filter[customer_id], filter[event_type] => $filter[event_type], filter[service_id] => $filter[service_id], filter[user_id] => $filter[user_id], filter[token_id] => $filter[token_id], filter[created_at] => $filter[created_at], filter[created_at][lte] => $filter[created_at][lte], filter[created_at][lt] => $filter[created_at][lt], filter[created_at][gte] => $filter[created_at][gte], filter[created_at][gt] => $filter[created_at][gt], page[number] => $page[number], page[size] => $page[size], sort => $sort);
     print Dumper($result);
 };
 if ($@) {
@@ -112,6 +116,10 @@ Name | Type | Description  | Notes
  **filter[user_id]** | **string**| Limit the results returned to a specific user. | [optional] 
  **filter[token_id]** | **string**| Limit the returned events to a specific token. | [optional] 
  **filter[created_at]** | **string**| Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12).  | [optional] 
+ **filter[created_at][lte]** | **string**| Return events on and before a date and time in ISO 8601 format.  | [optional] 
+ **filter[created_at][lt]** | **string**| Return events before a date and time in ISO 8601 format.  | [optional] 
+ **filter[created_at][gte]** | **string**| Return events on and after a date and time in ISO 8601 format.  | [optional] 
+ **filter[created_at][gt]** | **string**| Return events after a date and time in ISO 8601 format.  | [optional] 
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
  **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]

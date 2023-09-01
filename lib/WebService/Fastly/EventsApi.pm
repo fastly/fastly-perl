@@ -124,6 +124,10 @@ sub get_event {
 # @param string $filter[user_id] Limit the results returned to a specific user. (optional)
 # @param string $filter[token_id] Limit the returned events to a specific token. (optional)
 # @param string $filter[created_at] Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12).  (optional)
+# @param string $filter[created_at][lte] Return events on and before a date and time in ISO 8601 format.  (optional)
+# @param string $filter[created_at][lt] Return events before a date and time in ISO 8601 format.  (optional)
+# @param string $filter[created_at][gte] Return events on and after a date and time in ISO 8601 format.  (optional)
+# @param string $filter[created_at][gt] Return events after a date and time in ISO 8601 format.  (optional)
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
 # @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -157,6 +161,26 @@ sub get_event {
     'filter[created_at]' => {
         data_type => 'string',
         description => 'Limit the returned events to a specific time frame. Accepts sub-parameters: lt, lte, gt, gte (e.g., filter[created_at][gt]&#x3D;2022-01-12). ',
+        required => '0',
+    },
+    'filter[created_at][lte]' => {
+        data_type => 'string',
+        description => 'Return events on and before a date and time in ISO 8601 format. ',
+        required => '0',
+    },
+    'filter[created_at][lt]' => {
+        data_type => 'string',
+        description => 'Return events before a date and time in ISO 8601 format. ',
+        required => '0',
+    },
+    'filter[created_at][gte]' => {
+        data_type => 'string',
+        description => 'Return events on and after a date and time in ISO 8601 format. ',
+        required => '0',
+    },
+    'filter[created_at][gt]' => {
+        data_type => 'string',
+        description => 'Return events after a date and time in ISO 8601 format. ',
         required => '0',
     },
     'page[number]' => {
@@ -229,6 +253,26 @@ sub list_events {
     # query params
     if ( exists $args{'filter[created_at]'}) {
         $query_params->{'filter[created_at]'} = $self->{api_client}->to_query_value($args{'filter[created_at]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[created_at][lte]'}) {
+        $query_params->{'filter[created_at][lte]'} = $self->{api_client}->to_query_value($args{'filter[created_at][lte]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[created_at][lt]'}) {
+        $query_params->{'filter[created_at][lt]'} = $self->{api_client}->to_query_value($args{'filter[created_at][lt]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[created_at][gte]'}) {
+        $query_params->{'filter[created_at][gte]'} = $self->{api_client}->to_query_value($args{'filter[created_at][gte]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[created_at][gt]'}) {
+        $query_params->{'filter[created_at][gt]'} = $self->{api_client}->to_query_value($args{'filter[created_at][gt]'});
     }
 
     # query params
