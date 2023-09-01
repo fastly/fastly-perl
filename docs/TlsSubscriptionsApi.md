@@ -250,7 +250,7 @@ my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 );
 
 my $tls_subscription_id = "tls_subscription_id_example"; # string | Alphanumeric string identifying a TLS subscription.
-my $include = tls_authorizations; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. 
+my $include = tls_authorizations; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
 
 eval {
     my $result = $api_instance->get_tls_sub(tls_subscription_id => $tls_subscription_id, include => $include);
@@ -266,7 +266,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tls_subscription_id** | **string**| Alphanumeric string identifying a TLS subscription. | 
- **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.  | [optional] 
+ **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] 
 
 ### Return type
 
@@ -305,7 +305,7 @@ my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
 my $filter[state] = "filter[state]_example"; # string | Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]=renewing`). 
 my $filter[tls_domains/id] = "filter[tls_domains/id]_example"; # string | Limit the returned subscriptions to those that include the specific domain.
 my $filter[has_active_order] = null; # boolean | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. 
-my $include = tls_authorizations; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`. 
+my $include = tls_authorizations; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
 my $sort = created_at; # string | The order in which to list the results by creation date.
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
  **filter[state]** | **string**| Limit the returned subscriptions by state. Valid values are `pending`, `processing`, `issued`, `renewing`, and `failed`. Accepts parameters: `not` (e.g., `filter[state][not]&#x3D;renewing`).  | [optional] 
  **filter[tls_domains/id]** | **string**| Limit the returned subscriptions to those that include the specific domain. | [optional] 
  **filter[has_active_order]** | **boolean**| Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.  | [optional] 
- **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations` and `tls_authorizations.globalsign_email_challenge`.  | [optional] 
+ **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] 
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
  **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]

@@ -72,6 +72,7 @@ sub new {
 # @param string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
 # @param int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
 # @param string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+# @param string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
 # @param string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
 # @param string $ssl_ca_cert CA certificate attached to origin. (optional)
 # @param string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -188,6 +189,11 @@ sub new {
     'request_condition' => {
         data_type => 'string',
         description => 'Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.',
+        required => '0',
+    },
+    'share_key' => {
+        data_type => 'string',
+        description => 'Value that when shared across backends will enable those backends to share the same health check.',
         required => '0',
     },
     'shield' => {
@@ -389,6 +395,11 @@ sub create_backend {
     # form params
     if ( exists $args{'request_condition'} ) {
                 $form_params->{'request_condition'} = $self->{api_client}->to_form_value($args{'request_condition'});
+    }
+
+    # form params
+    if ( exists $args{'share_key'} ) {
+                $form_params->{'share_key'} = $self->{api_client}->to_form_value($args{'share_key'});
     }
 
     # form params
@@ -779,6 +790,7 @@ sub list_backends {
 # @param string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
 # @param int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
 # @param string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
+# @param string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
 # @param string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
 # @param string $ssl_ca_cert CA certificate attached to origin. (optional)
 # @param string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
@@ -900,6 +912,11 @@ sub list_backends {
     'request_condition' => {
         data_type => 'string',
         description => 'Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests.',
+        required => '0',
+    },
+    'share_key' => {
+        data_type => 'string',
+        description => 'Value that when shared across backends will enable those backends to share the same health check.',
         required => '0',
     },
     'shield' => {
@@ -1113,6 +1130,11 @@ sub update_backend {
     # form params
     if ( exists $args{'request_condition'} ) {
                 $form_params->{'request_condition'} = $self->{api_client}->to_form_value($args{'request_condition'});
+    }
+
+    # form params
+    if ( exists $args{'share_key'} ) {
+                $form_params->{'share_key'} = $self->{api_client}->to_form_value($args{'share_key'});
     }
 
     # form params

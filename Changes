@@ -1,5 +1,12 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+5.01 2023-09-01
+    * feat(backend): support share_key field.
+    * feat(events): support extra created_at filters.
+    * feat(logging/newrelic): add OTLP endpoints.
+    * feat(tls/subscriptions): support self_managed_http_challenge field.
+    * doc(secretstore): correct description for GET endpoint.
+
 5.00 2023-07-31
     * refactor: general restructure OpenAPI schemas.
     * refactor(domain): remove explicit schema type for 'any'.

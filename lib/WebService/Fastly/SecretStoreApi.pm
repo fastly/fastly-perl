@@ -221,7 +221,7 @@ sub delete_secret_store {
 #
 # get_secret_store
 #
-# Create secret store by ID
+# Get secret store by ID
 #
 # @param string $store_id  (required)
 {
@@ -233,7 +233,7 @@ sub delete_secret_store {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_secret_store' } = {
-        summary => 'Create secret store by ID',
+        summary => 'Get secret store by ID',
         params => $params,
         returns => 'SecretStoreResponse',
         };
