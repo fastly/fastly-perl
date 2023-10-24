@@ -1686,6 +1686,69 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'bot_challenge_starts' => {
+        datatype => 'int',
+        base_name => 'bot_challenge_starts',
+        description => 'The number of challenge-start tokens created.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenge_complete_tokens_passed' => {
+        datatype => 'int',
+        base_name => 'bot_challenge_complete_tokens_passed',
+        description => 'The number of challenge-complete tokens that passed validation.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenge_complete_tokens_failed' => {
+        datatype => 'int',
+        base_name => 'bot_challenge_complete_tokens_failed',
+        description => 'The number of challenge-complete tokens that failed validation.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenge_complete_tokens_checked' => {
+        datatype => 'int',
+        base_name => 'bot_challenge_complete_tokens_checked',
+        description => 'The number of challenge-complete tokens checked.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenge_complete_tokens_disabled' => {
+        datatype => 'int',
+        base_name => 'bot_challenge_complete_tokens_disabled',
+        description => 'The number of challenge-complete tokens not checked because the feature was disabled.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenges_issued' => {
+        datatype => 'int',
+        base_name => 'bot_challenges_issued',
+        description => 'The number of challenges issued. For example, the issuance of a CAPTCHA challenge.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenges_succeeded' => {
+        datatype => 'int',
+        base_name => 'bot_challenges_succeeded',
+        description => 'The number of successful challenge solutions processed. For example, a correct CAPTCHA solution.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenges_failed' => {
+        datatype => 'int',
+        base_name => 'bot_challenges_failed',
+        description => 'The number of failed challenge solutions processed. For example, an incorrect CAPTCHA solution.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenge_complete_tokens_issued' => {
+        datatype => 'int',
+        base_name => 'bot_challenge_complete_tokens_issued',
+        description => 'The number of challenge-complete tokens issued. For example, issuing a challenge-complete token after a series of CAPTCHA challenges ending in success.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -1906,7 +1969,16 @@ __PACKAGE__->openapi_types( {
     'ddos_action_tarpit_accept' => 'int',
     'ddos_action_tarpit' => 'int',
     'ddos_action_close' => 'int',
-    'ddos_action_blackhole' => 'int'
+    'ddos_action_blackhole' => 'int',
+    'bot_challenge_starts' => 'int',
+    'bot_challenge_complete_tokens_passed' => 'int',
+    'bot_challenge_complete_tokens_failed' => 'int',
+    'bot_challenge_complete_tokens_checked' => 'int',
+    'bot_challenge_complete_tokens_disabled' => 'int',
+    'bot_challenges_issued' => 'int',
+    'bot_challenges_succeeded' => 'int',
+    'bot_challenges_failed' => 'int',
+    'bot_challenge_complete_tokens_issued' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -2127,7 +2199,16 @@ __PACKAGE__->attribute_map( {
     'ddos_action_tarpit_accept' => 'ddos_action_tarpit_accept',
     'ddos_action_tarpit' => 'ddos_action_tarpit',
     'ddos_action_close' => 'ddos_action_close',
-    'ddos_action_blackhole' => 'ddos_action_blackhole'
+    'ddos_action_blackhole' => 'ddos_action_blackhole',
+    'bot_challenge_starts' => 'bot_challenge_starts',
+    'bot_challenge_complete_tokens_passed' => 'bot_challenge_complete_tokens_passed',
+    'bot_challenge_complete_tokens_failed' => 'bot_challenge_complete_tokens_failed',
+    'bot_challenge_complete_tokens_checked' => 'bot_challenge_complete_tokens_checked',
+    'bot_challenge_complete_tokens_disabled' => 'bot_challenge_complete_tokens_disabled',
+    'bot_challenges_issued' => 'bot_challenges_issued',
+    'bot_challenges_succeeded' => 'bot_challenges_succeeded',
+    'bot_challenges_failed' => 'bot_challenges_failed',
+    'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

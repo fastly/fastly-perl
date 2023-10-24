@@ -59,7 +59,7 @@ sub new {
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
 # @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param int $port The port number. (optional, default to 20000)
-# @param string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
+# @param string $token Use token based authentication. (optional)
 # @param LoggingUseTls $use_tls  (optional)
 # @param string $region The region to which to stream logs. (optional)
 {
@@ -106,7 +106,7 @@ sub new {
     },
     'token' => {
         data_type => 'string',
-        description => 'Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).',
+        description => 'Use token based authentication.',
         required => '0',
     },
     'use_tls' => {
@@ -535,7 +535,7 @@ sub list_log_logentries {
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
 # @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param int $port The port number. (optional, default to 20000)
-# @param string $token Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). (optional)
+# @param string $token Use token based authentication. (optional)
 # @param LoggingUseTls $use_tls  (optional)
 # @param string $region The region to which to stream logs. (optional)
 {
@@ -587,7 +587,7 @@ sub list_log_logentries {
     },
     'token' => {
         data_type => 'string',
-        description => 'Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).',
+        description => 'Use token based authentication.',
         required => '0',
     },
     'use_tls' => {

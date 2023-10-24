@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
     'token' => {
         datatype => 'string',
         base_name => 'token',
-        description => 'Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)).',
+        description => 'Use token based authentication.',
         format => '',
         read_only => 'false',
             },

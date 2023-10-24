@@ -9,7 +9,7 @@ use WebService::Fastly::Object::LoggingLogentriesAdditional;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **port** | **int** | The port number. | [optional] [default to 20000]
-**token** | **string** | Use token based authentication ([https://logentries.com/doc/input-token/](https://logentries.com/doc/input-token/)). | [optional] 
+**token** | **string** | Use token based authentication. | [optional] 
 **use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional] 
 **region** | **string** | The region to which to stream logs. | [optional] 
 

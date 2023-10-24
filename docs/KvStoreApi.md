@@ -9,18 +9,18 @@ All URIs are relative to *https://api.fastly.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create an kv store.
-[**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete an kv store.
-[**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe an kv store.
-[**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List kv stores.
+[**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create a KV store.
+[**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
+[**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
+[**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List KV stores.
 
 
 # **create_store**
 > StoreResponse create_store(location => $location, store => $store)
 
-Create an kv store.
+Create a KV store.
 
-Create a new kv store.
+Create a new KV store.
 
 ### Example
 ```perl
@@ -71,9 +71,9 @@ Name | Type | Description  | Notes
 # **delete_store**
 > delete_store(store_id => $store_id)
 
-Delete an kv store.
+Delete a KV store.
 
-An kv store must be empty before it can be deleted.  Deleting an kv store that still contains keys will result in a `409` (Conflict).
+A KV store must be empty before it can be deleted.  Deleting a KV store that still contains keys will result in a `409` (Conflict).
 
 ### Example
 ```perl
@@ -121,9 +121,9 @@ void (empty response body)
 # **get_store**
 > StoreResponse get_store(store_id => $store_id)
 
-Describe an kv store.
+Describe a KV store.
 
-Get an kv store by ID.
+Get a KV store by ID.
 
 ### Example
 ```perl
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 # **get_stores**
 > InlineResponse2003 get_stores(cursor => $cursor, limit => $limit)
 
-List kv stores.
+List KV stores.
 
 Get all stores for a given customer.
 

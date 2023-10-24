@@ -1,8 +1,8 @@
-# WebService::Fastly::Object::SnippetResponseAllOf
+# WebService::Fastly::Object::SnippetResponseCommonAllOf
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::SnippetResponseAllOf;
+use WebService::Fastly::Object::SnippetResponseCommonAllOf;
 ```
 
 ## Properties

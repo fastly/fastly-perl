@@ -49,7 +49,7 @@ sub new {
 #
 # create_store
 #
-# Create an kv store.
+# Create a KV store.
 #
 # @param string $location  (optional)
 # @param Store $store  (optional)
@@ -67,7 +67,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'create_store' } = {
-        summary => 'Create an kv store.',
+        summary => 'Create a KV store.',
         params => $params,
         returns => 'StoreResponse',
         };
@@ -120,7 +120,7 @@ sub create_store {
 #
 # delete_store
 #
-# Delete an kv store.
+# Delete a KV store.
 #
 # @param string $store_id  (required)
 {
@@ -132,7 +132,7 @@ sub create_store {
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_store' } = {
-        summary => 'Delete an kv store.',
+        summary => 'Delete a KV store.',
         params => $params,
         returns => undef,
         };
@@ -183,7 +183,7 @@ sub delete_store {
 #
 # get_store
 #
-# Describe an kv store.
+# Describe a KV store.
 #
 # @param string $store_id  (required)
 {
@@ -195,7 +195,7 @@ sub delete_store {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_store' } = {
-        summary => 'Describe an kv store.',
+        summary => 'Describe a KV store.',
         params => $params,
         returns => 'StoreResponse',
         };
@@ -250,7 +250,7 @@ sub get_store {
 #
 # get_stores
 #
-# List kv stores.
+# List KV stores.
 #
 # @param string $cursor  (optional)
 # @param int $limit  (optional, default to 100)
@@ -268,7 +268,7 @@ sub get_store {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_stores' } = {
-        summary => 'List kv stores.',
+        summary => 'List KV stores.',
         params => $params,
         returns => 'InlineResponse2003',
         };

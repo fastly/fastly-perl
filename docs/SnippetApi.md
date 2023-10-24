@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **create_snippet**
-> SnippetResponse create_snippet(service_id => $service_id, version_id => $version_id, name => $name, dynamic => $dynamic, type => $type, content => $content, priority => $priority)
+> SnippetResponsePost create_snippet(service_id => $service_id, version_id => $version_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic)
 
 Create a snippet
 
@@ -40,13 +40,13 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name for the snippet.
-my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
 my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
+my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 
 eval {
-    my $result = $api_instance->create_snippet(service_id => $service_id, version_id => $version_id, name => $name, dynamic => $dynamic, type => $type, content => $content, priority => $priority);
+    my $result = $api_instance->create_snippet(service_id => $service_id, version_id => $version_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic);
     print Dumper($result);
 };
 if ($@) {
@@ -61,14 +61,14 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
  **name** | **string**| The name for the snippet. | [optional] 
- **dynamic** | **string**| Sets the snippet version. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 
  **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
+ **dynamic** | **string**| Sets the snippet version. | [optional] 
 
 ### Return type
 
-[**SnippetResponse**](SnippetResponse.md)
+[**SnippetResponsePost**](SnippetResponsePost.md)
 
 ### Authorization
 
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_snippet_dynamic**
-> SnippetResponse update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, dynamic => $dynamic, type => $type, content => $content, priority => $priority)
+> SnippetResponse update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic)
 
 Update a dynamic snippet
 
@@ -374,13 +374,13 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $snippet_id = "snippet_id_example"; # string | Alphanumeric string identifying a VCL Snippet.
 my $name = "name_example"; # string | The name for the snippet.
-my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
 my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
+my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 
 eval {
-    my $result = $api_instance->update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, dynamic => $dynamic, type => $type, content => $content, priority => $priority);
+    my $result = $api_instance->update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic);
     print Dumper($result);
 };
 if ($@) {
@@ -395,10 +395,10 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **snippet_id** | **string**| Alphanumeric string identifying a VCL Snippet. | 
  **name** | **string**| The name for the snippet. | [optional] 
- **dynamic** | **string**| Sets the snippet version. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 
  **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
+ **dynamic** | **string**| Sets the snippet version. | [optional] 
 
 ### Return type
 

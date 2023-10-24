@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LoggingLogentriesResponse;
+package WebService::Fastly::Object::ValuesDdos;
 
 require 5.6.0;
 use strict;
@@ -28,16 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LoggingCommonResponse;
-use WebService::Fastly::Object::LoggingLogentriesAdditional;
-use WebService::Fastly::Object::LoggingUseTls;
-use WebService::Fastly::Object::ServiceIdAndVersionString;
-use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#The results of the query, optionally filtered and grouped over the requested timespan.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -157,154 +152,77 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
-                                  class => 'LoggingLogentriesResponse',
+__PACKAGE__->class_documentation({description => 'The results of the query, optionally filtered and grouped over the requested timespan.',
+                                  class => 'ValuesDdos',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'The name for the real-time logging configuration.',
-        format => '',
-        read_only => 'false',
-            },
-    'placement' => {
-        datatype => 'string',
-        base_name => 'placement',
-        description => 'Where in the generated VCL the logging call should be placed. If not set, endpoints with &#x60;format_version&#x60; of 2 are placed in &#x60;vcl_log&#x60; and those with &#x60;format_version&#x60; of 1 are placed in &#x60;vcl_deliver&#x60;. ',
-        format => '',
-        read_only => 'false',
-            },
-    'response_condition' => {
-        datatype => 'string',
-        base_name => 'response_condition',
-        description => 'The name of an existing condition in the configured endpoint, or leave blank to always execute.',
-        format => '',
-        read_only => 'false',
-            },
-    'format' => {
-        datatype => 'string',
-        base_name => 'format',
-        description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
-        format => '',
-        read_only => 'false',
-            },
-    'format_version' => {
-        datatype => 'string',
-        base_name => 'format_version',
-        description => 'The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;. ',
-        format => '',
-        read_only => 'false',
-            },
-    'port' => {
+    'ddos_action_limit_streams_connections' => {
         datatype => 'int',
-        base_name => 'port',
-        description => 'The port number.',
+        base_name => 'ddos_action_limit_streams_connections',
+        description => 'For HTTP/2, the number of connections the limit-streams action was applied to. The limit-streams action caps the allowed number of concurrent streams in a connection.',
         format => '',
         read_only => 'false',
             },
-    'token' => {
-        datatype => 'string',
-        base_name => 'token',
-        description => 'Use token based authentication.',
+    'ddos_action_limit_streams_requests' => {
+        datatype => 'int',
+        base_name => 'ddos_action_limit_streams_requests',
+        description => 'For HTTP/2, the number of requests made on a connection for which the limit-streams action was taken. The limit-streams action caps the allowed number of concurrent streams in a connection.',
         format => '',
         read_only => 'false',
             },
-    'use_tls' => {
-        datatype => 'LoggingUseTls',
-        base_name => 'use_tls',
-        description => '',
+    'ddos_action_tarpit_accept' => {
+        datatype => 'int',
+        base_name => 'ddos_action_tarpit_accept',
+        description => 'The number of times the tarpit-accept action was taken. The tarpit-accept action adds a delay when accepting future connections.',
         format => '',
         read_only => 'false',
             },
-    'region' => {
-        datatype => 'string',
-        base_name => 'region',
-        description => 'The region to which to stream logs.',
+    'ddos_action_tarpit' => {
+        datatype => 'int',
+        base_name => 'ddos_action_tarpit',
+        description => 'The number of times the tarpit action was taken. The tarpit action delays writing the response to the client.',
         format => '',
         read_only => 'false',
             },
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'service_id' => {
-        datatype => 'string',
-        base_name => 'service_id',
-        description => '',
+    'ddos_action_close' => {
+        datatype => 'int',
+        base_name => 'ddos_action_close',
+        description => 'The number of times the close action was taken. The close action aborts the connection as soon as possible. The close action takes effect either right after accept, right after the client hello, or right after the response was sent.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
-    'version' => {
-        datatype => 'string',
-        base_name => 'version',
-        description => '',
+    'ddos_action_blackhole' => {
+        datatype => 'int',
+        base_name => 'ddos_action_blackhole',
+        description => 'The number of times the blackhole action was taken. The blackhole action quietly closes a TCP connection without sending a reset. The blackhole action quietly closes a TCP connection without notifying its peer (all TCP state is dropped).',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'name' => 'string',
-    'placement' => 'string',
-    'response_condition' => 'string',
-    'format' => 'string',
-    'format_version' => 'string',
-    'port' => 'int',
-    'token' => 'string',
-    'use_tls' => 'LoggingUseTls',
-    'region' => 'string',
-    'created_at' => 'DateTime',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'service_id' => 'string',
-    'version' => 'string'
+    'ddos_action_limit_streams_connections' => 'int',
+    'ddos_action_limit_streams_requests' => 'int',
+    'ddos_action_tarpit_accept' => 'int',
+    'ddos_action_tarpit' => 'int',
+    'ddos_action_close' => 'int',
+    'ddos_action_blackhole' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'name' => 'name',
-    'placement' => 'placement',
-    'response_condition' => 'response_condition',
-    'format' => 'format',
-    'format_version' => 'format_version',
-    'port' => 'port',
-    'token' => 'token',
-    'use_tls' => 'use_tls',
-    'region' => 'region',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
-    'service_id' => 'service_id',
-    'version' => 'version'
+    'ddos_action_limit_streams_connections' => 'ddos_action_limit_streams_connections',
+    'ddos_action_limit_streams_requests' => 'ddos_action_limit_streams_requests',
+    'ddos_action_tarpit_accept' => 'ddos_action_tarpit_accept',
+    'ddos_action_tarpit' => 'ddos_action_tarpit',
+    'ddos_action_close' => 'ddos_action_close',
+    'ddos_action_blackhole' => 'ddos_action_blackhole'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'placement' => 'true',
-    'response_condition' => 'true',
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
 } );
 
 

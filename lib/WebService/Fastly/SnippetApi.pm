@@ -54,10 +54,10 @@ sub new {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $name The name for the snippet. (optional)
-# @param string $dynamic Sets the snippet version. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
 # @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+# @param string $dynamic Sets the snippet version. (optional)
 {
     my $params = {
     'service_id' => {
@@ -75,11 +75,6 @@ sub new {
         description => 'The name for the snippet.',
         required => '0',
     },
-    'dynamic' => {
-        data_type => 'string',
-        description => 'Sets the snippet version.',
-        required => '0',
-    },
     'type' => {
         data_type => 'string',
         description => 'The location in generated VCL where the snippet should be placed.',
@@ -95,14 +90,19 @@ sub new {
         description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
+    'dynamic' => {
+        data_type => 'string',
+        description => 'Sets the snippet version.',
+        required => '0',
+    },
     };
     __PACKAGE__->method_documentation->{ 'create_snippet' } = {
         summary => 'Create a snippet',
         params => $params,
-        returns => 'SnippetResponse',
+        returns => 'SnippetResponsePost',
         };
 }
-# @return SnippetResponse
+# @return SnippetResponsePost
 #
 sub create_snippet {
     my ($self, %args) = @_;
@@ -152,11 +152,6 @@ sub create_snippet {
     }
 
     # form params
-    if ( exists $args{'dynamic'} ) {
-                $form_params->{'dynamic'} = $self->{api_client}->to_form_value($args{'dynamic'});
-    }
-
-    # form params
     if ( exists $args{'type'} ) {
                 $form_params->{'type'} = $self->{api_client}->to_form_value($args{'type'});
     }
@@ -171,6 +166,11 @@ sub create_snippet {
                 $form_params->{'priority'} = $self->{api_client}->to_form_value($args{'priority'});
     }
 
+    # form params
+    if ( exists $args{'dynamic'} ) {
+                $form_params->{'dynamic'} = $self->{api_client}->to_form_value($args{'dynamic'});
+    }
+
     my $_body_data;
     # authentication setting, if any
     my $auth_settings = [qw(token )];
@@ -182,7 +182,7 @@ sub create_snippet {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('SnippetResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('SnippetResponsePost', $response);
     return $_response_object;
 }
 
@@ -673,10 +673,10 @@ sub update_snippet {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
 # @param string $name The name for the snippet. (optional)
-# @param string $dynamic Sets the snippet version. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
 # @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
+# @param string $dynamic Sets the snippet version. (optional)
 {
     my $params = {
     'service_id' => {
@@ -694,11 +694,6 @@ sub update_snippet {
         description => 'The name for the snippet.',
         required => '0',
     },
-    'dynamic' => {
-        data_type => 'string',
-        description => 'Sets the snippet version.',
-        required => '0',
-    },
     'type' => {
         data_type => 'string',
         description => 'The location in generated VCL where the snippet should be placed.',
@@ -712,6 +707,11 @@ sub update_snippet {
     'priority' => {
         data_type => 'string',
         description => 'Priority determines execution order. Lower numbers execute first.',
+        required => '0',
+    },
+    'dynamic' => {
+        data_type => 'string',
+        description => 'Sets the snippet version.',
         required => '0',
     },
     };
@@ -771,11 +771,6 @@ sub update_snippet_dynamic {
     }
 
     # form params
-    if ( exists $args{'dynamic'} ) {
-                $form_params->{'dynamic'} = $self->{api_client}->to_form_value($args{'dynamic'});
-    }
-
-    # form params
     if ( exists $args{'type'} ) {
                 $form_params->{'type'} = $self->{api_client}->to_form_value($args{'type'});
     }
@@ -788,6 +783,11 @@ sub update_snippet_dynamic {
     # form params
     if ( exists $args{'priority'} ) {
                 $form_params->{'priority'} = $self->{api_client}->to_form_value($args{'priority'});
+    }
+
+    # form params
+    if ( exists $args{'dynamic'} ) {
+                $form_params->{'dynamic'} = $self->{api_client}->to_form_value($args{'dynamic'});
     }
 
     my $_body_data;

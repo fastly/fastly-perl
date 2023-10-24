@@ -1,5 +1,10 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+5.03 2023-10-24
+    * feat(stats): add historical DDoS metrics.
+    * feat(stats): add bot challenges.
+    * fix(snippets): ensure POST response's dynamic field is numerical.
+
 5.02 2023-09-01
     * feat(events): support extra created_at filters.
 

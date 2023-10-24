@@ -28,9 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::SchemasSnippetResponseCommon;
 use WebService::Fastly::Object::Snippet;
-use WebService::Fastly::Object::SnippetResponseAllOf;
-use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -168,13 +167,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'dynamic' => {
-        datatype => 'string',
-        base_name => 'dynamic',
-        description => 'Sets the snippet version.',
-        format => '',
-        read_only => 'false',
-            },
     'type' => {
         datatype => 'string',
         base_name => 'type',
@@ -193,6 +185,13 @@ __PACKAGE__->method_documentation({
         datatype => 'string',
         base_name => 'priority',
         description => 'Priority determines execution order. Lower numbers execute first.',
+        format => '',
+        read_only => 'false',
+            },
+    'dynamic' => {
+        datatype => 'string',
+        base_name => 'dynamic',
+        description => 'Sets the snippet version.',
         format => '',
         read_only => 'false',
             },
@@ -242,10 +241,10 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'name' => 'string',
-    'dynamic' => 'string',
     'type' => 'string',
     'content' => 'string',
     'priority' => 'string',
+    'dynamic' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
@@ -256,10 +255,10 @@ __PACKAGE__->openapi_types( {
 
 __PACKAGE__->attribute_map( {
     'name' => 'name',
-    'dynamic' => 'dynamic',
     'type' => 'type',
     'content' => 'content',
     'priority' => 'priority',
+    'dynamic' => 'dynamic',
     'created_at' => 'created_at',
     'deleted_at' => 'deleted_at',
     'updated_at' => 'updated_at',

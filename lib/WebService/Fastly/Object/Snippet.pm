@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::SnippetAllOf;
+use WebService::Fastly::Object::SnippetCommon;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -165,13 +167,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'dynamic' => {
-        datatype => 'string',
-        base_name => 'dynamic',
-        description => 'Sets the snippet version.',
-        format => '',
-        read_only => 'false',
-            },
     'type' => {
         datatype => 'string',
         base_name => 'type',
@@ -193,22 +188,29 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'dynamic' => {
+        datatype => 'string',
+        base_name => 'dynamic',
+        description => 'Sets the snippet version.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'name' => 'string',
-    'dynamic' => 'string',
     'type' => 'string',
     'content' => 'string',
-    'priority' => 'string'
+    'priority' => 'string',
+    'dynamic' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'name' => 'name',
-    'dynamic' => 'dynamic',
     'type' => 'type',
     'content' => 'content',
-    'priority' => 'priority'
+    'priority' => 'priority',
+    'dynamic' => 'dynamic'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
