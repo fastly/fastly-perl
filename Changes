@@ -1,5 +1,8 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+5.04 2023-10-27
+    * docs: rename Compute@Edge to Compute.
+
 5.03 2023-10-24
     * feat(stats): add historical DDoS metrics.
     * feat(stats): add bot challenges.

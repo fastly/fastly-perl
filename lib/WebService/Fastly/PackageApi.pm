@@ -49,7 +49,7 @@ sub new {
 #
 # get_package
 #
-# Get details of the service's Compute@Edge package.
+# Get details of the service's Compute package.
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -67,7 +67,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_package' } = {
-        summary => 'Get details of the service&#39;s Compute@Edge package.',
+        summary => 'Get details of the service&#39;s Compute package.',
         params => $params,
         returns => 'PackageResponse',
         };
@@ -134,7 +134,7 @@ sub get_package {
 #
 # put_package
 #
-# Upload a Compute@Edge package.
+# Upload a Compute package.
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -164,7 +164,7 @@ sub get_package {
     },
     };
     __PACKAGE__->method_documentation->{ 'put_package' } = {
-        summary => 'Upload a Compute@Edge package.',
+        summary => 'Upload a Compute package.',
         params => $params,
         returns => 'PackageResponse',
         };
