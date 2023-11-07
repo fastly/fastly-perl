@@ -1,5 +1,8 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+5.05 2023-11-07
+    * feat(config_store): add `name` query param to list endpoint.
+
 5.04 2023-10-27
     * docs: rename Compute@Edge to Compute.
 
