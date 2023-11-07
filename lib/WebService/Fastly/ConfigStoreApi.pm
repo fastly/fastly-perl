@@ -379,8 +379,14 @@ sub list_config_store_services {
 #
 # List config stores
 #
+# @param string $name Returns a one-element array containing the details for the named config store. (optional)
 {
     my $params = {
+    'name' => {
+        data_type => 'string',
+        description => 'Returns a one-element array containing the details for the named config store.',
+        required => '0',
+    },
     };
     __PACKAGE__->method_documentation->{ 'list_config_stores' } = {
         summary => 'List config stores',
@@ -407,6 +413,11 @@ sub list_config_stores {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'name'}) {
+        $query_params->{'name'} = $self->{api_client}->to_query_value($args{'name'});
+    }
 
     my $_body_data;
     # authentication setting, if any

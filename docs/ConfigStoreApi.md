@@ -274,7 +274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_config_stores**
-> ARRAY[ConfigStoreResponse] list_config_stores()
+> ARRAY[ConfigStoreResponse] list_config_stores(name => $name)
 
 List config stores
 
@@ -292,9 +292,10 @@ my $api_instance = WebService::Fastly::ConfigStoreApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
+my $name = "name_example"; # string | Returns a one-element array containing the details for the named config store.
 
 eval {
-    my $result = $api_instance->list_config_stores();
+    my $result = $api_instance->list_config_stores(name => $name);
     print Dumper($result);
 };
 if ($@) {
@@ -303,7 +304,10 @@ if ($@) {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Returns a one-element array containing the details for the named config store. | [optional] 
 
 ### Return type
 
