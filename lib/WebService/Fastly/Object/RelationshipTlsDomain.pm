@@ -33,7 +33,7 @@ use WebService::Fastly::Object::RelationshipTlsDomainTlsDomain;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#The [TLS domain](/reference/api/tls/custom-certs/domains/) being enabled for TLS traffic. Required.
+#The TLS domain being enabled for TLS traffic. Required.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,7 +153,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'The [TLS domain](/reference/api/tls/custom-certs/domains/) being enabled for TLS traffic. Required.',
+__PACKAGE__->class_documentation({description => 'The TLS domain being enabled for TLS traffic. Required.',
                                   class => 'RelationshipTlsDomain',
                                   required => [], # TODO
 }                                 );

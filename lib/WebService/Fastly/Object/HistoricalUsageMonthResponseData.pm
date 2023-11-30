@@ -28,8 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalService;
-use WebService::Fastly::Object::HistoricalUsageResults;
+use WebService::Fastly::Object::HistoricalUsageData;
+use WebService::Fastly::Object::HistoricalUsageService;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -168,16 +168,16 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'services' => {
-        datatype => 'HASH[string,HistoricalService]',
+        datatype => 'HASH[string,HistoricalUsageService]',
         base_name => 'services',
-        description => '',
+        description => 'Organized by *service id*.',
         format => '',
         read_only => 'false',
             },
     'total' => {
-        datatype => 'HistoricalUsageResults',
+        datatype => 'HASH[string,HistoricalUsageData]',
         base_name => 'total',
-        description => '',
+        description => 'Organized by *region*.',
         format => '',
         read_only => 'false',
             },
@@ -185,8 +185,8 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'customer_id' => 'string',
-    'services' => 'HASH[string,HistoricalService]',
-    'total' => 'HistoricalUsageResults'
+    'services' => 'HASH[string,HistoricalUsageService]',
+    'total' => 'HASH[string,HistoricalUsageData]'
 } );
 
 __PACKAGE__->attribute_map( {

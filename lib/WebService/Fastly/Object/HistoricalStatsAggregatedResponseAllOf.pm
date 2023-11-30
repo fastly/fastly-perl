@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
+package WebService::Fastly::Object::HistoricalStatsAggregatedResponseAllOf;
 
 require 5.6.0;
 use strict;
@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalUsageData;
+use WebService::Fastly::Object::Results;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -154,22 +154,22 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalUsageServiceResponseAllOf',
+                                  class => 'HistoricalStatsAggregatedResponseAllOf',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'HASH[string,HASH[string,HistoricalUsageData]]',
+        datatype => 'ARRAY[Results]',
         base_name => 'data',
-        description => 'Organized by *region*.',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'HASH[string,HASH[string,HistoricalUsageData]]'
+    'data' => 'ARRAY[Results]'
 } );
 
 __PACKAGE__->attribute_map( {

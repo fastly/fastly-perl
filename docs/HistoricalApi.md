@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **get_hist_stats**
-> HistoricalResponse get_hist_stats(from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsByServiceResponse get_hist_stats(from => $from, to => $to, by => $by, region => $region)
 
 Get historical stats
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoricalResponse**](HistoricalResponse.md)
+[**HistoricalStatsByServiceResponse**](HistoricalStatsByServiceResponse.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_aggregated**
-> HistoricalAggregateResponse get_hist_stats_aggregated(from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsAggregatedResponse get_hist_stats_aggregated(from => $from, to => $to, by => $by, region => $region)
 
 Get aggregated historical stats
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoricalAggregateResponse**](HistoricalAggregateResponse.md)
+[**HistoricalStatsAggregatedResponse**](HistoricalStatsAggregatedResponse.md)
 
 ### Authorization
 
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_field**
-> HistoricalFieldResponse get_hist_stats_field(field => $field, from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsByServiceResponse get_hist_stats_field(field => $field, from => $from, to => $to, by => $by, region => $region)
 
 Get historical stats for a single field
 
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoricalFieldResponse**](HistoricalFieldResponse.md)
+[**HistoricalStatsByServiceResponse**](HistoricalStatsByServiceResponse.md)
 
 ### Authorization
 
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_service**
-> HistoricalAggregateResponse get_hist_stats_service(service_id => $service_id, from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsAggregatedResponse get_hist_stats_service(service_id => $service_id, from => $from, to => $to, by => $by, region => $region)
 
 Get historical stats for a single service
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoricalAggregateResponse**](HistoricalAggregateResponse.md)
+[**HistoricalStatsAggregatedResponse**](HistoricalStatsAggregatedResponse.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_service_field**
-> HistoricalFieldAggregateResponse get_hist_stats_service_field(service_id => $service_id, field => $field, from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsAggregatedResponse get_hist_stats_service_field(service_id => $service_id, field => $field, from => $from, to => $to, by => $by, region => $region)
 
 Get historical stats for a single service/field combination
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoricalFieldAggregateResponse**](HistoricalFieldAggregateResponse.md)
+[**HistoricalStatsAggregatedResponse**](HistoricalStatsAggregatedResponse.md)
 
 ### Authorization
 
@@ -361,7 +361,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_usage**
-> HistoricalUsageAggregateResponse get_usage(from => $from, to => $to)
+> HistoricalUsageAggregatedResponse get_usage(from => $from, to => $to)
 
 Get usage statistics
 
@@ -400,7 +400,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**HistoricalUsageAggregateResponse**](HistoricalUsageAggregateResponse.md)
+[**HistoricalUsageAggregatedResponse**](HistoricalUsageAggregatedResponse.md)
 
 ### Authorization
 

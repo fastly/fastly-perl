@@ -30,7 +30,7 @@ use DateTime;
 
 use WebService::Fastly::Object::Historical;
 use WebService::Fastly::Object::HistoricalMeta;
-use WebService::Fastly::Object::HistoricalUsageResults;
+use WebService::Fastly::Object::HistoricalUsageData;
 use WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -184,9 +184,9 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'data' => {
-        datatype => 'HistoricalUsageResults',
+        datatype => 'HASH[string,HASH[string,HistoricalUsageData]]',
         base_name => 'data',
-        description => '',
+        description => 'Organized by *region*.',
         format => '',
         read_only => 'false',
             },
@@ -196,7 +196,7 @@ __PACKAGE__->openapi_types( {
     'status' => 'string',
     'meta' => 'HistoricalMeta',
     'msg' => 'string',
-    'data' => 'HistoricalUsageResults'
+    'data' => 'HASH[string,HASH[string,HistoricalUsageData]]'
 } );
 
 __PACKAGE__->attribute_map( {

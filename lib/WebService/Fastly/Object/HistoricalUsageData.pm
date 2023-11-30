@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
+package WebService::Fastly::Object::HistoricalUsageData;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalUsageData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#The results of usage related queries, grouped by service and/or region depending on endpoint, and aggregated over the appropriate time span.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,27 +152,45 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalUsageServiceResponseAllOf',
+__PACKAGE__->class_documentation({description => 'The results of usage related queries, grouped by service and/or region depending on endpoint, and aggregated over the appropriate time span.',
+                                  class => 'HistoricalUsageData',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'HASH[string,HASH[string,HistoricalUsageData]]',
-        base_name => 'data',
-        description => 'Organized by *region*.',
+    'bandwidth' => {
+        datatype => 'double',
+        base_name => 'bandwidth',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'requests' => {
+        datatype => 'double',
+        base_name => 'requests',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'compute_requests' => {
+        datatype => 'double',
+        base_name => 'compute_requests',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'HASH[string,HASH[string,HistoricalUsageData]]'
+    'bandwidth' => 'double',
+    'requests' => 'double',
+    'compute_requests' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'bandwidth' => 'bandwidth',
+    'requests' => 'requests',
+    'compute_requests' => 'compute_requests'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

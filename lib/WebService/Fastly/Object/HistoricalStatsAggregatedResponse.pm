@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
+package WebService::Fastly::Object::HistoricalStatsAggregatedResponse;
 
 require 5.6.0;
 use strict;
@@ -28,7 +28,10 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::HistoricalUsageData;
+use WebService::Fastly::Object::Historical;
+use WebService::Fastly::Object::HistoricalMeta;
+use WebService::Fastly::Object::HistoricalStatsAggregatedResponseAllOf;
+use WebService::Fastly::Object::Results;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -154,31 +157,59 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalUsageServiceResponseAllOf',
+                                  class => 'HistoricalStatsAggregatedResponse',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'status' => {
+        datatype => 'string',
+        base_name => 'status',
+        description => 'Whether or not we were able to successfully execute the query.',
+        format => '',
+        read_only => 'false',
+            },
+    'meta' => {
+        datatype => 'HistoricalMeta',
+        base_name => 'meta',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'msg' => {
+        datatype => 'string',
+        base_name => 'msg',
+        description => 'If the query was not successful, this will provide a string that explains why.',
+        format => '',
+        read_only => 'false',
+            },
     'data' => {
-        datatype => 'HASH[string,HASH[string,HistoricalUsageData]]',
+        datatype => 'ARRAY[Results]',
         base_name => 'data',
-        description => 'Organized by *region*.',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'HASH[string,HASH[string,HistoricalUsageData]]'
+    'status' => 'string',
+    'meta' => 'HistoricalMeta',
+    'msg' => 'string',
+    'data' => 'ARRAY[Results]'
 } );
 
 __PACKAGE__->attribute_map( {
+    'status' => 'status',
+    'meta' => 'meta',
+    'msg' => 'msg',
     'data' => 'data'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'msg' => 'true',
 } );
 
 

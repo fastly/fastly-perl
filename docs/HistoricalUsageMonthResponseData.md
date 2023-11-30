@@ -9,8 +9,8 @@ use WebService::Fastly::Object::HistoricalUsageMonthResponseData;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **customer_id** | **string** |  | [optional] [readonly] 
-**services** | [**HASH[string,HistoricalService]**](HistoricalService.md) |  | [optional] 
-**total** | [**HistoricalUsageResults**](HistoricalUsageResults.md) |  | [optional] 
+**services** | [**HASH[string,HistoricalUsageService]**](HistoricalUsageService.md) | Organized by *service id*. | [optional] 
+**total** | [**HASH[string,HistoricalUsageData]**](HistoricalUsageData.md) | Organized by *region*. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

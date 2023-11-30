@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::HistoricalUsageServiceResponseAllOf;
+package WebService::Fastly::Object::HistoricalUsageService;
 
 require 5.6.0;
 use strict;
@@ -154,26 +154,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'HistoricalUsageServiceResponseAllOf',
+                                  class => 'HistoricalUsageService',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'HASH[string,HASH[string,HistoricalUsageData]]',
-        base_name => 'data',
-        description => 'Organized by *region*.',
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'The name of the service.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'HASH[string,HASH[string,HistoricalUsageData]]'
+    'name' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'name' => 'name'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

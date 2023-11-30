@@ -81,10 +81,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'get_hist_stats' } = {
         summary => 'Get historical stats',
         params => $params,
-        returns => 'HistoricalResponse',
+        returns => 'HistoricalStatsByServiceResponse',
         };
 }
-# @return HistoricalResponse
+# @return HistoricalStatsByServiceResponse
 #
 sub get_hist_stats {
     my ($self, %args) = @_;
@@ -135,7 +135,7 @@ sub get_hist_stats {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HistoricalResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('HistoricalStatsByServiceResponse', $response);
     return $_response_object;
 }
 
@@ -174,10 +174,10 @@ sub get_hist_stats {
     __PACKAGE__->method_documentation->{ 'get_hist_stats_aggregated' } = {
         summary => 'Get aggregated historical stats',
         params => $params,
-        returns => 'HistoricalAggregateResponse',
+        returns => 'HistoricalStatsAggregatedResponse',
         };
 }
-# @return HistoricalAggregateResponse
+# @return HistoricalStatsAggregatedResponse
 #
 sub get_hist_stats_aggregated {
     my ($self, %args) = @_;
@@ -228,7 +228,7 @@ sub get_hist_stats_aggregated {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HistoricalAggregateResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('HistoricalStatsAggregatedResponse', $response);
     return $_response_object;
 }
 
@@ -273,10 +273,10 @@ sub get_hist_stats_aggregated {
     __PACKAGE__->method_documentation->{ 'get_hist_stats_field' } = {
         summary => 'Get historical stats for a single field',
         params => $params,
-        returns => 'HistoricalFieldResponse',
+        returns => 'HistoricalStatsByServiceResponse',
         };
 }
-# @return HistoricalFieldResponse
+# @return HistoricalStatsByServiceResponse
 #
 sub get_hist_stats_field {
     my ($self, %args) = @_;
@@ -339,7 +339,7 @@ sub get_hist_stats_field {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HistoricalFieldResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('HistoricalStatsByServiceResponse', $response);
     return $_response_object;
 }
 
@@ -384,10 +384,10 @@ sub get_hist_stats_field {
     __PACKAGE__->method_documentation->{ 'get_hist_stats_service' } = {
         summary => 'Get historical stats for a single service',
         params => $params,
-        returns => 'HistoricalAggregateResponse',
+        returns => 'HistoricalStatsAggregatedResponse',
         };
 }
-# @return HistoricalAggregateResponse
+# @return HistoricalStatsAggregatedResponse
 #
 sub get_hist_stats_service {
     my ($self, %args) = @_;
@@ -450,7 +450,7 @@ sub get_hist_stats_service {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HistoricalAggregateResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('HistoricalStatsAggregatedResponse', $response);
     return $_response_object;
 }
 
@@ -501,10 +501,10 @@ sub get_hist_stats_service {
     __PACKAGE__->method_documentation->{ 'get_hist_stats_service_field' } = {
         summary => 'Get historical stats for a single service/field combination',
         params => $params,
-        returns => 'HistoricalFieldAggregateResponse',
+        returns => 'HistoricalStatsAggregatedResponse',
         };
 }
-# @return HistoricalFieldAggregateResponse
+# @return HistoricalStatsAggregatedResponse
 #
 sub get_hist_stats_service_field {
     my ($self, %args) = @_;
@@ -579,7 +579,7 @@ sub get_hist_stats_service_field {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HistoricalFieldAggregateResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('HistoricalStatsAggregatedResponse', $response);
     return $_response_object;
 }
 
@@ -655,10 +655,10 @@ sub get_regions {
     __PACKAGE__->method_documentation->{ 'get_usage' } = {
         summary => 'Get usage statistics',
         params => $params,
-        returns => 'HistoricalUsageAggregateResponse',
+        returns => 'HistoricalUsageAggregatedResponse',
         };
 }
-# @return HistoricalUsageAggregateResponse
+# @return HistoricalUsageAggregatedResponse
 #
 sub get_usage {
     my ($self, %args) = @_;
@@ -699,7 +699,7 @@ sub get_usage {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('HistoricalUsageAggregateResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('HistoricalUsageAggregatedResponse', $response);
     return $_response_object;
 }
 

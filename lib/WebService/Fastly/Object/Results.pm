@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#The [results](#results-data-model) of the query, grouped by service (and optionally, region), and aggregated over the appropriate time span.
+#The results of stats queries, may be grouped by service depending on endpoint, and aggregated over the appropriate time span.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,7 +152,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'The [results](#results-data-model) of the query, grouped by service (and optionally, region), and aggregated over the appropriate time span.',
+__PACKAGE__->class_documentation({description => 'The results of stats queries, may be grouped by service depending on endpoint, and aggregated over the appropriate time span.',
                                   class => 'Results',
                                   required => [], # TODO
 }                                 );
@@ -1733,6 +1733,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'service_id' => {
+        datatype => 'string',
+        base_name => 'service_id',
+        description => '',
+        format => '',
+        read_only => 'true',
+            },
+    'start_time' => {
+        datatype => 'int',
+        base_name => 'start_time',
+        description => 'Timestamp for the start of the time period being reported',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -1960,7 +1974,9 @@ __PACKAGE__->openapi_types( {
     'bot_challenge_complete_tokens_issued' => 'int',
     'bot_challenges_issued' => 'int',
     'bot_challenges_succeeded' => 'int',
-    'bot_challenges_failed' => 'int'
+    'bot_challenges_failed' => 'int',
+    'service_id' => 'string',
+    'start_time' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -2188,7 +2204,9 @@ __PACKAGE__->attribute_map( {
     'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued',
     'bot_challenges_issued' => 'bot_challenges_issued',
     'bot_challenges_succeeded' => 'bot_challenges_succeeded',
-    'bot_challenges_failed' => 'bot_challenges_failed'
+    'bot_challenges_failed' => 'bot_challenges_failed',
+    'service_id' => 'service_id',
+    'start_time' => 'start_time'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
