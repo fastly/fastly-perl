@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::TlsConfigurationResponseAttributes;
+package WebService::Fastly::Object::CreateResponseObjectRequest;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Timestamps;
-use WebService::Fastly::Object::TlsConfigurationResponseAttributesAllOf;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,88 +153,88 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'TlsConfigurationResponseAttributes',
+                                  class => 'CreateResponseObjectRequest',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'default' => {
-        datatype => 'boolean',
-        base_name => 'default',
-        description => 'Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](/reference/api/tls/custom-certs/activations/).',
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'The name of the response object to create.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
-    'http_protocols' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'http_protocols',
-        description => 'HTTP protocols available on your configuration.',
+    'status' => {
+        datatype => 'string',
+        base_name => 'status',
+        description => 'The status code the response will have. Defaults to 200.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
-    'tls_protocols' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'tls_protocols',
-        description => 'TLS protocols available on your configuration.',
+    'response' => {
+        datatype => 'string',
+        base_name => 'response',
+        description => 'The status text the response will have. Defaults to &#39;OK&#39;.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
-    'bulk' => {
-        datatype => 'boolean',
-        base_name => 'bulk',
-        description => 'Signifies whether the configuration is used for Platform TLS or not.',
+    'content' => {
+        datatype => 'string',
+        base_name => 'content',
+        description => 'The content the response will deliver.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
+            },
+    'content_type' => {
+        datatype => 'string',
+        base_name => 'content_type',
+        description => 'The MIME type of your response content.',
+        format => '',
+        read_only => 'false',
+            },
+    'request_condition' => {
+        datatype => 'string',
+        base_name => 'request_condition',
+        description => 'Condition which, if met, will select this configuration during a request. Optional.',
+        format => '',
+        read_only => 'false',
+            },
+    'cache_condition' => {
+        datatype => 'string',
+        base_name => 'cache_condition',
+        description => 'Name of the cache condition controlling when this configuration applies.',
+        format => '',
+        read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'created_at' => 'DateTime',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'default' => 'boolean',
-    'http_protocols' => 'ARRAY[string]',
-    'tls_protocols' => 'ARRAY[string]',
-    'bulk' => 'boolean'
+    'name' => 'string',
+    'status' => 'string',
+    'response' => 'string',
+    'content' => 'string',
+    'content_type' => 'string',
+    'request_condition' => 'string',
+    'cache_condition' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
-    'default' => 'default',
-    'http_protocols' => 'http_protocols',
-    'tls_protocols' => 'tls_protocols',
-    'bulk' => 'bulk'
+    'name' => 'name',
+    'status' => 'status',
+    'response' => 'response',
+    'content' => 'content',
+    'content_type' => 'content_type',
+    'request_condition' => 'request_condition',
+    'cache_condition' => 'cache_condition'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'created_at' => 'true',
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
+    'content_type' => 'true',
+    'request_condition' => 'true',
+    'cache_condition' => 'true',
 } );
 
 

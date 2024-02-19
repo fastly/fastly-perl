@@ -53,6 +53,7 @@ sub new {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
+# @param CreateResponseObjectRequest $create_response_object_request  (optional)
 {
     my $params = {
     'service_id' => {
@@ -64,6 +65,11 @@ sub new {
         data_type => 'int',
         description => 'Integer identifying a service version.',
         required => '1',
+    },
+    'create_response_object_request' => {
+        data_type => 'CreateResponseObjectRequest',
+        description => '',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'create_response_object' } = {
@@ -100,7 +106,7 @@ sub create_response_object {
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/x-www-form-urlencoded');
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     # path params
     if ( exists $args{'service_id'}) {
@@ -117,6 +123,11 @@ sub create_response_object {
     }
 
     my $_body_data;
+    # body params
+    if ( exists $args{'create_response_object_request'}) {
+        $_body_data = $args{'create_response_object_request'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 
@@ -430,6 +441,7 @@ sub list_response_objects {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $response_object_name Name for the request settings. (required)
+# @param CreateResponseObjectRequest $create_response_object_request  (optional)
 {
     my $params = {
     'service_id' => {
@@ -446,6 +458,11 @@ sub list_response_objects {
         data_type => 'string',
         description => 'Name for the request settings.',
         required => '1',
+    },
+    'create_response_object_request' => {
+        data_type => 'CreateResponseObjectRequest',
+        description => '',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'update_response_object' } = {
@@ -487,7 +504,7 @@ sub update_response_object {
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/x-www-form-urlencoded');
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     # path params
     if ( exists $args{'service_id'}) {
@@ -511,6 +528,11 @@ sub update_response_object {
     }
 
     my $_body_data;
+    # body params
+    if ( exists $args{'create_response_object_request'}) {
+        $_body_data = $args{'create_response_object_request'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 

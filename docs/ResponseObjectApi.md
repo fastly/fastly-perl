@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **create_response_object**
-> ResponseObjectResponse create_response_object(service_id => $service_id, version_id => $version_id)
+> ResponseObjectResponse create_response_object(service_id => $service_id, version_id => $version_id, create_response_object_request => $create_response_object_request)
 
 Create a Response object
 
@@ -37,9 +37,10 @@ my $api_instance = WebService::Fastly::ResponseObjectApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
+my $create_response_object_request = WebService::Fastly::Object::CreateResponseObjectRequest->new(); # CreateResponseObjectRequest | 
 
 eval {
-    my $result = $api_instance->create_response_object(service_id => $service_id, version_id => $version_id);
+    my $result = $api_instance->create_response_object(service_id => $service_id, version_id => $version_id, create_response_object_request => $create_response_object_request);
     print Dumper($result);
 };
 if ($@) {
@@ -53,6 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
+ **create_response_object_request** | [**CreateResponseObjectRequest**](CreateResponseObjectRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -233,7 +235,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_response_object**
-> ResponseObjectResponse update_response_object(service_id => $service_id, version_id => $version_id, response_object_name => $response_object_name)
+> ResponseObjectResponse update_response_object(service_id => $service_id, version_id => $version_id, response_object_name => $response_object_name, create_response_object_request => $create_response_object_request)
 
 Update a Response object
 
@@ -254,9 +256,10 @@ my $api_instance = WebService::Fastly::ResponseObjectApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $response_object_name = "response_object_name_example"; # string | Name for the request settings.
+my $create_response_object_request = WebService::Fastly::Object::CreateResponseObjectRequest->new(); # CreateResponseObjectRequest | 
 
 eval {
-    my $result = $api_instance->update_response_object(service_id => $service_id, version_id => $version_id, response_object_name => $response_object_name);
+    my $result = $api_instance->update_response_object(service_id => $service_id, version_id => $version_id, response_object_name => $response_object_name, create_response_object_request => $create_response_object_request);
     print Dumper($result);
 };
 if ($@) {
@@ -271,6 +274,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
  **response_object_name** | **string**| Name for the request settings. | 
+ **create_response_object_request** | [**CreateResponseObjectRequest**](CreateResponseObjectRequest.md)|  | [optional] 
 
 ### Return type
 
@@ -282,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/x-www-form-urlencoded
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

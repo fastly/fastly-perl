@@ -173,7 +173,7 @@ __PACKAGE__->method_documentation({
         read_only => 'true',
             },
     'tls_protocols' => {
-        datatype => 'ARRAY[double]',
+        datatype => 'ARRAY[string]',
         base_name => 'tls_protocols',
         description => 'TLS protocols available on your configuration.',
         format => '',
@@ -191,7 +191,7 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'default' => 'boolean',
     'http_protocols' => 'ARRAY[string]',
-    'tls_protocols' => 'ARRAY[double]',
+    'tls_protocols' => 'ARRAY[string]',
     'bulk' => 'boolean'
 } );
 
