@@ -9,6 +9,7 @@ use WebService::Fastly::Object::TlsSubscriptionResponseAttributesAllOf;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **state** | **string** | The current state of your subscription. | [optional] 
+**has_active_order** | **boolean** | Subscription has an active order | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

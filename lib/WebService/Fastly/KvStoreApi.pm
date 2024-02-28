@@ -253,7 +253,7 @@ sub get_store {
 # List KV stores.
 #
 # @param string $cursor  (optional)
-# @param int $limit  (optional, default to 100)
+# @param int $limit  (optional, default to 1000)
 {
     my $params = {
     'cursor' => {

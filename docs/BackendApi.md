@@ -61,7 +61,7 @@ my $shield = "shield_example"; # string | Identifier of the POP to use as a [shi
 my $ssl_ca_cert = "ssl_ca_cert_example"; # string | CA certificate attached to origin.
 my $ssl_cert_hostname = "ssl_cert_hostname_example"; # string | Overrides `ssl_hostname`, but only for cert verification. Does not affect SNI at all.
 my $ssl_check_cert = true; # boolean | Be strict on checking SSL certs.
-my $ssl_ciphers = "ssl_ciphers_example"; # string | List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
+my $ssl_ciphers = "ssl_ciphers_example"; # string | List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
 my $ssl_client_cert = "ssl_client_cert_example"; # string | Client certificate attached to origin.
 my $ssl_client_key = "ssl_client_key_example"; # string | Client key attached to origin.
 my $ssl_hostname = "ssl_hostname_example"; # string | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation.
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
  **ssl_ca_cert** | **string**| CA certificate attached to origin. | [optional] 
  **ssl_cert_hostname** | **string**| Overrides `ssl_hostname`, but only for cert verification. Does not affect SNI at all. | [optional] 
  **ssl_check_cert** | **boolean**| Be strict on checking SSL certs. | [optional] [default to true]
- **ssl_ciphers** | **string**| List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] 
+ **ssl_ciphers** | **string**| List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] 
  **ssl_client_cert** | **string**| Client certificate attached to origin. | [optional] 
  **ssl_client_key** | **string**| Client key attached to origin. | [optional] 
  **ssl_hostname** | **string**| Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation. | [optional] 
@@ -340,7 +340,7 @@ my $shield = "shield_example"; # string | Identifier of the POP to use as a [shi
 my $ssl_ca_cert = "ssl_ca_cert_example"; # string | CA certificate attached to origin.
 my $ssl_cert_hostname = "ssl_cert_hostname_example"; # string | Overrides `ssl_hostname`, but only for cert verification. Does not affect SNI at all.
 my $ssl_check_cert = true; # boolean | Be strict on checking SSL certs.
-my $ssl_ciphers = "ssl_ciphers_example"; # string | List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
+my $ssl_ciphers = "ssl_ciphers_example"; # string | List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated.
 my $ssl_client_cert = "ssl_client_cert_example"; # string | Client certificate attached to origin.
 my $ssl_client_key = "ssl_client_key_example"; # string | Client key attached to origin.
 my $ssl_hostname = "ssl_hostname_example"; # string | Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation.
@@ -388,7 +388,7 @@ Name | Type | Description  | Notes
  **ssl_ca_cert** | **string**| CA certificate attached to origin. | [optional] 
  **ssl_cert_hostname** | **string**| Overrides `ssl_hostname`, but only for cert verification. Does not affect SNI at all. | [optional] 
  **ssl_check_cert** | **boolean**| Be strict on checking SSL certs. | [optional] [default to true]
- **ssl_ciphers** | **string**| List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] 
+ **ssl_ciphers** | **string**| List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic `503` error response will be generated. | [optional] 
  **ssl_client_cert** | **string**| Client certificate attached to origin. | [optional] 
  **ssl_client_key** | **string**| Client key attached to origin. | [optional] 
  **ssl_hostname** | **string**| Use `ssl_cert_hostname` and `ssl_sni_hostname` to configure certificate validation. | [optional] 

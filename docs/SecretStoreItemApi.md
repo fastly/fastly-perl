@@ -195,7 +195,7 @@ my $api_instance = WebService::Fastly::SecretStoreItemApi->new(
 );
 
 my $store_id = "store_id_example"; # string | 
-my $cursor = "cursor_example"; # string | Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 my $limit = '100'; # string | Number of results per page. The maximum is 200.
 
 eval {
@@ -212,7 +212,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **store_id** | **string**|  | 
- **cursor** | **string**| Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. | [optional] 
+ **cursor** | **string**| Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] 
  **limit** | **string**| Number of results per page. The maximum is 200. | [optional] [default to &#39;100&#39;]
 
 ### Return type

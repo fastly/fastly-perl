@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_secret_stores**
-> InlineResponse2005 get_secret_stores(cursor => $cursor, limit => $limit)
+> InlineResponse2005 get_secret_stores(cursor => $cursor, limit => $limit, name => $name)
 
 Get all secret stores
 
@@ -235,11 +235,12 @@ my $api_instance = WebService::Fastly::SecretStoreApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $cursor = "cursor_example"; # string | Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.
+my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 my $limit = '100'; # string | Number of results per page. The maximum is 200.
+my $name = "name_example"; # string | Returns a one-element array containing the details for the named secret store.
 
 eval {
-    my $result = $api_instance->get_secret_stores(cursor => $cursor, limit => $limit);
+    my $result = $api_instance->get_secret_stores(cursor => $cursor, limit => $limit, name => $name);
     print Dumper($result);
 };
 if ($@) {
@@ -251,8 +252,9 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cursor** | **string**| Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. | [optional] 
+ **cursor** | **string**| Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] 
  **limit** | **string**| Number of results per page. The maximum is 200. | [optional] [default to &#39;100&#39;]
+ **name** | **string**| Returns a one-element array containing the details for the named secret store. | [optional] 
 
 ### Return type
 

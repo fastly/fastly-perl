@@ -55,10 +55,10 @@ sub new {
 # @param string $start A valid ISO-8601-formatted date and time, or UNIX timestamp, indicating the inclusive start of the query time range. If not provided, a default is chosen based on the provided &#x60;downsample&#x60; value. (optional)
 # @param string $end A valid ISO-8601-formatted date and time, or UNIX timestamp, indicating the exclusive end of the query time range. If not provided, a default is chosen based on the provided &#x60;downsample&#x60; value. (optional)
 # @param string $downsample Duration of sample windows. (optional, default to 'hour')
-# @param string $metric The metric to retrieve. Up to ten comma-separated metrics are accepted. (optional, default to 'edge_requests')
+# @param string $metric The metrics to retrieve. Multiple values should be comma-separated. (optional, default to 'edge_requests')
 # @param string $group_by Dimensions to return in the query. Multiple dimensions may be separated by commas. For example, &#x60;group_by&#x3D;domain&#x60; will return one timeseries for every domain, as a total across all datacenters (POPs).  (optional)
 # @param string $limit Number of results per page. The maximum is 200. (optional, default to '100')
-# @param string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+# @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 # @param string $region Limit query to one or more specific geographic regions. Values should be comma-separated.  (optional)
 # @param string $datacenter Limit query to one or more specific POPs. Values should be comma-separated. (optional)
 # @param string $domain Limit query to one or more specific domains. Values should be comma-separated. (optional)
@@ -86,7 +86,7 @@ sub new {
     },
     'metric' => {
         data_type => 'string',
-        description => 'The metric to retrieve. Up to ten comma-separated metrics are accepted.',
+        description => 'The metrics to retrieve. Multiple values should be comma-separated.',
         required => '0',
     },
     'group_by' => {
@@ -101,7 +101,7 @@ sub new {
     },
     'cursor' => {
         data_type => 'string',
-        description => 'Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.',
+        description => 'Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.',
         required => '0',
     },
     'region' => {

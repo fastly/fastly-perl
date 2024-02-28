@@ -207,7 +207,7 @@ __PACKAGE__->method_documentation({
     'token' => {
         datatype => 'string',
         base_name => 'token',
-        description => 'The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).',
+        description => 'The token to use for authentication.',
         format => '',
         read_only => 'false',
             },

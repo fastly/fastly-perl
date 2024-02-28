@@ -58,7 +58,7 @@ sub new {
 # @param string $comment A freeform descriptive note. (optional)
 # @param string $name Name for the Director. (optional)
 # @param int $quorum The percentage of capacity that needs to be up for a director to be considered up. &#x60;0&#x60; to &#x60;100&#x60;. (optional, default to 75)
-# @param string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+# @param string $shield Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
 # @param int $type What type of load balance group to use. (optional, default to 1)
 # @param int $retries How many backends to search if it fails. (optional, default to 5)
 {
@@ -100,7 +100,7 @@ sub new {
     },
     'shield' => {
         data_type => 'string',
-        description => 'Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
+        description => 'Selected POP to serve as a shield for the backends. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
         required => '0',
     },
     'type' => {

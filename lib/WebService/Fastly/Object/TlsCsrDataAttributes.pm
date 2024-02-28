@@ -161,7 +161,7 @@ __PACKAGE__->method_documentation({
     'sans' => {
         datatype => 'ARRAY[string]',
         base_name => 'sans',
-        description => 'Subject Altername Names - An array of one or more fully qualified domain names or public IP addresses to be secured by this certificate. Required.',
+        description => 'Subject Alternate Names - An array of one or more fully qualified domain names or public IP addresses to be secured by this certificate. Required.',
         format => '',
         read_only => 'false',
             },
@@ -228,6 +228,13 @@ __PACKAGE__->method_documentation({
         format => 'email',
         read_only => 'false',
             },
+    'key_type' => {
+        datatype => 'string',
+        base_name => 'key_type',
+        description => 'CSR Key Type.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -240,7 +247,8 @@ __PACKAGE__->openapi_types( {
     'street_address' => 'string',
     'organization' => 'string',
     'organizational_unit' => 'string',
-    'email' => 'string'
+    'email' => 'string',
+    'key_type' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -253,7 +261,8 @@ __PACKAGE__->attribute_map( {
     'street_address' => 'street_address',
     'organization' => 'organization',
     'organizational_unit' => 'organizational_unit',
-    'email' => 'email'
+    'email' => 'email',
+    'key_type' => 'key_type'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

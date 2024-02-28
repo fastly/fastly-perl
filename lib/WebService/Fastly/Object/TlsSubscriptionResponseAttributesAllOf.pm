@@ -165,14 +165,23 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'has_active_order' => {
+        datatype => 'boolean',
+        base_name => 'has_active_order',
+        description => 'Subscription has an active order',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'state' => 'string'
+    'state' => 'string',
+    'has_active_order' => 'boolean'
 } );
 
 __PACKAGE__->attribute_map( {
-    'state' => 'state'
+    'state' => 'state',
+    'has_active_order' => 'has_active_order'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

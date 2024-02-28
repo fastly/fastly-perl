@@ -77,7 +77,7 @@ sub new {
 # @param string $ssl_ca_cert CA certificate attached to origin. (optional)
 # @param string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
 # @param boolean $ssl_check_cert Be strict on checking SSL certs. (optional, default to true)
-# @param string $ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
+# @param string $ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
 # @param string $ssl_client_cert Client certificate attached to origin. (optional)
 # @param string $ssl_client_key Client key attached to origin. (optional)
 # @param string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
@@ -218,7 +218,7 @@ sub new {
     },
     'ssl_ciphers' => {
         data_type => 'string',
-        description => 'List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
+        description => 'List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
         required => '0',
     },
     'ssl_client_cert' => {
@@ -795,7 +795,7 @@ sub list_backends {
 # @param string $ssl_ca_cert CA certificate attached to origin. (optional)
 # @param string $ssl_cert_hostname Overrides &#x60;ssl_hostname&#x60;, but only for cert verification. Does not affect SNI at all. (optional)
 # @param boolean $ssl_check_cert Be strict on checking SSL certs. (optional, default to true)
-# @param string $ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
+# @param string $ssl_ciphers List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
 # @param string $ssl_client_cert Client certificate attached to origin. (optional)
 # @param string $ssl_client_key Client key attached to origin. (optional)
 # @param string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
@@ -941,7 +941,7 @@ sub list_backends {
     },
     'ssl_ciphers' => {
         data_type => 'string',
-        description => 'List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
+        description => 'List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
         required => '0',
     },
     'ssl_client_cert' => {

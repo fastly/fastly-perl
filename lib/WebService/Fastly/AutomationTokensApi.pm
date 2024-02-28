@@ -350,10 +350,10 @@ sub list_automation_tokens {
     __PACKAGE__->method_documentation->{ 'revoke_automation_token_id' } = {
         summary => 'Revoke an Automation Token by ID',
         params => $params,
-        returns => 'ErrorResponse',
+        returns => 'AutomationTokenErrorResponse',
         };
 }
-# @return ErrorResponse
+# @return AutomationTokenErrorResponse
 #
 sub revoke_automation_token_id {
     my ($self, %args) = @_;
@@ -396,7 +396,7 @@ sub revoke_automation_token_id {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ErrorResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('AutomationTokenErrorResponse', $response);
     return $_response_object;
 }
 

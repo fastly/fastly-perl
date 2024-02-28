@@ -161,7 +161,7 @@ __PACKAGE__->method_documentation({
     'default' => {
         datatype => 'boolean',
         base_name => 'default',
-        description => 'Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](/reference/api/tls/custom-certs/activations/).',
+        description => 'Signifies whether or not Fastly will use this configuration as a default when creating a new [TLS Activation](https://www.fastly.com/documentation/reference/api/tls/custom-certs/activations/).',
         format => '',
         read_only => 'true',
             },

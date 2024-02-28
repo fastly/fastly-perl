@@ -162,7 +162,7 @@ __PACKAGE__->method_documentation({
     'code' => {
         datatype => 'string',
         base_name => 'code',
-        description => 'the three-letter code for the [POP](https://developer.fastly.com/learning/concepts/pop/)',
+        description => 'the three-letter code for the [POP](https://www.fastly.com/documentation/learning/concepts/pop/)',
         format => '',
         read_only => 'false',
             },
@@ -211,7 +211,7 @@ __PACKAGE__->method_documentation({
     'shield' => {
         datatype => 'string',
         base_name => 'shield',
-        description => 'the name of the [shield code](https://developer.fastly.com/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding',
+        description => 'the name of the [shield code](https://www.fastly.com/documentation/learning/concepts/shielding/#choosing-a-shield-location) if this POP is suitable for shielding',
         format => '',
         read_only => 'false',
             },

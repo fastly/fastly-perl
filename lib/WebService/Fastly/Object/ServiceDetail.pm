@@ -236,7 +236,7 @@ __PACKAGE__->method_documentation({
     'versions' => {
         datatype => 'ARRAY[SchemasVersionResponse]',
         base_name => 'versions',
-        description => 'A list of [versions](/reference/api/services/version/) associated with the service.',
+        description => 'A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.',
         format => '',
         read_only => 'false',
             },

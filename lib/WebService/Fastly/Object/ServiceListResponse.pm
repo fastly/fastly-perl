@@ -221,14 +221,14 @@ __PACKAGE__->method_documentation({
     'version' => {
         datatype => 'int',
         base_name => 'version',
-        description => 'Current [version](/reference/api/services/version/) of the service.',
+        description => 'Current [version](https://www.fastly.com/documentation/reference/api/services/version/) of the service.',
         format => '',
         read_only => 'false',
             },
     'versions' => {
         datatype => 'ARRAY[SchemasVersionResponse]',
         base_name => 'versions',
-        description => 'A list of [versions](/reference/api/services/version/) associated with the service.',
+        description => 'A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service.',
         format => '',
         read_only => 'false',
             },

@@ -177,7 +177,7 @@ __PACKAGE__->method_documentation({
     'datacenter' => {
         datatype => 'HASH[string,HASH[string,DomainInspectorMeasurements]]',
         base_name => 'datacenter',
-        description => 'Groups [measurements](#measurements-data-model) by POP, then backend name, and then IP address. See the [POPs API](/reference/api/utils/pops/) for details about POP identifiers.',
+        description => 'Groups [measurements](#measurements-data-model) by POP, then backend name, and then IP address. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details about POP identifiers.',
         format => '',
         read_only => 'false',
             },

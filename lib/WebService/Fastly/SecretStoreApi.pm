@@ -290,18 +290,24 @@ sub get_secret_store {
 #
 # Get all secret stores
 #
-# @param string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+# @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 # @param string $limit Number of results per page. The maximum is 200. (optional, default to '100')
+# @param string $name Returns a one-element array containing the details for the named secret store. (optional)
 {
     my $params = {
     'cursor' => {
         data_type => 'string',
-        description => 'Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.',
+        description => 'Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.',
         required => '0',
     },
     'limit' => {
         data_type => 'string',
         description => 'Number of results per page. The maximum is 200.',
+        required => '0',
+    },
+    'name' => {
+        data_type => 'string',
+        description => 'Returns a one-element array containing the details for the named secret store.',
         required => '0',
     },
     };
@@ -339,6 +345,11 @@ sub get_secret_stores {
     # query params
     if ( exists $args{'limit'}) {
         $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'name'}) {
+        $query_params->{'name'} = $self->{api_client}->to_query_value($args{'name'});
     }
 
     my $_body_data;

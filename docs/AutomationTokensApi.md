@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **revoke_automation_token_id**
-> ErrorResponse revoke_automation_token_id(id => $id)
+> AutomationTokenErrorResponse revoke_automation_token_id(id => $id)
 
 Revoke an Automation Token by ID
 
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ErrorResponse**](ErrorResponse.md)
+[**AutomationTokenErrorResponse**](AutomationTokenErrorResponse.md)
 
 ### Authorization
 

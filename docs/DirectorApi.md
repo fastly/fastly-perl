@@ -42,7 +42,7 @@ my $capacity = 56; # int | Unused.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $name = "name_example"; # string | Name for the Director.
 my $quorum = 75; # int | The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`.
-my $shield = 'null'; # string | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.
+my $shield = 'null'; # string | Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.
 my $type = 1; # int | What type of load balance group to use.
 my $retries = 5; # int | How many backends to search if it fails.
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **name** | **string**| Name for the Director. | [optional] 
  **quorum** | **int**| The percentage of capacity that needs to be up for a director to be considered up. `0` to `100`. | [optional] [default to 75]
- **shield** | **string**| Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
+ **shield** | **string**| Selected POP to serve as a shield for the backends. Defaults to `null` meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. | [optional] [default to &#39;null&#39;]
  **type** | **int**| What type of load balance group to use. | [optional] [default to 1]
  **retries** | **int**| How many backends to search if it fails. | [optional] [default to 5]
 

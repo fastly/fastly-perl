@@ -189,7 +189,7 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 );
 
 my $cursor = "cursor_example"; # string | 
-my $limit = 100; # int | 
+my $limit = 1000; # int | 
 
 eval {
     my $result = $api_instance->get_stores(cursor => $cursor, limit => $limit);
@@ -205,7 +205,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **string**|  | [optional] 
- **limit** | **int**|  | [optional] [default to 100]
+ **limit** | **int**|  | [optional] [default to 1000]
 
 ### Return type
 

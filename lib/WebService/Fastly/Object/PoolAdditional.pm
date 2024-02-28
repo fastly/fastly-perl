@@ -168,7 +168,7 @@ __PACKAGE__->method_documentation({
     'shield' => {
         datatype => 'string',
         base_name => 'shield',
-        description => 'Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
+        description => 'Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
         format => '',
         read_only => 'false',
             },

@@ -329,7 +329,7 @@ __PACKAGE__->method_documentation({
     'ssl_ciphers' => {
         datatype => 'string',
         base_name => 'ssl_ciphers',
-        description => 'List of [OpenSSL ciphers](https://www.openssl.org/docs/manmaster/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
+        description => 'List of [OpenSSL ciphers](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) to support for connections to this origin. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
         format => '',
         read_only => 'false',
             },

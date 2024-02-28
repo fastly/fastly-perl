@@ -33,7 +33,7 @@ use WebService::Fastly::Object::RelationshipTlsCertificateTlsCertificate;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#The [TLS certificate](/reference/api/tls/custom-certs/certificates/) being used to terminate TLS traffic for a domain. Required.
+#The [TLS certificate](https://www.fastly.com/documentation/reference/api/tls/custom-certs/certificates/) being used to terminate TLS traffic for a domain. Required.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,7 +153,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'The [TLS certificate](/reference/api/tls/custom-certs/certificates/) being used to terminate TLS traffic for a domain. Required.',
+__PACKAGE__->class_documentation({description => 'The [TLS certificate](https://www.fastly.com/documentation/reference/api/tls/custom-certs/certificates/) being used to terminate TLS traffic for a domain. Required.',
                                   class => 'RelationshipTlsCertificate',
                                   required => [], # TODO
 }                                 );

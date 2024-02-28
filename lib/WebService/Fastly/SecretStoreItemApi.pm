@@ -296,7 +296,7 @@ sub get_secret {
 # List secrets within a store.
 #
 # @param string $store_id  (required)
-# @param string $cursor Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty. (optional)
+# @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 # @param string $limit Number of results per page. The maximum is 200. (optional, default to '100')
 {
     my $params = {
@@ -307,7 +307,7 @@ sub get_secret {
     },
     'cursor' => {
         data_type => 'string',
-        description => 'Cursor value from a previous response to retrieve the next page. To request the first page, this should be empty.',
+        description => 'Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.',
         required => '0',
     },
     'limit' => {

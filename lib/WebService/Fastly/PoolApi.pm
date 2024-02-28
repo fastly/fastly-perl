@@ -64,7 +64,7 @@ sub new {
 # @param string $service_id  (optional)
 # @param string $version  (optional)
 # @param string $name Name for the Pool. (optional)
-# @param string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+# @param string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
 # @param string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
 # @param string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional. (optional)
 # @param string $tls_sni_hostname SNI hostname. Optional. (optional)
@@ -149,7 +149,7 @@ sub new {
     },
     'shield' => {
         data_type => 'string',
-        description => 'Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
+        description => 'Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
         required => '0',
     },
     'request_condition' => {
@@ -738,7 +738,7 @@ sub list_server_pools {
 # @param string $service_id  (optional)
 # @param string $version  (optional)
 # @param string $name Name for the Pool. (optional)
-# @param string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
+# @param string $shield Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding. (optional, default to 'null')
 # @param string $request_condition Condition which, if met, will select this configuration during a request. Optional. (optional)
 # @param string $tls_ciphers List of OpenSSL ciphers (see the [openssl.org manpages](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html) for details). Optional. (optional)
 # @param string $tls_sni_hostname SNI hostname. Optional. (optional)
@@ -828,7 +828,7 @@ sub list_server_pools {
     },
     'shield' => {
         data_type => 'string',
-        description => 'Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
+        description => 'Selected POP to serve as a shield for the servers. Defaults to &#x60;null&#x60; meaning no origin shielding if not set. Refer to the [POPs API endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/) to get a list of available POPs used for shielding.',
         required => '0',
     },
     'request_condition' => {

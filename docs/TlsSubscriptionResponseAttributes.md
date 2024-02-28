@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **deleted_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **updated_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 
 **state** | **string** | The current state of your subscription. | [optional] 
+**has_active_order** | **boolean** | Subscription has an active order | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

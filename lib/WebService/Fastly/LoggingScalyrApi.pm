@@ -59,7 +59,7 @@ sub new {
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
 # @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $region The region that log data will be sent to. (optional, default to 'US')
-# @param string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
+# @param string $token The token to use for authentication. (optional)
 # @param string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
 {
     my $params = {
@@ -105,7 +105,7 @@ sub new {
     },
     'token' => {
         data_type => 'string',
-        description => 'The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).',
+        description => 'The token to use for authentication.',
         required => '0',
     },
     'project_id' => {
@@ -524,7 +524,7 @@ sub list_log_scalyr {
 # @param string $format A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). (optional, default to '%h %l %u %t "%r" %&gt;s %b')
 # @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param string $region The region that log data will be sent to. (optional, default to 'US')
-# @param string $token The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)). (optional)
+# @param string $token The token to use for authentication. (optional)
 # @param string $project_id The name of the logfile within Scalyr. (optional, default to 'logplex')
 {
     my $params = {
@@ -575,7 +575,7 @@ sub list_log_scalyr {
     },
     'token' => {
         data_type => 'string',
-        description => 'The token to use for authentication ([https://www.scalyr.com/keys](https://www.scalyr.com/keys)).',
+        description => 'The token to use for authentication.',
         required => '0',
     },
     'project_id' => {
