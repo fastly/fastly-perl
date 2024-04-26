@@ -82,6 +82,10 @@ sub new {
 # @param string $ssl_client_key Client key attached to origin. (optional)
 # @param string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
 # @param string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+# @param boolean $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+# @param int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+# @param int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+# @param int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
 # @param boolean $use_ssl Whether or not to require TLS for connections to this backend. (optional)
 # @param int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
 {
@@ -239,6 +243,26 @@ sub new {
     'ssl_sni_hostname' => {
         data_type => 'string',
         description => 'Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.',
+        required => '0',
+    },
+    'tcp_keepalive_enable' => {
+        data_type => 'boolean',
+        description => 'Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.',
+        required => '0',
+    },
+    'tcp_keepalive_interval' => {
+        data_type => 'int',
+        description => 'Interval in seconds between subsequent keepalive probes.',
+        required => '0',
+    },
+    'tcp_keepalive_probes' => {
+        data_type => 'int',
+        description => 'Number of unacknowledged probes to send before considering the connection dead.',
+        required => '0',
+    },
+    'tcp_keepalive_time' => {
+        data_type => 'int',
+        description => 'Interval in seconds between the last data packet sent and the first keepalive probe.',
         required => '0',
     },
     'use_ssl' => {
@@ -445,6 +469,26 @@ sub create_backend {
     # form params
     if ( exists $args{'ssl_sni_hostname'} ) {
                 $form_params->{'ssl_sni_hostname'} = $self->{api_client}->to_form_value($args{'ssl_sni_hostname'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_enable'} ) {
+                $form_params->{'tcp_keepalive_enable'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_enable'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_interval'} ) {
+                $form_params->{'tcp_keepalive_interval'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_interval'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_probes'} ) {
+                $form_params->{'tcp_keepalive_probes'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_probes'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_time'} ) {
+                $form_params->{'tcp_keepalive_time'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_time'});
     }
 
     # form params
@@ -800,6 +844,10 @@ sub list_backends {
 # @param string $ssl_client_key Client key attached to origin. (optional)
 # @param string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
 # @param string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
+# @param boolean $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
+# @param int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
+# @param int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
+# @param int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
 # @param boolean $use_ssl Whether or not to require TLS for connections to this backend. (optional)
 # @param int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
 {
@@ -962,6 +1010,26 @@ sub list_backends {
     'ssl_sni_hostname' => {
         data_type => 'string',
         description => 'Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all.',
+        required => '0',
+    },
+    'tcp_keepalive_enable' => {
+        data_type => 'boolean',
+        description => 'Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.',
+        required => '0',
+    },
+    'tcp_keepalive_interval' => {
+        data_type => 'int',
+        description => 'Interval in seconds between subsequent keepalive probes.',
+        required => '0',
+    },
+    'tcp_keepalive_probes' => {
+        data_type => 'int',
+        description => 'Number of unacknowledged probes to send before considering the connection dead.',
+        required => '0',
+    },
+    'tcp_keepalive_time' => {
+        data_type => 'int',
+        description => 'Interval in seconds between the last data packet sent and the first keepalive probe.',
         required => '0',
     },
     'use_ssl' => {
@@ -1180,6 +1248,26 @@ sub update_backend {
     # form params
     if ( exists $args{'ssl_sni_hostname'} ) {
                 $form_params->{'ssl_sni_hostname'} = $self->{api_client}->to_form_value($args{'ssl_sni_hostname'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_enable'} ) {
+                $form_params->{'tcp_keepalive_enable'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_enable'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_interval'} ) {
+                $form_params->{'tcp_keepalive_interval'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_interval'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_probes'} ) {
+                $form_params->{'tcp_keepalive_probes'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_probes'});
+    }
+
+    # form params
+    if ( exists $args{'tcp_keepalive_time'} ) {
+                $form_params->{'tcp_keepalive_time'} = $self->{api_client}->to_form_value($args{'tcp_keepalive_time'});
     }
 
     # form params

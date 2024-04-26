@@ -223,6 +223,11 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'bypass_busy_wait' => 'true',
+    'force_miss' => 'true',
+    'geo_headers' => 'true',
+    'max_stale_age' => 'true',
+    'timer_support' => 'true',
 } );
 
 

@@ -8,7 +8,7 @@ use WebService::Fastly::Object::RelationshipCustomerCustomer;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ARRAY[RelationshipMemberCustomer]**](RelationshipMemberCustomer.md) |  | [optional] 
+**data** | [**RelationshipMemberCustomer**](RelationshipMemberCustomer.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

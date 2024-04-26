@@ -361,6 +361,34 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'tcp_keepalive_enable' => {
+        datatype => 'boolean',
+        base_name => 'tcp_keepalive_enable',
+        description => 'Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified.',
+        format => '',
+        read_only => 'false',
+            },
+    'tcp_keepalive_interval' => {
+        datatype => 'int',
+        base_name => 'tcp_keepalive_interval',
+        description => 'Interval in seconds between subsequent keepalive probes.',
+        format => '',
+        read_only => 'false',
+            },
+    'tcp_keepalive_probes' => {
+        datatype => 'int',
+        base_name => 'tcp_keepalive_probes',
+        description => 'Number of unacknowledged probes to send before considering the connection dead.',
+        format => '',
+        read_only => 'false',
+            },
+    'tcp_keepalive_time' => {
+        datatype => 'int',
+        base_name => 'tcp_keepalive_time',
+        description => 'Interval in seconds between the last data packet sent and the first keepalive probe.',
+        format => '',
+        read_only => 'false',
+            },
     'use_ssl' => {
         datatype => 'boolean',
         base_name => 'use_ssl',
@@ -407,6 +435,10 @@ __PACKAGE__->openapi_types( {
     'ssl_client_key' => 'string',
     'ssl_hostname' => 'string',
     'ssl_sni_hostname' => 'string',
+    'tcp_keepalive_enable' => 'boolean',
+    'tcp_keepalive_interval' => 'int',
+    'tcp_keepalive_probes' => 'int',
+    'tcp_keepalive_time' => 'int',
     'use_ssl' => 'boolean',
     'weight' => 'int'
 } );
@@ -441,6 +473,10 @@ __PACKAGE__->attribute_map( {
     'ssl_client_key' => 'ssl_client_key',
     'ssl_hostname' => 'ssl_hostname',
     'ssl_sni_hostname' => 'ssl_sni_hostname',
+    'tcp_keepalive_enable' => 'tcp_keepalive_enable',
+    'tcp_keepalive_interval' => 'tcp_keepalive_interval',
+    'tcp_keepalive_probes' => 'tcp_keepalive_probes',
+    'tcp_keepalive_time' => 'tcp_keepalive_time',
     'use_ssl' => 'use_ssl',
     'weight' => 'weight'
 } );
@@ -468,6 +504,9 @@ __PACKAGE__->openapi_nullable( {
     'ssl_client_key' => 'true',
     'ssl_hostname' => 'true',
     'ssl_sni_hostname' => 'true',
+    'tcp_keepalive_interval' => 'true',
+    'tcp_keepalive_probes' => 'true',
+    'tcp_keepalive_time' => 'true',
 } );
 
 

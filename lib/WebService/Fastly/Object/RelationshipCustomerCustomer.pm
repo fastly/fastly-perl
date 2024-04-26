@@ -160,7 +160,7 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'ARRAY[RelationshipMemberCustomer]',
+        datatype => 'RelationshipMemberCustomer',
         base_name => 'data',
         description => '',
         format => '',
@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[RelationshipMemberCustomer]'
+    'data' => 'RelationshipMemberCustomer'
 } );
 
 __PACKAGE__->attribute_map( {

@@ -227,6 +227,7 @@ __PACKAGE__->openapi_nullable( {
     'default_host' => 'true',
     'hash_keys' => 'true',
     'request_condition' => 'true',
+    'xff' => 'true',
 } );
 
 

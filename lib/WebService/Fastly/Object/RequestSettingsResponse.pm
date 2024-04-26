@@ -333,6 +333,12 @@ __PACKAGE__->openapi_nullable( {
     'default_host' => 'true',
     'hash_keys' => 'true',
     'request_condition' => 'true',
+    'xff' => 'true',
+    'bypass_busy_wait' => 'true',
+    'force_miss' => 'true',
+    'geo_headers' => 'true',
+    'max_stale_age' => 'true',
+    'timer_support' => 'true',
 } );
 
 
