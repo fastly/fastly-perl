@@ -5,10 +5,11 @@
 use WebService::Fastly::Object::PopApi;
 ```
 
-All URIs are relative to *https://api.fastly.com*
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
 
 Method | HTTP request | Description
-------------- | ------------- | -------------
+------ | ------------ | -----------
 [**list_pops**](PopApi.md#list_pops) | **GET** /datacenters | List Fastly POPs
 
 

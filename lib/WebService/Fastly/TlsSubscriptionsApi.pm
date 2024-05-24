@@ -2,7 +2,7 @@
 
 Fastly API
 
-Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://developer.fastly.com/reference/api/) 
+Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://www.fastly.com/documentation/reference/api/) 
 
 The version of the API Spec document: 1.0.0
 Contact: oss@fastly.com
@@ -381,7 +381,7 @@ sub delete_tls_sub {
 # Get a TLS subscription
 #
 # @param string $tls_subscription_id Alphanumeric string identifying a TLS subscription. (required)
-# @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;.  (optional)
+# @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;.  (optional)
 {
     my $params = {
     'tls_subscription_id' => {
@@ -391,7 +391,7 @@ sub delete_tls_sub {
     },
     'include' => {
         data_type => 'string',
-        description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. ',
+        description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. ',
         required => '0',
     },
     };
@@ -461,7 +461,8 @@ sub get_tls_sub {
 # @param string $filter[state] Limit the returned subscriptions by state. Valid values are &#x60;pending&#x60;, &#x60;processing&#x60;, &#x60;issued&#x60;, &#x60;renewing&#x60;, and &#x60;failed&#x60;. Accepts parameters: &#x60;not&#x60; (e.g., &#x60;filter[state][not]&#x3D;renewing&#x60;).  (optional)
 # @param string $filter[tls_domains/id] Limit the returned subscriptions to those that include the specific domain. (optional)
 # @param boolean $filter[has_active_order] Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;.  (optional)
-# @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;.  (optional)
+# @param string $filter[certificate_authority] Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;.  (optional)
+# @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;.  (optional)
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
 # @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -482,9 +483,14 @@ sub get_tls_sub {
         description => 'Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;. ',
         required => '0',
     },
+    'filter[certificate_authority]' => {
+        data_type => 'string',
+        description => 'Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;. ',
+        required => '0',
+    },
     'include' => {
         data_type => 'string',
-        description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. ',
+        description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. ',
         required => '0',
     },
     'page[number]' => {
@@ -542,6 +548,11 @@ sub list_tls_subs {
     # query params
     if ( exists $args{'filter[has_active_order]'}) {
         $query_params->{'filter[has_active_order]'} = $self->{api_client}->to_query_value($args{'filter[has_active_order]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[certificate_authority]'}) {
+        $query_params->{'filter[certificate_authority]'} = $self->{api_client}->to_query_value($args{'filter[certificate_authority]'});
     }
 
     # query params

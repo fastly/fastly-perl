@@ -5,10 +5,11 @@
 use WebService::Fastly::Object::WafTagsApi;
 ```
 
-All URIs are relative to *https://api.fastly.com*
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
 
 Method | HTTP request | Description
-------------- | ------------- | -------------
+------ | ------------ | -----------
 [**list_waf_tags**](WafTagsApi.md#list_waf_tags) | **GET** /waf/tags | List tags
 
 

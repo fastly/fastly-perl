@@ -5,10 +5,11 @@
 use WebService::Fastly::Object::SudoApi;
 ```
 
-All URIs are relative to *https://api.fastly.com*
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
 
 Method | HTTP request | Description
-------------- | ------------- | -------------
+------ | ------------ | -----------
 [**request_sudo_access**](SudoApi.md#request_sudo_access) | **POST** /sudo | Request Sudo access
 
 

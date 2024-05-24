@@ -5,10 +5,11 @@
 use WebService::Fastly::Object::EventsApi;
 ```
 
-All URIs are relative to *https://api.fastly.com*
+> [!NOTE]
+> All URIs are relative to `https://api.fastly.com`
 
 Method | HTTP request | Description
-------------- | ------------- | -------------
+------ | ------------ | -----------
 [**get_event**](EventsApi.md#get_event) | **GET** /events/{event_id} | Get an event
 [**list_events**](EventsApi.md#list_events) | **GET** /events | List events
 
