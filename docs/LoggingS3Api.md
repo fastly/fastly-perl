@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **create_log_aws_s3**
-> LoggingS3Response create_log_aws_s3(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption)
+> LoggingS3Response create_log_aws_s3(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption, file_max_bytes => $file_max_bytes)
 
 Create an AWS S3 log endpoint
 
@@ -59,9 +59,10 @@ my $redundancy = 'null'; # string | The S3 redundancy level.
 my $secret_key = "secret_key_example"; # string | The secret key for your S3 account. Not required if `iam_role` is provided.
 my $server_side_encryption_kms_key_id = 'null'; # string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
 my $server_side_encryption = 'null'; # string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
 
 eval {
-    my $result = $api_instance->create_log_aws_s3(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption);
+    my $result = $api_instance->create_log_aws_s3(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption, file_max_bytes => $file_max_bytes);
     print Dumper($result);
 };
 if ($@) {
@@ -96,6 +97,7 @@ Name | Type | Description  | Notes
  **secret_key** | **string**| The secret key for your S3 account. Not required if `iam_role` is provided. | [optional] 
  **server_side_encryption_kms_key_id** | **string**| Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] [default to &#39;null&#39;]
  **server_side_encryption** | **string**| Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] [default to &#39;null&#39;]
+ **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
 
 ### Return type
 
@@ -276,7 +278,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_log_aws_s3**
-> LoggingS3Response update_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption)
+> LoggingS3Response update_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption, file_max_bytes => $file_max_bytes)
 
 Update an AWS S3 log endpoint
 
@@ -318,9 +320,10 @@ my $redundancy = 'null'; # string | The S3 redundancy level.
 my $secret_key = "secret_key_example"; # string | The secret key for your S3 account. Not required if `iam_role` is provided.
 my $server_side_encryption_kms_key_id = 'null'; # string | Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`.
 my $server_side_encryption = 'null'; # string | Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption.
+my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
 
 eval {
-    my $result = $api_instance->update_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption);
+    my $result = $api_instance->update_log_aws_s3(service_id => $service_id, version_id => $version_id, logging_s3_name => $logging_s3_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, access_key => $access_key, acl => $acl, bucket_name => $bucket_name, domain => $domain, iam_role => $iam_role, path => $path, public_key => $public_key, redundancy => $redundancy, secret_key => $secret_key, server_side_encryption_kms_key_id => $server_side_encryption_kms_key_id, server_side_encryption => $server_side_encryption, file_max_bytes => $file_max_bytes);
     print Dumper($result);
 };
 if ($@) {
@@ -356,6 +359,7 @@ Name | Type | Description  | Notes
  **secret_key** | **string**| The secret key for your S3 account. Not required if `iam_role` is provided. | [optional] 
  **server_side_encryption_kms_key_id** | **string**| Optional server-side KMS Key Id. Must be set if `server_side_encryption` is set to `aws:kms` or `AES256`. | [optional] [default to &#39;null&#39;]
  **server_side_encryption** | **string**| Set this to `AES256` or `aws:kms` to enable S3 Server Side Encryption. | [optional] [default to &#39;null&#39;]
+ **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
 
 ### Return type
 

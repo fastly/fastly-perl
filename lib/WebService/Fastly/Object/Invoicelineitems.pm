@@ -207,6 +207,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'product_line' => {
+        datatype => 'string',
+        base_name => 'ProductLine',
+        description => 'The broader classification of the product (e.g., &#x60;Network Services&#x60; or &#x60;Security&#x60;).',
+        format => '',
+        read_only => 'false',
+            },
     'region' => {
         datatype => 'string',
         base_name => 'Region',
@@ -231,6 +238,7 @@ __PACKAGE__->openapi_types( {
     'units' => 'double',
     'product_name' => 'string',
     'product_group' => 'string',
+    'product_line' => 'string',
     'region' => 'string',
     'usage_type' => 'string'
 } );
@@ -243,6 +251,7 @@ __PACKAGE__->attribute_map( {
     'units' => 'units',
     'product_name' => 'ProductName',
     'product_group' => 'ProductGroup',
+    'product_line' => 'ProductLine',
     'region' => 'Region',
     'usage_type' => 'UsageType'
 } );

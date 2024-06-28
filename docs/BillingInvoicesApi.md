@@ -84,8 +84,8 @@ my $api_instance = WebService::Fastly::BillingInvoicesApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $billing_start_date = 2023-01-01T00:00:00Z; # string | 
-my $billing_end_date = 2023-01-31T00:00:00Z; # string | 
+my $billing_start_date = 2023-01-01; # string | 
+my $billing_end_date = 2023-01-31; # string | 
 my $limit = '100'; # string | Number of results per page. The maximum is 200.
 my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 

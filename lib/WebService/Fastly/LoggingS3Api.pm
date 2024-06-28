@@ -74,6 +74,7 @@ sub new {
 # @param string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
 # @param string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
 # @param string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+# @param int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
 {
     my $params = {
     'service_id' => {
@@ -189,6 +190,11 @@ sub new {
     'server_side_encryption' => {
         data_type => 'string',
         description => 'Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption.',
+        required => '0',
+    },
+    'file_max_bytes' => {
+        data_type => 'int',
+        description => 'The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)',
         required => '0',
     },
     };
@@ -345,6 +351,11 @@ sub create_log_aws_s3 {
     # form params
     if ( exists $args{'server_side_encryption'} ) {
                 $form_params->{'server_side_encryption'} = $self->{api_client}->to_form_value($args{'server_side_encryption'});
+    }
+
+    # form params
+    if ( exists $args{'file_max_bytes'} ) {
+                $form_params->{'file_max_bytes'} = $self->{api_client}->to_form_value($args{'file_max_bytes'});
     }
 
     my $_body_data;
@@ -682,6 +693,7 @@ sub list_log_aws_s3 {
 # @param string $secret_key The secret key for your S3 account. Not required if &#x60;iam_role&#x60; is provided. (optional)
 # @param string $server_side_encryption_kms_key_id Optional server-side KMS Key Id. Must be set if &#x60;server_side_encryption&#x60; is set to &#x60;aws:kms&#x60; or &#x60;AES256&#x60;. (optional, default to 'null')
 # @param string $server_side_encryption Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption. (optional, default to 'null')
+# @param int $file_max_bytes The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) (optional)
 {
     my $params = {
     'service_id' => {
@@ -802,6 +814,11 @@ sub list_log_aws_s3 {
     'server_side_encryption' => {
         data_type => 'string',
         description => 'Set this to &#x60;AES256&#x60; or &#x60;aws:kms&#x60; to enable S3 Server Side Encryption.',
+        required => '0',
+    },
+    'file_max_bytes' => {
+        data_type => 'int',
+        description => 'The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)',
         required => '0',
     },
     };
@@ -970,6 +987,11 @@ sub update_log_aws_s3 {
     # form params
     if ( exists $args{'server_side_encryption'} ) {
                 $form_params->{'server_side_encryption'} = $self->{api_client}->to_form_value($args{'server_side_encryption'});
+    }
+
+    # form params
+    if ( exists $args{'file_max_bytes'} ) {
+                $form_params->{'file_max_bytes'} = $self->{api_client}->to_form_value($args{'file_max_bytes'});
     }
 
     my $_body_data;

@@ -345,6 +345,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'file_max_bytes' => {
+        datatype => 'int',
+        base_name => 'file_max_bytes',
+        description => 'The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -373,7 +380,8 @@ __PACKAGE__->openapi_types( {
     'redundancy' => 'string',
     'secret_key' => 'string',
     'server_side_encryption_kms_key_id' => 'string',
-    'server_side_encryption' => 'string'
+    'server_side_encryption' => 'string',
+    'file_max_bytes' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -402,7 +410,8 @@ __PACKAGE__->attribute_map( {
     'redundancy' => 'redundancy',
     'secret_key' => 'secret_key',
     'server_side_encryption_kms_key_id' => 'server_side_encryption_kms_key_id',
-    'server_side_encryption' => 'server_side_encryption'
+    'server_side_encryption' => 'server_side_encryption',
+    'file_max_bytes' => 'file_max_bytes'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
