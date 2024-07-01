@@ -45,7 +45,7 @@ my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format strin
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $port = 20000; # int | The port number.
 my $token = "token_example"; # string | Use token based authentication.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 my $region = "region_example"; # string | The region to which to stream logs.
 
 eval {
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **port** | **int**| The port number. | [optional] [default to 20000]
  **token** | **string**| Use token based authentication. | [optional] 
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
  **region** | **string**| The region to which to stream logs. | [optional] 
 
 ### Return type
@@ -280,7 +280,7 @@ my $format = '%h %l %u %t "%r" %&gt;s %b'; # string | A Fastly [log format strin
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $port = 20000; # int | The port number.
 my $token = "token_example"; # string | Use token based authentication.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 my $region = "region_example"; # string | The region to which to stream logs.
 
 eval {
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **port** | **int**| The port number. | [optional] [default to 20000]
  **token** | **string**| Use token based authentication. | [optional] 
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
  **region** | **string**| The region to which to stream logs. | [optional] 
 
 ### Return type

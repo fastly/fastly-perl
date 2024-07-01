@@ -30,7 +30,7 @@ use DateTime;
 
 use WebService::Fastly::Object::LoggingCommonResponse;
 use WebService::Fastly::Object::LoggingLogentriesAdditional;
-use WebService::Fastly::Object::LoggingUseTls;
+use WebService::Fastly::Object::LoggingUseTlsString;
 use WebService::Fastly::Object::ServiceIdAndVersionString;
 use WebService::Fastly::Object::Timestamps;
 
@@ -213,7 +213,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'use_tls' => {
-        datatype => 'LoggingUseTls',
+        datatype => 'LoggingUseTlsString',
         base_name => 'use_tls',
         description => '',
         format => '',
@@ -271,7 +271,7 @@ __PACKAGE__->openapi_types( {
     'format_version' => 'string',
     'port' => 'int',
     'token' => 'string',
-    'use_tls' => 'LoggingUseTls',
+    'use_tls' => 'LoggingUseTlsString',
     'region' => 'string',
     'created_at' => 'DateTime',
     'deleted_at' => 'DateTime',

@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LoggingUseTls;
+use WebService::Fastly::Object::LoggingUseTlsString;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -174,7 +174,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'use_tls' => {
-        datatype => 'LoggingUseTls',
+        datatype => 'LoggingUseTlsString',
         base_name => 'use_tls',
         description => '',
         format => '',
@@ -185,7 +185,7 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'url' => 'string',
     'token' => 'string',
-    'use_tls' => 'LoggingUseTls'
+    'use_tls' => 'LoggingUseTlsString'
 } );
 
 __PACKAGE__->attribute_map( {

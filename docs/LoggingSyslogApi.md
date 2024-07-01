@@ -53,7 +53,7 @@ my $message_type = new WebService::Fastly.LoggingMessageType(); # LoggingMessage
 my $hostname = "hostname_example"; # string | The hostname used for the syslog endpoint.
 my $ipv4 = "ipv4_example"; # string | The IPv4 address used for the syslog endpoint.
 my $token = 'null'; # string | Whether to prepend each message with a specific token.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 
 eval {
     my $result = $api_instance->create_log_syslog(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, address => $address, port => $port, message_type => $message_type, hostname => $hostname, ipv4 => $ipv4, token => $token, use_tls => $use_tls);
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
  **hostname** | **string**| The hostname used for the syslog endpoint. | [optional] 
  **ipv4** | **string**| The IPv4 address used for the syslog endpoint. | [optional] 
  **token** | **string**| Whether to prepend each message with a specific token. | [optional] [default to &#39;null&#39;]
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
 
 ### Return type
 
@@ -302,7 +302,7 @@ my $message_type = new WebService::Fastly.LoggingMessageType(); # LoggingMessage
 my $hostname = "hostname_example"; # string | The hostname used for the syslog endpoint.
 my $ipv4 = "ipv4_example"; # string | The IPv4 address used for the syslog endpoint.
 my $token = 'null'; # string | Whether to prepend each message with a specific token.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 
 eval {
     my $result = $api_instance->update_log_syslog(service_id => $service_id, version_id => $version_id, logging_syslog_name => $logging_syslog_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, address => $address, port => $port, message_type => $message_type, hostname => $hostname, ipv4 => $ipv4, token => $token, use_tls => $use_tls);
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
  **hostname** | **string**| The hostname used for the syslog endpoint. | [optional] 
  **ipv4** | **string**| The IPv4 address used for the syslog endpoint. | [optional] 
  **token** | **string**| Whether to prepend each message with a specific token. | [optional] [default to &#39;null&#39;]
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
 
 ### Return type
 

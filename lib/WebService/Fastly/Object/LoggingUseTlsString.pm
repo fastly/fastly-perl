@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LoggingSyslogAdditional;
+package WebService::Fastly::Object::LoggingUseTlsString;
 
 require 5.6.0;
 use strict;
@@ -28,13 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LoggingMessageType;
-use WebService::Fastly::Object::LoggingUseTlsString;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#Whether to use TLS.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -154,70 +152,25 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
-                                  class => 'LoggingSyslogAdditional',
+__PACKAGE__->class_documentation({description => 'Whether to use TLS.',
+                                  class => 'LoggingUseTlsString',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'message_type' => {
-        datatype => 'LoggingMessageType',
-        base_name => 'message_type',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'hostname' => {
-        datatype => 'string',
-        base_name => 'hostname',
-        description => 'The hostname used for the syslog endpoint.',
-        format => '',
-        read_only => 'false',
-            },
-    'ipv4' => {
-        datatype => 'string',
-        base_name => 'ipv4',
-        description => 'The IPv4 address used for the syslog endpoint.',
-        format => '',
-        read_only => 'false',
-            },
-    'token' => {
-        datatype => 'string',
-        base_name => 'token',
-        description => 'Whether to prepend each message with a specific token.',
-        format => '',
-        read_only => 'false',
-            },
-    'use_tls' => {
-        datatype => 'LoggingUseTlsString',
-        base_name => 'use_tls',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
-    'message_type' => 'LoggingMessageType',
-    'hostname' => 'string',
-    'ipv4' => 'string',
-    'token' => 'string',
-    'use_tls' => 'LoggingUseTlsString'
+    
 } );
 
 __PACKAGE__->attribute_map( {
-    'message_type' => 'message_type',
-    'hostname' => 'hostname',
-    'ipv4' => 'ipv4',
-    'token' => 'token',
-    'use_tls' => 'use_tls'
+    
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'ipv4' => 'true',
-    'token' => 'true',
 } );
 
 

@@ -71,7 +71,7 @@ sub new {
 # @param string $auth_method SASL authentication method. (optional)
 # @param string $user SASL user. (optional)
 # @param string $password SASL password. (optional)
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 {
     my $params = {
     'service_id' => {
@@ -175,7 +175,7 @@ sub new {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },

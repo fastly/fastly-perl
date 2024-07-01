@@ -1,8 +1,8 @@
-# WebService::Fastly::Object::LoggingUseTls
+# WebService::Fastly::Object::LoggingUseTlsString
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::LoggingUseTls;
+use WebService::Fastly::Object::LoggingUseTlsString;
 ```
 
 ## Properties

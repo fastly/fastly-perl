@@ -66,7 +66,7 @@ sub new {
 # @param int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
 # @param string $url The URL to post logs to. (optional)
 # @param string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 {
     my $params = {
     'service_id' => {
@@ -145,7 +145,7 @@ sub new {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },
@@ -597,7 +597,7 @@ sub list_log_splunk {
 # @param int $request_max_bytes The maximum number of bytes sent in one request. Defaults &#x60;0&#x60; for unbounded. (optional, default to 0)
 # @param string $url The URL to post logs to. (optional)
 # @param string $token A Splunk token for use in posting logs over HTTP to your collector. (optional)
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 {
     my $params = {
     'service_id' => {
@@ -681,7 +681,7 @@ sub list_log_splunk {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },

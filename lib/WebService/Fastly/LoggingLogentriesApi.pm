@@ -60,7 +60,7 @@ sub new {
 # @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param int $port The port number. (optional, default to 20000)
 # @param string $token Use token based authentication. (optional)
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 # @param string $region The region to which to stream logs. (optional)
 {
     my $params = {
@@ -110,7 +110,7 @@ sub new {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },
@@ -536,7 +536,7 @@ sub list_log_logentries {
 # @param int $format_version The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in &#x60;vcl_log&#x60; if &#x60;format_version&#x60; is set to &#x60;2&#x60; and in &#x60;vcl_deliver&#x60; if &#x60;format_version&#x60; is set to &#x60;1&#x60;.  (optional, default to 2)
 # @param int $port The port number. (optional, default to 20000)
 # @param string $token Use token based authentication. (optional)
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 # @param string $region The region to which to stream logs. (optional)
 {
     my $params = {
@@ -591,7 +591,7 @@ sub list_log_logentries {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },

@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **auth_method** | **string** | SASL authentication method. | [optional] 
 **user** | **string** | SASL user. | [optional] 
 **password** | **string** | SASL password. | [optional] 
-**use_tls** | [**LoggingUseTls**](LoggingUseTls.md) |  | [optional] 
+**use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

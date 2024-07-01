@@ -51,7 +51,7 @@ my $request_max_entries = 0; # int | The maximum number of logs sent in one requ
 my $request_max_bytes = 0; # int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 my $url = "url_example"; # string | The URL to post logs to.
 my $token = "token_example"; # string | A Splunk token for use in posting logs over HTTP to your collector.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 
 eval {
     my $result = $api_instance->create_log_splunk(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, token => $token, use_tls => $use_tls);
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
  **request_max_bytes** | **int**| The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **url** | **string**| The URL to post logs to. | [optional] 
  **token** | **string**| A Splunk token for use in posting logs over HTTP to your collector. | [optional] 
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
 
 ### Return type
 
@@ -296,7 +296,7 @@ my $request_max_entries = 0; # int | The maximum number of logs sent in one requ
 my $request_max_bytes = 0; # int | The maximum number of bytes sent in one request. Defaults `0` for unbounded.
 my $url = "url_example"; # string | The URL to post logs to.
 my $token = "token_example"; # string | A Splunk token for use in posting logs over HTTP to your collector.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 
 eval {
     my $result = $api_instance->update_log_splunk(service_id => $service_id, version_id => $version_id, logging_splunk_name => $logging_splunk_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, token => $token, use_tls => $use_tls);
@@ -327,7 +327,7 @@ Name | Type | Description  | Notes
  **request_max_bytes** | **int**| The maximum number of bytes sent in one request. Defaults `0` for unbounded. | [optional] [default to 0]
  **url** | **string**| The URL to post logs to. | [optional] 
  **token** | **string**| A Splunk token for use in posting logs over HTTP to your collector. | [optional] 
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
 
 ### Return type
 

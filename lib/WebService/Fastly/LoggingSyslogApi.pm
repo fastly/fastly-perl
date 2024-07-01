@@ -68,7 +68,7 @@ sub new {
 # @param string $hostname The hostname used for the syslog endpoint. (optional)
 # @param string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
 # @param string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 {
     my $params = {
     'service_id' => {
@@ -157,7 +157,7 @@ sub new {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },
@@ -621,7 +621,7 @@ sub list_log_syslog {
 # @param string $hostname The hostname used for the syslog endpoint. (optional)
 # @param string $ipv4 The IPv4 address used for the syslog endpoint. (optional)
 # @param string $token Whether to prepend each message with a specific token. (optional, default to 'null')
-# @param LoggingUseTls $use_tls  (optional)
+# @param LoggingUseTlsString $use_tls  (optional)
 {
     my $params = {
     'service_id' => {
@@ -715,7 +715,7 @@ sub list_log_syslog {
         required => '0',
     },
     'use_tls' => {
-        data_type => 'LoggingUseTls',
+        data_type => 'LoggingUseTlsString',
         description => '',
         required => '0',
     },

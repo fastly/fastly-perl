@@ -56,7 +56,7 @@ my $parse_log_keyvals = null; # boolean | Enables parsing of key=value tuples fr
 my $auth_method = "auth_method_example"; # string | SASL authentication method.
 my $user = "user_example"; # string | SASL user.
 my $password = "password_example"; # string | SASL password.
-my $use_tls = new WebService::Fastly.LoggingUseTls(); # LoggingUseTls | 
+my $use_tls = new WebService::Fastly.LoggingUseTlsString(); # LoggingUseTlsString | 
 
 eval {
     my $result = $api_instance->create_log_kafka(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, topic => $topic, brokers => $brokers, compression_codec => $compression_codec, required_acks => $required_acks, request_max_bytes => $request_max_bytes, parse_log_keyvals => $parse_log_keyvals, auth_method => $auth_method, user => $user, password => $password, use_tls => $use_tls);
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
  **auth_method** | **string**| SASL authentication method. | [optional] 
  **user** | **string**| SASL user. | [optional] 
  **password** | **string**| SASL password. | [optional] 
- **use_tls** | [**LoggingUseTls**](LoggingUseTls.md)|  | [optional] 
+ **use_tls** | [**LoggingUseTlsString**](LoggingUseTlsString.md)|  | [optional] 
 
 ### Return type
 
