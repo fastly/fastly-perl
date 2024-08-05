@@ -1894,6 +1894,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'origin_offload' => {
+        datatype => 'double',
+        base_name => 'origin_offload',
+        description => 'Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((&#x60;edge_resp_body_bytes&#x60; + &#x60;edge_resp_header_bytes&#x60;) - (&#x60;origin_fetch_resp_body_bytes&#x60; + &#x60;origin_fetch_resp_header_bytes&#x60;)) / (&#x60;edge_resp_body_bytes&#x60; + &#x60;edge_resp_header_bytes&#x60;).',
+        format => '',
+        read_only => 'false',
+            },
     'service_id' => {
         datatype => 'string',
         base_name => 'service_id',
@@ -2159,6 +2166,7 @@ __PACKAGE__->openapi_types( {
     'all_status_3xx' => 'int',
     'all_status_4xx' => 'int',
     'all_status_5xx' => 'int',
+    'origin_offload' => 'double',
     'service_id' => 'string',
     'start_time' => 'int'
 } );
@@ -2412,6 +2420,7 @@ __PACKAGE__->attribute_map( {
     'all_status_3xx' => 'all_status_3xx',
     'all_status_4xx' => 'all_status_4xx',
     'all_status_5xx' => 'all_status_5xx',
+    'origin_offload' => 'origin_offload',
     'service_id' => 'service_id',
     'start_time' => 'start_time'
 } );

@@ -237,6 +237,73 @@ sub get_tls_cert {
 }
 
 #
+# get_tls_cert_blob
+#
+# Get a TLS certificate blob (Limited Availability)
+#
+# @param string $tls_certificate_id Alphanumeric string identifying a TLS certificate. (required)
+{
+    my $params = {
+    'tls_certificate_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying a TLS certificate.',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_tls_cert_blob' } = {
+        summary => 'Get a TLS certificate blob (Limited Availability)',
+        params => $params,
+        returns => 'TlsCertificateBlobResponse',
+        };
+}
+# @return TlsCertificateBlobResponse
+#
+sub get_tls_cert_blob {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'tls_certificate_id' is set
+    unless (exists $args{'tls_certificate_id'}) {
+      croak("Missing the required parameter 'tls_certificate_id' when calling get_tls_cert_blob");
+    }
+
+    # parse inputs
+    my $_resource_path = '/tls/certificates/{tls_certificate_id}/blob';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'tls_certificate_id'}) {
+        my $_base_variable = "{" . "tls_certificate_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'tls_certificate_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('TlsCertificateBlobResponse', $response);
+    return $_response_object;
+}
+
+#
 # list_tls_certs
 #
 # List TLS certificates

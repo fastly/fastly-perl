@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**create_tls_cert**](TlsCertificatesApi.md#create_tls_cert) | **POST** /tls/certificates | Create a TLS certificate
 [**delete_tls_cert**](TlsCertificatesApi.md#delete_tls_cert) | **DELETE** /tls/certificates/{tls_certificate_id} | Delete a TLS certificate
 [**get_tls_cert**](TlsCertificatesApi.md#get_tls_cert) | **GET** /tls/certificates/{tls_certificate_id} | Get a TLS certificate
+[**get_tls_cert_blob**](TlsCertificatesApi.md#get_tls_cert_blob) | **GET** /tls/certificates/{tls_certificate_id}/blob | Get a TLS certificate blob (Limited Availability)
 [**list_tls_certs**](TlsCertificatesApi.md#list_tls_certs) | **GET** /tls/certificates | List TLS certificates
 [**update_tls_cert**](TlsCertificatesApi.md#update_tls_cert) | **PATCH** /tls/certificates/{tls_certificate_id} | Update a TLS certificate
 
@@ -166,6 +167,57 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.api+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_tls_cert_blob**
+> TlsCertificateBlobResponse get_tls_cert_blob(tls_certificate_id => $tls_certificate_id)
+
+Get a TLS certificate blob (Limited Availability)
+
+Retrieve a TLS certificate blob. This feature is part of a [limited availability](https://docs.fastly.com/products/fastly-product-lifecycle#limited-availability) release.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::TlsCertificatesApi;
+my $api_instance = WebService::Fastly::TlsCertificatesApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $tls_certificate_id = "tls_certificate_id_example"; # string | Alphanumeric string identifying a TLS certificate.
+
+eval {
+    my $result = $api_instance->get_tls_cert_blob(tls_certificate_id => $tls_certificate_id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling TlsCertificatesApi->get_tls_cert_blob: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tls_certificate_id** | **string**| Alphanumeric string identifying a TLS certificate. | 
+
+### Return type
+
+[**TlsCertificateBlobResponse**](TlsCertificateBlobResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

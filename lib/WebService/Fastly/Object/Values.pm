@@ -427,7 +427,7 @@ __PACKAGE__->method_documentation({
     'origin_offload' => {
         datatype => 'double',
         base_name => 'origin_offload',
-        description => 'Ratio of response bytes delivered from the edge compared to what is delivered from origin, between 0 and 1. (&#x60;edge_resp_body_bytes&#x60; + &#x60;edge_resp_header_bytes&#x60;) / (&#x60;origin_fetch_resp_body_bytes&#x60; + &#x60;origin_fetch_resp_header_bytes&#x60; + &#x60;edge_resp_body_bytes&#x60; + &#x60;edge_resp_header_bytes&#x60;).',
+        description => 'Origin Offload measures the ratio of bytes served to end users that were cached by Fastly, over the bytes served to end users, between 0 and 1. ((&#x60;edge_resp_body_bytes&#x60; + &#x60;edge_resp_header_bytes&#x60;) - (&#x60;origin_fetch_resp_body_bytes&#x60; + &#x60;origin_fetch_resp_header_bytes&#x60;)) / (&#x60;edge_resp_body_bytes&#x60; + &#x60;edge_resp_header_bytes&#x60;). Previously, Origin Offload used a different formula. [Learn more](https://www.fastly.com/documentation/reference/changes/2024/06/add-origin_offload-metric).',
         format => '',
         read_only => 'false',
             },

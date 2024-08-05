@@ -63,10 +63,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'get_invoice_by_invoice_id' } = {
         summary => 'Get invoice by ID.',
         params => $params,
-        returns => 'InvoiceResponse',
+        returns => 'EomInvoiceResponse',
         };
 }
-# @return InvoiceResponse
+# @return EomInvoiceResponse
 #
 sub get_invoice_by_invoice_id {
     my ($self, %args) = @_;
@@ -109,7 +109,56 @@ sub get_invoice_by_invoice_id {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InvoiceResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('EomInvoiceResponse', $response);
+    return $_response_object;
+}
+
+#
+# get_month_to_date_invoice
+#
+# Get month-to-date invoice.
+#
+{
+    my $params = {
+    };
+    __PACKAGE__->method_documentation->{ 'get_month_to_date_invoice' } = {
+        summary => 'Get month-to-date invoice.',
+        params => $params,
+        returns => 'MtdInvoiceResponse',
+        };
+}
+# @return MtdInvoiceResponse
+#
+sub get_month_to_date_invoice {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/billing/v3/invoices/month-to-date';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('MtdInvoiceResponse', $response);
     return $_response_object;
 }
 
@@ -148,10 +197,10 @@ sub get_invoice_by_invoice_id {
     __PACKAGE__->method_documentation->{ 'list_invoices' } = {
         summary => 'List of invoices.',
         params => $params,
-        returns => 'ListInvoicesResponse',
+        returns => 'ListEomInvoicesResponse',
         };
 }
-# @return ListInvoicesResponse
+# @return ListEomInvoicesResponse
 #
 sub list_invoices {
     my ($self, %args) = @_;
@@ -202,7 +251,7 @@ sub list_invoices {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ListInvoicesResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('ListEomInvoicesResponse', $response);
     return $_response_object;
 }
 

@@ -1,8 +1,8 @@
-# WebService::Fastly::Object::InvoiceResponse
+# WebService::Fastly::Object::EomInvoiceResponse
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::InvoiceResponse;
+use WebService::Fastly::Object::EomInvoiceResponse;
 ```
 
 ## Properties

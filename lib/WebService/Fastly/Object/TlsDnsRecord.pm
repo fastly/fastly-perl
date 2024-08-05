@@ -158,17 +158,10 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'id' => {
-        datatype => 'string',
-        base_name => 'id',
-        description => 'The IP address or hostname of the DNS record.',
-        format => '',
-        read_only => 'false',
-            },
     'region' => {
         datatype => 'string',
         base_name => 'region',
-        description => 'Specifies the regions that will be used to route traffic. Select DNS Records with a &#x60;global&#x60; region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a &#x60;us-eu&#x60; region to exclusively land traffic on North American and European POPs.',
+        description => 'Specifies the regions that will be used to route traffic. Select DNS records with a &#x60;global&#x60; region to route traffic to the most performant point of presence (POP) worldwide (global pricing will apply). Select DNS records with a &#x60;na/eu&#x60; region to exclusively land traffic on North American and European POPs.',
         format => '',
         read_only => 'false',
             },
@@ -182,13 +175,11 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'id' => 'string',
     'region' => 'string',
     'record_type' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'id' => 'id',
     'region' => 'region',
     'record_type' => 'record_type'
 } );

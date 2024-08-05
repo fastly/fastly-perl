@@ -195,35 +195,35 @@ __PACKAGE__->method_documentation({
             },
     'product_name' => {
         datatype => 'string',
-        base_name => 'ProductName',
+        base_name => 'product_name',
         description => 'The name of the product.',
         format => '',
         read_only => 'false',
             },
     'product_group' => {
         datatype => 'string',
-        base_name => 'ProductGroup',
+        base_name => 'product_group',
         description => 'The broader classification of the product (e.g., &#x60;Compute&#x60; or &#x60;Full-Site Delivery&#x60;).',
         format => '',
         read_only => 'false',
             },
     'product_line' => {
         datatype => 'string',
-        base_name => 'ProductLine',
+        base_name => 'product_line',
         description => 'The broader classification of the product (e.g., &#x60;Network Services&#x60; or &#x60;Security&#x60;).',
         format => '',
         read_only => 'false',
             },
     'region' => {
         datatype => 'string',
-        base_name => 'Region',
+        base_name => 'region',
         description => 'The geographical area applicable for regionally based products.',
         format => '',
         read_only => 'false',
             },
     'usage_type' => {
         datatype => 'string',
-        base_name => 'UsageType',
+        base_name => 'usage_type',
         description => 'The unit of measure (e.g., &#x60;requests&#x60; or &#x60;bandwidth&#x60;).',
         format => '',
         read_only => 'false',
@@ -249,11 +249,11 @@ __PACKAGE__->attribute_map( {
     'credit_coupon_code' => 'credit_coupon_code',
     'rate' => 'rate',
     'units' => 'units',
-    'product_name' => 'ProductName',
-    'product_group' => 'ProductGroup',
-    'product_line' => 'ProductLine',
-    'region' => 'Region',
-    'usage_type' => 'UsageType'
+    'product_name' => 'product_name',
+    'product_group' => 'product_group',
+    'product_line' => 'product_line',
+    'region' => 'region',
+    'usage_type' => 'usage_type'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
