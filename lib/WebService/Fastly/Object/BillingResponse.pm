@@ -29,6 +29,8 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Billing;
+use WebService::Fastly::Object::BillingInvoiceId;
+use WebService::Fastly::Object::BillingRegions;
 use WebService::Fastly::Object::BillingResponseItemItemsData;
 use WebService::Fastly::Object::BillingResponseLineItem;
 use WebService::Fastly::Object::BillingStatus;
@@ -177,13 +179,6 @@ __PACKAGE__->method_documentation({
         format => 'date-time',
         read_only => 'true',
             },
-    'invoice_id' => {
-        datatype => 'string',
-        base_name => 'invoice_id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
     'customer_id' => {
         datatype => 'string',
         base_name => 'customer_id',
@@ -213,11 +208,18 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'regions' => {
-        datatype => 'HASH[string,HASH[string,object]]',
+        datatype => 'HASH[string,BillingRegions]',
         base_name => 'regions',
         description => 'Breakdown of regional data for products that are region based.',
         format => '',
         read_only => 'false',
+            },
+    'invoice_id' => {
+        datatype => 'int',
+        base_name => 'invoice_id',
+        description => '',
+        format => '',
+        read_only => 'true',
             },
     'line_items' => {
         datatype => 'ARRAY[BillingResponseLineItem]',
@@ -231,24 +233,24 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'end_time' => 'DateTime',
     'start_time' => 'DateTime',
-    'invoice_id' => 'string',
     'customer_id' => 'string',
     'vendor_state' => 'string',
     'status' => 'BillingStatus',
     'total' => 'BillingTotal',
-    'regions' => 'HASH[string,HASH[string,object]]',
+    'regions' => 'HASH[string,BillingRegions]',
+    'invoice_id' => 'int',
     'line_items' => 'ARRAY[BillingResponseLineItem]'
 } );
 
 __PACKAGE__->attribute_map( {
     'end_time' => 'end_time',
     'start_time' => 'start_time',
-    'invoice_id' => 'invoice_id',
     'customer_id' => 'customer_id',
     'vendor_state' => 'vendor_state',
     'status' => 'status',
     'total' => 'total',
     'regions' => 'regions',
+    'invoice_id' => 'invoice_id',
     'line_items' => 'line_items'
 } );
 

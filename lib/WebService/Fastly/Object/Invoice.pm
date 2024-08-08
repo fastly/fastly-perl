@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
     'invoice_id' => {
         datatype => 'string',
         base_name => 'invoice_id',
-        description => 'Alphanumeric string identifying the invoice.',
+        description => 'Numeric string identifying the invoice.',
         format => '',
         read_only => 'false',
             },

@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BillingEstimateResponse;
+package WebService::Fastly::Object::BillingEstimateInvoiceId;
 
 require 5.6.0;
 use strict;
@@ -28,13 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Billing;
-use WebService::Fastly::Object::BillingEstimateInvoiceId;
-use WebService::Fastly::Object::BillingEstimateLines;
-use WebService::Fastly::Object::BillingEstimateLinesLineItems;
-use WebService::Fastly::Object::BillingRegions;
-use WebService::Fastly::Object::BillingStatus;
-use WebService::Fastly::Object::BillingTotal;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -160,60 +153,11 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BillingEstimateResponse',
+                                  class => 'BillingEstimateInvoiceId',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'end_time' => {
-        datatype => 'DateTime',
-        base_name => 'end_time',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'start_time' => {
-        datatype => 'DateTime',
-        base_name => 'start_time',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'customer_id' => {
-        datatype => 'string',
-        base_name => 'customer_id',
-        description => '',
-        format => '',
-        read_only => 'true',
-            },
-    'vendor_state' => {
-        datatype => 'string',
-        base_name => 'vendor_state',
-        description => 'The current state of our third-party billing vendor. One of &#x60;up&#x60; or &#x60;down&#x60;.',
-        format => '',
-        read_only => 'true',
-            },
-    'status' => {
-        datatype => 'BillingStatus',
-        base_name => 'status',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'total' => {
-        datatype => 'BillingTotal',
-        base_name => 'total',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'regions' => {
-        datatype => 'HASH[string,BillingRegions]',
-        base_name => 'regions',
-        description => 'Breakdown of regional data for products that are region based.',
-        format => '',
-        read_only => 'false',
-            },
     'invoice_id' => {
         datatype => 'string',
         base_name => 'invoice_id',
@@ -221,44 +165,19 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'true',
             },
-    'line_items' => {
-        datatype => 'ARRAY[BillingEstimateLinesLineItems]',
-        base_name => 'line_items',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
-    'end_time' => 'DateTime',
-    'start_time' => 'DateTime',
-    'customer_id' => 'string',
-    'vendor_state' => 'string',
-    'status' => 'BillingStatus',
-    'total' => 'BillingTotal',
-    'regions' => 'HASH[string,BillingRegions]',
-    'invoice_id' => 'string',
-    'line_items' => 'ARRAY[BillingEstimateLinesLineItems]'
+    'invoice_id' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'end_time' => 'end_time',
-    'start_time' => 'start_time',
-    'customer_id' => 'customer_id',
-    'vendor_state' => 'vendor_state',
-    'status' => 'status',
-    'total' => 'total',
-    'regions' => 'regions',
-    'invoice_id' => 'invoice_id',
-    'line_items' => 'line_items'
+    'invoice_id' => 'invoice_id'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'end_time' => 'true',
-    'start_time' => 'true',
 } );
 
 

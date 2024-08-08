@@ -88,7 +88,7 @@ my $api_instance = WebService::Fastly::BillingApi->new(
 );
 
 my $customer_id = "customer_id_example"; # string | Alphanumeric string identifying the customer.
-my $invoice_id = "invoice_id_example"; # string | Alphanumeric string identifying the invoice.
+my $invoice_id = 4183280; # int | 
 
 eval {
     my $result = $api_instance->get_invoice_by_id(customer_id => $customer_id, invoice_id => $invoice_id);
@@ -104,7 +104,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **customer_id** | **string**| Alphanumeric string identifying the customer. | 
- **invoice_id** | **string**| Alphanumeric string identifying the invoice. | 
+ **invoice_id** | **int**|  | 
 
 ### Return type
 

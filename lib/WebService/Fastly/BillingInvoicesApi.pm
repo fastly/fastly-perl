@@ -51,12 +51,12 @@ sub new {
 #
 # Get invoice by ID.
 #
-# @param string $invoice_id Alphanumeric string identifying the invoice. (required)
+# @param int $invoice_id  (required)
 {
     my $params = {
     'invoice_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the invoice.',
+        data_type => 'int',
+        description => '',
         required => '1',
     },
     };

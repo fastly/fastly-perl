@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::LineItemData;
-use WebService::Fastly::Object::LineItemDataReadOnlyInvoiceId;
 use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -190,11 +189,11 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'aria_invoice_id' => {
-        datatype => 'LineItemDataReadOnlyInvoiceId',
+        datatype => 'string',
         base_name => 'aria_invoice_id',
-        description => '',
+        description => 'An alphanumeric string identifying the invoice.',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
     'client_service_id' => {
         datatype => 'string',
@@ -308,7 +307,7 @@ __PACKAGE__->openapi_types( {
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'amount' => 'double',
-    'aria_invoice_id' => 'LineItemDataReadOnlyInvoiceId',
+    'aria_invoice_id' => 'string',
     'client_service_id' => 'string',
     'credit_coupon_code' => 'string',
     'description' => 'string',

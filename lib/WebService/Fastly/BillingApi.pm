@@ -137,7 +137,7 @@ sub get_invoice {
 # Get an invoice
 #
 # @param string $customer_id Alphanumeric string identifying the customer. (required)
-# @param string $invoice_id Alphanumeric string identifying the invoice. (required)
+# @param int $invoice_id  (required)
 {
     my $params = {
     'customer_id' => {
@@ -146,8 +146,8 @@ sub get_invoice {
         required => '1',
     },
     'invoice_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the invoice.',
+        data_type => 'int',
+        description => '',
         required => '1',
     },
     };
