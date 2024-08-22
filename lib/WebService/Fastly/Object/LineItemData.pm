@@ -323,6 +323,7 @@ __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
     'credit_coupon_code' => 'true',
+    'rate_per_unit' => 'true',
     'rate_schedule_no' => 'true',
     'rate_schedule_tier_no' => 'true',
     'usage_type_cd' => 'true',
