@@ -167,7 +167,7 @@ sub call_api {
 #  @return string the serialized object
 sub to_path_value {
     my ($self, $value, $allow_reserved) = @_;
-    $str = $self->to_string($value);
+    my $str = $self->to_string($value);
     if (!$allow_reserved) {
         $str = uri_escape($str);
     }

@@ -132,6 +132,109 @@ sub activate_service_version {
 }
 
 #
+# activate_service_version_environment
+#
+# Activate a service version on the specified environment
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+# @param int $version_id Integer identifying a service version. (required)
+# @param EnvironmentName $environment_name  (required)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    'version_id' => {
+        data_type => 'int',
+        description => 'Integer identifying a service version.',
+        required => '1',
+    },
+    'environment_name' => {
+        data_type => 'EnvironmentName',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'activate_service_version_environment' } = {
+        summary => 'Activate a service version on the specified environment',
+        params => $params,
+        returns => 'VersionResponse',
+        };
+}
+# @return VersionResponse
+#
+sub activate_service_version_environment {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling activate_service_version_environment");
+    }
+
+    # verify the required parameter 'version_id' is set
+    unless (exists $args{'version_id'}) {
+      croak("Missing the required parameter 'version_id' when calling activate_service_version_environment");
+    }
+
+    # verify the required parameter 'environment_name' is set
+    unless (exists $args{'environment_name'}) {
+      croak("Missing the required parameter 'environment_name' when calling activate_service_version_environment");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service/{service_id}/version/{version_id}/activate/{environment_name}';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'version_id'}) {
+        my $_base_variable = "{" . "version_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'version_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'environment_name'}) {
+        my $_base_variable = "{" . "environment_name" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'environment_name'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('VersionResponse', $response);
+    return $_response_object;
+}
+
+#
 # clone_service_version
 #
 # Clone a service version
@@ -350,6 +453,109 @@ sub deactivate_service_version {
     if ( exists $args{'version_id'}) {
         my $_base_variable = "{" . "version_id" . "}";
         my $_base_value = $self->{api_client}->to_path_value($args{'version_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('VersionResponse', $response);
+    return $_response_object;
+}
+
+#
+# deactivate_service_version_environment
+#
+# Deactivate a service version on an environment
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+# @param int $version_id Integer identifying a service version. (required)
+# @param EnvironmentName $environment_name  (required)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    'version_id' => {
+        data_type => 'int',
+        description => 'Integer identifying a service version.',
+        required => '1',
+    },
+    'environment_name' => {
+        data_type => 'EnvironmentName',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'deactivate_service_version_environment' } = {
+        summary => 'Deactivate a service version on an environment',
+        params => $params,
+        returns => 'VersionResponse',
+        };
+}
+# @return VersionResponse
+#
+sub deactivate_service_version_environment {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling deactivate_service_version_environment");
+    }
+
+    # verify the required parameter 'version_id' is set
+    unless (exists $args{'version_id'}) {
+      croak("Missing the required parameter 'version_id' when calling deactivate_service_version_environment");
+    }
+
+    # verify the required parameter 'environment_name' is set
+    unless (exists $args{'environment_name'}) {
+      croak("Missing the required parameter 'environment_name' when calling deactivate_service_version_environment");
+    }
+
+    # parse inputs
+    my $_resource_path = '/service/{service_id}/version/{version_id}/deactivate/{environment_name}';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'version_id'}) {
+        my $_base_variable = "{" . "version_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'version_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'environment_name'}) {
+        my $_base_variable = "{" . "environment_name" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'environment_name'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 

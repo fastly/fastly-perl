@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional] [readonly] 
 **version** | **int** | Current [version](https://www.fastly.com/documentation/reference/api/services/version/) of the service. | [optional] 
 **versions** | [**ARRAY[SchemasVersionResponse]**](SchemasVersionResponse.md) | A list of [versions](https://www.fastly.com/documentation/reference/api/services/version/) associated with the service. | [optional] 
+**environments** | [**ARRAY[Environment]**](Environment.md) | A list of environments where the service has been deployed. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

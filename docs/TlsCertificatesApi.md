@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tls_certs**
-> TlsCertificatesResponse list_tls_certs(filter[in_use] => $filter[in_use], filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> TlsCertificatesResponse list_tls_certs(filter[in_use] => $filter[in_use], filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, sort => $sort, page[number] => $page[number], page[size] => $page[size])
 
 List TLS certificates
 
@@ -244,12 +244,12 @@ my $filter[in_use] = "filter[in_use]_example"; # string | Optional. Limit the re
 my $filter[not_after] = "filter[not_after]_example"; # string | Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]=2020-05-05). 
 my $filter[tls_domains/id] = "filter[tls_domains/id]_example"; # string | Limit the returned certificates to those that include the specific domain.
 my $include = "include_example"; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`. 
+my $sort = '-created_at'; # string | The order in which to list the results.
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
-my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_tls_certs(filter[in_use] => $filter[in_use], filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_tls_certs(filter[in_use] => $filter[in_use], filter[not_after] => $filter[not_after], filter[tls_domains/id] => $filter[tls_domains/id], include => $include, sort => $sort, page[number] => $page[number], page[size] => $page[size]);
     print Dumper($result);
 };
 if ($@) {
@@ -265,9 +265,9 @@ Name | Type | Description  | Notes
  **filter[not_after]** | **string**| Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  | [optional] 
  **filter[tls_domains/id]** | **string**| Limit the returned certificates to those that include the specific domain. | [optional] 
  **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`.  | [optional] 
+ **sort** | **string**| The order in which to list the results. | [optional] [default to &#39;-created_at&#39;]
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
- **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]
 
 ### Return type
 

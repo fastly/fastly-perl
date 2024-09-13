@@ -33,6 +33,7 @@ use WebService::Fastly::Object::CacheSettingResponse;
 use WebService::Fastly::Object::ConditionResponse;
 use WebService::Fastly::Object::Director;
 use WebService::Fastly::Object::DomainResponse;
+use WebService::Fastly::Object::Environment;
 use WebService::Fastly::Object::GzipResponse;
 use WebService::Fastly::Object::HeaderResponse;
 use WebService::Fastly::Object::HealthcheckResponse;
@@ -250,6 +251,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'true',
             },
+    'environments' => {
+        datatype => 'ARRAY[Environment]',
+        base_name => 'environments',
+        description => 'A list of environments where the service has been deployed.',
+        format => '',
+        read_only => 'false',
+            },
     'backends' => {
         datatype => 'ARRAY[BackendResponse]',
         base_name => 'backends',
@@ -362,6 +370,7 @@ __PACKAGE__->openapi_types( {
     'deleted_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'service_id' => 'string',
+    'environments' => 'ARRAY[Environment]',
     'backends' => 'ARRAY[BackendResponse]',
     'cache_settings' => 'ARRAY[CacheSettingResponse]',
     'conditions' => 'ARRAY[ConditionResponse]',
@@ -390,6 +399,7 @@ __PACKAGE__->attribute_map( {
     'deleted_at' => 'deleted_at',
     'updated_at' => 'updated_at',
     'service_id' => 'service_id',
+    'environments' => 'environments',
     'backends' => 'backends',
     'cache_settings' => 'cache_settings',
     'conditions' => 'conditions',

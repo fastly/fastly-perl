@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::Environment;
 use WebService::Fastly::Object::SchemasVersionResponse;
 use WebService::Fastly::Object::ServiceDetailAllOf;
 use WebService::Fastly::Object::ServiceResponse;
@@ -240,6 +241,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'environments' => {
+        datatype => 'ARRAY[Environment]',
+        base_name => 'environments',
+        description => 'A list of environments where the service has been deployed.',
+        format => '',
+        read_only => 'false',
+            },
     'active_version' => {
         datatype => 'ServiceVersionDetailOrNull',
         base_name => 'active_version',
@@ -268,6 +276,7 @@ __PACKAGE__->openapi_types( {
     'publish_key' => 'string',
     'paused' => 'boolean',
     'versions' => 'ARRAY[SchemasVersionResponse]',
+    'environments' => 'ARRAY[Environment]',
     'active_version' => 'ServiceVersionDetailOrNull',
     'version' => 'ServiceVersionDetail'
 } );
@@ -284,6 +293,7 @@ __PACKAGE__->attribute_map( {
     'publish_key' => 'publish_key',
     'paused' => 'paused',
     'versions' => 'versions',
+    'environments' => 'environments',
     'active_version' => 'active_version',
     'version' => 'version'
 } );

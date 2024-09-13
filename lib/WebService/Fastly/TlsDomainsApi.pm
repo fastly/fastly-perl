@@ -55,9 +55,9 @@ sub new {
 # @param string $filter[tls_certificates/id] Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. (optional)
 # @param string $filter[tls_subscriptions/id] Optional. Limit the returned domains to those for a given TLS subscription. (optional)
 # @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;.  (optional)
+# @param string $sort The order in which to list the results. (optional, default to 'id')
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
-# @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
 {
     my $params = {
     'filter[in_use]' => {
@@ -80,6 +80,11 @@ sub new {
         description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;, &#x60;tls_certificates&#x60;, &#x60;tls_subscriptions&#x60;, &#x60;tls_subscriptions.tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, and &#x60;tls_authorizations.self_managed_http_challenge&#x60;. ',
         required => '0',
     },
+    'sort' => {
+        data_type => 'string',
+        description => 'The order in which to list the results.',
+        required => '0',
+    },
     'page[number]' => {
         data_type => 'int',
         description => 'Current page.',
@@ -88,11 +93,6 @@ sub new {
     'page[size]' => {
         data_type => 'int',
         description => 'Number of records per page.',
-        required => '0',
-    },
-    'sort' => {
-        data_type => 'string',
-        description => 'The order in which to list the results by creation date.',
         required => '0',
     },
     };
@@ -143,6 +143,11 @@ sub list_tls_domains {
     }
 
     # query params
+    if ( exists $args{'sort'}) {
+        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
+    }
+
+    # query params
     if ( exists $args{'page[number]'}) {
         $query_params->{'page[number]'} = $self->{api_client}->to_query_value($args{'page[number]'});
     }
@@ -150,11 +155,6 @@ sub list_tls_domains {
     # query params
     if ( exists $args{'page[size]'}) {
         $query_params->{'page[size]'} = $self->{api_client}->to_query_value($args{'page[size]'});
-    }
-
-    # query params
-    if ( exists $args{'sort'}) {
-        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
     }
 
     my $_body_data;

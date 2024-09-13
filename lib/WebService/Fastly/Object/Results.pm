@@ -1901,6 +1901,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'request_denied_get_head_body' => {
+        datatype => 'int',
+        base_name => 'request_denied_get_head_body',
+        description => 'Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body.',
+        format => '',
+        read_only => 'false',
+            },
     'service_id' => {
         datatype => 'string',
         base_name => 'service_id',
@@ -2167,6 +2174,7 @@ __PACKAGE__->openapi_types( {
     'all_status_4xx' => 'int',
     'all_status_5xx' => 'int',
     'origin_offload' => 'double',
+    'request_denied_get_head_body' => 'int',
     'service_id' => 'string',
     'start_time' => 'int'
 } );
@@ -2421,6 +2429,7 @@ __PACKAGE__->attribute_map( {
     'all_status_4xx' => 'all_status_4xx',
     'all_status_5xx' => 'all_status_5xx',
     'origin_offload' => 'origin_offload',
+    'request_denied_get_head_body' => 'request_denied_get_head_body',
     'service_id' => 'service_id',
     'start_time' => 'start_time'
 } );

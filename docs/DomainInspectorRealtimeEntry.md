@@ -8,7 +8,7 @@ use WebService::Fastly::Object::DomainInspectorRealtimeEntry;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**recorded** | [**RecordedTimestamp**](RecordedTimestamp.md) |  | [optional] 
+**recorded** | **int** | The Unix timestamp at which this record&#39;s data was generated. | [optional] 
 **aggregated** | [**HASH[string,DomainInspectorMeasurements]**](DomainInspectorMeasurements.md) | Groups [measurements](#measurements-data-model) by backend name and then by IP address. | [optional] 
 **datacenter** | **HASH[string,HASH[string,DomainInspectorMeasurements]]** | Groups [measurements](#measurements-data-model) by POP, then backend name, and then IP address. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details about POP identifiers. | [optional] 
 

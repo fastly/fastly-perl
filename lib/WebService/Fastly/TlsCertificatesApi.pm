@@ -312,9 +312,9 @@ sub get_tls_cert_blob {
 # @param string $filter[not_after] Limit the returned certificates to those that expire prior to the specified date in UTC. Accepts parameters: lte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  (optional)
 # @param string $filter[tls_domains/id] Limit the returned certificates to those that include the specific domain. (optional)
 # @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;.  (optional)
+# @param string $sort The order in which to list the results. (optional, default to '-created_at')
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
-# @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
 {
     my $params = {
     'filter[in_use]' => {
@@ -337,6 +337,11 @@ sub get_tls_cert_blob {
         description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_activations&#x60;. ',
         required => '0',
     },
+    'sort' => {
+        data_type => 'string',
+        description => 'The order in which to list the results.',
+        required => '0',
+    },
     'page[number]' => {
         data_type => 'int',
         description => 'Current page.',
@@ -345,11 +350,6 @@ sub get_tls_cert_blob {
     'page[size]' => {
         data_type => 'int',
         description => 'Number of records per page.',
-        required => '0',
-    },
-    'sort' => {
-        data_type => 'string',
-        description => 'The order in which to list the results by creation date.',
         required => '0',
     },
     };
@@ -400,6 +400,11 @@ sub list_tls_certs {
     }
 
     # query params
+    if ( exists $args{'sort'}) {
+        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
+    }
+
+    # query params
     if ( exists $args{'page[number]'}) {
         $query_params->{'page[number]'} = $self->{api_client}->to_query_value($args{'page[number]'});
     }
@@ -407,11 +412,6 @@ sub list_tls_certs {
     # query params
     if ( exists $args{'page[size]'}) {
         $query_params->{'page[size]'} = $self->{api_client}->to_query_value($args{'page[size]'});
-    }
-
-    # query params
-    if ( exists $args{'sort'}) {
-        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
     }
 
     my $_body_data;

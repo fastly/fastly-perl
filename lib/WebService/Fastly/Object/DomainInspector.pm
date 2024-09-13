@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::DomainInspectorRealtimeEntry;
-use WebService::Fastly::Object::SubsequentRequestTimestamp;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -161,9 +160,9 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'timestamp' => {
-        datatype => 'SubsequentRequestTimestamp',
+        datatype => 'int',
         base_name => 'Timestamp',
-        description => '',
+        description => 'Value to use for subsequent requests.',
         format => '',
         read_only => 'false',
             },
@@ -184,7 +183,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'timestamp' => 'SubsequentRequestTimestamp',
+    'timestamp' => 'int',
     'aggregate_delay' => 'int',
     'data' => 'ARRAY[DomainInspectorRealtimeEntry]'
 } );

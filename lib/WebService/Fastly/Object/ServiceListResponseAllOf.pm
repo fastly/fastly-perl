@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::Environment;
 use WebService::Fastly::Object::SchemasVersionResponse;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -180,18 +181,27 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'environments' => {
+        datatype => 'ARRAY[Environment]',
+        base_name => 'environments',
+        description => 'A list of environments where the service has been deployed.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'id' => 'string',
     'version' => 'int',
-    'versions' => 'ARRAY[SchemasVersionResponse]'
+    'versions' => 'ARRAY[SchemasVersionResponse]',
+    'environments' => 'ARRAY[Environment]'
 } );
 
 __PACKAGE__->attribute_map( {
     'id' => 'id',
     'version' => 'version',
-    'versions' => 'versions'
+    'versions' => 'versions',
+    'environments' => 'environments'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

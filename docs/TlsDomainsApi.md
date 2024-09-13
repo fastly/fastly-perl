@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **list_tls_domains**
-> TlsDomainsResponse list_tls_domains(filter[in_use] => $filter[in_use], filter[tls_certificates/id] => $filter[tls_certificates/id], filter[tls_subscriptions/id] => $filter[tls_subscriptions/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> TlsDomainsResponse list_tls_domains(filter[in_use] => $filter[in_use], filter[tls_certificates/id] => $filter[tls_certificates/id], filter[tls_subscriptions/id] => $filter[tls_subscriptions/id], include => $include, sort => $sort, page[number] => $page[number], page[size] => $page[size])
 
 List TLS domains
 
@@ -36,12 +36,12 @@ my $filter[in_use] = "filter[in_use]_example"; # string | Optional. Limit the re
 my $filter[tls_certificates/id] = "filter[tls_certificates/id]_example"; # string | Optional. Limit the returned domains to those listed in the given TLS certificate's SAN list.
 my $filter[tls_subscriptions/id] = "filter[tls_subscriptions/id]_example"; # string | Optional. Limit the returned domains to those for a given TLS subscription.
 my $include = "include_example"; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`, `tls_certificates`, `tls_subscriptions`, `tls_subscriptions.tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`. 
+my $sort = 'id'; # string | The order in which to list the results.
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
-my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_tls_domains(filter[in_use] => $filter[in_use], filter[tls_certificates/id] => $filter[tls_certificates/id], filter[tls_subscriptions/id] => $filter[tls_subscriptions/id], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_tls_domains(filter[in_use] => $filter[in_use], filter[tls_certificates/id] => $filter[tls_certificates/id], filter[tls_subscriptions/id] => $filter[tls_subscriptions/id], include => $include, sort => $sort, page[number] => $page[number], page[size] => $page[size]);
     print Dumper($result);
 };
 if ($@) {
@@ -57,9 +57,9 @@ Name | Type | Description  | Notes
  **filter[tls_certificates/id]** | **string**| Optional. Limit the returned domains to those listed in the given TLS certificate&#39;s SAN list. | [optional] 
  **filter[tls_subscriptions/id]** | **string**| Optional. Limit the returned domains to those for a given TLS subscription. | [optional] 
  **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_activations`, `tls_certificates`, `tls_subscriptions`, `tls_subscriptions.tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, and `tls_authorizations.self_managed_http_challenge`.  | [optional] 
+ **sort** | **string**| The order in which to list the results. | [optional] [default to &#39;id&#39;]
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
- **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]
 
 ### Return type
 

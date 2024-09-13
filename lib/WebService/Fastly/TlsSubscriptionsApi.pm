@@ -462,10 +462,10 @@ sub get_tls_sub {
 # @param string $filter[tls_domains/id] Limit the returned subscriptions to those that include the specific domain. (optional)
 # @param boolean $filter[has_active_order] Limit the returned subscriptions to those that have currently active orders. Permitted values: &#x60;true&#x60;.  (optional)
 # @param string $filter[certificate_authority] Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;.  (optional)
+# @param string $sort The order in which to list the results. (optional, default to '-created_at')
 # @param string $include Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;.  (optional)
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
-# @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
 {
     my $params = {
     'filter[state]' => {
@@ -488,6 +488,11 @@ sub get_tls_sub {
         description => 'Limit the returned subscriptions to a specific certification authority. Values may include &#x60;certainly&#x60;, &#x60;lets-encrypt&#x60;, or &#x60;globalsign&#x60;. ',
         required => '0',
     },
+    'sort' => {
+        data_type => 'string',
+        description => 'The order in which to list the results.',
+        required => '0',
+    },
     'include' => {
         data_type => 'string',
         description => 'Include related objects. Optional, comma-separated values. Permitted values: &#x60;tls_authorizations&#x60;, &#x60;tls_authorizations.globalsign_email_challenge&#x60;, &#x60;tls_authorizations.self_managed_http_challenge&#x60;, and &#x60;tls_certificates&#x60;. ',
@@ -501,11 +506,6 @@ sub get_tls_sub {
     'page[size]' => {
         data_type => 'int',
         description => 'Number of records per page.',
-        required => '0',
-    },
-    'sort' => {
-        data_type => 'string',
-        description => 'The order in which to list the results by creation date.',
         required => '0',
     },
     };
@@ -556,6 +556,11 @@ sub list_tls_subs {
     }
 
     # query params
+    if ( exists $args{'sort'}) {
+        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
+    }
+
+    # query params
     if ( exists $args{'include'}) {
         $query_params->{'include'} = $self->{api_client}->to_query_value($args{'include'});
     }
@@ -568,11 +573,6 @@ sub list_tls_subs {
     # query params
     if ( exists $args{'page[size]'}) {
         $query_params->{'page[size]'} = $self->{api_client}->to_query_value($args{'page[size]'});
-    }
-
-    # query params
-    if ( exists $args{'sort'}) {
-        $query_params->{'sort'} = $self->{api_client}->to_query_value($args{'sort'});
     }
 
     my $_body_data;

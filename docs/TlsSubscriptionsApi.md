@@ -285,7 +285,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tls_subs**
-> TlsSubscriptionsResponse list_tls_subs(filter[state] => $filter[state], filter[tls_domains/id] => $filter[tls_domains/id], filter[has_active_order] => $filter[has_active_order], filter[certificate_authority] => $filter[certificate_authority], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> TlsSubscriptionsResponse list_tls_subs(filter[state] => $filter[state], filter[tls_domains/id] => $filter[tls_domains/id], filter[has_active_order] => $filter[has_active_order], filter[certificate_authority] => $filter[certificate_authority], sort => $sort, include => $include, page[number] => $page[number], page[size] => $page[size])
 
 List TLS subscriptions
 
@@ -307,13 +307,13 @@ my $filter[state] = "filter[state]_example"; # string | Limit the returned subsc
 my $filter[tls_domains/id] = "filter[tls_domains/id]_example"; # string | Limit the returned subscriptions to those that include the specific domain.
 my $filter[has_active_order] = null; # boolean | Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`. 
 my $filter[certificate_authority] = "filter[certificate_authority]_example"; # string | Limit the returned subscriptions to a specific certification authority. Values may include `certainly`, `lets-encrypt`, or `globalsign`. 
+my $sort = '-created_at'; # string | The order in which to list the results.
 my $include = tls_authorizations; # string | Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`. 
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
-my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_tls_subs(filter[state] => $filter[state], filter[tls_domains/id] => $filter[tls_domains/id], filter[has_active_order] => $filter[has_active_order], filter[certificate_authority] => $filter[certificate_authority], include => $include, page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_tls_subs(filter[state] => $filter[state], filter[tls_domains/id] => $filter[tls_domains/id], filter[has_active_order] => $filter[has_active_order], filter[certificate_authority] => $filter[certificate_authority], sort => $sort, include => $include, page[number] => $page[number], page[size] => $page[size]);
     print Dumper($result);
 };
 if ($@) {
@@ -329,10 +329,10 @@ Name | Type | Description  | Notes
  **filter[tls_domains/id]** | **string**| Limit the returned subscriptions to those that include the specific domain. | [optional] 
  **filter[has_active_order]** | **boolean**| Limit the returned subscriptions to those that have currently active orders. Permitted values: `true`.  | [optional] 
  **filter[certificate_authority]** | **string**| Limit the returned subscriptions to a specific certification authority. Values may include `certainly`, `lets-encrypt`, or `globalsign`.  | [optional] 
+ **sort** | **string**| The order in which to list the results. | [optional] [default to &#39;-created_at&#39;]
  **include** | **string**| Include related objects. Optional, comma-separated values. Permitted values: `tls_authorizations`, `tls_authorizations.globalsign_email_challenge`, `tls_authorizations.self_managed_http_challenge`, and `tls_certificates`.  | [optional] 
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
- **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]
 
 ### Return type
 

@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::OriginInspectorMeasurements;
-use WebService::Fastly::Object::OriginInspectorRealtimeEntryRecorded;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -161,9 +160,9 @@ __PACKAGE__->class_documentation({description => 'Each reporting period is repre
 
 __PACKAGE__->method_documentation({
     'recorded' => {
-        datatype => 'OriginInspectorRealtimeEntryRecorded',
+        datatype => 'int',
         base_name => 'recorded',
-        description => '',
+        description => 'The Unix timestamp at which this record&#39;s data was generated.',
         format => '',
         read_only => 'false',
             },
@@ -184,7 +183,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'recorded' => 'OriginInspectorRealtimeEntryRecorded',
+    'recorded' => 'int',
     'aggregated' => 'HASH[string,OriginInspectorMeasurements]',
     'datacenter' => 'HASH[string,HASH[string,OriginInspectorMeasurements]]'
 } );

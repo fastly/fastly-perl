@@ -322,10 +322,20 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'amount' => 'true',
+    'aria_invoice_id' => 'true',
+    'client_service_id' => 'true',
     'credit_coupon_code' => 'true',
+    'description' => 'true',
+    'line_number' => 'true',
+    'plan_name' => 'true',
+    'plan_no' => 'true',
     'rate_per_unit' => 'true',
     'rate_schedule_no' => 'true',
     'rate_schedule_tier_no' => 'true',
+    'service_name' => 'true',
+    'service_no' => 'true',
+    'units' => 'true',
     'usage_type_cd' => 'true',
     'usage_type_no' => 'true',
 } );

@@ -221,7 +221,7 @@ sub delete_contact {
     }
 
     # parse inputs
-    my $_resource_path = '/customer/{customer_id}/contact/{contact_id}';
+    my $_resource_path = '/customer/{customer_id}/contacts/{contact_id}';
 
     my $_method = 'DELETE';
     my $query_params = {};

@@ -11,9 +11,11 @@ use WebService::Fastly::Object::VersionApi;
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**activate_service_version**](VersionApi.md#activate_service_version) | **PUT** /service/{service_id}/version/{version_id}/activate | Activate a service version
+[**activate_service_version_environment**](VersionApi.md#activate_service_version_environment) | **PUT** /service/{service_id}/version/{version_id}/activate/{environment_name} | Activate a service version on the specified environment
 [**clone_service_version**](VersionApi.md#clone_service_version) | **PUT** /service/{service_id}/version/{version_id}/clone | Clone a service version
 [**create_service_version**](VersionApi.md#create_service_version) | **POST** /service/{service_id}/version | Create a service version
 [**deactivate_service_version**](VersionApi.md#deactivate_service_version) | **PUT** /service/{service_id}/version/{version_id}/deactivate | Deactivate a service version
+[**deactivate_service_version_environment**](VersionApi.md#deactivate_service_version_environment) | **PUT** /service/{service_id}/version/{version_id}/deactivate/{environment_name} | Deactivate a service version on an environment
 [**get_service_version**](VersionApi.md#get_service_version) | **GET** /service/{service_id}/version/{version_id} | Get a version of a service
 [**list_service_versions**](VersionApi.md#list_service_versions) | **GET** /service/{service_id}/version | List versions of a service
 [**lock_service_version**](VersionApi.md#lock_service_version) | **PUT** /service/{service_id}/version/{version_id}/lock | Lock a service version
@@ -58,6 +60,61 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
+
+### Return type
+
+[**VersionResponse**](VersionResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **activate_service_version_environment**
+> VersionResponse activate_service_version_environment(service_id => $service_id, version_id => $version_id, environment_name => $environment_name)
+
+Activate a service version on the specified environment
+
+Activate a version on a given environment, i.e. \"staging\"
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $version_id = 56; # int | Integer identifying a service version.
+my $environment_name = new WebService::Fastly.EnvironmentName(); # EnvironmentName | 
+
+eval {
+    my $result = $api_instance->activate_service_version_environment(service_id => $service_id, version_id => $version_id, environment_name => $environment_name);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling VersionApi->activate_service_version_environment: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **version_id** | **int**| Integer identifying a service version. | 
+ **environment_name** | [**EnvironmentName**](.md)|  | 
 
 ### Return type
 
@@ -215,6 +272,61 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
+
+### Return type
+
+[**VersionResponse**](VersionResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deactivate_service_version_environment**
+> VersionResponse deactivate_service_version_environment(service_id => $service_id, version_id => $version_id, environment_name => $environment_name)
+
+Deactivate a service version on an environment
+
+Deactivate the current version on a given environment, i.e. \"staging\"
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::VersionApi;
+my $api_instance = WebService::Fastly::VersionApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $version_id = 56; # int | Integer identifying a service version.
+my $environment_name = new WebService::Fastly.EnvironmentName(); # EnvironmentName | 
+
+eval {
+    my $result = $api_instance->deactivate_service_version_environment(service_id => $service_id, version_id => $version_id, environment_name => $environment_name);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling VersionApi->deactivate_service_version_environment: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **version_id** | **int**| Integer identifying a service version. | 
+ **environment_name** | [**EnvironmentName**](.md)|  | 
 
 ### Return type
 
