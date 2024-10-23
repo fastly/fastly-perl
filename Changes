@@ -1,5 +1,10 @@
 Revision history for https://metacpan.org/dist/WebService-Fastly
 
+6.11 2024-10-23
+
+ [Documentation]
+ - doc(backend): Correct spelling in `connect_timeout` and `first_byte_timeout` field descriptions.
+
 6.10 2024-09-13
 
  [Bug fixes]

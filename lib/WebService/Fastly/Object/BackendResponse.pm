@@ -200,14 +200,14 @@ __PACKAGE__->method_documentation({
     'connect_timeout' => {
         datatype => 'int',
         base_name => 'connect_timeout',
-        description => 'Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthethic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.',
+        description => 'Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;.',
         format => '',
         read_only => 'false',
             },
     'first_byte_timeout' => {
         datatype => 'int',
         base_name => 'first_byte_timeout',
-        description => 'Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthethic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;.',
+        description => 'Maximum duration in milliseconds to wait for the server response to begin after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.first_byte_timeout&#x60;.',
         format => '',
         read_only => 'false',
             },
