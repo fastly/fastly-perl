@@ -69,7 +69,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_keys**
-> InlineResponse2004 get_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix)
+> InlineResponse2004 get_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix, consistency => $consistency)
 
 List kv store keys.
 
@@ -91,9 +91,10 @@ my $store_id = "store_id_example"; # string |
 my $cursor = "cursor_example"; # string | 
 my $limit = 100; # int | 
 my $prefix = "prefix_example"; # string | 
+my $consistency = "consistency_example"; # string | 
 
 eval {
-    my $result = $api_instance->get_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix);
+    my $result = $api_instance->get_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix, consistency => $consistency);
     print Dumper($result);
 };
 if ($@) {
@@ -109,6 +110,7 @@ Name | Type | Description  | Notes
  **cursor** | **string**|  | [optional] 
  **limit** | **int**|  | [optional] [default to 100]
  **prefix** | **string**|  | [optional] 
+ **consistency** | **string**|  | [optional] 
 
 ### Return type
 

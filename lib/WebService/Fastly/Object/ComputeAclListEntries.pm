@@ -34,7 +34,7 @@ use WebService::Fastly::Object::ComputeAclListEntriesMeta;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#An example of an ACL List Response.
+#Defines the structure of what the ACL List endpoint returns.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -154,7 +154,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'An example of an ACL List Response.',
+__PACKAGE__->class_documentation({description => 'Defines the structure of what the ACL List endpoint returns.',
                                   class => 'ComputeAclListEntries',
                                   required => [], # TODO
 }                                 );

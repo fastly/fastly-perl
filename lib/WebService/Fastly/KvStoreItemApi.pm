@@ -136,6 +136,7 @@ sub delete_key_from_store {
 # @param string $cursor  (optional)
 # @param int $limit  (optional, default to 100)
 # @param string $prefix  (optional)
+# @param string $consistency  (optional)
 {
     my $params = {
     'store_id' => {
@@ -154,6 +155,11 @@ sub delete_key_from_store {
         required => '0',
     },
     'prefix' => {
+        data_type => 'string',
+        description => '',
+        required => '0',
+    },
+    'consistency' => {
         data_type => 'string',
         description => '',
         required => '0',
@@ -203,6 +209,11 @@ sub get_keys {
     # query params
     if ( exists $args{'prefix'}) {
         $query_params->{'prefix'} = $self->{api_client}->to_query_value($args{'prefix'});
+    }
+
+    # query params
+    if ( exists $args{'consistency'}) {
+        $query_params->{'consistency'} = $self->{api_client}->to_query_value($args{'consistency'});
     }
 
     # path params

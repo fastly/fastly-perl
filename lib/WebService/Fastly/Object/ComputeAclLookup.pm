@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#An example of an ACL Lookup response.
+#Defines the structure of an ACL Lookup response.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,7 +152,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'An example of an ACL Lookup response.',
+__PACKAGE__->class_documentation({description => 'Defines the structure of an ACL Lookup response.',
                                   class => 'ComputeAclLookup',
                                   required => [], # TODO
 }                                 );

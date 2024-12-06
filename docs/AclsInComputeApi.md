@@ -327,7 +327,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **compute_acl_update_acls**
-> compute_acl_update_acls(acl_id => $acl_id, compute_acl_update_entry => $compute_acl_update_entry)
+> compute_acl_update_acls(acl_id => $acl_id, compute_acl_update => $compute_acl_update)
 
 Update an ACL
 
@@ -346,10 +346,10 @@ my $api_instance = WebService::Fastly::AclsInComputeApi->new(
 );
 
 my $acl_id = "acl_id_example"; # string | 
-my $compute_acl_update_entry = [WebService::Fastly::Object::ARRAY[ComputeAclUpdateEntry]->new()]; # ARRAY[ComputeAclUpdateEntry] | 
+my $compute_acl_update = WebService::Fastly::Object::ComputeAclUpdate->new(); # ComputeAclUpdate | 
 
 eval {
-    $api_instance->compute_acl_update_acls(acl_id => $acl_id, compute_acl_update_entry => $compute_acl_update_entry);
+    $api_instance->compute_acl_update_acls(acl_id => $acl_id, compute_acl_update => $compute_acl_update);
 };
 if ($@) {
     warn "Exception when calling AclsInComputeApi->compute_acl_update_acls: $@\n";
@@ -361,7 +361,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **acl_id** | **string**|  | 
- **compute_acl_update_entry** | [**ARRAY[ComputeAclUpdateEntry]**](ComputeAclUpdateEntry.md)|  | [optional] 
+ **compute_acl_update** | [**ComputeAclUpdate**](ComputeAclUpdate.md)|  | [optional] 
 
 ### Return type
 

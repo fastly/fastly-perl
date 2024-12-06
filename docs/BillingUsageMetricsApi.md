@@ -10,12 +10,12 @@ use WebService::Fastly::Object::BillingUsageMetricsApi;
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**get_service_level_usage**](BillingUsageMetricsApi.md#get_service_level_usage) | **GET** /billing/v2/account_customers/{customer_id}/service-usage-metrics | Retrieve service-level usage metrics for a product.
-[**get_service_level_usage_types**](BillingUsageMetricsApi.md#get_service_level_usage_types) | **GET** /billing/v2/account_customers/{customer_id}/service-usage-types | Retrieve product usage types for a customer.
+[**get_service_level_usage**](BillingUsageMetricsApi.md#get_service_level_usage) | **GET** /billing/v3/service-usage-metrics | Retrieve service-level usage metrics for a product.
+[**get_usage_metrics**](BillingUsageMetricsApi.md#get_usage_metrics) | **GET** /billing/v3/usage-metrics | Get monthly usage metrics
 
 
 # **get_service_level_usage**
-> Serviceusagemetrics get_service_level_usage(customer_id => $customer_id, product_id => $product_id, usage_type_name => $usage_type_name, time_granularity => $time_granularity, start_date => $start_date, end_date => $end_date, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor)
+> Serviceusagemetrics get_service_level_usage(product_id => $product_id, usage_type_name => $usage_type_name, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor)
 
 Retrieve service-level usage metrics for a product.
 
@@ -33,19 +33,15 @@ my $api_instance = WebService::Fastly::BillingUsageMetricsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $customer_id = "customer_id_example"; # string | Alphanumeric string identifying the customer.
 my $product_id = "product_id_example"; # string | The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests.
 my $usage_type_name = "usage_type_name_example"; # string | The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests.
-my $time_granularity = "time_granularity_example"; # string | 
-my $start_date = 2023-01-01; # string | 
-my $end_date = 2023-01-31; # string | 
 my $start_month = 2023-01; # string | 
 my $end_month = 2023-03; # string | 
 my $limit = '5'; # string | Number of results per page. The maximum is 100.
 my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 
 eval {
-    my $result = $api_instance->get_service_level_usage(customer_id => $customer_id, product_id => $product_id, usage_type_name => $usage_type_name, time_granularity => $time_granularity, start_date => $start_date, end_date => $end_date, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor);
+    my $result = $api_instance->get_service_level_usage(product_id => $product_id, usage_type_name => $usage_type_name, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor);
     print Dumper($result);
 };
 if ($@) {
@@ -57,12 +53,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customer_id** | **string**| Alphanumeric string identifying the customer. | 
  **product_id** | **string**| The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests. | 
  **usage_type_name** | **string**| The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests. | 
- **time_granularity** | **string**|  | 
- **start_date** | **string**|  | [optional] 
- **end_date** | **string**|  | [optional] 
  **start_month** | **string**|  | [optional] 
  **end_month** | **string**|  | [optional] 
  **limit** | **string**| Number of results per page. The maximum is 100. | [optional] [default to &#39;5&#39;]
@@ -83,12 +75,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_service_level_usage_types**
-> Serviceusagetypes get_service_level_usage_types(customer_id => $customer_id)
+# **get_usage_metrics**
+> Usagemetric get_usage_metrics(start_month => $start_month, end_month => $end_month)
 
-Retrieve product usage types for a customer.
+Get monthly usage metrics
 
-Returns product usage types reported by the customer's services.
+Returns monthly usage metrics for customer by product.
 
 ### Example
 ```perl
@@ -102,14 +94,15 @@ my $api_instance = WebService::Fastly::BillingUsageMetricsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $customer_id = "customer_id_example"; # string | Alphanumeric string identifying the customer.
+my $start_month = 2023-01; # string | 
+my $end_month = 2023-03; # string | 
 
 eval {
-    my $result = $api_instance->get_service_level_usage_types(customer_id => $customer_id);
+    my $result = $api_instance->get_usage_metrics(start_month => $start_month, end_month => $end_month);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling BillingUsageMetricsApi->get_service_level_usage_types: $@\n";
+    warn "Exception when calling BillingUsageMetricsApi->get_usage_metrics: $@\n";
 }
 ```
 
@@ -117,11 +110,12 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customer_id** | **string**| Alphanumeric string identifying the customer. | 
+ **start_month** | **string**|  | [optional] 
+ **end_month** | **string**|  | [optional] 
 
 ### Return type
 
-[**Serviceusagetypes**](Serviceusagetypes.md)
+[**Usagemetric**](Usagemetric.md)
 
 ### Authorization
 

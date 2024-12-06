@@ -172,16 +172,25 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'mode' => {
+        datatype => 'string',
+        base_name => 'mode',
+        description => 'The new mode to run the product in. One of &#x60;block&#x60;, &#x60;log&#x60;, or &#x60;off&#x60;. Optional in the &#x60;PATCH&#x60; request body for &#x60;ddos_protection&#x60;.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'workspace_id' => 'string',
-    'traffic_ramp' => 'string'
+    'traffic_ramp' => 'string',
+    'mode' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'workspace_id' => 'workspace_id',
-    'traffic_ramp' => 'traffic_ramp'
+    'traffic_ramp' => 'traffic_ramp',
+    'mode' => 'mode'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

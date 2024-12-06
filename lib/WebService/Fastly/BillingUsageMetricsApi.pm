@@ -51,23 +51,14 @@ sub new {
 #
 # Retrieve service-level usage metrics for a product.
 #
-# @param string $customer_id Alphanumeric string identifying the customer. (required)
 # @param string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
 # @param string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
-# @param string $time_granularity  (required)
-# @param string $start_date  (optional)
-# @param string $end_date  (optional)
 # @param string $start_month  (optional)
 # @param string $end_month  (optional)
 # @param string $limit Number of results per page. The maximum is 100. (optional, default to '5')
 # @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 {
     my $params = {
-    'customer_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the customer.',
-        required => '1',
-    },
     'product_id' => {
         data_type => 'string',
         description => 'The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests.',
@@ -77,21 +68,6 @@ sub new {
         data_type => 'string',
         description => 'The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests.',
         required => '1',
-    },
-    'time_granularity' => {
-        data_type => 'string',
-        description => '',
-        required => '1',
-    },
-    'start_date' => {
-        data_type => 'string',
-        description => '',
-        required => '0',
-    },
-    'end_date' => {
-        data_type => 'string',
-        description => '',
-        required => '0',
     },
     'start_month' => {
         data_type => 'string',
@@ -125,11 +101,6 @@ sub new {
 sub get_service_level_usage {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'customer_id' is set
-    unless (exists $args{'customer_id'}) {
-      croak("Missing the required parameter 'customer_id' when calling get_service_level_usage");
-    }
-
     # verify the required parameter 'product_id' is set
     unless (exists $args{'product_id'}) {
       croak("Missing the required parameter 'product_id' when calling get_service_level_usage");
@@ -140,13 +111,8 @@ sub get_service_level_usage {
       croak("Missing the required parameter 'usage_type_name' when calling get_service_level_usage");
     }
 
-    # verify the required parameter 'time_granularity' is set
-    unless (exists $args{'time_granularity'}) {
-      croak("Missing the required parameter 'time_granularity' when calling get_service_level_usage");
-    }
-
     # parse inputs
-    my $_resource_path = '/billing/v2/account_customers/{customer_id}/service-usage-metrics';
+    my $_resource_path = '/billing/v3/service-usage-metrics';
 
     my $_method = 'GET';
     my $query_params = {};
@@ -171,21 +137,6 @@ sub get_service_level_usage {
     }
 
     # query params
-    if ( exists $args{'time_granularity'}) {
-        $query_params->{'time_granularity'} = $self->{api_client}->to_query_value($args{'time_granularity'});
-    }
-
-    # query params
-    if ( exists $args{'start_date'}) {
-        $query_params->{'start_date'} = $self->{api_client}->to_query_value($args{'start_date'});
-    }
-
-    # query params
-    if ( exists $args{'end_date'}) {
-        $query_params->{'end_date'} = $self->{api_client}->to_query_value($args{'end_date'});
-    }
-
-    # query params
     if ( exists $args{'start_month'}) {
         $query_params->{'start_month'} = $self->{api_client}->to_query_value($args{'start_month'});
     }
@@ -205,13 +156,6 @@ sub get_service_level_usage {
         $query_params->{'cursor'} = $self->{api_client}->to_query_value($args{'cursor'});
     }
 
-    # path params
-    if ( exists $args{'customer_id'}) {
-        my $_base_variable = "{" . "customer_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'customer_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
     my $_body_data;
     # authentication setting, if any
     my $auth_settings = [qw(token )];
@@ -228,37 +172,38 @@ sub get_service_level_usage {
 }
 
 #
-# get_service_level_usage_types
+# get_usage_metrics
 #
-# Retrieve product usage types for a customer.
+# Get monthly usage metrics
 #
-# @param string $customer_id Alphanumeric string identifying the customer. (required)
+# @param string $start_month  (optional)
+# @param string $end_month  (optional)
 {
     my $params = {
-    'customer_id' => {
+    'start_month' => {
         data_type => 'string',
-        description => 'Alphanumeric string identifying the customer.',
-        required => '1',
+        description => '',
+        required => '0',
+    },
+    'end_month' => {
+        data_type => 'string',
+        description => '',
+        required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'get_service_level_usage_types' } = {
-        summary => 'Retrieve product usage types for a customer.',
+    __PACKAGE__->method_documentation->{ 'get_usage_metrics' } = {
+        summary => 'Get monthly usage metrics',
         params => $params,
-        returns => 'Serviceusagetypes',
+        returns => 'Usagemetric',
         };
 }
-# @return Serviceusagetypes
+# @return Usagemetric
 #
-sub get_service_level_usage_types {
+sub get_usage_metrics {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'customer_id' is set
-    unless (exists $args{'customer_id'}) {
-      croak("Missing the required parameter 'customer_id' when calling get_service_level_usage_types");
-    }
-
     # parse inputs
-    my $_resource_path = '/billing/v2/account_customers/{customer_id}/service-usage-types';
+    my $_resource_path = '/billing/v3/usage-metrics';
 
     my $_method = 'GET';
     my $query_params = {};
@@ -272,11 +217,14 @@ sub get_service_level_usage_types {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
-    # path params
-    if ( exists $args{'customer_id'}) {
-        my $_base_variable = "{" . "customer_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'customer_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    # query params
+    if ( exists $args{'start_month'}) {
+        $query_params->{'start_month'} = $self->{api_client}->to_query_value($args{'start_month'});
+    }
+
+    # query params
+    if ( exists $args{'end_month'}) {
+        $query_params->{'end_month'} = $self->{api_client}->to_query_value($args{'end_month'});
     }
 
     my $_body_data;
@@ -290,7 +238,7 @@ sub get_service_level_usage_types {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('Serviceusagetypes', $response);
+    my $_response_object = $self->{api_client}->deserialize('Usagemetric', $response);
     return $_response_object;
 }
 

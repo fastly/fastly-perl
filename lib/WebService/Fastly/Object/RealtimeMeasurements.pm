@@ -1762,55 +1762,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'vcl_on_compute_hit_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_hit_requests',
-        description => 'Number of cache hits for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
-    'vcl_on_compute_miss_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_miss_requests',
-        description => 'Number of cache misses for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
-    'vcl_on_compute_pass_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_pass_requests',
-        description => 'Number of requests that passed through the CDN without being cached for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
-    'vcl_on_compute_error_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_error_requests',
-        description => 'Number of cache errors for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
-    'vcl_on_compute_synth_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_synth_requests',
-        description => 'Number of requests that returned a synthetic response (i.e., response objects created with the &#x60;synthetic&#x60; VCL statement) for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
-    'vcl_on_compute_edge_hit_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_edge_hit_requests',
-        description => 'Number of requests sent by end users to Fastly that resulted in a hit at the edge for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
-    'vcl_on_compute_edge_miss_requests' => {
-        datatype => 'int',
-        base_name => 'vcl_on_compute_edge_miss_requests',
-        description => 'Number of requests sent by end users to Fastly that resulted in a miss at the edge for a VCL service running on Compute.',
-        format => '',
-        read_only => 'false',
-            },
     'all_hit_requests' => {
         datatype => 'int',
         base_name => 'all_hit_requests',
@@ -1906,6 +1857,27 @@ __PACKAGE__->method_documentation({
         datatype => 'int',
         base_name => 'request_denied_get_head_body',
         description => 'Number of requests where Fastly responded with 400 due to the request being a GET or HEAD request containing a body.',
+        format => '',
+        read_only => 'false',
+            },
+    'service_ddos_requests_detected' => {
+        datatype => 'int',
+        base_name => 'service_ddos_requests_detected',
+        description => 'Number of requests classified as a DDoS attack against a customer origin or service.',
+        format => '',
+        read_only => 'false',
+            },
+    'service_ddos_requests_mitigated' => {
+        datatype => 'int',
+        base_name => 'service_ddos_requests_mitigated',
+        description => 'Number of requests classified as a DDoS attack against a customer origin or service that were mitigated by the Fastly platform.',
+        format => '',
+        read_only => 'false',
+            },
+    'service_ddos_requests_allowed' => {
+        datatype => 'int',
+        base_name => 'service_ddos_requests_allowed',
+        description => 'Number of requests analyzed for DDoS attacks against a customer origin or service, but with no DDoS detected.',
         format => '',
         read_only => 'false',
             },
@@ -2141,13 +2113,6 @@ __PACKAGE__->openapi_types( {
     'bot_challenge_complete_tokens_issued' => 'int',
     'ddos_action_downgrade' => 'int',
     'ddos_action_downgraded_connections' => 'int',
-    'vcl_on_compute_hit_requests' => 'int',
-    'vcl_on_compute_miss_requests' => 'int',
-    'vcl_on_compute_pass_requests' => 'int',
-    'vcl_on_compute_error_requests' => 'int',
-    'vcl_on_compute_synth_requests' => 'int',
-    'vcl_on_compute_edge_hit_requests' => 'int',
-    'vcl_on_compute_edge_miss_requests' => 'int',
     'all_hit_requests' => 'int',
     'all_miss_requests' => 'int',
     'all_pass_requests' => 'int',
@@ -2161,7 +2126,10 @@ __PACKAGE__->openapi_types( {
     'all_status_4xx' => 'int',
     'all_status_5xx' => 'int',
     'origin_offload' => 'double',
-    'request_denied_get_head_body' => 'int'
+    'request_denied_get_head_body' => 'int',
+    'service_ddos_requests_detected' => 'int',
+    'service_ddos_requests_mitigated' => 'int',
+    'service_ddos_requests_allowed' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -2394,13 +2362,6 @@ __PACKAGE__->attribute_map( {
     'bot_challenge_complete_tokens_issued' => 'bot_challenge_complete_tokens_issued',
     'ddos_action_downgrade' => 'ddos_action_downgrade',
     'ddos_action_downgraded_connections' => 'ddos_action_downgraded_connections',
-    'vcl_on_compute_hit_requests' => 'vcl_on_compute_hit_requests',
-    'vcl_on_compute_miss_requests' => 'vcl_on_compute_miss_requests',
-    'vcl_on_compute_pass_requests' => 'vcl_on_compute_pass_requests',
-    'vcl_on_compute_error_requests' => 'vcl_on_compute_error_requests',
-    'vcl_on_compute_synth_requests' => 'vcl_on_compute_synth_requests',
-    'vcl_on_compute_edge_hit_requests' => 'vcl_on_compute_edge_hit_requests',
-    'vcl_on_compute_edge_miss_requests' => 'vcl_on_compute_edge_miss_requests',
     'all_hit_requests' => 'all_hit_requests',
     'all_miss_requests' => 'all_miss_requests',
     'all_pass_requests' => 'all_pass_requests',
@@ -2414,7 +2375,10 @@ __PACKAGE__->attribute_map( {
     'all_status_4xx' => 'all_status_4xx',
     'all_status_5xx' => 'all_status_5xx',
     'origin_offload' => 'origin_offload',
-    'request_denied_get_head_body' => 'request_denied_get_head_body'
+    'request_denied_get_head_body' => 'request_denied_get_head_body',
+    'service_ddos_requests_detected' => 'service_ddos_requests_detected',
+    'service_ddos_requests_mitigated' => 'service_ddos_requests_mitigated',
+    'service_ddos_requests_allowed' => 'service_ddos_requests_allowed'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

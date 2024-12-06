@@ -465,7 +465,7 @@ sub compute_acl_lookup_acls {
 # Update an ACL
 #
 # @param string $acl_id  (required)
-# @param ARRAY[ComputeAclUpdateEntry] $compute_acl_update_entry  (optional)
+# @param ComputeAclUpdate $compute_acl_update  (optional)
 {
     my $params = {
     'acl_id' => {
@@ -473,8 +473,8 @@ sub compute_acl_lookup_acls {
         description => '',
         required => '1',
     },
-    'compute_acl_update_entry' => {
-        data_type => 'ARRAY[ComputeAclUpdateEntry]',
+    'compute_acl_update' => {
+        data_type => 'ComputeAclUpdate',
         description => '',
         required => '0',
     },
@@ -519,8 +519,8 @@ sub compute_acl_update_acls {
 
     my $_body_data;
     # body params
-    if ( exists $args{'compute_acl_update_entry'}) {
-        $_body_data = $args{'compute_acl_update_entry'};
+    if ( exists $args{'compute_acl_update'}) {
+        $_body_data = $args{'compute_acl_update'};
     }
 
     # authentication setting, if any
