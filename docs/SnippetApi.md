@@ -11,12 +11,12 @@ use WebService::Fastly::Object::SnippetApi;
 Method | HTTP request | Description
 ------ | ------------ | -----------
 [**create_snippet**](SnippetApi.md#create_snippet) | **POST** /service/{service_id}/version/{version_id}/snippet | Create a snippet
-[**delete_snippet**](SnippetApi.md#delete_snippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Delete a snippet
-[**get_snippet**](SnippetApi.md#get_snippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Get a versioned snippet
-[**get_snippet_dynamic**](SnippetApi.md#get_snippet_dynamic) | **GET** /service/{service_id}/snippet/{snippet_id} | Get a dynamic snippet
+[**delete_snippet**](SnippetApi.md#delete_snippet) | **DELETE** /service/{service_id}/version/{version_id}/snippet/{name} | Delete a snippet
+[**get_snippet**](SnippetApi.md#get_snippet) | **GET** /service/{service_id}/version/{version_id}/snippet/{name} | Get a versioned snippet
+[**get_snippet_dynamic**](SnippetApi.md#get_snippet_dynamic) | **GET** /service/{service_id}/snippet/{id} | Get a dynamic snippet
 [**list_snippets**](SnippetApi.md#list_snippets) | **GET** /service/{service_id}/version/{version_id}/snippet | List snippets
-[**update_snippet**](SnippetApi.md#update_snippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{snippet_name} | Update a versioned snippet
-[**update_snippet_dynamic**](SnippetApi.md#update_snippet_dynamic) | **PUT** /service/{service_id}/snippet/{snippet_id} | Update a dynamic snippet
+[**update_snippet**](SnippetApi.md#update_snippet) | **PUT** /service/{service_id}/version/{version_id}/snippet/{name} | Update a versioned snippet
+[**update_snippet_dynamic**](SnippetApi.md#update_snippet_dynamic) | **PUT** /service/{service_id}/snippet/{id} | Update a dynamic snippet
 
 
 # **create_snippet**
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_snippet**
-> InlineResponse200 delete_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name)
+> InlineResponse200 delete_snippet(service_id => $service_id, version_id => $version_id, name => $name)
 
 Delete a snippet
 
@@ -103,10 +103,10 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
-my $snippet_name = "snippet_name_example"; # string | The name for the snippet.
+my $name = "name_example"; # string | The name for the snippet.
 
 eval {
-    my $result = $api_instance->delete_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name);
+    my $result = $api_instance->delete_snippet(service_id => $service_id, version_id => $version_id, name => $name);
     print Dumper($result);
 };
 if ($@) {
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
- **snippet_name** | **string**| The name for the snippet. | 
+ **name** | **string**| The name for the snippet. | 
 
 ### Return type
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_snippet**
-> SnippetResponse get_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name)
+> SnippetResponse get_snippet(service_id => $service_id, version_id => $version_id, name => $name)
 
 Get a versioned snippet
 
@@ -158,10 +158,10 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
-my $snippet_name = "snippet_name_example"; # string | The name for the snippet.
+my $name = "name_example"; # string | The name for the snippet.
 
 eval {
-    my $result = $api_instance->get_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name);
+    my $result = $api_instance->get_snippet(service_id => $service_id, version_id => $version_id, name => $name);
     print Dumper($result);
 };
 if ($@) {
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
- **snippet_name** | **string**| The name for the snippet. | 
+ **name** | **string**| The name for the snippet. | 
 
 ### Return type
 
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_snippet_dynamic**
-> SnippetResponse get_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id)
+> SnippetResponse get_snippet_dynamic(service_id => $service_id, id => $id)
 
 Get a dynamic snippet
 
@@ -212,10 +212,10 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 );
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
-my $snippet_id = "snippet_id_example"; # string | Alphanumeric string identifying a VCL Snippet.
+my $id = "id_example"; # string | Alphanumeric string identifying a VCL Snippet.
 
 eval {
-    my $result = $api_instance->get_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id);
+    my $result = $api_instance->get_snippet_dynamic(service_id => $service_id, id => $id);
     print Dumper($result);
 };
 if ($@) {
@@ -228,7 +228,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
- **snippet_id** | **string**| Alphanumeric string identifying a VCL Snippet. | 
+ **id** | **string**| Alphanumeric string identifying a VCL Snippet. | 
 
 ### Return type
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_snippet**
-> SnippetResponse update_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name)
+> SnippetResponse update_snippet(service_id => $service_id, version_id => $version_id, name => $name)
 
 Update a versioned snippet
 
@@ -319,10 +319,10 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
-my $snippet_name = "snippet_name_example"; # string | The name for the snippet.
+my $name = "name_example"; # string | The name for the snippet.
 
 eval {
-    my $result = $api_instance->update_snippet(service_id => $service_id, version_id => $version_id, snippet_name => $snippet_name);
+    my $result = $api_instance->update_snippet(service_id => $service_id, version_id => $version_id, name => $name);
     print Dumper($result);
 };
 if ($@) {
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
- **snippet_name** | **string**| The name for the snippet. | 
+ **name** | **string**| The name for the snippet. | 
 
 ### Return type
 
@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_snippet_dynamic**
-> SnippetResponse update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic)
+> SnippetResponse update_snippet_dynamic(service_id => $service_id, id => $id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic)
 
 Update a dynamic snippet
 
@@ -373,7 +373,7 @@ my $api_instance = WebService::Fastly::SnippetApi->new(
 );
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
-my $snippet_id = "snippet_id_example"; # string | Alphanumeric string identifying a VCL Snippet.
+my $id = "id_example"; # string | Alphanumeric string identifying a VCL Snippet.
 my $name = "name_example"; # string | The name for the snippet.
 my $type = "type_example"; # string | The location in generated VCL where the snippet should be placed.
 my $content = "content_example"; # string | The VCL code that specifies exactly what the snippet does.
@@ -381,7 +381,7 @@ my $priority = '100'; # string | Priority determines execution order. Lower numb
 my $dynamic = "dynamic_example"; # string | Sets the snippet version.
 
 eval {
-    my $result = $api_instance->update_snippet_dynamic(service_id => $service_id, snippet_id => $snippet_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic);
+    my $result = $api_instance->update_snippet_dynamic(service_id => $service_id, id => $id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic);
     print Dumper($result);
 };
 if ($@) {
@@ -394,7 +394,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
- **snippet_id** | **string**| Alphanumeric string identifying a VCL Snippet. | 
+ **id** | **string**| Alphanumeric string identifying a VCL Snippet. | 
  **name** | **string**| The name for the snippet. | [optional] 
  **type** | **string**| The location in generated VCL where the snippet should be placed. | [optional] 
  **content** | **string**| The VCL code that specifies exactly what the snippet does. | [optional] 

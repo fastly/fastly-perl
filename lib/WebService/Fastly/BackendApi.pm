@@ -64,7 +64,7 @@ sub new {
 # @param string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
-# @param int $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. (optional)
+# @param int $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. (optional)
 # @param int $max_conn Maximum number of concurrent connections this backend will accept. (optional)
 # @param string $max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
 # @param string $min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
@@ -157,7 +157,7 @@ sub new {
     },
     'keepalive_time' => {
         data_type => 'int',
-        description => 'How long in seconds to keep a persistent connection to the backend between requests.',
+        description => 'How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.',
         required => '0',
     },
     'max_conn' => {
@@ -826,7 +826,7 @@ sub list_backends {
 # @param string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
-# @param int $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. (optional)
+# @param int $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. (optional)
 # @param int $max_conn Maximum number of concurrent connections this backend will accept. (optional)
 # @param string $max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
 # @param string $min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
@@ -924,7 +924,7 @@ sub list_backends {
     },
     'keepalive_time' => {
         data_type => 'int',
-        description => 'How long in seconds to keep a persistent connection to the backend between requests.',
+        description => 'How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.',
         required => '0',
     },
     'max_conn' => {

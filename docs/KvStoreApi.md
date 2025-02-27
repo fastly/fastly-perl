@@ -10,18 +10,18 @@ use WebService::Fastly::Object::KvStoreApi;
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**create_store**](KvStoreApi.md#create_store) | **POST** /resources/stores/kv | Create a KV store.
-[**delete_store**](KvStoreApi.md#delete_store) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
-[**get_store**](KvStoreApi.md#get_store) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
-[**get_stores**](KvStoreApi.md#get_stores) | **GET** /resources/stores/kv | List KV stores.
+[**kv_store_create**](KvStoreApi.md#kv_store_create) | **POST** /resources/stores/kv | Create a KV store.
+[**kv_store_delete**](KvStoreApi.md#kv_store_delete) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
+[**kv_store_get**](KvStoreApi.md#kv_store_get) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
+[**kv_store_list**](KvStoreApi.md#kv_store_list) | **GET** /resources/stores/kv | List all KV stores.
 
 
-# **create_store**
-> StoreResponse create_store(location => $location, store => $store)
+# **kv_store_create**
+> KvStoreDetails kv_store_create(location => $location, kv_store_request_create => $kv_store_request_create)
 
 Create a KV store.
 
-Create a new KV store.
+Create a KV store.
 
 ### Example
 ```perl
@@ -36,14 +36,14 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 );
 
 my $location = "location_example"; # string | 
-my $store = WebService::Fastly::Object::Store->new(); # Store | 
+my $kv_store_request_create = WebService::Fastly::Object::KvStoreRequestCreate->new(); # KvStoreRequestCreate | 
 
 eval {
-    my $result = $api_instance->create_store(location => $location, store => $store);
+    my $result = $api_instance->kv_store_create(location => $location, kv_store_request_create => $kv_store_request_create);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling KvStoreApi->create_store: $@\n";
+    warn "Exception when calling KvStoreApi->kv_store_create: $@\n";
 }
 ```
 
@@ -52,11 +52,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location** | **string**|  | [optional] 
- **store** | [**Store**](Store.md)|  | [optional] 
+ **kv_store_request_create** | [**KvStoreRequestCreate**](KvStoreRequestCreate.md)|  | [optional] 
 
 ### Return type
 
-[**StoreResponse**](StoreResponse.md)
+[**KvStoreDetails**](KvStoreDetails.md)
 
 ### Authorization
 
@@ -69,12 +69,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_store**
-> delete_store(store_id => $store_id)
+# **kv_store_delete**
+> kv_store_delete(store_id => $store_id)
 
 Delete a KV store.
 
-A KV store must be empty before it can be deleted.  Deleting a KV store that still contains keys will result in a `409` (Conflict).
+A KV store must be empty before it can be deleted. Attempting to delete a KV store that contains items will result in a response with a `409` status code.
 
 ### Example
 ```perl
@@ -91,10 +91,10 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 my $store_id = "store_id_example"; # string | 
 
 eval {
-    $api_instance->delete_store(store_id => $store_id);
+    $api_instance->kv_store_delete(store_id => $store_id);
 };
 if ($@) {
-    warn "Exception when calling KvStoreApi->delete_store: $@\n";
+    warn "Exception when calling KvStoreApi->kv_store_delete: $@\n";
 }
 ```
 
@@ -119,12 +119,12 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_store**
-> StoreResponse get_store(store_id => $store_id)
+# **kv_store_get**
+> KvStoreDetails kv_store_get(store_id => $store_id)
 
 Describe a KV store.
 
-Get a KV store by ID.
+Get details of a KV store.
 
 ### Example
 ```perl
@@ -141,11 +141,11 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 my $store_id = "store_id_example"; # string | 
 
 eval {
-    my $result = $api_instance->get_store(store_id => $store_id);
+    my $result = $api_instance->kv_store_get(store_id => $store_id);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling KvStoreApi->get_store: $@\n";
+    warn "Exception when calling KvStoreApi->kv_store_get: $@\n";
 }
 ```
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**StoreResponse**](StoreResponse.md)
+[**KvStoreDetails**](KvStoreDetails.md)
 
 ### Authorization
 
@@ -170,12 +170,12 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_stores**
-> InlineResponse2003 get_stores(cursor => $cursor, limit => $limit)
+# **kv_store_list**
+> InlineResponse2003 kv_store_list(cursor => $cursor, limit => $limit)
 
-List KV stores.
+List all KV stores.
 
-Get all stores for a given customer.
+List all KV stores.
 
 ### Example
 ```perl
@@ -193,11 +193,11 @@ my $cursor = "cursor_example"; # string |
 my $limit = 1000; # int | 
 
 eval {
-    my $result = $api_instance->get_stores(cursor => $cursor, limit => $limit);
+    my $result = $api_instance->kv_store_list(cursor => $cursor, limit => $limit);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling KvStoreApi->get_stores: $@\n";
+    warn "Exception when calling KvStoreApi->kv_store_list: $@\n";
 }
 ```
 

@@ -47,12 +47,12 @@ sub new {
 
 
 #
-# create_store
+# kv_store_create
 #
 # Create a KV store.
 #
 # @param string $location  (optional)
-# @param Store $store  (optional)
+# @param KvStoreRequestCreate $kv_store_request_create  (optional)
 {
     my $params = {
     'location' => {
@@ -60,21 +60,21 @@ sub new {
         description => '',
         required => '0',
     },
-    'store' => {
-        data_type => 'Store',
+    'kv_store_request_create' => {
+        data_type => 'KvStoreRequestCreate',
         description => '',
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'create_store' } = {
+    __PACKAGE__->method_documentation->{ 'kv_store_create' } = {
         summary => 'Create a KV store.',
         params => $params,
-        returns => 'StoreResponse',
+        returns => 'KvStoreDetails',
         };
 }
-# @return StoreResponse
+# @return KvStoreDetails
 #
-sub create_store {
+sub kv_store_create {
     my ($self, %args) = @_;
 
     # parse inputs
@@ -99,8 +99,8 @@ sub create_store {
 
     my $_body_data;
     # body params
-    if ( exists $args{'store'}) {
-        $_body_data = $args{'store'};
+    if ( exists $args{'kv_store_request_create'}) {
+        $_body_data = $args{'kv_store_request_create'};
     }
 
     # authentication setting, if any
@@ -113,12 +113,12 @@ sub create_store {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('StoreResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('KvStoreDetails', $response);
     return $_response_object;
 }
 
 #
-# delete_store
+# kv_store_delete
 #
 # Delete a KV store.
 #
@@ -131,7 +131,7 @@ sub create_store {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'delete_store' } = {
+    __PACKAGE__->method_documentation->{ 'kv_store_delete' } = {
         summary => 'Delete a KV store.',
         params => $params,
         returns => undef,
@@ -139,12 +139,12 @@ sub create_store {
 }
 # @return void
 #
-sub delete_store {
+sub kv_store_delete {
     my ($self, %args) = @_;
 
     # verify the required parameter 'store_id' is set
     unless (exists $args{'store_id'}) {
-      croak("Missing the required parameter 'store_id' when calling delete_store");
+      croak("Missing the required parameter 'store_id' when calling kv_store_delete");
     }
 
     # parse inputs
@@ -181,7 +181,7 @@ sub delete_store {
 }
 
 #
-# get_store
+# kv_store_get
 #
 # Describe a KV store.
 #
@@ -194,20 +194,20 @@ sub delete_store {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'get_store' } = {
+    __PACKAGE__->method_documentation->{ 'kv_store_get' } = {
         summary => 'Describe a KV store.',
         params => $params,
-        returns => 'StoreResponse',
+        returns => 'KvStoreDetails',
         };
 }
-# @return StoreResponse
+# @return KvStoreDetails
 #
-sub get_store {
+sub kv_store_get {
     my ($self, %args) = @_;
 
     # verify the required parameter 'store_id' is set
     unless (exists $args{'store_id'}) {
-      croak("Missing the required parameter 'store_id' when calling get_store");
+      croak("Missing the required parameter 'store_id' when calling kv_store_get");
     }
 
     # parse inputs
@@ -243,14 +243,14 @@ sub get_store {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('StoreResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('KvStoreDetails', $response);
     return $_response_object;
 }
 
 #
-# get_stores
+# kv_store_list
 #
-# List KV stores.
+# List all KV stores.
 #
 # @param string $cursor  (optional)
 # @param int $limit  (optional, default to 1000)
@@ -267,15 +267,15 @@ sub get_store {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'get_stores' } = {
-        summary => 'List KV stores.',
+    __PACKAGE__->method_documentation->{ 'kv_store_list' } = {
+        summary => 'List all KV stores.',
         params => $params,
         returns => 'InlineResponse2003',
         };
 }
 # @return InlineResponse2003
 #
-sub get_stores {
+sub kv_store_list {
     my ($self, %args) = @_;
 
     # parse inputs

@@ -161,14 +161,7 @@ __PACKAGE__->method_documentation({
     'prefix' => {
         datatype => 'string',
         base_name => 'prefix',
-        description => 'A valid IPv4 or IPv6 address.',
-        format => '',
-        read_only => 'false',
-            },
-    'length' => {
-        datatype => 'int',
-        base_name => 'length',
-        description => 'The length of address in the IP addressing space.',
+        description => 'A valid IPv4 or IPv6 address and prefix in CIDR notation.',
         format => '',
         read_only => 'false',
             },
@@ -183,13 +176,11 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'prefix' => 'string',
-    'length' => 'int',
     'action' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'prefix' => 'prefix',
-    'length' => 'length',
     'action' => 'action'
 } );
 

@@ -33,8 +33,8 @@ my $api_instance = WebService::Fastly::BillingUsageMetricsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $product_id = "product_id_example"; # string | The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests.
-my $usage_type_name = "usage_type_name_example"; # string | The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests.
+my $product_id = "product_id_example"; # string | The product identifier for the metrics returned (e.g., `cdn_usage`).
+my $usage_type_name = "usage_type_name_example"; # string | The usage type name for the metrics returned (e.g., `North America Requests`).
 my $start_month = 2023-01; # string | 
 my $end_month = 2023-03; # string | 
 my $limit = '5'; # string | Number of results per page. The maximum is 100.
@@ -53,8 +53,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product_id** | **string**| The product identifier for the metrics returned (e.g., `cdn_usage`). This field is not required for CSV requests. | 
- **usage_type_name** | **string**| The usage type name for the metrics returned (e.g., `North America Requests`). This field is not required for CSV requests. | 
+ **product_id** | **string**| The product identifier for the metrics returned (e.g., `cdn_usage`). | [optional] 
+ **usage_type_name** | **string**| The usage type name for the metrics returned (e.g., `North America Requests`). | [optional] 
  **start_month** | **string**|  | [optional] 
  **end_month** | **string**|  | [optional] 
  **limit** | **string**| Number of results per page. The maximum is 100. | [optional] [default to &#39;5&#39;]
@@ -94,8 +94,8 @@ my $api_instance = WebService::Fastly::BillingUsageMetricsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $start_month = 2023-01; # string | 
-my $end_month = 2023-03; # string | 
+my $start_month = 2024-05; # string | 
+my $end_month = 2024-06; # string | 
 
 eval {
     my $result = $api_instance->get_usage_metrics(start_month => $start_month, end_month => $end_month);
@@ -110,8 +110,8 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start_month** | **string**|  | [optional] 
- **end_month** | **string**|  | [optional] 
+ **start_month** | **string**|  | 
+ **end_month** | **string**|  | 
 
 ### Return type
 

@@ -193,7 +193,7 @@ sub create_snippet {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $snippet_name The name for the snippet. (required)
+# @param string $name The name for the snippet. (required)
 {
     my $params = {
     'service_id' => {
@@ -206,7 +206,7 @@ sub create_snippet {
         description => 'Integer identifying a service version.',
         required => '1',
     },
-    'snippet_name' => {
+    'name' => {
         data_type => 'string',
         description => 'The name for the snippet.',
         required => '1',
@@ -233,13 +233,13 @@ sub delete_snippet {
       croak("Missing the required parameter 'version_id' when calling delete_snippet");
     }
 
-    # verify the required parameter 'snippet_name' is set
-    unless (exists $args{'snippet_name'}) {
-      croak("Missing the required parameter 'snippet_name' when calling delete_snippet");
+    # verify the required parameter 'name' is set
+    unless (exists $args{'name'}) {
+      croak("Missing the required parameter 'name' when calling delete_snippet");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}';
+    my $_resource_path = '/service/{service_id}/version/{version_id}/snippet/{name}';
 
     my $_method = 'DELETE';
     my $query_params = {};
@@ -268,9 +268,9 @@ sub delete_snippet {
     }
 
     # path params
-    if ( exists $args{'snippet_name'}) {
-        my $_base_variable = "{" . "snippet_name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'snippet_name'});
+    if ( exists $args{'name'}) {
+        my $_base_variable = "{" . "name" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'name'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -296,7 +296,7 @@ sub delete_snippet {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $snippet_name The name for the snippet. (required)
+# @param string $name The name for the snippet. (required)
 {
     my $params = {
     'service_id' => {
@@ -309,7 +309,7 @@ sub delete_snippet {
         description => 'Integer identifying a service version.',
         required => '1',
     },
-    'snippet_name' => {
+    'name' => {
         data_type => 'string',
         description => 'The name for the snippet.',
         required => '1',
@@ -336,13 +336,13 @@ sub get_snippet {
       croak("Missing the required parameter 'version_id' when calling get_snippet");
     }
 
-    # verify the required parameter 'snippet_name' is set
-    unless (exists $args{'snippet_name'}) {
-      croak("Missing the required parameter 'snippet_name' when calling get_snippet");
+    # verify the required parameter 'name' is set
+    unless (exists $args{'name'}) {
+      croak("Missing the required parameter 'name' when calling get_snippet");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}';
+    my $_resource_path = '/service/{service_id}/version/{version_id}/snippet/{name}';
 
     my $_method = 'GET';
     my $query_params = {};
@@ -371,9 +371,9 @@ sub get_snippet {
     }
 
     # path params
-    if ( exists $args{'snippet_name'}) {
-        my $_base_variable = "{" . "snippet_name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'snippet_name'});
+    if ( exists $args{'name'}) {
+        my $_base_variable = "{" . "name" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'name'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -398,7 +398,7 @@ sub get_snippet {
 # Get a dynamic snippet
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
-# @param string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+# @param string $id Alphanumeric string identifying a VCL Snippet. (required)
 {
     my $params = {
     'service_id' => {
@@ -406,7 +406,7 @@ sub get_snippet {
         description => 'Alphanumeric string identifying the service.',
         required => '1',
     },
-    'snippet_id' => {
+    'id' => {
         data_type => 'string',
         description => 'Alphanumeric string identifying a VCL Snippet.',
         required => '1',
@@ -428,13 +428,13 @@ sub get_snippet_dynamic {
       croak("Missing the required parameter 'service_id' when calling get_snippet_dynamic");
     }
 
-    # verify the required parameter 'snippet_id' is set
-    unless (exists $args{'snippet_id'}) {
-      croak("Missing the required parameter 'snippet_id' when calling get_snippet_dynamic");
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling get_snippet_dynamic");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/snippet/{snippet_id}';
+    my $_resource_path = '/service/{service_id}/snippet/{id}';
 
     my $_method = 'GET';
     my $query_params = {};
@@ -456,9 +456,9 @@ sub get_snippet_dynamic {
     }
 
     # path params
-    if ( exists $args{'snippet_id'}) {
-        my $_base_variable = "{" . "snippet_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'snippet_id'});
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -569,7 +569,7 @@ sub list_snippets {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param string $snippet_name The name for the snippet. (required)
+# @param string $name The name for the snippet. (required)
 {
     my $params = {
     'service_id' => {
@@ -582,7 +582,7 @@ sub list_snippets {
         description => 'Integer identifying a service version.',
         required => '1',
     },
-    'snippet_name' => {
+    'name' => {
         data_type => 'string',
         description => 'The name for the snippet.',
         required => '1',
@@ -609,13 +609,13 @@ sub update_snippet {
       croak("Missing the required parameter 'version_id' when calling update_snippet");
     }
 
-    # verify the required parameter 'snippet_name' is set
-    unless (exists $args{'snippet_name'}) {
-      croak("Missing the required parameter 'snippet_name' when calling update_snippet");
+    # verify the required parameter 'name' is set
+    unless (exists $args{'name'}) {
+      croak("Missing the required parameter 'name' when calling update_snippet");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/version/{version_id}/snippet/{snippet_name}';
+    my $_resource_path = '/service/{service_id}/version/{version_id}/snippet/{name}';
 
     my $_method = 'PUT';
     my $query_params = {};
@@ -644,9 +644,9 @@ sub update_snippet {
     }
 
     # path params
-    if ( exists $args{'snippet_name'}) {
-        my $_base_variable = "{" . "snippet_name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'snippet_name'});
+    if ( exists $args{'name'}) {
+        my $_base_variable = "{" . "name" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'name'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -671,7 +671,7 @@ sub update_snippet {
 # Update a dynamic snippet
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
-# @param string $snippet_id Alphanumeric string identifying a VCL Snippet. (required)
+# @param string $id Alphanumeric string identifying a VCL Snippet. (required)
 # @param string $name The name for the snippet. (optional)
 # @param string $type The location in generated VCL where the snippet should be placed. (optional)
 # @param string $content The VCL code that specifies exactly what the snippet does. (optional)
@@ -684,7 +684,7 @@ sub update_snippet {
         description => 'Alphanumeric string identifying the service.',
         required => '1',
     },
-    'snippet_id' => {
+    'id' => {
         data_type => 'string',
         description => 'Alphanumeric string identifying a VCL Snippet.',
         required => '1',
@@ -731,13 +731,13 @@ sub update_snippet_dynamic {
       croak("Missing the required parameter 'service_id' when calling update_snippet_dynamic");
     }
 
-    # verify the required parameter 'snippet_id' is set
-    unless (exists $args{'snippet_id'}) {
-      croak("Missing the required parameter 'snippet_id' when calling update_snippet_dynamic");
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling update_snippet_dynamic");
     }
 
     # parse inputs
-    my $_resource_path = '/service/{service_id}/snippet/{snippet_id}';
+    my $_resource_path = '/service/{service_id}/snippet/{id}';
 
     my $_method = 'PUT';
     my $query_params = {};
@@ -759,9 +759,9 @@ sub update_snippet_dynamic {
     }
 
     # path params
-    if ( exists $args{'snippet_id'}) {
-        my $_base_variable = "{" . "snippet_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'snippet_id'});
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 

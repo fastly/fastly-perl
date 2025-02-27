@@ -163,14 +163,14 @@ __PACKAGE__->method_documentation({
         datatype => 'int',
         base_name => 'Timestamp',
         description => 'Value to use for subsequent requests.',
-        format => '',
+        format => 'int64',
         read_only => 'false',
             },
     'aggregate_delay' => {
         datatype => 'int',
         base_name => 'AggregateDelay',
         description => 'How long the system will wait before aggregating messages for each second. The most recent data returned will have happened at the moment of the request, minus the aggregation delay.',
-        format => '',
+        format => 'int64',
         read_only => 'false',
             },
     'data' => {

@@ -269,10 +269,10 @@ sub compute_acl_list_acl_entries {
     __PACKAGE__->method_documentation->{ 'compute_acl_list_acls' } = {
         summary => 'List ACLs',
         params => $params,
-        returns => 'ARRAY[ComputeAclCreateAclsResponse]',
+        returns => 'ComputeAclList',
         };
 }
-# @return ARRAY[ComputeAclCreateAclsResponse]
+# @return ComputeAclList
 #
 sub compute_acl_list_acls {
     my ($self, %args) = @_;
@@ -303,7 +303,7 @@ sub compute_acl_list_acls {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('ARRAY[ComputeAclCreateAclsResponse]', $response);
+    my $_response_object = $self->{api_client}->deserialize('ComputeAclList', $response);
     return $_response_object;
 }
 

@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::InlineResponse2004Meta;
+use WebService::Fastly::Object::PaginationCursorMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -167,7 +167,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'meta' => {
-        datatype => 'InlineResponse2004Meta',
+        datatype => 'PaginationCursorMeta',
         base_name => 'meta',
         description => '',
         format => '',
@@ -177,7 +177,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'data' => 'ARRAY[string]',
-    'meta' => 'InlineResponse2004Meta'
+    'meta' => 'PaginationCursorMeta'
 } );
 
 __PACKAGE__->attribute_map( {

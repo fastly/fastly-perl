@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **compute_acl_list_acls**
-> ARRAY[ComputeAclCreateAclsResponse] compute_acl_list_acls()
+> ComputeAclList compute_acl_list_acls()
 
 List ACLs
 
@@ -209,7 +209,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ARRAY[ComputeAclCreateAclsResponse]**](ComputeAclCreateAclsResponse.md)
+[**ComputeAclList**](ComputeAclList.md)
 
 ### Authorization
 

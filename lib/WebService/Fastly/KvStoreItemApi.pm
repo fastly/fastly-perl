@@ -47,12 +47,14 @@ sub new {
 
 
 #
-# delete_key_from_store
+# kv_store_delete_item
 #
-# Delete kv store item.
+# Delete an item.
 #
 # @param string $store_id  (required)
-# @param string $key_name  (required)
+# @param string $key  (required)
+# @param int $if_generation_match  (optional)
+# @param boolean $force  (optional, default to false)
 {
     my $params = {
     'store_id' => {
@@ -60,35 +62,45 @@ sub new {
         description => '',
         required => '1',
     },
-    'key_name' => {
+    'key' => {
         data_type => 'string',
         description => '',
         required => '1',
     },
+    'if_generation_match' => {
+        data_type => 'int',
+        description => '',
+        required => '0',
+    },
+    'force' => {
+        data_type => 'boolean',
+        description => '',
+        required => '0',
+    },
     };
-    __PACKAGE__->method_documentation->{ 'delete_key_from_store' } = {
-        summary => 'Delete kv store item.',
+    __PACKAGE__->method_documentation->{ 'kv_store_delete_item' } = {
+        summary => 'Delete an item.',
         params => $params,
         returns => undef,
         };
 }
 # @return void
 #
-sub delete_key_from_store {
+sub kv_store_delete_item {
     my ($self, %args) = @_;
 
     # verify the required parameter 'store_id' is set
     unless (exists $args{'store_id'}) {
-      croak("Missing the required parameter 'store_id' when calling delete_key_from_store");
+      croak("Missing the required parameter 'store_id' when calling kv_store_delete_item");
     }
 
-    # verify the required parameter 'key_name' is set
-    unless (exists $args{'key_name'}) {
-      croak("Missing the required parameter 'key_name' when calling delete_key_from_store");
+    # verify the required parameter 'key' is set
+    unless (exists $args{'key'}) {
+      croak("Missing the required parameter 'key' when calling kv_store_delete_item");
     }
 
     # parse inputs
-    my $_resource_path = '/resources/stores/kv/{store_id}/keys/{key_name}';
+    my $_resource_path = '/resources/stores/kv/{store_id}/keys/{key}';
 
     my $_method = 'DELETE';
     my $query_params = {};
@@ -102,6 +114,16 @@ sub delete_key_from_store {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # query params
+    if ( exists $args{'force'}) {
+        $query_params->{'force'} = $self->{api_client}->to_query_value($args{'force'});
+    }
+
+    # header params
+    if ( exists $args{'if_generation_match'}) {
+        $header_params->{'if-generation-match'} = $self->{api_client}->to_header_value($args{'if_generation_match'});
+    }
+
     # path params
     if ( exists $args{'store_id'}) {
         my $_base_variable = "{" . "store_id" . "}";
@@ -110,9 +132,9 @@ sub delete_key_from_store {
     }
 
     # path params
-    if ( exists $args{'key_name'}) {
-        my $_base_variable = "{" . "key_name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'key_name'});
+    if ( exists $args{'key'}) {
+        my $_base_variable = "{" . "key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'key'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -128,15 +150,100 @@ sub delete_key_from_store {
 }
 
 #
-# get_keys
+# kv_store_get_item
 #
-# List kv store keys.
+# Get an item.
+#
+# @param string $store_id  (required)
+# @param string $key  (required)
+{
+    my $params = {
+    'store_id' => {
+        data_type => 'string',
+        description => '',
+        required => '1',
+    },
+    'key' => {
+        data_type => 'string',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'kv_store_get_item' } = {
+        summary => 'Get an item.',
+        params => $params,
+        returns => 'string',
+        };
+}
+# @return string
+#
+sub kv_store_get_item {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'store_id' is set
+    unless (exists $args{'store_id'}) {
+      croak("Missing the required parameter 'store_id' when calling kv_store_get_item");
+    }
+
+    # verify the required parameter 'key' is set
+    unless (exists $args{'key'}) {
+      croak("Missing the required parameter 'key' when calling kv_store_get_item");
+    }
+
+    # parse inputs
+    my $_resource_path = '/resources/stores/kv/{store_id}/keys/{key}';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/octet-stream');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'store_id'}) {
+        my $_base_variable = "{" . "store_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'store_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'key'}) {
+        my $_base_variable = "{" . "key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
+}
+
+#
+# kv_store_list_item_keys
+#
+# List item keys.
 #
 # @param string $store_id  (required)
 # @param string $cursor  (optional)
 # @param int $limit  (optional, default to 100)
 # @param string $prefix  (optional)
-# @param string $consistency  (optional)
+# @param string $consistency  (optional, default to 'strong')
 {
     my $params = {
     'store_id' => {
@@ -165,20 +272,20 @@ sub delete_key_from_store {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'get_keys' } = {
-        summary => 'List kv store keys.',
+    __PACKAGE__->method_documentation->{ 'kv_store_list_item_keys' } = {
+        summary => 'List item keys.',
         params => $params,
         returns => 'InlineResponse2004',
         };
 }
 # @return InlineResponse2004
 #
-sub get_keys {
+sub kv_store_list_item_keys {
     my ($self, %args) = @_;
 
     # verify the required parameter 'store_id' is set
     unless (exists $args{'store_id'}) {
-      croak("Missing the required parameter 'store_id' when calling get_keys");
+      croak("Missing the required parameter 'store_id' when calling kv_store_list_item_keys");
     }
 
     # parse inputs
@@ -239,104 +346,19 @@ sub get_keys {
 }
 
 #
-# get_value_for_key
+# kv_store_upsert_item
 #
-# Get the value of an kv store item
-#
-# @param string $store_id  (required)
-# @param string $key_name  (required)
-{
-    my $params = {
-    'store_id' => {
-        data_type => 'string',
-        description => '',
-        required => '1',
-    },
-    'key_name' => {
-        data_type => 'string',
-        description => '',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'get_value_for_key' } = {
-        summary => 'Get the value of an kv store item',
-        params => $params,
-        returns => 'string',
-        };
-}
-# @return string
-#
-sub get_value_for_key {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'store_id' is set
-    unless (exists $args{'store_id'}) {
-      croak("Missing the required parameter 'store_id' when calling get_value_for_key");
-    }
-
-    # verify the required parameter 'key_name' is set
-    unless (exists $args{'key_name'}) {
-      croak("Missing the required parameter 'key_name' when calling get_value_for_key");
-    }
-
-    # parse inputs
-    my $_resource_path = '/resources/stores/kv/{store_id}/keys/{key_name}';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/octet-stream');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'store_id'}) {
-        my $_base_variable = "{" . "store_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'store_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'key_name'}) {
-        my $_base_variable = "{" . "key_name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'key_name'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
-    return $_response_object;
-}
-
-#
-# set_value_for_key
-#
-# Insert an item into an kv store
+# Insert or update an item.
 #
 # @param string $store_id  (required)
-# @param string $key_name  (required)
+# @param string $key  (required)
 # @param int $if_generation_match  (optional)
 # @param int $time_to_live_sec  (optional)
 # @param string $metadata  (optional)
-# @param boolean $add  (optional)
-# @param boolean $append  (optional)
-# @param boolean $prepend  (optional)
-# @param boolean $background_fetch  (optional)
+# @param boolean $add  (optional, default to false)
+# @param boolean $append  (optional, default to false)
+# @param boolean $prepend  (optional, default to false)
+# @param boolean $background_fetch  (optional, default to false)
 # @param string $body  (optional)
 {
     my $params = {
@@ -345,7 +367,7 @@ sub get_value_for_key {
         description => '',
         required => '1',
     },
-    'key_name' => {
+    'key' => {
         data_type => 'string',
         description => '',
         required => '1',
@@ -391,29 +413,29 @@ sub get_value_for_key {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'set_value_for_key' } = {
-        summary => 'Insert an item into an kv store',
+    __PACKAGE__->method_documentation->{ 'kv_store_upsert_item' } = {
+        summary => 'Insert or update an item.',
         params => $params,
-        returns => 'string',
+        returns => undef,
         };
 }
-# @return string
+# @return void
 #
-sub set_value_for_key {
+sub kv_store_upsert_item {
     my ($self, %args) = @_;
 
     # verify the required parameter 'store_id' is set
     unless (exists $args{'store_id'}) {
-      croak("Missing the required parameter 'store_id' when calling set_value_for_key");
+      croak("Missing the required parameter 'store_id' when calling kv_store_upsert_item");
     }
 
-    # verify the required parameter 'key_name' is set
-    unless (exists $args{'key_name'}) {
-      croak("Missing the required parameter 'key_name' when calling set_value_for_key");
+    # verify the required parameter 'key' is set
+    unless (exists $args{'key'}) {
+      croak("Missing the required parameter 'key' when calling kv_store_upsert_item");
     }
 
     # parse inputs
-    my $_resource_path = '/resources/stores/kv/{store_id}/keys/{key_name}';
+    my $_resource_path = '/resources/stores/kv/{store_id}/keys/{key}';
 
     my $_method = 'PUT';
     my $query_params = {};
@@ -421,7 +443,7 @@ sub set_value_for_key {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/octet-stream');
+    my $_header_accept = $self->{api_client}->select_header_accept();
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
@@ -470,9 +492,9 @@ sub set_value_for_key {
     }
 
     # path params
-    if ( exists $args{'key_name'}) {
-        my $_base_variable = "{" . "key_name" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'key_name'});
+    if ( exists $args{'key'}) {
+        my $_base_variable = "{" . "key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'key'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
@@ -486,14 +508,10 @@ sub set_value_for_key {
     my $auth_settings = [qw(token )];
 
     # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+    $self->{api_client}->call_api($_resource_path, $_method,
                                            $query_params, $form_params,
                                            $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('string', $response);
-    return $_response_object;
+    return;
 }
 
 1;

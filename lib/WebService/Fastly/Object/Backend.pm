@@ -238,7 +238,7 @@ __PACKAGE__->method_documentation({
     'keepalive_time' => {
         datatype => 'int',
         base_name => 'keepalive_time',
-        description => 'How long in seconds to keep a persistent connection to the backend between requests.',
+        description => 'How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.',
         format => '',
         read_only => 'false',
             },

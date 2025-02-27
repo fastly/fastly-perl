@@ -51,8 +51,8 @@ sub new {
 #
 # Retrieve service-level usage metrics for a product.
 #
-# @param string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests. (required)
-# @param string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests. (required)
+# @param string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
+# @param string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
 # @param string $start_month  (optional)
 # @param string $end_month  (optional)
 # @param string $limit Number of results per page. The maximum is 100. (optional, default to '5')
@@ -61,13 +61,13 @@ sub new {
     my $params = {
     'product_id' => {
         data_type => 'string',
-        description => 'The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This field is not required for CSV requests.',
-        required => '1',
+        description => 'The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;).',
+        required => '0',
     },
     'usage_type_name' => {
         data_type => 'string',
-        description => 'The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This field is not required for CSV requests.',
-        required => '1',
+        description => 'The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;).',
+        required => '0',
     },
     'start_month' => {
         data_type => 'string',
@@ -100,16 +100,6 @@ sub new {
 #
 sub get_service_level_usage {
     my ($self, %args) = @_;
-
-    # verify the required parameter 'product_id' is set
-    unless (exists $args{'product_id'}) {
-      croak("Missing the required parameter 'product_id' when calling get_service_level_usage");
-    }
-
-    # verify the required parameter 'usage_type_name' is set
-    unless (exists $args{'usage_type_name'}) {
-      croak("Missing the required parameter 'usage_type_name' when calling get_service_level_usage");
-    }
 
     # parse inputs
     my $_resource_path = '/billing/v3/service-usage-metrics';
@@ -176,19 +166,19 @@ sub get_service_level_usage {
 #
 # Get monthly usage metrics
 #
-# @param string $start_month  (optional)
-# @param string $end_month  (optional)
+# @param string $start_month  (required)
+# @param string $end_month  (required)
 {
     my $params = {
     'start_month' => {
         data_type => 'string',
         description => '',
-        required => '0',
+        required => '1',
     },
     'end_month' => {
         data_type => 'string',
         description => '',
-        required => '0',
+        required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'get_usage_metrics' } = {
@@ -201,6 +191,16 @@ sub get_service_level_usage {
 #
 sub get_usage_metrics {
     my ($self, %args) = @_;
+
+    # verify the required parameter 'start_month' is set
+    unless (exists $args{'start_month'}) {
+      croak("Missing the required parameter 'start_month' when calling get_usage_metrics");
+    }
+
+    # verify the required parameter 'end_month' is set
+    unless (exists $args{'end_month'}) {
+      croak("Missing the required parameter 'end_month' when calling get_usage_metrics");
+    }
 
     # parse inputs
     my $_resource_path = '/billing/v3/usage-metrics';
