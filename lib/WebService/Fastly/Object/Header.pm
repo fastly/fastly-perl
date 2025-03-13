@@ -228,6 +228,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'ignore_if_set' => {
+        datatype => 'string',
+        base_name => 'ignore_if_set',
+        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\&quot;0\&quot; &#x3D; false, \&quot;1\&quot; &#x3D; true)',
+        format => '',
+        read_only => 'false',
+            },
+    'priority' => {
+        datatype => 'string',
+        base_name => 'priority',
+        description => 'Priority determines execution order. Lower numbers execute first.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -240,7 +254,9 @@ __PACKAGE__->openapi_types( {
     'response_condition' => 'string',
     'src' => 'string',
     'substitution' => 'string',
-    'type' => 'string'
+    'type' => 'string',
+    'ignore_if_set' => 'string',
+    'priority' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -253,7 +269,9 @@ __PACKAGE__->attribute_map( {
     'response_condition' => 'response_condition',
     'src' => 'src',
     'substitution' => 'substitution',
-    'type' => 'type'
+    'type' => 'type',
+    'ignore_if_set' => 'ignore_if_set',
+    'priority' => 'priority'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

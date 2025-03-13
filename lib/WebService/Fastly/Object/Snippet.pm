@@ -28,8 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::SnippetAllOf;
-use WebService::Fastly::Object::SnippetCommon;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 

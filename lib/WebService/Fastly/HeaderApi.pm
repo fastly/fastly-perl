@@ -63,8 +63,8 @@ sub new {
 # @param string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
 # @param string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
 # @param string $type Accepts a string value. (optional)
-# @param int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+# @param string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+# @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
 {
     my $params = {
     'service_id' => {
@@ -128,12 +128,12 @@ sub new {
         required => '0',
     },
     'ignore_if_set' => {
-        data_type => 'int',
-        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
+        data_type => 'string',
+        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true)',
         required => '0',
     },
     'priority' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },
@@ -572,8 +572,8 @@ sub list_header_objects {
 # @param string $src Variable to be used as a source for the header content. Does not apply to &#x60;delete&#x60; action. (optional)
 # @param string $substitution Value to substitute in place of regular expression. Only applies to &#x60;regex&#x60; and &#x60;regex_repeat&#x60; actions. (optional)
 # @param string $type Accepts a string value. (optional)
-# @param int $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. (optional)
-# @param int $priority Priority determines execution order. Lower numbers execute first. (optional, default to 100)
+# @param string $ignore_if_set Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) (optional)
+# @param string $priority Priority determines execution order. Lower numbers execute first. (optional, default to '100')
 {
     my $params = {
     'service_id' => {
@@ -642,12 +642,12 @@ sub list_header_objects {
         required => '0',
     },
     'ignore_if_set' => {
-        data_type => 'int',
-        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action.',
+        data_type => 'string',
+        description => 'Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true)',
         required => '0',
     },
     'priority' => {
-        data_type => 'int',
+        data_type => 'string',
         description => 'Priority determines execution order. Lower numbers execute first.',
         required => '0',
     },

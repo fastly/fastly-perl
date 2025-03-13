@@ -306,7 +306,7 @@ __PACKAGE__->method_documentation({
     'file_max_bytes' => {
         datatype => 'int',
         base_name => 'file_max_bytes',
-        description => 'The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)',
+        description => 'The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks).',
         format => '',
         read_only => 'false',
             },

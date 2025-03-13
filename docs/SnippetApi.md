@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **create_snippet**
-> SnippetResponsePost create_snippet(service_id => $service_id, version_id => $version_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic)
+> SnippetResponse create_snippet(service_id => $service_id, version_id => $version_id, name => $name, type => $type, content => $content, priority => $priority, dynamic => $dynamic)
 
 Create a snippet
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SnippetResponsePost**](SnippetResponsePost.md)
+[**SnippetResponse**](SnippetResponse.md)
 
 ### Authorization
 

@@ -80,11 +80,11 @@ sub create_automation_token {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json');
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/vnd.api+json');
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     my $_body_data;
     # body params
@@ -145,7 +145,7 @@ sub get_automation_token_id {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json', 'application/problem+json');
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
@@ -224,7 +224,7 @@ sub get_automation_tokens_id_services {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json', 'application/problem+json');
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
@@ -302,7 +302,7 @@ sub list_automation_tokens {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json', 'application/problem+json');
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
@@ -372,7 +372,7 @@ sub revoke_automation_token_id {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/vnd.api+json', 'application/problem+json');
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }

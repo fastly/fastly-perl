@@ -189,7 +189,7 @@ __PACKAGE__->method_documentation({
     'expires_at' => {
         datatype => 'string',
         base_name => 'expires_at',
-        description => 'A UTC time-stamp of when the token expires.',
+        description => 'A UTC timestamp of when the token expires.',
         format => '',
         read_only => 'false',
             },

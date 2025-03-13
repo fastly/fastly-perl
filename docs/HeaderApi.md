@@ -48,8 +48,8 @@ my $response_condition = "response_condition_example"; # string | Optional name 
 my $src = "src_example"; # string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 my $substitution = "substitution_example"; # string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 my $type = "type_example"; # string | Accepts a string value.
-my $ignore_if_set = 56; # int | Don't add the header if it is added already. Only applies to 'set' action.
-my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
+my $ignore_if_set = "ignore_if_set_example"; # string | Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\\\"0\\\" = false, \\\"1\\\" = true)
+my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
 
 eval {
     my $result = $api_instance->create_header_object(service_id => $service_id, version_id => $version_id, action => $action, cache_condition => $cache_condition, dst => $dst, name => $name, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type, ignore_if_set => $ignore_if_set, priority => $priority);
@@ -76,8 +76,8 @@ Name | Type | Description  | Notes
  **src** | **string**| Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] 
  **substitution** | **string**| Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] 
  **type** | **string**| Accepts a string value. | [optional] 
- **ignore_if_set** | **int**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] 
- **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+ **ignore_if_set** | **string**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) | [optional] 
+ **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
 
 ### Return type
 
@@ -289,8 +289,8 @@ my $response_condition = "response_condition_example"; # string | Optional name 
 my $src = "src_example"; # string | Variable to be used as a source for the header content. Does not apply to `delete` action.
 my $substitution = "substitution_example"; # string | Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions.
 my $type = "type_example"; # string | Accepts a string value.
-my $ignore_if_set = 56; # int | Don't add the header if it is added already. Only applies to 'set' action.
-my $priority = 100; # int | Priority determines execution order. Lower numbers execute first.
+my $ignore_if_set = "ignore_if_set_example"; # string | Don't add the header if it is added already. Only applies to 'set' action. Numerical value (\\\"0\\\" = false, \\\"1\\\" = true)
+my $priority = '100'; # string | Priority determines execution order. Lower numbers execute first.
 
 eval {
     my $result = $api_instance->update_header_object(service_id => $service_id, version_id => $version_id, header_name => $header_name, action => $action, cache_condition => $cache_condition, dst => $dst, name => $name, regex => $regex, request_condition => $request_condition, response_condition => $response_condition, src => $src, substitution => $substitution, type => $type, ignore_if_set => $ignore_if_set, priority => $priority);
@@ -318,8 +318,8 @@ Name | Type | Description  | Notes
  **src** | **string**| Variable to be used as a source for the header content. Does not apply to `delete` action. | [optional] 
  **substitution** | **string**| Value to substitute in place of regular expression. Only applies to `regex` and `regex_repeat` actions. | [optional] 
  **type** | **string**| Accepts a string value. | [optional] 
- **ignore_if_set** | **int**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. | [optional] 
- **priority** | **int**| Priority determines execution order. Lower numbers execute first. | [optional] [default to 100]
+ **ignore_if_set** | **string**| Don&#39;t add the header if it is added already. Only applies to &#39;set&#39; action. Numerical value (\\\&quot;0\\\&quot; &#x3D; false, \\\&quot;1\\\&quot; &#x3D; true) | [optional] 
+ **priority** | **string**| Priority determines execution order. Lower numbers execute first. | [optional] [default to &#39;100&#39;]
 
 ### Return type
 

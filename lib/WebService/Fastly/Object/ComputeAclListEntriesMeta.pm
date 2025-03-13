@@ -159,7 +159,7 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'limit' => {
-        datatype => 'string',
+        datatype => 'int',
         base_name => 'limit',
         description => 'The maximum number of results shown in this response.',
         format => '',
@@ -175,7 +175,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'limit' => 'string',
+    'limit' => 'int',
     'next_cursor' => 'string'
 } );
 

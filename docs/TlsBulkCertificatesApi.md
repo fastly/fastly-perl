@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_tls_bulk_certs**
-> TlsBulkCertificatesResponse list_tls_bulk_certs(filter[tls_domain/id] => $filter[tls_domain/id], page[number] => $page[number], page[size] => $page[size], sort => $sort)
+> TlsBulkCertificatesResponse list_tls_bulk_certs(filter[tls_domain/id] => $filter[tls_domain/id], filter[not_before] => $filter[not_before], filter[not_after] => $filter[not_after], page[number] => $page[number], page[size] => $page[size], sort => $sort)
 
 List certificates
 
@@ -138,12 +138,14 @@ my $api_instance = WebService::Fastly::TlsBulkCertificatesApi->new(
 );
 
 my $filter[tls_domain/id] = "filter[tls_domain/id]_example"; # string | Filter certificates by their matching, fully-qualified domain name.
+my $filter[not_before] = "filter[not_before]_example"; # string | Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]=2020-05-05). 
+my $filter[not_after] = "filter[not_after]_example"; # string | Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]=2020-05-05). 
 my $page[number] = 1; # int | Current page.
 my $page[size] = 20; # int | Number of records per page.
 my $sort = created_at; # string | The order in which to list the results by creation date.
 
 eval {
-    my $result = $api_instance->list_tls_bulk_certs(filter[tls_domain/id] => $filter[tls_domain/id], page[number] => $page[number], page[size] => $page[size], sort => $sort);
+    my $result = $api_instance->list_tls_bulk_certs(filter[tls_domain/id] => $filter[tls_domain/id], filter[not_before] => $filter[not_before], filter[not_after] => $filter[not_after], page[number] => $page[number], page[size] => $page[size], sort => $sort);
     print Dumper($result);
 };
 if ($@) {
@@ -156,6 +158,8 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **filter[tls_domain/id]** | **string**| Filter certificates by their matching, fully-qualified domain name. | [optional] 
+ **filter[not_before]** | **string**| Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05).  | [optional] 
+ **filter[not_after]** | **string**| Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  | [optional] 
  **page[number]** | **int**| Current page. | [optional] 
  **page[size]** | **int**| Number of records per page. | [optional] [default to 20]
  **sort** | **string**| The order in which to list the results by creation date. | [optional] [default to &#39;created_at&#39;]

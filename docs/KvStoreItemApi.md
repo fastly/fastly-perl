@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
  **append** | **boolean**|  | [optional] [default to false]
  **prepend** | **boolean**|  | [optional] [default to false]
  **background_fetch** | **boolean**|  | [optional] [default to false]
- **body** | **string****string**|  | [optional] 
+ **body** | **string**|  | [optional] 
 
 ### Return type
 

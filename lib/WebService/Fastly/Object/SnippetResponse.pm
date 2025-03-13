@@ -29,7 +29,8 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::Snippet;
-use WebService::Fastly::Object::SnippetResponseCommon;
+use WebService::Fastly::Object::SnippetResponseAllOf;
+use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 

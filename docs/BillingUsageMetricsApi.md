@@ -10,14 +10,14 @@ use WebService::Fastly::Object::BillingUsageMetricsApi;
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**get_service_level_usage**](BillingUsageMetricsApi.md#get_service_level_usage) | **GET** /billing/v3/service-usage-metrics | Retrieve service-level usage metrics for a product.
+[**get_service_level_usage**](BillingUsageMetricsApi.md#get_service_level_usage) | **GET** /billing/v3/service-usage-metrics | Retrieve service-level usage metrics for services with non-zero usage units.
 [**get_usage_metrics**](BillingUsageMetricsApi.md#get_usage_metrics) | **GET** /billing/v3/usage-metrics | Get monthly usage metrics
 
 
 # **get_service_level_usage**
-> Serviceusagemetrics get_service_level_usage(product_id => $product_id, usage_type_name => $usage_type_name, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor)
+> Serviceusagemetrics get_service_level_usage(product_id => $product_id, service => $service, usage_type_name => $usage_type_name, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor)
 
-Retrieve service-level usage metrics for a product.
+Retrieve service-level usage metrics for services with non-zero usage units.
 
 Returns product usage, broken down by service.
 
@@ -33,15 +33,16 @@ my $api_instance = WebService::Fastly::BillingUsageMetricsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $product_id = "product_id_example"; # string | The product identifier for the metrics returned (e.g., `cdn_usage`).
-my $usage_type_name = "usage_type_name_example"; # string | The usage type name for the metrics returned (e.g., `North America Requests`).
+my $product_id = "product_id_example"; # string | The product identifier for the metrics returned (e.g., `cdn_usage`). This should be used along with `usage_type_name`.
+my $service = "service_example"; # string | The service identifier for the metrics being requested.
+my $usage_type_name = "usage_type_name_example"; # string | The usage type name for the metrics returned (e.g., `North America Requests`). This should be used along with `product_id`.
 my $start_month = 2023-01; # string | 
 my $end_month = 2023-03; # string | 
-my $limit = '5'; # string | Number of results per page. The maximum is 100.
+my $limit = '1000'; # string | Number of results per page. The maximum is 10000.
 my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 
 eval {
-    my $result = $api_instance->get_service_level_usage(product_id => $product_id, usage_type_name => $usage_type_name, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor);
+    my $result = $api_instance->get_service_level_usage(product_id => $product_id, service => $service, usage_type_name => $usage_type_name, start_month => $start_month, end_month => $end_month, limit => $limit, cursor => $cursor);
     print Dumper($result);
 };
 if ($@) {
@@ -53,11 +54,12 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **product_id** | **string**| The product identifier for the metrics returned (e.g., `cdn_usage`). | [optional] 
- **usage_type_name** | **string**| The usage type name for the metrics returned (e.g., `North America Requests`). | [optional] 
+ **product_id** | **string**| The product identifier for the metrics returned (e.g., `cdn_usage`). This should be used along with `usage_type_name`. | [optional] 
+ **service** | **string**| The service identifier for the metrics being requested. | [optional] 
+ **usage_type_name** | **string**| The usage type name for the metrics returned (e.g., `North America Requests`). This should be used along with `product_id`. | [optional] 
  **start_month** | **string**|  | [optional] 
  **end_month** | **string**|  | [optional] 
- **limit** | **string**| Number of results per page. The maximum is 100. | [optional] [default to &#39;5&#39;]
+ **limit** | **string**| Number of results per page. The maximum is 10000. | [optional] [default to &#39;1000&#39;]
  **cursor** | **string**| Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] 
 
 ### Return type

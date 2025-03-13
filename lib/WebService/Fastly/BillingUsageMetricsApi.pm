@@ -49,24 +49,30 @@ sub new {
 #
 # get_service_level_usage
 #
-# Retrieve service-level usage metrics for a product.
+# Retrieve service-level usage metrics for services with non-zero usage units.
 #
-# @param string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). (optional)
-# @param string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). (optional)
+# @param string $product_id The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;. (optional)
+# @param string $service The service identifier for the metrics being requested. (optional)
+# @param string $usage_type_name The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;. (optional)
 # @param string $start_month  (optional)
 # @param string $end_month  (optional)
-# @param string $limit Number of results per page. The maximum is 100. (optional, default to '5')
+# @param string $limit Number of results per page. The maximum is 10000. (optional, default to '1000')
 # @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 {
     my $params = {
     'product_id' => {
         data_type => 'string',
-        description => 'The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;).',
+        description => 'The product identifier for the metrics returned (e.g., &#x60;cdn_usage&#x60;). This should be used along with &#x60;usage_type_name&#x60;.',
+        required => '0',
+    },
+    'service' => {
+        data_type => 'string',
+        description => 'The service identifier for the metrics being requested.',
         required => '0',
     },
     'usage_type_name' => {
         data_type => 'string',
-        description => 'The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;).',
+        description => 'The usage type name for the metrics returned (e.g., &#x60;North America Requests&#x60;). This should be used along with &#x60;product_id&#x60;.',
         required => '0',
     },
     'start_month' => {
@@ -81,7 +87,7 @@ sub new {
     },
     'limit' => {
         data_type => 'string',
-        description => 'Number of results per page. The maximum is 100.',
+        description => 'Number of results per page. The maximum is 10000.',
         required => '0',
     },
     'cursor' => {
@@ -91,7 +97,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_service_level_usage' } = {
-        summary => 'Retrieve service-level usage metrics for a product.',
+        summary => 'Retrieve service-level usage metrics for services with non-zero usage units.',
         params => $params,
         returns => 'Serviceusagemetrics',
         };
@@ -119,6 +125,11 @@ sub get_service_level_usage {
     # query params
     if ( exists $args{'product_id'}) {
         $query_params->{'product_id'} = $self->{api_client}->to_query_value($args{'product_id'});
+    }
+
+    # query params
+    if ( exists $args{'service'}) {
+        $query_params->{'service'} = $self->{api_client}->to_query_value($args{'service'});
     }
 
     # query params

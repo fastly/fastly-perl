@@ -99,10 +99,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'create_snippet' } = {
         summary => 'Create a snippet',
         params => $params,
-        returns => 'SnippetResponsePost',
+        returns => 'SnippetResponse',
         };
 }
-# @return SnippetResponsePost
+# @return SnippetResponse
 #
 sub create_snippet {
     my ($self, %args) = @_;
@@ -182,7 +182,7 @@ sub create_snippet {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('SnippetResponsePost', $response);
+    my $_response_object = $self->{api_client}->deserialize('SnippetResponse', $response);
     return $_response_object;
 }
 

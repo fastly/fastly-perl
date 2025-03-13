@@ -32,7 +32,6 @@ use WebService::Fastly::Object::AutomationToken;
 use WebService::Fastly::Object::AutomationTokenResponseAllOf;
 use WebService::Fastly::Object::ReadOnlyCustomerId;
 use WebService::Fastly::Object::ReadOnlyId;
-use WebService::Fastly::Object::Timestamps;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -194,30 +193,9 @@ __PACKAGE__->method_documentation({
     'expires_at' => {
         datatype => 'string',
         base_name => 'expires_at',
-        description => '(optional) A UTC time-stamp of when the token will expire.',
+        description => '(optional) A UTC timestamp of when the token will expire.',
         format => '',
         read_only => 'false',
-            },
-    'created_at' => {
-        datatype => 'string',
-        base_name => 'created_at',
-        description => 'A UTC time-stamp of when the token was created.',
-        format => '',
-        read_only => 'false',
-            },
-    'deleted_at' => {
-        datatype => 'DateTime',
-        base_name => 'deleted_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
             },
     'id' => {
         datatype => 'ReadOnlyId',
@@ -247,19 +225,26 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'sudo_expires_at' => {
-        datatype => 'string',
-        base_name => 'sudo_expires_at',
-        description => '',
+    'tls_access' => {
+        datatype => 'boolean',
+        base_name => 'tls_access',
+        description => 'Indicates whether TLS access is enabled for the token.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
     'last_used_at' => {
         datatype => 'DateTime',
         base_name => 'last_used_at',
-        description => 'A UTC time-stamp of when the token was last used.',
+        description => 'A UTC timestamp of when the token was last used.',
         format => 'date-time',
         read_only => 'true',
+            },
+    'created_at' => {
+        datatype => 'string',
+        base_name => 'created_at',
+        description => 'A UTC timestamp of when the token was created.',
+        format => '',
+        read_only => 'false',
             },
 });
 
@@ -269,15 +254,13 @@ __PACKAGE__->openapi_types( {
     'services' => 'ARRAY[string]',
     'scope' => 'string',
     'expires_at' => 'string',
-    'created_at' => 'string',
-    'deleted_at' => 'DateTime',
-    'updated_at' => 'DateTime',
     'id' => 'ReadOnlyId',
     'customer_id' => 'ReadOnlyCustomerId',
     'ip' => 'string',
     'user_agent' => 'string',
-    'sudo_expires_at' => 'string',
-    'last_used_at' => 'DateTime'
+    'tls_access' => 'boolean',
+    'last_used_at' => 'DateTime',
+    'created_at' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -286,22 +269,18 @@ __PACKAGE__->attribute_map( {
     'services' => 'services',
     'scope' => 'scope',
     'expires_at' => 'expires_at',
-    'created_at' => 'created_at',
-    'deleted_at' => 'deleted_at',
-    'updated_at' => 'updated_at',
     'id' => 'id',
     'customer_id' => 'customer_id',
     'ip' => 'ip',
     'user_agent' => 'user_agent',
-    'sudo_expires_at' => 'sudo_expires_at',
-    'last_used_at' => 'last_used_at'
+    'tls_access' => 'tls_access',
+    'last_used_at' => 'last_used_at',
+    'created_at' => 'created_at'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'deleted_at' => 'true',
-    'updated_at' => 'true',
 } );
 
 

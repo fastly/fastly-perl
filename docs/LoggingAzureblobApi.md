@@ -53,7 +53,7 @@ my $account_name = "account_name_example"; # string | The unique Azure Blob Stor
 my $container = "container_example"; # string | The name of the Azure Blob Storage container in which to store logs. Required.
 my $sas_token = "sas_token_example"; # string | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
 my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs=microsoft-entra-id#remarks).
 
 eval {
     my $result = $api_instance->create_log_azure(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, path => $path, account_name => $account_name, container => $container, sas_token => $sas_token, public_key => $public_key, file_max_bytes => $file_max_bytes);
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
  **container** | **string**| The name of the Azure Blob Storage container in which to store logs. Required. | [optional] 
  **sas_token** | **string**| The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required. | [optional] 
  **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
- **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
+ **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks). | [optional] 
 
 ### Return type
 
@@ -302,7 +302,7 @@ my $account_name = "account_name_example"; # string | The unique Azure Blob Stor
 my $container = "container_example"; # string | The name of the Azure Blob Storage container in which to store logs. Required.
 my $sas_token = "sas_token_example"; # string | The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required.
 my $public_key = 'null'; # string | A PGP public key that Fastly will use to encrypt your log files before writing them to disk.
-my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.)
+my $file_max_bytes = 56; # int | The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs=microsoft-entra-id#remarks).
 
 eval {
     my $result = $api_instance->update_log_azure(service_id => $service_id, version_id => $version_id, logging_azureblob_name => $logging_azureblob_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, message_type => $message_type, timestamp_format => $timestamp_format, compression_codec => $compression_codec, period => $period, gzip_level => $gzip_level, path => $path, account_name => $account_name, container => $container, sas_token => $sas_token, public_key => $public_key, file_max_bytes => $file_max_bytes);
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
  **container** | **string**| The name of the Azure Blob Storage container in which to store logs. Required. | [optional] 
  **sas_token** | **string**| The Azure shared access signature providing write access to the blob service objects. Be sure to update your token before it expires or the logging functionality will not work. Required. | [optional] 
  **public_key** | **string**| A PGP public key that Fastly will use to encrypt your log files before writing them to disk. | [optional] [default to &#39;null&#39;]
- **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB.) | [optional] 
+ **file_max_bytes** | **int**| The maximum number of bytes for each uploaded file. A value of 0 can be used to indicate there is no limit on the size of uploaded files, otherwise the minimum value is 1048576 bytes (1 MiB). Note that Microsoft Azure Storage has [block size limits](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?tabs&#x3D;microsoft-entra-id#remarks). | [optional] 
 
 ### Return type
 

@@ -182,6 +182,8 @@ sub get_tls_bulk_cert {
 # List certificates
 #
 # @param string $filter[tls_domain/id] Filter certificates by their matching, fully-qualified domain name. (optional)
+# @param string $filter[not_before] Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05).  (optional)
+# @param string $filter[not_after] Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05).  (optional)
 # @param int $page[number] Current page. (optional)
 # @param int $page[size] Number of records per page. (optional, default to 20)
 # @param string $sort The order in which to list the results by creation date. (optional, default to 'created_at')
@@ -190,6 +192,16 @@ sub get_tls_bulk_cert {
     'filter[tls_domain/id]' => {
         data_type => 'string',
         description => 'Filter certificates by their matching, fully-qualified domain name.',
+        required => '0',
+    },
+    'filter[not_before]' => {
+        data_type => 'string',
+        description => 'Filter the returned certificates by not_before date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_before][gte]&#x3D;2020-05-05). ',
+        required => '0',
+    },
+    'filter[not_after]' => {
+        data_type => 'string',
+        description => 'Filter the returned certificates by expiry date in UTC.  Accepts parameters: lt, lte, gt, gte (e.g., filter[not_after][lte]&#x3D;2020-05-05). ',
         required => '0',
     },
     'page[number]' => {
@@ -237,6 +249,16 @@ sub list_tls_bulk_certs {
     # query params
     if ( exists $args{'filter[tls_domain/id]'}) {
         $query_params->{'filter[tls_domain.id]'} = $self->{api_client}->to_query_value($args{'filter[tls_domain/id]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[not_before]'}) {
+        $query_params->{'filter[not_before]'} = $self->{api_client}->to_query_value($args{'filter[not_before]'});
+    }
+
+    # query params
+    if ( exists $args{'filter[not_after]'}) {
+        $query_params->{'filter[not_after]'} = $self->{api_client}->to_query_value($args{'filter[not_after]'});
     }
 
     # query params
