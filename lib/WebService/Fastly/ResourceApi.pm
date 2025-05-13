@@ -54,7 +54,7 @@ sub new {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $resource_id The ID of the underlying linked resource. (optional)
-# @param string $name The name of the resource link. (optional)
+# @param string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
 {
     my $params = {
     'service_id' => {
@@ -74,7 +74,7 @@ sub new {
     },
     'name' => {
         data_type => 'string',
-        description => 'The name of the resource link.',
+        description => 'The name of the resource link. Note this is separate from the resource store name and might not match the store name.',
         required => '0',
     },
     };
@@ -453,7 +453,7 @@ sub list_resources {
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $id An alphanumeric string identifying the resource link. (required)
 # @param string $resource_id The ID of the underlying linked resource. (optional)
-# @param string $name The name of the resource link. (optional)
+# @param string $name The name of the resource link. Note this is separate from the resource store name and might not match the store name. (optional)
 {
     my $params = {
     'service_id' => {
@@ -478,7 +478,7 @@ sub list_resources {
     },
     'name' => {
         data_type => 'string',
-        description => 'The name of the resource link.',
+        description => 'The name of the resource link. Note this is separate from the resource store name and might not match the store name.',
         required => '0',
     },
     };

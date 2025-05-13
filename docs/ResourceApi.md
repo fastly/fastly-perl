@@ -39,7 +39,7 @@ my $api_instance = WebService::Fastly::ResourceApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $resource_id = "resource_id_example"; # string | The ID of the underlying linked resource.
-my $name = "name_example"; # string | The name of the resource link.
+my $name = "name_example"; # string | The name of the resource link. Note this is separate from the resource store name and might not match the store name.
 
 eval {
     my $result = $api_instance->create_resource(service_id => $service_id, version_id => $version_id, resource_id => $resource_id, name => $name);
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
  **resource_id** | **string**| The ID of the underlying linked resource. | [optional] 
- **name** | **string**| The name of the resource link. | [optional] 
+ **name** | **string**| The name of the resource link. Note this is separate from the resource store name and might not match the store name. | [optional] 
 
 ### Return type
 
@@ -260,7 +260,7 @@ my $service_id = "service_id_example"; # string | Alphanumeric string identifyin
 my $version_id = 56; # int | Integer identifying a service version.
 my $id = "id_example"; # string | An alphanumeric string identifying the resource link.
 my $resource_id = "resource_id_example"; # string | The ID of the underlying linked resource.
-my $name = "name_example"; # string | The name of the resource link.
+my $name = "name_example"; # string | The name of the resource link. Note this is separate from the resource store name and might not match the store name.
 
 eval {
     my $result = $api_instance->update_resource(service_id => $service_id, version_id => $version_id, id => $id, resource_id => $resource_id, name => $name);
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
  **version_id** | **int**| Integer identifying a service version. | 
  **id** | **string**| An alphanumeric string identifying the resource link. | 
  **resource_id** | **string**| The ID of the underlying linked resource. | [optional] 
- **name** | **string**| The name of the resource link. | [optional] 
+ **name** | **string**| The name of the resource link. Note this is separate from the resource store name and might not match the store name. | [optional] 
 
 ### Return type
 

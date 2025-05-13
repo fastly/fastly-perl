@@ -161,7 +161,7 @@ __PACKAGE__->method_documentation({
     'op' => {
         datatype => 'string',
         base_name => 'op',
-        description => 'One of \&quot;create\&quot; or \&quot;update\&quot;, indicating that the rest of this entry is to be added to/updated in the ACL.',
+        description => 'One of \&quot;create\&quot;, \&quot;update\&quot;, or \&quot;delete\&quot; indicating the operation to perform on the update.',
         format => '',
         read_only => 'false',
             },
@@ -175,7 +175,7 @@ __PACKAGE__->method_documentation({
     'action' => {
         datatype => 'string',
         base_name => 'action',
-        description => 'The action taken on the IP address, either \&quot;block\&quot; or \&quot;allow\&quot;.',
+        description => 'The action taken on the IP address, one of \&quot;BLOCK\&quot; or \&quot;ALLOW\&quot;. If using the \&quot;delete\&quot; operation, no action should be specified.',
         format => '',
         read_only => 'false',
             },

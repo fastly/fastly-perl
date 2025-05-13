@@ -49,7 +49,7 @@ sub new {
 #
 # create_dictionary
 #
-# Create an edge dictionary
+# Create a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -79,7 +79,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'create_dictionary' } = {
-        summary => 'Create an edge dictionary',
+        summary => 'Create a dictionary',
         params => $params,
         returns => 'DictionaryResponse',
         };
@@ -156,7 +156,7 @@ sub create_dictionary {
 #
 # delete_dictionary
 #
-# Delete an edge dictionary
+# Delete a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -180,7 +180,7 @@ sub create_dictionary {
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_dictionary' } = {
-        summary => 'Delete an edge dictionary',
+        summary => 'Delete a dictionary',
         params => $params,
         returns => 'InlineResponse200',
         };
@@ -259,7 +259,7 @@ sub delete_dictionary {
 #
 # get_dictionary
 #
-# Get an edge dictionary
+# Get a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -283,7 +283,7 @@ sub delete_dictionary {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_dictionary' } = {
-        summary => 'Get an edge dictionary',
+        summary => 'Get a dictionary',
         params => $params,
         returns => 'DictionaryResponse',
         };
@@ -362,7 +362,7 @@ sub get_dictionary {
 #
 # list_dictionaries
 #
-# List edge dictionaries
+# List dictionaries
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -380,7 +380,7 @@ sub get_dictionary {
     },
     };
     __PACKAGE__->method_documentation->{ 'list_dictionaries' } = {
-        summary => 'List edge dictionaries',
+        summary => 'List dictionaries',
         params => $params,
         returns => 'ARRAY[DictionaryResponse]',
         };
@@ -447,7 +447,7 @@ sub list_dictionaries {
 #
 # update_dictionary
 #
-# Update an edge dictionary
+# Update a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -483,7 +483,7 @@ sub list_dictionaries {
     },
     };
     __PACKAGE__->method_documentation->{ 'update_dictionary' } = {
-        summary => 'Update an edge dictionary',
+        summary => 'Update a dictionary',
         params => $params,
         returns => 'DictionaryResponse',
         };

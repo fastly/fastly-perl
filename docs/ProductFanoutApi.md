@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**disable_product_fanout**](ProductFanoutApi.md#disable_product_fanout) | **DELETE** /enabled-products/v1/fanout/services/{service_id} | Disable product
 [**enable_product_fanout**](ProductFanoutApi.md#enable_product_fanout) | **PUT** /enabled-products/v1/fanout/services/{service_id} | Enable product
 [**get_product_fanout**](ProductFanoutApi.md#get_product_fanout) | **GET** /enabled-products/v1/fanout/services/{service_id} | Get product enablement status
+[**get_services_product_fanout**](ProductFanoutApi.md#get_services_product_fanout) | **GET** /enabled-products/v1/fanout/services | Get services with product enabled
 
 
 # **disable_product_fanout**
@@ -155,6 +156,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FanoutResponseBodyEnable**](FanoutResponseBodyEnable.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_services_product_fanout**
+> FanoutResponseBodyGetAllServices get_services_product_fanout()
+
+Get services with product enabled
+
+Get all the services which have the Fanout product enabled.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ProductFanoutApi;
+my $api_instance = WebService::Fastly::ProductFanoutApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+
+eval {
+    my $result = $api_instance->get_services_product_fanout();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ProductFanoutApi->get_services_product_fanout: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FanoutResponseBodyGetAllServices**](FanoutResponseBodyGetAllServices.md)
 
 ### Authorization
 

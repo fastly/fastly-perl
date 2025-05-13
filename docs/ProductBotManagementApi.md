@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**disable_product_bot_management**](ProductBotManagementApi.md#disable_product_bot_management) | **DELETE** /enabled-products/v1/bot_management/services/{service_id} | Disable product
 [**enable_product_bot_management**](ProductBotManagementApi.md#enable_product_bot_management) | **PUT** /enabled-products/v1/bot_management/services/{service_id} | Enable product
 [**get_product_bot_management**](ProductBotManagementApi.md#get_product_bot_management) | **GET** /enabled-products/v1/bot_management/services/{service_id} | Get product enablement status
+[**get_services_product_bot_management**](ProductBotManagementApi.md#get_services_product_bot_management) | **GET** /enabled-products/v1/bot_management/services | Get services with product enabled
 
 
 # **disable_product_bot_management**
@@ -155,6 +156,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BotManagementResponseBodyEnable**](BotManagementResponseBodyEnable.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_services_product_bot_management**
+> BotManagementResponseBodyGetAllServices get_services_product_bot_management()
+
+Get services with product enabled
+
+Get all the services which have the Bot Management product enabled.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ProductBotManagementApi;
+my $api_instance = WebService::Fastly::ProductBotManagementApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+
+eval {
+    my $result = $api_instance->get_services_product_bot_management();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ProductBotManagementApi->get_services_product_bot_management: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**BotManagementResponseBodyGetAllServices**](BotManagementResponseBodyGetAllServices.md)
 
 ### Authorization
 

@@ -49,7 +49,7 @@ sub new {
 #
 # get_dictionary_info
 #
-# Get edge dictionary metadata
+# Get dictionary metadata
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
@@ -73,7 +73,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_dictionary_info' } = {
-        summary => 'Get edge dictionary metadata',
+        summary => 'Get dictionary metadata',
         params => $params,
         returns => 'DictionaryInfoResponse',
         };

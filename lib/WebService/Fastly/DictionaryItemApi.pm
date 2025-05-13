@@ -49,7 +49,7 @@ sub new {
 #
 # bulk_update_dictionary_item
 #
-# Update multiple entries in an edge dictionary
+# Update multiple entries in a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -73,7 +73,7 @@ sub new {
     },
     };
     __PACKAGE__->method_documentation->{ 'bulk_update_dictionary_item' } = {
-        summary => 'Update multiple entries in an edge dictionary',
+        summary => 'Update multiple entries in a dictionary',
         params => $params,
         returns => 'InlineResponse200',
         };
@@ -145,7 +145,7 @@ sub bulk_update_dictionary_item {
 #
 # create_dictionary_item
 #
-# Create an entry in an edge dictionary
+# Create an entry in a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -175,7 +175,7 @@ sub bulk_update_dictionary_item {
     },
     };
     __PACKAGE__->method_documentation->{ 'create_dictionary_item' } = {
-        summary => 'Create an entry in an edge dictionary',
+        summary => 'Create an entry in a dictionary',
         params => $params,
         returns => 'DictionaryItemResponse',
         };
@@ -252,7 +252,7 @@ sub create_dictionary_item {
 #
 # delete_dictionary_item
 #
-# Delete an item from an edge dictionary
+# Delete an item from a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -276,7 +276,7 @@ sub create_dictionary_item {
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_dictionary_item' } = {
-        summary => 'Delete an item from an edge dictionary',
+        summary => 'Delete an item from a dictionary',
         params => $params,
         returns => 'InlineResponse200',
         };
@@ -355,7 +355,7 @@ sub delete_dictionary_item {
 #
 # get_dictionary_item
 #
-# Get an item from an edge dictionary
+# Get an item from a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -379,7 +379,7 @@ sub delete_dictionary_item {
     },
     };
     __PACKAGE__->method_documentation->{ 'get_dictionary_item' } = {
-        summary => 'Get an item from an edge dictionary',
+        summary => 'Get an item from a dictionary',
         params => $params,
         returns => 'DictionaryItemResponse',
         };
@@ -458,12 +458,12 @@ sub get_dictionary_item {
 #
 # list_dictionary_items
 #
-# List items in an edge dictionary
+# List items in a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
 # @param int $page Current page. (optional)
-# @param int $per_page Number of records per page. (optional, default to 20)
+# @param int $per_page Number of records per page. (optional, default to 100)
 # @param string $sort Field on which to sort. (optional, default to 'created')
 # @param string $direction Direction in which to sort results. (optional, default to 'ascend')
 {
@@ -500,7 +500,7 @@ sub get_dictionary_item {
     },
     };
     __PACKAGE__->method_documentation->{ 'list_dictionary_items' } = {
-        summary => 'List items in an edge dictionary',
+        summary => 'List items in a dictionary',
         params => $params,
         returns => 'ARRAY[DictionaryItemResponse]',
         };
@@ -587,7 +587,7 @@ sub list_dictionary_items {
 #
 # update_dictionary_item
 #
-# Update an entry in an edge dictionary
+# Update an entry in a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -623,7 +623,7 @@ sub list_dictionary_items {
     },
     };
     __PACKAGE__->method_documentation->{ 'update_dictionary_item' } = {
-        summary => 'Update an entry in an edge dictionary',
+        summary => 'Update an entry in a dictionary',
         params => $params,
         returns => 'DictionaryItemResponse',
         };
@@ -712,7 +712,7 @@ sub update_dictionary_item {
 #
 # upsert_dictionary_item
 #
-# Insert or update an entry in an edge dictionary
+# Insert or update an entry in a dictionary
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
@@ -748,7 +748,7 @@ sub update_dictionary_item {
     },
     };
     __PACKAGE__->method_documentation->{ 'upsert_dictionary_item' } = {
-        summary => 'Insert or update an entry in an edge dictionary',
+        summary => 'Insert or update an entry in a dictionary',
         params => $params,
         returns => 'DictionaryItemResponse',
         };

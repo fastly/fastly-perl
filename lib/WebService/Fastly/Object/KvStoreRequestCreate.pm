@@ -161,7 +161,7 @@ __PACKAGE__->method_documentation({
     'name' => {
         datatype => 'string',
         base_name => 'name',
-        description => 'A human-readable name for the store. Refer to https://www.fastly.com/documentation/guides/concepts/edge-state/data-stores/#limitations-and-constraints for constraints on the KV store name.',
+        description => 'A human-readable name for the store. Refer to https://docs.fastly.com/products/compute-resource-limits#kv-store for limitations on the KV store name.',
         format => '',
         read_only => 'false',
             },

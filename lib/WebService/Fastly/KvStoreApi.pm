@@ -270,10 +270,10 @@ sub kv_store_get {
     __PACKAGE__->method_documentation->{ 'kv_store_list' } = {
         summary => 'List all KV stores.',
         params => $params,
-        returns => 'InlineResponse2003',
+        returns => 'InlineResponse2005',
         };
 }
-# @return InlineResponse2003
+# @return InlineResponse2005
 #
 sub kv_store_list {
     my ($self, %args) = @_;
@@ -314,7 +314,7 @@ sub kv_store_list {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2003', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2005', $response);
     return $_response_object;
 }
 

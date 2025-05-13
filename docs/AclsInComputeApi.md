@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 Update an ACL
 
-Update an ACL.
+Update an ACL entry with a new operation or action, this allows you to modify an existing entry or delete it.
 
 ### Example
 ```perl

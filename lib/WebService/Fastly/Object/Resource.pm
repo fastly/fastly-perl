@@ -168,7 +168,7 @@ __PACKAGE__->method_documentation({
     'name' => {
         datatype => 'string',
         base_name => 'name',
-        description => 'The name of the resource link.',
+        description => 'The name of the resource link. Note this is separate from the resource store name and might not match the store name.',
         format => '',
         read_only => 'false',
             },

@@ -10,17 +10,17 @@ use WebService::Fastly::Object::DictionaryApi;
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**create_dictionary**](DictionaryApi.md#create_dictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create an edge dictionary
-[**delete_dictionary**](DictionaryApi.md#delete_dictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete an edge dictionary
-[**get_dictionary**](DictionaryApi.md#get_dictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get an edge dictionary
-[**list_dictionaries**](DictionaryApi.md#list_dictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List edge dictionaries
-[**update_dictionary**](DictionaryApi.md#update_dictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update an edge dictionary
+[**create_dictionary**](DictionaryApi.md#create_dictionary) | **POST** /service/{service_id}/version/{version_id}/dictionary | Create a dictionary
+[**delete_dictionary**](DictionaryApi.md#delete_dictionary) | **DELETE** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Delete a dictionary
+[**get_dictionary**](DictionaryApi.md#get_dictionary) | **GET** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Get a dictionary
+[**list_dictionaries**](DictionaryApi.md#list_dictionaries) | **GET** /service/{service_id}/version/{version_id}/dictionary | List dictionaries
+[**update_dictionary**](DictionaryApi.md#update_dictionary) | **PUT** /service/{service_id}/version/{version_id}/dictionary/{dictionary_name} | Update a dictionary
 
 
 # **create_dictionary**
 > DictionaryResponse create_dictionary(service_id => $service_id, version_id => $version_id, name => $name, write_only => $write_only)
 
-Create an edge dictionary
+Create a dictionary
 
 Create named dictionary for a particular service and version.
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 # **delete_dictionary**
 > InlineResponse200 delete_dictionary(service_id => $service_id, version_id => $version_id, dictionary_name => $dictionary_name)
 
-Delete an edge dictionary
+Delete a dictionary
 
 Delete named dictionary for a particular service and version.
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 # **get_dictionary**
 > DictionaryResponse get_dictionary(service_id => $service_id, version_id => $version_id, dictionary_name => $dictionary_name)
 
-Get an edge dictionary
+Get a dictionary
 
 Retrieve a single dictionary by name for the version and service.
 
@@ -187,7 +187,7 @@ Name | Type | Description  | Notes
 # **list_dictionaries**
 > ARRAY[DictionaryResponse] list_dictionaries(service_id => $service_id, version_id => $version_id)
 
-List edge dictionaries
+List dictionaries
 
 List all dictionaries for the version of the service.
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 # **update_dictionary**
 > DictionaryResponse update_dictionary(service_id => $service_id, version_id => $version_id, dictionary_name => $dictionary_name, name => $name, write_only => $write_only)
 
-Update an edge dictionary
+Update a dictionary
 
 Update named dictionary for a particular service and version.
 

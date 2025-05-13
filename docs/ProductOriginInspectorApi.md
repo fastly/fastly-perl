@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**disable_product_origin_inspector**](ProductOriginInspectorApi.md#disable_product_origin_inspector) | **DELETE** /enabled-products/v1/origin_inspector/services/{service_id} | Disable product
 [**enable_product_origin_inspector**](ProductOriginInspectorApi.md#enable_product_origin_inspector) | **PUT** /enabled-products/v1/origin_inspector/services/{service_id} | Enable product
 [**get_product_origin_inspector**](ProductOriginInspectorApi.md#get_product_origin_inspector) | **GET** /enabled-products/v1/origin_inspector/services/{service_id} | Get product enablement status
+[**get_services_product_origin_inspector**](ProductOriginInspectorApi.md#get_services_product_origin_inspector) | **GET** /enabled-products/v1/origin_inspector/services | Get services with product enabled
 
 
 # **disable_product_origin_inspector**
@@ -155,6 +156,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OriginInspectorResponseBodyEnable**](OriginInspectorResponseBodyEnable.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_services_product_origin_inspector**
+> OriginInspectorResponseBodyGetAllServices get_services_product_origin_inspector()
+
+Get services with product enabled
+
+Get all the services which have the Origin Inspector product enabled.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ProductOriginInspectorApi;
+my $api_instance = WebService::Fastly::ProductOriginInspectorApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+
+eval {
+    my $result = $api_instance->get_services_product_origin_inspector();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ProductOriginInspectorApi->get_services_product_origin_inspector: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**OriginInspectorResponseBodyGetAllServices**](OriginInspectorResponseBodyGetAllServices.md)
 
 ### Authorization
 

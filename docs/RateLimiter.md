@@ -9,7 +9,7 @@ use WebService::Fastly::Object::RateLimiter;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | A human readable name for the rate limiting rule. | [optional] 
-**uri_dictionary_name** | **string** | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional] 
+**uri_dictionary_name** | **string** | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional] 
 **http_methods** | **ARRAY[string]** | Array of HTTP methods to apply rate limiting to. | [optional] 
 **rps_limit** | **int** | Upper limit of requests per second allowed by the rate limiter. | [optional] 
 **window_size** | **int** | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] 

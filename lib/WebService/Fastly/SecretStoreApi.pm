@@ -314,10 +314,10 @@ sub get_secret_store {
     __PACKAGE__->method_documentation->{ 'get_secret_stores' } = {
         summary => 'Get all secret stores',
         params => $params,
-        returns => 'InlineResponse2005',
+        returns => 'InlineResponse2007',
         };
 }
-# @return InlineResponse2005
+# @return InlineResponse2007
 #
 sub get_secret_stores {
     my ($self, %args) = @_;
@@ -363,7 +363,7 @@ sub get_secret_stores {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2005', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2007', $response);
     return $_response_object;
 }
 

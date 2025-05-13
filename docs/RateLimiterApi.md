@@ -39,7 +39,7 @@ my $api_instance = WebService::Fastly::RateLimiterApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | A human readable name for the rate limiting rule.
-my $uri_dictionary_name = "uri_dictionary_name_example"; # string | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+my $uri_dictionary_name = "uri_dictionary_name_example"; # string | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
 my $http_methods = [("null")]; # ARRAY[string] | Array of HTTP methods to apply rate limiting to.
 my $rps_limit = 56; # int | Upper limit of requests per second allowed by the rate limiter.
 my $window_size = 56; # int | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
  **name** | **string**| A human readable name for the rate limiting rule. | [optional] 
- **uri_dictionary_name** | **string**| The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional] 
+ **uri_dictionary_name** | **string**| The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional] 
  **http_methods** | [**ARRAY[string]**](string.md)| Array of HTTP methods to apply rate limiting to. | [optional] 
  **rps_limit** | **int**| Upper limit of requests per second allowed by the rate limiter. | [optional] 
  **window_size** | **int**| Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] 
@@ -268,7 +268,7 @@ my $api_instance = WebService::Fastly::RateLimiterApi->new(
 
 my $rate_limiter_id = "rate_limiter_id_example"; # string | Alphanumeric string identifying the rate limiter.
 my $name = "name_example"; # string | A human readable name for the rate limiting rule.
-my $uri_dictionary_name = "uri_dictionary_name_example"; # string | The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
+my $uri_dictionary_name = "uri_dictionary_name_example"; # string | The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited.
 my $http_methods = [("null")]; # ARRAY[string] | Array of HTTP methods to apply rate limiting to.
 my $rps_limit = 56; # int | Upper limit of requests per second allowed by the rate limiter.
 my $window_size = 56; # int | Number of seconds during which the RPS limit must be exceeded in order to trigger a violation.
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **rate_limiter_id** | **string**| Alphanumeric string identifying the rate limiter. | 
  **name** | **string**| A human readable name for the rate limiting rule. | [optional] 
- **uri_dictionary_name** | **string**| The name of an Edge Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional] 
+ **uri_dictionary_name** | **string**| The name of a Dictionary containing URIs as keys. If not defined or `null`, all origin URIs will be rate limited. | [optional] 
  **http_methods** | [**ARRAY[string]**](string.md)| Array of HTTP methods to apply rate limiting to. | [optional] 
  **rps_limit** | **int**| Upper limit of requests per second allowed by the rate limiter. | [optional] 
  **window_size** | **int**| Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. | [optional] 

@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::DdosProtectionEvent;
+use WebService::Fastly::Object::PaginationCursorMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -158,21 +160,30 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'expires_at' => {
-        datatype => 'string',
-        base_name => 'expires_at',
-        description => 'Time-stamp (GMT) when the domain_ownership validation will expire.',
+    'data' => {
+        datatype => 'ARRAY[DdosProtectionEvent]',
+        base_name => 'data',
+        description => '',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
+            },
+    'meta' => {
+        datatype => 'PaginationCursorMeta',
+        base_name => 'meta',
+        description => '',
+        format => '',
+        read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'expires_at' => 'string'
+    'data' => 'ARRAY[DdosProtectionEvent]',
+    'meta' => 'PaginationCursorMeta'
 } );
 
 __PACKAGE__->attribute_map( {
-    'expires_at' => 'expires_at'
+    'data' => 'data',
+    'meta' => 'meta'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

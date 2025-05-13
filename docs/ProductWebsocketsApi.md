@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**disable_product_websockets**](ProductWebsocketsApi.md#disable_product_websockets) | **DELETE** /enabled-products/v1/websockets/services/{service_id} | Disable product
 [**enable_product_websockets**](ProductWebsocketsApi.md#enable_product_websockets) | **PUT** /enabled-products/v1/websockets/services/{service_id} | Enable product
 [**get_product_websockets**](ProductWebsocketsApi.md#get_product_websockets) | **GET** /enabled-products/v1/websockets/services/{service_id} | Get product enablement status
+[**get_services_product_websockets**](ProductWebsocketsApi.md#get_services_product_websockets) | **GET** /enabled-products/v1/websockets/services | Get services with product enabled
 
 
 # **disable_product_websockets**
@@ -155,6 +156,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**WebsocketsResponseBodyEnable**](WebsocketsResponseBodyEnable.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_services_product_websockets**
+> WebsocketsResponseBodyGetAllServices get_services_product_websockets()
+
+Get services with product enabled
+
+Get all the services which have the Websockets product enabled.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ProductWebsocketsApi;
+my $api_instance = WebService::Fastly::ProductWebsocketsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+
+eval {
+    my $result = $api_instance->get_services_product_websockets();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ProductWebsocketsApi->get_services_product_websockets: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WebsocketsResponseBodyGetAllServices**](WebsocketsResponseBodyGetAllServices.md)
 
 ### Authorization
 

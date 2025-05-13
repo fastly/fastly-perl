@@ -54,7 +54,7 @@ sub new {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $name A human readable name for the rate limiting rule. (optional)
-# @param string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+# @param string $uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
 # @param ARRAY[string] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
 # @param int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
 # @param int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
@@ -83,7 +83,7 @@ sub new {
     },
     'uri_dictionary_name' => {
         data_type => 'string',
-        description => 'The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.',
+        description => 'The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.',
         required => '0',
     },
     'http_methods' => {
@@ -478,7 +478,7 @@ sub list_rate_limiters {
 #
 # @param string $rate_limiter_id Alphanumeric string identifying the rate limiter. (required)
 # @param string $name A human readable name for the rate limiting rule. (optional)
-# @param string $uri_dictionary_name The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
+# @param string $uri_dictionary_name The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited. (optional)
 # @param ARRAY[string] $http_methods Array of HTTP methods to apply rate limiting to. (optional)
 # @param int $rps_limit Upper limit of requests per second allowed by the rate limiter. (optional)
 # @param int $window_size Number of seconds during which the RPS limit must be exceeded in order to trigger a violation. (optional)
@@ -502,7 +502,7 @@ sub list_rate_limiters {
     },
     'uri_dictionary_name' => {
         data_type => 'string',
-        description => 'The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.',
+        description => 'The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.',
         required => '0',
     },
     'http_methods' => {

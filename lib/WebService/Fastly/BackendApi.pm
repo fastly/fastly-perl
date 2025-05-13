@@ -71,6 +71,7 @@ sub new {
 # @param string $name The name of the backend. (optional)
 # @param string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
 # @param int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+# @param boolean $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
 # @param string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
 # @param string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
 # @param string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -188,6 +189,11 @@ sub new {
     'port' => {
         data_type => 'int',
         description => 'Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.',
+        required => '0',
+    },
+    'prefer_ipv6' => {
+        data_type => 'boolean',
+        description => 'Prefer IPv6 connections for DNS hostname lookups.',
         required => '0',
     },
     'request_condition' => {
@@ -414,6 +420,11 @@ sub create_backend {
     # form params
     if ( exists $args{'port'} ) {
                 $form_params->{'port'} = $self->{api_client}->to_form_value($args{'port'});
+    }
+
+    # form params
+    if ( exists $args{'prefer_ipv6'} ) {
+                $form_params->{'prefer_ipv6'} = $self->{api_client}->to_form_value($args{'prefer_ipv6'});
     }
 
     # form params
@@ -833,6 +844,7 @@ sub list_backends {
 # @param string $name The name of the backend. (optional)
 # @param string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
 # @param int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
+# @param boolean $prefer_ipv6 Prefer IPv6 connections for DNS hostname lookups. (optional)
 # @param string $request_condition Name of a Condition, which if satisfied, will select this backend during a request. If set, will override any &#x60;auto_loadbalance&#x60; setting. By default, the first backend added to a service is selected for all requests. (optional)
 # @param string $share_key Value that when shared across backends will enable those backends to share the same health check. (optional)
 # @param string $shield Identifier of the POP to use as a [shield](https://docs.fastly.com/en/guides/shielding). (optional)
@@ -955,6 +967,11 @@ sub list_backends {
     'port' => {
         data_type => 'int',
         description => 'Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request.',
+        required => '0',
+    },
+    'prefer_ipv6' => {
+        data_type => 'boolean',
+        description => 'Prefer IPv6 connections for DNS hostname lookups.',
         required => '0',
     },
     'request_condition' => {
@@ -1193,6 +1210,11 @@ sub update_backend {
     # form params
     if ( exists $args{'port'} ) {
                 $form_params->{'port'} = $self->{api_client}->to_form_value($args{'port'});
+    }
+
+    # form params
+    if ( exists $args{'prefer_ipv6'} ) {
+                $form_params->{'prefer_ipv6'} = $self->{api_client}->to_form_value($args{'prefer_ipv6'});
     }
 
     # form params

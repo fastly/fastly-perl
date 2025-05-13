@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**enable_product_ngwaf**](ProductNgwafApi.md#enable_product_ngwaf) | **PUT** /enabled-products/v1/ngwaf/services/{service_id} | Enable product
 [**get_product_ngwaf**](ProductNgwafApi.md#get_product_ngwaf) | **GET** /enabled-products/v1/ngwaf/services/{service_id} | Get product enablement status
 [**get_product_ngwaf_configuration**](ProductNgwafApi.md#get_product_ngwaf_configuration) | **GET** /enabled-products/v1/ngwaf/services/{service_id}/configuration | Get configuration
+[**get_services_product_ngwaf**](ProductNgwafApi.md#get_services_product_ngwaf) | **GET** /enabled-products/v1/ngwaf/services | Get services with product enabled
 [**set_product_ngwaf_configuration**](ProductNgwafApi.md#set_product_ngwaf_configuration) | **PATCH** /enabled-products/v1/ngwaf/services/{service_id}/configuration | Update configuration
 
 
@@ -210,6 +211,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**NgwafResponseConfigure**](NgwafResponseConfigure.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_services_product_ngwaf**
+> NgwafResponseBodyGetAllServices get_services_product_ngwaf()
+
+Get services with product enabled
+
+Get all the services which have the Next-Gen WAF product enabled.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ProductNgwafApi;
+my $api_instance = WebService::Fastly::ProductNgwafApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+
+eval {
+    my $result = $api_instance->get_services_product_ngwaf();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ProductNgwafApi->get_services_product_ngwaf: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**NgwafResponseBodyGetAllServices**](NgwafResponseBodyGetAllServices.md)
 
 ### Authorization
 

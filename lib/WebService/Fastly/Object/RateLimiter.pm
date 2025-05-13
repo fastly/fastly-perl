@@ -168,7 +168,7 @@ __PACKAGE__->method_documentation({
     'uri_dictionary_name' => {
         datatype => 'string',
         base_name => 'uri_dictionary_name',
-        description => 'The name of an Edge Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.',
+        description => 'The name of a Dictionary containing URIs as keys. If not defined or &#x60;null&#x60;, all origin URIs will be rate limited.',
         format => '',
         read_only => 'false',
             },

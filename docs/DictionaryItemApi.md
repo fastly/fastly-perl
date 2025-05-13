@@ -10,19 +10,19 @@ use WebService::Fastly::Object::DictionaryItemApi;
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
-[**bulk_update_dictionary_item**](DictionaryItemApi.md#bulk_update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in an edge dictionary
-[**create_dictionary_item**](DictionaryItemApi.md#create_dictionary_item) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in an edge dictionary
-[**delete_dictionary_item**](DictionaryItemApi.md#delete_dictionary_item) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from an edge dictionary
-[**get_dictionary_item**](DictionaryItemApi.md#get_dictionary_item) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from an edge dictionary
-[**list_dictionary_items**](DictionaryItemApi.md#list_dictionary_items) | **GET** /service/{service_id}/dictionary/{dictionary_id}/items | List items in an edge dictionary
-[**update_dictionary_item**](DictionaryItemApi.md#update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in an edge dictionary
-[**upsert_dictionary_item**](DictionaryItemApi.md#upsert_dictionary_item) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in an edge dictionary
+[**bulk_update_dictionary_item**](DictionaryItemApi.md#bulk_update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/items | Update multiple entries in a dictionary
+[**create_dictionary_item**](DictionaryItemApi.md#create_dictionary_item) | **POST** /service/{service_id}/dictionary/{dictionary_id}/item | Create an entry in a dictionary
+[**delete_dictionary_item**](DictionaryItemApi.md#delete_dictionary_item) | **DELETE** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Delete an item from a dictionary
+[**get_dictionary_item**](DictionaryItemApi.md#get_dictionary_item) | **GET** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Get an item from a dictionary
+[**list_dictionary_items**](DictionaryItemApi.md#list_dictionary_items) | **GET** /service/{service_id}/dictionary/{dictionary_id}/items | List items in a dictionary
+[**update_dictionary_item**](DictionaryItemApi.md#update_dictionary_item) | **PATCH** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Update an entry in a dictionary
+[**upsert_dictionary_item**](DictionaryItemApi.md#upsert_dictionary_item) | **PUT** /service/{service_id}/dictionary/{dictionary_id}/item/{dictionary_item_key} | Insert or update an entry in a dictionary
 
 
 # **bulk_update_dictionary_item**
 > InlineResponse200 bulk_update_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, bulk_update_dictionary_list_request => $bulk_update_dictionary_list_request)
 
-Update multiple entries in an edge dictionary
+Update multiple entries in a dictionary
 
 Update multiple items in the same dictionary. For faster updates to your service, group your changes into large batches. The maximum batch size is 1000 items. [Contact support](https://support.fastly.com/) to discuss raising this limit.
 
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 # **create_dictionary_item**
 > DictionaryItemResponse create_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, item_key => $item_key, item_value => $item_value)
 
-Create an entry in an edge dictionary
+Create an entry in a dictionary
 
 Create DictionaryItem given service, dictionary ID, item key, and item value.
 
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 # **delete_dictionary_item**
 > InlineResponse200 delete_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key)
 
-Delete an item from an edge dictionary
+Delete an item from a dictionary
 
 Delete DictionaryItem given service, dictionary ID, and item key.
 
@@ -189,7 +189,7 @@ Name | Type | Description  | Notes
 # **get_dictionary_item**
 > DictionaryItemResponse get_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key)
 
-Get an item from an edge dictionary
+Get an item from a dictionary
 
 Retrieve a single DictionaryItem given service, dictionary ID and item key.
 
@@ -244,7 +244,7 @@ Name | Type | Description  | Notes
 # **list_dictionary_items**
 > ARRAY[DictionaryItemResponse] list_dictionary_items(service_id => $service_id, dictionary_id => $dictionary_id, page => $page, per_page => $per_page, sort => $sort, direction => $direction)
 
-List items in an edge dictionary
+List items in a dictionary
 
 List of DictionaryItems given service and dictionary ID.
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **dictionary_id** | **string**| Alphanumeric string identifying a Dictionary. | 
  **page** | **int**| Current page. | [optional] 
- **per_page** | **int**| Number of records per page. | [optional] [default to 20]
+ **per_page** | **int**| Number of records per page. | [optional] [default to 100]
  **sort** | **string**| Field on which to sort. | [optional] [default to &#39;created&#39;]
  **direction** | **string**| Direction in which to sort results. | [optional] [default to &#39;ascend&#39;]
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 # **update_dictionary_item**
 > DictionaryItemResponse update_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key, item_key => $item_key, item_value => $item_value)
 
-Update an entry in an edge dictionary
+Update an entry in a dictionary
 
 Update DictionaryItem given service, dictionary ID, item key, and item value.
 
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 # **upsert_dictionary_item**
 > DictionaryItemResponse upsert_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key, item_key => $item_key, item_value => $item_value)
 
-Insert or update an entry in an edge dictionary
+Insert or update an entry in a dictionary
 
 Upsert DictionaryItem given service, dictionary ID, item key, and item value.
 

@@ -275,10 +275,10 @@ sub kv_store_get_item {
     __PACKAGE__->method_documentation->{ 'kv_store_list_item_keys' } = {
         summary => 'List item keys.',
         params => $params,
-        returns => 'InlineResponse2004',
+        returns => 'InlineResponse2006',
         };
 }
-# @return InlineResponse2004
+# @return InlineResponse2006
 #
 sub kv_store_list_item_keys {
     my ($self, %args) = @_;
@@ -341,7 +341,7 @@ sub kv_store_list_item_keys {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2004', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2006', $response);
     return $_response_object;
 }
 
