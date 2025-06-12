@@ -24,7 +24,7 @@ use utf8;
 use Log::Any qw($log);
 use Carp;
 
-use constant VERSION => '10.00';
+use constant VERSION => '11.00';
 
 =head1 Name
 
@@ -44,7 +44,7 @@ default: 180
 
 String. custom UserAgent header
 
-default: fastly-perl/10.00
+default: fastly-perl/11.00
 
 =item api_key: (optional)
 
@@ -93,7 +93,7 @@ sub new {
 
     # class/static variables
     $p{http_timeout} //= 180;
-    $p{http_user_agent} //= 'fastly-perl/10.00';
+    $p{http_user_agent} //= 'fastly-perl/11.00';
 
     # authentication setting
     $p{api_key} //= {};

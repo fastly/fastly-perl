@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_service_detail**
-> ServiceDetail get_service_detail(service_id => $service_id, version => $version)
+> ServiceDetail get_service_detail(service_id => $service_id, version => $version, filter[versions/active] => $filter[versions/active])
 
 Get service details
 
@@ -200,9 +200,10 @@ my $api_instance = WebService::Fastly::ServiceApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version = 56; # int | Number identifying a version of the service.
+my $filter[versions/active] = null; # boolean | Limits the versions array to the active versions. Accepts `true` or `false` (defaults to false).
 
 eval {
-    my $result = $api_instance->get_service_detail(service_id => $service_id, version => $version);
+    my $result = $api_instance->get_service_detail(service_id => $service_id, version => $version, filter[versions/active] => $filter[versions/active]);
     print Dumper($result);
 };
 if ($@) {
@@ -216,6 +217,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version** | **int**| Number identifying a version of the service. | [optional] 
+ **filter[versions/active]** | **boolean**| Limits the versions array to the active versions. Accepts `true` or `false` (defaults to false). | [optional] 
 
 ### Return type
 

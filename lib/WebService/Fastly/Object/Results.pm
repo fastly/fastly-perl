@@ -2002,7 +2002,7 @@ __PACKAGE__->method_documentation({
     'ngwaf_requests_allowed_count' => {
         datatype => 'int',
         base_name => 'ngwaf_requests_allowed_count',
-        description => 'Count of Edge WAF requests allowed.',
+        description => 'Count of Next-Gen WAF (Edge WAF &amp; Core WAF) requests allowed.',
         format => '',
         read_only => 'false',
             },
@@ -2016,7 +2016,7 @@ __PACKAGE__->method_documentation({
     'ngwaf_requests_blocked_count' => {
         datatype => 'int',
         base_name => 'ngwaf_requests_blocked_count',
-        description => 'Count of Edge WAF requests blocked.',
+        description => 'Count of Next-Gen WAF (Edge WAF &amp; Core WAF) requests blocked.',
         format => '',
         read_only => 'false',
             },

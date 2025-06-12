@@ -287,7 +287,7 @@ __PACKAGE__->method_documentation({
     'prefer_ipv6' => {
         datatype => 'boolean',
         base_name => 'prefer_ipv6',
-        description => 'Prefer IPv6 connections for DNS hostname lookups.',
+        description => 'Prefer IPv6 connections to origins for hostname backends.',
         format => '',
         read_only => 'false',
             },
@@ -503,6 +503,7 @@ __PACKAGE__->openapi_nullable( {
     'max_tls_version' => 'true',
     'min_tls_version' => 'true',
     'override_host' => 'true',
+    'prefer_ipv6' => 'true',
     'share_key' => 'true',
     'shield' => 'true',
     'ssl_ca_cert' => 'true',

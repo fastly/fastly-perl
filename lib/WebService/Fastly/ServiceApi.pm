@@ -280,6 +280,7 @@ sub get_service {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version Number identifying a version of the service. (optional)
+# @param boolean $filter[versions/active] Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false). (optional)
 {
     my $params = {
     'service_id' => {
@@ -290,6 +291,11 @@ sub get_service {
     'version' => {
         data_type => 'int',
         description => 'Number identifying a version of the service.',
+        required => '0',
+    },
+    'filter[versions/active]' => {
+        data_type => 'boolean',
+        description => 'Limits the versions array to the active versions. Accepts &#x60;true&#x60; or &#x60;false&#x60; (defaults to false).',
         required => '0',
     },
     };
@@ -327,6 +333,11 @@ sub get_service_detail {
     # query params
     if ( exists $args{'version'}) {
         $query_params->{'version'} = $self->{api_client}->to_query_value($args{'version'});
+    }
+
+    # query params
+    if ( exists $args{'filter[versions/active]'}) {
+        $query_params->{'filter[versions.active]'} = $self->{api_client}->to_query_value($args{'filter[versions/active]'});
     }
 
     # path params
