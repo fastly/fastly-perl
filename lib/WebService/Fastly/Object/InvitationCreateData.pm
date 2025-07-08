@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::InvitationResponse;
+package WebService::Fastly::Object::InvitationCreateData;
 
 require 5.6.0;
 use strict;
@@ -28,9 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Invitation;
-use WebService::Fastly::Object::InvitationResponseAllOf;
-use WebService::Fastly::Object::InvitationResponseData;
+use WebService::Fastly::Object::InvitationCreateDataAllOf;
+use WebService::Fastly::Object::InvitationData;
+use WebService::Fastly::Object::InvitationDataAttributes;
+use WebService::Fastly::Object::RelationshipServiceInvitationsCreate;
+use WebService::Fastly::Object::TypeInvitation;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -156,14 +158,28 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'InvitationResponse',
+                                  class => 'InvitationCreateData',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'InvitationResponseData',
-        base_name => 'data',
+    'type' => {
+        datatype => 'TypeInvitation',
+        base_name => 'type',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'attributes' => {
+        datatype => 'InvitationDataAttributes',
+        base_name => 'attributes',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'relationships' => {
+        datatype => 'RelationshipServiceInvitationsCreate',
+        base_name => 'relationships',
         description => '',
         format => '',
         read_only => 'false',
@@ -171,11 +187,15 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'InvitationResponseData'
+    'type' => 'TypeInvitation',
+    'attributes' => 'InvitationDataAttributes',
+    'relationships' => 'RelationshipServiceInvitationsCreate'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'type' => 'type',
+    'attributes' => 'attributes',
+    'relationships' => 'relationships'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -1,15 +1,14 @@
-# WebService::Fastly::Object::InvitationData
+# WebService::Fastly::Object::InvitationCreateResponseAllOf
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::InvitationData;
+use WebService::Fastly::Object::InvitationCreateResponseAllOf;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | [**TypeInvitation**](TypeInvitation.md) |  | [optional] 
-**attributes** | [**InvitationDataAttributes**](InvitationDataAttributes.md) |  | [optional] 
+**data** | [**InvitationResponseData**](InvitationResponseData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

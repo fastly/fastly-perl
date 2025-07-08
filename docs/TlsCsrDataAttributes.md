@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **organizational_unit** | **string** | Organizational Unit (OU) - The internal division of the organization managing the certificate. | [optional] 
 **email** | **string** | Email Address (EMAIL) - The organizational contact for this. | [optional] 
 **key_type** | **string** | CSR Key Type. | [optional] 
+**relationships/tls_private_key/id** | **string** | Optional. An alphanumeric string identifying the private key you&#39;ve uploaded for use with your TLS certificate. If left blank, Fastly will create and manage a key for you. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

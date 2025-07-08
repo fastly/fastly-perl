@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **create_log_grafanacloudlogs**
-> LoggingGrafanacloudlogsResponse create_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, url => $url, token => $token, index => $index)
+> LoggingGrafanacloudlogsResponse create_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, url => $url, token => $token, index => $index)
 
 Create a Grafana Cloud Logs log endpoint
 
@@ -41,7 +41,8 @@ my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name for the real-time logging configuration.
 my $placement = "placement_example"; # string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
-my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+my $format = "format_example"; # string | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
+my $log_processing_region = 'none'; # string | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $user = "user_example"; # string | The Grafana Cloud Logs Dataset you want to log to.
 my $url = "url_example"; # string | The URL of the Loki instance in your Grafana stack.
@@ -49,7 +50,7 @@ my $token = "token_example"; # string | The Grafana Access Policy token with `lo
 my $index = "index_example"; # string | The Stream Labels, a JSON string used to identify the stream.
 
 eval {
-    my $result = $api_instance->create_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, url => $url, token => $token, index => $index);
+    my $result = $api_instance->create_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, url => $url, token => $token, index => $index);
     print Dumper($result);
 };
 if ($@) {
@@ -66,7 +67,8 @@ Name | Type | Description  | Notes
  **name** | **string**| The name for the real-time logging configuration. | [optional] 
  **placement** | **string**| Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] 
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
- **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] 
+ **format** | **string**| A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). | [optional] 
+ **log_processing_region** | **string**| The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional] [default to &#39;none&#39;]
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **user** | **string**| The Grafana Cloud Logs Dataset you want to log to. | [optional] 
  **url** | **string**| The URL of the Loki instance in your Grafana stack. | [optional] 
@@ -252,7 +254,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_log_grafanacloudlogs**
-> LoggingGrafanacloudlogsResponse update_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, logging_grafanacloudlogs_name => $logging_grafanacloudlogs_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, url => $url, token => $token, index => $index)
+> LoggingGrafanacloudlogsResponse update_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, logging_grafanacloudlogs_name => $logging_grafanacloudlogs_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, url => $url, token => $token, index => $index)
 
 Update a Grafana Cloud Logs log endpoint
 
@@ -276,7 +278,8 @@ my $logging_grafanacloudlogs_name = "logging_grafanacloudlogs_name_example"; # s
 my $name = "name_example"; # string | The name for the real-time logging configuration.
 my $placement = "placement_example"; # string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
-my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).
+my $format = "format_example"; # string | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).
+my $log_processing_region = 'none'; # string | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $user = "user_example"; # string | The Grafana Cloud Logs Dataset you want to log to.
 my $url = "url_example"; # string | The URL of the Loki instance in your Grafana stack.
@@ -284,7 +287,7 @@ my $token = "token_example"; # string | The Grafana Access Policy token with `lo
 my $index = "index_example"; # string | The Stream Labels, a JSON string used to identify the stream.
 
 eval {
-    my $result = $api_instance->update_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, logging_grafanacloudlogs_name => $logging_grafanacloudlogs_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, url => $url, token => $token, index => $index);
+    my $result = $api_instance->update_log_grafanacloudlogs(service_id => $service_id, version_id => $version_id, logging_grafanacloudlogs_name => $logging_grafanacloudlogs_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, url => $url, token => $token, index => $index);
     print Dumper($result);
 };
 if ($@) {
@@ -302,7 +305,8 @@ Name | Type | Description  | Notes
  **name** | **string**| The name for the real-time logging configuration. | [optional] 
  **placement** | **string**| Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] 
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
- **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). | [optional] 
+ **format** | **string**| A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). | [optional] 
+ **log_processing_region** | **string**| The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional] [default to &#39;none&#39;]
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **user** | **string**| The Grafana Cloud Logs Dataset you want to log to. | [optional] 
  **url** | **string**| The URL of the Loki instance in your Grafana stack. | [optional] 

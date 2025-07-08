@@ -177,13 +177,6 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'relationships' => {
-        datatype => 'RelationshipsForInvitation',
-        base_name => 'relationships',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
     'id' => {
         datatype => 'string',
         base_name => 'id',
@@ -191,20 +184,27 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'true',
             },
+    'relationships' => {
+        datatype => 'RelationshipsForInvitation',
+        base_name => 'relationships',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'type' => 'TypeInvitation',
     'attributes' => 'Timestamps',
-    'relationships' => 'RelationshipsForInvitation',
-    'id' => 'string'
+    'id' => 'string',
+    'relationships' => 'RelationshipsForInvitation'
 } );
 
 __PACKAGE__->attribute_map( {
     'type' => 'type',
     'attributes' => 'attributes',
-    'relationships' => 'relationships',
-    'id' => 'id'
+    'id' => 'id',
+    'relationships' => 'relationships'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

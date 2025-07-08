@@ -235,6 +235,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'relationships/tls_private_key/id' => {
+        datatype => 'string',
+        base_name => 'relationships.tls_private_key.id',
+        description => 'Optional. An alphanumeric string identifying the private key you&#39;ve uploaded for use with your TLS certificate. If left blank, Fastly will create and manage a key for you.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -248,7 +255,8 @@ __PACKAGE__->openapi_types( {
     'organization' => 'string',
     'organizational_unit' => 'string',
     'email' => 'string',
-    'key_type' => 'string'
+    'key_type' => 'string',
+    'relationships/tls_private_key/id' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -262,7 +270,8 @@ __PACKAGE__->attribute_map( {
     'organization' => 'organization',
     'organizational_unit' => 'organizational_unit',
     'email' => 'email',
-    'key_type' => 'key_type'
+    'key_type' => 'key_type',
+    'relationships/tls_private_key/id' => 'relationships.tls_private_key.id'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

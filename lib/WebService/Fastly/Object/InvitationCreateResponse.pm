@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::InvitationResponseAllOf;
+package WebService::Fastly::Object::InvitationCreateResponse;
 
 require 5.6.0;
 use strict;
@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::Invitation;
+use WebService::Fastly::Object::InvitationCreateResponseAllOf;
 use WebService::Fastly::Object::InvitationResponseData;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -154,7 +156,7 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'InvitationResponseAllOf',
+                                  class => 'InvitationCreateResponse',
                                   required => [], # TODO
 }                                 );
 

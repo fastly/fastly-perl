@@ -191,6 +191,7 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'service_invitations' => 'true',
 } );
 
 

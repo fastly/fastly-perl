@@ -172,16 +172,25 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'allow_untrusted_root' => {
+        datatype => 'boolean',
+        base_name => 'allow_untrusted_root',
+        description => 'Indicates that the supplied certificate was not signed by a trusted CA.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'cert_blob' => 'string',
-    'name' => 'string'
+    'name' => 'string',
+    'allow_untrusted_root' => 'boolean'
 } );
 
 __PACKAGE__->attribute_map( {
     'cert_blob' => 'cert_blob',
-    'name' => 'name'
+    'name' => 'name',
+    'allow_untrusted_root' => 'allow_untrusted_root'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

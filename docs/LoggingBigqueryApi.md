@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **create_log_bigquery**
-> LoggingBigqueryResponse create_log_bigquery(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id)
+> LoggingBigqueryResponse create_log_bigquery(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id)
 
 Create a BigQuery log endpoint
 
@@ -41,7 +41,8 @@ my $version_id = 56; # int | Integer identifying a service version.
 my $name = "name_example"; # string | The name of the BigQuery logging object. Used as a primary key for API access.
 my $placement = "placement_example"; # string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
-my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+my $format = "format_example"; # string | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce JSON that matches the schema of your BigQuery table.
+my $log_processing_region = 'none'; # string | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $user = "user_example"; # string | Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Not required if `account_name` is specified.
 my $secret_key = "secret_key_example"; # string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified.
@@ -52,7 +53,7 @@ my $template_suffix = "template_suffix_example"; # string | BigQuery table name 
 my $project_id = "project_id_example"; # string | Your Google Cloud Platform project ID. Required
 
 eval {
-    my $result = $api_instance->create_log_bigquery(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id);
+    my $result = $api_instance->create_log_bigquery(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id);
     print Dumper($result);
 };
 if ($@) {
@@ -69,7 +70,8 @@ Name | Type | Description  | Notes
  **name** | **string**| The name of the BigQuery logging object. Used as a primary key for API access. | [optional] 
  **placement** | **string**| Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] 
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
- **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. | [optional] 
+ **format** | **string**| A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce JSON that matches the schema of your BigQuery table. | [optional] 
+ **log_processing_region** | **string**| The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional] [default to &#39;none&#39;]
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **user** | **string**| Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Not required if `account_name` is specified. | [optional] 
  **secret_key** | **string**| Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified. | [optional] 
@@ -258,7 +260,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_log_bigquery**
-> LoggingBigqueryResponse update_log_bigquery(service_id => $service_id, version_id => $version_id, logging_bigquery_name => $logging_bigquery_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id)
+> LoggingBigqueryResponse update_log_bigquery(service_id => $service_id, version_id => $version_id, logging_bigquery_name => $logging_bigquery_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id)
 
 Update a BigQuery log endpoint
 
@@ -282,7 +284,8 @@ my $logging_bigquery_name = "logging_bigquery_name_example"; # string | The name
 my $name = "name_example"; # string | The name of the BigQuery logging object. Used as a primary key for API access.
 my $placement = "placement_example"; # string | Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`. 
 my $response_condition = "response_condition_example"; # string | The name of an existing condition in the configured endpoint, or leave blank to always execute.
-my $format = "format_example"; # string | A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table.
+my $format = "format_example"; # string | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce JSON that matches the schema of your BigQuery table.
+my $log_processing_region = 'none'; # string | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global.
 my $format_version = 2; # int | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`. 
 my $user = "user_example"; # string | Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Not required if `account_name` is specified.
 my $secret_key = "secret_key_example"; # string | Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified.
@@ -293,7 +296,7 @@ my $template_suffix = "template_suffix_example"; # string | BigQuery table name 
 my $project_id = "project_id_example"; # string | Your Google Cloud Platform project ID. Required
 
 eval {
-    my $result = $api_instance->update_log_bigquery(service_id => $service_id, version_id => $version_id, logging_bigquery_name => $logging_bigquery_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id);
+    my $result = $api_instance->update_log_bigquery(service_id => $service_id, version_id => $version_id, logging_bigquery_name => $logging_bigquery_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, user => $user, secret_key => $secret_key, account_name => $account_name, dataset => $dataset, table => $table, template_suffix => $template_suffix, project_id => $project_id);
     print Dumper($result);
 };
 if ($@) {
@@ -311,7 +314,8 @@ Name | Type | Description  | Notes
  **name** | **string**| The name of the BigQuery logging object. Used as a primary key for API access. | [optional] 
  **placement** | **string**| Where in the generated VCL the logging call should be placed. If not set, endpoints with `format_version` of 2 are placed in `vcl_log` and those with `format_version` of 1 are placed in `vcl_deliver`.  | [optional] 
  **response_condition** | **string**| The name of an existing condition in the configured endpoint, or leave blank to always execute. | [optional] 
- **format** | **string**| A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats). Must produce JSON that matches the schema of your BigQuery table. | [optional] 
+ **format** | **string**| A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce JSON that matches the schema of your BigQuery table. | [optional] 
+ **log_processing_region** | **string**| The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional] [default to &#39;none&#39;]
  **format_version** | **int**| The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to 2]
  **user** | **string**| Your Google Cloud Platform service account email address. The `client_email` field in your service account authentication JSON. Not required if `account_name` is specified. | [optional] 
  **secret_key** | **string**| Your Google Cloud Platform account secret key. The `private_key` field in your service account authentication JSON. Not required if `account_name` is specified. | [optional] 

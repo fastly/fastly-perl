@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 
 # **create_invitation**
-> InvitationResponse create_invitation(invitation => $invitation)
+> InvitationCreateResponse create_invitation(invitation => $invitation)
 
 Create an invitation
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InvitationResponse**](InvitationResponse.md)
+[**InvitationCreateResponse**](InvitationCreateResponse.md)
 
 ### Authorization
 

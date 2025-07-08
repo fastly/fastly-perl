@@ -225,7 +225,7 @@ __PACKAGE__->method_documentation({
     'format' => {
         datatype => 'string',
         base_name => 'format',
-        description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
+        description => 'A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).',
         format => '',
         read_only => 'false',
             },

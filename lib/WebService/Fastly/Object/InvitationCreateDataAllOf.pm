@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LoggingNewrelicAdditional;
+package WebService::Fastly::Object::InvitationCreateDataAllOf;
 
 require 5.6.0;
 use strict;
@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::RelationshipServiceInvitationsCreate;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -153,44 +154,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'LoggingNewrelicAdditional',
+                                  class => 'InvitationCreateDataAllOf',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'format' => {
-        datatype => 'string',
-        base_name => 'format',
-        description => 'A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). Must produce valid JSON that New Relic Logs can ingest.',
-        format => '',
-        read_only => 'false',
-            },
-    'token' => {
-        datatype => 'string',
-        base_name => 'token',
-        description => 'The Insert API key from the Account page of your New Relic account. Required.',
-        format => '',
-        read_only => 'false',
-            },
-    'region' => {
-        datatype => 'string',
-        base_name => 'region',
-        description => 'The region to which to stream logs.',
+    'relationships' => {
+        datatype => 'RelationshipServiceInvitationsCreate',
+        base_name => 'relationships',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'format' => 'string',
-    'token' => 'string',
-    'region' => 'string'
+    'relationships' => 'RelationshipServiceInvitationsCreate'
 } );
 
 __PACKAGE__->attribute_map( {
-    'format' => 'format',
-    'token' => 'token',
-    'region' => 'region'
+    'relationships' => 'relationships'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

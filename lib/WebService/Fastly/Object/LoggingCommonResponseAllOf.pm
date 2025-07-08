@@ -182,7 +182,14 @@ __PACKAGE__->method_documentation({
     'format' => {
         datatype => 'string',
         base_name => 'format',
-        description => 'A Fastly [log format string](https://docs.fastly.com/en/guides/custom-log-formats).',
+        description => 'A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/).',
+        format => '',
+        read_only => 'false',
+            },
+    'log_processing_region' => {
+        datatype => 'string',
+        base_name => 'log_processing_region',
+        description => 'The geographic region where the logs will be processed before streaming. Valid values are &#x60;us&#x60;, &#x60;eu&#x60;, and &#x60;none&#x60; for global.',
         format => '',
         read_only => 'false',
             },
@@ -192,14 +199,16 @@ __PACKAGE__->openapi_types( {
     'name' => 'string',
     'placement' => 'string',
     'response_condition' => 'string',
-    'format' => 'string'
+    'format' => 'string',
+    'log_processing_region' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'name' => 'name',
     'placement' => 'placement',
     'response_condition' => 'response_condition',
-    'format' => 'format'
+    'format' => 'format',
+    'log_processing_region' => 'log_processing_region'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

@@ -4,7 +4,7 @@ WebService::Fastly - an interface to most facets of the Fastly API (https://www.
 
 # VERSION
 
-11.00
+11.01
 
 
 # SYNOPSIS
@@ -634,6 +634,9 @@ The fastly-perl API client currently does not support the following endpoints:
 - [`/domains/v1/tools/suggest`](https://www.fastly.com/documentation/reference/api/) (GET)
 - [`/domains/v1/{domain_id}`](https://www.fastly.com/documentation/reference/api/) (DELETE, GET, PATCH)
 - [`/domains/v1`](https://www.fastly.com/documentation/reference/api/) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}/signing-key`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}/alerts/{alert_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces/{workspace_id}/alerts`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspace_alerts) (GET, POST)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events/{event_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/events`](https://www.fastly.com/documentation/reference/api/ngwaf/events) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/redactions/{redaction_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/redactions) (DELETE, GET, PATCH)
@@ -645,8 +648,8 @@ The fastly-perl API client currently does not support the following endpoints:
 - [`/ngwaf/v1/workspaces/{workspace_id}/timeseries`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/timeseries) (GET)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches/{virtual_patch_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET, PATCH)
 - [`/ngwaf/v1/workspaces/{workspace_id}/virtual-patches`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/virtual-patches) (GET)
-- [`/ngwaf/v1/workspaces/{workspace_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspaces) (DELETE, GET, PATCH)
-- [`/ngwaf/v1/workspaces`](https://www.fastly.com/documentation/reference/api/ngwaf/v1/workspaces) (GET, POST)
+- [`/ngwaf/v1/workspaces/{workspace_id}`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (DELETE, GET, PATCH)
+- [`/ngwaf/v1/workspaces`](https://www.fastly.com/documentation/reference/api/ngwaf/workspaces) (GET, POST)
 - [`/notifications/integration-types`](https://developer.fastly.com/reference/api/observability/notification) (GET)
 - [`/notifications/integrations/{integration_id}/rotateSigningKey`](https://developer.fastly.com/reference/api/observability/notification) (POST)
 - [`/notifications/integrations/{integration_id}/signingKey`](https://developer.fastly.com/reference/api/observability/notification) (GET)

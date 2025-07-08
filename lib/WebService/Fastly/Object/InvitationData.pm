@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::InvitationDataAttributes;
-use WebService::Fastly::Object::RelationshipServiceInvitationsCreate;
 use WebService::Fastly::Object::TypeInvitation;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -175,25 +174,16 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'relationships' => {
-        datatype => 'RelationshipServiceInvitationsCreate',
-        base_name => 'relationships',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
     'type' => 'TypeInvitation',
-    'attributes' => 'InvitationDataAttributes',
-    'relationships' => 'RelationshipServiceInvitationsCreate'
+    'attributes' => 'InvitationDataAttributes'
 } );
 
 __PACKAGE__->attribute_map( {
     'type' => 'type',
-    'attributes' => 'attributes',
-    'relationships' => 'relationships'
+    'attributes' => 'attributes'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

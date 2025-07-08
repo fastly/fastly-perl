@@ -307,7 +307,7 @@ __PACKAGE__->method_documentation({
     'override_host' => {
         datatype => 'string',
         base_name => 'override_host',
-        description => 'The hostname to [override the Host header](https://docs.fastly.com/en/guides/specifying-an-override-host). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.',
+        description => 'The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting.',
         format => '',
         read_only => 'false',
             },

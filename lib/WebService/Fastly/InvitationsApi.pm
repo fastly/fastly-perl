@@ -63,10 +63,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'create_invitation' } = {
         summary => 'Create an invitation',
         params => $params,
-        returns => 'InvitationResponse',
+        returns => 'InvitationCreateResponse',
         };
 }
-# @return InvitationResponse
+# @return InvitationCreateResponse
 #
 sub create_invitation {
     my ($self, %args) = @_;
@@ -102,7 +102,7 @@ sub create_invitation {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InvitationResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('InvitationCreateResponse', $response);
     return $_response_object;
 }
 

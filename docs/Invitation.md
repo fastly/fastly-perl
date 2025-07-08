@@ -8,7 +8,7 @@ use WebService::Fastly::Object::Invitation;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**InvitationData**](InvitationData.md) |  | [optional] 
+**data** | [**InvitationCreateData**](InvitationCreateData.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

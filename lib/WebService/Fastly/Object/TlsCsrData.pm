@@ -28,7 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::RelationshipTlsPrivateKey;
 use WebService::Fastly::Object::TlsCsrDataAttributes;
 use WebService::Fastly::Object::TypeTlsCsr;
 
@@ -175,25 +174,16 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'relationships' => {
-        datatype => 'RelationshipTlsPrivateKey',
-        base_name => 'relationships',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
 });
 
 __PACKAGE__->openapi_types( {
     'type' => 'TypeTlsCsr',
-    'attributes' => 'TlsCsrDataAttributes',
-    'relationships' => 'RelationshipTlsPrivateKey'
+    'attributes' => 'TlsCsrDataAttributes'
 } );
 
 __PACKAGE__->attribute_map( {
     'type' => 'type',
-    'attributes' => 'attributes',
-    'relationships' => 'relationships'
+    'attributes' => 'attributes'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
