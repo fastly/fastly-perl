@@ -1,15 +1,15 @@
-# WebService::Fastly::Object::LogTimeseriesResult
+# WebService::Fastly::Object::TimeseriesGetResponse
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::LogTimeseriesResult;
+use WebService::Fastly::Object::TimeseriesGetResponse;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dimensions** | [**LogTimeseriesResultDimensions**](LogTimeseriesResultDimensions.md) |  | [optional] 
-**values** | **HASH[string,object]** |  | [optional] 
+**data** | [**ARRAY[TimeseriesResult]**](TimeseriesResult.md) |  | [optional] 
+**meta** | [**TimeseriesMeta**](TimeseriesMeta.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

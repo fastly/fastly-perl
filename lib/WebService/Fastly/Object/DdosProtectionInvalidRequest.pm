@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesGetResponse;
+package WebService::Fastly::Object::DdosProtectionInvalidRequest;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LogTimeseriesGetResponseMeta;
-use WebService::Fastly::Object::LogTimeseriesResult;
+use WebService::Fastly::Object::DdosProtectionErrorErrors;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,21 +154,35 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'LogTimeseriesGetResponse',
+                                  class => 'DdosProtectionInvalidRequest',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ARRAY[LogTimeseriesResult]',
-        base_name => 'data',
+    'title' => {
+        datatype => 'string',
+        base_name => 'title',
         description => '',
         format => '',
         read_only => 'false',
             },
-    'meta' => {
-        datatype => 'LogTimeseriesGetResponseMeta',
-        base_name => 'meta',
+    'status' => {
+        datatype => 'int',
+        base_name => 'status',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'detail' => {
+        datatype => 'string',
+        base_name => 'detail',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'errors' => {
+        datatype => 'ARRAY[DdosProtectionErrorErrors]',
+        base_name => 'errors',
         description => '',
         format => '',
         read_only => 'false',
@@ -177,13 +190,17 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[LogTimeseriesResult]',
-    'meta' => 'LogTimeseriesGetResponseMeta'
+    'title' => 'string',
+    'status' => 'int',
+    'detail' => 'string',
+    'errors' => 'ARRAY[DdosProtectionErrorErrors]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data',
-    'meta' => 'meta'
+    'title' => 'title',
+    'status' => 'status',
+    'detail' => 'detail',
+    'errors' => 'errors'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

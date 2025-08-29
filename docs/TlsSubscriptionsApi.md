@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_tls_sub**
-> TlsSubscriptionResponse create_tls_sub(force => $force, tls_subscription => $tls_subscription)
+> TlsSubscriptionResponse create_tls_sub(tls_subscription => $tls_subscription)
 
 Create a TLS subscription
 
@@ -93,11 +93,10 @@ my $api_instance = WebService::Fastly::TlsSubscriptionsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $force = true; # boolean | A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. 
 my $tls_subscription = WebService::Fastly::Object::TlsSubscription->new(); # TlsSubscription | 
 
 eval {
-    my $result = $api_instance->create_tls_sub(force => $force, tls_subscription => $tls_subscription);
+    my $result = $api_instance->create_tls_sub(tls_subscription => $tls_subscription);
     print Dumper($result);
 };
 if ($@) {
@@ -109,7 +108,6 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **force** | **boolean**| A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain.  | [optional] 
  **tls_subscription** | [**TlsSubscription**](TlsSubscription.md)|  | [optional] 
 
 ### Return type

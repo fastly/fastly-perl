@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesResult;
+package WebService::Fastly::Object::AttackSource;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::AnyType;
-use WebService::Fastly::Object::LogTimeseriesResultDimensions;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,35 +153,53 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'LogTimeseriesResult',
+                                  class => 'AttackSource',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'dimensions' => {
-        datatype => 'LogTimeseriesResultDimensions',
-        base_name => 'dimensions',
-        description => '',
+    'country_code' => {
+        datatype => 'string',
+        base_name => 'country_code',
+        description => 'Country code of the attack source',
         format => '',
         read_only => 'false',
             },
-    'values' => {
-        datatype => 'HASH[string,object]',
-        base_name => 'values',
-        description => '',
+    'country_name' => {
+        datatype => 'string',
+        base_name => 'country_name',
+        description => 'Name of the country',
+        format => '',
+        read_only => 'false',
+            },
+    'request_count' => {
+        datatype => 'int',
+        base_name => 'request_count',
+        description => 'Number of requests from this country',
+        format => '',
+        read_only => 'false',
+            },
+    'total_count' => {
+        datatype => 'int',
+        base_name => 'total_count',
+        description => 'Total number of attacks considered',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'dimensions' => 'LogTimeseriesResultDimensions',
-    'values' => 'HASH[string,object]'
+    'country_code' => 'string',
+    'country_name' => 'string',
+    'request_count' => 'int',
+    'total_count' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'dimensions' => 'dimensions',
-    'values' => 'values'
+    'country_code' => 'country_code',
+    'country_name' => 'country_name',
+    'request_count' => 'request_count',
+    'total_count' => 'total_count'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

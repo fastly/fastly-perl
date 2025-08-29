@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::DdosProtectionAction;
+package WebService::Fastly::Object::DdosProtectionNotAuthorized;
 
 require 5.6.0;
 use strict;
@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Action types for a rule.
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,20 +152,36 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Action types for a rule.',
-                                  class => 'DdosProtectionAction',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'DdosProtectionNotAuthorized',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'title' => {
+        datatype => 'string',
+        base_name => 'title',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'status' => {
+        datatype => 'int',
+        base_name => 'status',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    
+    'title' => 'string',
+    'status' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    
+    'title' => 'title',
+    'status' => 'status'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

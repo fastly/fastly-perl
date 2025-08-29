@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesGetResponseMeta;
+package WebService::Fastly::Object::ListSignalReport;
 
 require 5.6.0;
 use strict;
@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LogTimeseriesGetResponseMetaFilters;
+use WebService::Fastly::Object::SignalReport;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -154,42 +154,14 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'LogTimeseriesGetResponseMeta',
+                                  class => 'ListSignalReport',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'service_id' => {
-        datatype => 'string',
-        base_name => 'service_id',
-        description => 'ID of the service for which data was returned.',
-        format => '',
-        read_only => 'false',
-            },
-    'start' => {
-        datatype => 'string',
-        base_name => 'start',
-        description => 'Start time for the query as supplied in the request.',
-        format => '',
-        read_only => 'false',
-            },
-    'end' => {
-        datatype => 'string',
-        base_name => 'end',
-        description => 'End time for the query as supplied in the request.',
-        format => '',
-        read_only => 'false',
-            },
-    'granularity' => {
-        datatype => 'string',
-        base_name => 'granularity',
-        description => 'The granularity of the time buckets in the response.',
-        format => '',
-        read_only => 'false',
-            },
-    'filters' => {
-        datatype => 'LogTimeseriesGetResponseMetaFilters',
-        base_name => 'filters',
+    'data' => {
+        datatype => 'ARRAY[SignalReport]',
+        base_name => 'data',
         description => '',
         format => '',
         read_only => 'false',
@@ -197,19 +169,11 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'service_id' => 'string',
-    'start' => 'string',
-    'end' => 'string',
-    'granularity' => 'string',
-    'filters' => 'LogTimeseriesGetResponseMetaFilters'
+    'data' => 'ARRAY[SignalReport]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'service_id' => 'service_id',
-    'start' => 'start',
-    'end' => 'end',
-    'granularity' => 'granularity',
-    'filters' => 'filters'
+    'data' => 'data'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

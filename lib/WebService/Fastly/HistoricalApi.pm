@@ -55,6 +55,7 @@ sub new {
 # @param string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (optional, default to 'now')
 # @param string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (optional, default to 'day')
 # @param string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America.  (optional)
+# @param string $services Limit the query to only the specified, comma-separated list of services.  (optional)
 {
     my $params = {
     'from' => {
@@ -75,6 +76,11 @@ sub new {
     'region' => {
         data_type => 'string',
         description => 'Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. ',
+        required => '0',
+    },
+    'services' => {
+        data_type => 'string',
+        description => 'Limit the query to only the specified, comma-separated list of services. ',
         required => '0',
     },
     };
@@ -122,6 +128,11 @@ sub get_hist_stats {
     # query params
     if ( exists $args{'region'}) {
         $query_params->{'region'} = $self->{api_client}->to_query_value($args{'region'});
+    }
+
+    # query params
+    if ( exists $args{'services'}) {
+        $query_params->{'services'} = $self->{api_client}->to_query_value($args{'services'});
     }
 
     my $_body_data;

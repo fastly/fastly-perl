@@ -385,6 +385,84 @@ sub ddos_protection_rule_get {
 }
 
 #
+# ddos_protection_rule_patch
+#
+# Update rule
+#
+# @param string $rule_id Unique ID of the rule. (required)
+# @param DdosProtectionRulePatch $ddos_protection_rule_patch  (optional)
+{
+    my $params = {
+    'rule_id' => {
+        data_type => 'string',
+        description => 'Unique ID of the rule.',
+        required => '1',
+    },
+    'ddos_protection_rule_patch' => {
+        data_type => 'DdosProtectionRulePatch',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'ddos_protection_rule_patch' } = {
+        summary => 'Update rule',
+        params => $params,
+        returns => 'DdosProtectionRule',
+        };
+}
+# @return DdosProtectionRule
+#
+sub ddos_protection_rule_patch {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'rule_id' is set
+    unless (exists $args{'rule_id'}) {
+      croak("Missing the required parameter 'rule_id' when calling ddos_protection_rule_patch");
+    }
+
+    # parse inputs
+    my $_resource_path = '/ddos-protection/v1/rules/{rule_id}';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'rule_id'}) {
+        my $_base_variable = "{" . "rule_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'rule_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'ddos_protection_rule_patch'}) {
+        $_body_data = $args{'ddos_protection_rule_patch'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('DdosProtectionRule', $response);
+    return $_response_object;
+}
+
+#
 # ddos_protection_traffic_stats_rule_get
 #
 # Get traffic stats for a rule

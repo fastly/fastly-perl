@@ -147,15 +147,9 @@ sub create_globalsign_email_challenge {
 #
 # Create a TLS subscription
 #
-# @param boolean $force A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain.  (optional)
 # @param TlsSubscription $tls_subscription  (optional)
 {
     my $params = {
-    'force' => {
-        data_type => 'boolean',
-        description => 'A flag that allows you to edit and delete a subscription with active domains. Valid to use on PATCH and DELETE actions. As a warning, removing an active domain from a subscription or forcing the deletion of a subscription may result in breaking TLS termination to that domain. ',
-        required => '0',
-    },
     'tls_subscription' => {
         data_type => 'TlsSubscription',
         description => '',
@@ -187,11 +181,6 @@ sub create_tls_sub {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/vnd.api+json');
-
-    # query params
-    if ( exists $args{'force'}) {
-        $query_params->{'force'} = $self->{api_client}->to_query_value($args{'force'});
-    }
 
     my $_body_data;
     # body params

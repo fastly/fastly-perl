@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesResultDimensions;
+package WebService::Fastly::Object::DdosProtectionRulePatch;
 
 require 5.6.0;
 use strict;
@@ -153,26 +153,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'LogTimeseriesResultDimensions',
+                                  class => 'DdosProtectionRulePatch',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'time' => {
+    'action' => {
         datatype => 'string',
-        base_name => 'time',
-        description => '',
+        base_name => 'action',
+        description => 'Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'time' => 'string'
+    'action' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'time' => 'time'
+    'action' => 'action'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

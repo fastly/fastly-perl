@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kv_store_list**
-> InlineResponse2005 kv_store_list(cursor => $cursor, limit => $limit)
+> InlineResponse2005 kv_store_list(cursor => $cursor, limit => $limit, name => $name)
 
 List all KV stores.
 
@@ -191,9 +191,10 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 
 my $cursor = "cursor_example"; # string | 
 my $limit = 1000; # int | 
+my $name = "name_example"; # string | Returns a one-element array containing the details for the named KV store.
 
 eval {
-    my $result = $api_instance->kv_store_list(cursor => $cursor, limit => $limit);
+    my $result = $api_instance->kv_store_list(cursor => $cursor, limit => $limit, name => $name);
     print Dumper($result);
 };
 if ($@) {
@@ -207,6 +208,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **string**|  | [optional] 
  **limit** | **int**|  | [optional] [default to 1000]
+ **name** | **string**| Returns a one-element array containing the details for the named KV store. | [optional] 
 
 ### Return type
 

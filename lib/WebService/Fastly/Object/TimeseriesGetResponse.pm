@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesValueField;
+package WebService::Fastly::Object::TimeseriesGetResponse;
 
 require 5.6.0;
 use strict;
@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::TimeseriesMeta;
+use WebService::Fastly::Object::TimeseriesResult;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -153,19 +155,35 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'LogTimeseriesValueField',
+                                  class => 'TimeseriesGetResponse',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'data' => {
+        datatype => 'ARRAY[TimeseriesResult]',
+        base_name => 'data',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'meta' => {
+        datatype => 'TimeseriesMeta',
+        base_name => 'meta',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    
+    'data' => 'ARRAY[TimeseriesResult]',
+    'meta' => 'TimeseriesMeta'
 } );
 
 __PACKAGE__->attribute_map( {
-    
+    'data' => 'data',
+    'meta' => 'meta'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

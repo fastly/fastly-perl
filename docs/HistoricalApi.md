@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **get_hist_stats**
-> HistoricalStatsByServiceResponse get_hist_stats(from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsByServiceResponse get_hist_stats(from => $from, to => $to, by => $by, region => $region, services => $services)
 
 Get historical stats
 
@@ -44,9 +44,10 @@ my $from = 2020-04-09T18:14:30Z; # string | Timestamp that defines the start of 
 my $to = 2020-04-09T18:14:30Z; # string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. 
 my $by = day; # string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. 
 my $region = usa; # string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. 
+my $services = "services_example"; # string | Limit the query to only the specified, comma-separated list of services. 
 
 eval {
-    my $result = $api_instance->get_hist_stats(from => $from, to => $to, by => $by, region => $region);
+    my $result = $api_instance->get_hist_stats(from => $from, to => $to, by => $by, region => $region, services => $services);
     print Dumper($result);
 };
 if ($@) {
@@ -62,6 +63,7 @@ Name | Type | Description  | Notes
  **to** | **string**| Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.  | [optional] [default to &#39;now&#39;]
  **by** | **string**| Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.  | [optional] [default to &#39;day&#39;]
  **region** | **string**| Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.  | [optional] 
+ **services** | **string**| Limit the query to only the specified, comma-separated list of services.  | [optional] 
 
 ### Return type
 

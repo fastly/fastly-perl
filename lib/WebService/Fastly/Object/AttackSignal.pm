@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesFilterFieldItem;
+package WebService::Fastly::Object::AttackSignal;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,11 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LogTimeseriesValueField;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#A filtering parameter.
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,45 +152,45 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'A filtering parameter.',
-                                  class => 'LogTimeseriesFilterFieldItem',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'AttackSignal',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'field' => {
+    'tag_name' => {
         datatype => 'string',
-        base_name => 'field',
-        description => 'The log field to which this filter should be applied.',
+        base_name => 'tag_name',
+        description => 'Name of the attack signal tag',
         format => '',
         read_only => 'false',
             },
-    'operator' => {
-        datatype => 'string',
-        base_name => 'operator',
-        description => 'The comparison operator used for this filter.',
+    'tag_count' => {
+        datatype => 'int',
+        base_name => 'tag_count',
+        description => 'Count of requests with this attack signal',
         format => '',
         read_only => 'false',
             },
-    'value' => {
-        datatype => 'LogTimeseriesValueField',
-        base_name => 'value',
-        description => '',
+    'total_count' => {
+        datatype => 'int',
+        base_name => 'total_count',
+        description => 'Total number of attacks considered',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'field' => 'string',
-    'operator' => 'string',
-    'value' => 'LogTimeseriesValueField'
+    'tag_name' => 'string',
+    'tag_count' => 'int',
+    'total_count' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
-    'field' => 'field',
-    'operator' => 'operator',
-    'value' => 'value'
+    'tag_name' => 'tag_name',
+    'tag_count' => 'tag_count',
+    'total_count' => 'total_count'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

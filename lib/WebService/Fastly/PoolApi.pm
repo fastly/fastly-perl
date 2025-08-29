@@ -74,7 +74,7 @@ sub new {
 # @param string $comment A freeform descriptive note. (optional)
 # @param string $type What type of load balance group to use. (optional)
 # @param string $override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
-# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional, default to 10000)
+# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional, default to 10000)
 # @param int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
 # @param int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
 # @param int $max_conn_default Maximum number of connections. Optional. (optional, default to 200)
@@ -199,7 +199,7 @@ sub new {
     },
     'between_bytes_timeout' => {
         data_type => 'int',
-        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
+        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
         required => '0',
     },
     'connect_timeout' => {
@@ -748,7 +748,7 @@ sub list_server_pools {
 # @param string $comment A freeform descriptive note. (optional)
 # @param string $type What type of load balance group to use. (optional)
 # @param string $override_host The hostname to [override the Host header](https://www.fastly.com/documentation/guides/full-site-delivery/domains-and-origins/specifying-an-override-host/). Defaults to &#x60;null&#x60; meaning no override of the Host header will occur. This setting can also be added to a Server definition. If the field is set on a Server definition it will override the Pool setting. (optional, default to 'null')
-# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional, default to 10000)
+# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional, default to 10000)
 # @param int $connect_timeout How long to wait for a timeout in milliseconds. Optional. (optional)
 # @param int $first_byte_timeout How long to wait for the first byte in milliseconds. Optional. (optional)
 # @param int $max_conn_default Maximum number of connections. Optional. (optional, default to 200)
@@ -878,7 +878,7 @@ sub list_server_pools {
     },
     'between_bytes_timeout' => {
         data_type => 'int',
-        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
+        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
         required => '0',
     },
     'connect_timeout' => {

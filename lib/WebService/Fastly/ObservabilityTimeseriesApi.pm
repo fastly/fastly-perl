@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::ObservabilityTimeseriesForLogsApi;
+package WebService::Fastly::ObservabilityTimeseriesApi;
 
 require 5.6.0;
 use strict;
@@ -47,16 +47,16 @@ sub new {
 
 
 #
-# log_timeseries_get
+# timeseries_get
 #
-# Retrieve log data as time series
+# Retrieve observability data as a time series
 #
 # @param string $source  (required)
-# @param string $service_id  (required)
-# @param string $start  (required)
-# @param string $end  (required)
+# @param string $from  (required)
+# @param string $to  (required)
 # @param string $granularity  (required)
 # @param string $series  (required)
+# @param string $dimensions  (optional)
 # @param string $filter  (optional)
 {
     my $params = {
@@ -65,17 +65,12 @@ sub new {
         description => '',
         required => '1',
     },
-    'service_id' => {
+    'from' => {
         data_type => 'string',
         description => '',
         required => '1',
     },
-    'start' => {
-        data_type => 'string',
-        description => '',
-        required => '1',
-    },
-    'end' => {
+    'to' => {
         data_type => 'string',
         description => '',
         required => '1',
@@ -90,51 +85,51 @@ sub new {
         description => '',
         required => '1',
     },
+    'dimensions' => {
+        data_type => 'string',
+        description => '',
+        required => '0',
+    },
     'filter' => {
         data_type => 'string',
         description => '',
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'log_timeseries_get' } = {
-        summary => 'Retrieve log data as time series',
+    __PACKAGE__->method_documentation->{ 'timeseries_get' } = {
+        summary => 'Retrieve observability data as a time series',
         params => $params,
-        returns => 'LogTimeseriesGetResponse',
+        returns => 'TimeseriesGetResponse',
         };
 }
-# @return LogTimeseriesGetResponse
+# @return TimeseriesGetResponse
 #
-sub log_timeseries_get {
+sub timeseries_get {
     my ($self, %args) = @_;
 
     # verify the required parameter 'source' is set
     unless (exists $args{'source'}) {
-      croak("Missing the required parameter 'source' when calling log_timeseries_get");
+      croak("Missing the required parameter 'source' when calling timeseries_get");
     }
 
-    # verify the required parameter 'service_id' is set
-    unless (exists $args{'service_id'}) {
-      croak("Missing the required parameter 'service_id' when calling log_timeseries_get");
+    # verify the required parameter 'from' is set
+    unless (exists $args{'from'}) {
+      croak("Missing the required parameter 'from' when calling timeseries_get");
     }
 
-    # verify the required parameter 'start' is set
-    unless (exists $args{'start'}) {
-      croak("Missing the required parameter 'start' when calling log_timeseries_get");
-    }
-
-    # verify the required parameter 'end' is set
-    unless (exists $args{'end'}) {
-      croak("Missing the required parameter 'end' when calling log_timeseries_get");
+    # verify the required parameter 'to' is set
+    unless (exists $args{'to'}) {
+      croak("Missing the required parameter 'to' when calling timeseries_get");
     }
 
     # verify the required parameter 'granularity' is set
     unless (exists $args{'granularity'}) {
-      croak("Missing the required parameter 'granularity' when calling log_timeseries_get");
+      croak("Missing the required parameter 'granularity' when calling timeseries_get");
     }
 
     # verify the required parameter 'series' is set
     unless (exists $args{'series'}) {
-      croak("Missing the required parameter 'series' when calling log_timeseries_get");
+      croak("Missing the required parameter 'series' when calling timeseries_get");
     }
 
     # parse inputs
@@ -158,23 +153,23 @@ sub log_timeseries_get {
     }
 
     # query params
-    if ( exists $args{'service_id'}) {
-        $query_params->{'service_id'} = $self->{api_client}->to_query_value($args{'service_id'});
+    if ( exists $args{'from'}) {
+        $query_params->{'from'} = $self->{api_client}->to_query_value($args{'from'});
     }
 
     # query params
-    if ( exists $args{'start'}) {
-        $query_params->{'start'} = $self->{api_client}->to_query_value($args{'start'});
-    }
-
-    # query params
-    if ( exists $args{'end'}) {
-        $query_params->{'end'} = $self->{api_client}->to_query_value($args{'end'});
+    if ( exists $args{'to'}) {
+        $query_params->{'to'} = $self->{api_client}->to_query_value($args{'to'});
     }
 
     # query params
     if ( exists $args{'granularity'}) {
         $query_params->{'granularity'} = $self->{api_client}->to_query_value($args{'granularity'});
+    }
+
+    # query params
+    if ( exists $args{'dimensions'}) {
+        $query_params->{'dimensions'} = $self->{api_client}->to_query_value($args{'dimensions'});
     }
 
     # query params
@@ -198,7 +193,7 @@ sub log_timeseries_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('LogTimeseriesGetResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('TimeseriesGetResponse', $response);
     return $_response_object;
 }
 

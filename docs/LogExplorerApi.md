@@ -32,7 +32,7 @@ my $api_instance = WebService::Fastly::LogExplorerApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $service_id = "service_id_example"; # string | 
+my $service_id = 1jlmtMz1ncwA0KC3TBGD0X; # string | 
 my $start = "start_example"; # string | 
 my $end = "end_example"; # string | 
 my $limit = 3.4; # double | 

@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::LogTimeseriesGetResponseMetaFilters;
+package WebService::Fastly::Object::SignalReport;
 
 require 5.6.0;
 use strict;
@@ -28,12 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::LogTimeseriesFilterFieldItem;
+use WebService::Fastly::Object::TopWorkspace;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Echoes the filters that were supplied in the request.
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,33 +153,59 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Echoes the filters that were supplied in the request.',
-                                  class => 'LogTimeseriesGetResponseMetaFilters',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'SignalReport',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'filter_fields' => {
-        datatype => 'ARRAY[LogTimeseriesFilterFieldItem]',
-        base_name => 'filter_fields',
-        description => '',
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'Name of the attack type.',
+        format => '',
+        read_only => 'false',
+            },
+    'display_name' => {
+        datatype => 'string',
+        base_name => 'display_name',
+        description => 'Display name of the attack type.',
+        format => '',
+        read_only => 'false',
+            },
+    'count' => {
+        datatype => 'int',
+        base_name => 'count',
+        description => 'Total count of attacks of this type.',
+        format => '',
+        read_only => 'false',
+            },
+    'top_workspaces' => {
+        datatype => 'ARRAY[TopWorkspace]',
+        base_name => 'top_workspaces',
+        description => 'Top workspaces affected by this attack type.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'filter_fields' => 'ARRAY[LogTimeseriesFilterFieldItem]'
+    'name' => 'string',
+    'display_name' => 'string',
+    'count' => 'int',
+    'top_workspaces' => 'ARRAY[TopWorkspace]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'filter_fields' => 'filter_fields'
+    'name' => 'name',
+    'display_name' => 'display_name',
+    'count' => 'count',
+    'top_workspaces' => 'top_workspaces'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'filter_fields' => 'true',
 } );
 
 

@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**ddos_protection_event_list**](DdosProtectionApi.md#ddos_protection_event_list) | **GET** /ddos-protection/v1/events | Get events
 [**ddos_protection_event_rule_list**](DdosProtectionApi.md#ddos_protection_event_rule_list) | **GET** /ddos-protection/v1/events/{event_id}/rules | Get all rules for an event
 [**ddos_protection_rule_get**](DdosProtectionApi.md#ddos_protection_rule_get) | **GET** /ddos-protection/v1/rules/{rule_id} | Get a rule by ID
+[**ddos_protection_rule_patch**](DdosProtectionApi.md#ddos_protection_rule_patch) | **PATCH** /ddos-protection/v1/rules/{rule_id} | Update rule
 [**ddos_protection_traffic_stats_rule_get**](DdosProtectionApi.md#ddos_protection_traffic_stats_rule_get) | **GET** /ddos-protection/v1/events/{event_id}/rules/{rule_id}/traffic-stats | Get traffic stats for a rule
 
 
@@ -231,6 +232,59 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ddos_protection_rule_patch**
+> DdosProtectionRule ddos_protection_rule_patch(rule_id => $rule_id, ddos_protection_rule_patch => $ddos_protection_rule_patch)
+
+Update rule
+
+Update rule.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::DdosProtectionApi;
+my $api_instance = WebService::Fastly::DdosProtectionApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $rule_id = "rule_id_example"; # string | Unique ID of the rule.
+my $ddos_protection_rule_patch = WebService::Fastly::Object::DdosProtectionRulePatch->new(); # DdosProtectionRulePatch | 
+
+eval {
+    my $result = $api_instance->ddos_protection_rule_patch(rule_id => $rule_id, ddos_protection_rule_patch => $ddos_protection_rule_patch);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DdosProtectionApi->ddos_protection_rule_patch: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **rule_id** | **string**| Unique ID of the rule. | 
+ **ddos_protection_rule_patch** | [**DdosProtectionRulePatch**](DdosProtectionRulePatch.md)|  | [optional] 
+
+### Return type
+
+[**DdosProtectionRule**](DdosProtectionRule.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json, application/problem+json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

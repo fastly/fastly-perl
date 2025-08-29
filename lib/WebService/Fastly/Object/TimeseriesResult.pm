@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::DdosProtectionTrafficAttribute;
+package WebService::Fastly::Object::TimeseriesResult;
 
 require 5.6.0;
 use strict;
@@ -28,11 +28,12 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::AnyType;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#Name of an attribute type used in traffic stats.
+#
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,20 +153,36 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'Name of an attribute type used in traffic stats.',
-                                  class => 'DdosProtectionTrafficAttribute',
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'TimeseriesResult',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'dimensions' => {
+        datatype => 'HASH[string,object]',
+        base_name => 'dimensions',
+        description => 'An object containing each requested dimension and time as properties.',
+        format => '',
+        read_only => 'false',
+            },
+    'values' => {
+        datatype => 'HASH[string,object]',
+        base_name => 'values',
+        description => 'An object containing each requested series as a property.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    
+    'dimensions' => 'HASH[string,object]',
+    'values' => 'HASH[string,object]'
 } );
 
 __PACKAGE__->attribute_map( {
-    
+    'dimensions' => 'dimensions',
+    'values' => 'values'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

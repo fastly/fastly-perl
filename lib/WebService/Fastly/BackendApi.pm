@@ -55,7 +55,7 @@ sub new {
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $address A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend. (optional)
 # @param boolean $auto_loadbalance Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a &#x60;request_condition&#x60; will be selected based on their &#x60;weight&#x60;. (optional)
-# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional)
+# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional)
 # @param string $client_cert Unused. (optional)
 # @param string $comment A freeform descriptive note. (optional)
 # @param int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
@@ -84,9 +84,9 @@ sub new {
 # @param string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
 # @param string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
 # @param boolean $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
-# @param int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
-# @param int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
-# @param int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
+# @param int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional, default to 10)
+# @param int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional, default to 3)
+# @param int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional, default to 300)
 # @param boolean $use_ssl Whether or not to require TLS for connections to this backend. (optional)
 # @param int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
 {
@@ -113,7 +113,7 @@ sub new {
     },
     'between_bytes_timeout' => {
         data_type => 'int',
-        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
+        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
         required => '0',
     },
     'client_cert' => {
@@ -828,7 +828,7 @@ sub list_backends {
 # @param string $backend_name The name of the backend. (required)
 # @param string $address A hostname, IPv4, or IPv6 address for the backend. This is the preferred way to specify the location of your backend. (optional)
 # @param boolean $auto_loadbalance Whether or not this backend should be automatically load balanced. If true, all backends with this setting that don&#39;t have a &#x60;request_condition&#x60; will be selected based on their &#x60;weight&#x60;. (optional)
-# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional)
+# @param int $between_bytes_timeout Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;. (optional)
 # @param string $client_cert Unused. (optional)
 # @param string $comment A freeform descriptive note. (optional)
 # @param int $connect_timeout Maximum duration in milliseconds to wait for a connection to this backend to be established. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.connect_timeout&#x60;. (optional)
@@ -857,9 +857,9 @@ sub list_backends {
 # @param string $ssl_hostname Use &#x60;ssl_cert_hostname&#x60; and &#x60;ssl_sni_hostname&#x60; to configure certificate validation. (optional)
 # @param string $ssl_sni_hostname Overrides &#x60;ssl_hostname&#x60;, but only for SNI in the handshake. Does not affect cert validation at all. (optional)
 # @param boolean $tcp_keepalive_enable Whether to enable TCP keepalives for backend connections. Varnish defaults to using keepalives if this is unspecified. (optional)
-# @param int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional)
-# @param int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional)
-# @param int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional)
+# @param int $tcp_keepalive_interval Interval in seconds between subsequent keepalive probes. (optional, default to 10)
+# @param int $tcp_keepalive_probes Number of unacknowledged probes to send before considering the connection dead. (optional, default to 3)
+# @param int $tcp_keepalive_time Interval in seconds between the last data packet sent and the first keepalive probe. (optional, default to 300)
 # @param boolean $use_ssl Whether or not to require TLS for connections to this backend. (optional)
 # @param int $weight Weight used to load balance this backend against others. May be any positive integer. If &#x60;auto_loadbalance&#x60; is true, the chance of this backend being selected is equal to its own weight over the sum of all weights for backends that have &#x60;auto_loadbalance&#x60; set to true. (optional)
 {
@@ -891,7 +891,7 @@ sub list_backends {
     },
     'between_bytes_timeout' => {
         data_type => 'int',
-        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, the response received so far will be considered complete and the fetch will end. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
+        description => 'Maximum duration in milliseconds that Fastly will wait while receiving no data on a download from a backend. If exceeded, for Delivery services, the response received so far will be considered complete and the fetch will end. For Compute services, timeout expiration is treated as a failure of the backend connection, and an error is generated. May be set at runtime using &#x60;bereq.between_bytes_timeout&#x60;.',
         required => '0',
     },
     'client_cert' => {

@@ -29,7 +29,6 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::DdosProtectionAttributeValue;
-use WebService::Fastly::Object::DdosProtectionTrafficAttribute;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -161,9 +160,9 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'name' => {
-        datatype => 'DdosProtectionTrafficAttribute',
+        datatype => 'string',
         base_name => 'name',
-        description => '',
+        description => 'Name of an attribute type used in traffic stats. Currently, supported values are source_ip, country_code, host, asn, source_ip_prefix, user_agent, method_path.',
         format => '',
         read_only => 'false',
             },
@@ -177,7 +176,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'name' => 'DdosProtectionTrafficAttribute',
+    'name' => 'string',
     'values' => 'ARRAY[DdosProtectionAttributeValue]'
 } );
 

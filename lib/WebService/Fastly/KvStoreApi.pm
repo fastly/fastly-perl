@@ -254,6 +254,7 @@ sub kv_store_get {
 #
 # @param string $cursor  (optional)
 # @param int $limit  (optional, default to 1000)
+# @param string $name Returns a one-element array containing the details for the named KV store. (optional)
 {
     my $params = {
     'cursor' => {
@@ -264,6 +265,11 @@ sub kv_store_get {
     'limit' => {
         data_type => 'int',
         description => '',
+        required => '0',
+    },
+    'name' => {
+        data_type => 'string',
+        description => 'Returns a one-element array containing the details for the named KV store.',
         required => '0',
     },
     };
@@ -301,6 +307,11 @@ sub kv_store_list {
     # query params
     if ( exists $args{'limit'}) {
         $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'name'}) {
+        $query_params->{'name'} = $self->{api_client}->to_query_value($args{'name'});
     }
 
     my $_body_data;

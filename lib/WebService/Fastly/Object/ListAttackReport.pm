@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::DdosProtectionRule;
+package WebService::Fastly::Object::ListAttackReport;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::DdosProtectionRuleAllOf;
-use WebService::Fastly::Object::TimestampsNoDelete;
+use WebService::Fastly::Object::AttackReport;
+use WebService::Fastly::Object::ListAttackReportMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,146 +155,40 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'DdosProtectionRule',
+                                  class => 'ListAttackReport',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'Date and time in ISO 8601 format.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'id' => {
-        datatype => 'string',
-        base_name => 'id',
-        description => 'Unique ID of the rule.',
+    'data' => {
+        datatype => 'ARRAY[AttackReport]',
+        base_name => 'data',
+        description => '',
         format => '',
         read_only => 'false',
             },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'A human-readable name for the rule.',
-        format => '',
-        read_only => 'false',
-            },
-    'action' => {
-        datatype => 'string',
-        base_name => 'action',
-        description => 'Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.',
-        format => '',
-        read_only => 'false',
-            },
-    'customer_id' => {
-        datatype => 'string',
-        base_name => 'customer_id',
-        description => 'Alphanumeric string identifying the customer.',
-        format => '',
-        read_only => 'false',
-            },
-    'service_id' => {
-        datatype => 'string',
-        base_name => 'service_id',
-        description => 'Alphanumeric string identifying the service.',
-        format => '',
-        read_only => 'false',
-            },
-    'source_ip' => {
-        datatype => 'string',
-        base_name => 'source_ip',
-        description => 'Source IP address attribute.',
-        format => '',
-        read_only => 'false',
-            },
-    'country_code' => {
-        datatype => 'string',
-        base_name => 'country_code',
-        description => 'Country code attribute.',
-        format => '',
-        read_only => 'false',
-            },
-    'host' => {
-        datatype => 'string',
-        base_name => 'host',
-        description => 'Host attribute.',
-        format => '',
-        read_only => 'false',
-            },
-    'asn' => {
-        datatype => 'string',
-        base_name => 'asn',
-        description => 'ASN attribute.',
-        format => '',
-        read_only => 'false',
-            },
-    'source_ip_prefix' => {
-        datatype => 'string',
-        base_name => 'source_ip_prefix',
-        description => 'Source IP prefix attribute.',
-        format => '',
-        read_only => 'false',
-            },
-    'additional_attributes' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'additional_attributes',
-        description => 'Attribute category for additional, unlisted attributes used in a rule.',
+    'meta' => {
+        datatype => 'ListAttackReportMeta',
+        base_name => 'meta',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'created_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'id' => 'string',
-    'name' => 'string',
-    'action' => 'string',
-    'customer_id' => 'string',
-    'service_id' => 'string',
-    'source_ip' => 'string',
-    'country_code' => 'string',
-    'host' => 'string',
-    'asn' => 'string',
-    'source_ip_prefix' => 'string',
-    'additional_attributes' => 'ARRAY[string]'
+    'data' => 'ARRAY[AttackReport]',
+    'meta' => 'ListAttackReportMeta'
 } );
 
 __PACKAGE__->attribute_map( {
-    'created_at' => 'created_at',
-    'updated_at' => 'updated_at',
-    'id' => 'id',
-    'name' => 'name',
-    'action' => 'action',
-    'customer_id' => 'customer_id',
-    'service_id' => 'service_id',
-    'source_ip' => 'source_ip',
-    'country_code' => 'country_code',
-    'host' => 'host',
-    'asn' => 'asn',
-    'source_ip_prefix' => 'source_ip_prefix',
-    'additional_attributes' => 'additional_attributes'
+    'data' => 'data',
+    'meta' => 'meta'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'created_at' => 'true',
-    'updated_at' => 'true',
-    'source_ip' => 'true',
-    'country_code' => 'true',
-    'host' => 'true',
-    'asn' => 'true',
-    'source_ip_prefix' => 'true',
 } );
 
 
