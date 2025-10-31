@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::IamRole;
+package WebService::Fastly::Object::SuccessfulResponseAsObject;
 
 require 5.6.0;
 use strict;
@@ -28,13 +28,13 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::IamRoleAllOf;
+use WebService::Fastly::Object::SuccessfulResponseAsObjectAllOf;
 use WebService::Fastly::Object::TimestampsNoDelete;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#All attributes for a domain response
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -154,8 +154,8 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
-                                  class => 'IamRole',
+__PACKAGE__->class_documentation({description => 'All attributes for a domain response',
+                                  class => 'SuccessfulResponseAsObject',
                                   required => [], # TODO
 }                                 );
 
@@ -177,44 +177,44 @@ __PACKAGE__->method_documentation({
     'id' => {
         datatype => 'string',
         base_name => 'id',
-        description => 'Alphanumeric string identifying the role.',
+        description => 'Domain Identifier (UUID).',
         format => '',
         read_only => 'false',
             },
-    'object' => {
+    'fqdn' => {
         datatype => 'string',
-        base_name => 'object',
-        description => 'The type of the object.',
+        base_name => 'fqdn',
+        description => 'The fully-qualified domain name for your domain. Can be created, but not updated.',
         format => '',
         read_only => 'false',
             },
-    'name' => {
+    'service_id' => {
         datatype => 'string',
-        base_name => 'name',
-        description => 'Name of the role.',
+        base_name => 'service_id',
+        description => 'The &#x60;service_id&#x60; associated with your domain or &#x60;null&#x60; if there is no association.',
         format => '',
         read_only => 'false',
             },
     'description' => {
         datatype => 'string',
         base_name => 'description',
-        description => 'Description of the role.',
+        description => 'A freeform descriptive note.',
         format => '',
         read_only => 'false',
             },
-    'custom' => {
+    'activated' => {
         datatype => 'boolean',
-        base_name => 'custom',
-        description => 'This attribute is set to &#x60;true&#x60; if the role is managed by the customer. It is set to &#x60;false&#x60; if the role was created by Fastly.',
+        base_name => 'activated',
+        description => 'Denotes if the domain has at least one TLS activation or not.',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
-    'permissions_count' => {
-        datatype => 'int',
-        base_name => 'permissions_count',
-        description => 'Number of permissions assigned to the role.',
+    'verified' => {
+        datatype => 'boolean',
+        base_name => 'verified',
+        description => 'Denotes that the customer has proven ownership over the domain by obtaining a Fastly-managed TLS certificate for it or by providing a their own TLS certificate from a publicly-trusted CA that includes the domain or matching wildcard.     ',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
 });
 
@@ -222,22 +222,22 @@ __PACKAGE__->openapi_types( {
     'created_at' => 'DateTime',
     'updated_at' => 'DateTime',
     'id' => 'string',
-    'object' => 'string',
-    'name' => 'string',
+    'fqdn' => 'string',
+    'service_id' => 'string',
     'description' => 'string',
-    'custom' => 'boolean',
-    'permissions_count' => 'int'
+    'activated' => 'boolean',
+    'verified' => 'boolean'
 } );
 
 __PACKAGE__->attribute_map( {
     'created_at' => 'created_at',
     'updated_at' => 'updated_at',
     'id' => 'id',
-    'object' => 'object',
-    'name' => 'name',
+    'fqdn' => 'fqdn',
+    'service_id' => 'service_id',
     'description' => 'description',
-    'custom' => 'custom',
-    'permissions_count' => 'permissions_count'
+    'activated' => 'activated',
+    'verified' => 'verified'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
@@ -245,6 +245,7 @@ __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 __PACKAGE__->openapi_nullable( {
     'created_at' => 'true',
     'updated_at' => 'true',
+    'service_id' => 'true',
 } );
 
 

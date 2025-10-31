@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#The permissions role assigned to the user. Can be &#x60;user&#x60;, &#x60;billing&#x60;, &#x60;engineer&#x60;, or &#x60;superuser&#x60;.
+#The permissions role assigned to the user. Can be &#x60;user&#x60;, &#x60;tls_viewer&#x60;, &#x60;tls_admin&#x60;, &#x60;billing&#x60;, &#x60;engineer&#x60;, or &#x60;superuser&#x60;.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,7 +152,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => 'The permissions role assigned to the user. Can be &#x60;user&#x60;, &#x60;billing&#x60;, &#x60;engineer&#x60;, or &#x60;superuser&#x60;.',
+__PACKAGE__->class_documentation({description => 'The permissions role assigned to the user. Can be &#x60;user&#x60;, &#x60;tls_viewer&#x60;, &#x60;tls_admin&#x60;, &#x60;billing&#x60;, &#x60;engineer&#x60;, or &#x60;superuser&#x60;.',
                                   class => 'RoleUser',
                                   required => [], # TODO
 }                                 );

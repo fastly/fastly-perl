@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BotManagementResponseServiceService;
+use WebService::Fastly::Object::ApiDiscoveryResponseServiceService;
 use WebService::Fastly::Object::DdosProtectionResponseConfiguration;
 use WebService::Fastly::Object::DdosProtectionResponseConfigurationConfiguration;
 use WebService::Fastly::Object::DdosProtectionResponseLinks;
@@ -174,7 +174,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'service' => {
-        datatype => 'BotManagementResponseServiceService',
+        datatype => 'ApiDiscoveryResponseServiceService',
         base_name => 'service',
         description => '',
         format => '',
@@ -198,7 +198,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'product' => 'DdosProtectionResponseProductProduct',
-    'service' => 'BotManagementResponseServiceService',
+    'service' => 'ApiDiscoveryResponseServiceService',
     'configuration' => 'DdosProtectionResponseConfigurationConfiguration',
     '_links' => 'DdosProtectionResponseLinksLinks'
 } );

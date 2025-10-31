@@ -9,7 +9,7 @@ use WebService::Fastly::Object::DdosProtectionResponseConfigure;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **product** | [**DdosProtectionResponseProductProduct**](DdosProtectionResponseProductProduct.md) |  | [optional] 
-**service** | [**BotManagementResponseServiceService**](BotManagementResponseServiceService.md) |  | [optional] 
+**service** | [**ApiDiscoveryResponseServiceService**](ApiDiscoveryResponseServiceService.md) |  | [optional] 
 **configuration** | [**DdosProtectionResponseConfigurationConfiguration**](DdosProtectionResponseConfigurationConfiguration.md) |  | [optional] 
 **_links** | [**DdosProtectionResponseLinksLinks**](DdosProtectionResponseLinksLinks.md) |  | [optional] 
 

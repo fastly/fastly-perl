@@ -236,6 +236,7 @@ sub ddos_protection_event_list {
 # @param string $event_id Unique ID of the event. (required)
 # @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 # @param int $limit Limit how many results are returned. (optional, default to 20)
+# @param string $include Include relationships. Optional. Comma-separated values. (optional)
 {
     my $params = {
     'event_id' => {
@@ -251,6 +252,11 @@ sub ddos_protection_event_list {
     'limit' => {
         data_type => 'int',
         description => 'Limit how many results are returned.',
+        required => '0',
+    },
+    'include' => {
+        data_type => 'string',
+        description => 'Include relationships. Optional. Comma-separated values.',
         required => '0',
     },
     };
@@ -293,6 +299,11 @@ sub ddos_protection_event_rule_list {
     # query params
     if ( exists $args{'limit'}) {
         $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'include'}) {
+        $query_params->{'include'} = $self->{api_client}->to_query_value($args{'include'});
     }
 
     # path params

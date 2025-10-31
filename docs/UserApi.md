@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **create_user**
-> UserResponse create_user(login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required)
+> UserResponse create_user(login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, roles => $roles, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required)
 
 Create a user
 
@@ -44,11 +44,12 @@ my $limit_services = null; # boolean | Indicates that the user has limited acces
 my $locked = null; # boolean | Indicates whether the is account is locked for editing or not.
 my $require_new_password = null; # boolean | Indicates if a new password is required at next login.
 my $role = new WebService::Fastly.RoleUser(); # RoleUser | 
+my $roles = [("6bKsDElwPt8vZXCArszK9x")]; # ARRAY[string] | A list of role IDs assigned to the user.
 my $two_factor_auth_enabled = null; # boolean | Indicates if 2FA is enabled on the user.
 my $two_factor_setup_required = null; # boolean | Indicates if 2FA is required by the user's customer account.
 
 eval {
-    my $result = $api_instance->create_user(login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required);
+    my $result = $api_instance->create_user(login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, roles => $roles, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required);
     print Dumper($result);
 };
 if ($@) {
@@ -66,6 +67,7 @@ Name | Type | Description  | Notes
  **locked** | **boolean**| Indicates whether the is account is locked for editing or not. | [optional] 
  **require_new_password** | **boolean**| Indicates if a new password is required at next login. | [optional] 
  **role** | [**RoleUser**](RoleUser.md)|  | [optional] 
+ **roles** | [**ARRAY[string]**](string.md)| A list of role IDs assigned to the user. | [optional] 
  **two_factor_auth_enabled** | **boolean**| Indicates if 2FA is enabled on the user. | [optional] 
  **two_factor_setup_required** | **boolean**| Indicates if 2FA is required by the user&#39;s customer account. | [optional] 
 
@@ -285,7 +287,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_user**
-> UserResponse update_user(user_id => $user_id, login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required)
+> UserResponse update_user(user_id => $user_id, login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, roles => $roles, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required)
 
 Update a user
 
@@ -310,11 +312,12 @@ my $limit_services = null; # boolean | Indicates that the user has limited acces
 my $locked = null; # boolean | Indicates whether the is account is locked for editing or not.
 my $require_new_password = null; # boolean | Indicates if a new password is required at next login.
 my $role = new WebService::Fastly.RoleUser(); # RoleUser | 
+my $roles = [("6bKsDElwPt8vZXCArszK9x")]; # ARRAY[string] | A list of role IDs assigned to the user.
 my $two_factor_auth_enabled = null; # boolean | Indicates if 2FA is enabled on the user.
 my $two_factor_setup_required = null; # boolean | Indicates if 2FA is required by the user's customer account.
 
 eval {
-    my $result = $api_instance->update_user(user_id => $user_id, login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required);
+    my $result = $api_instance->update_user(user_id => $user_id, login => $login, name => $name, limit_services => $limit_services, locked => $locked, require_new_password => $require_new_password, role => $role, roles => $roles, two_factor_auth_enabled => $two_factor_auth_enabled, two_factor_setup_required => $two_factor_setup_required);
     print Dumper($result);
 };
 if ($@) {
@@ -333,6 +336,7 @@ Name | Type | Description  | Notes
  **locked** | **boolean**| Indicates whether the is account is locked for editing or not. | [optional] 
  **require_new_password** | **boolean**| Indicates if a new password is required at next login. | [optional] 
  **role** | [**RoleUser**](RoleUser.md)|  | [optional] 
+ **roles** | [**ARRAY[string]**](string.md)| A list of role IDs assigned to the user. | [optional] 
  **two_factor_auth_enabled** | **boolean**| Indicates if 2FA is enabled on the user. | [optional] 
  **two_factor_setup_required** | **boolean**| Indicates if 2FA is required by the user&#39;s customer account. | [optional] 
 

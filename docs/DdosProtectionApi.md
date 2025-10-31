@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ddos_protection_event_rule_list**
-> InlineResponse2003 ddos_protection_event_rule_list(event_id => $event_id, cursor => $cursor, limit => $limit)
+> InlineResponse2003 ddos_protection_event_rule_list(event_id => $event_id, cursor => $cursor, limit => $limit, include => $include)
 
 Get all rules for an event
 
@@ -152,9 +152,10 @@ my $api_instance = WebService::Fastly::DdosProtectionApi->new(
 my $event_id = "event_id_example"; # string | Unique ID of the event.
 my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty.
 my $limit = 20; # int | Limit how many results are returned.
+my $include = "include_example"; # string | Include relationships. Optional. Comma-separated values.
 
 eval {
-    my $result = $api_instance->ddos_protection_event_rule_list(event_id => $event_id, cursor => $cursor, limit => $limit);
+    my $result = $api_instance->ddos_protection_event_rule_list(event_id => $event_id, cursor => $cursor, limit => $limit, include => $include);
     print Dumper($result);
 };
 if ($@) {
@@ -169,6 +170,7 @@ Name | Type | Description  | Notes
  **event_id** | **string**| Unique ID of the event. | 
  **cursor** | **string**| Cursor value from the `next_cursor` field of a previous response, used to retrieve the next page. To request the first page, this should be empty. | [optional] 
  **limit** | **int**| Limit how many results are returned. | [optional] [default to 20]
+ **include** | **string**| Include relationships. Optional. Comma-separated values. | [optional] 
 
 ### Return type
 

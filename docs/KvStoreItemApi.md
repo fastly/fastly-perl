@@ -126,7 +126,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kv_store_list_item_keys**
-> InlineResponse2006 kv_store_list_item_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix, consistency => $consistency)
+> InlineResponse2007 kv_store_list_item_keys(store_id => $store_id, cursor => $cursor, limit => $limit, prefix => $prefix, consistency => $consistency)
 
 List item keys.
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 

@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::BotManagementResponseServiceService;
+use WebService::Fastly::Object::ApiDiscoveryResponseServiceService;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -160,7 +160,7 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'service' => {
-        datatype => 'BotManagementResponseServiceService',
+        datatype => 'ApiDiscoveryResponseServiceService',
         base_name => 'service',
         description => '',
         format => '',
@@ -169,7 +169,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'service' => 'BotManagementResponseServiceService'
+    'service' => 'ApiDiscoveryResponseServiceService'
 } );
 
 __PACKAGE__->attribute_map( {

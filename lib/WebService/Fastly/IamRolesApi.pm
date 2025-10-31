@@ -47,12 +47,12 @@ sub new {
 
 
 #
-# add_role_permissions
+# iam_v1_roles_get
 #
-# Add permissions to a role
+# Get IAM role by ID
 #
 # @param string $role_id Alphanumeric string identifying the role. (required)
-# @param HASH[string,object] $request_body  (optional)
+# @param string $include Include related data (i.e., permissions). (optional)
 {
     my $params = {
     'role_id' => {
@@ -60,360 +60,30 @@ sub new {
         description => 'Alphanumeric string identifying the role.',
         required => '1',
     },
-    'request_body' => {
-        data_type => 'HASH[string,object]',
-        description => '',
-        required => '0',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'add_role_permissions' } = {
-        summary => 'Add permissions to a role',
-        params => $params,
-        returns => 'object',
-        };
-}
-# @return object
-#
-sub add_role_permissions {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'role_id' is set
-    unless (exists $args{'role_id'}) {
-      croak("Missing the required parameter 'role_id' when calling add_role_permissions");
-    }
-
-    # parse inputs
-    my $_resource_path = '/roles/{role_id}/permissions';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'role_id'}) {
-        my $_base_variable = "{" . "role_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'request_body'}) {
-        $_body_data = $args{'request_body'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('object', $response);
-    return $_response_object;
-}
-
-#
-# create_a_role
-#
-# Create a role
-#
-# @param HASH[string,object] $request_body  (optional)
-{
-    my $params = {
-    'request_body' => {
-        data_type => 'HASH[string,object]',
-        description => '',
-        required => '0',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'create_a_role' } = {
-        summary => 'Create a role',
-        params => $params,
-        returns => 'object',
-        };
-}
-# @return object
-#
-sub create_a_role {
-    my ($self, %args) = @_;
-
-    # parse inputs
-    my $_resource_path = '/roles';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'request_body'}) {
-        $_body_data = $args{'request_body'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('object', $response);
-    return $_response_object;
-}
-
-#
-# delete_a_role
-#
-# Delete a role
-#
-# @param string $role_id Alphanumeric string identifying the role. (required)
-{
-    my $params = {
-    'role_id' => {
+    'include' => {
         data_type => 'string',
-        description => 'Alphanumeric string identifying the role.',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'delete_a_role' } = {
-        summary => 'Delete a role',
-        params => $params,
-        returns => undef,
-        };
-}
-# @return void
-#
-sub delete_a_role {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'role_id' is set
-    unless (exists $args{'role_id'}) {
-      croak("Missing the required parameter 'role_id' when calling delete_a_role");
-    }
-
-    # parse inputs
-    my $_resource_path = '/roles/{role_id}';
-
-    my $_method = 'DELETE';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept();
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'role_id'}) {
-        my $_base_variable = "{" . "role_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    return;
-}
-
-#
-# get_a_role
-#
-# Get a role
-#
-# @param string $role_id Alphanumeric string identifying the role. (required)
-{
-    my $params = {
-    'role_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the role.',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'get_a_role' } = {
-        summary => 'Get a role',
-        params => $params,
-        returns => 'object',
-        };
-}
-# @return object
-#
-sub get_a_role {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'role_id' is set
-    unless (exists $args{'role_id'}) {
-      croak("Missing the required parameter 'role_id' when calling get_a_role");
-    }
-
-    # parse inputs
-    my $_resource_path = '/roles/{role_id}';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'role_id'}) {
-        my $_base_variable = "{" . "role_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('object', $response);
-    return $_response_object;
-}
-
-#
-# list_role_permissions
-#
-# List permissions in a role
-#
-# @param string $role_id Alphanumeric string identifying the role. (required)
-{
-    my $params = {
-    'role_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the role.',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'list_role_permissions' } = {
-        summary => 'List permissions in a role',
-        params => $params,
-        returns => 'object',
-        };
-}
-# @return object
-#
-sub list_role_permissions {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'role_id' is set
-    unless (exists $args{'role_id'}) {
-      croak("Missing the required parameter 'role_id' when calling list_role_permissions");
-    }
-
-    # parse inputs
-    my $_resource_path = '/roles/{role_id}/permissions';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'role_id'}) {
-        my $_base_variable = "{" . "role_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('object', $response);
-    return $_response_object;
-}
-
-#
-# list_roles
-#
-# List roles
-#
-# @param int $per_page Number of records per page. (optional, default to 20)
-# @param int $page Current page. (optional)
-{
-    my $params = {
-    'per_page' => {
-        data_type => 'int',
-        description => 'Number of records per page.',
-        required => '0',
-    },
-    'page' => {
-        data_type => 'int',
-        description => 'Current page.',
+        description => 'Include related data (i.e., permissions).',
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'list_roles' } = {
-        summary => 'List roles',
+    __PACKAGE__->method_documentation->{ 'iam_v1_roles_get' } = {
+        summary => 'Get IAM role by ID',
         params => $params,
-        returns => 'object',
+        returns => 'IamV1RoleResponse',
         };
 }
-# @return object
+# @return IamV1RoleResponse
 #
-sub list_roles {
+sub iam_v1_roles_get {
     my ($self, %args) = @_;
 
+    # verify the required parameter 'role_id' is set
+    unless (exists $args{'role_id'}) {
+      croak("Missing the required parameter 'role_id' when calling iam_v1_roles_get");
+    }
+
     # parse inputs
-    my $_resource_path = '/roles';
+    my $_resource_path = '/iam/v1/roles/{role_id}';
 
     my $_method = 'GET';
     my $query_params = {};
@@ -428,13 +98,15 @@ sub list_roles {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
     # query params
-    if ( exists $args{'per_page'}) {
-        $query_params->{'per_page'} = $self->{api_client}->to_query_value($args{'per_page'});
+    if ( exists $args{'include'}) {
+        $query_params->{'include'} = $self->{api_client}->to_query_value($args{'include'});
     }
 
-    # query params
-    if ( exists $args{'page'}) {
-        $query_params->{'page'} = $self->{api_client}->to_query_value($args{'page'});
+    # path params
+    if ( exists $args{'role_id'}) {
+        my $_base_variable = "{" . "role_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
     my $_body_data;
@@ -448,124 +120,45 @@ sub list_roles {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    my $_response_object = $self->{api_client}->deserialize('IamV1RoleResponse', $response);
     return $_response_object;
 }
 
 #
-# remove_role_permissions
+# iam_v1_roles_list
 #
-# Remove permissions from a role
+# List IAM roles
 #
-# @param string $role_id Alphanumeric string identifying the role. (required)
-# @param HASH[string,object] $request_body  (optional)
+# @param int $limit Number of results per page. The maximum is 1000. (optional, default to 100)
+# @param string $cursor Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty. (optional)
 {
     my $params = {
-    'role_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the role.',
-        required => '1',
+    'limit' => {
+        data_type => 'int',
+        description => 'Number of results per page. The maximum is 1000.',
+        required => '0',
     },
-    'request_body' => {
-        data_type => 'HASH[string,object]',
-        description => '',
+    'cursor' => {
+        data_type => 'string',
+        description => 'Cursor value from the &#x60;next_cursor&#x60; field of a previous response, used to retrieve the next page. To request the first page, this should be empty.',
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'remove_role_permissions' } = {
-        summary => 'Remove permissions from a role',
+    __PACKAGE__->method_documentation->{ 'iam_v1_roles_list' } = {
+        summary => 'List IAM roles',
         params => $params,
-        returns => undef,
+        returns => 'IamV1RoleListResponse',
         };
 }
-# @return void
+# @return IamV1RoleListResponse
 #
-sub remove_role_permissions {
+sub iam_v1_roles_list {
     my ($self, %args) = @_;
 
-    # verify the required parameter 'role_id' is set
-    unless (exists $args{'role_id'}) {
-      croak("Missing the required parameter 'role_id' when calling remove_role_permissions");
-    }
-
     # parse inputs
-    my $_resource_path = '/roles/{role_id}/permissions';
+    my $_resource_path = '/iam/v1/roles';
 
-    my $_method = 'DELETE';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept();
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'role_id'}) {
-        my $_base_variable = "{" . "role_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'request_body'}) {
-        $_body_data = $args{'request_body'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(token )];
-
-    # make the API Call
-    $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    return;
-}
-
-#
-# update_a_role
-#
-# Update a role
-#
-# @param string $role_id Alphanumeric string identifying the role. (required)
-# @param HASH[string,object] $request_body  (optional)
-{
-    my $params = {
-    'role_id' => {
-        data_type => 'string',
-        description => 'Alphanumeric string identifying the role.',
-        required => '1',
-    },
-    'request_body' => {
-        data_type => 'HASH[string,object]',
-        description => '',
-        required => '0',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'update_a_role' } = {
-        summary => 'Update a role',
-        params => $params,
-        returns => 'object',
-        };
-}
-# @return object
-#
-sub update_a_role {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'role_id' is set
-    unless (exists $args{'role_id'}) {
-      croak("Missing the required parameter 'role_id' when calling update_a_role");
-    }
-
-    # parse inputs
-    my $_resource_path = '/roles/{role_id}';
-
-    my $_method = 'PATCH';
+    my $_method = 'GET';
     my $query_params = {};
     my $header_params = {};
     my $form_params = {};
@@ -575,21 +168,19 @@ sub update_a_role {
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
-    # path params
-    if ( exists $args{'role_id'}) {
-        my $_base_variable = "{" . "role_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'role_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    # query params
+    if ( exists $args{'limit'}) {
+        $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'cursor'}) {
+        $query_params->{'cursor'} = $self->{api_client}->to_query_value($args{'cursor'});
     }
 
     my $_body_data;
-    # body params
-    if ( exists $args{'request_body'}) {
-        $_body_data = $args{'request_body'};
-    }
-
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 
@@ -600,7 +191,7 @@ sub update_a_role {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('object', $response);
+    my $_response_object = $self->{api_client}->deserialize('IamV1RoleListResponse', $response);
     return $_response_object;
 }
 

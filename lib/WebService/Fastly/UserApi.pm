@@ -57,6 +57,7 @@ sub new {
 # @param boolean $locked Indicates whether the is account is locked for editing or not. (optional)
 # @param boolean $require_new_password Indicates if a new password is required at next login. (optional)
 # @param RoleUser $role  (optional)
+# @param ARRAY[string] $roles A list of role IDs assigned to the user. (optional)
 # @param boolean $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
 # @param boolean $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
 {
@@ -89,6 +90,11 @@ sub new {
     'role' => {
         data_type => 'RoleUser',
         description => '',
+        required => '0',
+    },
+    'roles' => {
+        data_type => 'ARRAY[string]',
+        description => 'A list of role IDs assigned to the user.',
         required => '0',
     },
     'two_factor_auth_enabled' => {
@@ -156,6 +162,11 @@ sub create_user {
     # form params
     if ( exists $args{'role'} ) {
                 $form_params->{'role'} = $self->{api_client}->to_form_value($args{'role'});
+    }
+
+    # form params
+    if ( exists $args{'roles'} ) {
+                $form_params->{'roles'} = $self->{api_client}->to_form_value($args{'roles'});
     }
 
     # form params
@@ -445,6 +456,7 @@ sub request_password_reset {
 # @param boolean $locked Indicates whether the is account is locked for editing or not. (optional)
 # @param boolean $require_new_password Indicates if a new password is required at next login. (optional)
 # @param RoleUser $role  (optional)
+# @param ARRAY[string] $roles A list of role IDs assigned to the user. (optional)
 # @param boolean $two_factor_auth_enabled Indicates if 2FA is enabled on the user. (optional)
 # @param boolean $two_factor_setup_required Indicates if 2FA is required by the user&#39;s customer account. (optional)
 {
@@ -482,6 +494,11 @@ sub request_password_reset {
     'role' => {
         data_type => 'RoleUser',
         description => '',
+        required => '0',
+    },
+    'roles' => {
+        data_type => 'ARRAY[string]',
+        description => 'A list of role IDs assigned to the user.',
         required => '0',
     },
     'two_factor_auth_enabled' => {
@@ -561,6 +578,11 @@ sub update_user {
     # form params
     if ( exists $args{'role'} ) {
                 $form_params->{'role'} = $self->{api_client}->to_form_value($args{'role'});
+    }
+
+    # form params
+    if ( exists $args{'roles'} ) {
+                $form_params->{'roles'} = $self->{api_client}->to_form_value($args{'roles'});
     }
 
     # form params

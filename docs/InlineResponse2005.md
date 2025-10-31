@@ -8,8 +8,7 @@ use WebService::Fastly::Object::InlineResponse2005;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ARRAY[KvStoreDetails]**](KvStoreDetails.md) |  | [optional] 
-**meta** | [**PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
+**expires_at** | **string** | Time-stamp (GMT) when the domain_ownership validation will expire. | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

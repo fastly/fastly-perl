@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **list_domain_ownerships**
-> InlineResponse2004 list_domain_ownerships()
+> InlineResponse2005 list_domain_ownerships()
 
 List domain-ownerships
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**InlineResponse2004**](InlineResponse2004.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 

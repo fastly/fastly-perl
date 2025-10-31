@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **create_log_https**
-> LoggingHttpsResponse create_log_https(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format)
+> LoggingHttpsResponse create_log_https(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format, period => $period)
 
 Create an HTTPS log endpoint
 
@@ -57,9 +57,10 @@ my $message_type = new WebService::Fastly.LoggingMessageType(); # LoggingMessage
 my $header_value = 'null'; # string | Value of the custom header sent with the request.
 my $method = 'POST'; # string | HTTP method used for request.
 my $json_format = "json_format_example"; # string | Enforces valid JSON formatting for log entries.
+my $period = 5; # int | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
 
 eval {
-    my $result = $api_instance->create_log_https(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format);
+    my $result = $api_instance->create_log_https(service_id => $service_id, version_id => $version_id, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format, period => $period);
     print Dumper($result);
 };
 if ($@) {
@@ -92,6 +93,7 @@ Name | Type | Description  | Notes
  **header_value** | **string**| Value of the custom header sent with the request. | [optional] [default to &#39;null&#39;]
  **method** | **string**| HTTP method used for request. | [optional] [default to &#39;POST&#39;]
  **json_format** | **string**| Enforces valid JSON formatting for log entries. | [optional] 
+ **period** | **int**| How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds. | [optional] [default to 5]
 
 ### Return type
 
@@ -272,7 +274,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_log_https**
-> LoggingHttpsResponse update_log_https(service_id => $service_id, version_id => $version_id, logging_https_name => $logging_https_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format)
+> LoggingHttpsResponse update_log_https(service_id => $service_id, version_id => $version_id, logging_https_name => $logging_https_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format, period => $period)
 
 Update an HTTPS log endpoint
 
@@ -312,9 +314,10 @@ my $message_type = new WebService::Fastly.LoggingMessageType(); # LoggingMessage
 my $header_value = 'null'; # string | Value of the custom header sent with the request.
 my $method = 'POST'; # string | HTTP method used for request.
 my $json_format = "json_format_example"; # string | Enforces valid JSON formatting for log entries.
+my $period = 5; # int | How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds.
 
 eval {
-    my $result = $api_instance->update_log_https(service_id => $service_id, version_id => $version_id, logging_https_name => $logging_https_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format);
+    my $result = $api_instance->update_log_https(service_id => $service_id, version_id => $version_id, logging_https_name => $logging_https_name, name => $name, placement => $placement, response_condition => $response_condition, format => $format, log_processing_region => $log_processing_region, format_version => $format_version, tls_ca_cert => $tls_ca_cert, tls_client_cert => $tls_client_cert, tls_client_key => $tls_client_key, tls_hostname => $tls_hostname, request_max_entries => $request_max_entries, request_max_bytes => $request_max_bytes, url => $url, content_type => $content_type, header_name => $header_name, message_type => $message_type, header_value => $header_value, method => $method, json_format => $json_format, period => $period);
     print Dumper($result);
 };
 if ($@) {
@@ -348,6 +351,7 @@ Name | Type | Description  | Notes
  **header_value** | **string**| Value of the custom header sent with the request. | [optional] [default to &#39;null&#39;]
  **method** | **string**| HTTP method used for request. | [optional] [default to &#39;POST&#39;]
  **json_format** | **string**| Enforces valid JSON formatting for log entries. | [optional] 
+ **period** | **int**| How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of `0` sends logs at the same interval as the default, which is `5` seconds. | [optional] [default to 5]
 
 ### Return type
 

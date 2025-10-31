@@ -1986,6 +1986,13 @@ __PACKAGE__->method_documentation({
         format => 'int64',
         read_only => 'false',
             },
+    'api_discovery_requests_count' => {
+        datatype => 'int',
+        base_name => 'api_discovery_requests_count',
+        description => 'Number of requests processed by the API Discovery engine.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -2249,7 +2256,8 @@ __PACKAGE__->openapi_types( {
     'aia_estimated_time_saved_ms' => 'int',
     'request_collapse_usable_count' => 'int',
     'request_collapse_unusable_count' => 'int',
-    'compute_cache_operations_count' => 'int'
+    'compute_cache_operations_count' => 'int',
+    'api_discovery_requests_count' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -2513,7 +2521,8 @@ __PACKAGE__->attribute_map( {
     'aia_estimated_time_saved_ms' => 'aia_estimated_time_saved_ms',
     'request_collapse_usable_count' => 'request_collapse_usable_count',
     'request_collapse_unusable_count' => 'request_collapse_unusable_count',
-    'compute_cache_operations_count' => 'compute_cache_operations_count'
+    'compute_cache_operations_count' => 'compute_cache_operations_count',
+    'api_discovery_requests_count' => 'api_discovery_requests_count'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

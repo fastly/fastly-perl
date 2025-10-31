@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::BotManagementResponseServiceService;
+package WebService::Fastly::Object::ApiDiscoveryResponseEnabledServices;
 
 require 5.6.0;
 use strict;
@@ -153,35 +153,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'BotManagementResponseServiceService',
+                                  class => 'ApiDiscoveryResponseEnabledServices',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'id' => {
-        datatype => 'string',
-        base_name => 'id',
-        description => 'Service identifier',
-        format => '',
-        read_only => 'false',
-            },
-    'object' => {
-        datatype => 'string',
-        base_name => 'object',
-        description => 'Name of the object',
+    'services' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'services',
+        description => 'A list of services for a customer with API Discovery enabled.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'id' => 'string',
-    'object' => 'string'
+    'services' => 'ARRAY[string]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'id' => 'id',
-    'object' => 'object'
+    'services' => 'services'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

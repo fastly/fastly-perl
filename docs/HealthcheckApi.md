@@ -38,7 +38,7 @@ my $api_instance = WebService::Fastly::HealthcheckApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
-my $check_interval = 56; # int | How often to run the health check in milliseconds.
+my $check_interval = 56; # int | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $expected_response = 56; # int | The status code expected from the host.
 my $headers = [("null")]; # ARRAY[string] | Array of custom headers that will be added to the health check probes.
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
- **check_interval** | **int**| How often to run the health check in milliseconds. | [optional] 
+ **check_interval** | **int**| How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. | [optional] 
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **expected_response** | **int**| The status code expected from the host. | [optional] 
  **headers** | [**ARRAY[string]**](string.md)| Array of custom headers that will be added to the health check probes. | [optional] 
@@ -281,7 +281,7 @@ my $api_instance = WebService::Fastly::HealthcheckApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $version_id = 56; # int | Integer identifying a service version.
 my $healthcheck_name = "healthcheck_name_example"; # string | The name of the health check.
-my $check_interval = 56; # int | How often to run the health check in milliseconds.
+my $check_interval = 56; # int | How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.
 my $comment = "comment_example"; # string | A freeform descriptive note.
 my $expected_response = 56; # int | The status code expected from the host.
 my $headers = [("null")]; # ARRAY[string] | Array of custom headers that will be added to the health check probes.
@@ -311,7 +311,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **version_id** | **int**| Integer identifying a service version. | 
  **healthcheck_name** | **string**| The name of the health check. | 
- **check_interval** | **int**| How often to run the health check in milliseconds. | [optional] 
+ **check_interval** | **int**| How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. | [optional] 
  **comment** | **string**| A freeform descriptive note. | [optional] 
  **expected_response** | **int**| The status code expected from the host. | [optional] 
  **headers** | [**ARRAY[string]**](string.md)| Array of custom headers that will be added to the health check probes. | [optional] 

@@ -2034,6 +2034,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'api_discovery_requests_count' => {
+        datatype => 'int',
+        base_name => 'api_discovery_requests_count',
+        description => 'Number of requests processed by the API Discovery engine.',
+        format => '',
+        read_only => 'false',
+            },
     'service_id' => {
         datatype => 'string',
         base_name => 'service_id',
@@ -2319,6 +2326,7 @@ __PACKAGE__->openapi_types( {
     'ngwaf_requests_blocked_count' => 'int',
     'ngwaf_requests_timeout_count' => 'int',
     'ngwaf_requests_challenged_count' => 'int',
+    'api_discovery_requests_count' => 'int',
     'service_id' => 'string',
     'start_time' => 'int'
 } );
@@ -2592,6 +2600,7 @@ __PACKAGE__->attribute_map( {
     'ngwaf_requests_blocked_count' => 'ngwaf_requests_blocked_count',
     'ngwaf_requests_timeout_count' => 'ngwaf_requests_timeout_count',
     'ngwaf_requests_challenged_count' => 'ngwaf_requests_challenged_count',
+    'api_discovery_requests_count' => 'api_discovery_requests_count',
     'service_id' => 'service_id',
     'start_time' => 'start_time'
 } );

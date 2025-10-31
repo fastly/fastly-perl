@@ -180,18 +180,27 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'traffic_percentage' => {
+        datatype => 'double',
+        base_name => 'traffic_percentage',
+        description => 'Rule traffic percentage for the event.',
+        format => 'float',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'customer_id' => 'string',
     'service_id' => 'string',
-    'attributes' => 'ARRAY[DdosProtectionAttributeStats]'
+    'attributes' => 'ARRAY[DdosProtectionAttributeStats]',
+    'traffic_percentage' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
     'customer_id' => 'customer_id',
     'service_id' => 'service_id',
-    'attributes' => 'attributes'
+    'attributes' => 'attributes',
+    'traffic_percentage' => 'traffic_percentage'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

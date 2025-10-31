@@ -180,6 +180,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'roles' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'roles',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
     'status_code' => {
         datatype => 'int',
         base_name => 'status_code',
@@ -193,6 +200,7 @@ __PACKAGE__->openapi_types( {
     'email' => 'string',
     'limit_services' => 'boolean',
     'role' => 'RoleUser',
+    'roles' => 'ARRAY[string]',
     'status_code' => 'int'
 } );
 
@@ -200,6 +208,7 @@ __PACKAGE__->attribute_map( {
     'email' => 'email',
     'limit_services' => 'limit_services',
     'role' => 'role',
+    'roles' => 'roles',
     'status_code' => 'status_code'
 } );
 

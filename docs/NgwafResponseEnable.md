@@ -9,7 +9,7 @@ use WebService::Fastly::Object::NgwafResponseEnable;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **product** | [**NgwafResponseProductProduct**](NgwafResponseProductProduct.md) |  | [optional] 
-**service** | [**BotManagementResponseServiceService**](BotManagementResponseServiceService.md) |  | [optional] 
+**service** | [**ApiDiscoveryResponseServiceService**](ApiDiscoveryResponseServiceService.md) |  | [optional] 
 **_links** | [**NgwafResponseLinksLinks**](NgwafResponseLinksLinks.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -229,6 +229,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'period' => {
+        datatype => 'int',
+        base_name => 'period',
+        description => 'How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -241,7 +248,8 @@ __PACKAGE__->openapi_types( {
     'header_value' => 'string',
     'method' => 'string',
     'json_format' => 'string',
-    'format' => 'string'
+    'format' => 'string',
+    'period' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -254,7 +262,8 @@ __PACKAGE__->attribute_map( {
     'header_value' => 'header_value',
     'method' => 'method',
     'json_format' => 'json_format',
-    'format' => 'format'
+    'format' => 'format',
+    'period' => 'period'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

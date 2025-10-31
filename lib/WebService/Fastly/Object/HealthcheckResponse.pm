@@ -164,7 +164,7 @@ __PACKAGE__->method_documentation({
     'check_interval' => {
         datatype => 'int',
         base_name => 'check_interval',
-        description => 'How often to run the health check in milliseconds.',
+        description => 'How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.',
         format => '',
         read_only => 'false',
             },

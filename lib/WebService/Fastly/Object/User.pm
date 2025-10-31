@@ -201,6 +201,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'roles' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'roles',
+        description => 'A list of role IDs assigned to the user.',
+        format => '',
+        read_only => 'false',
+            },
     'two_factor_auth_enabled' => {
         datatype => 'boolean',
         base_name => 'two_factor_auth_enabled',
@@ -224,6 +231,7 @@ __PACKAGE__->openapi_types( {
     'locked' => 'boolean',
     'require_new_password' => 'boolean',
     'role' => 'RoleUser',
+    'roles' => 'ARRAY[string]',
     'two_factor_auth_enabled' => 'boolean',
     'two_factor_setup_required' => 'boolean'
 } );
@@ -235,6 +243,7 @@ __PACKAGE__->attribute_map( {
     'locked' => 'locked',
     'require_new_password' => 'require_new_password',
     'role' => 'role',
+    'roles' => 'roles',
     'two_factor_auth_enabled' => 'two_factor_auth_enabled',
     'two_factor_setup_required' => 'two_factor_setup_required'
 } );

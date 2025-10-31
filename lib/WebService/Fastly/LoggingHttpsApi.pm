@@ -72,6 +72,7 @@ sub new {
 # @param string $header_value Value of the custom header sent with the request. (optional, default to 'null')
 # @param string $method HTTP method used for request. (optional, default to 'POST')
 # @param string $json_format Enforces valid JSON formatting for log entries. (optional)
+# @param int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
 {
     my $params = {
     'service_id' => {
@@ -177,6 +178,11 @@ sub new {
     'json_format' => {
         data_type => 'string',
         description => 'Enforces valid JSON formatting for log entries.',
+        required => '0',
+    },
+    'period' => {
+        data_type => 'int',
+        description => 'How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds.',
         required => '0',
     },
     };
@@ -323,6 +329,11 @@ sub create_log_https {
     # form params
     if ( exists $args{'json_format'} ) {
                 $form_params->{'json_format'} = $self->{api_client}->to_form_value($args{'json_format'});
+    }
+
+    # form params
+    if ( exists $args{'period'} ) {
+                $form_params->{'period'} = $self->{api_client}->to_form_value($args{'period'});
     }
 
     my $_body_data;
@@ -658,6 +669,7 @@ sub list_log_https {
 # @param string $header_value Value of the custom header sent with the request. (optional, default to 'null')
 # @param string $method HTTP method used for request. (optional, default to 'POST')
 # @param string $json_format Enforces valid JSON formatting for log entries. (optional)
+# @param int $period How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds. (optional, default to 5)
 {
     my $params = {
     'service_id' => {
@@ -768,6 +780,11 @@ sub list_log_https {
     'json_format' => {
         data_type => 'string',
         description => 'Enforces valid JSON formatting for log entries.',
+        required => '0',
+    },
+    'period' => {
+        data_type => 'int',
+        description => 'How frequently, in seconds, batches of log data are sent to the HTTPS endpoint. A value of &#x60;0&#x60; sends logs at the same interval as the default, which is &#x60;5&#x60; seconds.',
         required => '0',
     },
     };
@@ -926,6 +943,11 @@ sub update_log_https {
     # form params
     if ( exists $args{'json_format'} ) {
                 $form_params->{'json_format'} = $self->{api_client}->to_form_value($args{'json_format'});
+    }
+
+    # form params
+    if ( exists $args{'period'} ) {
+                $form_params->{'period'} = $self->{api_client}->to_form_value($args{'period'});
     }
 
     my $_body_data;

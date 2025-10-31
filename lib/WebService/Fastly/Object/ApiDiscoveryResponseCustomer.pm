@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::IamRoleAllOf;
+package WebService::Fastly::Object::ApiDiscoveryResponseCustomer;
 
 require 5.6.0;
 use strict;
@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::ApiDiscoveryResponseCustomerCustomer;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -153,71 +154,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'IamRoleAllOf',
+                                  class => 'ApiDiscoveryResponseCustomer',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'id' => {
-        datatype => 'string',
-        base_name => 'id',
-        description => 'Alphanumeric string identifying the role.',
-        format => '',
-        read_only => 'false',
-            },
-    'object' => {
-        datatype => 'string',
-        base_name => 'object',
-        description => 'The type of the object.',
-        format => '',
-        read_only => 'false',
-            },
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'Name of the role.',
-        format => '',
-        read_only => 'false',
-            },
-    'description' => {
-        datatype => 'string',
-        base_name => 'description',
-        description => 'Description of the role.',
-        format => '',
-        read_only => 'false',
-            },
-    'custom' => {
-        datatype => 'boolean',
-        base_name => 'custom',
-        description => 'This attribute is set to &#x60;true&#x60; if the role is managed by the customer. It is set to &#x60;false&#x60; if the role was created by Fastly.',
-        format => '',
-        read_only => 'false',
-            },
-    'permissions_count' => {
-        datatype => 'int',
-        base_name => 'permissions_count',
-        description => 'Number of permissions assigned to the role.',
+    'customer' => {
+        datatype => 'ApiDiscoveryResponseCustomerCustomer',
+        base_name => 'customer',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'id' => 'string',
-    'object' => 'string',
-    'name' => 'string',
-    'description' => 'string',
-    'custom' => 'boolean',
-    'permissions_count' => 'int'
+    'customer' => 'ApiDiscoveryResponseCustomerCustomer'
 } );
 
 __PACKAGE__->attribute_map( {
-    'id' => 'id',
-    'object' => 'object',
-    'name' => 'name',
-    'description' => 'description',
-    'custom' => 'custom',
-    'permissions_count' => 'permissions_count'
+    'customer' => 'customer'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

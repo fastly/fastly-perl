@@ -121,7 +121,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_service_authorization2**
-> InlineResponse2009 delete_service_authorization2(request_body => $request_body)
+> InlineResponse20010 delete_service_authorization2(request_body => $request_body)
 
 Delete service authorizations
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 

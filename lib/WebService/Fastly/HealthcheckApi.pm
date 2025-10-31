@@ -53,7 +53,7 @@ sub new {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
-# @param int $check_interval How often to run the health check in milliseconds. (optional)
+# @param int $check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. (optional)
 # @param string $comment A freeform descriptive note. (optional)
 # @param int $expected_response The status code expected from the host. (optional)
 # @param ARRAY[string] $headers Array of custom headers that will be added to the health check probes. (optional)
@@ -80,7 +80,7 @@ sub new {
     },
     'check_interval' => {
         data_type => 'int',
-        description => 'How often to run the health check in milliseconds.',
+        description => 'How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.',
         required => '0',
     },
     'comment' => {
@@ -573,7 +573,7 @@ sub list_healthchecks {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $version_id Integer identifying a service version. (required)
 # @param string $healthcheck_name The name of the health check. (required)
-# @param int $check_interval How often to run the health check in milliseconds. (optional)
+# @param int $check_interval How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour. (optional)
 # @param string $comment A freeform descriptive note. (optional)
 # @param int $expected_response The status code expected from the host. (optional)
 # @param ARRAY[string] $headers Array of custom headers that will be added to the health check probes. (optional)
@@ -605,7 +605,7 @@ sub list_healthchecks {
     },
     'check_interval' => {
         data_type => 'int',
-        description => 'How often to run the health check in milliseconds.',
+        description => 'How often to run the health check in milliseconds. Minimum 1 second, maximum 1 hour.',
         required => '0',
     },
     'comment' => {
