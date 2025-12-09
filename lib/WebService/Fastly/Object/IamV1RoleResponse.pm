@@ -172,6 +172,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'display_name' => {
+        datatype => 'string',
+        base_name => 'display_name',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
     'description' => {
         datatype => 'string',
         base_name => 'description',
@@ -191,6 +198,7 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'id' => 'string',
     'name' => 'string',
+    'display_name' => 'string',
     'description' => 'string',
     'permissions' => 'ARRAY[string]'
 } );
@@ -198,6 +206,7 @@ __PACKAGE__->openapi_types( {
 __PACKAGE__->attribute_map( {
     'id' => 'id',
     'name' => 'name',
+    'display_name' => 'display_name',
     'description' => 'description',
     'permissions' => 'permissions'
 } );

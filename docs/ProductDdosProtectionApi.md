@@ -69,11 +69,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **enable_product_ddos_protection**
-> DdosProtectionResponseEnable enable_product_ddos_protection(service_id => $service_id)
+> DdosProtectionResponseEnable enable_product_ddos_protection(service_id => $service_id, ddos_protection_request_enable_mode => $ddos_protection_request_enable_mode)
 
 Enable product
 
-Enable the DDoS Protection product on a service in 'log' mode.
+Enable the DDoS Protection product on a service in default 'log' mode unless otherwise specified in the request body.
 
 ### Example
 ```perl
@@ -88,9 +88,10 @@ my $api_instance = WebService::Fastly::ProductDdosProtectionApi->new(
 );
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $ddos_protection_request_enable_mode = WebService::Fastly::Object::DdosProtectionRequestEnableMode->new(); # DdosProtectionRequestEnableMode | 
 
 eval {
-    my $result = $api_instance->enable_product_ddos_protection(service_id => $service_id);
+    my $result = $api_instance->enable_product_ddos_protection(service_id => $service_id, ddos_protection_request_enable_mode => $ddos_protection_request_enable_mode);
     print Dumper($result);
 };
 if ($@) {
@@ -103,6 +104,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **ddos_protection_request_enable_mode** | [**DdosProtectionRequestEnableMode**](DdosProtectionRequestEnableMode.md)|  | [optional] 
 
 ### Return type
 
@@ -114,7 +116,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

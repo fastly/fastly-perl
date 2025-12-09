@@ -28,6 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::KvStoreDetails;
 use WebService::Fastly::Object::PaginationCursorMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
@@ -160,7 +161,7 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'ARRAY[string]',
+        datatype => 'ARRAY[KvStoreDetails]',
         base_name => 'data',
         description => '',
         format => '',
@@ -176,7 +177,7 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[string]',
+    'data' => 'ARRAY[KvStoreDetails]',
     'meta' => 'PaginationCursorMeta'
 } );
 

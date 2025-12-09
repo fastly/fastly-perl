@@ -1,14 +1,14 @@
-# WebService::Fastly::Object::KvStoreRequestCreate
+# WebService::Fastly::Object::DomainResearchResponseLinks
 
 ## Load the model package
 ```perl
-use WebService::Fastly::Object::KvStoreRequestCreate;
+use WebService::Fastly::Object::DomainResearchResponseLinks;
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** | A human-readable name for the store. Refer to https://docs.fastly.com/products/compute-resource-limits#kv-store for limitations on the KV store name. | 
+**_links** | [**DomainResearchResponseLinksLinks**](DomainResearchResponseLinksLinks.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

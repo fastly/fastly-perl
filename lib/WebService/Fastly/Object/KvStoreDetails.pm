@@ -172,16 +172,34 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'created_at' => {
+        datatype => 'string',
+        base_name => 'created_at',
+        description => 'Timestamp at which the store was created.',
+        format => '',
+        read_only => 'false',
+            },
+    'updated_at' => {
+        datatype => 'string',
+        base_name => 'updated_at',
+        description => 'Timestamp at which the store was last updated.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'id' => 'string',
-    'name' => 'string'
+    'name' => 'string',
+    'created_at' => 'string',
+    'updated_at' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'id' => 'id',
-    'name' => 'name'
+    'name' => 'name',
+    'created_at' => 'created_at',
+    'updated_at' => 'updated_at'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

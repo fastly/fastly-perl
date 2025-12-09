@@ -14,10 +14,11 @@ Method | HTTP request | Description
 [**kv_store_delete**](KvStoreApi.md#kv_store_delete) | **DELETE** /resources/stores/kv/{store_id} | Delete a KV store.
 [**kv_store_get**](KvStoreApi.md#kv_store_get) | **GET** /resources/stores/kv/{store_id} | Describe a KV store.
 [**kv_store_list**](KvStoreApi.md#kv_store_list) | **GET** /resources/stores/kv | List all KV stores.
+[**kv_store_put**](KvStoreApi.md#kv_store_put) | **PUT** /resources/stores/kv/{store_id} | Update a KV store.
 
 
 # **kv_store_create**
-> KvStoreDetails kv_store_create(location => $location, kv_store_request_create => $kv_store_request_create)
+> KvStoreDetails kv_store_create(location => $location, kv_store_request_create_or_update => $kv_store_request_create_or_update)
 
 Create a KV store.
 
@@ -36,10 +37,10 @@ my $api_instance = WebService::Fastly::KvStoreApi->new(
 );
 
 my $location = "location_example"; # string | 
-my $kv_store_request_create = WebService::Fastly::Object::KvStoreRequestCreate->new(); # KvStoreRequestCreate | 
+my $kv_store_request_create_or_update = WebService::Fastly::Object::KvStoreRequestCreateOrUpdate->new(); # KvStoreRequestCreateOrUpdate | 
 
 eval {
-    my $result = $api_instance->kv_store_create(location => $location, kv_store_request_create => $kv_store_request_create);
+    my $result = $api_instance->kv_store_create(location => $location, kv_store_request_create_or_update => $kv_store_request_create_or_update);
     print Dumper($result);
 };
 if ($@) {
@@ -52,7 +53,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location** | **string**|  | [optional] 
- **kv_store_request_create** | [**KvStoreRequestCreate**](KvStoreRequestCreate.md)|  | [optional] 
+ **kv_store_request_create_or_update** | [**KvStoreRequestCreateOrUpdate**](KvStoreRequestCreateOrUpdate.md)|  | [optional] 
 
 ### Return type
 
@@ -171,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kv_store_list**
-> InlineResponse2006 kv_store_list(cursor => $cursor, limit => $limit, name => $name)
+> InlineResponse2007 kv_store_list(cursor => $cursor, limit => $limit, name => $name)
 
 List all KV stores.
 
@@ -212,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 
@@ -222,6 +223,58 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **kv_store_put**
+> kv_store_put(store_id => $store_id, kv_store_request_create_or_update => $kv_store_request_create_or_update)
+
+Update a KV store.
+
+Update the name of a KV store.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::KvStoreApi;
+my $api_instance = WebService::Fastly::KvStoreApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $store_id = "store_id_example"; # string | 
+my $kv_store_request_create_or_update = WebService::Fastly::Object::KvStoreRequestCreateOrUpdate->new(); # KvStoreRequestCreateOrUpdate | 
+
+eval {
+    $api_instance->kv_store_put(store_id => $store_id, kv_store_request_create_or_update => $kv_store_request_create_or_update);
+};
+if ($@) {
+    warn "Exception when calling KvStoreApi->kv_store_put: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **store_id** | **string**|  | 
+ **kv_store_request_create_or_update** | [**KvStoreRequestCreateOrUpdate**](KvStoreRequestCreateOrUpdate.md)|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -165,14 +165,23 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'traffic_ramp' => {
+        datatype => 'string',
+        base_name => 'traffic_ramp',
+        description => 'The percentage of traffic to inspect.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'workspace_id' => 'string'
+    'workspace_id' => 'string',
+    'traffic_ramp' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'workspace_id' => 'workspace_id'
+    'workspace_id' => 'workspace_id',
+    'traffic_ramp' => 'traffic_ramp'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

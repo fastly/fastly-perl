@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::KvStoreRequestCreate;
+package WebService::Fastly::Object::DomainResearchResponseLinksLinks;
 
 require 5.6.0;
 use strict;
@@ -153,26 +153,26 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'KvStoreRequestCreate',
+                                  class => 'DomainResearchResponseLinksLinks',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'name' => {
+    'self' => {
         datatype => 'string',
-        base_name => 'name',
-        description => 'A human-readable name for the store. Refer to https://docs.fastly.com/products/compute-resource-limits#kv-store for limitations on the KV store name.',
-        format => '',
+        base_name => 'self',
+        description => 'Location of resource',
+        format => 'uri',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'name' => 'string'
+    'self' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'name' => 'name'
+    'self' => 'self'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

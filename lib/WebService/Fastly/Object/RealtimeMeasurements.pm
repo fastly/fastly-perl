@@ -1993,6 +1993,34 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'imgopto_compute_requests' => {
+        datatype => 'int',
+        base_name => 'imgopto_compute_requests',
+        description => 'The number of Image Optimizer requests made from Compute services.',
+        format => '',
+        read_only => 'false',
+            },
+    'dns_billable_responses_count' => {
+        datatype => 'int',
+        base_name => 'dns_billable_responses_count',
+        description => 'Number of billable DNS responses (e.g., A, CNAME).',
+        format => '',
+        read_only => 'false',
+            },
+    'dns_nonbillable_responses_count' => {
+        datatype => 'int',
+        base_name => 'dns_nonbillable_responses_count',
+        description => 'Number of non-billable DNS responses (e.g., NODATA, NXDOMAIN).',
+        format => '',
+        read_only => 'false',
+            },
+    'upgrade' => {
+        datatype => 'int',
+        base_name => 'upgrade',
+        description => 'Number of requests that resulted in a WebSocket upgrade.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -2257,7 +2285,11 @@ __PACKAGE__->openapi_types( {
     'request_collapse_usable_count' => 'int',
     'request_collapse_unusable_count' => 'int',
     'compute_cache_operations_count' => 'int',
-    'api_discovery_requests_count' => 'int'
+    'api_discovery_requests_count' => 'int',
+    'imgopto_compute_requests' => 'int',
+    'dns_billable_responses_count' => 'int',
+    'dns_nonbillable_responses_count' => 'int',
+    'upgrade' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -2522,7 +2554,11 @@ __PACKAGE__->attribute_map( {
     'request_collapse_usable_count' => 'request_collapse_usable_count',
     'request_collapse_unusable_count' => 'request_collapse_unusable_count',
     'compute_cache_operations_count' => 'compute_cache_operations_count',
-    'api_discovery_requests_count' => 'api_discovery_requests_count'
+    'api_discovery_requests_count' => 'api_discovery_requests_count',
+    'imgopto_compute_requests' => 'imgopto_compute_requests',
+    'dns_billable_responses_count' => 'dns_billable_responses_count',
+    'dns_nonbillable_responses_count' => 'dns_nonbillable_responses_count',
+    'upgrade' => 'upgrade'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

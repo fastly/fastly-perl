@@ -52,7 +52,7 @@ sub new {
 # Create a KV store.
 #
 # @param string $location  (optional)
-# @param KvStoreRequestCreate $kv_store_request_create  (optional)
+# @param KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update  (optional)
 {
     my $params = {
     'location' => {
@@ -60,8 +60,8 @@ sub new {
         description => '',
         required => '0',
     },
-    'kv_store_request_create' => {
-        data_type => 'KvStoreRequestCreate',
+    'kv_store_request_create_or_update' => {
+        data_type => 'KvStoreRequestCreateOrUpdate',
         description => '',
         required => '0',
     },
@@ -99,8 +99,8 @@ sub kv_store_create {
 
     my $_body_data;
     # body params
-    if ( exists $args{'kv_store_request_create'}) {
-        $_body_data = $args{'kv_store_request_create'};
+    if ( exists $args{'kv_store_request_create_or_update'}) {
+        $_body_data = $args{'kv_store_request_create_or_update'};
     }
 
     # authentication setting, if any
@@ -276,10 +276,10 @@ sub kv_store_get {
     __PACKAGE__->method_documentation->{ 'kv_store_list' } = {
         summary => 'List all KV stores.',
         params => $params,
-        returns => 'InlineResponse2006',
+        returns => 'InlineResponse2007',
         };
 }
-# @return InlineResponse2006
+# @return InlineResponse2007
 #
 sub kv_store_list {
     my ($self, %args) = @_;
@@ -325,8 +325,82 @@ sub kv_store_list {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2006', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2007', $response);
     return $_response_object;
+}
+
+#
+# kv_store_put
+#
+# Update a KV store.
+#
+# @param string $store_id  (required)
+# @param KvStoreRequestCreateOrUpdate $kv_store_request_create_or_update  (optional)
+{
+    my $params = {
+    'store_id' => {
+        data_type => 'string',
+        description => '',
+        required => '1',
+    },
+    'kv_store_request_create_or_update' => {
+        data_type => 'KvStoreRequestCreateOrUpdate',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'kv_store_put' } = {
+        summary => 'Update a KV store.',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub kv_store_put {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'store_id' is set
+    unless (exists $args{'store_id'}) {
+      croak("Missing the required parameter 'store_id' when calling kv_store_put");
+    }
+
+    # parse inputs
+    my $_resource_path = '/resources/stores/kv/{store_id}';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept();
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'store_id'}) {
+        my $_base_variable = "{" . "store_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'store_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'kv_store_request_create_or_update'}) {
+        $_body_data = $args{'kv_store_request_create_or_update'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
 }
 
 1;

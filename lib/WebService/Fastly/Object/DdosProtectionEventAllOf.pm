@@ -172,6 +172,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'requests_allowed' => {
+        datatype => 'int',
+        base_name => 'requests_allowed',
+        description => 'Number of requests classified as non-attack traffic for an event.',
+        format => '',
+        read_only => 'false',
+            },
+    'requests_detected' => {
+        datatype => 'int',
+        base_name => 'requests_detected',
+        description => 'Number of requests classified as DDoS attack traffic for an event.',
+        format => '',
+        read_only => 'false',
+            },
     'customer_id' => {
         datatype => 'string',
         base_name => 'customer_id',
@@ -205,6 +219,8 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'id' => 'string',
     'name' => 'string',
+    'requests_allowed' => 'int',
+    'requests_detected' => 'int',
     'customer_id' => 'string',
     'service_id' => 'string',
     'started_at' => 'DateTime',
@@ -214,6 +230,8 @@ __PACKAGE__->openapi_types( {
 __PACKAGE__->attribute_map( {
     'id' => 'id',
     'name' => 'name',
+    'requests_allowed' => 'requests_allowed',
+    'requests_detected' => 'requests_detected',
     'customer_id' => 'customer_id',
     'service_id' => 'service_id',
     'started_at' => 'started_at',

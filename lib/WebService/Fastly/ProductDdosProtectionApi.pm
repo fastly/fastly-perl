@@ -115,12 +115,18 @@ sub disable_product_ddos_protection {
 # Enable product
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
+# @param DdosProtectionRequestEnableMode $ddos_protection_request_enable_mode  (optional)
 {
     my $params = {
     'service_id' => {
         data_type => 'string',
         description => 'Alphanumeric string identifying the service.',
         required => '1',
+    },
+    'ddos_protection_request_enable_mode' => {
+        data_type => 'DdosProtectionRequestEnableMode',
+        description => '',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'enable_product_ddos_protection' } = {
@@ -152,7 +158,7 @@ sub enable_product_ddos_protection {
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     # path params
     if ( exists $args{'service_id'}) {
@@ -162,6 +168,11 @@ sub enable_product_ddos_protection {
     }
 
     my $_body_data;
+    # body params
+    if ( exists $args{'ddos_protection_request_enable_mode'}) {
+        $_body_data = $args{'ddos_protection_request_enable_mode'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(token )];
 
