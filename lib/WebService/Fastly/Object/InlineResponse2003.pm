@@ -28,8 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::DdosProtectionRuleWithStats;
-use WebService::Fastly::Object::PaginationCursorMeta;
+use WebService::Fastly::Object::Meta;
+use WebService::Fastly::Object::TagGet;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -160,30 +160,30 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ARRAY[DdosProtectionRuleWithStats]',
-        base_name => 'data',
+    'meta' => {
+        datatype => 'Meta',
+        base_name => 'meta',
         description => '',
         format => '',
         read_only => 'false',
             },
-    'meta' => {
-        datatype => 'PaginationCursorMeta',
-        base_name => 'meta',
-        description => '',
+    'data' => {
+        datatype => 'ARRAY[TagGet]',
+        base_name => 'data',
+        description => 'The operation tags returned by the request.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[DdosProtectionRuleWithStats]',
-    'meta' => 'PaginationCursorMeta'
+    'meta' => 'Meta',
+    'data' => 'ARRAY[TagGet]'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data',
-    'meta' => 'meta'
+    'meta' => 'meta',
+    'data' => 'data'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

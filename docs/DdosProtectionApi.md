@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ddos_protection_event_list**
-> InlineResponse2002 ddos_protection_event_list(cursor => $cursor, limit => $limit, service_id => $service_id, from => $from, to => $to, name => $name)
+> InlineResponse2005 ddos_protection_event_list(cursor => $cursor, limit => $limit, service_id => $service_id, from => $from, to => $to, name => $name)
 
 Get events
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2005**](InlineResponse2005.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ddos_protection_event_rule_list**
-> InlineResponse2003 ddos_protection_event_rule_list(event_id => $event_id, cursor => $cursor, limit => $limit, include => $include)
+> InlineResponse2006 ddos_protection_event_rule_list(event_id => $event_id, cursor => $cursor, limit => $limit, include => $include)
 
 Get all rules for an event
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 

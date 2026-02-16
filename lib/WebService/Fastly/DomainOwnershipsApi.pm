@@ -57,10 +57,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'list_domain_ownerships' } = {
         summary => 'List domain-ownerships',
         params => $params,
-        returns => 'InlineResponse2005',
+        returns => 'InlineResponse2008',
         };
 }
-# @return InlineResponse2005
+# @return InlineResponse2008
 #
 sub list_domain_ownerships {
     my ($self, %args) = @_;
@@ -91,7 +91,7 @@ sub list_domain_ownerships {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2005', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2008', $response);
     return $_response_object;
 }
 

@@ -28,8 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::KvStoreDetails;
-use WebService::Fastly::Object::PaginationCursorMeta;
+use WebService::Fastly::Object::SuccessfulResponseAsObject;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -161,24 +160,24 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'ARRAY[KvStoreDetails]',
+        datatype => 'ARRAY[SuccessfulResponseAsObject]',
         base_name => 'data',
         description => '',
         format => '',
         read_only => 'false',
             },
     'meta' => {
-        datatype => 'PaginationCursorMeta',
+        datatype => 'object',
         base_name => 'meta',
-        description => '',
+        description => 'Meta for the pagination.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[KvStoreDetails]',
-    'meta' => 'PaginationCursorMeta'
+    'data' => 'ARRAY[SuccessfulResponseAsObject]',
+    'meta' => 'object'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -189,6 +188,7 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'meta' => 'true',
 } );
 
 

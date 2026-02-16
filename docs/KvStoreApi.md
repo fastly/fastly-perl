@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **kv_store_list**
-> InlineResponse2007 kv_store_list(cursor => $cursor, limit => $limit, name => $name)
+> InlineResponse20010 kv_store_list(cursor => $cursor, limit => $limit, name => $name)
 
 List all KV stores.
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse20010**](InlineResponse20010.md)
 
 ### Authorization
 

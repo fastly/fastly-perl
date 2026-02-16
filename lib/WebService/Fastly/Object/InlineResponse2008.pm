@@ -28,7 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::PaginationCursorMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -159,30 +158,21 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'data' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'data',
-        description => '',
+    'expires_at' => {
+        datatype => 'string',
+        base_name => 'expires_at',
+        description => 'Time-stamp (GMT) when the domain_ownership validation will expire.',
         format => '',
-        read_only => 'false',
-            },
-    'meta' => {
-        datatype => 'PaginationCursorMeta',
-        base_name => 'meta',
-        description => '',
-        format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[string]',
-    'meta' => 'PaginationCursorMeta'
+    'expires_at' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data',
-    'meta' => 'meta'
+    'expires_at' => 'expires_at'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

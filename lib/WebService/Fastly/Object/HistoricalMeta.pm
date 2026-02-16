@@ -186,20 +186,29 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'datacenter' => {
+        datatype => 'string',
+        base_name => 'datacenter',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'to' => 'string',
     'from' => 'string',
     'by' => 'string',
-    'region' => 'string'
+    'region' => 'string',
+    'datacenter' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
     'to' => 'to',
     'from' => 'from',
     'by' => 'by',
-    'region' => 'region'
+    'region' => 'region',
+    'datacenter' => 'datacenter'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

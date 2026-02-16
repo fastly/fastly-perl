@@ -8,7 +8,8 @@ use WebService::Fastly::Object::InlineResponse20011;
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**ARRAY[ServiceAuthorizationResponseData]**](ServiceAuthorizationResponseData.md) |  | [optional] 
+**data** | **ARRAY[string]** |  | [optional] 
+**meta** | [**PaginationCursorMeta**](PaginationCursorMeta.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

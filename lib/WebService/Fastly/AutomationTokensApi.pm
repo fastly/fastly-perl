@@ -202,10 +202,10 @@ sub get_automation_token_id {
     __PACKAGE__->method_documentation->{ 'get_automation_tokens_id_services' } = {
         summary => 'List Automation Token Services',
         params => $params,
-        returns => 'InlineResponse2001',
+        returns => 'InlineResponse2004',
         };
 }
-# @return InlineResponse2001
+# @return InlineResponse2004
 #
 sub get_automation_tokens_id_services {
     my ($self, %args) = @_;
@@ -258,7 +258,7 @@ sub get_automation_tokens_id_services {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2001', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2004', $response);
     return $_response_object;
 }
 

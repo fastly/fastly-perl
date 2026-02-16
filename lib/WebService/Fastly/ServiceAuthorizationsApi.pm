@@ -186,10 +186,10 @@ sub delete_service_authorization {
     __PACKAGE__->method_documentation->{ 'delete_service_authorization2' } = {
         summary => 'Delete service authorizations',
         params => $params,
-        returns => 'InlineResponse20011',
+        returns => 'InlineResponse20014',
         };
 }
-# @return InlineResponse20011
+# @return InlineResponse20014
 #
 sub delete_service_authorization2 {
     my ($self, %args) = @_;
@@ -225,7 +225,7 @@ sub delete_service_authorization2 {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse20011', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse20014', $response);
     return $_response_object;
 }
 

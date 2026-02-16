@@ -28,7 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::Suggestion;
+use WebService::Fastly::Object::DdosProtectionRuleWithStats;
+use WebService::Fastly::Object::PaginationCursorMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -159,9 +160,16 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'results' => {
-        datatype => 'ARRAY[Suggestion]',
-        base_name => 'results',
+    'data' => {
+        datatype => 'ARRAY[DdosProtectionRuleWithStats]',
+        base_name => 'data',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'meta' => {
+        datatype => 'PaginationCursorMeta',
+        base_name => 'meta',
         description => '',
         format => '',
         read_only => 'false',
@@ -169,11 +177,13 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'results' => 'ARRAY[Suggestion]'
+    'data' => 'ARRAY[DdosProtectionRuleWithStats]',
+    'meta' => 'PaginationCursorMeta'
 } );
 
 __PACKAGE__->attribute_map( {
-    'results' => 'results'
+    'data' => 'data',
+    'meta' => 'meta'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

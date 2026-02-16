@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::DiscoveredOperationGet;
+use WebService::Fastly::Object::Meta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -158,20 +160,29 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
+    'meta' => {
+        datatype => 'Meta',
+        base_name => 'meta',
+        description => '',
+        format => '',
+        read_only => 'false',
+            },
     'data' => {
-        datatype => 'ARRAY[string]',
+        datatype => 'ARRAY[DiscoveredOperationGet]',
         base_name => 'data',
-        description => 'The service IDs of the services the token will have access to. Separate service IDs with a space.',
+        description => 'The discovered operations returned by the request.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[string]'
+    'meta' => 'Meta',
+    'data' => 'ARRAY[DiscoveredOperationGet]'
 } );
 
 __PACKAGE__->attribute_map( {
+    'meta' => 'meta',
     'data' => 'data'
 } );
 

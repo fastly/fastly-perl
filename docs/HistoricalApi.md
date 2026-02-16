@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 
 # **get_hist_stats**
-> HistoricalStatsByServiceResponse get_hist_stats(from => $from, to => $to, by => $by, region => $region, services => $services)
+> HistoricalStatsByServiceResponse get_hist_stats(from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter, services => $services)
 
 Get historical stats
 
@@ -44,10 +44,11 @@ my $from = 2020-04-09T18:14:30Z; # string | Timestamp that defines the start of 
 my $to = 2020-04-09T18:14:30Z; # string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. 
 my $by = day; # string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. 
 my $region = usa; # string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. 
+my $datacenter = IAD,CHI; # string | Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
 my $services = "services_example"; # string | Limit the query to only the specified, comma-separated list of services. 
 
 eval {
-    my $result = $api_instance->get_hist_stats(from => $from, to => $to, by => $by, region => $region, services => $services);
+    my $result = $api_instance->get_hist_stats(from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter, services => $services);
     print Dumper($result);
 };
 if ($@) {
@@ -63,6 +64,7 @@ Name | Type | Description  | Notes
  **to** | **string**| Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.  | [optional] [default to &#39;now&#39;]
  **by** | **string**| Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.  | [optional] [default to &#39;day&#39;]
  **region** | **string**| Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.  | [optional] 
+ **datacenter** | **string**| Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  | [optional] 
  **services** | **string**| Limit the query to only the specified, comma-separated list of services.  | [optional] 
 
 ### Return type
@@ -138,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_field**
-> HistoricalStatsByServiceResponse get_hist_stats_field(field => $field, from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsByServiceResponse get_hist_stats_field(field => $field, from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter)
 
 Get historical stats for a single field
 
@@ -161,9 +163,10 @@ my $from = 2020-04-09T18:14:30Z; # string | Timestamp that defines the start of 
 my $to = 2020-04-09T18:14:30Z; # string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. 
 my $by = day; # string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. 
 my $region = usa; # string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. 
+my $datacenter = IAD,CHI; # string | Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
 
 eval {
-    my $result = $api_instance->get_hist_stats_field(field => $field, from => $from, to => $to, by => $by, region => $region);
+    my $result = $api_instance->get_hist_stats_field(field => $field, from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter);
     print Dumper($result);
 };
 if ($@) {
@@ -180,6 +183,7 @@ Name | Type | Description  | Notes
  **to** | **string**| Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.  | [optional] [default to &#39;now&#39;]
  **by** | **string**| Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.  | [optional] [default to &#39;day&#39;]
  **region** | **string**| Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.  | [optional] 
+ **datacenter** | **string**| Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  | [optional] 
 
 ### Return type
 
@@ -197,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_service**
-> HistoricalStatsAggregatedResponse get_hist_stats_service(service_id => $service_id, from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsAggregatedResponse get_hist_stats_service(service_id => $service_id, from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter)
 
 Get historical stats for a single service
 
@@ -220,9 +224,10 @@ my $from = 2020-04-09T18:14:30Z; # string | Timestamp that defines the start of 
 my $to = 2020-04-09T18:14:30Z; # string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. 
 my $by = day; # string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. 
 my $region = usa; # string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. 
+my $datacenter = IAD,CHI; # string | Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
 
 eval {
-    my $result = $api_instance->get_hist_stats_service(service_id => $service_id, from => $from, to => $to, by => $by, region => $region);
+    my $result = $api_instance->get_hist_stats_service(service_id => $service_id, from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter);
     print Dumper($result);
 };
 if ($@) {
@@ -239,6 +244,7 @@ Name | Type | Description  | Notes
  **to** | **string**| Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.  | [optional] [default to &#39;now&#39;]
  **by** | **string**| Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.  | [optional] [default to &#39;day&#39;]
  **region** | **string**| Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.  | [optional] 
+ **datacenter** | **string**| Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  | [optional] 
 
 ### Return type
 
@@ -256,7 +262,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_hist_stats_service_field**
-> HistoricalStatsAggregatedResponse get_hist_stats_service_field(service_id => $service_id, field => $field, from => $from, to => $to, by => $by, region => $region)
+> HistoricalStatsAggregatedResponse get_hist_stats_service_field(service_id => $service_id, field => $field, from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter)
 
 Get historical stats for a single service/field combination
 
@@ -280,9 +286,10 @@ my $from = 2020-04-09T18:14:30Z; # string | Timestamp that defines the start of 
 my $to = 2020-04-09T18:14:30Z; # string | Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`. 
 my $by = day; # string | Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day. 
 my $region = usa; # string | Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America. 
+my $datacenter = IAD,CHI; # string | Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). 
 
 eval {
-    my $result = $api_instance->get_hist_stats_service_field(service_id => $service_id, field => $field, from => $from, to => $to, by => $by, region => $region);
+    my $result = $api_instance->get_hist_stats_service_field(service_id => $service_id, field => $field, from => $from, to => $to, by => $by, region => $region, datacenter => $datacenter);
     print Dumper($result);
 };
 if ($@) {
@@ -300,6 +307,7 @@ Name | Type | Description  | Notes
  **to** | **string**| Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as `from`.  | [optional] [default to &#39;now&#39;]
  **by** | **string**| Duration of sample windows. One of:   * `hour` - Group data by hour.   * `minute` - Group data by minute.   * `day` - Group data by day.  | [optional] [default to &#39;day&#39;]
  **region** | **string**| Limit query to a specific geographic region. One of:   * `usa` - North America.   * `europe` - Europe.   * `anzac` - Australia and New Zealand.   * `asia` - Asia.   * `asia_india` - India.   * `asia_southkorea` - South Korea.   * `africa_std` - Africa.   * `mexico` - Mexico.   * `southamerica_std` - South America.  | [optional] 
+ **datacenter** | **string**| Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  | [optional] 
 
 ### Return type
 

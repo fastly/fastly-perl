@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_secret_stores**
-> InlineResponse2009 get_secret_stores(cursor => $cursor, limit => $limit, name => $name)
+> InlineResponse20012 get_secret_stores(cursor => $cursor, limit => $limit, name => $name)
 
 Get all secret stores
 
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2009**](InlineResponse2009.md)
+[**InlineResponse20012**](InlineResponse20012.md)
 
 ### Authorization
 

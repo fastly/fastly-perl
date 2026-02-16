@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **suggest_domains**
-> InlineResponse2006 suggest_domains(query => $query, defaults => $defaults, keywords => $keywords, location => $location, vendor => $vendor)
+> InlineResponse2009 suggest_domains(query => $query, defaults => $defaults, keywords => $keywords, location => $location, vendor => $vendor)
 
 Suggest domains
 
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2009**](InlineResponse2009.md)
 
 ### Authorization
 

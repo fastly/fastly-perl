@@ -189,14 +189,14 @@ __PACKAGE__->method_documentation({
     'size' => {
         datatype => 'int',
         base_name => 'size',
-        description => 'Size of the Compute package in bytes.',
+        description => 'Size of the Compute package in bytes. This is deprecated along with &#x60;hashsum&#x60;.',
         format => '',
         read_only => 'false',
             },
     'hashsum' => {
         datatype => 'string',
         base_name => 'hashsum',
-        description => 'Hash of the Compute package.',
+        description => 'Hash of the Compute package. This is deprecated in favor of &#x60;files_hash&#x60;.',
         format => '',
         read_only => 'false',
             },

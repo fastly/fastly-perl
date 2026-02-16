@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_automation_tokens_id_services**
-> InlineResponse2001 get_automation_tokens_id_services(id => $id, per_page => $per_page, page => $page)
+> InlineResponse2004 get_automation_tokens_id_services(id => $id, per_page => $per_page, page => $page)
 
 List Automation Token Services
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse2004**](InlineResponse2004.md)
 
 ### Authorization
 

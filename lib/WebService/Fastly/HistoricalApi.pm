@@ -55,6 +55,7 @@ sub new {
 # @param string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (optional, default to 'now')
 # @param string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (optional, default to 'day')
 # @param string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America.  (optional)
+# @param string $datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  (optional)
 # @param string $services Limit the query to only the specified, comma-separated list of services.  (optional)
 {
     my $params = {
@@ -76,6 +77,11 @@ sub new {
     'region' => {
         data_type => 'string',
         description => 'Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. ',
+        required => '0',
+    },
+    'datacenter' => {
+        data_type => 'string',
+        description => 'Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). ',
         required => '0',
     },
     'services' => {
@@ -128,6 +134,11 @@ sub get_hist_stats {
     # query params
     if ( exists $args{'region'}) {
         $query_params->{'region'} = $self->{api_client}->to_query_value($args{'region'});
+    }
+
+    # query params
+    if ( exists $args{'datacenter'}) {
+        $query_params->{'datacenter'} = $self->{api_client}->to_query_value($args{'datacenter'});
     }
 
     # query params
@@ -253,6 +264,7 @@ sub get_hist_stats_aggregated {
 # @param string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (optional, default to 'now')
 # @param string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (optional, default to 'day')
 # @param string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America.  (optional)
+# @param string $datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  (optional)
 {
     my $params = {
     'field' => {
@@ -278,6 +290,11 @@ sub get_hist_stats_aggregated {
     'region' => {
         data_type => 'string',
         description => 'Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. ',
+        required => '0',
+    },
+    'datacenter' => {
+        data_type => 'string',
+        description => 'Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). ',
         required => '0',
     },
     };
@@ -332,6 +349,11 @@ sub get_hist_stats_field {
         $query_params->{'region'} = $self->{api_client}->to_query_value($args{'region'});
     }
 
+    # query params
+    if ( exists $args{'datacenter'}) {
+        $query_params->{'datacenter'} = $self->{api_client}->to_query_value($args{'datacenter'});
+    }
+
     # path params
     if ( exists $args{'field'}) {
         my $_base_variable = "{" . "field" . "}";
@@ -364,6 +386,7 @@ sub get_hist_stats_field {
 # @param string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (optional, default to 'now')
 # @param string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (optional, default to 'day')
 # @param string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America.  (optional)
+# @param string $datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  (optional)
 {
     my $params = {
     'service_id' => {
@@ -389,6 +412,11 @@ sub get_hist_stats_field {
     'region' => {
         data_type => 'string',
         description => 'Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. ',
+        required => '0',
+    },
+    'datacenter' => {
+        data_type => 'string',
+        description => 'Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). ',
         required => '0',
     },
     };
@@ -443,6 +471,11 @@ sub get_hist_stats_service {
         $query_params->{'region'} = $self->{api_client}->to_query_value($args{'region'});
     }
 
+    # query params
+    if ( exists $args{'datacenter'}) {
+        $query_params->{'datacenter'} = $self->{api_client}->to_query_value($args{'datacenter'});
+    }
+
     # path params
     if ( exists $args{'service_id'}) {
         my $_base_variable = "{" . "service_id" . "}";
@@ -476,6 +509,7 @@ sub get_hist_stats_service {
 # @param string $to Timestamp that defines the end of the window for which to fetch statistics. Accepts the same formats as &#x60;from&#x60;.  (optional, default to 'now')
 # @param string $by Duration of sample windows. One of:   * &#x60;hour&#x60; - Group data by hour.   * &#x60;minute&#x60; - Group data by minute.   * &#x60;day&#x60; - Group data by day.  (optional, default to 'day')
 # @param string $region Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America.  (optional)
+# @param string $datacenter Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/).  (optional)
 {
     my $params = {
     'service_id' => {
@@ -506,6 +540,11 @@ sub get_hist_stats_service {
     'region' => {
         data_type => 'string',
         description => 'Limit query to a specific geographic region. One of:   * &#x60;usa&#x60; - North America.   * &#x60;europe&#x60; - Europe.   * &#x60;anzac&#x60; - Australia and New Zealand.   * &#x60;asia&#x60; - Asia.   * &#x60;asia_india&#x60; - India.   * &#x60;asia_southkorea&#x60; - South Korea.   * &#x60;africa_std&#x60; - Africa.   * &#x60;mexico&#x60; - Mexico.   * &#x60;southamerica_std&#x60; - South America. ',
+        required => '0',
+    },
+    'datacenter' => {
+        data_type => 'string',
+        description => 'Limit query to one or more Fastly POPs. For multiple POPs use a comma-seperated list of POPs. These must be all uppercase and be valid codes. A full list of POPs can be obtained from the [POPs endpoint](https://www.fastly.com/documentation/reference/api/utils/pops/). ',
         required => '0',
     },
     };
@@ -563,6 +602,11 @@ sub get_hist_stats_service_field {
     # query params
     if ( exists $args{'region'}) {
         $query_params->{'region'} = $self->{api_client}->to_query_value($args{'region'});
+    }
+
+    # query params
+    if ( exists $args{'datacenter'}) {
+        $query_params->{'datacenter'} = $self->{api_client}->to_query_value($args{'datacenter'});
     }
 
     # path params

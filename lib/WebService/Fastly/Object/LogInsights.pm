@@ -176,7 +176,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'values' => {
-        datatype => 'LogInsightsValues',
+        datatype => 'ARRAY[LogInsightsValues]',
         base_name => 'values',
         description => '',
         format => '',
@@ -187,7 +187,7 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'dimensions' => 'LogInsightsDimensions',
     'dimension_attributes' => 'LogInsightsDimensionAttributes',
-    'values' => 'LogInsightsValues'
+    'values' => 'ARRAY[LogInsightsValues]'
 } );
 
 __PACKAGE__->attribute_map( {

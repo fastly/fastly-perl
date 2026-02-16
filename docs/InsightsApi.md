@@ -32,10 +32,10 @@ my $api_instance = WebService::Fastly::InsightsApi->new(
     #api_key_prefix => {'Fastly-Key' => 'Bearer'},
 );
 
-my $visualization = "visualization_example"; # string | 
-my $service_id = "service_id_example"; # string | 
-my $start = "start_example"; # string | 
-my $end = "end_example"; # string | 
+my $visualization = top-url-by-requests; # string | 
+my $service_id = 1jlmtMz1ncwA0KC3TBGD0X; # string | 
+my $start = 2024-01-01T14:30:23Z; # string | 
+my $end = 2024-01-05T14:30:23Z; # string | 
 my $pops = "pops_example"; # string | 
 my $domain = "domain_example"; # string | 
 my $domain_exact_match = null; # boolean | 

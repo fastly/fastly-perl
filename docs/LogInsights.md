@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dimensions** | [**LogInsightsDimensions**](LogInsightsDimensions.md) |  | [optional] 
 **dimension_attributes** | [**LogInsightsDimensionAttributes**](LogInsightsDimensionAttributes.md) |  | [optional] 
-**values** | [**LogInsightsValues**](LogInsightsValues.md) |  | [optional] 
+**values** | [**ARRAY[LogInsightsValues]**](LogInsightsValues.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

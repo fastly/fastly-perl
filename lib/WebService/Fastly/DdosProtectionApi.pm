@@ -160,10 +160,10 @@ sub ddos_protection_event_get {
     __PACKAGE__->method_documentation->{ 'ddos_protection_event_list' } = {
         summary => 'Get events',
         params => $params,
-        returns => 'InlineResponse2002',
+        returns => 'InlineResponse2005',
         };
 }
-# @return InlineResponse2002
+# @return InlineResponse2005
 #
 sub ddos_protection_event_list {
     my ($self, %args) = @_;
@@ -224,7 +224,7 @@ sub ddos_protection_event_list {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2002', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2005', $response);
     return $_response_object;
 }
 
@@ -263,10 +263,10 @@ sub ddos_protection_event_list {
     __PACKAGE__->method_documentation->{ 'ddos_protection_event_rule_list' } = {
         summary => 'Get all rules for an event',
         params => $params,
-        returns => 'InlineResponse2003',
+        returns => 'InlineResponse2006',
         };
 }
-# @return InlineResponse2003
+# @return InlineResponse2006
 #
 sub ddos_protection_event_rule_list {
     my ($self, %args) = @_;
@@ -324,7 +324,7 @@ sub ddos_protection_event_rule_list {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2003', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2006', $response);
     return $_response_object;
 }
 
