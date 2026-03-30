@@ -31,6 +31,10 @@ jobs:
           install: |
             Dist::Milla
             CPAN::Uploader
+          args: >-
+            --mirror https://cpan.metacpan.org
+            --mirror-only
+            --verbose
       - name: Pack API client
         run: ./.github/scripts/pack.sh
         working-directory: ./main
