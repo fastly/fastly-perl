@@ -47,6 +47,240 @@ sub new {
 
 
 #
+# api_security_bulk_add_tags_to_operations
+#
+# Bulk add tags to operations
+#
+# @param string $service_id The unique identifier of the service. (required)
+# @param OperationBulkAddTags $operation_bulk_add_tags  (optional)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'The unique identifier of the service.',
+        required => '1',
+    },
+    'operation_bulk_add_tags' => {
+        data_type => 'OperationBulkAddTags',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'api_security_bulk_add_tags_to_operations' } = {
+        summary => 'Bulk add tags to operations',
+        params => $params,
+        returns => 'InlineResponse2071',
+        };
+}
+# @return InlineResponse2071
+#
+sub api_security_bulk_add_tags_to_operations {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling api_security_bulk_add_tags_to_operations");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api-security/v1/services/{service_id}/operations-bulk-tags';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'operation_bulk_add_tags'}) {
+        $_body_data = $args{'operation_bulk_add_tags'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2071', $response);
+    return $_response_object;
+}
+
+#
+# api_security_bulk_create_operations
+#
+# Bulk create operations
+#
+# @param string $service_id The unique identifier of the service. (required)
+# @param OperationBulkCreate $operation_bulk_create  (optional)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'The unique identifier of the service.',
+        required => '1',
+    },
+    'operation_bulk_create' => {
+        data_type => 'OperationBulkCreate',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'api_security_bulk_create_operations' } = {
+        summary => 'Bulk create operations',
+        params => $params,
+        returns => 'InlineResponse207',
+        };
+}
+# @return InlineResponse207
+#
+sub api_security_bulk_create_operations {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling api_security_bulk_create_operations");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api-security/v1/services/{service_id}/operations-bulk';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'operation_bulk_create'}) {
+        $_body_data = $args{'operation_bulk_create'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse207', $response);
+    return $_response_object;
+}
+
+#
+# api_security_bulk_delete_operations
+#
+# Bulk delete operations
+#
+# @param string $service_id The unique identifier of the service. (required)
+# @param OperationBulkDelete $operation_bulk_delete  (optional)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'The unique identifier of the service.',
+        required => '1',
+    },
+    'operation_bulk_delete' => {
+        data_type => 'OperationBulkDelete',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'api_security_bulk_delete_operations' } = {
+        summary => 'Bulk delete operations',
+        params => $params,
+        returns => 'InlineResponse2071',
+        };
+}
+# @return InlineResponse2071
+#
+sub api_security_bulk_delete_operations {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling api_security_bulk_delete_operations");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api-security/v1/services/{service_id}/operations-bulk';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'operation_bulk_delete'}) {
+        $_body_data = $args{'operation_bulk_delete'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse2071', $response);
+    return $_response_object;
+}
+
+#
 # api_security_create_operation
 #
 # Create operation
@@ -540,7 +774,9 @@ sub api_security_get_operation_tag {
 # List discovered operations
 #
 # @param string $service_id The unique identifier of the service. (required)
-# @param string $status Filter operations by status. Only operations with this status will be returned. (optional)
+# @param ARRAY[string] $method Filter operations by HTTP method. (optional)
+# @param ARRAY[string] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+# @param string $path Filter operations by path (exact match). (optional)
 # @param int $limit The maximum number of operations to return per page. (optional, default to 100)
 # @param int $page The page number to return. (optional, default to 0)
 {
@@ -550,9 +786,19 @@ sub api_security_get_operation_tag {
         description => 'The unique identifier of the service.',
         required => '1',
     },
-    'status' => {
+    'method' => {
+        data_type => 'ARRAY[string]',
+        description => 'Filter operations by HTTP method.',
+        required => '0',
+    },
+    'domain' => {
+        data_type => 'ARRAY[string]',
+        description => 'Filter operations by fully-qualified domain name (exact match).',
+        required => '0',
+    },
+    'path' => {
         data_type => 'string',
-        description => 'Filter operations by status. Only operations with this status will be returned.',
+        description => 'Filter operations by path (exact match).',
         required => '0',
     },
     'limit' => {
@@ -598,8 +844,18 @@ sub api_security_list_discovered_operations {
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
     # query params
-    if ( exists $args{'status'}) {
-        $query_params->{'status'} = $self->{api_client}->to_query_value($args{'status'});
+    if ( exists $args{'method'}) {
+        $query_params->{'method'} = $self->{api_client}->to_query_value($args{'method'});
+    }
+
+    # query params
+    if ( exists $args{'domain'}) {
+        $query_params->{'domain'} = $self->{api_client}->to_query_value($args{'domain'});
+    }
+
+    # query params
+    if ( exists $args{'path'}) {
+        $query_params->{'path'} = $self->{api_client}->to_query_value($args{'path'});
     }
 
     # query params
@@ -640,12 +896,24 @@ sub api_security_list_discovered_operations {
 # List operation tags
 #
 # @param string $service_id The unique identifier of the service. (required)
+# @param int $limit The maximum number of operations to return per page. (optional, default to 100)
+# @param int $page The page number to return. (optional, default to 0)
 {
     my $params = {
     'service_id' => {
         data_type => 'string',
         description => 'The unique identifier of the service.',
         required => '1',
+    },
+    'limit' => {
+        data_type => 'int',
+        description => 'The maximum number of operations to return per page.',
+        required => '0',
+    },
+    'page' => {
+        data_type => 'int',
+        description => 'The page number to return.',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'api_security_list_operation_tags' } = {
@@ -679,6 +947,16 @@ sub api_security_list_operation_tags {
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
 
+    # query params
+    if ( exists $args{'limit'}) {
+        $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'page'}) {
+        $query_params->{'page'} = $self->{api_client}->to_query_value($args{'page'});
+    }
+
     # path params
     if ( exists $args{'service_id'}) {
         my $_base_variable = "{" . "service_id" . "}";
@@ -708,6 +986,10 @@ sub api_security_list_operation_tags {
 #
 # @param string $service_id The unique identifier of the service. (required)
 # @param string $tag_id Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. (optional)
+# @param string $status Filter operations by status. Defaults to SAVED if omitted. (optional, default to 'SAVED')
+# @param ARRAY[string] $method Filter operations by HTTP method. (optional)
+# @param ARRAY[string] $domain Filter operations by fully-qualified domain name (exact match). (optional)
+# @param string $path Filter operations by path (exact match). (optional)
 # @param int $limit The maximum number of operations to return per page. (optional, default to 100)
 # @param int $page The page number to return. (optional, default to 0)
 {
@@ -720,6 +1002,26 @@ sub api_security_list_operation_tags {
     'tag_id' => {
         data_type => 'string',
         description => 'Filter operations by operation tag ID. Only operations associated with this operation tag will be returned.',
+        required => '0',
+    },
+    'status' => {
+        data_type => 'string',
+        description => 'Filter operations by status. Defaults to SAVED if omitted.',
+        required => '0',
+    },
+    'method' => {
+        data_type => 'ARRAY[string]',
+        description => 'Filter operations by HTTP method.',
+        required => '0',
+    },
+    'domain' => {
+        data_type => 'ARRAY[string]',
+        description => 'Filter operations by fully-qualified domain name (exact match).',
+        required => '0',
+    },
+    'path' => {
+        data_type => 'string',
+        description => 'Filter operations by path (exact match).',
         required => '0',
     },
     'limit' => {
@@ -767,6 +1069,26 @@ sub api_security_list_operations {
     # query params
     if ( exists $args{'tag_id'}) {
         $query_params->{'tag_id'} = $self->{api_client}->to_query_value($args{'tag_id'});
+    }
+
+    # query params
+    if ( exists $args{'status'}) {
+        $query_params->{'status'} = $self->{api_client}->to_query_value($args{'status'});
+    }
+
+    # query params
+    if ( exists $args{'method'}) {
+        $query_params->{'method'} = $self->{api_client}->to_query_value($args{'method'});
+    }
+
+    # query params
+    if ( exists $args{'domain'}) {
+        $query_params->{'domain'} = $self->{api_client}->to_query_value($args{'domain'});
+    }
+
+    # query params
+    if ( exists $args{'path'}) {
+        $query_params->{'path'} = $self->{api_client}->to_query_value($args{'path'});
     }
 
     # query params

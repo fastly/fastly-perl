@@ -181,12 +181,12 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
-    'status' => {
+    'id' => {
         datatype => 'string',
-        base_name => 'status',
-        description => 'The current status of the operation.',
+        base_name => 'id',
+        description => 'The unique identifier of the discovered operation.',
         format => '',
-        read_only => 'false',
+        read_only => 'true',
             },
     'updated_at' => {
         datatype => 'DateTime',
@@ -202,24 +202,33 @@ __PACKAGE__->method_documentation({
         format => 'date-time',
         read_only => 'true',
             },
+    'rps' => {
+        datatype => 'double',
+        base_name => 'rps',
+        description => 'Requests per second observed for this operation.',
+        format => '',
+        read_only => 'true',
+            },
 });
 
 __PACKAGE__->openapi_types( {
     'method' => 'string',
     'domain' => 'string',
     'path' => 'string',
-    'status' => 'string',
+    'id' => 'string',
     'updated_at' => 'DateTime',
-    'last_seen_at' => 'DateTime'
+    'last_seen_at' => 'DateTime',
+    'rps' => 'double'
 } );
 
 __PACKAGE__->attribute_map( {
     'method' => 'method',
     'domain' => 'domain',
     'path' => 'path',
-    'status' => 'status',
+    'id' => 'id',
     'updated_at' => 'updated_at',
-    'last_seen_at' => 'last_seen_at'
+    'last_seen_at' => 'last_seen_at',
+    'rps' => 'rps'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

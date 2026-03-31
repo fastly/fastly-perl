@@ -29,6 +29,7 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::OperationBase;
+use WebService::Fastly::Object::OperationCreateExtra;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -194,6 +195,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'status' => {
+        datatype => 'string',
+        base_name => 'status',
+        description => 'The status to assign to the operation. Defaults to SAVED if omitted.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -201,7 +209,8 @@ __PACKAGE__->openapi_types( {
     'domain' => 'string',
     'path' => 'string',
     'description' => 'string',
-    'tag_ids' => 'ARRAY[string]'
+    'tag_ids' => 'ARRAY[string]',
+    'status' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -209,7 +218,8 @@ __PACKAGE__->attribute_map( {
     'domain' => 'domain',
     'path' => 'path',
     'description' => 'description',
-    'tag_ids' => 'tag_ids'
+    'tag_ids' => 'tag_ids',
+    'status' => 'status'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

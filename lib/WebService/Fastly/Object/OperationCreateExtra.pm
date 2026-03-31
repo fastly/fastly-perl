@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::OperationGet;
+package WebService::Fastly::Object::OperationCreateExtra;
 
 require 5.6.0;
 use strict;
@@ -28,8 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::OperationBase;
-use WebService::Fastly::Object::OperationGetExtra;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -155,115 +153,25 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'OperationGet',
+                                  class => 'OperationCreateExtra',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'method' => {
-        datatype => 'string',
-        base_name => 'method',
-        description => 'The HTTP method for the operation.',
-        format => '',
-        read_only => 'false',
-            },
-    'domain' => {
-        datatype => 'string',
-        base_name => 'domain',
-        description => 'The domain for the operation.',
-        format => '',
-        read_only => 'false',
-            },
-    'path' => {
-        datatype => 'string',
-        base_name => 'path',
-        description => 'The path for the operation, which may include path parameters.',
-        format => '',
-        read_only => 'false',
-            },
-    'description' => {
-        datatype => 'string',
-        base_name => 'description',
-        description => 'A description of what the operation does.',
-        format => '',
-        read_only => 'false',
-            },
-    'tag_ids' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'tag_ids',
-        description => 'An array of operation tag IDs associated with this operation.',
-        format => '',
-        read_only => 'false',
-            },
-    'id' => {
-        datatype => 'string',
-        base_name => 'id',
-        description => 'The unique identifier of the operation.',
-        format => '',
-        read_only => 'true',
-            },
-    'created_at' => {
-        datatype => 'DateTime',
-        base_name => 'created_at',
-        description => 'The timestamp when the operation was created.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'updated_at' => {
-        datatype => 'DateTime',
-        base_name => 'updated_at',
-        description => 'The timestamp when the operation was last updated.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'last_seen_at' => {
-        datatype => 'DateTime',
-        base_name => 'last_seen_at',
-        description => 'The timestamp when the operation was last seen in traffic.',
-        format => 'date-time',
-        read_only => 'true',
-            },
-    'rps' => {
-        datatype => 'double',
-        base_name => 'rps',
-        description => 'Requests per second observed for this operation.',
-        format => '',
-        read_only => 'true',
-            },
     'status' => {
         datatype => 'string',
         base_name => 'status',
-        description => 'The status of the operation.',
+        description => 'The status to assign to the operation. Defaults to SAVED if omitted.',
         format => '',
-        read_only => 'true',
+        read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'method' => 'string',
-    'domain' => 'string',
-    'path' => 'string',
-    'description' => 'string',
-    'tag_ids' => 'ARRAY[string]',
-    'id' => 'string',
-    'created_at' => 'DateTime',
-    'updated_at' => 'DateTime',
-    'last_seen_at' => 'DateTime',
-    'rps' => 'double',
     'status' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'method' => 'method',
-    'domain' => 'domain',
-    'path' => 'path',
-    'description' => 'description',
-    'tag_ids' => 'tag_ids',
-    'id' => 'id',
-    'created_at' => 'created_at',
-    'updated_at' => 'updated_at',
-    'last_seen_at' => 'last_seen_at',
-    'rps' => 'rps',
     'status' => 'status'
 } );
 

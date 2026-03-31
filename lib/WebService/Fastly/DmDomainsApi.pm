@@ -242,6 +242,7 @@ sub get_dm_domain {
 # List domains
 #
 # @param string $fqdn  (optional)
+# @param string $fqdn_match (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. (optional, default to 'contains')
 # @param string $service_id Filter results based on a service_id. (optional)
 # @param string $sort The order in which to list the results. (optional, default to 'fqdn')
 # @param boolean $activated  (optional)
@@ -253,6 +254,11 @@ sub get_dm_domain {
     'fqdn' => {
         data_type => 'string',
         description => '',
+        required => '0',
+    },
+    'fqdn_match' => {
+        data_type => 'string',
+        description => '(Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN.',
         required => '0',
     },
     'service_id' => {
@@ -315,6 +321,11 @@ sub list_dm_domains {
     # query params
     if ( exists $args{'fqdn'}) {
         $query_params->{'fqdn'} = $self->{api_client}->to_query_value($args{'fqdn'});
+    }
+
+    # query params
+    if ( exists $args{'fqdn_match'}) {
+        $query_params->{'fqdn_match'} = $self->{api_client}->to_query_value($args{'fqdn_match'});
     }
 
     # query params

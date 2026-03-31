@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_dm_domains**
-> InlineResponse2007 list_dm_domains(fqdn => $fqdn, service_id => $service_id, sort => $sort, activated => $activated, verified => $verified, cursor => $cursor, limit => $limit)
+> InlineResponse2007 list_dm_domains(fqdn => $fqdn, fqdn_match => $fqdn_match, service_id => $service_id, sort => $sort, activated => $activated, verified => $verified, cursor => $cursor, limit => $limit)
 
 List domains
 
@@ -189,6 +189,7 @@ my $api_instance = WebService::Fastly::DmDomainsApi->new(
 );
 
 my $fqdn = "fqdn_example"; # string | 
+my $fqdn_match = 'contains'; # string | (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN.
 my $service_id = "service_id_example"; # string | Filter results based on a service_id.
 my $sort = 'fqdn'; # string | The order in which to list the results.
 my $activated = null; # boolean | 
@@ -197,7 +198,7 @@ my $cursor = "cursor_example"; # string | Cursor value from the `next_cursor` fi
 my $limit = 20; # int | Limit how many results are returned.
 
 eval {
-    my $result = $api_instance->list_dm_domains(fqdn => $fqdn, service_id => $service_id, sort => $sort, activated => $activated, verified => $verified, cursor => $cursor, limit => $limit);
+    my $result = $api_instance->list_dm_domains(fqdn => $fqdn, fqdn_match => $fqdn_match, service_id => $service_id, sort => $sort, activated => $activated, verified => $verified, cursor => $cursor, limit => $limit);
     print Dumper($result);
 };
 if ($@) {
@@ -210,6 +211,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fqdn** | **string**|  | [optional] 
+ **fqdn_match** | **string**| (Optional) Filter fully-qualified domain name (FQDN) specifically by match type. If used, requires filtering by FQDN. | [optional] [default to &#39;contains&#39;]
  **service_id** | **string**| Filter results based on a service_id. | [optional] 
  **sort** | **string**| The order in which to list the results. | [optional] [default to &#39;fqdn&#39;]
  **activated** | **boolean**|  | [optional] 

@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **created_at** | **DateTime** | The timestamp when the operation was created. | [optional] [readonly] 
 **updated_at** | **DateTime** | The timestamp when the operation was last updated. | [readonly] 
 **last_seen_at** | **DateTime** | The timestamp when the operation was last seen in traffic. | [optional] [readonly] 
+**rps** | **double** | Requests per second observed for this operation. | [optional] [readonly] 
+**status** | **string** | The status of the operation. | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

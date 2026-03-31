@@ -10,6 +10,9 @@ use WebService::Fastly::Object::ApisecurityOperationsApi;
 
 Method | HTTP request | Description
 ------ | ------------ | -----------
+[**api_security_bulk_add_tags_to_operations**](ApisecurityOperationsApi.md#api_security_bulk_add_tags_to_operations) | **POST** /api-security/v1/services/{service_id}/operations-bulk-tags | Bulk add tags to operations
+[**api_security_bulk_create_operations**](ApisecurityOperationsApi.md#api_security_bulk_create_operations) | **POST** /api-security/v1/services/{service_id}/operations-bulk | Bulk create operations
+[**api_security_bulk_delete_operations**](ApisecurityOperationsApi.md#api_security_bulk_delete_operations) | **DELETE** /api-security/v1/services/{service_id}/operations-bulk | Bulk delete operations
 [**api_security_create_operation**](ApisecurityOperationsApi.md#api_security_create_operation) | **POST** /api-security/v1/services/{service_id}/operations | Create operation
 [**api_security_create_operation_tag**](ApisecurityOperationsApi.md#api_security_create_operation_tag) | **POST** /api-security/v1/services/{service_id}/tags | Create operation tag
 [**api_security_delete_operation**](ApisecurityOperationsApi.md#api_security_delete_operation) | **DELETE** /api-security/v1/services/{service_id}/operations/{operation_id} | Delete operation
@@ -22,6 +25,165 @@ Method | HTTP request | Description
 [**api_security_update_operation**](ApisecurityOperationsApi.md#api_security_update_operation) | **PATCH** /api-security/v1/services/{service_id}/operations/{operation_id} | Update operation
 [**api_security_update_operation_tag**](ApisecurityOperationsApi.md#api_security_update_operation_tag) | **PATCH** /api-security/v1/services/{service_id}/tags/{tag_id} | Update operation tag
 
+
+# **api_security_bulk_add_tags_to_operations**
+> InlineResponse2071 api_security_bulk_add_tags_to_operations(service_id => $service_id, operation_bulk_add_tags => $operation_bulk_add_tags)
+
+Bulk add tags to operations
+
+Add tags to multiple operations in a single request.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ApisecurityOperationsApi;
+my $api_instance = WebService::Fastly::ApisecurityOperationsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = 3NeCFuZNP1v0iyJ2vmYQI6; # string | The unique identifier of the service.
+my $operation_bulk_add_tags = WebService::Fastly::Object::OperationBulkAddTags->new(); # OperationBulkAddTags | 
+
+eval {
+    my $result = $api_instance->api_security_bulk_add_tags_to_operations(service_id => $service_id, operation_bulk_add_tags => $operation_bulk_add_tags);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ApisecurityOperationsApi->api_security_bulk_add_tags_to_operations: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| The unique identifier of the service. | 
+ **operation_bulk_add_tags** | [**OperationBulkAddTags**](OperationBulkAddTags.md)|  | [optional] 
+
+### Return type
+
+[**InlineResponse2071**](InlineResponse2071.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_security_bulk_create_operations**
+> InlineResponse207 api_security_bulk_create_operations(service_id => $service_id, operation_bulk_create => $operation_bulk_create)
+
+Bulk create operations
+
+Create multiple operations associated with a specific service in a single request.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ApisecurityOperationsApi;
+my $api_instance = WebService::Fastly::ApisecurityOperationsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = 3NeCFuZNP1v0iyJ2vmYQI6; # string | The unique identifier of the service.
+my $operation_bulk_create = WebService::Fastly::Object::OperationBulkCreate->new(); # OperationBulkCreate | 
+
+eval {
+    my $result = $api_instance->api_security_bulk_create_operations(service_id => $service_id, operation_bulk_create => $operation_bulk_create);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ApisecurityOperationsApi->api_security_bulk_create_operations: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| The unique identifier of the service. | 
+ **operation_bulk_create** | [**OperationBulkCreate**](OperationBulkCreate.md)|  | [optional] 
+
+### Return type
+
+[**InlineResponse207**](InlineResponse207.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **api_security_bulk_delete_operations**
+> InlineResponse2071 api_security_bulk_delete_operations(service_id => $service_id, operation_bulk_delete => $operation_bulk_delete)
+
+Bulk delete operations
+
+Delete multiple operations in a single request.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::ApisecurityOperationsApi;
+my $api_instance = WebService::Fastly::ApisecurityOperationsApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $service_id = 3NeCFuZNP1v0iyJ2vmYQI6; # string | The unique identifier of the service.
+my $operation_bulk_delete = WebService::Fastly::Object::OperationBulkDelete->new(); # OperationBulkDelete | 
+
+eval {
+    my $result = $api_instance->api_security_bulk_delete_operations(service_id => $service_id, operation_bulk_delete => $operation_bulk_delete);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ApisecurityOperationsApi->api_security_bulk_delete_operations: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **service_id** | **string**| The unique identifier of the service. | 
+ **operation_bulk_delete** | [**OperationBulkDelete**](OperationBulkDelete.md)|  | [optional] 
+
+### Return type
+
+[**InlineResponse2071**](InlineResponse2071.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_security_create_operation**
 > OperationGet api_security_create_operation(service_id => $service_id, operation_create => $operation_create)
@@ -340,7 +502,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_security_list_discovered_operations**
-> InlineResponse2001 api_security_list_discovered_operations(service_id => $service_id, status => $status, limit => $limit, page => $page)
+> InlineResponse2001 api_security_list_discovered_operations(service_id => $service_id, method => $method, domain => $domain, path => $path, limit => $limit, page => $page)
 
 List discovered operations
 
@@ -359,12 +521,14 @@ my $api_instance = WebService::Fastly::ApisecurityOperationsApi->new(
 );
 
 my $service_id = 3NeCFuZNP1v0iyJ2vmYQI6; # string | The unique identifier of the service.
-my $status = SAVED; # string | Filter operations by status. Only operations with this status will be returned.
+my $method = [["GET","POST"]]; # ARRAY[string] | Filter operations by HTTP method.
+my $domain = [["example.com","api.example.com"]]; # ARRAY[string] | Filter operations by fully-qualified domain name (exact match).
+my $path = /api/v1/users; # string | Filter operations by path (exact match).
 my $limit = 100; # int | The maximum number of operations to return per page.
 my $page = 1; # int | The page number to return.
 
 eval {
-    my $result = $api_instance->api_security_list_discovered_operations(service_id => $service_id, status => $status, limit => $limit, page => $page);
+    my $result = $api_instance->api_security_list_discovered_operations(service_id => $service_id, method => $method, domain => $domain, path => $path, limit => $limit, page => $page);
     print Dumper($result);
 };
 if ($@) {
@@ -377,7 +541,9 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| The unique identifier of the service. | 
- **status** | **string**| Filter operations by status. Only operations with this status will be returned. | [optional] 
+ **method** | [**ARRAY[string]**](string.md)| Filter operations by HTTP method. | [optional] 
+ **domain** | [**ARRAY[string]**](string.md)| Filter operations by fully-qualified domain name (exact match). | [optional] 
+ **path** | **string**| Filter operations by path (exact match). | [optional] 
  **limit** | **int**| The maximum number of operations to return per page. | [optional] [default to 100]
  **page** | **int**| The page number to return. | [optional] [default to 0]
 
@@ -397,7 +563,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_security_list_operation_tags**
-> InlineResponse2003 api_security_list_operation_tags(service_id => $service_id)
+> InlineResponse2003 api_security_list_operation_tags(service_id => $service_id, limit => $limit, page => $page)
 
 List operation tags
 
@@ -416,9 +582,11 @@ my $api_instance = WebService::Fastly::ApisecurityOperationsApi->new(
 );
 
 my $service_id = 3NeCFuZNP1v0iyJ2vmYQI6; # string | The unique identifier of the service.
+my $limit = 100; # int | The maximum number of operations to return per page.
+my $page = 1; # int | The page number to return.
 
 eval {
-    my $result = $api_instance->api_security_list_operation_tags(service_id => $service_id);
+    my $result = $api_instance->api_security_list_operation_tags(service_id => $service_id, limit => $limit, page => $page);
     print Dumper($result);
 };
 if ($@) {
@@ -431,6 +599,8 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| The unique identifier of the service. | 
+ **limit** | **int**| The maximum number of operations to return per page. | [optional] [default to 100]
+ **page** | **int**| The page number to return. | [optional] [default to 0]
 
 ### Return type
 
@@ -448,7 +618,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **api_security_list_operations**
-> InlineResponse2002 api_security_list_operations(service_id => $service_id, tag_id => $tag_id, limit => $limit, page => $page)
+> InlineResponse2002 api_security_list_operations(service_id => $service_id, tag_id => $tag_id, status => $status, method => $method, domain => $domain, path => $path, limit => $limit, page => $page)
 
 List operations
 
@@ -468,11 +638,15 @@ my $api_instance = WebService::Fastly::ApisecurityOperationsApi->new(
 
 my $service_id = 3NeCFuZNP1v0iyJ2vmYQI6; # string | The unique identifier of the service.
 my $tag_id = tag_abc123def456; # string | Filter operations by operation tag ID. Only operations associated with this operation tag will be returned.
+my $status = SAVED; # string | Filter operations by status. Defaults to SAVED if omitted.
+my $method = [["GET","POST"]]; # ARRAY[string] | Filter operations by HTTP method.
+my $domain = [["example.com","api.example.com"]]; # ARRAY[string] | Filter operations by fully-qualified domain name (exact match).
+my $path = /api/v1/users; # string | Filter operations by path (exact match).
 my $limit = 100; # int | The maximum number of operations to return per page.
 my $page = 1; # int | The page number to return.
 
 eval {
-    my $result = $api_instance->api_security_list_operations(service_id => $service_id, tag_id => $tag_id, limit => $limit, page => $page);
+    my $result = $api_instance->api_security_list_operations(service_id => $service_id, tag_id => $tag_id, status => $status, method => $method, domain => $domain, path => $path, limit => $limit, page => $page);
     print Dumper($result);
 };
 if ($@) {
@@ -486,6 +660,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| The unique identifier of the service. | 
  **tag_id** | **string**| Filter operations by operation tag ID. Only operations associated with this operation tag will be returned. | [optional] 
+ **status** | **string**| Filter operations by status. Defaults to SAVED if omitted. | [optional] [default to &#39;SAVED&#39;]
+ **method** | [**ARRAY[string]**](string.md)| Filter operations by HTTP method. | [optional] 
+ **domain** | [**ARRAY[string]**](string.md)| Filter operations by fully-qualified domain name (exact match). | [optional] 
+ **path** | **string**| Filter operations by path (exact match). | [optional] 
  **limit** | **int**| The maximum number of operations to return per page. | [optional] [default to 100]
  **page** | **int**| The page number to return. | [optional] [default to 0]
 
