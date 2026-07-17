@@ -32,7 +32,7 @@ use WebService::Fastly::Object::Event;
 use WebService::Fastly::Object::EventData;
 use WebService::Fastly::Object::Pagination;
 use WebService::Fastly::Object::PaginationLinks;
-use WebService::Fastly::Object::PaginationMeta;
+use WebService::Fastly::Object::PaginationMeta1;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -171,7 +171,7 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'meta' => {
-        datatype => 'PaginationMeta',
+        datatype => 'PaginationMeta1',
         base_name => 'meta',
         description => '',
         format => '',
@@ -188,7 +188,7 @@ __PACKAGE__->method_documentation({
 
 __PACKAGE__->openapi_types( {
     'links' => 'PaginationLinks',
-    'meta' => 'PaginationMeta',
+    'meta' => 'PaginationMeta1',
     'data' => 'ARRAY[Event]'
 } );
 

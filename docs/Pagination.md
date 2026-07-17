@@ -9,7 +9,7 @@ use WebService::Fastly::Object::Pagination;
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **links** | [**PaginationLinks**](PaginationLinks.md) |  | [optional] 
-**meta** | [**PaginationMeta**](PaginationMeta.md) |  | [optional] 
+**meta** | [**PaginationMeta1**](PaginationMeta1.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

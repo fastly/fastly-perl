@@ -32,7 +32,7 @@ use DateTime;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#Cursor-based pagination metadata.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -152,54 +152,54 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
+__PACKAGE__->class_documentation({description => 'Cursor-based pagination metadata.',
                                   class => 'PaginationMeta',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'current_page' => {
+    'limit' => {
         datatype => 'int',
-        base_name => 'current_page',
-        description => 'Current page.',
+        base_name => 'limit',
+        description => 'The number of records returned per page.',
         format => '',
         read_only => 'false',
             },
-    'per_page' => {
-        datatype => 'int',
-        base_name => 'per_page',
-        description => 'Number of records per page.',
+    'next_cursor' => {
+        datatype => 'string',
+        base_name => 'next_cursor',
+        description => 'Cursor value used to retrieve the next page of results. Empty if there are no more results.',
         format => '',
         read_only => 'false',
             },
-    'record_count' => {
-        datatype => 'int',
-        base_name => 'record_count',
-        description => 'Total records in result set.',
+    'previous_cursor' => {
+        datatype => 'string',
+        base_name => 'previous_cursor',
+        description => 'Cursor value used to retrieve the previous page of results. Empty if there is no previous page.',
         format => '',
         read_only => 'false',
             },
-    'total_pages' => {
-        datatype => 'int',
-        base_name => 'total_pages',
-        description => 'Total pages in result set.',
+    'sort' => {
+        datatype => 'string',
+        base_name => 'sort',
+        description => 'The sort order applied to the results.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'current_page' => 'int',
-    'per_page' => 'int',
-    'record_count' => 'int',
-    'total_pages' => 'int'
+    'limit' => 'int',
+    'next_cursor' => 'string',
+    'previous_cursor' => 'string',
+    'sort' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'current_page' => 'current_page',
-    'per_page' => 'per_page',
-    'record_count' => 'record_count',
-    'total_pages' => 'total_pages'
+    'limit' => 'limit',
+    'next_cursor' => 'next_cursor',
+    'previous_cursor' => 'previous_cursor',
+    'sort' => 'sort'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

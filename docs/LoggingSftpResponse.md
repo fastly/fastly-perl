@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **format** | **string** | A Fastly [log format string](https://www.fastly.com/documentation/guides/integrations/streaming-logs/custom-log-formats/). | [optional] [default to &#39;%h %l %u %t &quot;%r&quot; %&amp;gt;s %b&#39;]
 **log_processing_region** | **string** | The geographic region where the logs will be processed before streaming. Valid values are `us`, `eu`, and `none` for global. | [optional] [default to &#39;none&#39;]
 **format_version** | **string** | The version of the custom logging format used for the configured endpoint. The logging call gets placed by default in `vcl_log` if `format_version` is set to `2` and in `vcl_deliver` if `format_version` is set to `1`.  | [optional] [default to &#39;2&#39;]
-**message_type** | **string** | How the message should be formatted. | [optional] [default to &#39;classic&#39;]
+**message_type** | **string** | How the message should be formatted. | [optional] [default to &#39;blank&#39;]
 **timestamp_format** | **string** | A timestamp format | [optional] [readonly] 
 **compression_codec** | **string** | The codec used for compressing your logs. Valid values are `zstd`, `snappy`, and `gzip`. Specifying both `compression_codec` and `gzip_level` in the same API request will result in an error. | [optional] 
 **created_at** | **DateTime** | Date and time in ISO 8601 format. | [optional] [readonly] 

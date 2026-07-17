@@ -163,10 +163,10 @@ sub domain_status {
     __PACKAGE__->method_documentation->{ 'suggest_domains' } = {
         summary => 'Suggest domains',
         params => $params,
-        returns => 'InlineResponse2009',
+        returns => 'InlineResponse20016',
         };
 }
-# @return InlineResponse2009
+# @return InlineResponse20016
 #
 sub suggest_domains {
     my ($self, %args) = @_;
@@ -227,7 +227,7 @@ sub suggest_domains {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2009', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse20016', $response);
     return $_response_object;
 }
 

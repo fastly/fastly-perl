@@ -179,6 +179,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'routing_configuration_id' => {
+        datatype => 'string',
+        base_name => 'routing_configuration_id',
+        description => 'The &#x60;routing_configuration_id&#x60; associated with your domain or &#x60;null&#x60; if there is no association.',
+        format => '',
+        read_only => 'false',
+            },
     'description' => {
         datatype => 'string',
         base_name => 'description',
@@ -206,6 +213,7 @@ __PACKAGE__->openapi_types( {
     'id' => 'string',
     'fqdn' => 'string',
     'service_id' => 'string',
+    'routing_configuration_id' => 'string',
     'description' => 'string',
     'activated' => 'boolean',
     'verified' => 'boolean'
@@ -215,6 +223,7 @@ __PACKAGE__->attribute_map( {
     'id' => 'id',
     'fqdn' => 'fqdn',
     'service_id' => 'service_id',
+    'routing_configuration_id' => 'routing_configuration_id',
     'description' => 'description',
     'activated' => 'activated',
     'verified' => 'verified'
@@ -224,6 +233,7 @@ __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
     'service_id' => 'true',
+    'routing_configuration_id' => 'true',
 } );
 
 

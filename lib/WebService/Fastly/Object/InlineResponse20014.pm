@@ -28,7 +28,7 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::ServiceAuthorizationResponseData;
+use WebService::Fastly::Object::SuccessfulResponseAsObject;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -160,25 +160,35 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'ARRAY[ServiceAuthorizationResponseData]',
+        datatype => 'ARRAY[SuccessfulResponseAsObject]',
         base_name => 'data',
         description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'meta' => {
+        datatype => 'object',
+        base_name => 'meta',
+        description => 'Meta for the pagination.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[ServiceAuthorizationResponseData]'
+    'data' => 'ARRAY[SuccessfulResponseAsObject]',
+    'meta' => 'object'
 } );
 
 __PACKAGE__->attribute_map( {
-    'data' => 'data'
+    'data' => 'data',
+    'meta' => 'meta'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'meta' => 'true',
 } );
 
 

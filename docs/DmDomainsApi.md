@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_dm_domains**
-> InlineResponse2007 list_dm_domains(fqdn => $fqdn, fqdn_match => $fqdn_match, service_id => $service_id, sort => $sort, activated => $activated, verified => $verified, cursor => $cursor, limit => $limit)
+> InlineResponse20014 list_dm_domains(fqdn => $fqdn, fqdn_match => $fqdn_match, service_id => $service_id, sort => $sort, activated => $activated, verified => $verified, cursor => $cursor, limit => $limit)
 
 List domains
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse20014**](InlineResponse20014.md)
 
 ### Authorization
 

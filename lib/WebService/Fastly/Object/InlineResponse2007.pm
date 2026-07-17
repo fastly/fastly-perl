@@ -28,7 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::SuccessfulResponseAsObject;
+use WebService::Fastly::Object::PaginationMeta;
+use WebService::Fastly::Object::Script;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -160,24 +161,24 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'ARRAY[SuccessfulResponseAsObject]',
+        datatype => 'ARRAY[Script]',
         base_name => 'data',
         description => '',
         format => '',
         read_only => 'false',
             },
     'meta' => {
-        datatype => 'object',
+        datatype => 'PaginationMeta',
         base_name => 'meta',
-        description => 'Meta for the pagination.',
+        description => '',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[SuccessfulResponseAsObject]',
-    'meta' => 'object'
+    'data' => 'ARRAY[Script]',
+    'meta' => 'PaginationMeta'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -188,7 +189,6 @@ __PACKAGE__->attribute_map( {
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'meta' => 'true',
 } );
 
 

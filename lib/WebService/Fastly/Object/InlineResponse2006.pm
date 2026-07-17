@@ -28,8 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::DdosProtectionRuleWithStats;
-use WebService::Fastly::Object::PaginationCursorMeta;
+use WebService::Fastly::Object::Page;
+use WebService::Fastly::Object::PaginationMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -161,14 +161,14 @@ __PACKAGE__->class_documentation({description => '',
 
 __PACKAGE__->method_documentation({
     'data' => {
-        datatype => 'ARRAY[DdosProtectionRuleWithStats]',
+        datatype => 'ARRAY[Page]',
         base_name => 'data',
         description => '',
         format => '',
         read_only => 'false',
             },
     'meta' => {
-        datatype => 'PaginationCursorMeta',
+        datatype => 'PaginationMeta',
         base_name => 'meta',
         description => '',
         format => '',
@@ -177,8 +177,8 @@ __PACKAGE__->method_documentation({
 });
 
 __PACKAGE__->openapi_types( {
-    'data' => 'ARRAY[DdosProtectionRuleWithStats]',
-    'meta' => 'PaginationCursorMeta'
+    'data' => 'ARRAY[Page]',
+    'meta' => 'PaginationMeta'
 } );
 
 __PACKAGE__->attribute_map( {

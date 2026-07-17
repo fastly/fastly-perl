@@ -319,10 +319,10 @@ sub get_secret {
     __PACKAGE__->method_documentation->{ 'get_secrets' } = {
         summary => 'List secrets within a store.',
         params => $params,
-        returns => 'InlineResponse20013',
+        returns => 'InlineResponse20021',
         };
 }
-# @return InlineResponse20013
+# @return InlineResponse20021
 #
 sub get_secrets {
     my ($self, %args) = @_;
@@ -375,7 +375,7 @@ sub get_secrets {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse20013', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse20021', $response);
     return $_response_object;
 }
 

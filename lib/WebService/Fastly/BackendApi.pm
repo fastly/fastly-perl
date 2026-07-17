@@ -65,10 +65,12 @@ sub new {
 # @param string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
-# @param int $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. (optional)
+# @param int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
 # @param int $max_conn Maximum number of concurrent connections this backend will accept. (optional)
+# @param int $max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited. (optional)
 # @param string $max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
 # @param string $min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
+# @param int $max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited. (optional)
 # @param string $name The name of the backend. (optional)
 # @param string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
 # @param int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
@@ -164,12 +166,17 @@ sub new {
     },
     'keepalive_time' => {
         data_type => 'int',
-        description => 'How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.',
+        description => 'How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.',
         required => '0',
     },
     'max_conn' => {
         data_type => 'int',
         description => 'Maximum number of concurrent connections this backend will accept.',
+        required => '0',
+    },
+    'max_lifetime' => {
+        data_type => 'int',
+        description => 'Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.',
         required => '0',
     },
     'max_tls_version' => {
@@ -180,6 +187,11 @@ sub new {
     'min_tls_version' => {
         data_type => 'string',
         description => 'Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
+        required => '0',
+    },
+    'max_use' => {
+        data_type => 'int',
+        description => 'Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.',
         required => '0',
     },
     'name' => {
@@ -409,6 +421,11 @@ sub create_backend {
     }
 
     # form params
+    if ( exists $args{'max_lifetime'} ) {
+                $form_params->{'max_lifetime'} = $self->{api_client}->to_form_value($args{'max_lifetime'});
+    }
+
+    # form params
     if ( exists $args{'max_tls_version'} ) {
                 $form_params->{'max_tls_version'} = $self->{api_client}->to_form_value($args{'max_tls_version'});
     }
@@ -416,6 +433,11 @@ sub create_backend {
     # form params
     if ( exists $args{'min_tls_version'} ) {
                 $form_params->{'min_tls_version'} = $self->{api_client}->to_form_value($args{'min_tls_version'});
+    }
+
+    # form params
+    if ( exists $args{'max_use'} ) {
+                $form_params->{'max_use'} = $self->{api_client}->to_form_value($args{'max_use'});
     }
 
     # form params
@@ -849,10 +871,12 @@ sub list_backends {
 # @param string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
-# @param int $keepalive_time How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can. (optional)
+# @param int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
 # @param int $max_conn Maximum number of concurrent connections this backend will accept. (optional)
+# @param int $max_lifetime Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited. (optional)
 # @param string $max_tls_version Maximum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
 # @param string $min_tls_version Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated. (optional)
+# @param int $max_use Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited. (optional)
 # @param string $name The name of the backend. (optional)
 # @param string $override_host If set, will replace the client-supplied HTTP &#x60;Host&#x60; header on connections to this backend. Applied after VCL has been processed, so this setting will take precedence over changing &#x60;bereq.http.Host&#x60; in VCL. (optional)
 # @param int $port Port on which the backend server is listening for connections from Fastly. Setting &#x60;port&#x60; to 80 or 443 will also set &#x60;use_ssl&#x60; automatically (to false and true respectively), unless explicitly overridden by setting &#x60;use_ssl&#x60; in the same request. (optional)
@@ -953,12 +977,17 @@ sub list_backends {
     },
     'keepalive_time' => {
         data_type => 'int',
-        description => 'How long in seconds to keep a persistent connection to the backend between requests. By default, Varnish keeps connections open as long as it can.',
+        description => 'How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can.',
         required => '0',
     },
     'max_conn' => {
         data_type => 'int',
         description => 'Maximum number of concurrent connections this backend will accept.',
+        required => '0',
+    },
+    'max_lifetime' => {
+        data_type => 'int',
+        description => 'Maximum time from creation (in milliseconds) that a pooled HTTP keepalive connection will be eligible for reuse; 0 is treated as unlimited.',
         required => '0',
     },
     'max_tls_version' => {
@@ -969,6 +998,11 @@ sub list_backends {
     'min_tls_version' => {
         data_type => 'string',
         description => 'Minimum allowed TLS version on SSL connections to this backend. If your backend server is not able to negotiate a connection meeting this constraint, a synthetic &#x60;503&#x60; error response will be generated.',
+        required => '0',
+    },
+    'max_use' => {
+        data_type => 'int',
+        description => 'Maximum number of requests allowed over a single, pooled HTTP keepalive connection to this backend; 0 is treated as unlimited.',
         required => '0',
     },
     'name' => {
@@ -1210,6 +1244,11 @@ sub update_backend {
     }
 
     # form params
+    if ( exists $args{'max_lifetime'} ) {
+                $form_params->{'max_lifetime'} = $self->{api_client}->to_form_value($args{'max_lifetime'});
+    }
+
+    # form params
     if ( exists $args{'max_tls_version'} ) {
                 $form_params->{'max_tls_version'} = $self->{api_client}->to_form_value($args{'max_tls_version'});
     }
@@ -1217,6 +1256,11 @@ sub update_backend {
     # form params
     if ( exists $args{'min_tls_version'} ) {
                 $form_params->{'min_tls_version'} = $self->{api_client}->to_form_value($args{'min_tls_version'});
+    }
+
+    # form params
+    if ( exists $args{'max_use'} ) {
+                $form_params->{'max_use'} = $self->{api_client}->to_form_value($args{'max_use'});
     }
 
     # form params

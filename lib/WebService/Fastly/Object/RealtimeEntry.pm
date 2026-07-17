@@ -29,8 +29,8 @@ use Date::Parse;
 use DateTime;
 
 use WebService::Fastly::Object::RealtimeEntryAggregated;
+use WebService::Fastly::Object::RealtimeEntryDatacenter;
 use WebService::Fastly::Object::RealtimeEntryRecorded;
-use WebService::Fastly::Object::RealtimeMeasurements;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -176,9 +176,9 @@ __PACKAGE__->method_documentation({
         read_only => 'false',
             },
     'datacenter' => {
-        datatype => 'HASH[string,RealtimeMeasurements]',
+        datatype => 'RealtimeEntryDatacenter',
         base_name => 'datacenter',
-        description => 'Groups [measurements](#measurements-data-model) by POP. See the [POPs API](https://www.fastly.com/documentation/reference/api/utils/pops/) for details of POP identifiers.',
+        description => '',
         format => '',
         read_only => 'false',
             },
@@ -187,7 +187,7 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'recorded' => 'RealtimeEntryRecorded',
     'aggregated' => 'RealtimeEntryAggregated',
-    'datacenter' => 'HASH[string,RealtimeMeasurements]'
+    'datacenter' => 'RealtimeEntryDatacenter'
 } );
 
 __PACKAGE__->attribute_map( {

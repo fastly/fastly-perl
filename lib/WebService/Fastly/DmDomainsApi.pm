@@ -295,10 +295,10 @@ sub get_dm_domain {
     __PACKAGE__->method_documentation->{ 'list_dm_domains' } = {
         summary => 'List domains',
         params => $params,
-        returns => 'InlineResponse2007',
+        returns => 'InlineResponse20014',
         };
 }
-# @return InlineResponse2007
+# @return InlineResponse20014
 #
 sub list_dm_domains {
     my ($self, %args) = @_;
@@ -369,7 +369,7 @@ sub list_dm_domains {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('InlineResponse2007', $response);
+    my $_response_object = $self->{api_client}->deserialize('InlineResponse20014', $response);
     return $_response_object;
 }
 

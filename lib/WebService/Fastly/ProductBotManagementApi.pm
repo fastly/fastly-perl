@@ -244,6 +244,73 @@ sub get_product_bot_management {
 }
 
 #
+# get_product_bot_management_configuration
+#
+# Get configuration
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_product_bot_management_configuration' } = {
+        summary => 'Get configuration',
+        params => $params,
+        returns => 'BotManagementResponseConfigure',
+        };
+}
+# @return BotManagementResponseConfigure
+#
+sub get_product_bot_management_configuration {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling get_product_bot_management_configuration");
+    }
+
+    # parse inputs
+    my $_resource_path = '/enabled-products/v1/bot_management/services/{service_id}/configuration';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('BotManagementResponseConfigure', $response);
+    return $_response_object;
+}
+
+#
 # get_services_product_bot_management
 #
 # Get services with product enabled
@@ -289,6 +356,84 @@ sub get_services_product_bot_management {
         return;
     }
     my $_response_object = $self->{api_client}->deserialize('BotManagementResponseBodyGetAllServices', $response);
+    return $_response_object;
+}
+
+#
+# set_product_bot_management_configuration
+#
+# Update configuration
+#
+# @param string $service_id Alphanumeric string identifying the service. (required)
+# @param BotManagementRequestUpdateConfiguration $bot_management_request_update_configuration  (optional)
+{
+    my $params = {
+    'service_id' => {
+        data_type => 'string',
+        description => 'Alphanumeric string identifying the service.',
+        required => '1',
+    },
+    'bot_management_request_update_configuration' => {
+        data_type => 'BotManagementRequestUpdateConfiguration',
+        description => '',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'set_product_bot_management_configuration' } = {
+        summary => 'Update configuration',
+        params => $params,
+        returns => 'BotManagementResponseConfigure',
+        };
+}
+# @return BotManagementResponseConfigure
+#
+sub set_product_bot_management_configuration {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'service_id' is set
+    unless (exists $args{'service_id'}) {
+      croak("Missing the required parameter 'service_id' when calling set_product_bot_management_configuration");
+    }
+
+    # parse inputs
+    my $_resource_path = '/enabled-products/v1/bot_management/services/{service_id}/configuration';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'service_id'}) {
+        my $_base_variable = "{" . "service_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'service_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'bot_management_request_update_configuration'}) {
+        $_body_data = $args{'bot_management_request_update_configuration'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('BotManagementResponseConfigure', $response);
     return $_response_object;
 }
 
