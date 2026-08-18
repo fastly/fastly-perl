@@ -2512,6 +2512,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'bot_challenges_pats_issued' => {
+        datatype => 'int',
+        base_name => 'bot_challenges_pats_issued',
+        description => 'Number of Private Access Token challenges issued.',
+        format => '',
+        read_only => 'false',
+            },
+    'bot_challenges_pats_succeeded' => {
+        datatype => 'int',
+        base_name => 'bot_challenges_pats_succeeded',
+        description => 'Number of successful Private Access Token challenge solutions processed.',
+        format => '',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -2850,7 +2864,9 @@ __PACKAGE__->openapi_types( {
     'compute_service_bereq_5xx_error' => 'int',
     'compute_service_bereq_conn_error' => 'int',
     'compute_service_bereq_tls_error' => 'int',
-    'compute_service_bereq_http_error' => 'int'
+    'compute_service_bereq_http_error' => 'int',
+    'bot_challenges_pats_issued' => 'int',
+    'bot_challenges_pats_succeeded' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -3189,7 +3205,9 @@ __PACKAGE__->attribute_map( {
     'compute_service_bereq_5xx_error' => 'compute_service_bereq_5xx_error',
     'compute_service_bereq_conn_error' => 'compute_service_bereq_conn_error',
     'compute_service_bereq_tls_error' => 'compute_service_bereq_tls_error',
-    'compute_service_bereq_http_error' => 'compute_service_bereq_http_error'
+    'compute_service_bereq_http_error' => 'compute_service_bereq_http_error',
+    'bot_challenges_pats_issued' => 'bot_challenges_pats_issued',
+    'bot_challenges_pats_succeeded' => 'bot_challenges_pats_succeeded'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

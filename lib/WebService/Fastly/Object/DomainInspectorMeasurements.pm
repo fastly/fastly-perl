@@ -1047,6 +1047,48 @@ __PACKAGE__->method_documentation({
         format => 'int64',
         read_only => 'false',
             },
+    'http2' => {
+        datatype => 'int',
+        base_name => 'http2',
+        description => 'Number of requests received over HTTP/2.',
+        format => 'int64',
+        read_only => 'false',
+            },
+    'http3' => {
+        datatype => 'int',
+        base_name => 'http3',
+        description => 'Number of requests received over HTTP/3.',
+        format => 'int64',
+        read_only => 'false',
+            },
+    'tls_v10' => {
+        datatype => 'int',
+        base_name => 'tls_v10',
+        description => 'Number of requests received over TLS 1.0.',
+        format => 'int64',
+        read_only => 'false',
+            },
+    'tls_v11' => {
+        datatype => 'int',
+        base_name => 'tls_v11',
+        description => 'Number of requests received over TLS 1.1.',
+        format => 'int64',
+        read_only => 'false',
+            },
+    'tls_v12' => {
+        datatype => 'int',
+        base_name => 'tls_v12',
+        description => 'Number of requests received over TLS 1.2.',
+        format => 'int64',
+        read_only => 'false',
+            },
+    'tls_v13' => {
+        datatype => 'int',
+        base_name => 'tls_v13',
+        description => 'Number of requests received over TLS 1.3.',
+        format => 'int64',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -1176,7 +1218,13 @@ __PACKAGE__->openapi_types( {
     'compute_resp_status_504' => 'int',
     'compute_resp_status_505' => 'int',
     'compute_resp_status_530' => 'int',
-    'compute_resp_status_5xx' => 'int'
+    'compute_resp_status_5xx' => 'int',
+    'http2' => 'int',
+    'http3' => 'int',
+    'tls_v10' => 'int',
+    'tls_v11' => 'int',
+    'tls_v12' => 'int',
+    'tls_v13' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -1306,7 +1354,13 @@ __PACKAGE__->attribute_map( {
     'compute_resp_status_504' => 'compute_resp_status_504',
     'compute_resp_status_505' => 'compute_resp_status_505',
     'compute_resp_status_530' => 'compute_resp_status_530',
-    'compute_resp_status_5xx' => 'compute_resp_status_5xx'
+    'compute_resp_status_5xx' => 'compute_resp_status_5xx',
+    'http2' => 'http2',
+    'http3' => 'http3',
+    'tls_v10' => 'tls_v10',
+    'tls_v11' => 'tls_v11',
+    'tls_v12' => 'tls_v12',
+    'tls_v13' => 'tls_v13'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
