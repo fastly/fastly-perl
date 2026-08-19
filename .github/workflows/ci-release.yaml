@@ -16,6 +16,12 @@ jobs:
   publish:
     name: Publish to CPAN
     runs-on: ubuntu-latest
+    permissions:
+      # Needed by the "Create GitHub release" step below. `write` is the
+      # repository default, but stating it explicitly means adding another scope
+      # here later (e.g. `id-token: write` for trusted publishing) cannot
+      # silently drop `contents` to `none`.
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
