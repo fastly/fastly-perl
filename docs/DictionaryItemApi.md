@@ -95,7 +95,7 @@ my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $dictionary_id = "dictionary_id_example"; # string | Alphanumeric string identifying a Dictionary.
-my $item_key = "item_key_example"; # string | Item key, maximum 256 characters.
+my $item_key = "item_key_example"; # string | Item key, maximum 255 characters.
 my $item_value = "item_value_example"; # string | Item value, maximum 8000 characters.
 
 eval {
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **dictionary_id** | **string**| Alphanumeric string identifying a Dictionary. | 
- **item_key** | **string**| Item key, maximum 256 characters. | [optional] 
+ **item_key** | **string**| Item key, maximum 255 characters. | [optional] 
  **item_value** | **string**| Item value, maximum 8000 characters. | [optional] 
 
 ### Return type
@@ -152,7 +152,7 @@ my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $dictionary_id = "dictionary_id_example"; # string | Alphanumeric string identifying a Dictionary.
-my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 256 characters.
+my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 255 characters.
 
 eval {
     my $result = $api_instance->delete_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key);
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **dictionary_id** | **string**| Alphanumeric string identifying a Dictionary. | 
- **dictionary_item_key** | **string**| Item key, maximum 256 characters. | 
+ **dictionary_item_key** | **string**| Item key, maximum 255 characters. | 
 
 ### Return type
 
@@ -207,7 +207,7 @@ my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $dictionary_id = "dictionary_id_example"; # string | Alphanumeric string identifying a Dictionary.
-my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 256 characters.
+my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 255 characters.
 
 eval {
     my $result = $api_instance->get_dictionary_item(service_id => $service_id, dictionary_id => $dictionary_id, dictionary_item_key => $dictionary_item_key);
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **dictionary_id** | **string**| Alphanumeric string identifying a Dictionary. | 
- **dictionary_item_key** | **string**| Item key, maximum 256 characters. | 
+ **dictionary_item_key** | **string**| Item key, maximum 255 characters. | 
 
 ### Return type
 
@@ -323,8 +323,8 @@ my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $dictionary_id = "dictionary_id_example"; # string | Alphanumeric string identifying a Dictionary.
-my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 256 characters.
-my $item_key = "item_key_example"; # string | Item key, maximum 256 characters.
+my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 255 characters.
+my $item_key = "item_key_example"; # string | Item key, maximum 255 characters.
 my $item_value = "item_value_example"; # string | Item value, maximum 8000 characters.
 
 eval {
@@ -342,8 +342,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **dictionary_id** | **string**| Alphanumeric string identifying a Dictionary. | 
- **dictionary_item_key** | **string**| Item key, maximum 256 characters. | 
- **item_key** | **string**| Item key, maximum 256 characters. | [optional] 
+ **dictionary_item_key** | **string**| Item key, maximum 255 characters. | 
+ **item_key** | **string**| Item key, maximum 255 characters. | [optional] 
  **item_value** | **string**| Item value, maximum 8000 characters. | [optional] 
 
 ### Return type
@@ -382,8 +382,8 @@ my $api_instance = WebService::Fastly::DictionaryItemApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $dictionary_id = "dictionary_id_example"; # string | Alphanumeric string identifying a Dictionary.
-my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 256 characters.
-my $item_key = "item_key_example"; # string | Item key, maximum 256 characters.
+my $dictionary_item_key = "dictionary_item_key_example"; # string | Item key, maximum 255 characters.
+my $item_key = "item_key_example"; # string | Item key, maximum 255 characters.
 my $item_value = "item_value_example"; # string | Item value, maximum 8000 characters.
 
 eval {
@@ -401,8 +401,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **dictionary_id** | **string**| Alphanumeric string identifying a Dictionary. | 
- **dictionary_item_key** | **string**| Item key, maximum 256 characters. | 
- **item_key** | **string**| Item key, maximum 256 characters. | [optional] 
+ **dictionary_item_key** | **string**| Item key, maximum 255 characters. | 
+ **item_key** | **string**| Item key, maximum 255 characters. | [optional] 
  **item_value** | **string**| Item value, maximum 8000 characters. | [optional] 
 
 ### Return type

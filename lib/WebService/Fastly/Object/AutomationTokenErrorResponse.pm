@@ -33,7 +33,7 @@ use WebService::Fastly::Object::AnyType;
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
 #
-#
+#Error response format used by automation token endpoints.
 #
 # NOTE: This class is auto generated. Do not edit the class manually.
 #
@@ -153,7 +153,7 @@ sub _deserialize {
 }
 
 
-__PACKAGE__->class_documentation({description => '',
+__PACKAGE__->class_documentation({description => 'Error response format used by automation token endpoints.',
                                   class => 'AutomationTokenErrorResponse',
                                   required => [], # TODO
 }                                 );

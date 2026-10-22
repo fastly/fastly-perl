@@ -53,6 +53,7 @@ sub new {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+# @param string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
 # @param string $surrogate_key Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. (optional)
 # @param PurgeResponse $purge_response  (optional)
 {
@@ -65,6 +66,11 @@ sub new {
     'fastly_soft_purge' => {
         data_type => 'int',
         description => 'If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.',
+        required => '0',
+    },
+    'fastly_purge_environment' => {
+        data_type => 'string',
+        description => 'Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.',
         required => '0',
     },
     'surrogate_key' => {
@@ -115,6 +121,11 @@ sub bulk_purge_tag {
     }
 
     # header params
+    if ( exists $args{'fastly_purge_environment'}) {
+        $header_params->{'fastly-purge-environment'} = $self->{api_client}->to_header_value($args{'fastly_purge_environment'});
+    }
+
+    # header params
     if ( exists $args{'surrogate_key'}) {
         $header_params->{'surrogate-key'} = $self->{api_client}->to_header_value($args{'surrogate_key'});
     }
@@ -152,12 +163,18 @@ sub bulk_purge_tag {
 # Purge everything from a service
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
+# @param string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
 {
     my $params = {
     'service_id' => {
         data_type => 'string',
         description => 'Alphanumeric string identifying the service.',
         required => '1',
+    },
+    'fastly_purge_environment' => {
+        data_type => 'string',
+        description => 'Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'purge_all' } = {
@@ -190,6 +207,11 @@ sub purge_all {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # header params
+    if ( exists $args{'fastly_purge_environment'}) {
+        $header_params->{'fastly-purge-environment'} = $self->{api_client}->to_header_value($args{'fastly_purge_environment'});
+    }
 
     # path params
     if ( exists $args{'service_id'}) {
@@ -299,6 +321,7 @@ sub purge_single_url {
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $surrogate_key Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. (required)
 # @param int $fastly_soft_purge If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. (optional)
+# @param string $fastly_purge_environment Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. (optional)
 {
     my $params = {
     'service_id' => {
@@ -314,6 +337,11 @@ sub purge_single_url {
     'fastly_soft_purge' => {
         data_type => 'int',
         description => 'If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important.',
+        required => '0',
+    },
+    'fastly_purge_environment' => {
+        data_type => 'string',
+        description => 'Set to &#x60;staging&#x60; to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.',
         required => '0',
     },
     };
@@ -356,6 +384,11 @@ sub purge_tag {
     # header params
     if ( exists $args{'fastly_soft_purge'}) {
         $header_params->{'fastly-soft-purge'} = $self->{api_client}->to_header_value($args{'fastly_soft_purge'});
+    }
+
+    # header params
+    if ( exists $args{'fastly_purge_environment'}) {
+        $header_params->{'fastly-purge-environment'} = $self->{api_client}->to_header_value($args{'fastly_purge_environment'});
     }
 
     # path params

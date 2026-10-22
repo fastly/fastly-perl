@@ -1089,6 +1089,13 @@ __PACKAGE__->method_documentation({
         format => 'int64',
         read_only => 'false',
             },
+    'status_499' => {
+        datatype => 'int',
+        base_name => 'status_499',
+        description => 'Number of responses sent with status code 499 (Client Disconnected).',
+        format => 'int64',
+        read_only => 'false',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -1224,7 +1231,8 @@ __PACKAGE__->openapi_types( {
     'tls_v10' => 'int',
     'tls_v11' => 'int',
     'tls_v12' => 'int',
-    'tls_v13' => 'int'
+    'tls_v13' => 'int',
+    'status_499' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -1360,7 +1368,8 @@ __PACKAGE__->attribute_map( {
     'tls_v10' => 'tls_v10',
     'tls_v11' => 'tls_v11',
     'tls_v12' => 'tls_v12',
-    'tls_v13' => 'tls_v13'
+    'tls_v13' => 'tls_v13',
+    'status_499' => 'status_499'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

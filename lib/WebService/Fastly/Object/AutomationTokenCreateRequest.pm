@@ -28,7 +28,6 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
-use WebService::Fastly::Object::AutomationTokenCreateRequestAttributes;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -159,26 +158,108 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'attributes' => {
-        datatype => 'AutomationTokenCreateRequestAttributes',
-        base_name => 'attributes',
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'The name of the token.',
+        format => '',
+        read_only => 'false',
+            },
+    'role' => {
+        datatype => 'string',
+        base_name => 'role',
+        description => 'The role for the token. The &#x60;roles&#x60; field is the preferred way to assign roles. This field is supported for backwards compatibility with single-role tokens.',
+        format => '',
+        read_only => 'false',
+            },
+    'roles' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'roles',
+        description => 'Array of role IDs to assign to the token. Use this field for tokens with multiple roles. When provided, this takes precedence over the &#x60;role&#x60; field. To get available role IDs, use [GET /roles](https://www.fastly.com/documentation/reference/api/account/roles/).',
+        format => '',
+        read_only => 'false',
+            },
+    'services' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'services',
+        description => 'List of service IDs the token can access. Only used when &#x60;limit_services&#x60; is &#x60;true&#x60;.',
+        format => '',
+        read_only => 'false',
+            },
+    'limit_services' => {
+        datatype => 'boolean',
+        base_name => 'limit_services',
+        description => 'When &#x60;true&#x60;, restricts the token to only the services specified in the &#x60;services&#x60; array. When &#x60;false&#x60; (default), the token has access to all services.',
+        format => '',
+        read_only => 'false',
+            },
+    'limit_workspaces' => {
+        datatype => 'boolean',
+        base_name => 'limit_workspaces',
+        description => 'When &#x60;true&#x60; (default), restricts the token to only the workspaces specified in the &#x60;workspaces&#x60; array. When &#x60;false&#x60;, the token has access to all workspaces. Only applies to roles that support workspace access (such as Next-Gen WAF roles). For roles without workspace support, this field has no effect.',
+        format => '',
+        read_only => 'false',
+            },
+    'workspaces' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'workspaces',
+        description => 'List of workspace IDs the token can access. Only used when &#x60;limit_workspaces&#x60; is &#x60;true&#x60; and the token has roles that support workspace access.',
+        format => '',
+        read_only => 'false',
+            },
+    'scope' => {
+        datatype => 'string',
+        base_name => 'scope',
         description => '',
+        format => '',
+        read_only => 'false',
+            },
+    'expires_at' => {
+        datatype => 'DateTime',
+        base_name => 'expires_at',
+        description => 'A UTC timestamp of when the token will expire.',
+        format => 'date-time',
+        read_only => 'false',
+            },
+    'tls_access' => {
+        datatype => 'boolean',
+        base_name => 'tls_access',
+        description => 'Indicates whether TLS access is enabled for the token. Only applicable when using the single-role &#x60;role&#x60; field. For tokens with multiple roles, assign TLS roles (&#x60;tls_admin&#x60; or &#x60;tls_viewer&#x60;) via the &#x60;roles&#x60; field instead.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'attributes' => 'AutomationTokenCreateRequestAttributes'
+    'name' => 'string',
+    'role' => 'string',
+    'roles' => 'ARRAY[string]',
+    'services' => 'ARRAY[string]',
+    'limit_services' => 'boolean',
+    'limit_workspaces' => 'boolean',
+    'workspaces' => 'ARRAY[string]',
+    'scope' => 'string',
+    'expires_at' => 'DateTime',
+    'tls_access' => 'boolean'
 } );
 
 __PACKAGE__->attribute_map( {
-    'attributes' => 'attributes'
+    'name' => 'name',
+    'role' => 'role',
+    'roles' => 'roles',
+    'services' => 'services',
+    'limit_services' => 'limit_services',
+    'limit_workspaces' => 'limit_workspaces',
+    'workspaces' => 'workspaces',
+    'scope' => 'scope',
+    'expires_at' => 'expires_at',
+    'tls_access' => 'tls_access'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
+    'expires_at' => 'true',
 } );
 
 

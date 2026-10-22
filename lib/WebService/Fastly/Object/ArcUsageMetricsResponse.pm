@@ -15,7 +15,7 @@ Contact: oss@fastly.com
 # NOTE: This class is auto generated.
 # Do not edit the class manually.
 #
-package WebService::Fastly::Object::AutomationTokenCreateRequestAttributes;
+package WebService::Fastly::Object::ArcUsageMetricsResponse;
 
 require 5.6.0;
 use strict;
@@ -28,6 +28,8 @@ use Log::Any qw($log);
 use Date::Parse;
 use DateTime;
 
+use WebService::Fastly::Object::ArcUsageMetric;
+use WebService::Fastly::Object::ArcUsageMetricsMeta;
 
 use base ("Class::Accessor", "Class::Data::Inheritable");
 
@@ -153,77 +155,40 @@ sub _deserialize {
 
 
 __PACKAGE__->class_documentation({description => '',
-                                  class => 'AutomationTokenCreateRequestAttributes',
+                                  class => 'ArcUsageMetricsResponse',
                                   required => [], # TODO
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'name' => {
-        datatype => 'string',
-        base_name => 'name',
-        description => 'name of the token',
+    'data' => {
+        datatype => 'ARRAY[ArcUsageMetric]',
+        base_name => 'data',
+        description => 'The usage metrics returned by the request.',
         format => '',
         read_only => 'false',
             },
-    'role' => {
-        datatype => 'string',
-        base_name => 'role',
+    'meta' => {
+        datatype => 'ArcUsageMetricsMeta',
+        base_name => 'meta',
         description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'services' => {
-        datatype => 'ARRAY[string]',
-        base_name => 'services',
-        description => 'List of service ids to limit the token',
-        format => '',
-        read_only => 'false',
-            },
-    'scope' => {
-        datatype => 'string',
-        base_name => 'scope',
-        description => '',
-        format => '',
-        read_only => 'false',
-            },
-    'expires_at' => {
-        datatype => 'DateTime',
-        base_name => 'expires_at',
-        description => 'A UTC timestamp of when the token will expire.',
-        format => 'date-time',
-        read_only => 'false',
-            },
-    'tls_access' => {
-        datatype => 'boolean',
-        base_name => 'tls_access',
-        description => 'Indicates whether TLS access is enabled for the token.',
         format => '',
         read_only => 'false',
             },
 });
 
 __PACKAGE__->openapi_types( {
-    'name' => 'string',
-    'role' => 'string',
-    'services' => 'ARRAY[string]',
-    'scope' => 'string',
-    'expires_at' => 'DateTime',
-    'tls_access' => 'boolean'
+    'data' => 'ARRAY[ArcUsageMetric]',
+    'meta' => 'ArcUsageMetricsMeta'
 } );
 
 __PACKAGE__->attribute_map( {
-    'name' => 'name',
-    'role' => 'role',
-    'services' => 'services',
-    'scope' => 'scope',
-    'expires_at' => 'expires_at',
-    'tls_access' => 'tls_access'
+    'data' => 'data',
+    'meta' => 'meta'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
 
 __PACKAGE__->openapi_nullable( {
-    'expires_at' => 'true',
 } );
 
 

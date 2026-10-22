@@ -30,6 +30,7 @@ use DateTime;
 
 use WebService::Fastly::Object::AutomationToken;
 use WebService::Fastly::Object::AutomationTokenCreateResponseAllOf;
+use WebService::Fastly::Object::AutomationTokenRole;
 use WebService::Fastly::Object::ReadOnlyCustomerId;
 use WebService::Fastly::Object::ReadOnlyId;
 use WebService::Fastly::Object::ReadOnlyUserId;
@@ -173,14 +174,42 @@ __PACKAGE__->method_documentation({
     'role' => {
         datatype => 'string',
         base_name => 'role',
-        description => 'The role on the token.',
+        description => 'The primary role on the token. For tokens with multiple roles, this returns the highest-priority role for backwards compatibility.',
+        format => '',
+        read_only => 'false',
+            },
+    'roles' => {
+        datatype => 'ARRAY[AutomationTokenRole]',
+        base_name => 'roles',
+        description => 'All roles assigned to the token. Each role includes an &#x60;id&#x60; and &#x60;name&#x60;.',
         format => '',
         read_only => 'false',
             },
     'services' => {
         datatype => 'ARRAY[string]',
         base_name => 'services',
-        description => '(Optional) The service IDs of the services the token will have access to. Separate service IDs with a space. If no services are specified, the token will have access to all services on the account. ',
+        description => 'The service IDs of the services the token has access to. Empty when &#x60;limit_services&#x60; is &#x60;false&#x60; (full access) or when the token has no service access.',
+        format => '',
+        read_only => 'false',
+            },
+    'limit_services' => {
+        datatype => 'boolean',
+        base_name => 'limit_services',
+        description => 'When &#x60;true&#x60;, the token is restricted to only the services in the &#x60;services&#x60; array. When &#x60;false&#x60;, the token has access to all services.',
+        format => '',
+        read_only => 'false',
+            },
+    'limit_workspaces' => {
+        datatype => 'boolean',
+        base_name => 'limit_workspaces',
+        description => 'When &#x60;true&#x60;, the token is restricted to only the workspaces in the &#x60;workspaces&#x60; array. When &#x60;false&#x60;, the token has access to all workspaces. Only applies to roles that support workspace access.',
+        format => '',
+        read_only => 'false',
+            },
+    'workspaces' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'workspaces',
+        description => 'The workspace IDs of the workspaces the token has access to. Returns an empty array for tokens without workspace access.',
         format => '',
         read_only => 'false',
             },
@@ -259,7 +288,11 @@ __PACKAGE__->method_documentation({
 __PACKAGE__->openapi_types( {
     'name' => 'string',
     'role' => 'string',
+    'roles' => 'ARRAY[AutomationTokenRole]',
     'services' => 'ARRAY[string]',
+    'limit_services' => 'boolean',
+    'limit_workspaces' => 'boolean',
+    'workspaces' => 'ARRAY[string]',
     'scope' => 'string',
     'expires_at' => 'string',
     'id' => 'ReadOnlyId',
@@ -275,7 +308,11 @@ __PACKAGE__->openapi_types( {
 __PACKAGE__->attribute_map( {
     'name' => 'name',
     'role' => 'role',
+    'roles' => 'roles',
     'services' => 'services',
+    'limit_services' => 'limit_services',
+    'limit_workspaces' => 'limit_workspaces',
+    'workspaces' => 'workspaces',
     'scope' => 'scope',
     'expires_at' => 'expires_at',
     'id' => 'id',

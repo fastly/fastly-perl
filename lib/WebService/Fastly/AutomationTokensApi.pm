@@ -80,7 +80,7 @@ sub create_automation_token {
     my $form_params = {};
 
     # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
@@ -259,6 +259,95 @@ sub get_automation_tokens_id_services {
         return;
     }
     my $_response_object = $self->{api_client}->deserialize('InlineResponse2004', $response);
+    return $_response_object;
+}
+
+#
+# get_automation_tokens_id_workspaces
+#
+# List Automation Token Workspaces
+#
+# @param string $id The alphanumeric string identifying the automation token. (required)
+# @param int $limit Maximum number of workspaces to return per page. (optional, default to 20)
+# @param string $cursor Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back. (optional)
+{
+    my $params = {
+    'id' => {
+        data_type => 'string',
+        description => 'The alphanumeric string identifying the automation token.',
+        required => '1',
+    },
+    'limit' => {
+        data_type => 'int',
+        description => 'Maximum number of workspaces to return per page.',
+        required => '0',
+    },
+    'cursor' => {
+        data_type => 'string',
+        description => 'Pagination cursor from a previous response. Pass the &#x60;next_cursor&#x60; value to retrieve the next page, or &#x60;previous_cursor&#x60; to go back.',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_automation_tokens_id_workspaces' } = {
+        summary => 'List Automation Token Workspaces',
+        params => $params,
+        returns => 'AutomationTokenWorkspacesResponse',
+        };
+}
+# @return AutomationTokenWorkspacesResponse
+#
+sub get_automation_tokens_id_workspaces {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'id' is set
+    unless (exists $args{'id'}) {
+      croak("Missing the required parameter 'id' when calling get_automation_tokens_id_workspaces");
+    }
+
+    # parse inputs
+    my $_resource_path = '/automation-tokens/{id}/workspaces';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'limit'}) {
+        $query_params->{'limit'} = $self->{api_client}->to_query_value($args{'limit'});
+    }
+
+    # query params
+    if ( exists $args{'cursor'}) {
+        $query_params->{'cursor'} = $self->{api_client}->to_query_value($args{'cursor'});
+    }
+
+    # path params
+    if ( exists $args{'id'}) {
+        my $_base_variable = "{" . "id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('AutomationTokenWorkspacesResponse', $response);
     return $_response_object;
 }
 

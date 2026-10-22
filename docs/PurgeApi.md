@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **bulk_purge_tag**
-> HASH[string,string] bulk_purge_tag(service_id => $service_id, fastly_soft_purge => $fastly_soft_purge, surrogate_key => $surrogate_key, purge_response => $purge_response)
+> HASH[string,string] bulk_purge_tag(service_id => $service_id, fastly_soft_purge => $fastly_soft_purge, fastly_purge_environment => $fastly_purge_environment, surrogate_key => $surrogate_key, purge_response => $purge_response)
 
 Purge multiple surrogate key tags
 
@@ -37,11 +37,12 @@ my $api_instance = WebService::Fastly::PurgeApi->new(
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $fastly_soft_purge = 1; # int | If present, this header triggers the purge to be 'soft', which marks the affected object as stale rather than making it inaccessible.  Typically set to \"1\" when used, but the value is not important.
+my $fastly_purge_environment = staging; # string | Set to `staging` to purge the cache of the service's [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
 my $surrogate_key = key_1 key_2 key_3; # string | Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified.
 my $purge_response = WebService::Fastly::Object::PurgeResponse->new(); # PurgeResponse | 
 
 eval {
-    my $result = $api_instance->bulk_purge_tag(service_id => $service_id, fastly_soft_purge => $fastly_soft_purge, surrogate_key => $surrogate_key, purge_response => $purge_response);
+    my $result = $api_instance->bulk_purge_tag(service_id => $service_id, fastly_soft_purge => $fastly_soft_purge, fastly_purge_environment => $fastly_purge_environment, surrogate_key => $surrogate_key, purge_response => $purge_response);
     print Dumper($result);
 };
 if ($@) {
@@ -55,6 +56,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **fastly_soft_purge** | **int**| If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. | [optional] 
+ **fastly_purge_environment** | **string**| Set to `staging` to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. | [optional] 
  **surrogate_key** | **string**| Purge multiple surrogate key tags using a request header. Not required if a JSON POST body is specified. | [optional] 
  **purge_response** | [**PurgeResponse**](PurgeResponse.md)|  | [optional] 
 
@@ -74,7 +76,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **purge_all**
-> InlineResponse200 purge_all(service_id => $service_id)
+> InlineResponse200 purge_all(service_id => $service_id, fastly_purge_environment => $fastly_purge_environment)
 
 Purge everything from a service
 
@@ -93,9 +95,10 @@ my $api_instance = WebService::Fastly::PurgeApi->new(
 );
 
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
+my $fastly_purge_environment = staging; # string | Set to `staging` to purge the cache of the service's [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
 
 eval {
-    my $result = $api_instance->purge_all(service_id => $service_id);
+    my $result = $api_instance->purge_all(service_id => $service_id, fastly_purge_environment => $fastly_purge_environment);
     print Dumper($result);
 };
 if ($@) {
@@ -108,6 +111,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_id** | **string**| Alphanumeric string identifying the service. | 
+ **fastly_purge_environment** | **string**| Set to `staging` to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. | [optional] 
 
 ### Return type
 
@@ -178,7 +182,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **purge_tag**
-> PurgeResponse purge_tag(service_id => $service_id, surrogate_key => $surrogate_key, fastly_soft_purge => $fastly_soft_purge)
+> PurgeResponse purge_tag(service_id => $service_id, surrogate_key => $surrogate_key, fastly_soft_purge => $fastly_soft_purge, fastly_purge_environment => $fastly_purge_environment)
 
 Purge by surrogate key tag
 
@@ -199,9 +203,10 @@ my $api_instance = WebService::Fastly::PurgeApi->new(
 my $service_id = "service_id_example"; # string | Alphanumeric string identifying the service.
 my $surrogate_key = key_1; # string | Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request.
 my $fastly_soft_purge = 1; # int | If present, this header triggers the purge to be 'soft', which marks the affected object as stale rather than making it inaccessible.  Typically set to \"1\" when used, but the value is not important.
+my $fastly_purge_environment = staging; # string | Set to `staging` to purge the cache of the service's [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment.
 
 eval {
-    my $result = $api_instance->purge_tag(service_id => $service_id, surrogate_key => $surrogate_key, fastly_soft_purge => $fastly_soft_purge);
+    my $result = $api_instance->purge_tag(service_id => $service_id, surrogate_key => $surrogate_key, fastly_soft_purge => $fastly_soft_purge, fastly_purge_environment => $fastly_purge_environment);
     print Dumper($result);
 };
 if ($@) {
@@ -216,6 +221,7 @@ Name | Type | Description  | Notes
  **service_id** | **string**| Alphanumeric string identifying the service. | 
  **surrogate_key** | **string**| Surrogate keys are used to efficiently purge content from cache. Instead of purging your entire site or individual URLs, you can tag related assets (like all images and descriptions associated with a single product) with surrogate keys, and these grouped URLs can be purged in a single request. | 
  **fastly_soft_purge** | **int**| If present, this header triggers the purge to be &#39;soft&#39;, which marks the affected object as stale rather than making it inaccessible.  Typically set to \&quot;1\&quot; when used, but the value is not important. | [optional] 
+ **fastly_purge_environment** | **string**| Set to `staging` to purge the cache of the service&#39;s [staging environment](https://www.fastly.com/documentation/guides/getting-started/services/working-with-staging/) instead of its production environment. If this header is not present, the purge applies to the production environment. | [optional] 
 
 ### Return type
 

@@ -191,7 +191,7 @@ __PACKAGE__->method_documentation({
     'action' => {
         datatype => 'string',
         base_name => 'action',
-        description => 'Action types for a rule. Supported action values are default, block, log, off. The default action value follows the current protection mode of the associated service.',
+        description => 'Action types for a rule. Supported action values are default, block, log, off, client_challenge. The default action value follows the current protection mode of the associated service.',
         format => '',
         read_only => 'false',
             },

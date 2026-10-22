@@ -1,0 +1,240 @@
+=begin comment
+
+Fastly API
+
+Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://www.fastly.com/documentation/reference/api/) 
+
+The version of the API Spec document: 1.0.0
+Contact: oss@fastly.com
+
+=end comment
+
+=cut
+
+#
+# NOTE: This class is auto generated.
+# Do not edit the class manually.
+#
+package WebService::Fastly::Object::ArcProviderConnectionRequest;
+
+require 5.6.0;
+use strict;
+use warnings;
+use utf8;
+use JSON::MaybeXS qw(decode_json);
+use Data::Dumper;
+use Module::Runtime qw(use_module);
+use Log::Any qw($log);
+use Date::Parse;
+use DateTime;
+
+use WebService::Fastly::Object::ArcProviderConnectionApiKey;
+use WebService::Fastly::Object::ArcProviderConnectionAwsIam;
+
+use base ("Class::Accessor", "Class::Data::Inheritable");
+
+#
+#
+#
+# NOTE: This class is auto generated. Do not edit the class manually.
+#
+
+=begin comment
+
+Fastly API
+
+Via the Fastly API you can perform any of the operations that are possible within the management console,  including creating services, domains, and backends, configuring rules or uploading your own application code, as well as account operations such as user administration and billing reports. The API is organized into collections of endpoints that allow manipulation of objects related to Fastly services and accounts. For the most accurate and up-to-date API reference content, visit our [Developer Hub](https://www.fastly.com/documentation/reference/api/) 
+
+The version of the API Spec document: 1.0.0
+Contact: oss@fastly.com
+
+=end comment
+
+=cut
+
+#
+# NOTE: This class is auto generated.
+# Do not edit the class manually.
+#
+__PACKAGE__->mk_classdata('attribute_map' => {});
+__PACKAGE__->mk_classdata('openapi_types' => {});
+__PACKAGE__->mk_classdata('method_documentation' => {});
+__PACKAGE__->mk_classdata('class_documentation' => {});
+__PACKAGE__->mk_classdata('openapi_nullable' => {});
+
+# new plain object
+sub new {
+    my ($class, %args) = @_;
+
+    my $self = bless {}, $class;
+
+    $self->init(%args);
+
+    return $self;
+}
+
+# initialize the object
+sub init
+{
+    my ($self, %args) = @_;
+
+    foreach my $attribute (keys %{$self->attribute_map}) {
+        my $args_key = $self->attribute_map->{$attribute};
+        $self->$attribute( $args{ $args_key } );
+    }
+}
+
+# return perl hash
+sub to_hash {
+    my $self = shift;
+    my $_hash = decode_json(JSON()->new->allow_blessed->convert_blessed->encode($self));
+
+    return $_hash;
+}
+
+# used by JSON for serialization
+sub TO_JSON {
+    my $self = shift;
+    my $_data = {};
+    foreach my $_key (keys %{$self->attribute_map}) {
+        $_data->{$self->attribute_map->{$_key}} = $self->{$_key};
+    }
+
+    return $_data;
+}
+
+# from Perl hashref
+sub from_hash {
+    my ($self, $hash) = @_;
+
+    # loop through attributes and use openapi_types to deserialize the data
+    while ( my ($_key, $_type) = each %{$self->openapi_types} ) {
+        my $_json_attribute = $self->attribute_map->{$_key};
+        my $_is_nullable = ($self->openapi_nullable->{$_key} || 'false') eq 'true';
+        if ($_type =~ /^array\[(.+)\]$/i) { # array
+            my $_subclass = $1;
+            my @_array = ();
+            foreach my $_element (@{$hash->{$_json_attribute}}) {
+                push @_array, $self->_deserialize($_subclass, $_element, $_is_nullable);
+            }
+            $self->{$_key} = \@_array;
+        } elsif ($_type =~ /^hash\[string,(.+)\]$/i) { # hash
+            my $_subclass = $1;
+            my %_hash = ();
+            while (my($_key, $_element) = each %{$hash->{$_json_attribute}}) {
+                $_hash{$_key} = $self->_deserialize($_subclass, $_element, $_is_nullable);
+            }
+            $self->{$_key} = \%_hash;
+        } elsif (exists $hash->{$_json_attribute}) { #hash(model), primitive, datetime
+            $self->{$_key} = $self->_deserialize($_type, $hash->{$_json_attribute}, $_is_nullable);
+        } else {
+            $log->debugf("Warning: %s (%s) does not exist in input hash\n", $_key, $_json_attribute);
+        }
+    }
+
+    return $self;
+}
+
+# deserialize non-array data
+sub _deserialize {
+    my ($self, $type, $data, $is_nullable) = @_;
+    $log->debugf("deserializing %s with %s",Dumper($data), $type);
+
+    if (!(defined $data) && $is_nullable) {
+        return undef;
+    }
+    if ($type eq 'DateTime') {
+        return DateTime->from_epoch(epoch => str2time($data));
+    } elsif ( grep( /^$type$/, ('int', 'double', 'string', 'boolean'))) {
+        return $data;
+    } else { # hash(model)
+        my $_instance = eval "WebService::Fastly::Object::$type->new()";
+        return $_instance->from_hash($data);
+    }
+}
+
+
+__PACKAGE__->class_documentation({description => '',
+                                  class => 'ArcProviderConnectionRequest',
+                                  required => [], # TODO
+}                                 );
+
+__PACKAGE__->method_documentation({
+    'name' => {
+        datatype => 'string',
+        base_name => 'name',
+        description => 'The provider name. Must be &#x60;bedrock&#x60; for &#x60;aws-iam&#x60; connections.',
+        format => '',
+        read_only => 'false',
+            },
+    'models' => {
+        datatype => 'ARRAY[string]',
+        base_name => 'models',
+        description => 'The Bedrock model identifiers this connection is allowed to use.',
+        format => '',
+        read_only => 'false',
+            },
+    'base_url' => {
+        datatype => 'string',
+        base_name => 'base_url',
+        description => 'The base URL of the provider&#39;s API. Must be an absolute &#x60;http&#x60; or &#x60;https&#x60; URL and must not end in &#x60;/v1&#x60;.',
+        format => 'uri',
+        read_only => 'false',
+            },
+    'api_key' => {
+        datatype => 'string',
+        base_name => 'api_key',
+        description => 'The provider&#39;s secret API key.',
+        format => '',
+        read_only => 'false',
+            },
+    'auth_type' => {
+        datatype => 'string',
+        base_name => 'auth_type',
+        description => 'The authentication type for this connection.',
+        format => '',
+        read_only => 'false',
+            },
+    'customer_role_arn' => {
+        datatype => 'string',
+        base_name => 'customer_role_arn',
+        description => 'The ARN of the IAM role in your AWS account that AI Runtime Control assumes to access Bedrock. See [get Bedrock setup information](https://www.fastly.com/documentation/reference/api/ai-runtime-control/providers#arc-get-bedrock-setup) for the role ARN and external ID your trust policy must reference.',
+        format => '',
+        read_only => 'false',
+            },
+    'region' => {
+        datatype => 'string',
+        base_name => 'region',
+        description => 'The AWS region for Bedrock API requests.',
+        format => '',
+        read_only => 'false',
+            },
+});
+
+__PACKAGE__->openapi_types( {
+    'name' => 'string',
+    'models' => 'ARRAY[string]',
+    'base_url' => 'string',
+    'api_key' => 'string',
+    'auth_type' => 'string',
+    'customer_role_arn' => 'string',
+    'region' => 'string'
+} );
+
+__PACKAGE__->attribute_map( {
+    'name' => 'name',
+    'models' => 'models',
+    'base_url' => 'base_url',
+    'api_key' => 'api_key',
+    'auth_type' => 'auth_type',
+    'customer_role_arn' => 'customer_role_arn',
+    'region' => 'region'
+} );
+
+__PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});
+
+__PACKAGE__->openapi_nullable( {
+} );
+
+
+1;

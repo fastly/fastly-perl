@@ -163,7 +163,7 @@ __PACKAGE__->method_documentation({
     'item_key' => {
         datatype => 'string',
         base_name => 'item_key',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         format => '',
         read_only => 'false',
             },

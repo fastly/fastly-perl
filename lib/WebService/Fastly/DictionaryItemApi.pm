@@ -149,7 +149,7 @@ sub bulk_update_dictionary_item {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
-# @param string $item_key Item key, maximum 256 characters. (optional)
+# @param string $item_key Item key, maximum 255 characters. (optional)
 # @param string $item_value Item value, maximum 8000 characters. (optional)
 {
     my $params = {
@@ -165,7 +165,7 @@ sub bulk_update_dictionary_item {
     },
     'item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '0',
     },
     'item_value' => {
@@ -256,7 +256,7 @@ sub create_dictionary_item {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
-# @param string $dictionary_item_key Item key, maximum 256 characters. (required)
+# @param string $dictionary_item_key Item key, maximum 255 characters. (required)
 {
     my $params = {
     'service_id' => {
@@ -271,7 +271,7 @@ sub create_dictionary_item {
     },
     'dictionary_item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '1',
     },
     };
@@ -359,7 +359,7 @@ sub delete_dictionary_item {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
-# @param string $dictionary_item_key Item key, maximum 256 characters. (required)
+# @param string $dictionary_item_key Item key, maximum 255 characters. (required)
 {
     my $params = {
     'service_id' => {
@@ -374,7 +374,7 @@ sub delete_dictionary_item {
     },
     'dictionary_item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '1',
     },
     };
@@ -591,8 +591,8 @@ sub list_dictionary_items {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
-# @param string $dictionary_item_key Item key, maximum 256 characters. (required)
-# @param string $item_key Item key, maximum 256 characters. (optional)
+# @param string $dictionary_item_key Item key, maximum 255 characters. (required)
+# @param string $item_key Item key, maximum 255 characters. (optional)
 # @param string $item_value Item value, maximum 8000 characters. (optional)
 {
     my $params = {
@@ -608,12 +608,12 @@ sub list_dictionary_items {
     },
     'dictionary_item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '1',
     },
     'item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '0',
     },
     'item_value' => {
@@ -716,8 +716,8 @@ sub update_dictionary_item {
 #
 # @param string $service_id Alphanumeric string identifying the service. (required)
 # @param string $dictionary_id Alphanumeric string identifying a Dictionary. (required)
-# @param string $dictionary_item_key Item key, maximum 256 characters. (required)
-# @param string $item_key Item key, maximum 256 characters. (optional)
+# @param string $dictionary_item_key Item key, maximum 255 characters. (required)
+# @param string $item_key Item key, maximum 255 characters. (optional)
 # @param string $item_value Item value, maximum 8000 characters. (optional)
 {
     my $params = {
@@ -733,12 +733,12 @@ sub update_dictionary_item {
     },
     'dictionary_item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '1',
     },
     'item_key' => {
         data_type => 'string',
-        description => 'Item key, maximum 256 characters.',
+        description => 'Item key, maximum 255 characters.',
         required => '0',
     },
     'item_value' => {
