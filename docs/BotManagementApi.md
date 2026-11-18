@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**bot_management_list_workspaces**](BotManagementApi.md#bot_management_list_workspaces) | **GET** /bot-management/v1/workspaces | List workspaces
 [**bot_management_update_bot**](BotManagementApi.md#bot_management_update_bot) | **PATCH** /bot-management/v1/workspaces/{workspace_id}/policy/categories/{category_id}/bots/{bot_id} | Set a bot action
 [**bot_management_update_category**](BotManagementApi.md#bot_management_update_category) | **PATCH** /bot-management/v1/workspaces/{workspace_id}/policy/categories/{category_id} | Set a category action
+[**bot_management_update_category_bots**](BotManagementApi.md#bot_management_update_category_bots) | **PATCH** /bot-management/v1/workspaces/{workspace_id}/policy/categories/{category_id}/bots | Set the action for all bots in a category
 [**bot_management_update_workspace**](BotManagementApi.md#bot_management_update_workspace) | **PATCH** /bot-management/v1/workspaces/{workspace_id} | Update a workspace
 
 
@@ -241,7 +242,7 @@ Name | Type | Description  | Notes
 
 List categories
 
-List all bot categories in a workspace's policy. Each category has an action that applies to every bot in the category. To list the bots themselves, use [list all bots in a workspace](#bot-management-list-bots) or [list bots in a category](#bot-management-list-category-bots).
+List all bot categories in a workspace's policy. Each category has an action that applies to every bot in the category that is set to `inherit`. To list the bots themselves, use [list all bots in a workspace](#bot-management-list-bots) or [list bots in a category](#bot-management-list-category-bots).
 
 ### Example
 ```perl
@@ -465,7 +466,7 @@ Name | Type | Description  | Notes
 
 Set a category action
 
-Set the action for a bot category. Every bot in the category configured with the 'inherit' action uses the action set for the category.
+Set the default action for a bot category. Bots set to `inherit` follow this action. Bots with their own action keep it. To remove every bot's own action in the category, use [set the action for all bots in a category](#bot-management-update-category-bots).
 
 ### Example
 ```perl
@@ -503,6 +504,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BotManagementCategoryResponse**](BotManagementCategoryResponse.md)
+
+### Authorization
+
+[token](../README.md#token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/problem+json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **bot_management_update_category_bots**
+> BotManagementBotsResponse bot_management_update_category_bots(workspace_id => $workspace_id, category_id => $category_id, bot_management_category_bots => $bot_management_category_bots)
+
+Set the action for all bots in a category
+
+Set the action for every bot in a category. Setting `inherit` removes each bot's own action, so every bot follows the category's action. The category's own action is unchanged. The update applies to every bot in the category or to none, and repeating it gives the same result. The response lists every bot in the category, including bots that already inherited, and is not paginated.
+
+### Example
+```perl
+use Data::Dumper;
+use WebService::Fastly::BotManagementApi;
+my $api_instance = WebService::Fastly::BotManagementApi->new(
+
+    # Configure API key authorization: token
+    api_key => {'Fastly-Key' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Fastly-Key' => 'Bearer'},
+);
+
+my $workspace_id = SU1Z0isxPaozGVKXdv0eY; # string | The ID of the bot management workspace.
+my $category_id = ai_crawlers; # string | The ID of the bot category.
+my $bot_management_category_bots = WebService::Fastly::Object::BotManagementCategoryBots->new(); # BotManagementCategoryBots | 
+
+eval {
+    my $result = $api_instance->bot_management_update_category_bots(workspace_id => $workspace_id, category_id => $category_id, bot_management_category_bots => $bot_management_category_bots);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling BotManagementApi->bot_management_update_category_bots: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **workspace_id** | **string**| The ID of the bot management workspace. | 
+ **category_id** | **string**| The ID of the bot category. | 
+ **bot_management_category_bots** | [**BotManagementCategoryBots**](BotManagementCategoryBots.md)|  | 
+
+### Return type
+
+[**BotManagementBotsResponse**](BotManagementBotsResponse.md)
 
 ### Authorization
 

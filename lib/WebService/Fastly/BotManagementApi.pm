@@ -889,6 +889,107 @@ sub bot_management_update_category {
 }
 
 #
+# bot_management_update_category_bots
+#
+# Set the action for all bots in a category
+#
+# @param string $workspace_id The ID of the bot management workspace. (required)
+# @param string $category_id The ID of the bot category. (required)
+# @param BotManagementCategoryBots $bot_management_category_bots  (required)
+{
+    my $params = {
+    'workspace_id' => {
+        data_type => 'string',
+        description => 'The ID of the bot management workspace.',
+        required => '1',
+    },
+    'category_id' => {
+        data_type => 'string',
+        description => 'The ID of the bot category.',
+        required => '1',
+    },
+    'bot_management_category_bots' => {
+        data_type => 'BotManagementCategoryBots',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'bot_management_update_category_bots' } = {
+        summary => 'Set the action for all bots in a category',
+        params => $params,
+        returns => 'BotManagementBotsResponse',
+        };
+}
+# @return BotManagementBotsResponse
+#
+sub bot_management_update_category_bots {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'workspace_id' is set
+    unless (exists $args{'workspace_id'}) {
+      croak("Missing the required parameter 'workspace_id' when calling bot_management_update_category_bots");
+    }
+
+    # verify the required parameter 'category_id' is set
+    unless (exists $args{'category_id'}) {
+      croak("Missing the required parameter 'category_id' when calling bot_management_update_category_bots");
+    }
+
+    # verify the required parameter 'bot_management_category_bots' is set
+    unless (exists $args{'bot_management_category_bots'}) {
+      croak("Missing the required parameter 'bot_management_category_bots' when calling bot_management_update_category_bots");
+    }
+
+    # parse inputs
+    my $_resource_path = '/bot-management/v1/workspaces/{workspace_id}/policy/categories/{category_id}/bots';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json', 'application/problem+json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'workspace_id'}) {
+        my $_base_variable = "{" . "workspace_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'workspace_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'category_id'}) {
+        my $_base_variable = "{" . "category_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'category_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'bot_management_category_bots'}) {
+        $_body_data = $args{'bot_management_category_bots'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(token )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('BotManagementBotsResponse', $response);
+    return $_response_object;
+}
+
+#
 # bot_management_update_workspace
 #
 # Update a workspace

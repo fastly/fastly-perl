@@ -228,6 +228,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'path' => {
+        datatype => 'string',
+        base_name => 'path',
+        description => 'URL path attribute.',
+        format => '',
+        read_only => 'false',
+            },
     'additional_attributes' => {
         datatype => 'ARRAY[string]',
         base_name => 'additional_attributes',
@@ -248,6 +255,7 @@ __PACKAGE__->openapi_types( {
     'host' => 'string',
     'asn' => 'string',
     'source_ip_prefix' => 'string',
+    'path' => 'string',
     'additional_attributes' => 'ARRAY[string]'
 } );
 
@@ -262,6 +270,7 @@ __PACKAGE__->attribute_map( {
     'host' => 'host',
     'asn' => 'asn',
     'source_ip_prefix' => 'source_ip_prefix',
+    'path' => 'path',
     'additional_attributes' => 'additional_attributes'
 } );
 
@@ -273,6 +282,7 @@ __PACKAGE__->openapi_nullable( {
     'host' => 'true',
     'asn' => 'true',
     'source_ip_prefix' => 'true',
+    'path' => 'true',
 } );
 
 

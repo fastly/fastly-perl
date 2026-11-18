@@ -2790,6 +2790,20 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => 'false',
             },
+    'origin_fetch_iam_success_count' => {
+        datatype => 'int',
+        base_name => 'origin_fetch_iam_success_count',
+        description => 'Count of successful IAM authenticated backend requests.',
+        format => '',
+        read_only => 'false',
+            },
+    'origin_fetch_iam_failure_count' => {
+        datatype => 'int',
+        base_name => 'origin_fetch_iam_failure_count',
+        description => 'Count of failed IAM authenticated backend requests.',
+        format => '',
+        read_only => 'false',
+            },
     'service_id' => {
         datatype => 'string',
         base_name => 'service_id',
@@ -3183,6 +3197,8 @@ __PACKAGE__->openapi_types( {
     'netprotect_firewall_dropped_packets' => 'int',
     'api_enforcement_allowed_requests_count' => 'int',
     'api_enforcement_flagged_requests_count' => 'int',
+    'origin_fetch_iam_success_count' => 'int',
+    'origin_fetch_iam_failure_count' => 'int',
     'service_id' => 'string',
     'start_time' => 'int'
 } );
@@ -3564,6 +3580,8 @@ __PACKAGE__->attribute_map( {
     'netprotect_firewall_dropped_packets' => 'netprotect_firewall_dropped_packets',
     'api_enforcement_allowed_requests_count' => 'api_enforcement_allowed_requests_count',
     'api_enforcement_flagged_requests_count' => 'api_enforcement_flagged_requests_count',
+    'origin_fetch_iam_success_count' => 'origin_fetch_iam_success_count',
+    'origin_fetch_iam_failure_count' => 'origin_fetch_iam_failure_count',
     'service_id' => 'service_id',
     'start_time' => 'start_time'
 } );

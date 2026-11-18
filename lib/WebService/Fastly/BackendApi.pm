@@ -63,6 +63,11 @@ sub new {
 # @param int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
 # @param string $healthcheck The name of the healthcheck to use with this backend. (optional)
 # @param string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+# @param string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+# @param string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+# @param string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+# @param string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+# @param string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
 # @param string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -152,6 +157,31 @@ sub new {
     'hostname' => {
         data_type => 'string',
         description => 'The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.',
+        required => '0',
+    },
+    'iam_external_id' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.',
+        required => '0',
+    },
+    'iam_product' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication, the IAM signature will use this as the product element.',
+        required => '0',
+    },
+    'iam_region' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication, this region will be used for signing and access.',
+        required => '0',
+    },
+    'iam_role' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.',
+        required => '0',
+    },
+    'iam_vendor' => {
+        data_type => 'string',
+        description => 'A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.',
         required => '0',
     },
     'ipv4' => {
@@ -398,6 +428,31 @@ sub create_backend {
     # form params
     if ( exists $args{'hostname'} ) {
                 $form_params->{'hostname'} = $self->{api_client}->to_form_value($args{'hostname'});
+    }
+
+    # form params
+    if ( exists $args{'iam_external_id'} ) {
+                $form_params->{'iam_external_id'} = $self->{api_client}->to_form_value($args{'iam_external_id'});
+    }
+
+    # form params
+    if ( exists $args{'iam_product'} ) {
+                $form_params->{'iam_product'} = $self->{api_client}->to_form_value($args{'iam_product'});
+    }
+
+    # form params
+    if ( exists $args{'iam_region'} ) {
+                $form_params->{'iam_region'} = $self->{api_client}->to_form_value($args{'iam_region'});
+    }
+
+    # form params
+    if ( exists $args{'iam_role'} ) {
+                $form_params->{'iam_role'} = $self->{api_client}->to_form_value($args{'iam_role'});
+    }
+
+    # form params
+    if ( exists $args{'iam_vendor'} ) {
+                $form_params->{'iam_vendor'} = $self->{api_client}->to_form_value($args{'iam_vendor'});
     }
 
     # form params
@@ -869,6 +924,11 @@ sub list_backends {
 # @param int $fetch_timeout Maximum duration in milliseconds to wait for the entire response to be received after a TCP connection is established and the request has been sent. If exceeded, the connection is aborted and a synthetic &#x60;503&#x60; response will be presented instead. May be set at runtime using &#x60;bereq.fetch_timeout&#x60;. (optional)
 # @param string $healthcheck The name of the healthcheck to use with this backend. (optional)
 # @param string $hostname The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
+# @param string $iam_external_id If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set. (optional)
+# @param string $iam_product If the backend is using IAM authentication, the IAM signature will use this as the product element. (optional)
+# @param string $iam_region If the backend is using IAM authentication, this region will be used for signing and access. (optional)
+# @param string $iam_role If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor. (optional)
+# @param string $iam_vendor A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value. (optional)
 # @param string $ipv4 IPv4 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param string $ipv6 IPv6 address of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location. (optional)
 # @param int $keepalive_time How long (in seconds) to keep a persistent connection to the backend between requests. By default, Fastly keeps connections open as long as it can. (optional)
@@ -963,6 +1023,31 @@ sub list_backends {
     'hostname' => {
         data_type => 'string',
         description => 'The hostname of the backend. May be used as an alternative to &#x60;address&#x60; to set the backend location.',
+        required => '0',
+    },
+    'iam_external_id' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication and the IAM system policy requires a matching external identifier, it should match this value. Your Fastly customer ID will be used if this attribute is not set.',
+        required => '0',
+    },
+    'iam_product' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication, the IAM signature will use this as the product element.',
+        required => '0',
+    },
+    'iam_region' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication, this region will be used for signing and access.',
+        required => '0',
+    },
+    'iam_role' => {
+        data_type => 'string',
+        description => 'If the backend is using IAM authentication, the fully qualified role string supplied by the storage vendor.',
+        required => '0',
+    },
+    'iam_vendor' => {
+        data_type => 'string',
+        description => 'A label that identifies the storage vendor. Providing a value in this field enables IAM usage, and all other IAM fields depend on its value.',
         required => '0',
     },
     'ipv4' => {
@@ -1221,6 +1306,31 @@ sub update_backend {
     # form params
     if ( exists $args{'hostname'} ) {
                 $form_params->{'hostname'} = $self->{api_client}->to_form_value($args{'hostname'});
+    }
+
+    # form params
+    if ( exists $args{'iam_external_id'} ) {
+                $form_params->{'iam_external_id'} = $self->{api_client}->to_form_value($args{'iam_external_id'});
+    }
+
+    # form params
+    if ( exists $args{'iam_product'} ) {
+                $form_params->{'iam_product'} = $self->{api_client}->to_form_value($args{'iam_product'});
+    }
+
+    # form params
+    if ( exists $args{'iam_region'} ) {
+                $form_params->{'iam_region'} = $self->{api_client}->to_form_value($args{'iam_region'});
+    }
+
+    # form params
+    if ( exists $args{'iam_role'} ) {
+                $form_params->{'iam_role'} = $self->{api_client}->to_form_value($args{'iam_role'});
+    }
+
+    # form params
+    if ( exists $args{'iam_vendor'} ) {
+                $form_params->{'iam_vendor'} = $self->{api_client}->to_form_value($args{'iam_vendor'});
     }
 
     # form params
